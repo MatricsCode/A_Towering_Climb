@@ -1,0 +1,8 @@
+res://Scenes/Main.tscn
+res://Scenes/Level.tscn
+res://Scenes/player.tscn
+res://Scripts/Player.gd
+res://Scripts/Player/Player.gd
+res://Scripts/Player/StateMachine.gd
+res://Scripts/State.gd
+res://Scripts/Player/WalkingState.gd

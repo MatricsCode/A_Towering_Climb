@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://yok4okqr5xhe"]
+
+[ext_resource type="Script" uid="uid://ceh88qybxg6et" path="res://Scripts/Level/multiplayer_spawner.gd" id="1_0ba56"]
+[ext_resource type="PackedScene" uid="uid://0gvtt6ccvbm1" path="res://Scenes/player.tscn" id="2_vsvp5"]
+
+[node name="Level" type="Node"]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath(".")
+script = ExtResource("1_0ba56")
+player_scene = ExtResource("2_vsvp5")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(44.0001, -88)
+scale = Vector2(2.375, 2.375)
+polygon = PackedVector2Array(-96, -64, -96, 64, 192, 64, 192, 0, 256, 0, 256, 192, -320, 192, -320, -64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(44.25, -88.5)
+scale = Vector2(2.38281, 2.38281)
+polygon = PackedVector2Array(-97, -36, -96, 64, 192, 64, 192, 0, 256, 0, 256, 192, -320, 192, -320, -64, -96, -64)
