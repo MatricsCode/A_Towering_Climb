@@ -157,11 +157,13 @@ properties/0/spawn = true
 properties/0/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 15
 script = ExtResource("1_v0iea")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e6mvm")
-animation = &"ram"
+animation = &"pre_jump"
 speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -171,8 +173,9 @@ shape = SubResource("RectangleShape2D_cvnsp")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="GroundDetector" type="RayCast2D" parent="."]
-target_position = Vector2(0, 136)
-collision_mask = 4
+position = Vector2(0, 128)
+target_position = Vector2(0, 8)
+collision_mask = 2
 hit_from_inside = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

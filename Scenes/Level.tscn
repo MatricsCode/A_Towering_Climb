@@ -16,6 +16,8 @@ scale = Vector2(2.375, 2.375)
 polygon = PackedVector2Array(-96, -64, -96, 64, 192, 64, 192, 0, 256, 0, 256, 192, -320, 192, -320, -64)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(44.25, -88.5)
