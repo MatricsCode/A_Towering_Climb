@@ -14,6 +14,7 @@ player_scene = ExtResource("2_vsvp5")
 position = Vector2(44.0001, -88)
 scale = Vector2(2.375, 2.375)
 polygon = PackedVector2Array(-96, -64, -96, 64, 192, 64, 192, 0, 256, 0, 256, 192, -320, 192, -320, -64)
+uv = PackedVector2Array(-419, -9)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2

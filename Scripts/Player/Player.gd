@@ -19,14 +19,14 @@ var main_vars = { ## Main ariables
 	gravity = 0, ## Determins at what speed the player falls down
 }
 
-var main_var_reset = [] ## The Array, getting auto-assigned in the ready function the values of main_vars
+var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
 
 ## --- Nodes ---
 @onready var cam = $Camera2D 
 @onready var sprite = $Sprite
-@onready var ground_detector = $GroundDetector
 
-@export var velocity2 = velocity
+## --- Export Variables ---
+@export var velocity2 = velocity ## Allows the Multiplayer Synchronizer to sync the velocity
 
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scene
@@ -52,8 +52,17 @@ func _physics_process(delta):  ## Runs every physics frame
 
 ## --- Self made functions ---
 func ground():
+	## All of the different ways of exiting the current state go here
+	#region Exits
+	if Input.is_action_pressed("Jump"):
+		switch(States.GROUND, States.AIR)
+	elif not is_on_floor():
+		switch(States.GROUND, States.AIR)
+	#endregion
+	
+	## All of the different actions possible in the current state go here
 	#region Main
-	if velocity.x != 0:
+	if velocity.x != 0: # This plays the correct animation, according to what the velocity is
 		sprite.play("walk")
 	elif velocity.x == 0:
 		sprite.play("idle")
@@ -61,43 +70,38 @@ func ground():
 	move()
 	turn()
 	#endregion
-	
-	#region Exits
-	if Input.is_action_pressed("Jump"):
-		switch(States.GROUND, States.AIR)
-	#endregion
-
 func air():
+	## All of the different ways of exiting the current state go here
+	#region Exits
+	if is_on_floor() and main_vars.gravity != 0:
+		switch(States.AIR, States.GROUND)
+	#endregion
+	
+	## All of the different actions possible in the current state go here
 	#region Main
-	if Input.is_action_pressed("Jump") and ground_detector.is_colliding():
-		sprite.play("pre_jump")
+	if Input.is_action_pressed("Jump") and is_on_floor(): # Checks if you are holding jump
+		sprite.play("pre_jump") # Plays the crouching animation for anticipation
 		
-		if main_vars.jump_power < MAX_JUMP:
+		if main_vars.jump_power < MAX_JUMP: # Checks if jump power is maxed out, and if not increases it
 			main_vars.jump_power += main_vars.jump_increase
 			main_vars.jump_increase += 1
 		
-		velocity.x = 0
-	elif Input.is_action_just_released("Jump") and ground_detector.is_colliding():
-		sprite.play("jump")
-		velocity.y = -main_vars.jump_power
-		return
+		velocity.x = 0 # Dissables the ability to move during pre_jumps
+	elif Input.is_action_just_released("Jump") and is_on_floor(): # Plays as soon as you release the jump
+		sprite.play("jump") # Plays the jump animtation
+		velocity.y = -main_vars.jump_power # Sets the upward velocity to jumping heights
 	
 	if velocity.y > 0:
-		sprite.play("fall")
+		sprite.play("fall") # Plays the fall animation if you are traveling downward
 	
-	if not ground_detector.is_colliding() and velocity.y < MAX_GRAVITY:
+	if not is_on_floor() and velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
 		velocity.y += main_vars.gravity
 		main_vars.gravity += 0.5
 		move()
 		turn()
 	#endregion
-	
-	
-	#region Exits
-	if ground_detector.is_colliding() and main_vars.gravity != 0:
-		switch(States.AIR, States.GROUND)
-	#endregion
-
+func climb():
+	pass
 
 ## --- Helper Functions ---
 func move():
