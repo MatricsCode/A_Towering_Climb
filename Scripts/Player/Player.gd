@@ -26,6 +26,7 @@ var main_var_reset = [] ## The Array, getting auto-assigned in the ready functio
 @onready var sprite = $Sprite
 @onready var ground_detector = $GroundDetector
 
+@export var velocity2 = velocity
 
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scene
