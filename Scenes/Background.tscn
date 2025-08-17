@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbnyp3hyfqj53"]
+
+[ext_resource type="Texture2D" uid="uid://cgy5aq6l3q62q" path="res://Art/Background/Paralax Backround9.png" id="1_rqs8y"]
+[ext_resource type="Texture2D" uid="uid://dlyek5n3t831i" path="res://Art/Background/Paralax Backround8.png" id="2_vxnle"]
+[ext_resource type="Texture2D" uid="uid://d3ksc7ujvucu4" path="res://Art/Background/Paralax Backround7.png" id="3_8sjso"]
+[ext_resource type="Texture2D" uid="uid://cicvb34mq5aub" path="res://Art/Background/Paralax Backround6.png" id="4_6s3s0"]
+[ext_resource type="Texture2D" uid="uid://c6oxsra8qjq65" path="res://Art/Background/Paralax Backround5.png" id="5_cboml"]
+[ext_resource type="Texture2D" uid="uid://y006iehw7qa5" path="res://Art/Background/Paralax Backround4.png" id="6_jwwbk"]
+[ext_resource type="Texture2D" uid="uid://cscmgmrei7k7t" path="res://Art/Background/Paralax Backround3.png" id="7_dvy6d"]
+[ext_resource type="Texture2D" uid="uid://clca7782awsl1" path="res://Art/Background/Paralax Backround2.png" id="8_ni1bc"]
+[ext_resource type="Texture2D" uid="uid://cm4s2xhs2nbxe" path="res://Art/Background/Paralax Backround1.png" id="9_q11sa"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(4290, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Sky"]
+offset_top = -5620.0
+offset_right = 4290.0
+texture = ExtResource("1_rqs8y")
+stretch_mode = 1
+
+[node name="Towers5" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(4290, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Towers5"]
+offset_top = -5620.0
+offset_right = 4290.0
+texture = ExtResource("2_vxnle")
+stretch_mode = 1
+
+[node name="Towers4" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(4290, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Towers4"]
+offset_top = -5620.0
+offset_right = 4290.0
+texture = ExtResource("3_8sjso")
+stretch_mode = 1
+
+[node name="Towers3" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(4290, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Towers3"]
+offset_top = -5620.0
+offset_right = 4290.0
+texture = ExtResource("4_6s3s0")
+stretch_mode = 1
+
+[node name="Towers2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(4290, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Towers2"]
+offset_top = -5620.0
+offset_right = 4290.0
+texture = ExtResource("5_cboml")
+stretch_mode = 1
+
+[node name="Towers1" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(4290, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Towers1"]
+offset_top = -5620.0
+offset_right = 4290.0
+texture = ExtResource("6_jwwbk")
+stretch_mode = 1
+
+[node name="Backroads" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(4290, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Backroads"]
+offset_top = -5620.0
+offset_right = 4290.0
+texture = ExtResource("7_dvy6d")
+stretch_mode = 1
+
+[node name="Walkway" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(4290, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Walkway"]
+offset_top = -5620.0
+offset_right = 4290.0
+texture = ExtResource("8_ni1bc")
+stretch_mode = 1
+
+[node name="Roads" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(4290, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Roads"]
+offset_top = -5620.0
+offset_right = 4290.0
+texture = ExtResource("9_q11sa")
+stretch_mode = 1

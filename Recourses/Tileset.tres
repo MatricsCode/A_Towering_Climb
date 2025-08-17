@@ -1,0 +1,52 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cxjreg6tirxq3"]
+
+[ext_resource type="Texture2D" uid="uid://vu8lrnx8rw0u" path="res://Art/Tilemap/Beams.png" id="1_wvmsy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wmugh"]
+texture = ExtResource("1_wvmsy")
+texture_region_size = Vector2i(110, 110)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25, -35, 55, -35, 55, 55, -25, 55)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25, -55, 25, -55, 25, 55, -25, 55)
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25, -55, 55, -55, 55, 35, -25, 35)
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-55, -55, 25, -55, 25, 35, -55, 35)
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-55, -35, 25, -35, 25, 55, -55, 55)
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/left_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-55, -35, 55, -35, 55, 35, -55, 35)
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+
+[resource]
+tile_size = Vector2i(110, 110)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "Beams"
+terrain_set_0/terrain_0/color = Color(0.717647, 0, 0, 1)
+sources/0 = SubResource("TileSetAtlasSource_wmugh")

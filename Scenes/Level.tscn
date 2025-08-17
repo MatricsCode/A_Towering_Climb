@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://yok4okqr5xhe"]
 
 [ext_resource type="Script" uid="uid://ceh88qybxg6et" path="res://Scripts/Level/multiplayer_spawner.gd" id="1_0ba56"]
-[ext_resource type="PackedScene" uid="uid://0gvtt6ccvbm1" path="res://Scenes/player.tscn" id="2_vsvp5"]
+[ext_resource type="PackedScene" uid="uid://0gvtt6ccvbm1" path="res://Scenes/Player.tscn" id="2_vsvp5"]
 
 [node name="Level" type="Node"]
 
@@ -11,12 +11,13 @@ script = ExtResource("1_0ba56")
 player_scene = ExtResource("2_vsvp5")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(44.0001, -88)
+position = Vector2(756, -456)
 scale = Vector2(2.375, 2.375)
 polygon = PackedVector2Array(-96, -64, -96, 64, 192, 64, 192, 0, 256, 0, 256, 192, -320, 192, -320, -64)
 uv = PackedVector2Array(-419, -9)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(712, -368)
 collision_layer = 2
 collision_mask = 0
 

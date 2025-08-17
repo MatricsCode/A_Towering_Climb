@@ -1,8 +1,18 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1755196740
-export_presets.cfg::TextFile/TextFile::-1::1755033292::0::1::::<><><>0<>0<><>::
+::res://::1755459128
+export_presets.cfg::TextFile/TextFile::-1::1755203647::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::3041926038368580319::1754591159::1754591168::1::::<><><>0<>0<>2d6f129e0168ad32ec413d66709c61f3<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-::res://Art/::1754856579
+::res://Art/::1755373181
+::res://Art/Background/::1755201887
+Paralax Backround1.png::CompressedTexture2D/CompressedTexture2D::5676116787920668590::1755201639::1755201887::1::::<><><>0<>0<>17d86e4a80cb0856aa1d1e42b7f2111e<>res://.godot/imported/Paralax Backround1.png-a9687f8f61b7f999acda926f4a147c38.ctex::
+Paralax Backround2.png::CompressedTexture2D/CompressedTexture2D::5549106281271027240::1755201640::1755201887::1::::<><><>0<>0<>a08fcf8e07230b65a24e8cd1fb3ea367<>res://.godot/imported/Paralax Backround2.png-c586423747420b3bb75095530481ba38.ctex::
+Paralax Backround3.png::CompressedTexture2D/CompressedTexture2D::6041109283791111099::1755201641::1755201887::1::::<><><>0<>0<>eba0419036e8205a493355881ad61fe7<>res://.godot/imported/Paralax Backround3.png-f3fe251d02b682265bf9fb25baea532e.ctex::
+Paralax Backround4.png::CompressedTexture2D/CompressedTexture2D::1737715402309227422::1755201642::1755201886::1::::<><><>0<>0<>f04d63f4f74f0ef71cbc00bce39b6352<>res://.godot/imported/Paralax Backround4.png-58d9f1bbea9c33ae3a58644e8460730f.ctex::
+Paralax Backround5.png::CompressedTexture2D/CompressedTexture2D::6979026338264035812::1755201644::1755201886::1::::<><><>0<>0<>40dda54c722666613af33b95a99e992b<>res://.godot/imported/Paralax Backround5.png-b434a57121f19a845b5be5150a4f4de9.ctex::
+Paralax Backround6.png::CompressedTexture2D/CompressedTexture2D::5339759230661499737::1755201645::1755201887::1::::<><><>0<>0<>51c334e39155a4733498c98eac05cfe1<>res://.godot/imported/Paralax Backround6.png-cd169f2878cb3b1c631f6ef1cf588a88.ctex::
+Paralax Backround7.png::CompressedTexture2D/CompressedTexture2D::9146291640023477725::1755201646::1755201887::1::::<><><>0<>0<>218459076ee49dc8cf0a44d16aaa1e08<>res://.godot/imported/Paralax Backround7.png-ab764b596d7c67c7af1b3ef50c705a90.ctex::
+Paralax Backround8.png::CompressedTexture2D/CompressedTexture2D::7981146720187083108::1755201647::1755201887::1::::<><><>0<>0<>b88d02ad4023ed1891a027452df21bb8<>res://.godot/imported/Paralax Backround8.png-6a7e1d1439a1ecdcf0addd9c1fbeb7fb.ctex::
+Paralax Backround9.png::CompressedTexture2D/CompressedTexture2D::5245341893895236866::1755201649::1755201882::1::::<><><>0<>0<>d1a63783e539fe9c1d24a9c410e77f43<>res://.godot/imported/Paralax Backround9.png-664cd7c1251e9f84c12d1c81633c8748.ctex::
 ::res://Art/Player/::1754856591
 Climber1.png::CompressedTexture2D/CompressedTexture2D::1530549249114544074::1754856585::1754856591::1::::<><><>0<>0<>1faafa6d30091f65f1f5bf624f9c4b70<>res://.godot/imported/Climber1.png-3ff71c6c8721656fa292ace9670ba28c.ctex::
 Climber2.png::CompressedTexture2D/CompressedTexture2D::3196315001306128496::1754856585::1754856591::1::::<><><>0<>0<>6193d078704c0e5211a38c404e6fb850<>res://.godot/imported/Climber2.png-d4915d5b86c0d3dd9e6ffa603354607b.ctex::
@@ -29,15 +39,23 @@ Climber22.png::CompressedTexture2D/CompressedTexture2D::4215298005795783988::175
 Climber23.png::CompressedTexture2D/CompressedTexture2D::506560176017568935::1754856585::1754856591::1::::<><><>0<>0<>c152f02f7c38b9769e4419634da8e8b1<>res://.godot/imported/Climber23.png-c7801663c69285bae24465a963a62321.ctex::
 Climber24.png::CompressedTexture2D/CompressedTexture2D::5203476611852411865::1754856585::1754856591::1::::<><><>0<>0<>c188d7cb9416bbf1802ab96a7dfbc0e0<>res://.godot/imported/Climber24.png-89fb4c76fa7caa6562b410664deacc13.ctex::
 Climber25.png::CompressedTexture2D/CompressedTexture2D::3198953098855238037::1754856585::1754856591::1::::<><><>0<>0<>6e5da2b7b337833c0a3d3deabc3535f5<>res://.godot/imported/Climber25.png-e898e8504f8f71238fbf12e3bb94387b.ctex::
-::res://Scenes/::1755034670
-Level.tscn::PackedScene::1714093245346357326::1755034670::0::1::::<><><>0<>0<><>::uid://ceh88qybxg6et::::res://Scripts/Level/multiplayer_spawner.gd<>uid://0gvtt6ccvbm1::::res://Scenes/player.tscn
-Main.tscn::PackedScene::3874195412453570886::1755034670::0::1::::<><><>0<>0<><>::uid://cwr65tthifp3p::::res://Scripts/MainScene/main.gd<>uid://c5g2d6i58r61p::::res://Scripts/MainScene/steam.gd
-player.tscn::PackedScene::1768417390334417150::1755034670::0::1::::<><><>0<>0<><>::uid://b7q3cr0opi67a::::res://Scripts/Player/Player.gd<>uid://b5yxoskdspugl::::res://Art/Player/Climber12.png<>uid://g7kvj74jxr8y::::res://Art/Player/Climber13.png<>uid://d0704c7trp3mq::::res://Art/Player/Climber14.png<>uid://c23dyki441stt::::res://Art/Player/Climber15.png<>uid://p3iqb2xmmwmm::::res://Art/Player/Climber11.png<>uid://b6wyahku0krlf::::res://Art/Player/Climber16.png<>uid://c2a4a0bu0npx8::::res://Art/Player/Climber17.png<>uid://c6jekn5xgutbk::::res://Art/Player/Climber18.png<>uid://d2c6t0v8vdhfq::::res://Art/Player/Climber19.png<>uid://djcutp3fw10eo::::res://Art/Player/Climber20.png<>uid://cc7ogqbxw08q5::::res://Art/Player/Climber21.png<>uid://v2n6mouri1as::::res://Art/Player/Climber1.png<>uid://x7aq4fi5sb2m::::res://Art/Player/Climber10.png<>uid://cwheguxbggp6u::::res://Art/Player/Climber9.png<>uid://b1b6lvxqcotts::::res://Art/Player/Climber22.png<>uid://hhm8b0ana2ql::::res://Art/Player/Climber23.png<>uid://cgeuq8qxxuf34::::res://Art/Player/Climber24.png<>uid://bltuj4owjd2fx::::res://Art/Player/Climber25.png<>uid://blsk3uj75ilc7::::res://Art/Player/Climber2.png<>uid://d3hgjamg108p3::::res://Art/Player/Climber3.png<>uid://brq55ibfgpg2y::::res://Art/Player/Climber4.png<>uid://dkbvrbfuu2tvb::::res://Art/Player/Climber5.png<>uid://d0rkw81b6di2::::res://Art/Player/Climber6.png<>uid://c8p2s1xdfqe06::::res://Art/Player/Climber7.png<>uid://bwnfnfpusry3s::::res://Art/Player/Climber8.png
-::res://Scripts/::1754768048
-::res://Scripts/Level/::1754765951
-multiplayer_spawner.gd::GDScript/GDScript::5070110855702256215::1754591914::0::1::::<>MultiplayerSpawner<><>0<>0<><>::
-::res://Scripts/MainScene/::1755034601
-main.gd::GDScript::6354027177458728139::1755034601::0::1::::<>Node2D<><>0<>0<><>::
+::res://Art/Tilemap/::1755373205
+Beams.png::CompressedTexture2D/CompressedTexture2D::1517277490043340918::1755373203::1755373205::1::::<><><>0<>0<>53f5ba793491802c86ad22a29eae8a16<>res://.godot/imported/Beams.png-10c4621ce76e025f4076d8e8b1700262.ctex::
+::res://Recourses/::1755458262
+Tileset.tres::TileSet::6406803866803831232::1755458262::0::1::::<><><>0<>0<><>::uid://vu8lrnx8rw0u::::res://Art/Tilemap/Beams.png
+::res://Scenes/::1755459101
+Background.tscn::PackedScene::4871352599127187276::1755459101::0::1::::<><><>0<>0<><>::uid://cgy5aq6l3q62q::::res://Art/Background/Paralax Backround9.png<>uid://dlyek5n3t831i::::res://Art/Background/Paralax Backround8.png<>uid://d3ksc7ujvucu4::::res://Art/Background/Paralax Backround7.png<>uid://cicvb34mq5aub::::res://Art/Background/Paralax Backround6.png<>uid://c6oxsra8qjq65::::res://Art/Background/Paralax Backround5.png<>uid://y006iehw7qa5::::res://Art/Background/Paralax Backround4.png<>uid://cscmgmrei7k7t::::res://Art/Background/Paralax Backround3.png<>uid://clca7782awsl1::::res://Art/Background/Paralax Backround2.png<>uid://cm4s2xhs2nbxe::::res://Art/Background/Paralax Backround1.png
+Level.tscn::PackedScene::1714093245346357326::1755459101::0::1::::<><><>0<>0<><>::uid://ceh88qybxg6et::::res://Scripts/Level/multiplayer_spawner.gd<>uid://0gvtt6ccvbm1::::res://Scenes/Player.tscn
+Main.tscn::PackedScene::3874195412453570886::1755459101::0::1::::<><><>0<>0<><>::uid://cwr65tthifp3p::::res://Scripts/MainScene/main.gd<>uid://c5g2d6i58r61p::::res://Scripts/MainScene/steam.gd<>uid://cbnyp3hyfqj53::::res://Scenes/Background.tscn
+Player.tscn::PackedScene::1768417390334417150::1755459101::0::1::::<><><>0<>0<><>::uid://b7q3cr0opi67a::::res://Scripts/Player/Player.gd<>uid://b5yxoskdspugl::::res://Art/Player/Climber12.png<>uid://g7kvj74jxr8y::::res://Art/Player/Climber13.png<>uid://d0704c7trp3mq::::res://Art/Player/Climber14.png<>uid://c23dyki441stt::::res://Art/Player/Climber15.png<>uid://p3iqb2xmmwmm::::res://Art/Player/Climber11.png<>uid://b6wyahku0krlf::::res://Art/Player/Climber16.png<>uid://c2a4a0bu0npx8::::res://Art/Player/Climber17.png<>uid://c6jekn5xgutbk::::res://Art/Player/Climber18.png<>uid://d2c6t0v8vdhfq::::res://Art/Player/Climber19.png<>uid://djcutp3fw10eo::::res://Art/Player/Climber20.png<>uid://cc7ogqbxw08q5::::res://Art/Player/Climber21.png<>uid://v2n6mouri1as::::res://Art/Player/Climber1.png<>uid://x7aq4fi5sb2m::::res://Art/Player/Climber10.png<>uid://cwheguxbggp6u::::res://Art/Player/Climber9.png<>uid://b1b6lvxqcotts::::res://Art/Player/Climber22.png<>uid://hhm8b0ana2ql::::res://Art/Player/Climber23.png<>uid://cgeuq8qxxuf34::::res://Art/Player/Climber24.png<>uid://bltuj4owjd2fx::::res://Art/Player/Climber25.png<>uid://blsk3uj75ilc7::::res://Art/Player/Climber2.png<>uid://d3hgjamg108p3::::res://Art/Player/Climber3.png<>uid://brq55ibfgpg2y::::res://Art/Player/Climber4.png<>uid://dkbvrbfuu2tvb::::res://Art/Player/Climber5.png<>uid://d0rkw81b6di2::::res://Art/Player/Climber6.png<>uid://c8p2s1xdfqe06::::res://Art/Player/Climber7.png<>uid://bwnfnfpusry3s::::res://Art/Player/Climber8.png
+TowerGenerator.tscn::PackedScene::6804943712955010598::1755459101::0::1::::<><><>0<>0<><>::uid://cxjreg6tirxq3::::res://Recourses/Tileset.tres<>uid://bwj246dth8mtn::::res://Scripts/TowerGenerator/tower_generator.gd
+::res://Scripts/::1755374663
+::res://Scripts/Level/::1755203974
+multiplayer_spawner.gd::GDScript/GDScript::5070110855702256215::1755203974::0::1::::<>MultiplayerSpawner<><>0<>0<><>::
+::res://Scripts/MainScene/::1755203614
+main.gd::GDScript/GDScript::6354027177458728139::1755203614::0::1::::<>Node2D<><>0<>0<><>::
 steam.gd::GDScript/GDScript::6892539301228098007::1754596051::0::1::::<>Node<><>0<>0<><>::
-::res://Scripts/Player/::1755033135
-Player.gd::GDScript/GDScript::4667198303733919724::1755033135::0::1::::player<>CharacterBody2D<><>0<>0<><>::
+::res://Scripts/Player/::1755201310
+Player.gd::GDScript/GDScript::4667198303733919724::1755201310::0::1::::player<>CharacterBody2D<><>0<>0<><>::
+::res://Scripts/TowerGenerator/::1755459078
+tower_generator.gd::GDScript::3950847424076494683::1755459078::0::1::::<>Node2D<><>0<>0<><>::

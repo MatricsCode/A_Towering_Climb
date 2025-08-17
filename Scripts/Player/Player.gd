@@ -33,7 +33,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scene
 	
 	cam.enabled = is_multiplayer_authority() ## Checks if you are this player and grants/denies you the camera from this
 	
-	current_state = States.GROUND ## Autoloads the normal state into the player
+	current_state = States.AIR ## Autoloads the normal state into the player
 	
 	main_var_reset = main_vars.values() ## Loads all the values of main vars into main var reset, so that they are stored seperatly
 
@@ -52,14 +52,6 @@ func _physics_process(delta):  ## Runs every physics frame
 
 ## --- Self made functions ---
 func ground():
-	## All of the different ways of exiting the current state go here
-	#region Exits
-	if Input.is_action_pressed("Jump"):
-		switch(States.GROUND, States.AIR)
-	elif not is_on_floor():
-		switch(States.GROUND, States.AIR)
-	#endregion
-	
 	## All of the different actions possible in the current state go here
 	#region Main
 	if velocity.x != 0: # This plays the correct animation, according to what the velocity is
@@ -70,13 +62,16 @@ func ground():
 	move()
 	turn()
 	#endregion
-func air():
+	
 	## All of the different ways of exiting the current state go here
 	#region Exits
-	if is_on_floor() and main_vars.gravity != 0:
-		switch(States.AIR, States.GROUND)
+	if Input.is_action_pressed("Jump"):
+		switch(States.GROUND, States.AIR)
+	elif not is_on_floor():
+		switch(States.GROUND, States.AIR)
 	#endregion
-	
+
+func air():
 	## All of the different actions possible in the current state go here
 	#region Main
 	if Input.is_action_pressed("Jump") and is_on_floor(): # Checks if you are holding jump
@@ -99,6 +94,12 @@ func air():
 		main_vars.gravity += 0.5
 		move()
 		turn()
+	#endregion
+	
+	## All of the different ways of exiting the current state go here
+	#region Exits
+	if is_on_floor() and main_vars.gravity != 0:
+		switch(States.AIR, States.GROUND)
 	#endregion
 func climb():
 	pass
