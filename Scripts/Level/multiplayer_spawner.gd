@@ -15,7 +15,7 @@ func spawn_player(data):
 	var p = player_scene.instantiate()
 	p.set_multiplayer_authority(data)
 	players[data] = p
-	p.position = Vector2(756.0,-456.0)
+	p.position.y -= 100
 	return p
 func remove_player(data):
 	players[data].queue_free()

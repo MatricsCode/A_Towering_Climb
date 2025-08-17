@@ -6,7 +6,7 @@ enum States {GROUND, AIR, CLIMB, RAM, EMPTY}
 
 ## --- Constants ---
 
-const MAX_JUMP = 700
+const MAX_JUMP = 1000
 const MAX_GRAVITY = 5000
 
 ## --- Variables ---
@@ -15,8 +15,9 @@ var current_state
 var main_vars = { ## Main ariables
 	speed = 300, ## Determins how much the player can move in one frame
 	jump_power = 500,  ## Determins the height of the players jump
-	jump_increase = 1,
+	jump_increase = 1, ## Determins how fast the player increases in jump power
 	gravity = 0, ## Determins at what speed the player falls down
+	climbing_speed = 250, ## How fast the player can climb
 }
 
 var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
@@ -24,6 +25,8 @@ var main_var_reset = [] ## The Array, gets auto-assigned in the ready function w
 ## --- Nodes ---
 @onready var cam = $Camera2D 
 @onready var sprite = $Sprite
+@onready var wall_detector = $WallDetectors
+@onready var edge_detector = $EdgeDetectors
 
 ## --- Export Variables ---
 @export var velocity2 = velocity ## Allows the Multiplayer Synchronizer to sync the velocity
@@ -37,7 +40,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scene
 	
 	main_var_reset = main_vars.values() ## Loads all the values of main vars into main var reset, so that they are stored seperatly
 
-func _physics_process(delta):  ## Runs every physics frame
+func _physics_process(delta):  ## Runs every physics frames
 	if not is_multiplayer_authority():
 		return ## Checks if you are this player, and grants/denies you control acordingly
 	
@@ -46,6 +49,13 @@ func _physics_process(delta):  ## Runs every physics frame
 			ground()
 		States.AIR:
 			air()
+		States.CLIMB:
+			climb()
+		States.EMPTY:
+			pass
+		
+		_:
+			print("A unidentified state has been entered")
 	
 	move_and_slide()
 
@@ -67,8 +77,13 @@ func ground():
 	#region Exits
 	if Input.is_action_pressed("Jump"):
 		switch(States.GROUND, States.AIR)
-	elif not is_on_floor():
+	
+	if not is_on_floor():
 		switch(States.GROUND, States.AIR)
+	
+	elif wall_detector.touching_wall():
+		position.y -= 5
+		switch(States.GROUND, States.CLIMB)
 	#endregion
 
 func air():
@@ -79,7 +94,6 @@ func air():
 		
 		if main_vars.jump_power < MAX_JUMP: # Checks if jump power is maxed out, and if not increases it
 			main_vars.jump_power += main_vars.jump_increase
-			main_vars.jump_increase += 1
 		
 		velocity.x = 0 # Dissables the ability to move during pre_jumps
 	elif Input.is_action_just_released("Jump") and is_on_floor(): # Plays as soon as you release the jump
@@ -88,6 +102,8 @@ func air():
 	
 	if velocity.y > 0:
 		sprite.play("fall") # Plays the fall animation if you are traveling downward
+	elif velocity.y < 0:
+		sprite.play("jump")
 	
 	if not is_on_floor() and velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
 		velocity.y += main_vars.gravity
@@ -100,9 +116,48 @@ func air():
 	#region Exits
 	if is_on_floor() and main_vars.gravity != 0:
 		switch(States.AIR, States.GROUND)
+	
+	if wall_detector.touching_wall():
+		position.y -= 5
+		switch(States.AIR, States.CLIMB)
 	#endregion
+
 func climb():
-	pass
+	
+	## All of the different actions possible in the current state go here
+	#region Main
+	var input = Input.get_axis("Up", "Down") ## Accesses the current input
+	
+	if input != 0:
+		velocity.y = main_vars.climbing_speed * input ## Sets the Velocity to input
+		sprite.play("climb")
+	
+	else:
+		sprite.play("climb")
+		sprite.stop()
+		velocity.y = 0
+	#endregion
+	
+	## All of the different ways of exiting the current state go here
+	#region Exits
+	if Input.is_action_just_pressed("Jump"):
+		velocity.x = main_vars.jump_power * get_sprite_rotation() * -1
+		velocity.y = -main_vars.jump_power
+		switch(States.CLIMB, States.AIR)
+	
+	if is_on_floor():
+		position.x += 5 * get_sprite_rotation() * -1
+		switch(States.CLIMB, States.GROUND)
+	
+	elif wall_detector.touching_wall() == false:
+		switch(States.CLIMB, States.AIR)
+	
+	if edge_detector.on_edge():
+		position.x += 5 * get_sprite_rotation()
+		position.y -= 31.5
+		velocity = Vector2(0,0)
+		switch(States.CLIMB, States.GROUND)
+	#endregion
 
 ## --- Helper Functions ---
 func move():
@@ -118,6 +173,12 @@ func turn():
 	elif velocity.x < 0:
 		sprite.flip_h = true
 
+func get_sprite_rotation():
+	if sprite.flip_h == false:
+		return 1
+	else:
+		return -1
+
 func switch(old_state, new_state):
 	if old_state == States.GROUND and new_state == States.AIR:
 		current_state = new_state
@@ -132,6 +193,9 @@ func switch(old_state, new_state):
 		
 		await get_tree().create_timer(0.2).timeout
 		
+		current_state = new_state
+	
+	else:
 		current_state = new_state
 
 func reset_main_vars():

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://yok4okqr5xhe"]
+[gd_scene load_steps=5 format=3 uid="uid://yok4okqr5xhe"]
 
 [ext_resource type="Script" uid="uid://ceh88qybxg6et" path="res://Scripts/Level/multiplayer_spawner.gd" id="1_0ba56"]
 [ext_resource type="PackedScene" uid="uid://0gvtt6ccvbm1" path="res://Scenes/Player.tscn" id="2_vsvp5"]
+[ext_resource type="PackedScene" uid="uid://c37motvds571c" path="res://Scenes/TowerGenerator.tscn" id="3_8rbpu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rbpu"]
+size = Vector2(4838, 20)
 
 [node name="Level" type="Node"]
 
@@ -10,18 +14,12 @@ spawn_path = NodePath(".")
 script = ExtResource("1_0ba56")
 player_scene = ExtResource("2_vsvp5")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(756, -456)
-scale = Vector2(2.375, 2.375)
-polygon = PackedVector2Array(-96, -64, -96, 64, 192, 64, 192, 0, 256, 0, 256, 192, -320, 192, -320, -64)
-uv = PackedVector2Array(-419, -9)
+[node name="LevelGen" parent="." instance=ExtResource("3_8rbpu")]
+position = Vector2(0, -144)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(712, -368)
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(44.25, -88.5)
-scale = Vector2(2.38281, 2.38281)
-polygon = PackedVector2Array(-97, -36, -96, 64, 192, 64, 192, 0, 256, 0, 256, 192, -320, 192, -320, -64, -96, -64)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_8rbpu")
