@@ -1,12 +1,7 @@
-res://Scenes/TowerGenerator.tscn
-res://Recourses/Tileset.tres
-res://Scripts/TowerGenerator/tower_generator.gd
 res://Scenes/Player.tscn
+res://Recourses/Tileset.tres
 res://Scenes/Main.tscn
 res://Scenes/Background.tscn
 res://Scenes/Level.tscn
-res://Scripts/Level/multiplayer_spawner.gd
-res://Scripts/Player/Player.gd
-res://Scripts/Player/wall_detectors.gd
-res://Scripts/Player/player.gd
-res://Scripts/Player/edge_detectors.gd
+res://Scenes/TowerGenerator.tscn
+res://Scripts/TowerGenerator/tower_generator.gd
