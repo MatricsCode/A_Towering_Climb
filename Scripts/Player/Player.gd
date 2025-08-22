@@ -59,7 +59,6 @@ func _physics_process(delta):  ## Runs every physics frames
 	
 	move_and_slide()
 
-
 ## --- Self made functions ---
 func ground():
 	## All of the different actions possible in the current state go here
@@ -96,26 +95,28 @@ func air():
 			main_vars.jump_power += main_vars.jump_increase
 		
 		velocity.x = 0 # Dissables the ability to move during pre_jumps
+	
 	elif Input.is_action_just_released("Jump") and is_on_floor(): # Plays as soon as you release the jump
 		sprite.play("jump") # Plays the jump animtation
 		velocity.y = -main_vars.jump_power # Sets the upward velocity to jumping heights
 	
-	if velocity.y > 0:
-		sprite.play("fall") # Plays the fall animation if you are traveling downward
-	elif velocity.y < 0:
-		sprite.play("jump")
-	
-	if not is_on_floor() and velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
-		velocity.y += main_vars.gravity
-		main_vars.gravity += 0.5
-		move()
-		turn()
+	elif not Input.is_action_pressed("Jump") and not is_on_floor():
+			if velocity.y > 0:
+				sprite.play("fall") # Plays the fall animation if you are traveling downward
+			elif velocity.y < 0:
+				sprite.play("jump")# Plays the jump animation if you are traveling upward
 	#endregion
 	
 	## All of the different ways of exiting the current state go here
 	#region Exits
 	if is_on_floor() and main_vars.gravity != 0:
 		switch(States.AIR, States.GROUND)
+	
+	if not is_on_floor() and velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
+		velocity.y += main_vars.gravity
+		main_vars.gravity += 0.5
+		move()
+		turn()
 	
 	if wall_detector.touching_wall():
 		position.y -= 5

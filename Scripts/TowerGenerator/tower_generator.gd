@@ -5,6 +5,7 @@ extends Node2D
 @export var visible_nodes = [] ## Will hold and send the tilemaps which form this level
 
 func _ready():
+	await get_tree().create_timer(0.5).timeout
 	if visible_nodes == []: ## Checks if is the host
 		for i in get_children(false):
 			
@@ -21,8 +22,6 @@ func _ready():
 			
 			visible_nodes.append(chosen_child) ## Adds the current tilemap to the array
 			i.position.y = -(height_difference * i.get_index() * 110) ## Displaces all of the tilemaps into a tower
-		
-	
 	else:
 		for i in get_children(false):
 			
@@ -36,7 +35,7 @@ func _ready():
 			for y in i.get_children(false):
 				if y.get_index() != chosen_child:
 					y.queue_free()
-			
-			i.get_child(chosen_child - 1).visible = true ## Turns on the correct tilemap
+				else:
+					y.visible = true ## Turns on the correct tilemap
 			
 			i.position.y = -(height_difference * i.get_index() * 110) ## Displaces all of the tilemaps into a tower
