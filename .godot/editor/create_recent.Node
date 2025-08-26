@@ -1,6 +1,7 @@
+Node2D
+Area2D
 MultiplayerSpawner
 RayCast2D
-Node2D
 StaticBody2D
 CollisionShape2D
 MultiplayerSynchronizer
@@ -11,5 +12,3 @@ VBoxContainer
 HSplitContainer
 Control
 TextureRect
-Sprite2D
-ParallaxLayer

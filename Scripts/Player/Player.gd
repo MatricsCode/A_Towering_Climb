@@ -1,35 +1,41 @@
 extends CharacterBody2D
 class_name player
 
+
 ## --- Enums ---
 enum States {GROUND, AIR, CLIMB, RAM, EMPTY}
 
-## --- Constants ---
 
+## --- Constants ---
 const MAX_JUMP = 1000
 const MAX_GRAVITY = 5000
+
 
 ## --- Variables ---
 var current_state
 
 var main_vars = { ## Main ariables
-	speed = 300, ## Determins how much the player can move in one frame
-	jump_power = 500,  ## Determins the height of the players jump
+	speed = 600, ## Determins how much the player can move in one frame
+	jump_power = 350,  ## Determins the height of the players jump
 	jump_increase = 1, ## Determins how fast the player increases in jump power
 	gravity = 0, ## Determins at what speed the player falls down
-	climbing_speed = 250, ## How fast the player can climb
-}
+	glide_gravity = 100,
+	climbing_speed = 300,} ## How fast the player can climb
 
 var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
+
 
 ## --- Nodes ---
 @onready var cam = $Camera2D 
 @onready var sprite = $Sprite
 @onready var wall_detector = $WallDetectors
 @onready var edge_detector = $EdgeDetectors
+@onready var bump_detectors = $BumpDetectors
+
 
 ## --- Export Variables ---
 @export var velocity2 = velocity ## Allows the Multiplayer Synchronizer to sync the velocity
+
 
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scene
@@ -51,13 +57,15 @@ func _physics_process(delta):  ## Runs every physics frames
 			air()
 		States.CLIMB:
 			climb()
+		States.RAM:
+			ram()
 		States.EMPTY:
 			pass
-		
 		_:
 			print("A unidentified state has been entered")
 	
 	move_and_slide()
+
 
 ## --- Self made functions ---
 func ground():
@@ -77,7 +85,11 @@ func ground():
 	if Input.is_action_pressed("Jump"):
 		switch(States.GROUND, States.AIR)
 	
+	elif Input.is_action_pressed("Ram"):
+		switch(States.GROUND, States.RAM)
+	
 	if not is_on_floor():
+		main_vars.gravity = 50
 		switch(States.GROUND, States.AIR)
 	
 	elif wall_detector.touching_wall():
@@ -87,6 +99,23 @@ func ground():
 
 func air():
 	## All of the different actions possible in the current state go here
+	#region Functions
+	var air_movement = func air_movement():
+			var direction = Input.get_axis("Left", "Right")
+			var current_direction = 0
+			
+			if velocity.x > 0:
+				current_direction = 1
+			elif velocity.x <= 0:
+				current_direction = -1
+			if direction == current_direction:
+				velocity.x = lerp(velocity.x, main_vars.speed * direction, 0.3)
+			elif direction != current_direction and direction != 0:
+				velocity.x = lerp(velocity.x, main_vars.speed * direction, 0.05)
+			else:
+				velocity.x = lerpf(velocity.x, 0.0, 0.3)
+	#endregion
+	
 	#region Main
 	if Input.is_action_pressed("Jump") and is_on_floor(): # Checks if you are holding jump
 		sprite.play("pre_jump") # Plays the crouching animation for anticipation
@@ -100,23 +129,35 @@ func air():
 		sprite.play("jump") # Plays the jump animtation
 		velocity.y = -main_vars.jump_power # Sets the upward velocity to jumping heights
 	
+	elif Input.is_action_pressed("Jump") and not is_on_floor() and velocity.y > 0:
+		main_vars.gravity = 0
+		velocity.y = lerpf(velocity.y, float(main_vars.glide_gravity), 0.2)
+		sprite.play("glide")
+		air_movement.call()
+	
 	elif not Input.is_action_pressed("Jump") and not is_on_floor():
 			if velocity.y > 0:
 				sprite.play("fall") # Plays the fall animation if you are traveling downward
 			elif velocity.y < 0:
 				sprite.play("jump")# Plays the jump animation if you are traveling upward
+			
+			air_movement.call()
+			
+			turn()
+	
+	if not is_on_floor() and velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
+		if velocity.y == main_vars.glide_gravity:
+			main_vars.gravity = 50
+		elif velocity.y != main_vars.glide_gravity:
+			velocity.y += main_vars.gravity
+			main_vars.gravity += 0.5
+	
 	#endregion
 	
 	## All of the different ways of exiting the current state go here
 	#region Exits
 	if is_on_floor() and main_vars.gravity != 0:
 		switch(States.AIR, States.GROUND)
-	
-	if not is_on_floor() and velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
-		velocity.y += main_vars.gravity
-		main_vars.gravity += 0.5
-		move()
-		turn()
 	
 	if wall_detector.touching_wall():
 		position.y -= 5
@@ -144,6 +185,7 @@ func climb():
 	if Input.is_action_just_pressed("Jump"):
 		velocity.x = main_vars.jump_power * get_sprite_rotation() * -1
 		velocity.y = -main_vars.jump_power
+		sprite.flip_h = not sprite.flip_h
 		switch(States.CLIMB, States.AIR)
 	
 	if is_on_floor():
@@ -154,11 +196,33 @@ func climb():
 		switch(States.CLIMB, States.AIR)
 	
 	if edge_detector.on_edge():
-		position.x += 5 * get_sprite_rotation()
-		position.y -= 31.5
+		position.x += 20 * get_sprite_rotation()
+		position.y -= 20
 		velocity = Vector2(0,0)
 		switch(States.CLIMB, States.GROUND)
 	#endregion
+
+func ram():
+	#region Main
+	if Input.is_action_pressed("Ram"):
+		velocity.x = main_vars.speed * 2 * get_sprite_rotation()
+		sprite.play("ram")
+	#endregion
+	
+	#region Exits
+	if not Input.is_action_pressed("Ram"):
+		velocity.x = 0
+		switch(States.RAM, States.GROUND)
+	
+	if bump_detectors.bumped():
+		velocity.x = main_vars.speed * 4 * get_sprite_rotation() * -1
+		velocity.y = -main_vars.jump_power * 1.5
+		switch(States.RAM, States.AIR)
+	
+	if not is_on_floor():
+		switch(States.RAM, States.AIR)
+	#endregion
+
 
 ## --- Helper Functions ---
 func move():
@@ -186,13 +250,15 @@ func switch(old_state, new_state):
 	
 	elif old_state == States.AIR and new_state == States.GROUND:
 		sprite.play("pre_jump")
+		var get_gravity = main_vars.gravity
+		
 		reset_main_vars()
 		
 		current_state = States.EMPTY
 		
 		velocity.x = 0
 		
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(get_gravity/2500).timeout
 		
 		current_state = new_state
 	

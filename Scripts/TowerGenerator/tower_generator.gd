@@ -21,7 +21,7 @@ func _ready():
 			i.get_child(chosen_child - 1).visible = true ## Turns on the correct tilemap
 			
 			visible_nodes.append(chosen_child) ## Adds the current tilemap to the array
-			i.position.y = -(height_difference * i.get_index() * 110) ## Displaces all of the tilemaps into a tower
+			i.position.y = -(height_difference * i.get_index() * 80) ## Displaces all of the tilemaps into a tower
 	else:
 		for i in get_children(false):
 			
@@ -38,4 +38,4 @@ func _ready():
 				else:
 					y.visible = true ## Turns on the correct tilemap
 			
-			i.position.y = -(height_difference * i.get_index() * 110) ## Displaces all of the tilemaps into a tower
+			i.position.y = -(height_difference * i.get_index() * 80) ## Displaces all of the tilemaps into a tower
