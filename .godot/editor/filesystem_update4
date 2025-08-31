@@ -1,8 +1,5 @@
-res://Scenes/Main.tscn
-res://Recourses/Tileset.tres
-res://Scripts/MainScene/steam.gd
 res://Scenes/Player.tscn
-res://Scenes/Background.tscn
+res://Recourses/Tileset.tres
+res://Scenes/Main.tscn
 res://Scenes/Level.tscn
 res://Scenes/TowerGenerator.tscn
-res://Scripts/Player/player.gd
