@@ -8,7 +8,7 @@ enum States {GROUND, AIR, CLIMB, RAM, EMPTY}
 
 ## --- Constants ---
 const MAX_JUMP = 1000
-const MAX_GRAVITY = 5000
+const MAX_GRAVITY = 10000
 
 
 ## --- Variables ---
@@ -16,7 +16,7 @@ var current_state
 
 var main_vars = { ## Main ariables
 	speed = 600, ## Determins how much the player can move in one frame
-	jump_power = 350,  ## Determins the height of the players jump
+	jump_power = 750,  ## Determins the height of the players jump
 	jump_increase = 1, ## Determins how fast the player increases in jump power
 	gravity = 0, ## Determins at what speed the player falls down
 	glide_gravity = 100,
@@ -98,24 +98,32 @@ func ground():
 	#endregion
 
 func air():
-	## All of the different actions possible in the current state go here
+	
 	#region Functions
 	var air_movement = func air_movement():
 			var direction = Input.get_axis("Left", "Right")
 			var current_direction = 0
 			
-			if velocity.x > 0:
+			
+			if velocity.x == 0:
+				current_direction = 0
+			elif velocity.x > 0:
 				current_direction = 1
-			elif velocity.x <= 0:
+			elif velocity.x < 0:
 				current_direction = -1
+			
 			if direction == current_direction:
 				velocity.x = lerp(velocity.x, main_vars.speed * direction, 0.3)
-			elif direction != current_direction and direction != 0:
+			elif direction != current_direction:
 				velocity.x = lerp(velocity.x, main_vars.speed * direction, 0.05)
-			else:
-				velocity.x = lerpf(velocity.x, 0.0, 0.3)
+	
+	var drop = func drop():
+		if velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
+			velocity.y += main_vars.gravity
+			main_vars.gravity += 1
 	#endregion
 	
+	## All of the different actions possible in the current state        dw                            ddddddd go here
 	#region Main
 	if Input.is_action_pressed("Jump") and is_on_floor(): # Checks if you are holding jump
 		sprite.play("pre_jump") # Plays the crouching animation for anticipation
@@ -129,13 +137,15 @@ func air():
 		sprite.play("jump") # Plays the jump animtation
 		velocity.y = -main_vars.jump_power # Sets the upward velocity to jumping heights
 	
-	elif Input.is_action_pressed("Jump") and not is_on_floor() and velocity.y > 0:
-		main_vars.gravity = 0
-		velocity.y = lerpf(velocity.y, float(main_vars.glide_gravity), 0.2)
+	if Input.is_action_pressed("Jump") and not is_on_floor() and velocity.y > 0: # Checks if you are mid jump and holding
+		velocity.y = main_vars.glide_gravity
 		sprite.play("glide")
 		air_movement.call()
+		
+		turn()
 	
-	elif not Input.is_action_pressed("Jump") and not is_on_floor():
+	elif (not Input.is_action_pressed("Jump") and not is_on_floor() or
+	 Input.is_action_pressed("Jump") and not is_on_floor() and velocity.y < 0): # Checks if you are mid jump and falling
 			if velocity.y > 0:
 				sprite.play("fall") # Plays the fall animation if you are traveling downward
 			elif velocity.y < 0:
@@ -144,13 +154,8 @@ func air():
 			air_movement.call()
 			
 			turn()
+			drop.call()
 	
-	if not is_on_floor() and velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
-		if velocity.y == main_vars.glide_gravity:
-			main_vars.gravity = 50
-		elif velocity.y != main_vars.glide_gravity:
-			velocity.y += main_vars.gravity
-			main_vars.gravity += 0.5
 	
 	#endregion
 	
@@ -186,6 +191,7 @@ func climb():
 		velocity.x = main_vars.jump_power * get_sprite_rotation() * -1
 		velocity.y = -main_vars.jump_power
 		sprite.flip_h = not sprite.flip_h
+		sprite.play("fall")
 		switch(States.CLIMB, States.AIR)
 	
 	if is_on_floor():
@@ -205,7 +211,7 @@ func climb():
 func ram():
 	#region Main
 	if Input.is_action_pressed("Ram"):
-		velocity.x = main_vars.speed * 2 * get_sprite_rotation()
+		velocity.x = lerpf(velocity.x, float(main_vars.speed * 2 * get_sprite_rotation()), 0.02)
 		sprite.play("ram")
 	#endregion
 	
@@ -215,7 +221,7 @@ func ram():
 		switch(States.RAM, States.GROUND)
 	
 	if bump_detectors.bumped():
-		velocity.x = main_vars.speed * 4 * get_sprite_rotation() * -1
+		velocity.x = main_vars.speed * 2 * get_sprite_rotation() * -1
 		velocity.y = -main_vars.jump_power * 1.5
 		switch(States.RAM, States.AIR)
 	
@@ -259,6 +265,11 @@ func switch(old_state, new_state):
 		velocity.x = 0
 		
 		await get_tree().create_timer(get_gravity/2500).timeout
+		
+		current_state = new_state
+	
+	elif old_state == States.CLIMB and new_state == States.AIR:
+		reset_main_vars()
 		
 		current_state = new_state
 	

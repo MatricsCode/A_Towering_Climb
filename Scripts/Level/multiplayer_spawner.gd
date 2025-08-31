@@ -5,6 +5,8 @@ extends MultiplayerSpawner
 var players = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("You are appending the players position to a global array in multiplayer_spawner.gd")
+	
 	spawn_function = spawn_player
 	if is_multiplayer_authority():
 		spawn(1)
@@ -20,3 +22,13 @@ func spawn_player(data):
 func remove_player(data):
 	players[data].queue_free()
 	players.erase(data)
+
+func _physics_process(delta):
+	for i in get_children():
+		if GlobalScript.player_positions_y.size() == get_child_count():
+			GlobalScript.player_positions_y.set(i.get_index(), i.position.y)
+		else:
+			if GlobalScript.player_positions_y.size() < get_child_count():
+				GlobalScript.player_positions_y.append(i.position.y)
+			else:
+				GlobalScript.player_positions_y.erase(GlobalScript.player_positions_y.size())

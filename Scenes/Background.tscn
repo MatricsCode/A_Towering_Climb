@@ -88,7 +88,8 @@ stretch_mode = 1
 motion_mirroring = Vector2(4290, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Roads"]
-offset_top = -5620.0
+offset_top = -5250.0
 offset_right = 4290.0
+offset_bottom = 370.0
 texture = ExtResource("9_q11sa")
 stretch_mode = 1

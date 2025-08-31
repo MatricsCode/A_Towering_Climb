@@ -3,3 +3,12 @@ res://Recourses/Tileset.tres
 res://Scenes/Main.tscn
 res://Scenes/Level.tscn
 res://Scenes/TowerGenerator.tscn
+res://Scenes/Background.tscn
+res://Scripts/Player/player.gd
+res://Scripts/UI/pause_menu.gd
+res://Scenes/MainUI.tscn
+res://Scripts/UI/main_ui.gd
+res://Scripts/Level/multiplayer_spawner.gd
+res://Scenes/GlobalScript.tscn
+res://Scripts/GlobalScript.gd
+res://Scripts/UI/height_leaderboard.gd

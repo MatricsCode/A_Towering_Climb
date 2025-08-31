@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://yok4okqr5xhe"]
+[gd_scene load_steps=6 format=3 uid="uid://yok4okqr5xhe"]
 
 [ext_resource type="Script" uid="uid://ceh88qybxg6et" path="res://Scripts/Level/multiplayer_spawner.gd" id="1_0ba56"]
 [ext_resource type="PackedScene" uid="uid://0gvtt6ccvbm1" path="res://Scenes/Player.tscn" id="2_vsvp5"]
 [ext_resource type="PackedScene" uid="uid://c37motvds571c" path="res://Scenes/TowerGenerator.tscn" id="3_8rbpu"]
+[ext_resource type="PackedScene" uid="uid://bnt4usslrchfy" path="res://Scenes/MainUI.tscn" id="4_fuudy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rbpu"]
 size = Vector2(4838, 20)
@@ -24,3 +25,8 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_8rbpu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainUI" parent="CanvasLayer" instance=ExtResource("4_fuudy")]
+metadata/_edit_use_anchors_ = true

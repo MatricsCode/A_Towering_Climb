@@ -224,13 +224,13 @@ script = ExtResource("28_utwlt")
 
 [node name="EdgeDetector1" type="RayCast2D" parent="EdgeDetectors"]
 position = Vector2(-26, 120)
-target_position = Vector2(-1, 0)
+target_position = Vector2(-3, 0)
 collision_mask = 4
 hit_from_inside = true
 
 [node name="EdgeDetector2" type="RayCast2D" parent="EdgeDetectors"]
 position = Vector2(36, 120)
-target_position = Vector2(1, 0)
+target_position = Vector2(3, 0)
 collision_mask = 4
 hit_from_inside = true
 
