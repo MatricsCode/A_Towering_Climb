@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbnyp3hyfqj53"]
+[gd_scene load_steps=12 format=3 uid="uid://cbnyp3hyfqj53"]
 
+[ext_resource type="Texture2D" uid="uid://c55lhug7ik44j" path="res://Art/Background/Paralax Backround11.png" id="1_8sjso"]
 [ext_resource type="Texture2D" uid="uid://cgy5aq6l3q62q" path="res://Art/Background/Paralax Backround9.png" id="1_rqs8y"]
+[ext_resource type="Texture2D" uid="uid://jaeaok86etry" path="res://Art/Background/Paralax Backround10.png" id="1_vxnle"]
 [ext_resource type="Texture2D" uid="uid://dlyek5n3t831i" path="res://Art/Background/Paralax Backround8.png" id="2_vxnle"]
 [ext_resource type="Texture2D" uid="uid://d3ksc7ujvucu4" path="res://Art/Background/Paralax Backround7.png" id="3_8sjso"]
 [ext_resource type="Texture2D" uid="uid://cicvb34mq5aub" path="res://Art/Background/Paralax Backround6.png" id="4_6s3s0"]
@@ -12,84 +14,114 @@
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
-[node name="Sky" type="ParallaxLayer" parent="."]
+[node name="Sky3" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Sky"]
-offset_top = -5620.0
+[node name="TextureRect" type="TextureRect" parent="Sky3"]
+offset_top = -11240.0
+offset_right = 4290.0
+texture = ExtResource("1_8sjso")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sky2" type="ParallaxLayer" parent="."]
+motion_offset = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(4290, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Sky2"]
+offset_top = -11240.0
+offset_right = 4290.0
+texture = ExtResource("1_vxnle")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sky1" type="ParallaxLayer" parent="."]
+motion_offset = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(4290, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Sky1"]
+offset_top = -11240.0
 offset_right = 4290.0
 texture = ExtResource("1_rqs8y")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Towers5" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(4290, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Towers5"]
-offset_top = -5620.0
+offset_top = -11240.0
 offset_right = 4290.0
 texture = ExtResource("2_vxnle")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Towers4" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(4290, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Towers4"]
-offset_top = -5620.0
+offset_top = -11240.0
 offset_right = 4290.0
 texture = ExtResource("3_8sjso")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Towers3" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(4290, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Towers3"]
-offset_top = -5620.0
+offset_top = -11240.0
 offset_right = 4290.0
 texture = ExtResource("4_6s3s0")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Towers2" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(4290, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Towers2"]
-offset_top = -5620.0
+offset_top = -11240.0
 offset_right = 4290.0
 texture = ExtResource("5_cboml")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Towers1" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(4290, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Towers1"]
-offset_top = -5620.0
+offset_top = -11240.0
 offset_right = 4290.0
 texture = ExtResource("6_jwwbk")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Backroads" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(4290, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Backroads"]
-offset_top = -5620.0
+offset_top = -11240.0
 offset_right = 4290.0
 texture = ExtResource("7_dvy6d")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Walkway" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(4290, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Walkway"]
-offset_top = -5620.0
+offset_top = -11240.0
 offset_right = 4290.0
 texture = ExtResource("8_ni1bc")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Roads" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(4290, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Roads"]
-offset_top = -5250.0
+offset_top = -11240.0
 offset_right = 4290.0
-offset_bottom = 370.0
 texture = ExtResource("9_q11sa")
 stretch_mode = 1
+metadata/_edit_use_anchors_ = true

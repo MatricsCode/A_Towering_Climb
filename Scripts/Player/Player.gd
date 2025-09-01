@@ -189,7 +189,7 @@ func climb():
 	#region Exits
 	if Input.is_action_just_pressed("Jump"):
 		velocity.x = main_vars.jump_power * get_sprite_rotation() * -1
-		velocity.y = -main_vars.jump_power
+		velocity.y = -main_vars.jump_power / 2
 		sprite.flip_h = not sprite.flip_h
 		sprite.play("fall")
 		switch(States.CLIMB, States.AIR)
