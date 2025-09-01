@@ -24,6 +24,10 @@ GlobalScript="*res://Scenes/GlobalScript.tscn"
 
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+Bumpable=""
+
 [input]
 
 Up={

@@ -15,12 +15,12 @@ const MAX_GRAVITY = 10000
 var current_state
 
 var main_vars = { ## Main ariables
-	speed = 600, ## Determins how much the player can move in one frame
-	jump_power = 750,  ## Determins the height of the players jump
-	jump_increase = 1, ## Determins how fast the player increases in jump power
-	gravity = 0, ## Determins at what speed the player falls down
-	glide_gravity = 100,
-	climbing_speed = 300,} ## How fast the player can climb
+	speed = 600, # Determins how much the player can move in one frame
+	jump_power = 750,  # Determins the height of the players jump
+	jump_increase = 1, # Determins how fast the player increases in jump power
+	gravity = 0, # Determins at what speed the player falls down
+	glide_gravity = 100, # Determins at what speed the player falls down once gliding
+	climbing_speed = 300,} # How fast the player can climb
 
 var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
 
@@ -47,6 +47,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scene
 	main_var_reset = main_vars.values() ## Loads all the values of main vars into main var reset, so that they are stored seperatly
 
 func _physics_process(delta):  ## Runs every physics frames
+	
 	if not is_multiplayer_authority():
 		return ## Checks if you are this player, and grants/denies you control acordingly
 	
@@ -209,9 +210,12 @@ func climb():
 	#endregion
 
 func ram():
+	
+	var current_speed = lerpf(velocity.x, float(main_vars.speed * 2 * get_sprite_rotation()), 0.02)
+	
 	#region Main
 	if Input.is_action_pressed("Ram"):
-		velocity.x = lerpf(velocity.x, float(main_vars.speed * 2 * get_sprite_rotation()), 0.02)
+		velocity.x = current_speed
 		sprite.play("ram")
 	#endregion
 	
@@ -221,6 +225,27 @@ func ram():
 		switch(States.RAM, States.GROUND)
 	
 	if bump_detectors.bumped():
+		
+		print("YOU WHERE WORKING ON BOX BUMPING IN THE PLAYER!!!")
+		
+		if %WallDetector1.is_colliding() and %WallDetector1.get_collider().is_in_group("Bumpable"):
+			
+			if current_speed > -500:
+				%WallDetector1.get_collider().bumped(1)
+			elif current_speed > -1000:
+				%WallDetector1.get_collider().bumped(2)
+			elif current_speed > -5000:
+				%WallDetector1.get_collider().bumped(3)
+		
+		elif %WallDetector2.is_colliding() and %WallDetector2.get_collider().is_in_group("Bumpable"):
+			
+			if current_speed < 500:
+				%WallDetector2.get_collider().bumped(1)
+			elif current_speed < 1000:
+				%WallDetector2.get_collider().bumped(2)
+			elif current_speed < 5000:
+				%WallDetector2.get_collider().bumped(3)
+		
 		velocity.x = main_vars.speed * 2 * get_sprite_rotation() * -1
 		velocity.y = -main_vars.jump_power * 1.5
 		switch(States.RAM, States.AIR)

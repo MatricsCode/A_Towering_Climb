@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://j0ml6gtwkiec"]
+
+[ext_resource type="Script" uid="uid://ufse1qjko4yu" path="res://Scripts/Box/box.gd" id="1_8s0t8"]
+[ext_resource type="Texture2D" uid="uid://bjlscvq7o16m2" path="res://icon.svg" id="2_42nxc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42nxc"]
+size = Vector2(128, 128)
+
+[node name="Box" type="StaticBody2D" groups=["Bumpable"]]
+collision_layer = 17
+collision_mask = 0
+script = ExtResource("1_8s0t8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_42nxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_42nxc")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -160.0
+offset_right = 21.0
+offset_bottom = -91.0
+theme_override_font_sizes/font_size = 50
+text = "5"
