@@ -7,7 +7,7 @@ extends Node2D
 var level_selected = 0
 
 func _ready():
-	level_selected = 3 #randi_range(0, get_child_count() - 2)
+	level_selected = randi_range(0, get_child_count() - 2)
 	
 	await get_tree().create_timer(0.1).timeout
 	

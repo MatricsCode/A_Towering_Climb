@@ -211,11 +211,10 @@ func climb():
 
 func ram():
 	
-	var current_speed = lerpf(velocity.x, float(main_vars.speed * 2 * get_sprite_rotation()), 0.02)
 	
 	#region Main
 	if Input.is_action_pressed("Ram"):
-		velocity.x = current_speed
+		velocity.x = (lerpf(velocity.x,  float(main_vars.speed * 2 * get_sprite_rotation()), 0.01))
 		sprite.play("ram")
 	#endregion
 	
@@ -225,27 +224,6 @@ func ram():
 		switch(States.RAM, States.GROUND)
 	
 	if bump_detectors.bumped():
-		
-		print("YOU WHERE WORKING ON BOX BUMPING IN THE PLAYER!!!")
-		
-		if %WallDetector1.is_colliding() and %WallDetector1.get_collider().is_in_group("Bumpable"):
-			
-			if current_speed > -500:
-				%WallDetector1.get_collider().bumped(1)
-			elif current_speed > -1000:
-				%WallDetector1.get_collider().bumped(2)
-			elif current_speed > -5000:
-				%WallDetector1.get_collider().bumped(3)
-		
-		elif %WallDetector2.is_colliding() and %WallDetector2.get_collider().is_in_group("Bumpable"):
-			
-			if current_speed < 500:
-				%WallDetector2.get_collider().bumped(1)
-			elif current_speed < 1000:
-				%WallDetector2.get_collider().bumped(2)
-			elif current_speed < 5000:
-				%WallDetector2.get_collider().bumped(3)
-		
 		velocity.x = main_vars.speed * 2 * get_sprite_rotation() * -1
 		velocity.y = -main_vars.jump_power * 1.5
 		switch(States.RAM, States.AIR)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://ibhv3ulgppft"]
+
+[ext_resource type="Script" uid="uid://cjmoi3rtnx4vu" path="res://Scripts/Bird/bird.gd" id="1_806kn"]
+[ext_resource type="SpriteFrames" uid="uid://duo0cm7k7dn1g" path="res://Recourses/Birds/White.tres" id="2_806kn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_806kn"]
+radius = 146.014
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rpcp7"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:animation")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("AnimatedSprite2D:frame")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_806kn")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_806kn")
+animation = &"idle"
+frame_progress = 0.00262164
+speed_scale = 2.0
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("CircleShape2D_806kn")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_rpcp7")
+
+[connection signal="area_entered" from="PlayerDetector" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_area_2d_body_entered"]

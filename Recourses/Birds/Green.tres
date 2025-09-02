@@ -1,0 +1,35 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://dqh0it2cn5iqk"]
+
+[ext_resource type="Texture2D" uid="uid://dxh83l04ih4vs" path="res://Art/Bird/Bird7.png" id="1_c2se6"]
+[ext_resource type="Texture2D" uid="uid://mofp4o61bglv" path="res://Art/Bird/Bird8.png" id="2_1lv2f"]
+[ext_resource type="Texture2D" uid="uid://bilvunskk5ae1" path="res://Art/Bird/Bird9.png" id="3_ndcs0"]
+[ext_resource type="Texture2D" uid="uid://8ycssksiic6c" path="res://Art/Bird/Bird10.png" id="4_86dk7"]
+[ext_resource type="Texture2D" uid="uid://dmeta1ojki2ci" path="res://Art/Bird/Bird6.png" id="5_t2ya0"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c2se6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1lv2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ndcs0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_86dk7")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_t2ya0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
