@@ -24,7 +24,7 @@ tile_set = ExtResource("1_nq722")
 position = Vector2(-3016, -711)
 
 [node name="BirdSpawner" parent="Level0" node_paths=PackedStringArray("spawn_position") instance=ExtResource("4_07dyd")]
-spawn_position = NodePath("../../Level2/Node2D")
+spawn_position = NodePath("../Node2D")
 
 [node name="Node2D" type="Node2D" parent="Level0"]
 position = Vector2(-1420, -951)
@@ -40,7 +40,7 @@ tile_set = ExtResource("1_nq722")
 position = Vector2(428, 12)
 
 [node name="BirdSpawner" parent="Level1" node_paths=PackedStringArray("spawn_position") instance=ExtResource("4_07dyd")]
-spawn_position = NodePath("../../Level2/Node2D")
+spawn_position = NodePath("../Node2D")
 
 [node name="Node2D" type="Node2D" parent="Level1"]
 position = Vector2(366, -359)

@@ -23,12 +23,14 @@ collision_mask = 0
 script = ExtResource("1_806kn")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -25)
 sprite_frames = ExtResource("2_806kn")
 animation = &"idle"
 frame_progress = 0.51389
 speed_scale = 2.0
 
 [node name="PlayerDetector" type="Area2D" parent="."]
+position = Vector2(0, -25)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
