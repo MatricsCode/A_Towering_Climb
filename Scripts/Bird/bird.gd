@@ -8,6 +8,8 @@ const WHITE = preload("res://Recourses/Birds/White.tres")
 
 @onready var sprite = $Sprite
 
+var positionY = 0
+
 var fly_speed = Vector2(0, 0)
 
 func _ready():
@@ -26,8 +28,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	position.y = positionY
+	
 	move_and_slide()
-
 
 
 func _on_area_2d_body_entered(body):
@@ -47,7 +50,8 @@ func run(detected):
 	
 	sprite.play("fly")
 	
-	velocity.y = -randf_range(100, 500)
-	velocity.x = randf_range(100, 500) * run_rotation
+	velocity.y = -randf_range(300, 700)
+	velocity.x = randf_range(300, 700) * run_rotation
 	
-	$PlayerDetector.set_collision_layer_value(1, true)
+	
+	#$PlayerDetector.set_collision_layer_value(1, true)

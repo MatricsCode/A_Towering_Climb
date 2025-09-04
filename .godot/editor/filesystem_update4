@@ -1,4 +1,6 @@
+res://Scenes/BirdSpawner.tscn
 res://Recourses/Tileset.tres
+res://Scripts/BirdSpawner/bird_spawner.gd
 res://Scenes/Player.tscn
 res://Scenes/Main.tscn
 res://Scenes/Level.tscn
@@ -8,4 +10,5 @@ res://Scenes/Background.tscn
 res://Scenes/Box.tscn
 res://Scenes/TowerGenerator.tscn
 res://Scenes/Bird.tscn
-res://Scenes/BirdSpawner.tscn
+res://Scripts/Bird/bird.gd
+res://Scripts/TowerGenerator/tower_generator.gd

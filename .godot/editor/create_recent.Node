@@ -1,6 +1,6 @@
+CollisionShape2D
 Node2D
 MultiplayerSpawner
-CollisionShape2D
 MultiplayerSynchronizer
 AnimatedSprite2D
 RayCast2D
