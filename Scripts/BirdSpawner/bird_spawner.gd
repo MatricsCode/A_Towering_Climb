@@ -14,15 +14,16 @@ var birds = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	spawn_function = spawn_bird
-	
-	if spawn_position == null:
-		push_error("You didn't assing the positional node to the birdspawner called: ", name)
-	
-	birds = randi_range(3, max_birds)
-	
-	for i in birds:
-		spawn(1)
+	if is_multiplayer_authority():
+		spawn_function = spawn_bird
+		
+		if spawn_position == null:
+			push_error("You didn't assing the positional node to the birdspawner called: ", name)
+		
+		birds = randi_range(3, max_birds)
+		
+		for i in birds:
+			spawn(1)
 
 func spawn_bird(data):
 	var bird = bird_scene.instantiate()

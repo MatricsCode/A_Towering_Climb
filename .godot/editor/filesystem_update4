@@ -12,3 +12,4 @@ res://Scenes/TowerGenerator.tscn
 res://Scenes/Bird.tscn
 res://Scripts/Bird/bird.gd
 res://Scripts/TowerGenerator/tower_generator.gd
+res://Scripts/Level/tower_spawner.gd
