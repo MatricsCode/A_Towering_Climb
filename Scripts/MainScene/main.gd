@@ -6,6 +6,12 @@ var peer = SteamMultiplayerPeer.new()
 @onready var ms = $MultiplayerSpawner
 @onready var lobbies = $SelectorUI/HSplitContainer/LobbyContainer/Lobbies
 @onready var MainUI = $SelectorUI
+@onready var PlayerSelectorUI = $"PlayerSelector UI"
+
+@onready var host = $SelectorUI/HSplitContainer/VBoxContainer/Host
+@onready var refresh = $SelectorUI/HSplitContainer/VBoxContainer/Refresh
+
+var x = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,9 +19,6 @@ func _ready():
 	peer.lobby_created.connect(on_lobby_created)
 	Steam.lobby_match_list.connect(on_lobby_match_list)
 	open_lobby_list()
-
-func _process(delta):
-	MainUI.position.x += 1
 
 func spawn_level(data):
 	var a = (load(data) as PackedScene).instantiate()
@@ -64,3 +67,8 @@ func _on_refresh_pressed():
 			i.queue_free()
 	open_lobby_list()
 	
+
+
+func _on_player_customiser_pressed():
+	MainUI.visible = false
+	PlayerSelectorUI.visible = true

@@ -1,4 +1,7 @@
 C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports
+res://Scripts/MainScene
+res://Recourses/PlayerSprites
+res://Scripts/Player
 res://Scripts/Level
 res://Scripts/BirdSpawner
 res://Scenes
@@ -8,7 +11,6 @@ res://Scripts/Box
 res://Recourses
 res://Scripts/UI
 res://Scripts
-res://Scripts/Player
 res://Art/Player
 C:/Users/Jayden/Desktop/Godot Test/GodotSteam/GodotSteamMultipayerPeer
 res://

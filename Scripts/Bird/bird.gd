@@ -13,6 +13,8 @@ var positionY = 0
 var fly_speed = Vector2(0, 0)
 
 func _ready():
+	position.y = positionY
+	
 	var color = randi_range(0, 4)
 	match color:
 		0:
@@ -28,7 +30,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	position.y = positionY
 	
 	move_and_slide()
 
@@ -50,7 +51,7 @@ func run(detected):
 	
 	sprite.play("fly")
 	
-	velocity.y = -randf_range(300, 700)
+	velocity.y = randf_range(300, 700) * -1
 	velocity.x = randf_range(300, 700) * run_rotation
 	
 	

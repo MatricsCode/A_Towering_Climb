@@ -1,0 +1,148 @@
+[gd_resource type="SpriteFrames" load_steps=26 format=3 uid="uid://cm6254juvje6s"]
+
+[ext_resource type="Texture2D" uid="uid://b5yxoskdspugl" path="res://Art/Player/Climber1/Climber12.png" id="1_fsahv"]
+[ext_resource type="Texture2D" uid="uid://g7kvj74jxr8y" path="res://Art/Player/Climber1/Climber13.png" id="2_togyg"]
+[ext_resource type="Texture2D" uid="uid://d0704c7trp3mq" path="res://Art/Player/Climber1/Climber14.png" id="3_m60p5"]
+[ext_resource type="Texture2D" uid="uid://c23dyki441stt" path="res://Art/Player/Climber1/Climber15.png" id="4_hw2ss"]
+[ext_resource type="Texture2D" uid="uid://p3iqb2xmmwmm" path="res://Art/Player/Climber1/Climber11.png" id="5_r637j"]
+[ext_resource type="Texture2D" uid="uid://b6wyahku0krlf" path="res://Art/Player/Climber1/Climber16.png" id="6_wvktw"]
+[ext_resource type="Texture2D" uid="uid://c2a4a0bu0npx8" path="res://Art/Player/Climber1/Climber17.png" id="7_5g05m"]
+[ext_resource type="Texture2D" uid="uid://c6jekn5xgutbk" path="res://Art/Player/Climber1/Climber18.png" id="8_mtelc"]
+[ext_resource type="Texture2D" uid="uid://d2c6t0v8vdhfq" path="res://Art/Player/Climber1/Climber19.png" id="9_hll6l"]
+[ext_resource type="Texture2D" uid="uid://djcutp3fw10eo" path="res://Art/Player/Climber1/Climber20.png" id="10_uog4d"]
+[ext_resource type="Texture2D" uid="uid://cc7ogqbxw08q5" path="res://Art/Player/Climber1/Climber21.png" id="11_51j7o"]
+[ext_resource type="Texture2D" uid="uid://v2n6mouri1as" path="res://Art/Player/Climber1/Climber1.png" id="12_ki8au"]
+[ext_resource type="Texture2D" uid="uid://x7aq4fi5sb2m" path="res://Art/Player/Climber1/Climber10.png" id="13_d7wru"]
+[ext_resource type="Texture2D" uid="uid://cwheguxbggp6u" path="res://Art/Player/Climber1/Climber9.png" id="14_owsc1"]
+[ext_resource type="Texture2D" uid="uid://b1b6lvxqcotts" path="res://Art/Player/Climber1/Climber22.png" id="15_m8rl4"]
+[ext_resource type="Texture2D" uid="uid://hhm8b0ana2ql" path="res://Art/Player/Climber1/Climber23.png" id="16_augce"]
+[ext_resource type="Texture2D" uid="uid://cgeuq8qxxuf34" path="res://Art/Player/Climber1/Climber24.png" id="17_6de1w"]
+[ext_resource type="Texture2D" uid="uid://bltuj4owjd2fx" path="res://Art/Player/Climber1/Climber25.png" id="18_6we60"]
+[ext_resource type="Texture2D" uid="uid://blsk3uj75ilc7" path="res://Art/Player/Climber1/Climber2.png" id="19_7sj10"]
+[ext_resource type="Texture2D" uid="uid://d3hgjamg108p3" path="res://Art/Player/Climber1/Climber3.png" id="20_2n0kf"]
+[ext_resource type="Texture2D" uid="uid://brq55ibfgpg2y" path="res://Art/Player/Climber1/Climber4.png" id="21_f7ww8"]
+[ext_resource type="Texture2D" uid="uid://dkbvrbfuu2tvb" path="res://Art/Player/Climber1/Climber5.png" id="22_fl1jt"]
+[ext_resource type="Texture2D" uid="uid://d0rkw81b6di2" path="res://Art/Player/Climber1/Climber6.png" id="23_iex5u"]
+[ext_resource type="Texture2D" uid="uid://c8p2s1xdfqe06" path="res://Art/Player/Climber1/Climber7.png" id="24_8el2l"]
+[ext_resource type="Texture2D" uid="uid://bwnfnfpusry3s" path="res://Art/Player/Climber1/Climber8.png" id="25_1wpa4"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fsahv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_togyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m60p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hw2ss")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_r637j")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wvktw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5g05m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mtelc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hll6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uog4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_51j7o")
+}],
+"loop": true,
+"name": &"glide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ki8au")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_d7wru")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_owsc1")
+}],
+"loop": true,
+"name": &"pre_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_m8rl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_augce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_6de1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_6we60")
+}],
+"loop": true,
+"name": &"ram",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ki8au")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_7sj10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_2n0kf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_f7ww8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_fl1jt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_iex5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_8el2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_1wpa4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
