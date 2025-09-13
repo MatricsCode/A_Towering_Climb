@@ -114,7 +114,7 @@ position = Vector2(288, 324)
 sprite_frames = ExtResource("5_pbw6q")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.580909
+frame_progress = 0.852333
 speed_scale = 3.0
 
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]

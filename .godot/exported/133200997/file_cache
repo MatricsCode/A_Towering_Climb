@@ -1,8 +1,8 @@
-res://Scenes/Level.tscn::60ce77a3ee1d74d8d089e094d252b625::1757621556::res://.godot/exported/133200997/export-44e9c94aaf0888750f1e3fc27d477f34-Level.scn
-res://Scenes/Main.tscn::c0662ef14aa245ad5f29964ee8173392::1757621546::res://.godot/exported/133200997/export-a8e1520d83f25710dd4e3da8c6f32601-Main.scn
+res://Scenes/Level.tscn::60ce77a3ee1d74d8d089e094d252b625::1757621873::res://.godot/exported/133200997/export-44e9c94aaf0888750f1e3fc27d477f34-Level.scn
+res://Scenes/Main.tscn::6c4136bdab628e37e86a5789ab2afac7::1757621938::res://.godot/exported/133200997/export-a8e1520d83f25710dd4e3da8c6f32601-Main.scn
 res://Scenes/Background.tscn::b8ff62e1aa52e593eaf45238b017e8d4::1757619300::res://.godot/exported/133200997/export-b394a4340ed895386261b9ccc00eb92f-Background.scn
 res://Recourses/Tileset.tres::74edcee6e3ef4818326634d6078dbb19::1757621442::res://.godot/exported/133200997/export-a7c8114d87ebb17ba3406754ee374787-Tileset.res
-res://Scenes/Player.tscn::2de4f1280d2347557753b311ff75c373::1757621546::res://.godot/exported/133200997/export-a7209d3b864edc0146622aad500fa2c1-Player.scn
+res://Scenes/Player.tscn::2de4f1280d2347557753b311ff75c373::1757621873::res://.godot/exported/133200997/export-a7209d3b864edc0146622aad500fa2c1-Player.scn
 res://Scenes/TowerGenerator.tscn::0d667cc20fcbb7610ef82bf3e9c39e33::1757619300::res://.godot/exported/133200997/export-a9166983675362adcf3b6f74977150f2-TowerGenerator.scn
 res://Recourses/Birds/Blue.tres::da692cd9ac4e0d2e487c0b3ae72fcfbb::1756847391::res://.godot/exported/133200997/export-a9ca4bc6bd8cda03f2a44a62ab5089e4-Blue.res
 res://Recourses/Birds/Green.tres::ab3c9f1b714cc652a8188dcecd506b12::1756847391::res://.godot/exported/133200997/export-bcdcabf2ad9c358082bdb34db24c4c96-Green.res
@@ -11,8 +11,8 @@ res://Recourses/Birds/Pink.tres::064046b9a587a85c8a3a02cd9c822d30::1756847391::r
 res://Recourses/Birds/White.tres::eaff494a8de000499576c0b3fbf4a59b::1756847391::res://.godot/exported/133200997/export-46034dcffbdf022e9772ea70b9cc990c-White.res
 res://Recourses/Height Leaderboard.tres::eabbd2f3d53ecb580a3ac410b12eeb1c::1756674355::res://.godot/exported/133200997/export-c3d10e7920bbaf22569a6c1b4279fc49-Height Leaderboard.res
 res://Scenes/Box.tscn::f30e17a57d43857534f1cedec0db090c::1757619300::res://.godot/exported/133200997/export-0825d52c5f965c43d3edb3705f04af1e-Box.scn
-res://Scenes/GlobalScript.tscn::db63c918e24f6f9cb52c8dbc65c5801a::1757621546::res://.godot/exported/133200997/export-6ff1517f0224a7c9dd8f94ad6b439b6c-GlobalScript.scn
-res://Scenes/MainUI.tscn::79d64d2d4d3388e69006bf6e990b7865::1757621546::res://.godot/exported/133200997/export-6ac01b04af26f34e2b1e6369fec5bab6-MainUI.scn
+res://Scenes/GlobalScript.tscn::db63c918e24f6f9cb52c8dbc65c5801a::1757621873::res://.godot/exported/133200997/export-6ff1517f0224a7c9dd8f94ad6b439b6c-GlobalScript.scn
+res://Scenes/MainUI.tscn::79d64d2d4d3388e69006bf6e990b7865::1757621873::res://.godot/exported/133200997/export-6ac01b04af26f34e2b1e6369fec5bab6-MainUI.scn
 res://Scenes/Bird.tscn::4857ce1cc96578e169362ee52da85f6c::1757619300::res://.godot/exported/133200997/export-5212e3d6cf814e053605ec1958a68b34-Bird.scn
 res://Scenes/BirdSpawner.tscn::d92f182b405821158c6044b4ee4f90b0::1757619300::res://.godot/exported/133200997/export-cb33b93b7264986e0ca38c0697a171db-BirdSpawner.scn
 res://Recourses/PlayerSprites/Climber1.tres::733a25414ccd4766584f25ed6922aa33::1757362112::res://.godot/exported/133200997/export-ba7638b388dccc98500ce527f7226383-Climber1.res

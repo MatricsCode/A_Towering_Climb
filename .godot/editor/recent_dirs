@@ -1,3 +1,5 @@
+res://Recourses/PlayerSprites/PlayerHeadSprites
+res://Recourses
 C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports
 res://Scripts/MainScene
 res://Recourses/PlayerSprites
@@ -8,7 +10,6 @@ res://Scenes
 res://Recourses/Birds
 res://Scripts/Bird
 res://Scripts/Box
-res://Recourses
 res://Scripts/UI
 res://Scripts
 res://Art/Player

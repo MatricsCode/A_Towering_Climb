@@ -25,24 +25,26 @@ func _ready():
 		for i in birds:
 			spawn(1)
 
-func spawn_bird(data):
+func spawn_bird(_data):
 	var bird = bird_scene.instantiate()
 	
 	var bird_position = randf_range(spawn_position.x - positional_change, spawn_position.x + positional_change)
 	
-	var i = 0
-	var itterations = 0
-	while i < positions.size():
-		itterations += 1
-		if bird_position < positions[i] + 20 and bird_position > positions[i] - 20:
-			bird_position = randf_range(spawn_position.x - positional_change, spawn_position.x + positional_change)
-			i = 0
-		else:
-			i += 1
-		
-		if itterations > 50:
-			bird_position = randf_range(spawn_position.x - positional_change, spawn_position.x + positional_change)
-			birds = 0
+	#var i = 0
+	#var itterations = 0
+	#while i < positions.size():
+		#itterations += 1
+		#if bird_position > positions[i] + 100 and bird_position < positions[i] - 100:
+			#bird_position = randf_range(spawn_position.x - positional_change, spawn_position.x + positional_change)
+			#i = 0
+			#print(i)
+		#else:
+			#i += 1
+		#
+		#if itterations > 50:
+			#bird_position = randf_range(spawn_position.x - positional_change, spawn_position.x + positional_change)
+			#birds = 0
+			
 	
 	bird.positionY = spawn_position.y
 	bird.position.x = randf_range(spawn_position.x - positional_change, spawn_position.x + positional_change)

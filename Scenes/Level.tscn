@@ -11,7 +11,7 @@ size = Vector2(4838, 20)
 
 [node name="Level" type="Node"]
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." groups=["PlayerSpawner"]]
 spawn_path = NodePath(".")
 script = ExtResource("1_0ba56")
 player_scene = ExtResource("2_vsvp5")

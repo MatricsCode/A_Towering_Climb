@@ -63,7 +63,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_3ngb3")
 
-[node name="HeightLeaderboard" type="HBoxContainer" parent="."]
+[node name="HeightLeaderboard" type="HBoxContainer" parent="." groups=["PlayerOutfit"]]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -71,10 +71,5 @@ anchor_bottom = 1.0
 offset_top = -197.0
 grow_vertical = 0
 script = ExtResource("3_3ngb3")
-
-[node name="VSlider" type="VSlider" parent="."]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 8.0
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/Unpaused" to="PauseMenu" method="_on_unpaused_pressed"]

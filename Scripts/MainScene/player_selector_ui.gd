@@ -4,28 +4,39 @@ extends Control
 
 @onready var selector_ui = $"../SelectorUI"
 
-const CLIMBER_1 = preload("res://Recourses/PlayerSprites/Climber1.tres")
-const CLIMBER_2 = preload("res://Recourses/PlayerSprites/Climber2.tres")
+var current_outfit = 0
+
+func _physics_process(delta):
+	if get_tree().get_node_count_in_group("PlayerOutfit") != 0 and current_outfit != -1:
+		
+		await get_tree().create_timer(5)
+			
+		for i in current_outfit:
+			get_tree().call_group("PlayerOutfit", "switch_costume")
+			
+			current_outfit -= 1
+		
+		current_outfit = -1
 
 func _on_climber_1_pressed():
 	var current_frame = sprite.frame
 	
-	sprite.sprite_frames = CLIMBER_1
+	current_outfit = 0
+	
+	sprite.sprite_frames = GlobalScript.player_outfits[current_outfit]
 	sprite.animation = "walk"
 	sprite.play()
 	sprite.frame = current_frame
-	
-	GlobalScript.current_outfit = CLIMBER_1
 
 func _on_climber_2_pressed():
 	var current_frame = sprite.frame
 	
-	sprite.sprite_frames = CLIMBER_2
+	current_outfit = 1
+	
+	sprite.sprite_frames = GlobalScript.player_outfits[current_outfit]
 	sprite.animation = "walk"
 	sprite.play()
 	sprite.frame = current_frame
-	
-	GlobalScript.current_outfit = CLIMBER_2
 
 
 func _on_exit_pressed():

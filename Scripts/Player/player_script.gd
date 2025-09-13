@@ -1,5 +1,4 @@
 extends CharacterBody2D
-class_name player
 
 ## --- Enums ---
 enum States {GROUND, AIR, CLIMB, RAM, EMPTY}
@@ -12,6 +11,8 @@ const MAX_GRAVITY = 10000
 
 ## --- Variables ---
 var current_state
+
+var current_outfit = 0
 
 var main_vars = { ## Main ariables
 	speed = 600, # Determins how much the player can move in one frame
@@ -35,7 +36,6 @@ var main_var_reset = [] ## The Array, gets auto-assigned in the ready function w
 ## --- Export Variables ---
 @export var velocity2 = velocity ## Allows the Multiplayer Synchronizer to sync the velocity
 
-
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scene
 	
@@ -45,9 +45,9 @@ func _ready(): ## Runns as soon as the player is loaded into the scene
 	
 	main_var_reset = main_vars.values() ## Loads all the values of main vars into main var reset, so that they are stored seperatly
 	
-	sprite.sprite_frames = GlobalScript.current_outfit
+	await get_tree().create_timer(0.2).timeout
 
-func _physics_process(delta):  ## Runs every physics frames
+func _physics_process(_delta):  ## Runs every physics frames
 	
 	if not is_multiplayer_authority():
 		return ## Checks if you are this player, and grants/denies you control acordingly
@@ -284,3 +284,8 @@ func reset_main_vars():
 	
 	for i in main_vars.size():
 		main_vars[keys[i]] = main_var_reset[i]
+
+func switch_costume():
+	if is_multiplayer_authority():
+		current_outfit += 1
+		sprite.sprite_frames = GlobalScript.player_outfits[current_outfit]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://0gvtt6ccvbm1"]
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_kih0c"]
-[ext_resource type="SpriteFrames" uid="uid://418bfoocsqxw" path="res://Recourses/PlayerSprites/PlayerPrefab.tres" id="2_5ixxa"]
+[ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="2_5ixxa"]
 [ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Scripts/Player/wall_detectors.gd" id="27_u7x0b"]
 [ext_resource type="Script" uid="uid://bpmhsc3tdcpqq" path="res://Scripts/Player/bump_detectors.gd" id="28_kih0c"]
 [ext_resource type="Script" uid="uid://dvnr5lwr2t2n8" path="res://Scripts/Player/edge_detectors.gd" id="28_utwlt"]
@@ -23,7 +23,7 @@ properties/3/path = NodePath("Sprite:flip_h")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["PlayerOutfit"]]
 collision_mask = 15
 script = ExtResource("1_kih0c")
 
