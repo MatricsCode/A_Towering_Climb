@@ -6,3 +6,5 @@ res://Scenes/Level.tscn
 res://Scenes/BirdSpawner.tscn
 res://Scenes/Bird.tscn
 res://Scenes/Player.tscn
+res://Scripts/BirdSpawner/bird_spawner.gd
+res://Scripts/Bird/bird.gd

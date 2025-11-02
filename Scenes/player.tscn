@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://0gvtt6ccvbm1"]
+[gd_scene load_steps=8 format=3 uid="uid://b4d84e536ftxf"]
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_kih0c"]
 [ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="2_5ixxa"]
