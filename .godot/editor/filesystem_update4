@@ -1,3 +1,9 @@
 res://Scenes/Main.tscn
 res://Recourses/Tileset.tres
-res://Scripts/MainScene/main.gd
+res://Scenes/MainUI.tscn
+res://Scenes/GlobalScript.tscn
+res://Scenes/Level.tscn
+res://Scenes/BirdSpawner.tscn
+res://Scenes/Bird.tscn
+res://Scenes/TowerGenerator.tscn
+res://Scenes/Player.tscn

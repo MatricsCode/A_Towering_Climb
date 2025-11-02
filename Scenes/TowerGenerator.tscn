@@ -1,14 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://c37motvds571c"]
+[gd_scene load_steps=5 format=4 uid="uid://c37motvds571c"]
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Recourses/Tileset.tres" id="1_nq722"]
 [ext_resource type="Script" uid="uid://bwj246dth8mtn" path="res://Scripts/TowerGenerator/tower_generator.gd" id="1_xxreh"]
 [ext_resource type="PackedScene" uid="uid://j0ml6gtwkiec" path="res://Scenes/Box.tscn" id="3_1srw6"]
 [ext_resource type="PackedScene" uid="uid://dbd4mefv24ifl" path="res://Scenes/BirdSpawner.tscn" id="4_07dyd"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xxreh"]
-properties/0/path = NodePath(".:level_selected")
-properties/0/spawn = true
-properties/0/replication_mode = 1
 
 [node name="LevelGen" type="Node2D"]
 script = ExtResource("1_xxreh")
@@ -58,6 +53,3 @@ position = Vector2(-1238, -150)
 spawn_position = Vector2(-886, -1110)
 max_birds = 6
 positional_change = 50
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_xxreh")
