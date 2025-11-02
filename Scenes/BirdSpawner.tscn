@@ -7,3 +7,7 @@
 spawn_path = NodePath(".")
 script = ExtResource("1_4qnch")
 bird_scene = ExtResource("2_c3ytk")
+max_birds = 195
+positional_change = 130
+
+[node name="Camera2D" type="Camera2D" parent="."]

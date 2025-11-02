@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bn3yhpfpiel2i"]
+
+[ext_resource type="Texture2D" uid="uid://l5ciqi18p0us" path="res://Art/Player/ClimberIcon2.png" id="1_bk0ex"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bk0ex"]
+
+[resource]
+VSlider/icons/grabber = ExtResource("1_bk0ex")
+VSlider/icons/grabber_disabled = ExtResource("1_bk0ex")
+VSlider/icons/grabber_highlight = ExtResource("1_bk0ex")
+VSlider/styles/slider = SubResource("StyleBoxEmpty_bk0ex")

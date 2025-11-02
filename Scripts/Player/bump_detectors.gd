@@ -2,7 +2,7 @@ extends Node2D
 
 var timer = 0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_pressed("Ram") and get_parent().is_on_floor():
 		timer += 1
 		print(timer)
