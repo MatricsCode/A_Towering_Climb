@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://yok4okqr5xhe"]
 
 [ext_resource type="Script" uid="uid://ceh88qybxg6et" path="res://Scripts/Level/multiplayer_spawner.gd" id="1_0ba56"]
-[ext_resource type="PackedScene" uid="uid://0gvtt6ccvbm1" path="res://Scenes/player.tscn" id="2_vsvp5"]
+[ext_resource type="PackedScene" uid="uid://b4d84e536ftxf" path="res://Scenes/player.tscn" id="2_vsvp5"]
 [ext_resource type="PackedScene" uid="uid://c37motvds571c" path="res://Scenes/TowerGenerator.tscn" id="3_8rbpu"]
 [ext_resource type="Script" uid="uid://c8fnhel15a8cb" path="res://Scripts/Level/tower_spawner.gd" id="3_fuudy"]
 [ext_resource type="PackedScene" uid="uid://bnt4usslrchfy" path="res://Scenes/MainUI.tscn" id="4_fuudy"]

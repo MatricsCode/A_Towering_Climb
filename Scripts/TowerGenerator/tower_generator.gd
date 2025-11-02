@@ -5,7 +5,6 @@ extends Node2D
 @export var level_selected = -1
 
 func _ready():
-	
 	for i in get_children():
 		if i.get_index() < get_child_count() -1:
 			i.visible = false
