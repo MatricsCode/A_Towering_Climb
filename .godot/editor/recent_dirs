@@ -1,3 +1,6 @@
+res://Scripts/Goal
+res://Scenes
+res://Scripts/Moving Platform
 C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports
 res://Recourses/PlayerSprites/PlayerHeadSprites
 res://Recourses
@@ -6,7 +9,6 @@ res://Recourses/PlayerSprites
 res://Scripts/Player
 res://Scripts/Level
 res://Scripts/BirdSpawner
-res://Scenes
 res://Recourses/Birds
 res://Scripts/Bird
 res://Scripts/Box
