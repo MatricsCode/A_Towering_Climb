@@ -1,12 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnt4usslrchfy"]
+[gd_scene load_steps=9 format=3 uid="uid://bnt4usslrchfy"]
 
 [ext_resource type="Script" uid="uid://bevxwl1n2p71r" path="res://Scripts/UI/pause_menu.gd" id="1_xh0hd"]
 [ext_resource type="Script" uid="uid://lugaf8yhlsla" path="res://Scripts/UI/main_ui.gd" id="1_yd0xa"]
 [ext_resource type="Script" uid="uid://ba6n6ohx1qr25" path="res://Scripts/UI/height_leaderboard.gd" id="3_3ngb3"]
+[ext_resource type="Script" uid="uid://du0w16lun2fuy" path="res://Scripts/UI/win_menu.gd" id="3_c3bvd"]
+
+[sub_resource type="Gradient" id="Gradient_c3bvd"]
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 0.364706)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8dqd8"]
+gradient = SubResource("Gradient_c3bvd")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_yd0xa"]
-offsets = PackedFloat32Array(0.5, 1)
-colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 0.356863)
+offsets = PackedFloat32Array(0.25, 1)
+colors = PackedColorArray(0, 1, 1, 0, 0.6, 0.56, 0, 0.392157)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3ngb3"]
 gradient = SubResource("Gradient_yd0xa")
@@ -16,7 +28,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="MainUI" type="Control"]
-top_level = true
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,6 +47,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xh0hd")
 
+[node name="TextureRect" type="TextureRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_8dqd8")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
@@ -49,12 +70,29 @@ offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Winner2" type="Label" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "    Paused    "
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Unpaused" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "  Back  "
 
-[node name="TextureRect" type="TextureRect" parent="PauseMenu"]
+[node name="WinMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_c3bvd")
+
+[node name="TextureRect" type="TextureRect" parent="WinMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,6 +100,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_3ngb3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.5
+offset_top = -38.5
+offset_right = 87.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Winner" type="Label" parent="WinMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Player Won"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Again" type="Button" parent="WinMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Again"
 
 [node name="HeightLeaderboard" type="HBoxContainer" parent="." groups=["PlayerOutfit"]]
 layout_mode = 1
@@ -73,3 +137,4 @@ grow_vertical = 0
 script = ExtResource("3_3ngb3")
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/Unpaused" to="PauseMenu" method="_on_unpaused_pressed"]
+[connection signal="pressed" from="WinMenu/VBoxContainer/Again" to="WinMenu" method="_on_again_pressed"]

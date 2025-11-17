@@ -1,13 +1,17 @@
-res://Scenes/TowerGenerator.tscn
-res://Recourses/Tileset.tres
-res://Scenes/BirdSpawner.tscn
-res://Scenes/Moving Platform.tscn
-res://Scripts/Moving Platform/moving_platform.gd
-res://Scenes/Main.tscn
-res://Scenes/Player.tscn
 res://Scenes/MainUI.tscn
-res://Scenes/GlobalScript.tscn
-res://Scenes/Level.tscn
+res://Recourses/Tileset.tres
+res://Scenes/Main.tscn
+res://Scripts/UI/win_menu.gd
+res://Scenes/Player.tscn
+res://Scenes/PlayArea.tscn
+res://Scenes/BirdSpawner.tscn
 res://Scenes/Bird.tscn
+res://Scenes/TowerGenerator.tscn
+res://Scenes/Moving Platform.tscn
 res://Scenes/Goal.tscn
+res://Scenes/GlobalScript.tscn
+res://Scripts/PlayArea/level_spawner.gd
 res://Scripts/Goal/goal.gd
+res://Scripts/GlobalScript.gd
+res://Scenes/Levels/level_1.tscn
+res://Scripts/PlayArea/multiplayer_spawner.gd

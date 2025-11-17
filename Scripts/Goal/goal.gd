@@ -1,7 +1,6 @@
 extends StaticBody2D
 
-signal won(player)
-
 func _on_area_2d_body_entered(body):
+	GlobalScript.winner.emit(body.name)
 	get_tree().paused = true
-	won.emit(body.name)
+	queue_free()

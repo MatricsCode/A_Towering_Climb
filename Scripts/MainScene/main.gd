@@ -27,7 +27,7 @@ func spawn_level(data):
 func _on_host_pressed():
 	peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
 	multiplayer.multiplayer_peer = peer
-	ms.spawn("res://Scenes/Level.tscn")
+	ms.spawn("res://Scenes/PlayArea.tscn")
 	MainUI.hide()
 	$SelectorUI/Camera2D.enabled = false
 
