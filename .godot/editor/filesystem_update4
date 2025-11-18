@@ -1,7 +1,6 @@
 res://Scenes/MainUI.tscn
 res://Recourses/Tileset.tres
 res://Scenes/Main.tscn
-res://Scripts/UI/win_menu.gd
 res://Scenes/Player.tscn
 res://Scenes/PlayArea.tscn
 res://Scenes/BirdSpawner.tscn
@@ -11,7 +10,8 @@ res://Scenes/Moving Platform.tscn
 res://Scenes/Goal.tscn
 res://Scenes/GlobalScript.tscn
 res://Scripts/PlayArea/level_spawner.gd
-res://Scripts/Goal/goal.gd
-res://Scripts/GlobalScript.gd
-res://Scenes/Levels/level_1.tscn
-res://Scripts/PlayArea/multiplayer_spawner.gd
+res://default_bus_layout.tres
+res://Scripts/UI/pause_menu.gd
+res://Scripts/UI/main_ui.gd
+res://Scripts/UI/win_menu.gd
+res://Scripts/MainScene/main.gd

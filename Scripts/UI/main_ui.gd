@@ -7,3 +7,7 @@ func _ready():
 			child.visible = true
 		else:
 			child.visible = false
+
+
+func _on_leave_lobby_pressed():
+	pass # Replace with function body.

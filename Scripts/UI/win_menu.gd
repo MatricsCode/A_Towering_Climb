@@ -14,7 +14,4 @@ func reset():
 func _on_again_pressed():
 	GlobalScript.reset.emit()
 	get_tree().paused = false
-
-
-func _on_quit_pressed():
-	pass # Replace with function body.
+	await get_tree().create_timer(0.5).timeout

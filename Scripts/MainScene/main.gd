@@ -66,7 +66,6 @@ func _on_refresh_pressed():
 		for i in lobbies.get_children():
 			i.queue_free()
 	open_lobby_list()
-	
 
 
 func _on_player_customiser_pressed():

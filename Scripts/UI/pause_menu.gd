@@ -14,7 +14,7 @@ func _process(_delta):
 		visible = false
 
 
-func _on_unpaused_pressed():
+func _on_back_pressed():
 	get_tree().paused = false
 
 func winner(name):
