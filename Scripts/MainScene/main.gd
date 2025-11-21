@@ -11,7 +11,7 @@ var peer = SteamMultiplayerPeer.new()
 @onready var host = $SelectorUI/HSplitContainer/VBoxContainer/Host
 @onready var refresh = $SelectorUI/HSplitContainer/VBoxContainer/Refresh
 
-var x = 0
+var lobby_members: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,6 +67,18 @@ func _on_refresh_pressed():
 			i.queue_free()
 	open_lobby_list()
 
+func leave_lobby():
+	if lobby_id != 0:
+		Steam.leaveLobby(lobby_id)
+		
+		lobby_id = 0
+	
+	for this_member in lobby_members:
+		
+		if this_member != 0:#steam_id:
+			# Close the P2P session using the Networking class
+			#Steam.closeP2PSessionWithUser(this_member["D"])
+			pass
 
 func _on_player_customiser_pressed():
 	MainUI.visible = false
