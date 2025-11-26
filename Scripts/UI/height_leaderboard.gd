@@ -18,8 +18,9 @@ func _process(delta):
 			add_child(height_representor)
 			height_representor.step = 0.01
 			height_representor.editable = false
+			height_representor.tick_count = (1 * (GlobalScript.goal_position_y - 50)) / 10
 			height_representor.theme = themes[0]
-			height_representor.max_value = 5250.0
+			height_representor.max_value = -1 * (GlobalScript.goal_position_y - 50)
 			height_representor.min_value = 0
 			
 			children.append(height_representor)

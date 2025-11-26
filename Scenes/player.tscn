@@ -28,16 +28,18 @@ collision_mask = 15
 script = ExtResource("1_kih0c")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -136)
 sprite_frames = ExtResource("2_5ixxa")
 animation = &"climb"
 speed_scale = 3.0
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 60)
+position = Vector2(5, -76)
 shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -136)
 zoom = Vector2(0.5, 0.5)
 limit_bottom = 0
 
@@ -45,6 +47,7 @@ limit_bottom = 0
 replication_config = SubResource("SceneReplicationConfig_cvnsp")
 
 [node name="WallDetectors" type="Node2D" parent="."]
+position = Vector2(0, -136)
 script = ExtResource("27_u7x0b")
 
 [node name="WallDetector1" type="RayCast2D" parent="WallDetectors"]
@@ -60,6 +63,7 @@ collision_mask = 4
 hit_from_inside = true
 
 [node name="BumpDetectors" type="Node2D" parent="."]
+position = Vector2(0, -136)
 script = ExtResource("28_kih0c")
 
 [node name="WallDetector1" type="RayCast2D" parent="BumpDetectors"]
@@ -77,6 +81,7 @@ collision_mask = 16
 hit_from_inside = true
 
 [node name="EdgeDetectors" type="Node2D" parent="."]
+position = Vector2(0, -136)
 script = ExtResource("28_utwlt")
 
 [node name="EdgeDetector1" type="RayCast2D" parent="EdgeDetectors"]

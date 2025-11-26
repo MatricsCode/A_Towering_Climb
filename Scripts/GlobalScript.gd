@@ -7,9 +7,13 @@ var player_outfits = [
 	preload("res://Recourses/PlayerSprites/Climber2.tres"),
 	]
 
+var goal_position_y : float
+
 signal winner (name)
 
 signal reset
+
+signal left_lobby
 
 signal paused
 

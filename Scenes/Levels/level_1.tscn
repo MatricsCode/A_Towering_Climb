@@ -12,9 +12,9 @@ tile_map_data = PackedByteArray("AAANAP//AAAAAAEAAAANAP7/AAAAAAEAAAANAP3/AAAAAAE
 tile_set = ExtResource("1_tlcug")
 
 [node name="MovingPlatform" parent="." instance=ExtResource("2_4dpyx")]
-position = Vector2(-757, -1491)
-position1 = Vector2(-757, -1491)
-position2 = Vector2(-1855, -1643)
+position = Vector2(-757, -1430)
+position1 = Vector2(-757, -1430)
+position2 = Vector2(-1855, -1591)
 
 [node name="BirdSpawner" parent="." instance=ExtResource("3_3mqfk")]
 spawn_position = Vector2(-394, -1431)

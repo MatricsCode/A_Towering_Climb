@@ -13,9 +13,11 @@ position1 = Vector2(50, 20)
 position2 = Vector2(-20, -50)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
 texture = ExtResource("1_se2iq")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 15)

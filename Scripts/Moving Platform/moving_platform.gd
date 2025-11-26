@@ -16,11 +16,9 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("Interact") and label.visible == true:
+		player.position = position
 		label.visible = false
 		move()
-		
-	while position != position1 and position != position2: 
-		player.position = position
 
 func _on_area_2d_body_entered(body):
 	label.visible = true
@@ -32,10 +30,12 @@ func _on_area_2d_body_exited(body):
 
 func move():
 	if position == position1:
-		tween(position2)
+		tween(position2, self)
+		tween(position2, player)
 	elif position == position2:
-		tween(position1)
+		tween(position1, self)
+		tween(position1, player)
 
-func tween(pos):
+func tween(pos, user):
 	var position_change = create_tween()
-	position_change.tween_property(self, "position", pos, speed)
+	position_change.tween_property(user, "position", pos, speed)

@@ -4,18 +4,14 @@ var won = false
 
 func _ready():
 	GlobalScript.winner.connect(winner)
+	GlobalScript.paused.connect(change)
 	GlobalScript.reset.connect(reset)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if get_tree().paused == true and won == false:
-		visible = true
-	else:
-		visible = false
-
+func change():
+	visible = not visible
 
 func _on_back_pressed():
-	get_tree().paused = false
+	GlobalScript.paused.emit()
 
 func winner(name):
 	won = true

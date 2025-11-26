@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 ## --- Enums ---
-enum States {GROUND, AIR, CLIMB, RAM, EMPTY}
+enum States {GROUND, AIR, CLIMB, RAM, PAUSED, EMPTY}
 
 
 ## --- Constants ---
@@ -45,6 +45,8 @@ func _ready(): ## Runns as soon as the player is loaded into the scene
 	
 	main_var_reset = main_vars.values() ## Loads all the values of main vars into main var reset, so that they are stored seperatly
 	
+	GlobalScript.paused.connect(pause_switch)
+	
 	await get_tree().create_timer(0.2).timeout
 
 func _physics_process(_delta):  ## Runs every physics frames
@@ -61,6 +63,8 @@ func _physics_process(_delta):  ## Runs every physics frames
 			climb()
 		States.RAM:
 			ram()
+		States.PAUSED:
+			paused()
 		States.EMPTY:
 			pass
 		_:
@@ -232,6 +236,23 @@ func ram():
 		switch(States.RAM, States.AIR)
 	#endregion
 
+func paused():
+	if wall_detector.touching_wall() == false and not is_on_floor():
+	
+		if velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
+			velocity.y += main_vars.gravity
+			main_vars.gravity += 1
+			sprite.play("fall")
+	
+	elif wall_detector.touching_wall() == true and not is_on_floor():
+		sprite.set_animation("climb")
+	
+	elif wall_detector.touching_wall() == true and is_on_floor():
+		position.x += get_sprite_rotation() * -1 * 20
+		sprite.play("idle")
+	
+	else:
+		sprite.play("idle")
 
 ## --- Helper Functions ---
 func move():
@@ -284,6 +305,12 @@ func reset_main_vars():
 	
 	for i in main_vars.size():
 		main_vars[keys[i]] = main_var_reset[i]
+
+func pause_switch():
+	if current_state != States.PAUSED:
+		switch(current_state, States.PAUSED)
+	else:
+		switch(States.PAUSED, States.GROUND)
 
 func switch_costume():
 	if is_multiplayer_authority():

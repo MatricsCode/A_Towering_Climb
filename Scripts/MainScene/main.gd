@@ -11,10 +11,10 @@ var peer = SteamMultiplayerPeer.new()
 @onready var host = $SelectorUI/HSplitContainer/VBoxContainer/Host
 @onready var refresh = $SelectorUI/HSplitContainer/VBoxContainer/Refresh
 
-var lobby_members: Array = []
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GlobalScript.left_lobby.connect(leave_lobby)
+	
 	ms.spawn_function = spawn_level
 	peer.lobby_created.connect(on_lobby_created)
 	Steam.lobby_match_list.connect(on_lobby_match_list)
@@ -25,7 +25,13 @@ func spawn_level(data):
 	return a
 
 func _on_host_pressed():
-	peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
+	print(peer.get_lobby_id())
+	
+	if peer.get_lobby_id() == 0:
+		peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
+	else:
+		print("Still in lobby")
+	
 	multiplayer.multiplayer_peer = peer
 	ms.spawn("res://Scenes/PlayArea.tscn")
 	MainUI.hide()
@@ -43,7 +49,6 @@ func on_lobby_created(connected, id):
 		lobby_id = id
 		Steam.setLobbyData(lobby_id,"name",str(Steam.getPersonaName()+"'s lobby"))
 		Steam.setLobbyJoinable(lobby_id, true)
-		print(lobby_id)
 
 func open_lobby_list():
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
@@ -73,12 +78,16 @@ func leave_lobby():
 		
 		lobby_id = 0
 	
+	var lobby_members = peer.get_peer_map()
+	
 	for this_member in lobby_members:
 		
-		if this_member != 0:#steam_id:
-			# Close the P2P session using the Networking class
-			#Steam.closeP2PSessionWithUser(this_member["D"])
-			pass
+		if this_member != Steam.getSteamID():
+			Steam.closeP2PSessionWithUser(this_member["peer id"])
+	
+	get_child(get_child_count() - 1).queue_free()
+	MainUI.show()
+	$SelectorUI/Camera2D.enabled = true
 
 func _on_player_customiser_pressed():
 	MainUI.visible = false
