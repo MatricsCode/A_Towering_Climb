@@ -1,15 +1,25 @@
 extends Control
 
+@onready var background = $"../Background"
+@onready var win_ui = $VBoxContainer
+
+const WIN_BACKGROUND = preload("res://Recourses/UI/WinBackground.tres")
+
 func _ready():
 	GlobalScript.winner.connect(won)
 	GlobalScript.reset.connect(reset)
+	
+	reset()
 
 func won(name):
-	visible = true
+	background.texture = WIN_BACKGROUND
+	win_ui.visible = true
 	$VBoxContainer/Winner.text = str(name, " Won!")
 
 func reset():
-	visible = false
+	background.texture = null
+	win_ui.visible = false
+
 
 func _on_again_pressed():
 	GlobalScript.reset.emit()

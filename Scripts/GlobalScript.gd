@@ -16,7 +16,3 @@ signal reset
 signal left_lobby
 
 signal paused
-
-func _physics_process(_delta):
-	if Input.is_action_just_pressed("Pause"):
-		paused.emit()

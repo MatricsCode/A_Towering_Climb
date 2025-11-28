@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4d84e536ftxf"]
+[gd_scene load_steps=9 format=3 uid="uid://b4d84e536ftxf"]
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_kih0c"]
 [ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="2_5ixxa"]
+[ext_resource type="AudioStream" uid="uid://dhkxxmmxffvo5" path="res://Sound Effects/Test Sounds/Walking 2.0 Free!.mp3" id="6_nn08x"]
 [ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Scripts/Player/wall_detectors.gd" id="27_u7x0b"]
 [ext_resource type="Script" uid="uid://bpmhsc3tdcpqq" path="res://Scripts/Player/bump_detectors.gd" id="28_kih0c"]
 [ext_resource type="Script" uid="uid://dvnr5lwr2t2n8" path="res://Scripts/Player/edge_detectors.gd" id="28_utwlt"]
@@ -30,7 +31,7 @@ script = ExtResource("1_kih0c")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -136)
 sprite_frames = ExtResource("2_5ixxa")
-animation = &"climb"
+animation = &"walk"
 speed_scale = 3.0
 metadata/_edit_lock_ = true
 
@@ -109,3 +110,9 @@ collision_mask = 4
 hit_from_inside = true
 
 [node name="Upgrades" type="Node" parent="."]
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_nn08x")
+bus = &"Player"
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
