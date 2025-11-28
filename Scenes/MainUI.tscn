@@ -3,20 +3,11 @@
 [ext_resource type="Script" uid="uid://bevxwl1n2p71r" path="res://Scripts/UI/pause_menu.gd" id="1_xh0hd"]
 [ext_resource type="Script" uid="uid://lugaf8yhlsla" path="res://Scripts/UI/main_ui.gd" id="1_yd0xa"]
 [ext_resource type="Script" uid="uid://ba6n6ohx1qr25" path="res://Scripts/UI/height_leaderboard.gd" id="3_3ngb3"]
-
-[sub_resource type="Gradient" id="Gradient_yd0xa"]
-offsets = PackedFloat32Array(0.5, 1)
-colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 0.356863)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3ngb3"]
-gradient = SubResource("Gradient_yd0xa")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[ext_resource type="Script" uid="uid://blkue12vglqdr" path="res://Scripts/UI/settings.gd" id="3_8dqd8"]
+[ext_resource type="Script" uid="uid://du0w16lun2fuy" path="res://Scripts/UI/win_menu.gd" id="3_c3bvd"]
 
 [node name="MainUI" type="Control"]
-top_level = true
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +15,57 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yd0xa")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_c3bvd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -187.0
+offset_right = 154.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Winner" type="Label" parent="WinMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Player Won"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Again" type="Button" parent="WinMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Again"
+
+[node name="LeaveLobby" type="Button" parent="WinMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Leave Lobby"
 
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
@@ -33,35 +75,135 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_xh0hd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+[node name="Main" type="VBoxContainer" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -87.5
-offset_top = -38.5
-offset_right = 87.5
-offset_bottom = 38.5
+offset_left = -154.0
+offset_top = -187.5
+offset_right = 154.0
+offset_bottom = 187.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 25
 
-[node name="Unpaused" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="Paused" type="Label" parent="PauseMenu/Main"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "  Back  "
+text = "    Paused    "
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PauseMenu"]
+[node name="Unpause" type="Button" parent="PauseMenu/Main"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Unpause"
+
+[node name="Menu1" type="Button" parent="PauseMenu/Main"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="LeaveLobby" type="Button" parent="PauseMenu/Main"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Leave Lobby"
+
+[node name="Settings" type="VBoxContainer" parent="PauseMenu"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -188.0
+offset_right = 154.0
+offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_3ngb3")
+script = ExtResource("3_8dqd8")
+
+[node name="Settings" type="Label" parent="PauseMenu/Settings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "  Settings  "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu1" type="Button" parent="PauseMenu/Settings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Settings"]
+layout_mode = 2
+
+[node name="MainAudio" type="HBoxContainer" parent="PauseMenu/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Main" type="HSlider" parent="PauseMenu/Settings/VBoxContainer/MainAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Label" type="Label" parent="PauseMenu/Settings/VBoxContainer/MainAudio"]
+layout_mode = 2
+text = " Main "
+
+[node name="PlayerAudio" type="HBoxContainer" parent="PauseMenu/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Player" type="HSlider" parent="PauseMenu/Settings/VBoxContainer/PlayerAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Label" type="Label" parent="PauseMenu/Settings/VBoxContainer/PlayerAudio"]
+layout_mode = 2
+text = "Player"
+
+[node name="Effects" type="HBoxContainer" parent="PauseMenu/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="BG SFX" type="HSlider" parent="PauseMenu/Settings/VBoxContainer/Effects"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Label" type="Label" parent="PauseMenu/Settings/VBoxContainer/Effects"]
+layout_mode = 2
+text = " Cars  "
+
+[node name="Music" type="HBoxContainer" parent="PauseMenu/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Music" type="HSlider" parent="PauseMenu/Settings/VBoxContainer/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Label" type="Label" parent="PauseMenu/Settings/VBoxContainer/Music"]
+layout_mode = 2
+text = "Music"
 
 [node name="HeightLeaderboard" type="HBoxContainer" parent="." groups=["PlayerOutfit"]]
 layout_mode = 1
@@ -72,4 +214,13 @@ offset_top = -197.0
 grow_vertical = 0
 script = ExtResource("3_3ngb3")
 
-[connection signal="pressed" from="PauseMenu/VBoxContainer/Unpaused" to="PauseMenu" method="_on_unpaused_pressed"]
+[connection signal="pressed" from="WinMenu/VBoxContainer/Again" to="WinMenu" method="_on_again_pressed"]
+[connection signal="pressed" from="WinMenu/VBoxContainer/LeaveLobby" to="." method="_on_leave_lobby_pressed"]
+[connection signal="pressed" from="PauseMenu/Main/Unpause" to="PauseMenu" method="_on_unpause_pressed"]
+[connection signal="pressed" from="PauseMenu/Main/Menu1" to="PauseMenu" method="_on_menu_1_pressed"]
+[connection signal="pressed" from="PauseMenu/Main/LeaveLobby" to="." method="_on_leave_lobby_pressed"]
+[connection signal="pressed" from="PauseMenu/Settings/Menu1" to="PauseMenu" method="_on_menu_1_pressed"]
+[connection signal="value_changed" from="PauseMenu/Settings/VBoxContainer/MainAudio/Main" to="PauseMenu/Settings" method="_on_main_value_changed"]
+[connection signal="value_changed" from="PauseMenu/Settings/VBoxContainer/PlayerAudio/Player" to="PauseMenu/Settings" method="_on_player_value_changed"]
+[connection signal="value_changed" from="PauseMenu/Settings/VBoxContainer/Effects/BG SFX" to="PauseMenu/Settings" method="_on_bg_sfx_value_changed"]
+[connection signal="value_changed" from="PauseMenu/Settings/VBoxContainer/Music/Music" to="PauseMenu/Settings" method="_on_music_value_changed"]

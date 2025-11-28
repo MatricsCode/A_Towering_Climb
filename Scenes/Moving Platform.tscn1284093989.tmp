@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://deffkwaj6jy8s"]
+
+[ext_resource type="Script" uid="uid://7rnk5tl50grf" path="res://Scripts/Moving Platform/moving_platform.gd" id="1_qioah"]
+[ext_resource type="Texture2D" uid="uid://l5ciqi18p0us" path="res://Art/Player/ClimberIcon2.png" id="1_se2iq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qioah"]
+size = Vector2(120, 50)
+
+[node name="MovingPlatform" type="StaticBody2D"]
+script = ExtResource("1_qioah")
+speed = 1
+position1 = Vector2(50, 20)
+position2 = Vector2(-20, -50)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_se2iq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_qioah")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -156.0
+offset_right = 20.0
+offset_bottom = -87.0
+theme_override_font_sizes/font_size = 50
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

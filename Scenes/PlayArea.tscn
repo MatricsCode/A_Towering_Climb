@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://yok4okqr5xhe"]
+
+[ext_resource type="Script" uid="uid://ceh88qybxg6et" path="res://Scripts/PlayArea/multiplayer_spawner.gd" id="1_1wwee"]
+[ext_resource type="PackedScene" uid="uid://b4d84e536ftxf" path="res://Scenes/Player.tscn" id="2_aqo4u"]
+[ext_resource type="Script" uid="uid://mxplkon28xxc" path="res://Scripts/PlayArea/level_spawner.gd" id="5_aqo4u"]
+[ext_resource type="PackedScene" uid="uid://bnt4usslrchfy" path="res://Scenes/MainUI.tscn" id="5_wgbis"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rbpu"]
+size = Vector2(4838, 20)
+
+[node name="PlayArea" type="Node"]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." groups=["PlayerSpawner"]]
+spawn_path = NodePath(".")
+script = ExtResource("1_1wwee")
+player_scene = ExtResource("2_aqo4u")
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath(".")
+script = ExtResource("5_aqo4u")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_8rbpu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainUI" parent="CanvasLayer" instance=ExtResource("5_wgbis")]
+metadata/_edit_use_anchors_ = true

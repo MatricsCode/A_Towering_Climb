@@ -1,8 +1,8 @@
 res://Scenes/Main.tscn
+res://Recourses/UI/WinBackground.tres
 res://Recourses/Tileset.tres
+res://Scenes/Player.tscn
 res://Scenes/MainUI.tscn
 res://Scenes/GlobalScript.tscn
-res://Scenes/Level.tscn
-res://Scenes/BirdSpawner.tscn
-res://Scenes/Bird.tscn
-res://Scenes/Player.tscn
+res://Scenes/Levels/level_1.tscn
+res://Scenes/Levels/level_2.tscn

@@ -12,16 +12,8 @@ var positionY = 0
 
 var fly_speed = Vector2(0, 0)
 
-var push_force = 5
-
 func _ready():
 	position.y = positionY
-	
-	$Switch_bird_detection_side.wait_time = randf_range(0, 3)
-	$Switch_bird_detection_side.start()
-	
-	$BirdDetector.position.x += randf_range(-5, 5)
-	$BirdDetector.target_position.x += randf_range(-5, 5)
 	
 	var color = randi_range(0, 4)
 	match color:
@@ -38,11 +30,6 @@ func _ready():
 
 
 func _physics_process(_delta):
-	if $BirdDetector.is_colliding():
-		$BirdDetector.get_collider().velocity.x = push_force * (position.x - $BirdDetector.get_collider().position.x) * -1
-	
-	velocity.x = lerp(velocity.x, 0.0, 0.2)
-	
 	move_and_slide()
 
 
@@ -68,12 +55,3 @@ func run(detected):
 	
 	
 	#$PlayerDetector.set_collision_layer_value(1, true)
-
-
-func _on_switch_bird_detection_side_timeout():
-	
-	$BirdDetector.position.x *= -1
-	$BirdDetector.target_position.x *= -1
-	
-	$Switch_bird_detection_side.wait_time = randf_range(2, 15)
-	$Switch_bird_detection_side.start()

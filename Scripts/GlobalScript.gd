@@ -7,6 +7,12 @@ var player_outfits = [
 	preload("res://Recourses/PlayerSprites/Climber2.tres"),
 	]
 
-func _physics_process(_delta):
-	if Input.is_action_just_pressed("Pause"):
-		get_tree().paused = not get_tree().paused
+var goal_position_y : float
+
+signal winner (name)
+
+signal reset
+
+signal left_lobby
+
+signal paused

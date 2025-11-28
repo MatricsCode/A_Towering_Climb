@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://doktp74e7kmtf"
+path="res://.godot/imported/Land.mp3-3b4df38997b365eb07772b9cf0079252.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/Land.mp3"
+dest_files=["res://.godot/imported/Land.mp3-3b4df38997b365eb07772b9cf0079252.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
