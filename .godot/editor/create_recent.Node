@@ -1,4 +1,5 @@
 Node2D
+Node
 HBoxContainer
 Label
 HSlider
@@ -11,5 +12,3 @@ VSlider
 Area2D
 Control
 MultiplayerSpawner
-TileMapLayer
-StaticBody2D

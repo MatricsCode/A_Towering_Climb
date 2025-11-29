@@ -17,9 +17,9 @@ position1 = Vector2(-757, -1430)
 position2 = Vector2(-1855, -1591)
 
 [node name="BirdSpawner" parent="." instance=ExtResource("3_3mqfk")]
-spawn_position = Vector2(-394, -1431)
-max_birds = 20
-positional_change = 375
+spawn_position = Vector2(-463, -1430)
+max_birds = 10
+positional_change = 250
 
 [node name="Goal" parent="." instance=ExtResource("4_iixi8")]
-position = Vector2(823, -93)
+position = Vector2(-198, -4760)

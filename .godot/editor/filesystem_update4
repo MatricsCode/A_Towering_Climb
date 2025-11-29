@@ -6,3 +6,5 @@ res://Scenes/MainUI.tscn
 res://Scenes/GlobalScript.tscn
 res://Scenes/Levels/level_1.tscn
 res://Scenes/Levels/level_2.tscn
+res://Scripts/Player/player_script.gd
+res://export_presets.cfg

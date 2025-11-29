@@ -1,18 +1,23 @@
 extends CharacterBody2D
 
 ## --- Enums ---
-enum States {GROUND, AIR, CLIMB, RAM, PAUSED, EMPTY}
+enum States {GROUND, AIR, CLIMB, RAM, PAUSED, OVERIDDEN, EMPTY}
 
 
 ## --- Constants ---
 const MAX_JUMP = 1000
 const MAX_GRAVITY = 10000
 
-
 ## --- Variables ---
 var current_state
 
 var current_outfit = 0
+
+var sounds = {
+	"Walk" : preload("res://Sound Effects/Walking.mp3"),
+	"Land" : preload("res://Sound Effects/Land.mp3"),
+	"Jump" : preload("res://Sound Effects/Jump.mp3"),
+	"Climb" : preload("res://Sound Effects/Climb.mp3"),}
 
 var main_vars = { ## Main ariables
 	speed = 600, # Determins how much the player can move in one frame
@@ -31,7 +36,6 @@ var main_var_reset = [] ## The Array, gets auto-assigned in the ready function w
 @onready var wall_detector = $WallDetectors
 @onready var edge_detector = $EdgeDetectors
 @onready var bump_detectors = $BumpDetectors
-@onready var sfx = $SFX
 
 
 ## --- Export Variables ---
@@ -69,6 +73,8 @@ func _physics_process(_delta):  ## Runs every physics frames
 			ram()
 		States.PAUSED:
 			paused()
+		States.OVERIDDEN:
+			overidden()
 		States.EMPTY:
 			pass
 		_:
@@ -87,8 +93,7 @@ func ground():
 		sprite.play("idle")
 	
 	if sprite.frame == 1 or sprite.frame == 5:
-		sfx.play()
-		sfx.pitch_scale = randf_range(0.95, 1.15 )
+		play_sound(sounds["Walk"])
 	
 	move()
 	turn()
@@ -112,7 +117,6 @@ func ground():
 	#endregion
 
 func air():
-	
 	#region Functions
 	var air_movement = func air_movement():
 			var direction = Input.get_axis("Left", "Right")
@@ -197,6 +201,9 @@ func climb():
 		sprite.play("climb")
 		sprite.stop()
 		velocity.y = 0
+	
+	if sprite.frame == 1 or sprite.frame == 3:
+		play_sound(sounds["Climb"])
 	#endregion
 	
 	## All of the different ways of exiting the current state go here
@@ -263,6 +270,9 @@ func paused():
 		sprite.play("idle")
 		velocity.x = lerp(velocity.x, 0.0, 0.4)
 
+func overidden():
+	pass
+
 ## --- Helper Functions ---
 func move():
 	var direction = Input.get_axis("Left", "Right")
@@ -277,6 +287,11 @@ func turn():
 	elif velocity.x < 0:
 		sprite.flip_h = true
 
+func play_sound(sound : Resource):
+	$SFX.stream = sound
+	$SFX.play()
+	$SFX.pitch_scale = randf_range(0.95, 1.15)
+
 func get_sprite_rotation():
 	if sprite.flip_h == false:
 		return 1
@@ -285,6 +300,7 @@ func get_sprite_rotation():
 
 func switch(old_state, new_state):
 	if old_state == States.GROUND and new_state == States.AIR:
+		play_sound(sounds["Jump"])
 		current_state = new_state
 	
 	elif old_state == States.AIR and new_state == States.GROUND:
@@ -297,7 +313,7 @@ func switch(old_state, new_state):
 		
 		velocity.x = 0
 		
-		await get_tree().create_timer(current_gravity/2500).timeout
+		play_sound(sounds["Land"])
 		
 		current_state = new_state
 	
