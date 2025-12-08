@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://deffkwaj6jy8s"]
+[gd_scene load_steps=5 format=3 uid="uid://deffkwaj6jy8s"]
 
 [ext_resource type="Script" uid="uid://7rnk5tl50grf" path="res://Scripts/Moving Platform/moving_platform.gd" id="1_qioah"]
 [ext_resource type="Texture2D" uid="uid://l5ciqi18p0us" path="res://Art/Player/ClimberIcon2.png" id="1_se2iq"]
@@ -6,9 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qioah"]
 size = Vector2(120, 50)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qioah"]
+properties/0/path = NodePath(".:position1")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
 [node name="MovingPlatform" type="StaticBody2D"]
 script = ExtResource("1_qioah")
-speed = 1
 position1 = Vector2(50, 20)
 position2 = Vector2(-20, -50)
 
@@ -33,6 +37,9 @@ theme_override_font_sizes/font_size = 50
 text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_qioah")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

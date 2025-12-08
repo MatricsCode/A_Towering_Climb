@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7w851wnif2io"]
+[gd_scene load_steps=10 format=3 uid="uid://b7w851wnif2io"]
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_kih0c"]
 [ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="2_5ixxa"]
 [ext_resource type="Script" uid="uid://c22ccct5h31um" path="res://Scripts/Player/abillity_manager.gd" id="6_52ee3"]
+[ext_resource type="Script" uid="uid://d0y0w2hbe3jwq" path="res://Scripts/Player/Abilitys/glide.gd" id="6_nn08x"]
 [ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Scripts/Player/wall_detectors.gd" id="27_u7x0b"]
 [ext_resource type="Script" uid="uid://bpmhsc3tdcpqq" path="res://Scripts/Player/bump_detectors.gd" id="28_kih0c"]
 [ext_resource type="Script" uid="uid://dvnr5lwr2t2n8" path="res://Scripts/Player/edge_detectors.gd" id="28_utwlt"]
@@ -52,13 +53,13 @@ position = Vector2(0, -136)
 script = ExtResource("27_u7x0b")
 
 [node name="WallDetector1" type="RayCast2D" parent="WallDetectors"]
-position = Vector2(-28, -8)
+position = Vector2(-26, -8)
 target_position = Vector2(0, 120)
 collision_mask = 4
 hit_from_inside = true
 
 [node name="WallDetector2" type="RayCast2D" parent="WallDetectors"]
-position = Vector2(38, -8)
+position = Vector2(36, -8)
 target_position = Vector2(0, 120)
 collision_mask = 4
 hit_from_inside = true
@@ -69,14 +70,14 @@ script = ExtResource("28_kih0c")
 
 [node name="WallDetector1" type="RayCast2D" parent="BumpDetectors"]
 unique_name_in_owner = true
-position = Vector2(-32, -8)
+position = Vector2(-28, -8)
 target_position = Vector2(0, 120)
 collision_mask = 16
 hit_from_inside = true
 
 [node name="WallDetector2" type="RayCast2D" parent="BumpDetectors"]
 unique_name_in_owner = true
-position = Vector2(42, -8)
+position = Vector2(37, -8)
 target_position = Vector2(0, 120)
 collision_mask = 16
 hit_from_inside = true
@@ -111,6 +112,12 @@ hit_from_inside = true
 
 [node name="Upgrades" type="Node" parent="."]
 script = ExtResource("6_52ee3")
+
+[node name="glide" type="Node" parent="Upgrades" node_paths=PackedStringArray("player")]
+script = ExtResource("6_nn08x")
+activation_state = 1
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://cv1hug186rnvc"
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = 5.0

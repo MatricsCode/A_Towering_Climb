@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var speed := 10
+@export var speed := 1
 
 @export var position1 := Vector2.ZERO
 @export var position2 := Vector2.ZERO
@@ -10,6 +10,8 @@ var chosen_position = Vector2.ZERO
 @onready var label = $Label
 
 var player = null
+
+var players = []
 
 func _ready():
 	position = position1
@@ -21,8 +23,19 @@ func _physics_process(delta):
 		move()
 
 func _on_area_2d_body_entered(body):
-	label.visible = true
-	player = body
+	var key_search = body.get_children(true)
+	
+	for i in key_search:
+		
+		var children = i.get_children(true) 
+		
+		for y in children:
+			if y.name == "SkyLiftKey":
+				label.visible = true
+				if body.is_multiplayer_authority():
+					player = body
+			else:
+				pass
 
 func _on_area_2d_body_exited(body):
 	label.visible = false

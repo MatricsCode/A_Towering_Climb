@@ -1,10 +1,10 @@
 extends StaticBody2D
 
-var health = 5
+@export var health = 50
 
-func bumped(remaining_health):
-	
-	health -= remaining_health
-	
-	if health <= 0:
-		queue_free()
+func _on_area_2d_body_exited(body):
+	if body.is_in_class("player"):
+		if body.velocity.x > 0:
+			health -= int(body.velocity.x / 48)
+		else:
+			health += int(body.velocity.x / 48)

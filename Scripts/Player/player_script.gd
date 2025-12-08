@@ -1,17 +1,26 @@
 extends CharacterBody2D
 
+class_name player
+
+## Data containers
+#region Enums
 ## --- Enums ---
 enum States {GROUND, AIR, CLIMB, RAM, PAUSED, OVERIDDEN, EMPTY}
+#endregion
 
-
+#region Constants
 ## --- Constants ---
 const MAX_JUMP = 1000
 const MAX_GRAVITY = 10000
+#endregion
 
+#region Variables
 ## --- Variables ---
 var current_state
 
 var current_outfit = 0
+
+var current_ground_speed = 0
 
 var sounds = {
 	"Walk" : preload("res://Sound Effects/Walking.mp3"),
@@ -25,22 +34,23 @@ var main_vars = { ## Main ariables
 	jump_increase = 1, # Determins how fast the player increases in jump power
 	gravity = 0, # Determins at what speed the player falls down
 	glide_gravity = 100, # Determins at what speed the player falls down once gliding
-	climbing_speed = 300,} # How fast the player can climb
+	climbing_speed = 300,
+	ram_damage = 50,} # How fast the player can climb
 
 var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
+#endregion
 
-
+#region Nodes
 ## --- Nodes ---
 @onready var cam = $Camera2D 
 @onready var sprite = $Sprite
 @onready var wall_detector = $WallDetectors
 @onready var edge_detector = $EdgeDetectors
 @onready var bump_detectors = $BumpDetectors
+#endregion
 
-
-## --- Export Variables ---
-@export var velocity2 = velocity ## Allows the Multiplayer Synchronizer to sync the velocity
-
+## Functions
+#region Inbuilt Functions
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scene
 	
@@ -58,7 +68,6 @@ func _ready(): ## Runns as soon as the player is loaded into the scene
 	await get_tree().create_timer(0.2).timeout
 
 func _physics_process(_delta):  ## Runs every physics frames
-	
 	if not is_multiplayer_authority():
 		return ## Checks if you are this player, and grants/denies you control acordingly
 	
@@ -78,12 +87,13 @@ func _physics_process(_delta):  ## Runs every physics frames
 		States.EMPTY:
 			pass
 		_:
-			print("A unidentified state has been entered")
+			printerr("A unidentified state has been entered")
 	
 	move_and_slide()
+#endregion
 
-
-## --- Self made functions ---
+#region State Functions
+## --- state functions ---
 func ground():
 	## All of the different actions possible in the current state go here
 	#region Main
@@ -141,7 +151,7 @@ func air():
 			main_vars.gravity += 1
 	#endregion
 	
-	## All of the different actions possible in the current state        dw                            ddddddd go here
+	## All of the different actions possible in the current state go here
 	#region Main
 	if Input.is_action_pressed("Jump") and is_on_floor(): # Checks if you are holding jump
 		sprite.play("pre_jump") # Plays the crouching animation for anticipation
@@ -149,21 +159,14 @@ func air():
 		if main_vars.jump_power < MAX_JUMP: # Checks if jump power is maxed out, and if not increases it
 			main_vars.jump_power += main_vars.jump_increase
 		
-		velocity.x = 0 # Dissables the ability to move during pre_jumps
+		velocity.x = 0 # Disables the ability to move during pre_jumps
 	
 	elif Input.is_action_just_released("Jump") and is_on_floor(): # Plays as soon as you release the jump
 		sprite.play("jump") # Plays the jump animtation
 		velocity.y = -main_vars.jump_power # Sets the upward velocity to jumping heights
 	
-	if Input.is_action_pressed("Jump") and not is_on_floor() and velocity.y > 0: # Checks if you are mid jump and holding
-		velocity.y = main_vars.glide_gravity
-		sprite.play("glide")
-		air_movement.call()
-		
-		turn()
-	
 	# Checks if you are mid jump and falling
-	elif (not Input.is_action_pressed("Jump") and not is_on_floor() or Input.is_action_pressed("Jump") and not is_on_floor() and velocity.y <= 0):
+	elif not is_on_floor():
 			if velocity.y > 0:
 				sprite.play("fall") # Plays the fall animation if you are traveling downward
 			elif velocity.y < 0:
@@ -173,8 +176,6 @@ func air():
 			
 			turn()
 			drop.call()
-	
-	
 	#endregion
 	
 	## All of the different ways of exiting the current state go here
@@ -230,10 +231,19 @@ func climb():
 	#endregion
 
 func ram():
-	
 	#region Main
 	if Input.is_action_pressed("Ram"):
-		velocity.x = (lerpf(velocity.x,  float(main_vars.speed * 2 * get_sprite_rotation()), 0.01))
+		if velocity.x * get_sprite_rotation() < 0:
+			velocity.x *= get_sprite_rotation()
+			current_ground_speed *= get_sprite_rotation()
+		
+		if velocity.x == 0.0:
+			velocity.x = main_vars.speed / 10
+			current_ground_speed = main_vars.speed / 10
+		
+		if velocity.x <= main_vars.speed * 1.5 and velocity.x >= -main_vars.speed * 1.5:
+			velocity.x *= 1.05 #(lerpf(velocity.x,  float(main_vars.speed * 2 * get_sprite_rotation()), 0.1))
+			current_ground_speed *= 1.05
 		sprite.play("ram")
 	#endregion
 	
@@ -243,9 +253,16 @@ func ram():
 		switch(States.RAM, States.GROUND)
 	
 	if bump_detectors.bumped():
-		velocity.x = main_vars.speed * 2 * get_sprite_rotation() * -1
-		velocity.y = -main_vars.jump_power * 1.5
+		if velocity.x > 0:
+			velocity.y = -velocity.x - main_vars.ram_damage
+			velocity.x = -2 * velocity.x - main_vars.ram_damage
+		
+		else:
+			velocity.y = -velocity.x - main_vars.ram_damage
+			velocity.x = 2 * velocity.x + main_vars.ram_damage
+		
 		switch(States.RAM, States.AIR)
+	
 	
 	if not is_on_floor():
 		switch(States.RAM, States.AIR)
@@ -269,17 +286,23 @@ func paused():
 	else:
 		sprite.play("idle")
 		velocity.x = lerp(velocity.x, 0.0, 0.4)
+		current_ground_speed = velocity.x
 
 func overidden():
 	pass
+#endregion
 
-## --- Helper Functions ---
+#region Other Functions
+## --- Other Functions ---
+#region Main Other Functions
 func move():
 	var direction = Input.get_axis("Left", "Right")
 	if direction != 0:
 		velocity.x = main_vars.speed * direction
+		current_ground_speed = main_vars.speed * direction
 	else:
 		velocity.x = 0
+		current_ground_speed = 0
 
 func turn():
 	if velocity.x > 0:
@@ -325,6 +348,15 @@ func switch(old_state, new_state):
 	else:
 		current_state = new_state
 
+func overide(overidden : bool):
+	if overidden:
+		switch(current_state, States.OVERIDDEN)
+	else:
+		switch(States.OVERIDDEN, States.AIR)
+#endregion
+
+#region Secondary Other Functions
+
 func reset_main_vars():
 	var keys = main_vars.keys()
 	
@@ -341,3 +373,5 @@ func switch_costume():
 	if is_multiplayer_authority():
 		current_outfit += 1
 		sprite.sprite_frames = GlobalScript.player_outfits[current_outfit]
+#endregion
+#endregion

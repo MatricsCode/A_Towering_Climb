@@ -5,8 +5,10 @@ var peer = SteamMultiplayerPeer.new()
 
 @onready var ms = $MultiplayerSpawner
 @onready var lobbies = $SelectorUI/HSplitContainer/LobbyContainer/Lobbies
+
 @onready var MainUI = $SelectorUI
 @onready var PlayerSelectorUI = $"PlayerSelector UI"
+@onready var AbilitySelectorUI = $"AbilitySelector UI"
 
 @onready var host = $SelectorUI/HSplitContainer/VBoxContainer/Host
 @onready var refresh = $SelectorUI/HSplitContainer/VBoxContainer/Refresh
@@ -92,3 +94,7 @@ func leave_lobby():
 func _on_player_customiser_pressed():
 	MainUI.visible = false
 	PlayerSelectorUI.visible = true
+
+func _on_abilitys_pressed():
+	MainUI.visible = false
+	AbilitySelectorUI.visible = true

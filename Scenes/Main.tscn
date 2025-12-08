@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvgxox4xf14tm"]
+[gd_scene load_steps=7 format=3 uid="uid://bvgxox4xf14tm"]
 
 [ext_resource type="Script" uid="uid://cwr65tthifp3p" path="res://Scripts/MainScene/main.gd" id="1_idj7w"]
 [ext_resource type="Script" uid="uid://c5g2d6i58r61p" path="res://Scripts/MainScene/steam.gd" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://cbnyp3hyfqj53" path="res://Scenes/Background.tscn" id="3_kln2b"]
 [ext_resource type="Script" uid="uid://bk8xpp3j12mfu" path="res://Scripts/MainScene/player_selector_ui.gd" id="4_pbw6q"]
 [ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="5_pbw6q"]
+[ext_resource type="Script" uid="uid://bclb8lmymae8s" path="res://Scripts/MainScene/ability_selector_ui.gd" id="6_jw32o"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_idj7w")
@@ -56,6 +57,12 @@ text = "Refresh
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Player Customiser
+"
+
+[node name="Abilitys" type="Button" parent="SelectorUI/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Abilitys
 "
 
 [node name="LobbyContainer" type="ScrollContainer" parent="SelectorUI/HSplitContainer"]
@@ -117,9 +124,31 @@ autoplay = "walk"
 frame_progress = 0.852333
 speed_scale = 3.0
 
+[node name="AbilitySelector UI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 47.0
+offset_top = -2121.0
+offset_right = 1199.0
+offset_bottom = -1473.0
+script = ExtResource("6_jw32o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AbilitySelector UI"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -475.0
+offset_right = -21.0
+grow_horizontal = 0
+grow_vertical = 2
+
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Refresh" to="." method="_on_refresh_pressed"]
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/PlayerCustomiser" to="." method="_on_player_customiser_pressed"]
+[connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Abilitys" to="." method="_on_abilitys_pressed"]
 [connection signal="pressed" from="PlayerSelector UI/HSplitContainer/VBoxContainer/Climber1" to="PlayerSelector UI" method="_on_climber_1_pressed"]
 [connection signal="pressed" from="PlayerSelector UI/HSplitContainer/VBoxContainer/Climber2" to="PlayerSelector UI" method="_on_climber_2_pressed"]
 [connection signal="pressed" from="PlayerSelector UI/HSplitContainer/VBoxContainer/Exit" to="PlayerSelector UI" method="_on_exit_pressed"]

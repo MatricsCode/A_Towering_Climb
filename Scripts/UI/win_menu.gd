@@ -11,10 +11,10 @@ func _ready():
 	
 	reset()
 
-func won(name):
+func won(player_name):
 	background.texture = WIN_BACKGROUND
 	win_ui.visible = true
-	$VBoxContainer/Winner.text = str(name, " Won!")
+	$VBoxContainer/Winner.text = str(player_name, " Won!")
 
 func reset():
 	background.texture = null
