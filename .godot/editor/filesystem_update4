@@ -10,5 +10,5 @@ res://Scenes/Tools/BaseButton.tscn
 res://Scenes/Moving Platform.tscn
 res://Scenes/Box.tscn
 res://Scripts/Player/player_script.gd
+res://Scripts/Box/box.gd
 res://Scripts/Player/bump_detectors.gd
-res://Scripts/MainScene/main.gd

@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://j0ml6gtwkiec"]
+[gd_scene load_steps=4 format=3 uid="uid://j0ml6gtwkiec"]
 
 [ext_resource type="Script" uid="uid://ufse1qjko4yu" path="res://Scripts/Box/box.gd" id="1_8s0t8"]
 [ext_resource type="Texture2D" uid="uid://cpynj37pxhbjv" path="res://Art/Box/Box.png" id="2_42nxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42nxc"]
 size = Vector2(330, 370)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mckbn"]
-size = Vector2(20, 370)
 
 [node name="Box" type="StaticBody2D" groups=["Bumpable"]]
 collision_layer = 18
@@ -21,15 +18,3 @@ texture = ExtResource("2_42nxc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -185)
 shape = SubResource("RectangleShape2D_42nxc")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-175, -186)
-shape = SubResource("RectangleShape2D_mckbn")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(175, -186)
-shape = SubResource("RectangleShape2D_mckbn")
-
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

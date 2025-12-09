@@ -2,25 +2,17 @@ extends CharacterBody2D
 
 class_name player
 
-## Data containers
-#region Enums
 ## --- Enums ---
 enum States {GROUND, AIR, CLIMB, RAM, PAUSED, OVERIDDEN, EMPTY}
-#endregion
 
-#region Constants
 ## --- Constants ---
 const MAX_JUMP = 1000
 const MAX_GRAVITY = 10000
-#endregion
 
-#region Variables
 ## --- Variables ---
 var current_state
 
 var current_outfit = 0
-
-var current_ground_speed = 0
 
 var sounds = {
 	"Walk" : preload("res://Sound Effects/Walking.mp3"),
@@ -34,17 +26,18 @@ var main_vars = { ## Main ariables
 	jump_increase = 1, # Determins how fast the player increases in jump power
 	gravity = 0, # Determins at what speed the player falls down
 	glide_gravity = 100, # Determins at what speed the player falls down once gliding
-	climbing_speed = 300,
-	ram_damage = 50,} # How fast the player can climb
+	climbing_speed = 300, # How fast the player can climb
+	ram_time = 0, # How long the player is ramming
+	ram_damage = 5, # How much damage the player deals automaticly to the boxes
+	}
 
 var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
-#endregion
 
 #region Nodes
 ## --- Nodes ---
 @onready var cam = $Camera2D 
 @onready var sprite = $Sprite
-@onready var wall_detector = $WallDetectors
+@onready var wall_detector = $WallDetectors 
 @onready var edge_detector = $EdgeDetectors
 @onready var bump_detectors = $BumpDetectors
 #endregion
@@ -115,6 +108,10 @@ func ground():
 		switch(States.GROUND, States.AIR)
 	
 	elif Input.is_action_pressed("Ram"):
+		if velocity.x != 0:
+			main_vars.ram_time = 2
+		else:
+			main_vars.ram_time = 0
 		switch(States.GROUND, States.RAM)
 	
 	if not is_on_floor():
@@ -232,18 +229,15 @@ func climb():
 
 func ram():
 	#region Main
+	main_vars.ram_time += 0.1
+	
+	print(main_vars.ram_time)
+	
 	if Input.is_action_pressed("Ram"):
 		if velocity.x * get_sprite_rotation() < 0:
 			velocity.x *= get_sprite_rotation()
-			current_ground_speed *= get_sprite_rotation()
 		
-		if velocity.x == 0.0:
-			velocity.x = main_vars.speed / 10
-			current_ground_speed = main_vars.speed / 10
-		
-		if velocity.x <= main_vars.speed * 1.5 and velocity.x >= -main_vars.speed * 1.5:
-			velocity.x *= 1.05 #(lerpf(velocity.x,  float(main_vars.speed * 2 * get_sprite_rotation()), 0.1))
-			current_ground_speed *= 1.05
+		velocity.x = main_vars.ram_time * main_vars.ram_time * 10 * get_sprite_rotation() #(lerpf(velocity.x,  float(main_vars.speed * 2 * get_sprite_rotation()), 0.1))
 		sprite.play("ram")
 	#endregion
 	
@@ -253,13 +247,10 @@ func ram():
 		switch(States.RAM, States.GROUND)
 	
 	if bump_detectors.bumped():
-		if velocity.x > 0:
-			velocity.y = -velocity.x - main_vars.ram_damage
-			velocity.x = -2 * velocity.x - main_vars.ram_damage
+		velocity.y = main_vars.ram_time * -75
+		velocity.x = main_vars.ram_time * -75 * get_sprite_rotation()
 		
-		else:
-			velocity.y = -velocity.x - main_vars.ram_damage
-			velocity.x = 2 * velocity.x + main_vars.ram_damage
+		print(velocity)
 		
 		switch(States.RAM, States.AIR)
 	
@@ -286,23 +277,19 @@ func paused():
 	else:
 		sprite.play("idle")
 		velocity.x = lerp(velocity.x, 0.0, 0.4)
-		current_ground_speed = velocity.x
 
 func overidden():
 	pass
 #endregion
 
-#region Other Functions
 ## --- Other Functions ---
 #region Main Other Functions
 func move():
 	var direction = Input.get_axis("Left", "Right")
 	if direction != 0:
 		velocity.x = main_vars.speed * direction
-		current_ground_speed = main_vars.speed * direction
 	else:
 		velocity.x = 0
-		current_ground_speed = 0
 
 func turn():
 	if velocity.x > 0:
@@ -322,6 +309,9 @@ func get_sprite_rotation():
 		return -1
 
 func switch(old_state, new_state):
+	if old_state == States.RAM:
+		main_vars.ram_time = 0
+	
 	if old_state == States.GROUND and new_state == States.AIR:
 		play_sound(sounds["Jump"])
 		current_state = new_state
@@ -373,5 +363,4 @@ func switch_costume():
 	if is_multiplayer_authority():
 		current_outfit += 1
 		sprite.sprite_frames = GlobalScript.player_outfits[current_outfit]
-#endregion
 #endregion
