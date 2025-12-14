@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://bb64cr50jmhs8"]
+[gd_scene load_steps=6 format=4 uid="uid://bb64cr50jmhs8"]
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Recourses/Tileset.tres" id="1_tlcug"]
 [ext_resource type="PackedScene" uid="uid://deffkwaj6jy8s" path="res://Scenes/Moving Platform.tscn" id="2_4dpyx"]
 [ext_resource type="PackedScene" uid="uid://dbd4mefv24ifl" path="res://Scenes/BirdSpawner.tscn" id="3_3mqfk"]
 [ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Goal.tscn" id="4_iixi8"]
+[ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/LiquidDrum.tscn" id="7_5f3p6"]
 
 [node name="Level1" type="StaticBody2D"]
 
@@ -23,3 +24,6 @@ positional_change = 250
 
 [node name="Goal" parent="." instance=ExtResource("4_iixi8")]
 position = Vector2(-198, -4760)
+
+[node name="Liquid Drum" parent="." instance=ExtResource("7_5f3p6")]
+position = Vector2(885, -121)

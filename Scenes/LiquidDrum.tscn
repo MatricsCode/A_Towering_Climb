@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://qcca3v04ibwv"]
+
+[ext_resource type="Texture2D" uid="uid://l5ciqi18p0us" path="res://Art/Player/ClimberIcon2.png" id="1_7op4x"]
+[ext_resource type="Script" uid="uid://cwnojcoqhgt44" path="res://Scripts/LiquidDrum/liquid_drum.gd" id="1_xwc7i"]
+[ext_resource type="Texture2D" uid="uid://g3go1fgefanm" path="res://Art/Player/ClimberIcon.png" id="2_xwc7i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jon1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7op4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xwc7i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yqq0"]
+size = Vector2(122, 18)
+
+[node name="Liquid Drum" type="StaticBody2D"]
+script = ExtResource("1_xwc7i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jon1u")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 71)
+shape = SubResource("RectangleShape2D_3yqq0")

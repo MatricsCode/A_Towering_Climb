@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-class_name player
-
 ## --- Enums ---
 enum States {GROUND, AIR, CLIMB, RAM, PAUSED, OVERIDDEN, EMPTY}
 
@@ -138,9 +136,12 @@ func air():
 				current_direction = -1
 			
 			if direction == current_direction:
-				velocity.x = lerp(velocity.x, main_vars.speed * direction, 0.3)
-			elif direction != current_direction:
-				velocity.x = lerp(velocity.x, main_vars.speed * direction, 0.05)
+				velocity.x = lerp(velocity.x, main_vars.speed * direction * 0.7, 0.2)
+			elif direction != current_direction and direction != 0:
+				velocity.x = lerp(velocity.x, main_vars.speed * direction * 0.7, 0.05)
+			
+			elif direction == 0:
+				velocity.x += velocity.x * -0.05
 	
 	var drop = func drop():
 		if velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
@@ -231,8 +232,6 @@ func ram():
 	#region Main
 	main_vars.ram_time += 0.1
 	
-	print(main_vars.ram_time)
-	
 	if Input.is_action_pressed("Ram"):
 		if velocity.x * get_sprite_rotation() < 0:
 			velocity.x *= get_sprite_rotation()
@@ -248,9 +247,7 @@ func ram():
 	
 	if bump_detectors.bumped():
 		velocity.y = main_vars.ram_time * -75
-		velocity.x = main_vars.ram_time * -75 * get_sprite_rotation()
-		
-		print(velocity)
+		velocity.x = main_vars.ram_time * -150 * get_sprite_rotation()
 		
 		switch(States.RAM, States.AIR)
 	

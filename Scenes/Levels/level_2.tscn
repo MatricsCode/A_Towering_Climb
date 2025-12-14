@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://c04puj7j1jrp"]
+[gd_scene load_steps=5 format=4 uid="uid://c04puj7j1jrp"]
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Recourses/Tileset.tres" id="1_7qxk6"]
 [ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Goal.tscn" id="2_ucdhh"]
 [ext_resource type="PackedScene" uid="uid://j0ml6gtwkiec" path="res://Scenes/Box.tscn" id="3_oylv5"]
+[ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/LiquidDrum.tscn" id="6_8qsmg"]
 
 [node name="Level2" type="StaticBody2D"]
 
@@ -15,3 +16,6 @@ position = Vector2(145, -2840)
 
 [node name="Box" parent="." instance=ExtResource("3_oylv5")]
 position = Vector2(1503, -1031)
+
+[node name="Liquid Drum" parent="." instance=ExtResource("6_8qsmg")]
+position = Vector2(-537, -110)

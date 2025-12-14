@@ -25,12 +25,16 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	var key_search = body.get_children(true)
 	
+	var key = GlobalScript.all_player_abilitys.keys()
+	
+	print(key[1])
+	
 	for i in key_search:
 		
 		var children = i.get_children(true) 
 		
 		for y in children:
-			if y.name == "SkyLiftKey":
+			if y.name == key[1]:
 				label.visible = true
 				if body.is_multiplayer_authority():
 					player = body

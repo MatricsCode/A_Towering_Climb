@@ -1,14 +1,19 @@
-res://Scenes/Player.tscn
+res://Scenes/Levels/level_1.tscn
 res://Recourses/UI/WinBackground.tres
 res://Recourses/Tileset.tres
 res://Scenes/Main.tscn
+res://Scenes/Player.tscn
 res://Scenes/MainUI.tscn
 res://Scenes/GlobalScript.tscn
-res://Scenes/Levels/level_1.tscn
 res://Scenes/Levels/level_2.tscn
 res://Scenes/Tools/BaseButton.tscn
 res://Scenes/Moving Platform.tscn
 res://Scenes/Box.tscn
-res://Scripts/Player/player_script.gd
+res://Scenes/Can.tscn
+res://Scenes/LiquidDrum.tscn
+res://Scripts/LiquidDrum/liquid_drum.gd
+res://Scripts/GlobalScript.gd
 res://Scripts/Box/box.gd
-res://Scripts/Player/bump_detectors.gd
+res://Scripts/Player/player_script.gd
+res://Test.gd
+res://Scripts/MovingPlatform/moving_platform.gd

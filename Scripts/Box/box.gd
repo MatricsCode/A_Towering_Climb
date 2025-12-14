@@ -4,8 +4,6 @@ extends StaticBody2D
 
 func bumped(new_health):
 	health -= new_health
-	print(">> ", new_health)
-	print(">> ",health)
 	
 	if health < 0:
 		self_destruct()

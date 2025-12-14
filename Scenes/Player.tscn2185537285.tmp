@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7w851wnif2io"]
+
+[ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_kih0c"]
+[ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="2_5ixxa"]
+[ext_resource type="Script" uid="uid://c22ccct5h31um" path="res://Scripts/Player/abillity_manager.gd" id="6_52ee3"]
+[ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Scripts/Player/wall_detectors.gd" id="27_u7x0b"]
+[ext_resource type="Script" uid="uid://bpmhsc3tdcpqq" path="res://Scripts/Player/bump_detectors.gd" id="28_kih0c"]
+[ext_resource type="Script" uid="uid://dvnr5lwr2t2n8" path="res://Scripts/Player/edge_detectors.gd" id="28_utwlt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(60, 150)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cvnsp"]
+properties/0/path = NodePath("Sprite:animation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Sprite:frame")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Sprite:flip_h")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D" groups=["PlayerOutfit"]]
+collision_mask = 15
+script = ExtResource("1_kih0c")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -136)
+sprite_frames = ExtResource("2_5ixxa")
+animation = &"walk"
+speed_scale = 3.0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -76)
+shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -136)
+zoom = Vector2(0.5, 0.5)
+limit_bottom = 0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_cvnsp")
+
+[node name="WallDetectors" type="Node2D" parent="."]
+position = Vector2(0, -136)
+script = ExtResource("27_u7x0b")
+
+[node name="WallDetector1" type="RayCast2D" parent="WallDetectors"]
+position = Vector2(-26, -8)
+target_position = Vector2(0, 120)
+collision_mask = 4
+hit_from_inside = true
+
+[node name="WallDetector2" type="RayCast2D" parent="WallDetectors"]
+position = Vector2(36, -8)
+target_position = Vector2(0, 120)
+collision_mask = 4
+hit_from_inside = true
+
+[node name="BumpDetectors" type="Node2D" parent="."]
+position = Vector2(0, -136)
+script = ExtResource("28_kih0c")
+
+[node name="WallDetector1" type="RayCast2D" parent="BumpDetectors"]
+unique_name_in_owner = true
+position = Vector2(-30, -8)
+target_position = Vector2(0, 120)
+collision_mask = 16
+hit_from_inside = true
+
+[node name="WallDetector2" type="RayCast2D" parent="BumpDetectors"]
+unique_name_in_owner = true
+position = Vector2(40, -8)
+target_position = Vector2(0, 120)
+collision_mask = 16
+hit_from_inside = true
+
+[node name="EdgeDetectors" type="Node2D" parent="."]
+position = Vector2(0, -136)
+script = ExtResource("28_utwlt")
+
+[node name="EdgeDetector1" type="RayCast2D" parent="EdgeDetectors"]
+position = Vector2(-26, 120)
+target_position = Vector2(-3, 0)
+collision_mask = 4
+hit_from_inside = true
+
+[node name="EdgeDetector2" type="RayCast2D" parent="EdgeDetectors"]
+position = Vector2(36, 120)
+target_position = Vector2(3, 0)
+collision_mask = 4
+hit_from_inside = true
+
+[node name="FloorDetector1" type="RayCast2D" parent="EdgeDetectors"]
+position = Vector2(-27, 124)
+target_position = Vector2(0, -3)
+collision_mask = 4
+hit_from_inside = true
+
+[node name="FloorDetector2" type="RayCast2D" parent="EdgeDetectors"]
+position = Vector2(37, 124)
+target_position = Vector2(0, -3)
+collision_mask = 4
+hit_from_inside = true
+
+[node name="Upgrades" type="Node" parent="."]
+script = ExtResource("6_52ee3")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = 5.0
+bus = &"Player"
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]

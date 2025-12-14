@@ -10,7 +10,8 @@ var player_outfits = [
 var all_player_abilitys = {
 	"Glide" = preload("res://Scripts/Player/Abilitys/glide.gd"),
 	"SkyLiftKey" = preload("res://Scripts/Player/Abilitys/ability_moduel.gd"),
-	"Fast Legs" = preload("res://Scripts/Player/Abilitys/strong_shoulders.gd"),
+	"Fast Legs" = preload("res://Scripts/Player/Abilitys/strong_legs.gd"),
+	"Climbers Hook" = preload("res://Scripts/Player/Abilitys/climbers_hook.gd"),
 }
 
 var goal_position_y : float

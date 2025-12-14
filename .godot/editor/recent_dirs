@@ -1,3 +1,6 @@
+res://Scripts/LiquidDrum
+res://Scenes
+res://
 res://Scripts/Player/Abilitys
 res://Scripts/MainScene
 res://Scenes/Tools
@@ -6,11 +9,9 @@ res://Scripts/Player
 C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports
 res://Recourses/UI
 res://Scripts/UI
-res://
 res://Scripts/PlayArea
 res://Scenes/Levels
 res://Scripts/Goal
-res://Scenes
 res://Scripts/Moving Platform
 res://Recourses/PlayerSprites/PlayerHeadSprites
 res://Recourses
@@ -19,5 +20,4 @@ res://Scripts/BirdSpawner
 res://Recourses/Birds
 res://Scripts/Bird
 res://Scripts/Box
-res://Scripts
 C:/Users/Jayden/Desktop/Godot Test/GodotSteam/GodotSteamMultipayerPeer
