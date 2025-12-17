@@ -315,7 +315,6 @@ func switch(old_state, new_state):
 	
 	elif old_state == States.AIR and new_state == States.GROUND:
 		sprite.play("pre_jump")
-		var current_gravity = main_vars.gravity
 		
 		reset_main_vars()
 		
@@ -335,10 +334,11 @@ func switch(old_state, new_state):
 	else:
 		current_state = new_state
 
-func overide(overidden : bool):
-	if overidden:
+func overide(overidden2 : bool):
+	if overidden2:
 		switch(current_state, States.OVERIDDEN)
 	else:
+		print(current_state)
 		switch(States.OVERIDDEN, States.AIR)
 #endregion
 

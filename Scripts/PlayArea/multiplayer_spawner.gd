@@ -25,7 +25,7 @@ func remove_player(data):
 	players[data].queue_free()
 	players.erase(data)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	for i in get_children():
 		if GlobalScript.player_positions_y.size() == get_child_count():
 			GlobalScript.player_positions_y.set(i.get_index(), i.position.y)

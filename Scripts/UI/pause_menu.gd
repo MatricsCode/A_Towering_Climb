@@ -16,7 +16,7 @@ func _ready():
 	for i in get_child_count():
 		get_child(i).visible = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_just_pressed("Pause") and settings.visible == false:
 		GlobalScript.paused.emit()
 
@@ -29,7 +29,7 @@ func change():
 func _on_unpause_pressed():
 	GlobalScript.paused.emit()
 
-func winner(name):
+func winner(names):
 	won = true
 
 func reset():

@@ -6,10 +6,10 @@ extends Control
 
 var current_outfit = 0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if get_tree().get_node_count_in_group("PlayerOutfit") != 0 and current_outfit != -1:
 		
-		await get_tree().create_timer(5)
+		await get_tree().create_timer(5).timeout
 			
 		for i in current_outfit:
 			get_tree().call_group("PlayerOutfit", "switch_costume")

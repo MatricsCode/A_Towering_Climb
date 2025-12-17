@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dvnr5lwr2t2n8" path="res://Scripts/Player/edge_detectors.gd" id="28_utwlt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
-size = Vector2(60, 150)
+size = Vector2(60, 149)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cvnsp"]
 properties/0/path = NodePath("Sprite:animation")
@@ -25,7 +25,7 @@ properties/3/spawn = true
 properties/3/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D" groups=["PlayerOutfit"]]
-collision_mask = 15
+collision_mask = 14
 script = ExtResource("1_kih0c")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -36,7 +36,7 @@ speed_scale = 3.0
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, -76)
+position = Vector2(5, -76.5)
 shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="Camera2D" type="Camera2D" parent="."]

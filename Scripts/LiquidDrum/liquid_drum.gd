@@ -1,51 +1,72 @@
 extends StaticBody2D
 
-enum States {FULL, EMPTYING, EMPTY}
-
 @export var spill_colour : Color
 
 var players = []
 
-var current_state = States.FULL
+@onready var area = $Area2D
+@onready var label = $Label
+@onready var sprite = $AnimatedSprite2D
 
 func _ready():
-	$Area2D.body_entered.connect(player_array)
-	$Area2D.body_exited.connect(player_array)
+	area.body_entered.connect(player_array)
+	area.body_exited.connect(player_array)
 
-func _physics_process(delta):
-	if players.size() > 0:
+func _physics_process(_delta):
+	if players.size() > 0 and sprite.animation == "Full":
 		$Label.visible = true
-	else:
+	elif players.size() == 0 and sprite.animation == "Full":
 		$Label.visible = false
 	
-	if players.size() > 0 and Input.is_action_pressed("Interact"):
-		current_state = States.EMPTYING
-		players.clear()
-		$Area2D.body_entered.disconnect(player_array)
-		$Area2D.body_exited.disconnect(player_array)
-		$Area2D.body_entered.connectp(player_slip)
-		$Area2D.body_exited.connectp(player_slip)
+	if players.size() > 0 and Input.is_action_pressed("Interact") and sprite.animation == "Full":
+		empty()
 
+func empty():
+	sprite.play("Emptying")
+	await sprite.animation_finished
+	
+	sprite.play("Empty")
+	
+	for i in players:
+		player_slip(i)
+		players.erase(i)
+	
+	area.body_entered.disconnect(player_array)
+	area.body_exited.disconnect(player_array)
+	
+	area.body_entered.connect(player_slip)
+	area.body_exited.connect(player_slip)
 
 func player_array(body):
-	var keys = GlobalScript.all_player_abilitys.keys()
+	var key_search = body.get_children(true)
 	
-	print(body.name)
+	var key = GlobalScript.all_player_abilitys.keys()
 	
-	if players.find(body) == -1:
-		print(body.get_child_count(true))
-		for i in body.get_child_count(true):
-			if body.get_child(i, true).name == keys[4]:
-				players.append(body)
-				print(players)
-				return
-			else:
-				pass
-	
-	else:
-		players.erase(body)
-	
-	print(players)
+	for i in key_search:
+		
+		var children = i.get_children(true)
+		
+		for y in children:
+			if y.name == key[4]:
+				if body.is_multiplayer_authority():
+					if players.find(body) == -1:
+						players.append(body)
+					else:
+						players.erase(body)
 
 func player_slip(body):
-	print("sliped")
+	var key_search = body.get_children(true)
+	
+	var key = GlobalScript.all_player_abilitys.keys()
+	
+	for i in key_search:
+		
+		var children = i.get_children(true)
+		
+		for y in children:
+			if y.name == key[4] and y.in_action == false:
+				y.overide()
+				print(y.name)
+			elif y.name == key[4] and y.in_action == true:
+				y.reset()
+				print(y.name)

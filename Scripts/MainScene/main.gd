@@ -62,7 +62,7 @@ func on_lobby_match_list(lobbies2):
 		var lobby_mem = Steam.getNumLobbyMembers(lobby)
 		
 		var but = Button.new()
-		but.set_text(str("Other Computers Lobby | Playercount :", lobby_mem))
+		but.set_text(str(lobby_name ," | Playercount :", lobby_mem))
 		but.set_size(Vector2(100, 5))
 		but.connect("pressed", Callable(self, "join_lobby").bind(lobby))
 		

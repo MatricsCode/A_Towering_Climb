@@ -24,7 +24,7 @@ func _ready():
 		if i.is_class("Area2D"):
 			area = i
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	area.position = player.position
 	
 	if to_throw != null and Input.is_action_pressed("Interact"):

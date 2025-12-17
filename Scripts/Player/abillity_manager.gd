@@ -11,15 +11,10 @@ func _ready():
 		match i:
 			"Glide":
 				ability.activation_state = 1
-			"Sky Lift Key":
-				ability.activation_state = -1
-			"Strong Legs":
-				ability.activation_state = -1
-			"Climbers Hook":
-				ability.activation_state = -1
 			"Drum Key":
-				ability.activation_state = -1
+				ability.activation_state = 0
 			_:
 				print("No Ability Specified!")
+				ability.activation_state = -1
 		
 		add_child(ability)

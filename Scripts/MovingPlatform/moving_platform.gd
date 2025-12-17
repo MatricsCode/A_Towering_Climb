@@ -16,7 +16,7 @@ var players = []
 func _ready():
 	position = position1
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_just_pressed("Interact") and label.visible == true:
 		player.position = position
 		label.visible = false
@@ -41,7 +41,7 @@ func _on_area_2d_body_entered(body):
 			else:
 				pass
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	label.visible = false
 	player = null
 

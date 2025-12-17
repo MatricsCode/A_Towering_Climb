@@ -2,7 +2,7 @@ extends abilitys
 
 var min_gliding_speed = 100
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_pressed("Jump") and player.current_state == activation_state and player.velocity.y > min_gliding_speed:
 		overide()
 	

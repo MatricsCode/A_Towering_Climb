@@ -26,4 +26,4 @@ positional_change = 250
 position = Vector2(-198, -4760)
 
 [node name="Liquid Drum" parent="." instance=ExtResource("7_5f3p6")]
-position = Vector2(885, -121)
+position = Vector2(885, 0)

@@ -1,44 +1,141 @@
-[gd_scene load_steps=6 format=3 uid="uid://qcca3v04ibwv"]
+[gd_scene load_steps=7 format=3 uid="uid://qcca3v04ibwv"]
 
-[ext_resource type="Texture2D" uid="uid://l5ciqi18p0us" path="res://Art/Player/ClimberIcon2.png" id="1_7op4x"]
 [ext_resource type="Script" uid="uid://cwnojcoqhgt44" path="res://Scripts/LiquidDrum/liquid_drum.gd" id="1_xwc7i"]
-[ext_resource type="Texture2D" uid="uid://g3go1fgefanm" path="res://Art/Player/ClimberIcon.png" id="2_xwc7i"]
+[ext_resource type="Texture2D" uid="uid://b05n87ae7e08t" path="res://Art/Liquid Drum/Industrial Drum1.png" id="2_l6euv"]
+[ext_resource type="Texture2D" uid="uid://bn5fnuhqtrrx8" path="res://Art/Liquid Drum/Industrial Drum2.png" id="3_da04d"]
+[ext_resource type="Texture2D" uid="uid://6rhj6bm2oipt" path="res://Art/Liquid Drum/Industrial Drum3.png" id="4_kexb0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jon1u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_7op4x")
+"texture": ExtResource("2_l6euv")
+}],
+"loop": false,
+"name": &"Empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_xwc7i")
+"texture": ExtResource("4_kexb0")
 }],
-"loop": true,
-"name": &"default",
+"loop": false,
+"name": &"Emptying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kexb0")
+}],
+"loop": false,
+"name": &"EmptyingTrue",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l6euv")
+}],
+"loop": false,
+"name": &"Full",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3yqq0"]
-size = Vector2(122, 80)
+size = Vector2(195, 40)
 
 [node name="Liquid Drum" type="StaticBody2D"]
 script = ExtResource("1_xwc7i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -145)
 sprite_frames = SubResource("SpriteFrames_jon1u")
+animation = &"Full"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-173.5, -20)
 shape = SubResource("RectangleShape2D_3yqq0")
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = -20.0
-offset_top = -156.0
-offset_right = 20.0
-offset_bottom = -87.0
+offset_left = -125.0
+offset_top = -223.0
+offset_right = -85.0
+offset_bottom = -154.0
 theme_override_font_sizes/font_size = 50
 text = "E"
 horizontal_alignment = 1

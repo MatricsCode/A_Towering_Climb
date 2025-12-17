@@ -8,7 +8,7 @@ var themes = [
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(_delta):
 	if get_child_count() > GlobalScript.player_positions_y.size():
 		get_child(get_child_count() - 1).queue_free()
 	

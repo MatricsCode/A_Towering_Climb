@@ -12,7 +12,7 @@ var all_player_abilitys = {
 	"Sky Lift Key" = preload("res://Scripts/Player/Abilitys/ability_moduel.gd"),
 	"Strong Legs" = preload("res://Scripts/Player/Abilitys/strong_legs.gd"),
 	"Climbers Hook" = preload("res://Scripts/Player/Abilitys/climbers_hook.gd"),
-	"Drum Key" = preload("res://Scripts/Player/Abilitys/ability_moduel.gd"),
+	"Drum Key" = preload("res://Scripts/Player/Abilitys/drum_key.gd"),
 }
 
 var goal_position_y : float

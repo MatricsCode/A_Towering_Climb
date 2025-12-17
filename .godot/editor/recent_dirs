@@ -1,7 +1,7 @@
+res://Scripts/Player/Abilitys
 res://Scripts/LiquidDrum
 res://Scenes
 res://
-res://Scripts/Player/Abilitys
 res://Scripts/MainScene
 res://Scenes/Tools
 res://Scripts/Tools
@@ -12,7 +12,6 @@ res://Scripts/UI
 res://Scripts/PlayArea
 res://Scenes/Levels
 res://Scripts/Goal
-res://Scripts/Moving Platform
 res://Recourses/PlayerSprites/PlayerHeadSprites
 res://Recourses
 res://Recourses/PlayerSprites
