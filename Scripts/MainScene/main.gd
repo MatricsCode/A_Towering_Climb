@@ -82,10 +82,12 @@ func leave_lobby():
 	
 	var lobby_members = peer.get_peer_map()
 	
-	for this_member in lobby_members:
+	var IDs = lobby_members.keys()
+	
+	for i in IDs.size():
 		
-		if this_member != Steam.getSteamID():
-			Steam.closeP2PSessionWithUser(this_member["peer id"])
+		if lobby_members[IDs[i]] != Steam.getSteamID():
+			Steam.closeP2PSessionWithUser(IDs[i])
 	
 	get_child(get_child_count() - 1).queue_free()
 	MainUI.show()

@@ -1,3 +1,5 @@
+HSplitContainer
+VBoxContainer
 MultiplayerSpawner
 CollisionShape2D
 AnimatedSprite2D
@@ -9,6 +11,4 @@ Node
 Timer
 MultiplayerSynchronizer
 Button
-VBoxContainer
-HSplitContainer
 Control

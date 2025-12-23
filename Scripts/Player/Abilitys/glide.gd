@@ -1,15 +1,16 @@
 extends abilitys
 
-var min_gliding_speed = 100
+var min_gliding_speed = 500
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("Jump") and player.current_state == activation_state and player.velocity.y > min_gliding_speed:
 		overide()
+		player.velocity.y -= min_gliding_speed
 	
 	elif in_action and Input.is_action_pressed("Jump") and not player.is_on_floor():
 		$"../../Sprite".play("glide")
-		player.main_vars.gravity = min_gliding_speed
-		player.velocity.y = min_gliding_speed
+		player.main_vars.gravity += 1
+		player.velocity.y += 5
 		
 		air_movement()
 		

@@ -2,34 +2,36 @@ extends StaticBody2D
 
 @export var spill_colour : Color
 
-var players = []
+var player = null
+
+var entered = []
 
 @onready var area = $Area2D
 @onready var label = $Label
 @onready var sprite = $AnimatedSprite2D
 
+var controler = preload("res://Scripts/LiquidDrum/slip_overider.gd")
 func _ready():
 	area.body_entered.connect(player_array)
 	area.body_exited.connect(player_array)
 
 func _physics_process(_delta):
-	if players.size() > 0 and sprite.animation == "Full":
+	if player != null and sprite.animation == "Full":
 		$Label.visible = true
-	elif players.size() == 0 and sprite.animation == "Full":
+	else:
 		$Label.visible = false
 	
-	if players.size() > 0 and Input.is_action_pressed("Interact") and sprite.animation == "Full":
+	if player != null and Input.is_action_pressed("Interact") and sprite.animation == "Full":
 		empty()
 
 func empty():
 	sprite.play("Emptying")
 	await sprite.animation_finished
 	
-	sprite.play("Empty")
-	
-	for i in players:
+	for i in entered:
 		player_slip(i)
-		players.erase(i)
+	
+	sprite.play("Empty")
 	
 	area.body_entered.disconnect(player_array)
 	area.body_exited.disconnect(player_array)
@@ -38,35 +40,55 @@ func empty():
 	area.body_exited.connect(player_slip)
 
 func player_array(body):
+	if entered.find(body) == -1:
+		entered.append(body)
+	else:
+		entered.erase(body)
+	
 	var key_search = body.get_children(true)
 	
 	var key = GlobalScript.all_player_abilitys.keys()
 	
-	for i in key_search:
-		
-		var children = i.get_children(true)
-		
-		for y in children:
-			if y.name == key[4]:
-				if body.is_multiplayer_authority():
-					if players.find(body) == -1:
-						players.append(body)
+	if body.is_multiplayer_authority():
+		for i in key_search:
+			
+			var children = i.get_children(true)
+			
+			for y in children:
+				if y.name == key[4]:
+					if player == null:
+						player = body
 					else:
-						players.erase(body)
+						player = null
+	else:
+		pass
 
 func player_slip(body):
 	var key_search = body.get_children(true)
 	
 	var key = GlobalScript.all_player_abilitys.keys()
 	
-	for i in key_search:
+	if not body.is_multiplayer_authority():
+		return
+	else:
+		for i in key_search:
+			var children = i.get_children()
+			
+			for y in children:
+				if y.name == key[4]:
+					return
+				
+				if y.name == "slip_overider":
+					y.reset()
+					y.queue_free()
+					return
 		
-		var children = i.get_children(true)
-		
-		for y in children:
-			if y.name == key[4] and y.in_action == false:
-				y.overide()
-				print(y.name)
-			elif y.name == key[4] and y.in_action == true:
-				y.reset()
-				print(y.name)
+		for i in key_search:
+			
+			if i.name == "Upgrades":
+				var slip_controler = Node.new()
+				slip_controler.name = "slip_overider"
+				slip_controler.set_script(controler)
+				
+				slip_controler.player = i.main_player
+				i.add_child(slip_controler)

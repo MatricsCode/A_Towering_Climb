@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cxjreg6tirxq3"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cxjreg6tirxq3"]
 
 [ext_resource type="Texture2D" uid="uid://vu8lrnx8rw0u" path="res://Art/Tilemap/Beams.png" id="1_wvmsy"]
+[ext_resource type="Texture2D" uid="uid://b06baxs5t618j" path="res://Art/Tilemap/Signs.png" id="2_wmugh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wmugh"]
 texture = ExtResource("1_wvmsy")
@@ -42,6 +43,30 @@ texture_region_size = Vector2i(80, 80)
 0:2/0/terrains_peering_bit/right_side = 0
 0:2/0/terrains_peering_bit/top_side = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfarp"]
+texture = ExtResource("2_wmugh")
+texture_region_size = Vector2i(80, 80)
+0:1/size_in_atlas = Vector2i(2, 3)
+0:1/0 = 0
+2:1/size_in_atlas = Vector2i(2, 3)
+2:1/0 = 0
+4:1/size_in_atlas = Vector2i(2, 3)
+4:1/0 = 0
+6:1/size_in_atlas = Vector2i(2, 3)
+6:1/0 = 0
+8:1/size_in_atlas = Vector2i(2, 3)
+8:1/0 = 0
+0:5/size_in_atlas = Vector2i(2, 3)
+0:5/0 = 0
+2:5/size_in_atlas = Vector2i(2, 3)
+2:5/0 = 0
+4:5/size_in_atlas = Vector2i(2, 3)
+4:5/0 = 0
+6:5/size_in_atlas = Vector2i(2, 3)
+6:5/0 = 0
+8:5/size_in_atlas = Vector2i(2, 3)
+8:5/0 = 0
+
 [resource]
 tile_size = Vector2i(80, 80)
 physics_layer_0/collision_layer = 22
@@ -50,3 +75,4 @@ terrain_set_0/mode = 2
 terrain_set_0/terrain_0/name = "Beams"
 terrain_set_0/terrain_0/color = Color(0.717647, 0, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_wmugh")
+sources/1 = SubResource("TileSetAtlasSource_mfarp")
