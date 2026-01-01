@@ -3,9 +3,6 @@ extends Control
 @onready var deselect_buttons = $HSplitContainer/Deselect_buttons
 @onready var select_buttons = $HSplitContainer/Select_buttons
 
-var abilitys_selected = []
-var abilitys_not_selected = []
-
 func _ready():
 	for i in GlobalScript.all_player_abilitys.keys():
 		select_buttons.add_child(create_button(i, i))
@@ -42,35 +39,32 @@ func button_pressed(ability_button):
 	
 	
 	#region Buttons
-	
 	for i in deselect_buttons.get_children():
 		i.queue_free()
 	for i in select_buttons.get_children():
 		i.queue_free()
 	
 	
+	var other_abilitys = []
 	
+	var found = false
 	
 	for i in GlobalScript.all_player_abilitys.keys():
 		
-		var found = false
-		
-		for y in abilitys_selected:
+		for y in GlobalScript.player_abilitys:
 			if i == y:
 				found = true
+				other_abilitys.append(i)
 		
 		if found == false:
-			abilitys_not_selected.append(i)
+			GlobalScript.player_abilitys.append(i)
 	
 	
-	for i in abilitys_selected:
+	for i in GlobalScript.player_abilitys:
 		deselect_buttons.add_child(create_button(i,i))
-		abilitys_selected.erase(i)
 	
-	for i in abilitys_not_selected:
+	for i in other_abilitys:
 		select_buttons.add_child(create_button(i,i))
-		abilitys_not_selected.erase(i)
-	
 	#endregion 
 	
 
