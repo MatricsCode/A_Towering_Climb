@@ -38,31 +38,70 @@ func button_pressed(ability_button):
 	
 	#endregion
 	
+	
 	#region Buttons
-	for i in select_buttons.get_children():
-		i.queue_free()
+	
 	for i in deselect_buttons.get_children():
 		i.queue_free()
+	for i in select_buttons.get_children():
+		i.queue_free()
 	
 	
+	var ability_names = []
+	var no_ability_names = []
 	
 	for i in GlobalScript.player_abilitys:
-		deselect_buttons.add_child(create_button(i, i))
+		ability_names.append(i)
 	
-	for i in GlobalScript.all_player_abilitys.values():
+	for i in GlobalScript.all_player_abilitys.keys():
 		
-		var count2 = 0
+		var found = false
 		
-		for y in GlobalScript.player_abilitys:
-			if str(i) != str(y):
-				count2 += 1
+		for y in ability_names:
+			if i == y:
+				found = true
 		
-		if count2 == GlobalScript.player_abilitys.size():
-			select_buttons.add_child(create_button(str(i), str(i)))
+		if found == false:
+			no_ability_names.append(i)
 	
-	select_buttons.add_child(create_button("Back", "Back"))
-	deselect_buttons.add_child(create_button("Back", "Back"))
+	
+	#endregion 
+	
+
+	
+	#region Test
+	#for i in select_buttons.get_children():
+		#i.queue_free()
+	#for i in deselect_buttons.get_children():
+		#i.queue_free()
+	#
+	#var ability_list = GlobalScript.all_player_abilitys.values()
+	#
+	#for i in GlobalScript.player_abilitys:
+		#deselect_buttons.add_child(create_button(i, i))
+	#
+	#for i in GlobalScript.all_player_abilitys.values():
+		#
+		#var count2 = 0
+		#
+		#for y in GlobalScript.player_abilitys:
+			#if str(i) != str(y):
+				#count2 += 1
+		#
+		#if count2 == GlobalScript.player_abilitys.size():
+			#select_buttons.add_child(create_button(str(i), str(i)))
+	#
+	#select_buttons.add_child(create_button("Back", "Back"))
+	#deselect_buttons.add_child(create_button("Back", "Back"))
 	#endregion
+	
+	for i in ability_names:
+		deselect_buttons.add_child(create_button(i,i))
+		ability_names.erase(i)
+	
+	for i in no_ability_names:
+		select_buttons.add_child(create_button(i,i))
+		no_ability_names.erase(i)
 	
 
 func create_button(set_name, set_text):
