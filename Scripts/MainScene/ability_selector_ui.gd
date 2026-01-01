@@ -3,6 +3,8 @@ extends Control
 @onready var deselect_buttons = $HSplitContainer/Deselect_buttons
 @onready var select_buttons = $HSplitContainer/Select_buttons
 
+var abilitys_selected = []
+var abilitys_not_selected = []
 
 func _ready():
 	for i in GlobalScript.all_player_abilitys.keys():
@@ -47,23 +49,27 @@ func button_pressed(ability_button):
 		i.queue_free()
 	
 	
-	var ability_names = []
-	var no_ability_names = []
 	
-	for i in GlobalScript.player_abilitys:
-		ability_names.append(i)
 	
 	for i in GlobalScript.all_player_abilitys.keys():
 		
 		var found = false
 		
-		for y in ability_names:
+		for y in abilitys_selected:
 			if i == y:
 				found = true
 		
 		if found == false:
-			no_ability_names.append(i)
+			abilitys_not_selected.append(i)
 	
+	
+	for i in abilitys_selected:
+		deselect_buttons.add_child(create_button(i,i))
+		abilitys_selected.erase(i)
+	
+	for i in abilitys_not_selected:
+		select_buttons.add_child(create_button(i,i))
+		abilitys_not_selected.erase(i)
 	
 	#endregion 
 	
@@ -94,14 +100,6 @@ func button_pressed(ability_button):
 	#select_buttons.add_child(create_button("Back", "Back"))
 	#deselect_buttons.add_child(create_button("Back", "Back"))
 	#endregion
-	
-	for i in ability_names:
-		deselect_buttons.add_child(create_button(i,i))
-		ability_names.erase(i)
-	
-	for i in no_ability_names:
-		select_buttons.add_child(create_button(i,i))
-		no_ability_names.erase(i)
 	
 
 func create_button(set_name, set_text):
