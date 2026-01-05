@@ -134,21 +134,14 @@ offset_right = 1199.0
 offset_bottom = -1473.0
 script = ExtResource("6_jw32o")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="AbilitySelector UI"]
+[node name="Buttons" type="VBoxContainer" parent="AbilitySelector UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-split_offset = 576
-
-[node name="Deselect_buttons" type="VBoxContainer" parent="AbilitySelector UI/HSplitContainer"]
-layout_mode = 2
 theme_override_constants/separation = 20
-
-[node name="Select_buttons" type="VBoxContainer" parent="AbilitySelector UI/HSplitContainer"]
-layout_mode = 2
 
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Refresh" to="." method="_on_refresh_pressed"]

@@ -1,2 +1,8 @@
 res://Scenes/Main.tscn
-res://Scripts/MainScene/ability_selector_ui.gd
+res://Recourses/Tileset.tres
+res://Recourses/UI/WinBackground.tres
+res://Scenes/PlayArea.tscn
+res://Scenes/Levels/level_1.tscn
+res://Scenes/Levels/level_2.tscn
+res://Scenes/Moving Platform.tscn
+res://Scripts/MainScene/steam.gd

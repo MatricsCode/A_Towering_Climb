@@ -26,6 +26,9 @@ func spawn_level(data):
 	var a = (load(data) as PackedScene).instantiate()
 	return a
 
+func _physics_process(delta):
+	print(peer.get_lobby_id())
+
 func _on_host_pressed():
 	print(peer.get_lobby_id())
 	
@@ -85,10 +88,12 @@ func leave_lobby():
 	var IDs = lobby_members.keys()
 	
 	for i in IDs.size():
-		
-		if lobby_members[IDs[i]] != Steam.getSteamID():
-			Steam.closeP2PSessionWithUser(IDs[i])
+		Steam.closeP2PSessionWithUser(IDs[i])
 	
+	Steam.leaveLobby(peer.get_lobby_id())
+	peer.set_lobby_data("ID", "0")
+	
+	peer.close()
 	get_child(get_child_count() - 1).queue_free()
 	MainUI.show()
 	$SelectorUI/Camera2D.enabled = true

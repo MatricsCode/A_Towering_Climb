@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://c04puj7j1jrp"]
+[gd_scene load_steps=6 format=4 uid="uid://c04puj7j1jrp"]
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Recourses/Tileset.tres" id="1_7qxk6"]
 [ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/LiquidDrum.tscn" id="2_ucdhh"]
 [ext_resource type="PackedScene" uid="uid://deffkwaj6jy8s" path="res://Scenes/Moving Platform.tscn" id="3_oylv5"]
 [ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Goal.tscn" id="4_w2ac1"]
+[ext_resource type="PackedScene" uid="uid://j0ml6gtwkiec" path="res://Scenes/Box.tscn" id="5_ovj6s"]
 
 [node name="Level2" type="StaticBody2D"]
 
@@ -24,7 +25,7 @@ position = Vector2(-410, -6790)
 [node name="MovingPlatform" parent="." instance=ExtResource("3_oylv5")]
 position = Vector2(2874, -1350)
 position1 = Vector2(2874, -1350)
-position2 = Vector2(2874, -1350)
+position2 = Vector2(2533, -2870)
 
 [node name="MovingPlatform2" parent="." instance=ExtResource("3_oylv5")]
 position = Vector2(-1357, -3830)
@@ -33,3 +34,10 @@ position2 = Vector2(-487, -6791)
 
 [node name="Goal" parent="." instance=ExtResource("4_w2ac1")]
 position = Vector2(1075, -6841)
+
+[node name="Wall" parent="." instance=ExtResource("5_ovj6s")]
+position = Vector2(2413, -1398)
+
+[node name="Wall2" parent="." instance=ExtResource("5_ovj6s")]
+position = Vector2(-771, -3842)
+scale = Vector2(-1, 1)

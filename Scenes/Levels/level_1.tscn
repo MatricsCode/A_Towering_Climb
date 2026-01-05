@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://bb64cr50jmhs8"]
+[gd_scene load_steps=6 format=4 uid="uid://bb64cr50jmhs8"]
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Recourses/Tileset.tres" id="1_tlcug"]
 [ext_resource type="PackedScene" uid="uid://deffkwaj6jy8s" path="res://Scenes/Moving Platform.tscn" id="2_4dpyx"]
+[ext_resource type="PackedScene" uid="uid://j0ml6gtwkiec" path="res://Scenes/Box.tscn" id="4_iixi8"]
+[ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Goal.tscn" id="5_cyadu"]
 [ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/LiquidDrum.tscn" id="7_5f3p6"]
 
 [node name="Level1" type="StaticBody2D"]
@@ -27,3 +29,13 @@ position2 = Vector2(629, -2790)
 position = Vector2(3173, -3350)
 position1 = Vector2(3173, -3350)
 position2 = Vector2(-1045, -4071)
+
+[node name="Wall" parent="." instance=ExtResource("4_iixi8")]
+position = Vector2(2671, -2402)
+
+[node name="Wall2" parent="." instance=ExtResource("4_iixi8")]
+position = Vector2(904, -3846)
+scale = Vector2(-1, 1)
+
+[node name="Goal" parent="." instance=ExtResource("5_cyadu")]
+position = Vector2(1006, -5961)

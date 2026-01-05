@@ -1,20 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://j0ml6gtwkiec"]
 
-[ext_resource type="Script" uid="uid://ufse1qjko4yu" path="res://Scripts/Box/box.gd" id="1_8s0t8"]
-[ext_resource type="Texture2D" uid="uid://cpynj37pxhbjv" path="res://Art/Box/Box.png" id="2_42nxc"]
+[ext_resource type="Script" uid="uid://ufse1qjko4yu" path="res://Scripts/Box/box.gd" id="1_42nxc"]
+[ext_resource type="Texture2D" uid="uid://cpynj37pxhbjv" path="res://Art/Box/Box.png" id="2_mckbn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42nxc"]
-size = Vector2(330, 370)
+size = Vector2(330, 297)
 
 [node name="Box" type="StaticBody2D" groups=["Bumpable"]]
 collision_layer = 18
 collision_mask = 0
-script = ExtResource("1_8s0t8")
+script = ExtResource("1_42nxc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Box" type="Sprite2D" parent="."]
 position = Vector2(0, -185)
-texture = ExtResource("2_42nxc")
+texture = ExtResource("2_mckbn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -185)
+position = Vector2(0, -160.5)
 shape = SubResource("RectangleShape2D_42nxc")
