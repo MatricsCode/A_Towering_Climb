@@ -26,16 +26,11 @@ func spawn_level(data):
 	var a = (load(data) as PackedScene).instantiate()
 	return a
 
-func _physics_process(delta):
-	print(peer.get_lobby_id())
-
 func _on_host_pressed():
 	print(peer.get_lobby_id())
 	
-	if peer.get_lobby_id() == 0:
-		peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
-	else:
-		print("Still in lobby")
+	#if peer.get_lobby_id() == 0:
+	peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
 	
 	multiplayer.multiplayer_peer = peer
 	ms.spawn("res://Scenes/PlayArea.tscn")

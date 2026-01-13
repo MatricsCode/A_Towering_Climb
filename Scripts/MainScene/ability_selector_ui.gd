@@ -1,6 +1,7 @@
 extends Control
 
-@onready var buttons = $Buttons
+@onready var buttons = $HSplitContainer/Buttons
+@onready var selected = $HSplitContainer/Selected
 
 var selected_abilitys = []
 var unselected_abilitys = []
@@ -10,7 +11,18 @@ func _ready():
 	
 	for i in unselected_abilitys:
 		buttons.add_child(create_button(i, i))
+		
+		var selector = ColorRect.new()
+		selector.color = Color.RED
+		selector.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		selector.name = i
+		selected.add_child(selector)
 	
+	var selector = ColorRect.new()
+	selector.color = Color.TRANSPARENT
+	selector.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	selector.name = "nulldd"
+	selected.add_child(selector)
 	
 	buttons.add_child(create_button("Back", "Back"))
 
@@ -26,6 +38,10 @@ func button_pressed(ability_button):
 	#region Main
 	if GlobalScript.player_abilitys.is_empty():
 		GlobalScript.player_abilitys.append(ability_button)
+		for i in selected.get_children():
+			if i.name == ability_button:
+				i.color = Color.GREEN
+	
 	
 	else:
 		var found = false
@@ -36,8 +52,14 @@ func button_pressed(ability_button):
 		
 		if found == true:
 			GlobalScript.player_abilitys.erase(ability_button)
-		else:
+			for i in selected.get_children():
+				if i.name == ability_button:
+					i.color = Color.RED
+		elif found == false and GlobalScript.player_abilitys.size() < GlobalScript.max_abilitys:
 			GlobalScript.player_abilitys.append(ability_button)
+			for i in selected.get_children():
+				if i.name == ability_button:
+					i.color = Color.GREEN
 	
 	
 	#endregion

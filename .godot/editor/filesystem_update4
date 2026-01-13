@@ -1,8 +1,18 @@
-res://Scenes/Main.tscn
+res://Scenes/MainUI.tscn
 res://Recourses/Tileset.tres
+res://Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres
 res://Recourses/UI/WinBackground.tres
+res://Scenes/Main.tscn
 res://Scenes/PlayArea.tscn
 res://Scenes/Levels/level_1.tscn
 res://Scenes/Levels/level_2.tscn
 res://Scenes/Moving Platform.tscn
-res://Scripts/MainScene/steam.gd
+res://Scenes/GlobalScript.tscn
+res://Scenes/Background.tscn
+res://Scenes/LiquidDrum.tscn
+res://Scenes/Box.tscn
+res://Scenes/Player.tscn
+res://Scripts/Player/player_script.gd
+res://Scripts/Player/Abilitys/ram.gd
+res://Scripts/GlobalScript.gd
+res://Scripts/Player/Abilitys/ability_moduel.gd

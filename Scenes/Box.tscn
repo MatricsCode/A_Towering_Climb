@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cpynj37pxhbjv" path="res://Art/Box/Box.png" id="2_mckbn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42nxc"]
-size = Vector2(330, 297)
+size = Vector2(330, 369)
 
 [node name="Box" type="StaticBody2D" groups=["Bumpable"]]
 collision_layer = 18
@@ -16,5 +16,5 @@ position = Vector2(0, -185)
 texture = ExtResource("2_mckbn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -160.5)
+position = Vector2(0, -185.5)
 shape = SubResource("RectangleShape2D_42nxc")

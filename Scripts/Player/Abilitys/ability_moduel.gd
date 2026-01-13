@@ -7,7 +7,6 @@ class_name abilitys
 
 var in_action = false
 
-
 func overide():
 	in_action = true
 	get_parent().get_parent().overide(true)

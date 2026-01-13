@@ -1,11 +1,50 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bdjgx5pmdia66"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bdjgx5pmdia66"]
 
 [ext_resource type="Texture2D" uid="uid://g3go1fgefanm" path="res://Art/Player/ClimberIcon.png" id="1_6p7o2"]
+
+[sub_resource type="Gradient" id="Gradient_6p7o2"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b0138"]
+gradient = SubResource("Gradient_6p7o2")
+width = 20
+height = 5
+fill_to = Vector2(0.445652, 0.429348)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouqe5"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86a7s"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6p7o2"]
 
 [resource]
+VSlider/constants/center_grabber = 0
+VSlider/constants/grabber_offset = 0
 VSlider/icons/grabber = ExtResource("1_6p7o2")
 VSlider/icons/grabber_disabled = ExtResource("1_6p7o2")
 VSlider/icons/grabber_highlight = ExtResource("1_6p7o2")
+VSlider/icons/tick = SubResource("GradientTexture2D_b0138")
+VSlider/styles/grabber_area = SubResource("StyleBoxFlat_ouqe5")
+VSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_86a7s")
 VSlider/styles/slider = SubResource("StyleBoxEmpty_6p7o2")

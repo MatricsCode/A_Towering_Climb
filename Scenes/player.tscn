@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7w851wnif2io"]
+[gd_scene load_steps=15 format=3 uid="uid://b7w851wnif2io"]
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_kih0c"]
 [ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="2_5ixxa"]
 [ext_resource type="Script" uid="uid://c22ccct5h31um" path="res://Scripts/Player/abillity_manager.gd" id="6_52ee3"]
+[ext_resource type="Texture2D" uid="uid://cp5ug06icbkxv" path="res://Art/Player/Sweat.png" id="7_52ee3"]
 [ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Scripts/Player/wall_detectors.gd" id="27_u7x0b"]
 [ext_resource type="Script" uid="uid://bpmhsc3tdcpqq" path="res://Scripts/Player/bump_detectors.gd" id="28_kih0c"]
 [ext_resource type="Script" uid="uid://dvnr5lwr2t2n8" path="res://Scripts/Player/edge_detectors.gd" id="28_utwlt"]
@@ -24,6 +25,33 @@ properties/3/path = NodePath("Sprite:flip_h")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
+[sub_resource type="Gradient" id="Gradient_bhhdu"]
+offsets = PackedFloat32Array(0, 0.625, 0.785714, 0.964286)
+colors = PackedColorArray(0.0901961, 0.12549, 0.219608, 1, 0.643137, 0.866667, 0.858824, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_megsn"]
+gradient = SubResource("Gradient_bhhdu")
+
+[sub_resource type="Curve" id="Curve_yoq75"]
+_data = [Vector2(0, 0.640449), 0.0, 0.0, 0, 0, Vector2(0.768293, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ksbbd"]
+curve = SubResource("Curve_yoq75")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_glx4g"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, 5, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 116.67
+initial_velocity_max = 185.52
+gravity = Vector3(0, 250, 0)
+damping_max = 12.5
+scale_curve = SubResource("CurveTexture_ksbbd")
+color_ramp = SubResource("GradientTexture1D_megsn")
+
 [node name="Player" type="CharacterBody2D" groups=["PlayerOutfit"]]
 collision_mask = 14
 script = ExtResource("1_kih0c")
@@ -31,7 +59,7 @@ script = ExtResource("1_kih0c")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -136)
 sprite_frames = ExtResource("2_5ixxa")
-animation = &"walk"
+animation = &"pre_jump"
 speed_scale = 3.0
 metadata/_edit_lock_ = true
 
@@ -41,6 +69,7 @@ shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -136)
+ignore_rotation = false
 zoom = Vector2(0.5, 0.5)
 limit_bottom = 0
 
@@ -118,3 +147,10 @@ volume_db = 5.0
 bus = &"Player"
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="Sweat" type="GPUParticles2D" parent="."]
+position = Vector2(2, -133)
+emitting = false
+amount = 4
+texture = ExtResource("7_52ee3")
+process_material = SubResource("ParticleProcessMaterial_glx4g")

@@ -17,7 +17,7 @@ tile_set = ExtResource("1_tlcug")
 position = Vector2(2412, -2391)
 
 [node name="Liquid Drum2" parent="." instance=ExtResource("7_5f3p6")]
-position = Vector2(1321, -3831)
+position = Vector2(1557, -3831)
 scale = Vector2(-1, 1)
 
 [node name="MovingPlatform" parent="." instance=ExtResource("2_4dpyx")]
@@ -31,11 +31,13 @@ position1 = Vector2(3173, -3350)
 position2 = Vector2(-1045, -4071)
 
 [node name="Wall" parent="." instance=ExtResource("4_iixi8")]
-position = Vector2(2671, -2402)
+position = Vector2(-499, -1350)
+health = 10
 
 [node name="Wall2" parent="." instance=ExtResource("4_iixi8")]
-position = Vector2(904, -3846)
+position = Vector2(989, -3830)
 scale = Vector2(-1, 1)
+health = 10
 
 [node name="Goal" parent="." instance=ExtResource("5_cyadu")]
 position = Vector2(1006, -5961)

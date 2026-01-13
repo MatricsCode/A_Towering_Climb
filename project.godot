@@ -29,6 +29,7 @@ window/stretch/mode="canvas_items"
 Bumpable=""
 PlayerSpawner=""
 PlayerOutfit=""
+Background=""
 
 [input]
 

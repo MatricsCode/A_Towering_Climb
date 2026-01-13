@@ -1,5 +1,7 @@
 extends MultiplayerSpawner
 
+@export var current_level = 0
+
 var levels = [preload("res://Scenes/Levels/level_1.tscn"), preload("res://Scenes/Levels/level_2.tscn")]
 
 var level_scene
@@ -9,9 +11,11 @@ var previouse_level
 func _ready():
 	GlobalScript.reset.connect(_reset)
 	
-	level_scene = levels[choose_level()]
+	current_level = choose_level()
 	
-	spawn_function = spawn_player
+	level_scene = levels[current_level]
+	
+	spawn_function = spawn_level
 	
 	if is_multiplayer_authority():
 		spawn()
@@ -19,11 +23,11 @@ func _ready():
 func _reset():
 	get_child(0).queue_free()
 	
-	if is_multiplayer_authority():
-		level_scene = levels[choose_level()]
-		spawn()
+	current_level = choose_level()
+	level_scene = levels[current_level]
+	spawn()
   
-func spawn_player(_data):
+func spawn_level(_data):
 	var p = level_scene.instantiate()
 	return p
 

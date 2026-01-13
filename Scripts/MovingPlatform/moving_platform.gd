@@ -27,8 +27,6 @@ func _on_area_2d_body_entered(body):
 	
 	var key = GlobalScript.all_player_abilitys.keys()
 	
-	print(key[1])
-	
 	for i in key_search:
 		
 		var children = i.get_children(true) 

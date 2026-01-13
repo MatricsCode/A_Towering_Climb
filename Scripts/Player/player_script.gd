@@ -1,10 +1,9 @@
 extends CharacterBody2D
 
 ## --- Enums ---
-enum States {GROUND, AIR, CLIMB, RAM, PAUSED, OVERIDDEN, EMPTY}
+enum States {GROUND, AIR, CLIMB, PAUSED, OVERIDDEN, EMPTY}
 
 ## --- Constants ---
-const MAX_JUMP = 1000
 const MAX_GRAVITY = 10000
 
 ## --- Variables ---
@@ -25,11 +24,12 @@ var main_vars = { ## Main ariables
 	gravity = 0, # Determins at what speed the player falls down
 	glide_gravity = 100, # Determins at what speed the player falls down once gliding
 	climbing_speed = 300, # How fast the player can climb
-	ram_time = 0, # How long the player is ramming
-	ram_damage = 5, # How much damage the player deals automaticly to the boxes
 	}
 
 var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
+
+var background_rotation = 0
+var background_rotation_range = 0.5
 
 #region Nodes
 ## --- Nodes ---
@@ -38,6 +38,7 @@ var main_var_reset = [] ## The Array, gets auto-assigned in the ready function w
 @onready var wall_detector = $WallDetectors 
 @onready var edge_detector = $EdgeDetectors
 @onready var bump_detectors = $BumpDetectors
+@onready var sweat = $Sweat
 #endregion
 
 ## Functions
@@ -56,6 +57,8 @@ func _ready(): ## Runns as soon as the player is loaded into the scene
 	
 	GlobalScript.paused.connect(pause_switch)
 	
+	background_rotation_switch()
+	
 	await get_tree().create_timer(0.2).timeout
 
 func _physics_process(_delta):  ## Runs every physics frames
@@ -69,8 +72,6 @@ func _physics_process(_delta):  ## Runs every physics frames
 			air()
 		States.CLIMB:
 			climb()
-		States.RAM:
-			ram()
 		States.PAUSED:
 			paused()
 		States.OVERIDDEN:
@@ -105,13 +106,6 @@ func ground():
 	if Input.is_action_pressed("Jump"):
 		switch(States.GROUND, States.AIR)
 	
-	elif Input.is_action_pressed("Ram"):
-		if velocity.x != 0:
-			main_vars.ram_time = 2
-		else:
-			main_vars.ram_time = 0
-		switch(States.GROUND, States.RAM)
-	
 	if not is_on_floor():
 		main_vars.gravity = 50
 		switch(States.GROUND, States.AIR)
@@ -126,7 +120,6 @@ func air():
 	var air_movement = func air_movement():
 			var direction = Input.get_axis("Left", "Right")
 			var current_direction = 0
-			
 			
 			if velocity.x == 0:
 				current_direction = 0
@@ -154,14 +147,24 @@ func air():
 	if Input.is_action_pressed("Jump") and is_on_floor(): # Checks if you are holding jump
 		sprite.play("pre_jump") # Plays the crouching animation for anticipation
 		
-		if main_vars.jump_power < MAX_JUMP: # Checks if jump power is maxed out, and if not increases it
+		var timer = get_tree().create_timer(3)
+		
+		if timer.time_left > 0: # Checks if jump power is maxed out, and if not increases it
 			main_vars.jump_power += main_vars.jump_increase
+			
+		sweat.emitting = true
+		
+		camera_zoom(true, 3)
 		
 		velocity.x = 0 # Disables the ability to move during pre_jumps
 	
 	elif Input.is_action_just_released("Jump") and is_on_floor(): # Plays as soon as you release the jump
 		sprite.play("jump") # Plays the jump animtation
 		velocity.y = -main_vars.jump_power # Sets the upward velocity to jumping heights
+		sweat.emitting = false
+		
+		background_rotation_switch()
+		camera_zoom(false, 3)
 	
 	# Checks if you are mid jump and falling
 	elif not is_on_floor():
@@ -228,34 +231,6 @@ func climb():
 		switch(States.CLIMB, States.GROUND)
 	#endregion
 
-func ram():
-	#region Main
-	main_vars.ram_time += 0.1
-	
-	if Input.is_action_pressed("Ram"):
-		if velocity.x * get_sprite_rotation() < 0:
-			velocity.x *= get_sprite_rotation()
-		
-		velocity.x = main_vars.ram_time * main_vars.ram_time * 10 * get_sprite_rotation() #(lerpf(velocity.x,  float(main_vars.speed * 2 * get_sprite_rotation()), 0.1))
-		sprite.play("ram")
-	#endregion
-	
-	#region Exits
-	if not Input.is_action_pressed("Ram"):
-		velocity.x = 0
-		switch(States.RAM, States.GROUND)
-	
-	if bump_detectors.bumped():
-		velocity.y = main_vars.ram_time * -75
-		velocity.x = main_vars.ram_time * -150 * get_sprite_rotation()
-		
-		switch(States.RAM, States.AIR)
-	
-	
-	if not is_on_floor():
-		switch(States.RAM, States.AIR)
-	#endregion
-
 func paused():
 	if wall_detector.touching_wall() == false and not is_on_floor():
 	
@@ -280,6 +255,7 @@ func overidden():
 #endregion
 
 ## --- Other Functions ---
+
 #region Main Other Functions
 func move():
 	var direction = Input.get_axis("Left", "Right")
@@ -306,9 +282,6 @@ func get_sprite_rotation():
 		return -1
 
 func switch(old_state, new_state):
-	if old_state == States.RAM:
-		main_vars.ram_time = 0
-	
 	if old_state == States.GROUND and new_state == States.AIR:
 		play_sound(sounds["Jump"])
 		current_state = new_state
@@ -334,8 +307,27 @@ func switch(old_state, new_state):
 	else:
 		current_state = new_state
 
+func camera_zoom(hold_on : bool, duration := 1.0):
+	var camera = get_viewport().get_camera_2d()
+	var background = get_tree().get_nodes_in_group("Background")
+	
+	if hold_on:
+		var camera_changing1 = get_tree().create_tween()
+		
+		camera_changing1.tween_property(camera, "zoom", Vector2(1, 1), duration)
+		camera_changing1.set_parallel(true)
+		camera_changing1.tween_property(background[0], "rotation", background_rotation, duration)
+	
+	else:
+		var camera_changing2 = get_tree().create_tween()
+		
+		camera_changing2.tween_property(camera, "zoom", Vector2(0.5, 0.5), duration)
+		camera_changing2.set_parallel(true)
+		camera_changing2.tween_property(background[0], "rotation", 0, duration)
+
 func overide(overidden2 : bool):
 	if overidden2:
+		print("switch state back ",overidden2)
 		switch(current_state, States.OVERIDDEN)
 	else:
 		print(current_state)
@@ -355,6 +347,14 @@ func pause_switch():
 		switch(current_state, States.PAUSED)
 	else:
 		switch(States.PAUSED, States.GROUND)
+
+func background_rotation_switch():
+	if background_rotation > 0:
+		background_rotation = randf_range(-1 * (background_rotation_range / 10), -1 * background_rotation_range)
+	elif background_rotation < 0:
+		background_rotation = randf_range(background_rotation_range / 10, background_rotation_range)
+	elif background_rotation == 0:
+		background_rotation = 0.2
 
 func switch_costume():
 	if is_multiplayer_authority():
