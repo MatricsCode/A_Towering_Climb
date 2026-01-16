@@ -3,7 +3,7 @@ extends abilitys
 var timer = 0
 
 func _physics_process(delta):
-	if Input.is_action_pressed("Ram"):
+	if Input.is_action_pressed("Ram") and ! in_action:
 		overide()
 		
 		var direction = player.get_sprite_rotation()
@@ -13,7 +13,7 @@ func _physics_process(delta):
 		if player.velocity.x * direction < 0:
 			player.velocity.x *= direction
 		
-		player.velocity.x = 10 * direction
+		player.velocity.x = 500 * direction
 		$"../../Sprite".play("ram")
 	
 	if not Input.is_action_pressed("Ram") and in_action:

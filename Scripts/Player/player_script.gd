@@ -181,7 +181,7 @@ func air():
 	
 	## All of the different ways of exiting the current state go here
 	#region Exits
-	if is_on_floor() and main_vars.gravity != 0:
+	if is_on_floor() and main_vars.gravity != 0: # This line breaks the Ram!
 		switch(States.AIR, States.GROUND)
 	
 	if wall_detector.touching_wall():
@@ -327,10 +327,10 @@ func camera_zoom(hold_on : bool, duration := 1.0):
 
 func overide(overidden2 : bool):
 	if overidden2:
-		print("switch state back ",overidden2)
+		print("Overide State")
 		switch(current_state, States.OVERIDDEN)
 	else:
-		print(current_state)
+		print("Overide the overide : ", current_state)
 		switch(States.OVERIDDEN, States.AIR)
 #endregion
 
