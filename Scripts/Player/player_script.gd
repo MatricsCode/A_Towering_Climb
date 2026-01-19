@@ -28,8 +28,11 @@ var main_vars = { ## Main ariables
 
 var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
 
-var background_rotation = 0
-var background_rotation_range = 0.5
+
+var background_changing := false
+var background_rotation = randf_range(-0.1, 0.1)
+
+var camera_changing : Tween
 
 #region Nodes
 ## --- Nodes ---
@@ -87,6 +90,7 @@ func _physics_process(_delta):  ## Runs every physics frames
 #region State Functions
 ## --- state functions ---
 func ground():
+	
 	## All of the different actions possible in the current state go here
 	#region Main
 	if velocity.x != 0: # This plays the correct animation, according to what the velocity is
@@ -104,9 +108,36 @@ func ground():
 	## All of the different ways of exiting the current state go here
 	#region Exits
 	if Input.is_action_pressed("Jump"):
+		main_vars.speed = 300
+		
+		sweat.emitting = true
+		
+		if not background_changing:
+			camera_zoom(true, 0.5)
+		
+		if camera_changing.is_running() == true                                                                      :
+			main_vars.jump_power += main_vars.jump_increase
+			main_vars.jump_increase += 1
+		
+		if velocity.x == 0:
+			sprite.play("pre_jump")
+	
+	if Input.is_action_just_released("Jump"):
+		main_vars.speed = 600
+		
+		sprite.play("jump") # Plays the jump animtation
+		velocity.y = -main_vars.jump_power # Sets the upward velocity to jumping heights
+		sweat.emitting = false
+		
+		background_rotation_switch()
+		camera_zoom(false, 0.5)
+	
+	if not is_on_floor() and not Input.is_action_pressed("Jump"):
+		main_vars.gravity = 50
 		switch(States.GROUND, States.AIR)
 	
-	if not is_on_floor():
+	elif not is_on_floor() and Input.is_action_pressed("Jump"):
+		await get_tree().create_timer(0.1).timeout
 		main_vars.gravity = 50
 		switch(States.GROUND, States.AIR)
 	
@@ -144,30 +175,30 @@ func air():
 	
 	## All of the different actions possible in the current state go here
 	#region Main
-	if Input.is_action_pressed("Jump") and is_on_floor(): # Checks if you are holding jump
-		sprite.play("pre_jump") # Plays the crouching animation for anticipation
-		
-		var timer = get_tree().create_timer(3)
-		
-		if timer.time_left > 0: # Checks if jump power is maxed out, and if not increases it
-			main_vars.jump_power += main_vars.jump_increase
-			
-		sweat.emitting = true
-		
-		camera_zoom(true, 3)
-		
-		velocity.x = 0 # Disables the ability to move during pre_jumps
-	
-	elif Input.is_action_just_released("Jump") and is_on_floor(): # Plays as soon as you release the jump
-		sprite.play("jump") # Plays the jump animtation
-		velocity.y = -main_vars.jump_power # Sets the upward velocity to jumping heights
-		sweat.emitting = false
-		
-		background_rotation_switch()
-		camera_zoom(false, 3)
-	
-	# Checks if you are mid jump and falling
-	elif not is_on_floor():
+	#if Input.is_action_pressed("Jump") and is_on_floor(): # Checks if you are holding jump
+		#sprite.play("pre_jump") # Plays the crouching animation for anticipation
+		#
+		#var timer = get_tree().create_timer(3)
+		#
+		#if timer.time_left > 0: # Checks if jump power is maxed out, and if not increases it
+			#main_vars.jump_power += main_vars.jump_increase
+			#
+		#sweat.emitting = true
+		#
+		#camera_zoom(true, 3)
+		#
+		#velocity.x = 0 # Disables the ability to move during pre_jumps
+	#
+	#elif Input.is_action_just_released("Jump") and is_on_floor(): # Plays as soon as you release the jump
+		#sprite.play("jump") # Plays the jump animtation
+		#velocity.y = -main_vars.jump_power # Sets the upward velocity to jumping heights
+		#sweat.emitting = false
+		#
+		#background_rotation_switch()
+		#camera_zoom(false, 3)
+	#
+	## Checks if you are mid jump and falling
+	if not is_on_floor(): #elif not is_on_floor():
 			if velocity.y > 0:
 				sprite.play("fall") # Plays the fall animation if you are traveling downward
 			elif velocity.y < 0:
@@ -181,7 +212,7 @@ func air():
 	
 	## All of the different ways of exiting the current state go here
 	#region Exits
-	if is_on_floor() and main_vars.gravity != 0: # This line breaks the Ram!
+	if is_on_floor(): # This line breaks the Ram!
 		switch(States.AIR, States.GROUND)
 	
 	if wall_detector.touching_wall():
@@ -254,6 +285,7 @@ func overidden():
 	pass
 #endregion
 
+
 ## --- Other Functions ---
 
 #region Main Other Functions
@@ -282,6 +314,9 @@ func get_sprite_rotation():
 		return -1
 
 func switch(old_state, new_state):
+	if old_state == States.AIR:
+		reset_main_vars()
+	
 	if old_state == States.GROUND and new_state == States.AIR:
 		play_sound(sounds["Jump"])
 		current_state = new_state
@@ -289,7 +324,12 @@ func switch(old_state, new_state):
 	elif old_state == States.AIR and new_state == States.GROUND:
 		sprite.play("pre_jump")
 		
-		reset_main_vars()
+		camera_zoom(true, 0.1)
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "velocity", Vector2(0,0), 0.1)
+		
+		await get_tree().create_timer(0.1).timeout
+		camera_zoom(false,0.1)
 		
 		current_state = States.EMPTY
 		
@@ -307,23 +347,33 @@ func switch(old_state, new_state):
 	else:
 		current_state = new_state
 
-func camera_zoom(hold_on : bool, duration := 1.0):
+func camera_zoom(hold_on : bool, duration := 0.0):
 	var camera = get_viewport().get_camera_2d()
 	var background = get_tree().get_nodes_in_group("Background")
 	
+	if camera_changing:
+		camera_changing.kill()
+	
 	if hold_on:
-		var camera_changing1 = get_tree().create_tween()
+		camera_changing = get_tree().create_tween()
 		
-		camera_changing1.tween_property(camera, "zoom", Vector2(1, 1), duration)
-		camera_changing1.set_parallel(true)
-		camera_changing1.tween_property(background[0], "rotation", background_rotation, duration)
+		camera_changing.tween_property(camera, "zoom", Vector2(0.6, 0.6), duration)
+		camera_changing.set_parallel(true)
+		camera_changing.tween_property(background[0], "rotation", background_rotation, duration)
+		
+		background_changing = true
+		
 	
 	else:
-		var camera_changing2 = get_tree().create_tween()
+		camera_changing = get_tree().create_tween()
 		
-		camera_changing2.tween_property(camera, "zoom", Vector2(0.5, 0.5), duration)
-		camera_changing2.set_parallel(true)
-		camera_changing2.tween_property(background[0], "rotation", 0, duration)
+		camera_changing.tween_property(camera, "zoom", Vector2(0.5, 0.5), duration)
+		camera_changing.set_parallel(true)
+		camera_changing.tween_property(background[0], "rotation", 0, duration)
+		
+		await camera_changing.finished
+		
+		background_changing = false
 
 func overide(overidden2 : bool):
 	if overidden2:
@@ -350,11 +400,12 @@ func pause_switch():
 
 func background_rotation_switch():
 	if background_rotation > 0:
-		background_rotation = randf_range(-1 * (background_rotation_range / 10), -1 * background_rotation_range)
+		background_rotation = randf_range(-0.001, -0.1)
 	elif background_rotation < 0:
-		background_rotation = randf_range(background_rotation_range / 10, background_rotation_range)
-	elif background_rotation == 0:
-		background_rotation = 0.2
+		background_rotation = randf_range(0.001, 0.1)
+	
+	while background_rotation == 0:
+		background_rotation = randf_range(-0.1, 0.1)
 
 func switch_costume():
 	if is_multiplayer_authority():
