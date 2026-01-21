@@ -21,7 +21,8 @@ func _ready():
 		spawn()
 
 func _reset():
-	get_child(0).queue_free()
+	for i in get_children():
+		i.queue_free()
 	
 	current_level = choose_level()
 	level_scene = levels[current_level]

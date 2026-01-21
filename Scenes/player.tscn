@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7w851wnif2io"]
+[gd_scene load_steps=16 format=3 uid="uid://b7w851wnif2io"]
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_kih0c"]
 [ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="2_5ixxa"]
@@ -52,6 +52,9 @@ damping_max = 12.5
 scale_curve = SubResource("CurveTexture_ksbbd")
 color_ramp = SubResource("GradientTexture1D_megsn")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52ee3"]
+size = Vector2(74, 9)
+
 [node name="Player" type="CharacterBody2D" groups=["PlayerOutfit"]]
 collision_mask = 14
 script = ExtResource("1_kih0c")
@@ -74,7 +77,7 @@ limit_bottom = 0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.25
-drag_top_margin = 0.6
+drag_top_margin = 0.4
 drag_right_margin = 0.25
 editor_draw_drag_margin = true
 
@@ -159,3 +162,13 @@ emitting = false
 amount = 4
 texture = ExtResource("7_52ee3")
 process_material = SubResource("ParticleProcessMaterial_glx4g")
+
+[node name="InteractionSystem" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionSystem"]
+position = Vector2(5, -76.5)
+shape = SubResource("RectangleShape2D_52ee3")
+
+[connection signal="body_entered" from="InteractionSystem" to="." method="_on_interaction_system_body_entered"]
