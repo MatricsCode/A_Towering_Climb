@@ -4,10 +4,7 @@ extends StaticBody2D
 
 var destroyed_wall = preload("res://Art/Tilemap/Wall2.png")
 
-func bumped(new_health):
-	health -= new_health
-	
-	if health < 0:
+func bumped():
 		self_destruct()
 
 func self_destruct():

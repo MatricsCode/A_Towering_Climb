@@ -44,3 +44,6 @@ func _physics_process(delta):
 		timer = 0
 		reset()
 	
+	if not player.is_on_floor() and in_action:
+		timer = 0
+		reset()

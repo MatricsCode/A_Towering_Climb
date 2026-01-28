@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://deffkwaj6jy8s"]
+[gd_scene load_steps=5 format=3 uid="uid://deffkwaj6jy8s"]
 
-[ext_resource type="Script" uid="uid://7rnk5tl50grf" path="res://Scripts/MovingPlatform/moving_platform.gd" id="1_qioah"]
+[ext_resource type="Script" uid="uid://7rnk5tl50grf" path="res://Scripts/Interactables/moving_platform.gd" id="1_qioah"]
 [ext_resource type="Texture2D" uid="uid://dng3lsxxhco41" path="res://Art/Moving Platform/Moving Platform.png" id="2_qioah"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qioah"]
+size = Vector2(140, 140)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qioah"]
 properties/0/path = NodePath(".:position1")
@@ -9,22 +12,19 @@ properties/0/spawn = true
 properties/0/replication_mode = 2
 
 [node name="MovingPlatform" type="StaticBody2D"]
+z_index = 1
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_qioah")
+metadata/_custom_type_script = "uid://c3pd3dg0vshs0"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -220)
 texture = ExtResource("2_qioah")
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = -20.0
-offset_top = -228.0
-offset_right = 20.0
-offset_bottom = -159.0
-theme_override_font_sizes/font_size = 50
-text = "E"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -70)
+shape = SubResource("RectangleShape2D_qioah")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_qioah")

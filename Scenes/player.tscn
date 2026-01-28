@@ -53,7 +53,7 @@ scale_curve = SubResource("CurveTexture_ksbbd")
 color_ramp = SubResource("GradientTexture1D_megsn")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52ee3"]
-size = Vector2(74, 9)
+size = Vector2(74, 78)
 
 [node name="Player" type="CharacterBody2D" groups=["PlayerOutfit"]]
 collision_mask = 14
@@ -108,14 +108,14 @@ script = ExtResource("28_kih0c")
 unique_name_in_owner = true
 position = Vector2(-30, -8)
 target_position = Vector2(0, 120)
-collision_mask = 16
+collision_mask = 2
 hit_from_inside = true
 
 [node name="WallDetector2" type="RayCast2D" parent="BumpDetectors"]
 unique_name_in_owner = true
 position = Vector2(40, -8)
 target_position = Vector2(0, 120)
-collision_mask = 16
+collision_mask = 2
 hit_from_inside = true
 
 [node name="EdgeDetectors" type="Node2D" parent="."]
@@ -163,12 +163,24 @@ amount = 4
 texture = ExtResource("7_52ee3")
 process_material = SubResource("ParticleProcessMaterial_glx4g")
 
-[node name="InteractionSystem" type="Area2D" parent="."]
+[node name="InteractDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionSystem"]
-position = Vector2(5, -76.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractDetector"]
+position = Vector2(5, -42)
 shape = SubResource("RectangleShape2D_52ee3")
 
-[connection signal="body_entered" from="InteractionSystem" to="." method="_on_interaction_system_body_entered"]
+[node name="Interact" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -241.0
+offset_right = 20.0
+offset_bottom = -172.0
+theme_override_font_sizes/font_size = 50
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="InteractDetector" to="." method="_on_interact_detector_body_entered"]
+[connection signal="body_exited" from="InteractDetector" to="." method="_on_interact_detector_body_exited"]

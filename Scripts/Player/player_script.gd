@@ -29,17 +29,20 @@ var main_vars = { ## Main ariables
 var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
 
 var background_changing = false
-
 var camera_changing : Tween
 
-#region Nodes
+var interactables = []
+
 ## --- Nodes ---
+#region Nodes
 @onready var cam = $Camera2D 
 @onready var sprite = $Sprite
 @onready var wall_detector = $WallDetectors 
 @onready var edge_detector = $EdgeDetectors
 @onready var bump_detectors = $BumpDetectors
 @onready var sweat = $Sweat
+@onready var interact_detector = $InteractDetector
+@onready var interacting = $Interact
 #endregion
 
 ## ---- Functions ----
@@ -96,6 +99,16 @@ func ground():
 	
 	if sprite.frame == 1 or sprite.frame == 5:
 		play_sound(sounds["Walk"])
+	
+	if interactables.is_empty() == false:
+		interacting.visible = true
+	
+	elif interactables.is_empty() == true:
+		interacting.visible = false
+	
+	if interactables.is_empty() == false and Input.is_action_just_pressed("Interact"):
+		for i in interactables:
+			i.interact(self)
 	
 	move()
 	turn()
@@ -259,14 +272,17 @@ func overidden():
 	pass
 #endregion
 
-## ---- Signals ----
-#region Main Signals
-func _on_interaction_system_body_entered(body):
-	body.interact(self)
+## --- Signals ---
+#region Interact Detector Signals
+func _on_interact_detector_body_entered(body):
+	interactables.append(body)
 
+func _on_interact_detector_body_exited(body):
+	interactables.erase(body)
 #endregion
 
-## --- Other Functions ---
+
+## ---- Other Functions ----
 #region Main Other Functions
 func move():
 	var direction = Input.get_axis("Left", "Right")

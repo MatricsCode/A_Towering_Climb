@@ -1,10 +1,12 @@
 res://Scenes/Player.tscn
+res://Recourses/Tileset.tres
 res://Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres
-res://Scripts/Player/Abilitys/ram.gd
-res://Scripts/Player/player_script.gd
+res://Recourses/UI/WinBackground.tres
 res://Scenes/Main.tscn
 res://Scenes/PlayArea.tscn
-res://Recourses/Tileset.tres
-res://Recourses/UI/WinBackground.tres
-res://Scripts/PlayArea/level_spawner.gd
+res://Scenes/Levels/level_1.tscn
+res://Scenes/Levels/level_2.tscn
+res://Scenes/Box.tscn
 res://Scenes/Moving Platform.tscn
+res://Scenes/LiquidDrum.tscn
+res://Scripts/Player/player_script.gd
