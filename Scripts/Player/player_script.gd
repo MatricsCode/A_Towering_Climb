@@ -18,18 +18,18 @@ var sounds = {
 	"Climb" : preload("res://Sound Effects/Climb.mp3"),}
 
 var main_vars = { ## Main ariables
-	speed = 600, # Determins how much the player can move in one frame
-	jump_power = 750,  # Determins the height of the players jump
-	jump_increase = 1, # Determins how fast the player increases in jump power
-	gravity = 0, # Determins at what speed the player falls down
-	glide_gravity = 100, # Determins at what speed the player falls down once gliding
-	climbing_speed = 300, # How fast the player can climb
+	ground_vars = {speed = 600},
+	jump_vars = {jump_power = 750, jump_increase = 1, gravity = 0, movement_direction = 0}, # Determins how fast the player increases in jump powe
+	climbing_vars = {climbing_speed = 300},
+	
+	switching_vars = {switch_again = true},
+	
+	background_wiggle_vars = {background_changing = false},
 	}
 
-var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
-
-var background_changing = false
 var camera_changing : Tween
+
+var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
 
 var interactables = []
 
@@ -66,6 +66,10 @@ func _ready(): ## Runns as soon as the player is loaded into the scene
 func _physics_process(_delta):  ## Runs every physics frames
 	if not is_multiplayer_authority():
 		return ## Checks if you are this player, and grants/denies you control acordingly
+	
+	if velocity.y != 0 and current_state == States.AIR:
+		if Input.is_action_just_released("Jump") and 0 >velocity.y:
+				main_vars.jump_vars.gravity += 50
 	
 	match current_state:
 		States.GROUND:
@@ -117,73 +121,58 @@ func ground():
 	## All of the different ways of exiting the current state go here
 	#region Exits
 	if Input.is_action_pressed("Jump"):
-		main_vars.speed = 300
-		
-		sweat.emitting = true
-		
-		if not background_changing:
-			camera_zoom(true, 0.5)
-		
-		if main_vars.jump_power <= 1800:
-			main_vars.jump_power += main_vars.jump_increase
-			main_vars.jump_increase += 2
-		
-		if velocity.x == 0:
-			sprite.play("pre_jump")
-	
-	if Input.is_action_just_released("Jump"):
-		main_vars.speed = 600
-		
-		sprite.play("jump") # Plays the jump animtation
-		velocity.y = -main_vars.jump_power # Sets the upward velocity to jumping heights
-		sweat.emitting = false
-		
-		camera_zoom(false, 0.5)
+		switch(States.GROUND, States.AIR)
 	
 	if not is_on_floor() and not Input.is_action_pressed("Jump"):
-		main_vars.gravity = 50
+		await get_tree().create_timer(0.1).timeout
+		main_vars.jump_vars.gravity = 50
 		switch(States.GROUND, States.AIR)
 	
 	elif not is_on_floor() and Input.is_action_pressed("Jump"):
-		await get_tree().create_timer(0.1).timeout
-		main_vars.gravity = 50
 		switch(States.GROUND, States.AIR)
 	
 	elif wall_detector.touching_wall():
-		position.y -= 5
 		switch(States.GROUND, States.CLIMB)
+	
 	#endregion
 
-func air():
+func air(): 
 	#region Functions
 	var air_movement = func air_movement():
 		var direction = Input.get_axis("Left", "Right")
-		var current_direction = 0
 		
-		if velocity.x == 0:
-			current_direction = 0
-		elif velocity.x > 0:
-			current_direction = 1
-		elif velocity.x < 0:
-			current_direction = -1
+		if direction == main_vars.jump_vars.movement_direction and main_vars.jump_vars.movement_direction != 0:
+			velocity.x = main_vars.jump_vars.jump_power * direction / 1.5
 		
-		if direction == current_direction:
-			velocity.x = lerp(velocity.x, main_vars.speed * direction * 0.7, 0.2)
-		elif direction != current_direction and direction != 0:
-			velocity.x = lerp(velocity.x, main_vars.speed * direction * 0.7, 0.05)
+		elif direction != main_vars.jump_vars.movement_direction and main_vars.jump_vars.movement_direction != 0:
+			velocity.x += direction * main_vars.jump_vars.jump_power / 20
+			velocity.x = clamp(velocity.x, -main_vars.jump_vars.jump_power, main_vars.jump_vars.jump_power)
 		
-		elif direction == 0:
-			velocity.x += velocity.x * -0.05
+		elif direction != main_vars.jump_vars.movement_direction and main_vars.jump_vars.movement_direction == 0:
+			velocity.x += direction * main_vars.jump_vars.jump_power / 30
+			velocity.x = clamp(velocity.x, -main_vars.jump_vars.jump_power, main_vars.jump_vars.jump_power)
+		
+		elif direction == 0 and velocity.x != 0:
+			if velocity.x > 0:
+				velocity.x += main_vars.jump_vars.jump_power / 100
+			else:
+				velocity.x -= main_vars.jump_vars.jump_power / 100
 	
 	var drop = func drop():
 		if velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
-			velocity.y += main_vars.gravity
-			main_vars.gravity += 1
+			velocity.y += main_vars.jump_vars.gravity
+			main_vars.jump_vars.gravity += 1
+		
+		if velocity.y > -300:
+			main_vars.jump_vars.gravity += 9
+		
+		if velocity.y > -250 and velocity.y < 0:
+			velocity.y = 100
 	#endregion
 	
 	## All of the different actions possible in the current state go here
 	#region Main
-
+	
 	## Checks if you are mid jump and falling
 	if not is_on_floor(): #elif not is_on_floor():
 			if velocity.y > 0:
@@ -208,13 +197,12 @@ func air():
 	#endregion
 
 func climb():
-	
 	## All of the different actions possible in the current state go here
 	#region Main
 	var input = Input.get_axis("Up", "Down") ## Accesses the current input
 	
 	if input != 0:
-		velocity.y = main_vars.climbing_speed * input ## Sets the Velocity to input
+		velocity.y = main_vars.climbing_vars.climbing_speed * input ## Sets the Velocity to input
 		sprite.play("climb")
 	
 	else:
@@ -228,33 +216,25 @@ func climb():
 	
 	## All of the different ways of exiting the current state go here
 	#region Exits
+	if edge_detector.on_edge():
+		switch(States.CLIMB, States.GROUND)
+	
 	if Input.is_action_just_pressed("Jump"):
-		velocity.x = main_vars.jump_power * get_sprite_rotation() * -1
-		velocity.y = -main_vars.jump_power / 2
-		sprite.flip_h = not sprite.flip_h
-		sprite.play("fall")
 		switch(States.CLIMB, States.AIR)
 	
 	if is_on_floor():
-		position.x += 5 * get_sprite_rotation() * -1
 		switch(States.CLIMB, States.GROUND)
 	
 	elif wall_detector.touching_wall() == false:
 		switch(States.CLIMB, States.AIR)
-	
-	if edge_detector.on_edge():
-		position.x += 20 * get_sprite_rotation()
-		position.y -= 20
-		velocity = Vector2(0,0)
-		switch(States.CLIMB, States.GROUND)
 	#endregion
 
 func paused():
 	if wall_detector.touching_wall() == false and not is_on_floor():
 	
 		if velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
-			velocity.y += main_vars.gravity
-			main_vars.gravity += 1
+			velocity.y += main_vars.jump_vars.gravity
+			main_vars.jump_vars.gravity += 1
 			sprite.play("fall")
 	
 	elif wall_detector.touching_wall() == true and not is_on_floor():
@@ -287,7 +267,7 @@ func _on_interact_detector_body_exited(body):
 func move():
 	var direction = Input.get_axis("Left", "Right")
 	if direction != 0:
-		velocity.x = main_vars.speed * direction
+		velocity.x = main_vars.ground_vars.speed * direction
 	else:
 		velocity.x = 0
 
@@ -309,15 +289,34 @@ func get_sprite_rotation():
 		return -1
 
 func switch(old_state, new_state):
-	if old_state == States.AIR:
-		reset_main_vars()
+	if main_vars.switching_vars.switch_again == false:
+		return
 	
+	main_vars.switching_vars.switch_again = false
+	
+	if new_state == States.AIR:
+		main_vars.jump_vars.gravity = 0
 	
 	if old_state == States.GROUND and new_state == States.AIR:
-		play_sound(sounds["Jump"])
+		reset_main_vars(0)
+		
+		if Input.is_action_pressed("Jump"):
+			play_sound(sounds["Jump"])
+			
+			if velocity.x > 0:
+				main_vars.jump_vars.movement_direction = 1
+			elif velocity.x < 0:
+				main_vars.jump_vars.movement_direction = -1
+			else:
+				main_vars.jump_vars.movement_direction = 0
+			
+			velocity.y = -main_vars.jump_vars.jump_power
+		
 		current_state = new_state
 	
 	elif old_state == States.AIR and new_state == States.GROUND:
+		reset_main_vars(1)
+		
 		sprite.play("pre_jump")
 		
 		camera_zoom(true, 0.1)
@@ -333,15 +332,44 @@ func switch(old_state, new_state):
 		
 		play_sound(sounds["Land"])
 		
+		reset_main_vars(1)
+		
 		current_state = new_state
 	
 	elif old_state == States.CLIMB and new_state == States.AIR:
-		reset_main_vars()
+		reset_main_vars(1)
+		reset_main_vars(2)
 		
+		if edge_detector.on_edge():
+			print("On Edge")
+			position.x += 20 * get_sprite_rotation()
+			position.y -= 20
+			velocity = Vector2(0,0)
+		
+		elif Input.is_action_pressed("Jump"):
+			main_vars.jump_vars.movement_direction = get_sprite_rotation() * -1
+			
+			velocity.x = main_vars.jump_vars.jump_power * main_vars.jump_vars.movement_direction
+			velocity.y = -main_vars.jump_vars.jump_power / 2
+			sprite.play("fall")
+		
+		current_state = new_state
+	
+	elif old_state == States.GROUND and new_state == States.CLIMB:
+		position.y -= 20
+		current_state = new_state
+		
+	
+	elif old_state == States.CLIMB and new_state == States.GROUND:
+		position.x += 20 * get_sprite_rotation() * -1
 		current_state = new_state
 	
 	else:
 		current_state = new_state
+	
+	await get_tree().create_timer(0.25).timeout
+	
+	main_vars.switching_vars.switch_again = true
 
 func camera_zoom(hold_on : bool, duration := 0.0, wave := true):
 	var camera = get_viewport().get_camera_2d()
@@ -358,7 +386,7 @@ func camera_zoom(hold_on : bool, duration := 0.0, wave := true):
 			camera_changing.set_parallel(true)
 			camera_changing.tween_property(background[0], "rotation", background_rotation(), duration)
 		
-		background_changing = true
+		main_vars.background_wiggle_vars.background_changing = true
 		
 	
 	else:
@@ -371,7 +399,7 @@ func camera_zoom(hold_on : bool, duration := 0.0, wave := true):
 		
 		await camera_changing.finished
 		
-		background_changing = false
+		main_vars.background_wiggle_vars.background_changing = false
 
 func overide(overidden2 : bool):
 	if overidden2:
@@ -384,11 +412,14 @@ func overide(overidden2 : bool):
 
 #region Secondary Other Functions
 
-func reset_main_vars():
+
+## 0 = Ground, 1 = Air, 2 = Climb
+func reset_main_vars(key : int):
 	var keys = main_vars.keys()
 	
 	for i in main_vars.size():
-		main_vars[keys[i]] = main_var_reset[i]
+		if i == key:
+			main_vars[keys[i]] = main_var_reset[i]
 
 func pause_switch():
 	if current_state != States.PAUSED:

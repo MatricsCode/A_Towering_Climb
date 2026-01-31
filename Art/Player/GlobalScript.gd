@@ -2,7 +2,9 @@ extends Node
 
 var player_positions_y : Array[float]
 
-var player_outfits = [
+@export var player_outfits : Array[int]
+
+var all_player_outfits = [
 	preload("res://Recourses/PlayerSprites/Climber1.tres"),
 	preload("res://Recourses/PlayerSprites/Climber2.tres"),
 	]

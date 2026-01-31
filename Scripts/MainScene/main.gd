@@ -7,7 +7,7 @@ var peer = SteamMultiplayerPeer.new()
 @onready var lobbies = $SelectorUI/HSplitContainer/LobbyContainer/Lobbies
 
 @onready var MainUI = $SelectorUI
-@onready var PlayerSelectorUI = $"PlayerSelector UI"
+@onready var PlayerReadyScreen = $PlayerReadyScreen
 @onready var AbilitySelectorUI = $"AbilitySelector UI"
 
 @onready var host = $SelectorUI/HSplitContainer/VBoxContainer/Host
@@ -22,6 +22,13 @@ func _ready():
 	Steam.lobby_match_list.connect(on_lobby_match_list)
 	open_lobby_list()
 
+var time = 0
+func _physics_process(delta):
+	if lobby_id == 0:
+		position.x += 1
+		time += 0.1
+		position.y = sin(time) * 2
+
 func spawn_level(data):
 	var a = (load(data) as PackedScene).instantiate()
 	return a
@@ -33,10 +40,9 @@ func _on_host_pressed():
 	peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
 	
 	multiplayer.multiplayer_peer = peer
-	ms.spawn("res://Scenes/PlayArea.tscn")
-	MainUI.hide()
-	$SelectorUI/Camera2D.enabled = false
-
+	#ms.spawn("res://Scenes/PlayArea.tscn")
+	#MainUI.hide()
+	#$SelectorUI/Camera2D.enabled = false
 func join_lobby(id):
 	peer.connect_lobby(id)
 	multiplayer.multiplayer_peer = peer
@@ -49,11 +55,9 @@ func on_lobby_created(connected, id):
 		lobby_id = id
 		Steam.setLobbyData(lobby_id,"name",str(Steam.getPersonaName()+"'s lobby"))
 		Steam.setLobbyJoinable(lobby_id, true)
-
 func open_lobby_list():
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
 	Steam.requestLobbyList()
-
 func on_lobby_match_list(lobbies2):
 	for lobby in lobbies2:
 		var lobby_name = Steam.getLobbyData(lobby, "name")
@@ -92,10 +96,6 @@ func leave_lobby():
 	get_child(get_child_count() - 1).queue_free()
 	MainUI.show()
 	$SelectorUI/Camera2D.enabled = true
-
-func _on_player_customiser_pressed():
-	MainUI.visible = false
-	PlayerSelectorUI.visible = true
 
 func _on_abilitys_pressed():
 	MainUI.visible = false

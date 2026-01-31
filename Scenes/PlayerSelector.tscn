@@ -1,0 +1,260 @@
+[gd_scene load_steps=37 format=3 uid="uid://cam0eoq23msfi"]
+
+[ext_resource type="Script" uid="uid://dw4ltxmxmvvfq" path="res://Scripts/PlayerSelectorUI/player_selector.gd" id="1_xs5nl"]
+[ext_resource type="Texture2D" uid="uid://b1b6lvxqcotts" path="res://Art/Player/Climber1/Climber22.png" id="2_b5r3k"]
+[ext_resource type="Texture2D" uid="uid://hhm8b0ana2ql" path="res://Art/Player/Climber1/Climber23.png" id="3_800ha"]
+[ext_resource type="Texture2D" uid="uid://cgeuq8qxxuf34" path="res://Art/Player/Climber1/Climber24.png" id="4_nyrgn"]
+[ext_resource type="Texture2D" uid="uid://bltuj4owjd2fx" path="res://Art/Player/Climber1/Climber25.png" id="5_sofy2"]
+[ext_resource type="Texture2D" uid="uid://b5yxoskdspugl" path="res://Art/Player/Climber1/Climber12.png" id="6_yd8kd"]
+[ext_resource type="Texture2D" uid="uid://g7kvj74jxr8y" path="res://Art/Player/Climber1/Climber13.png" id="7_gwj3k"]
+[ext_resource type="Texture2D" uid="uid://d0704c7trp3mq" path="res://Art/Player/Climber1/Climber14.png" id="8_nchna"]
+[ext_resource type="Texture2D" uid="uid://c23dyki441stt" path="res://Art/Player/Climber1/Climber15.png" id="9_luge1"]
+[ext_resource type="Texture2D" uid="uid://v2n6mouri1as" path="res://Art/Player/Climber1/Climber1.png" id="10_755lh"]
+[ext_resource type="Texture2D" uid="uid://blsk3uj75ilc7" path="res://Art/Player/Climber1/Climber2.png" id="11_d5pn0"]
+[ext_resource type="Texture2D" uid="uid://d3hgjamg108p3" path="res://Art/Player/Climber1/Climber3.png" id="12_t7ov3"]
+[ext_resource type="Texture2D" uid="uid://brq55ibfgpg2y" path="res://Art/Player/Climber1/Climber4.png" id="13_7ngm7"]
+[ext_resource type="Texture2D" uid="uid://dkbvrbfuu2tvb" path="res://Art/Player/Climber1/Climber5.png" id="14_f3jc3"]
+[ext_resource type="Texture2D" uid="uid://d0rkw81b6di2" path="res://Art/Player/Climber1/Climber6.png" id="15_yhnkq"]
+[ext_resource type="Texture2D" uid="uid://c8p2s1xdfqe06" path="res://Art/Player/Climber1/Climber7.png" id="16_rkvwc"]
+[ext_resource type="Texture2D" uid="uid://bwnfnfpusry3s" path="res://Art/Player/Climber1/Climber8.png" id="17_vojjo"]
+[ext_resource type="Texture2D" uid="uid://oxp7mb3jb8" path="res://Art/Player/Climber2/Climber1.png" id="18_2suyp"]
+[ext_resource type="Texture2D" uid="uid://cb7ugnetq4uar" path="res://Art/Player/Climber2/Climber2.png" id="19_1mebd"]
+[ext_resource type="Texture2D" uid="uid://dr7b0lc1i6rst" path="res://Art/Player/Climber2/Climber3.png" id="20_htean"]
+[ext_resource type="Texture2D" uid="uid://dysrifmtfwj84" path="res://Art/Player/Climber2/Climber4.png" id="21_4kbex"]
+[ext_resource type="Texture2D" uid="uid://bisc4g1tst550" path="res://Art/Player/Climber2/Climber5.png" id="22_jx0fm"]
+[ext_resource type="Texture2D" uid="uid://dqyq32de2mie" path="res://Art/Player/Climber2/Climber6.png" id="23_7ub4j"]
+[ext_resource type="Texture2D" uid="uid://d0fvd5f0eamo4" path="res://Art/Player/Climber2/Climber7.png" id="24_g52h1"]
+[ext_resource type="Texture2D" uid="uid://rldeh7j488l6" path="res://Art/Player/Climber2/Climber8.png" id="25_8w0v5"]
+[ext_resource type="Texture2D" uid="uid://4goq44tv87vg" path="res://Art/Player/Climber2/Climber16.png" id="26_melfk"]
+[ext_resource type="Texture2D" uid="uid://bfk3tud6ipqaj" path="res://Art/Player/Climber2/Climber17.png" id="27_s6r65"]
+[ext_resource type="Texture2D" uid="uid://ddwocgsluoxds" path="res://Art/Player/Climber2/Climber18.png" id="28_2ka4b"]
+[ext_resource type="Texture2D" uid="uid://6376djgsneho" path="res://Art/Player/Climber2/Climber19.png" id="29_qqbyb"]
+[ext_resource type="Texture2D" uid="uid://ctpby74ckspso" path="res://Art/Player/Climber2/Climber20.png" id="30_2jwfs"]
+[ext_resource type="Texture2D" uid="uid://dui537e1l22pk" path="res://Art/Player/Climber2/Climber21.png" id="31_cddky"]
+[ext_resource type="Script" uid="uid://cncyjq3g5cty0" path="res://Scripts/Tools/base_button.gd" id="32_dye6n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0wkq"]
+bg_color = Color(0.12, 0.12, 0.12, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_uhaop"]
+Panel/styles/panel = SubResource("StyleBoxFlat_b0wkq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsrcl"]
+bg_color = Color(0.5168, 0.695147, 0.76, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qon4y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b5r3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_800ha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nyrgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sofy2")
+}],
+"loop": true,
+"name": &"Augius",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_yd8kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gwj3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nchna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_luge1")
+}],
+"loop": true,
+"name": &"Builder",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_755lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_d5pn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t7ov3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7ngm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_f3jc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_yhnkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rkvwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_vojjo")
+}],
+"loop": true,
+"name": &"Climber1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_2suyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1mebd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_htean")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_4kbex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_jx0fm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_7ub4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_g52h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_8w0v5")
+}],
+"loop": true,
+"name": &"Climber2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_melfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_s6r65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_2ka4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_qqbyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_2jwfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_cddky")
+}],
+"loop": true,
+"name": &"DonutBaker",
+"speed": 5.0
+}]
+
+[node name="PlayerSelect" type="Panel"]
+custom_minimum_size = Vector2(210, 0)
+theme = SubResource("Theme_uhaop")
+script = ExtResource("1_xs5nl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -173.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+use_top_left = true
+
+[node name="Background2" type="Panel" parent="VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(180, 270)
+layout_mode = 2
+theme = SubResource("Theme_uhaop")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jsrcl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/CenterContainer"]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_qon4y")
+animation = &"Climber1"
+autoplay = "Climber1"
+speed_scale = 3.0
+
+[node name="ButtonContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Climber1" type="Button" parent="VBoxContainer/ButtonContainer" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Climber 1"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Climber2" type="Button" parent="VBoxContainer/ButtonContainer" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Climber 2"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="DonutBaker" type="Button" parent="VBoxContainer/ButtonContainer" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Donut Baker"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Builder" type="Button" parent="VBoxContainer/ButtonContainer" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Builder"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Augius" type="Button" parent="VBoxContainer/ButtonContainer" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Augius"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Ready" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Ready?"
+
+[connection signal="mouse_entered" from="VBoxContainer/Ready" to="." method="_on_ready_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Ready" to="." method="_on_ready_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Ready" to="." method="_on_ready_pressed"]

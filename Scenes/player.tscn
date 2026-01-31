@@ -55,14 +55,15 @@ color_ramp = SubResource("GradientTexture1D_megsn")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52ee3"]
 size = Vector2(74, 78)
 
-[node name="Player" type="CharacterBody2D" groups=["PlayerOutfit"]]
+[node name="Player" type="CharacterBody2D"]
 collision_mask = 14
 script = ExtResource("1_kih0c")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -136)
 sprite_frames = ExtResource("2_5ixxa")
-animation = &"pre_jump"
+animation = &"walk"
+frame_progress = 0.595083
 speed_scale = 3.0
 metadata/_edit_lock_ = true
 

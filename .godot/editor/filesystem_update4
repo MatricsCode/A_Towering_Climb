@@ -9,4 +9,14 @@ res://Scenes/Levels/level_2.tscn
 res://Scenes/Box.tscn
 res://Scenes/Moving Platform.tscn
 res://Scenes/LiquidDrum.tscn
-res://Scripts/Player/player_script.gd
+res://Scripts/MainScene/main.gd
+res://Scripts/MainScene/player_ready_up.gd
+res://Recourses/PlayerSprites/Climber1.tres
+res://Scripts/Tools/base_button.gd
+res://Scripts/MainScene/ability_selector_ui.gd
+res://Scenes/player_selector.tscn
+res://Scripts/PlayerSelectorUI/player_selector.gd
+res://Scenes/GlobalScript.tscn
+res://Art/Player/GlobalScript.gd
+res://Scenes/MainUI.tscn
+res://Scenes/PlayerSelector.tscn

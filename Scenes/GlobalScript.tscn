@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://kejlp28p67mq"]
+[gd_scene load_steps=3 format=3 uid="uid://kejlp28p67mq"]
 
-[ext_resource type="Script" uid="uid://kidyfaimhvk1" path="res://Scripts/GlobalScript.gd" id="1_elpgb"]
+[ext_resource type="Script" uid="uid://kidyfaimhvk1" path="res://Art/Player/GlobalScript.gd" id="1_elpgb"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_elpgb"]
+properties/0/path = NodePath(".:player_outfits")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="Node" type="Node"]
 process_mode = 3
 script = ExtResource("1_elpgb")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_elpgb")
