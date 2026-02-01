@@ -11,6 +11,8 @@ var host = false
 func start():
 	visible = true
 	
+	print(GlobalScript.player_outfits)
+	
 	for i in GlobalScript.player_outfits.size():
 		everyone_readyed.append(false)
 		

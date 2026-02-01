@@ -29,7 +29,7 @@ func _physics_process(_delta):
 	
 	if to_throw != null and Input.is_action_pressed("Interact"):
 		to_throw.position.x = 5 * player.get_sprite_rotation() * -1
-		to_throw.velocity.x = player.get_sprite_rotation() * player.main_vars.climbing_speed * -10
+		to_throw.velocity.x = player.get_sprite_rotation() * player.main_vars.climbing_animation.climbing_speed * -10
 
 func throw_player(body):
 	if to_throw == null:

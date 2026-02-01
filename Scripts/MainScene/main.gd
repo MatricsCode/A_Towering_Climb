@@ -86,6 +86,8 @@ func leave_lobby():
 		Steam.leaveLobby(lobby_id)
 		
 		lobby_id = 0
+	for i in GlobalScript.player_outfits:
+		GlobalScript.player_outfits.erase(i)
 	
 	var lobby_members = peer.get_peer_map()
 	

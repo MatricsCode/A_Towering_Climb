@@ -359,7 +359,6 @@ func switch(old_state, new_state):
 		position.y -= 20
 		current_state = new_state
 		
-	
 	elif old_state == States.CLIMB and new_state == States.GROUND:
 		position.x += 20 * get_sprite_rotation() * -1
 		current_state = new_state
@@ -411,8 +410,6 @@ func overide(overidden2 : bool):
 #endregion
 
 #region Secondary Other Functions
-
-
 ## 0 = Ground, 1 = Air, 2 = Climb
 func reset_main_vars(key : int):
 	var keys = main_vars.keys()

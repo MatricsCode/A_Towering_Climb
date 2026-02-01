@@ -6,37 +6,80 @@ var current_player : int
 
 
 @onready var ready_button = $VBoxContainer/Ready
-@onready var button_container = $VBoxContainer/ButtonContainer
-@onready var animated_sprite_2d = $VBoxContainer/CenterContainer/AnimatedSprite2D
+
+@onready var main_container = $VBoxContainer/Main
+@onready var abilitys_container = $VBoxContainer/Abilitys
+@onready var outfits_container = $VBoxContainer/Outfits
+
+@onready var sprite = $VBoxContainer/CenterContainer/AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await get_tree().create_timer(0.1).timeout
 	
 	if main_player == false:
-		for i in button_container.get_children():
-			i.text = "Other Player"
+		for i in main_container.get_children():
 			i.disabled = true
-		ready_button.text = "Someone elses!"
-		ready_button.disabled
 
 func _physics_process(delta):
-	if animated_sprite_2d.animation != str(GlobalScript.player_outfits[current_player]):
-		animated_sprite_2d.animation = str(GlobalScript.player_outfits[current_player])
+	if sprite.animation != str(GlobalScript.player_outfits[current_player]):
+		sprite.animation = str(GlobalScript.player_outfits[current_player])
+
 
 func button_pressed(name):
-	$VBoxContainer/CenterContainer/AnimatedSprite2D.play(name)
+	print(name)
 	
-	for i in $VBoxContainer/ButtonContainer.get_children():
-		if i.name == name:
-			GlobalScript.player_outfits[current_player] = i.get_index()
+	if name != "Back":
+		ready_button.text = "Selecting Stuff"
+	
+	if name == "Back":
+		
+		main_container.visible = true
+		abilitys_container.visible = false
+		outfits_container.visible = false
+		
+		ready_button.text = "Ready?"
+		
+		return
+	if name == "Abilitys":
+		
+		main_container.visible = false
+		abilitys_container.visible = true
+		
+		return
+	elif name == "Outfits":
+		
+		main_container.visible = false
+		outfits_container.visible = true
+		
+		return
+	 
+	else:
+		for i in GlobalScript.all_player_abilitys:
+			if name == str(i):
+				
+				if GlobalScript.player_abilitys.find(name) == -1:
+					GlobalScript.player_abilitys.append(name)
+				else:
+					GlobalScript.player_abilitys.erase(name)
+				
+				return
+	
+		sprite.play(name)
+		
+		for i in outfits_container.get_children():
+			if i.name == name:
+				GlobalScript.player_outfits[current_player] = i.get_index()
+	
+	print(GlobalScript.player_abilitys)
+
 
 
 func _on_ready_pressed():
 	if ready_button.text == "Ready?":
 		ready_button.text = "Geared Up!"
 		
-		for i in button_container.get_children():
+		for i in main_container.get_children():
 			i.disabled = true
 		
 		main_screen.ready(true)
@@ -44,16 +87,14 @@ func _on_ready_pressed():
 	elif ready_button.text == "Changed my mind...":
 		ready_button.text = "Ready?"
 		
-		for i in button_container.get_children():
+		for i in main_container.get_children():
 			i.disabled = false
 		
 		main_screen.ready(false)
 
-
 func _on_ready_mouse_entered():
 	if ready_button.text == "Geared Up!":
 		ready_button.text = "Changed my mind..."
-
 
 func _on_ready_mouse_exited():
 	if ready_button.text == "Changed my mind...":

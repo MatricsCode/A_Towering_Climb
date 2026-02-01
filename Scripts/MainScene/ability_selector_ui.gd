@@ -63,8 +63,6 @@ func button_pressed(ability_button):
 	
 	
 	#endregion
-	
-	
 
 func create_button(set_name, set_text):
 	var button = Base_Button.new()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cam0eoq23msfi"]
+[gd_scene load_steps=38 format=3 uid="uid://cam0eoq23msfi"]
 
 [ext_resource type="Script" uid="uid://dw4ltxmxmvvfq" path="res://Scripts/PlayerSelectorUI/player_selector.gd" id="1_xs5nl"]
 [ext_resource type="Texture2D" uid="uid://b1b6lvxqcotts" path="res://Art/Player/Climber1/Climber22.png" id="2_b5r3k"]
@@ -168,6 +168,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xs5nl"]
+properties/0/path = NodePath("VBoxContainer/Ready:text")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("VBoxContainer/Main:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("VBoxContainer/Abilitys:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("VBoxContainer/Outfits:visible")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+
 [node name="PlayerSelect" type="Panel"]
 custom_minimum_size = Vector2(210, 0)
 anchors_preset = -1
@@ -213,48 +227,141 @@ autoplay = "0"
 speed_scale = 3.0
 offset = Vector2(-298, -93)
 
-[node name="ButtonContainer" type="VBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 325)
+[node name="Main" type="VBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(160, 320)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Abilitys" type="Button" parent="VBoxContainer/Main" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Abilitys"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Outfits" type="Button" parent="VBoxContainer/Main" node_paths=PackedStringArray("parent")]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Outfits"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Abilitys" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(160, 320)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="Glide" type="Button" parent="VBoxContainer/Abilitys" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Glide"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Sky_Lift_Key" type="Button" parent="VBoxContainer/Abilitys" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Sky Lift Key"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Climbers_Hook" type="Button" parent="VBoxContainer/Abilitys" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Climbers Hook"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Drum_Key" type="Button" parent="VBoxContainer/Abilitys" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Drum Key"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Ram" type="Button" parent="VBoxContainer/Abilitys" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Ram"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Back" type="Button" parent="VBoxContainer/Abilitys" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Back"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Outfits" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(160, 320)
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 2
 
-[node name="Climber1" type="Button" parent="VBoxContainer/ButtonContainer" node_paths=PackedStringArray("parent")]
+[node name="Climber1" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Climber 1"
 script = ExtResource("32_dye6n")
 parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Climber2" type="Button" parent="VBoxContainer/ButtonContainer" node_paths=PackedStringArray("parent")]
+[node name="Climber2" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Climber 2"
 script = ExtResource("32_dye6n")
 parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="DonutBaker" type="Button" parent="VBoxContainer/ButtonContainer" node_paths=PackedStringArray("parent")]
+[node name="DonutBaker" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Donut Baker"
 script = ExtResource("32_dye6n")
 parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Builder" type="Button" parent="VBoxContainer/ButtonContainer" node_paths=PackedStringArray("parent")]
+[node name="Builder" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Builder"
 script = ExtResource("32_dye6n")
 parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Augius" type="Button" parent="VBoxContainer/ButtonContainer" node_paths=PackedStringArray("parent")]
+[node name="Augius" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Augius"
+script = ExtResource("32_dye6n")
+parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Back" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Back"
 script = ExtResource("32_dye6n")
 parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
@@ -263,6 +370,9 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 layout_mode = 2
 size_flags_vertical = 4
 text = "Ready?"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_xs5nl")
 
 [connection signal="mouse_entered" from="VBoxContainer/Ready" to="." method="_on_ready_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Ready" to="." method="_on_ready_mouse_exited"]

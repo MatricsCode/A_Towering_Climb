@@ -11,10 +11,9 @@ var all_player_outfits = [
 
 var all_player_abilitys = {
 	"Glide" = preload("res://Scripts/Player/Abilitys/glide.gd"),
-	"Sky Lift Key" = preload("res://Scripts/Player/Abilitys/ability_moduel.gd"),
-	"Strong Legs" = preload("res://Scripts/Player/Abilitys/strong_legs.gd"),
-	"Climbers Hook" = preload("res://Scripts/Player/Abilitys/climbers_hook.gd"), 
-	"Drum Key" = preload("res://Scripts/Player/Abilitys/ability_moduel.gd"),
+	"Sky_Lift_Key" = preload("res://Scripts/Player/Abilitys/ability_moduel.gd"),
+	"Climbers_Hook" = preload("res://Scripts/Player/Abilitys/climbers_hook.gd"), 
+	"Drum_Key" = preload("res://Scripts/Player/Abilitys/ability_moduel.gd"),
 	"Ram" = preload("res://Scripts/Player/Abilitys/ram.gd")
 }
 

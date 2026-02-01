@@ -9,7 +9,7 @@ func _physics_process(_delta):
 	
 	elif in_action and Input.is_action_pressed("Jump") and not player.is_on_floor():
 		$"../../Sprite".play("glide")
-		player.main_vars.gravity += 1
+		player.main_vars.jump_vars.gravity += 1
 		player.velocity.y += 5
 		
 		air_movement()
@@ -32,9 +32,9 @@ func air_movement():
 		current_direction = -1
 	
 	if direction == current_direction:
-		player.velocity.x = lerp(player.velocity.x, player.main_vars.speed * direction, 0.3)
+		player.velocity.x = lerp(player.velocity.x, player.main_vars.ground_vars.speed * direction, 0.3)
 	elif direction != current_direction:
-		player.velocity.x = lerp(player.velocity.x, player.main_vars.speed * direction, 0.05)
+		player.velocity.x = lerp(player.velocity.x, player.main_vars.ground_vars.speed * direction, 0.05)
 
 func turn():
 	if player.velocity.x > 0:
