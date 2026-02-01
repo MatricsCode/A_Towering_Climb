@@ -40,15 +40,20 @@ func _on_host_pressed():
 	peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
 	
 	multiplayer.multiplayer_peer = peer
-	#ms.spawn("res://Scenes/PlayArea.tscn")
-	#MainUI.hide()
-	#$SelectorUI/Camera2D.enabled = false
+	
+	for i in peer.get_peer_map().size() + 1:
+		GlobalScript.player_outfits.append(0)
+	
+	PlayerReadyScreen.start()
+	PlayerReadyScreen.host = true
+	MainUI.hide()
 func join_lobby(id):
 	peer.connect_lobby(id)
 	multiplayer.multiplayer_peer = peer
 	lobby_id = id
+	
+	PlayerReadyScreen.start()
 	MainUI.hide()
-	$SelectorUI/Camera2D.enabled = false
 
 func on_lobby_created(connected, id):
 	if connected:
@@ -95,8 +100,15 @@ func leave_lobby():
 	peer.close()
 	get_child(get_child_count() - 1).queue_free()
 	MainUI.show()
+	PlayerReadyScreen.reset()
 	$SelectorUI/Camera2D.enabled = true
 
 func _on_abilitys_pressed():
 	MainUI.visible = false
 	AbilitySelectorUI.visible = true
+
+
+func _on_ready_pressed():
+	ms.spawn("res://Scenes/PlayArea.tscn")
+	$SelectorUI/Camera2D.enabled = false
+	PlayerReadyScreen.reset()

@@ -54,40 +54,6 @@ corner_radius_bottom_left = 20
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_b5r3k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_800ha")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_nyrgn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_sofy2")
-}],
-"loop": true,
-"name": &"Augius",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_yd8kd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_gwj3k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_nchna")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_luge1")
-}],
-"loop": true,
-"name": &"Builder",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("10_755lh")
 }, {
 "duration": 1.0,
@@ -112,7 +78,7 @@ animations = [{
 "texture": ExtResource("17_vojjo")
 }],
 "loop": true,
-"name": &"Climber1",
+"name": &"0",
 "speed": 5.0
 }, {
 "frames": [{
@@ -141,7 +107,7 @@ animations = [{
 "texture": ExtResource("25_8w0v5")
 }],
 "loop": true,
-"name": &"Climber2",
+"name": &"1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -164,24 +130,67 @@ animations = [{
 "texture": ExtResource("31_cddky")
 }],
 "loop": true,
-"name": &"DonutBaker",
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b5r3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_800ha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nyrgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sofy2")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_yd8kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gwj3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nchna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_luge1")
+}],
+"loop": true,
+"name": &"4",
 "speed": 5.0
 }]
 
 [node name="PlayerSelect" type="Panel"]
 custom_minimum_size = Vector2(210, 0)
+anchors_preset = -1
+anchor_top = -0.432
+anchor_right = 0.182
+anchor_bottom = 0.427
+offset_top = 3.436
+offset_right = 0.335983
+offset_bottom = -0.196014
 theme = SubResource("Theme_uhaop")
 script = ExtResource("1_xs5nl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.241
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -173.0
-offset_bottom = 241.0
+anchor_bottom = 0.958
+offset_top = 44.727
+offset_bottom = -44.774
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(-386, -37)
 theme_override_constants/separation = 20
 alignment = 1
 
@@ -192,22 +201,22 @@ size_flags_vertical = 4
 use_top_left = true
 
 [node name="Background2" type="Panel" parent="VBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(180, 270)
+custom_minimum_size = Vector2(180, 240)
 layout_mode = 2
-theme = SubResource("Theme_uhaop")
 theme_override_styles/panel = SubResource("StyleBoxFlat_jsrcl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/CenterContainer"]
-position = Vector2(0, -32)
+position = Vector2(298, 73)
 sprite_frames = SubResource("SpriteFrames_qon4y")
-animation = &"Climber1"
-autoplay = "Climber1"
+animation = &"4"
+autoplay = "0"
 speed_scale = 3.0
+offset = Vector2(-298, -93)
 
 [node name="ButtonContainer" type="VBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 325)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
 alignment = 2
 
 [node name="Climber1" type="Button" parent="VBoxContainer/ButtonContainer" node_paths=PackedStringArray("parent")]
