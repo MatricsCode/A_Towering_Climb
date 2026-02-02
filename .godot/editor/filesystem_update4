@@ -1,20 +1,11 @@
-res://Scenes/PlayerSelector.tscn
+res://Scenes/Player.tscn
 res://Recourses/Tileset.tres
 res://Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres
 res://Recourses/UI/WinBackground.tres
-res://Scripts/PlayerSelectorUI/player_selector.gd
-res://Scenes/PlayArea.tscn
-res://Scenes/Levels/level_1.tscn
-res://Scenes/Levels/level_2.tscn
-res://Scenes/Box.tscn
-res://Scenes/Moving Platform.tscn
-res://Scenes/LiquidDrum.tscn
-res://Scenes/MainUI.tscn
 res://Scenes/Main.tscn
+res://Scenes/PlayArea.tscn
 res://Scenes/GlobalScript.tscn
-res://Art/Player/GlobalScript.gd
-res://Scenes/Tools/BaseButton.tscn
-res://Scripts/Player/Abilitys/glide.gd
-res://Scripts/Player/Abilitys/climbers_hook.gd
-res://Scenes/Player.tscn
+res://Scenes/PlayerSelector.tscn
+res://Scenes/MainUI.tscn
 res://Scripts/Player/player_script.gd
+res://Scripts/Player/camera.gd

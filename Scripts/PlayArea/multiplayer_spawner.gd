@@ -20,6 +20,7 @@ func spawn_player(data):
 	p.set_multiplayer_authority(data)
 	players[data] = p
 	p.position.y -= 100
+	
 	return p
 func remove_player(data):
 	players[data].queue_free()

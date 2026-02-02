@@ -64,8 +64,6 @@ func button_pressed(name):
 					GlobalScript.player_abilitys.erase(name)
 				
 				return
-	
-		sprite.play(name)
 		
 		for i in outfits_container.get_children():
 			if i.name == name:

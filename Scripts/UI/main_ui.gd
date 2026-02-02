@@ -31,3 +31,23 @@ func _ready():
 func _on_leave_lobby_pressed():
 	get_tree().paused = false
 	GlobalScript.left_lobby.emit()
+
+
+func _on_timer_timeout():
+	var timer = $StartTimer/Timer_text.text
+	
+	var time_left = int(timer) - 1
+	
+	print(time_left)
+	
+	$StartTimer/Timer_text.text = str(time_left)
+	
+	if time_left >= 0:
+		
+		if time_left == 0:
+			$StartTimer/Timer_text.text = "GO!!!"
+		
+		$StartTimer/Timer.start(1)
+	
+	if time_left < 0:
+		$StartTimer.queue_free()

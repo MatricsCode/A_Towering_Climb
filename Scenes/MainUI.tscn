@@ -222,6 +222,31 @@ offset_top = -197.0
 grow_vertical = 0
 script = ExtResource("3_3ngb3")
 
+[node name="StartTimer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Timer" type="Timer" parent="StartTimer"]
+autostart = true
+
+[node name="Timer_text" type="Label" parent="StartTimer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 536.0
+offset_top = 99.5
+offset_right = 576.0
+offset_bottom = 508.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 300
+text = "3"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="WinMenu/VBoxContainer/Again" to="WinMenu" method="_on_again_pressed"]
 [connection signal="pressed" from="WinMenu/VBoxContainer/LeaveLobby" to="." method="_on_leave_lobby_pressed"]
 [connection signal="pressed" from="PauseMenu/Main/Unpause" to="PauseMenu" method="_on_unpause_pressed"]
@@ -232,3 +257,4 @@ script = ExtResource("3_3ngb3")
 [connection signal="value_changed" from="PauseMenu/Settings/VBoxContainer/PlayerAudio/Player" to="PauseMenu/Settings" method="_on_player_value_changed"]
 [connection signal="value_changed" from="PauseMenu/Settings/VBoxContainer/Effects/BG SFX" to="PauseMenu/Settings" method="_on_bg_sfx_value_changed"]
 [connection signal="value_changed" from="PauseMenu/Settings/VBoxContainer/Music/Music" to="PauseMenu/Settings" method="_on_music_value_changed"]
+[connection signal="timeout" from="StartTimer/Timer" to="." method="_on_timer_timeout"]

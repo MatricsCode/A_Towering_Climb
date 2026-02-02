@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://kejlp28p67mq"]
 
-[ext_resource type="Script" uid="uid://kidyfaimhvk1" path="res://Art/Player/GlobalScript.gd" id="1_elpgb"]
+[ext_resource type="Script" uid="uid://kidyfaimhvk1" path="res://Scripts/GlobalScript.gd" id="1_elpgb"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_elpgb"]
 properties/0/path = NodePath(".:player_outfits")
