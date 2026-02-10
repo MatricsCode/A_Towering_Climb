@@ -18,7 +18,7 @@ var all_player_abilitys = {
 var goal_position : Vector2
 var max_abilitys = 3
 
-var player_abilitys = ["Glide", "Sky_Lift_Key", "Ram"]
+var player_abilitys = []
 
 signal winner (name)
 signal reset

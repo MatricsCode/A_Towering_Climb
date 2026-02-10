@@ -8,7 +8,6 @@ const WIN_BACKGROUND = preload("res://Recourses/UI/WinBackground.tres")
 
 func _ready():
 	GlobalScript.winner.connect(won)
-	GlobalScript.reset.connect(reset)
 	
 	reset()
 

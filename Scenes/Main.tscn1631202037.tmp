@@ -140,4 +140,3 @@ text = "Waiting..."
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Refresh" to="." method="_on_refresh_pressed"]
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Abilitys" to="." method="_on_abilitys_pressed"]
 [connection signal="pressed" from="PlayerReadyScreen/VBoxContainer/Ready" to="." method="_on_ready_pressed"]
-[connection signal="pressed" from="PlayerReadyScreen/VBoxContainer/Ready" to="PlayerReadyScreen" method="_on_ready_pressed"]

@@ -9,9 +9,12 @@ var original_size = custom_minimum_size
 var sizer : Tween
 
 func _ready():
-	pressed.connect(has_pressed)
-	mouse_entered.connect(mouse_hover)
-	mouse_exited.connect(mouse_gone)
+	await get_tree().create_timer(0.1).timeout
+	
+	if disabled == false:
+		pressed.connect(has_pressed)
+		mouse_entered.connect(mouse_hover)
+		mouse_exited.connect(mouse_gone)
 	
 
 func has_pressed():

@@ -16,6 +16,7 @@ z_index = 1
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_qioah")
+activator = "Sky_Lift_Key"
 metadata/_custom_type_script = "uid://c3pd3dg0vshs0"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

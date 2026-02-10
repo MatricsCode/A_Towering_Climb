@@ -36,7 +36,7 @@ var shaking_camera = 0
 @onready var cam = $Camera2D 
 @onready var sprite = $Sprite
 @onready var wall_detector = $Detectors/WallDetectors
-@onready var edge_detector = $Detectors/EdgeDetectors
+@onready var edge_detectors = $Detectors/EdgeDetectors
 @onready var sweat = $Sweat
 @onready var interact_detector = $InteractDetector
 @onready var interacting = $Interact
@@ -52,15 +52,14 @@ func _ready(): ## Runns as soon as the player is loaded into the scene
 	
 	current_state = States.PAUSED
 	
-	camera_changing = get_tree().create_tween()
-	
 	print_rich("[color=red][shake level=20][pulse][wave amp=100][b] YOU HAVE DEACTIVATED THE CAMERA START ANIMATION!!!")
 	
-	#cam.position = Vector2(-10000, -10000)
-	#camera_changing.set_ease(Tween.EASE_OUT)
-	#camera_changing.tween_property(cam, "position", Vector2(position.x, position.y), 3)
-	#
-	#await camera_changing.finished
+	camera_changing = get_tree().create_tween()
+	cam.position = Vector2(-10000, -10000)
+	camera_changing.set_ease(Tween.EASE_OUT)
+	camera_changing.tween_property(cam, "position", Vector2(position.x, position.y), 3)
+	
+	await camera_changing.finished
 	
 	if is_multiplayer_authority():
 		$AudioListener2D.make_current()
@@ -124,8 +123,8 @@ func ground():
 	
 	if interactables.is_empty() == false:
 		for i in interactables:
-			for y in GlobalScript.player_abilitys.size():
-				if i.activator == y -1:
+			for y in GlobalScript.player_abilitys:
+				if i.activator == y:
 					interacting.visible = true
 	
 	elif interactables.is_empty() == true:
@@ -133,8 +132,8 @@ func ground():
 	
 	if interactables.is_empty() == false and Input.is_action_just_pressed("Interact"):
 		for i in interactables:
-			for y in GlobalScript.player_abilitys.size():
-				if i.activator == y -1:
+			for y in GlobalScript.player_abilitys:
+				if i.activator == y:
 					i.interact(self)
 	
 	move()
@@ -242,7 +241,7 @@ func climb():
 	
 	## All of the different ways of exiting the current state go here
 	#region Exits
-	if edge_detector.on_edge():
+	if not edge_detectors.on_edge():
 		switch(States.CLIMB, States.GROUND)
 	
 	if Input.is_action_just_pressed("Jump"):
@@ -373,13 +372,7 @@ func switch(old_state, new_state):
 		reset_main_vars(1)
 		reset_main_vars(2)
 		
-		if edge_detector.on_edge():
-			print("On Edge")
-			position.x += 20 * get_sprite_rotation()
-			position.y -= 20
-			velocity = Vector2(0,0)
-		
-		elif Input.is_action_pressed("Jump"):
+		if Input.is_action_pressed("Jump"):
 			main_vars.jump_vars.movement_direction = get_sprite_rotation() * -1
 			
 			velocity.x = main_vars.jump_vars.jump_power * main_vars.jump_vars.movement_direction
@@ -393,7 +386,12 @@ func switch(old_state, new_state):
 		current_state = new_state
 		
 	elif old_state == States.CLIMB and new_state == States.GROUND:
-		position.x += 20 * get_sprite_rotation() * -1
+		if edge_detectors.on_edge():
+			position.x += 20 * get_sprite_rotation() * -1
+		
+		else:
+			position.x += 50 * get_sprite_rotation()
+			position.y -= 50
 		current_state = new_state
 	
 	else:

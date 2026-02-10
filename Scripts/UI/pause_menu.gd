@@ -11,7 +11,6 @@ var won = false
 func _ready():
 	GlobalScript.winner.connect(winner)
 	GlobalScript.paused.connect(change)
-	GlobalScript.reset.connect(reset)
 	
 	for i in get_child_count():
 		get_child(i).visible = false
@@ -31,10 +30,6 @@ func _on_unpause_pressed():
 
 func winner(names):
 	won = true
-
-func reset():
-	won = false
-	move_to_front()
 
 func _on_menu_1_pressed():
 	main.visible = not main.visible

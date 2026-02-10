@@ -16,6 +16,8 @@ var peer = SteamMultiplayerPeer.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalScript.left_lobby.connect(leave_lobby)
+	GlobalScript.reset.connect(reset)
+	
 	
 	ms.spawn_function = spawn_level
 	peer.lobby_created.connect(on_lobby_created)
@@ -38,9 +40,6 @@ func _on_host_pressed():
 	peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
 	
 	multiplayer.multiplayer_peer = peer
-	
-	for i in peer.get_peer_map().size() + 1:
-		GlobalScript.player_outfits.append(0)
 	
 	PlayerReadyScreen.start()
 	PlayerReadyScreen.host = true
@@ -112,3 +111,15 @@ func _on_ready_pressed():
 	ms.spawn("res://Scenes/PlayArea.tscn")
 	$SelectorUI/Camera2D.enabled = false
 	PlayerReadyScreen.reset()
+	
+	peer.set_lobby_joinable(false)
+
+func reset():
+	for i in get_children():
+		if i.get_index() == get_child_count() -1:
+			i.queue_free()
+	
+	peer.set_lobby_joinable(true)
+	
+	$SelectorUI/Camera2D.enabled = true
+	PlayerReadyScreen.start()

@@ -110,7 +110,7 @@ scale = Vector2(1.0046, 0.996686)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_xwc7i")
-activator = 3.0
+activator = "Drum_Key"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -145)

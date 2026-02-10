@@ -21,7 +21,7 @@ func _ready():
 	var selector = ColorRect.new()
 	selector.color = Color.TRANSPARENT
 	selector.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	selector.name = "nulldd"
+	selector.name = "null"
 	selected.add_child(selector)
 	
 	buttons.add_child(create_button("Back", "Back"))

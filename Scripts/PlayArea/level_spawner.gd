@@ -9,8 +9,6 @@ var previouse_level
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GlobalScript.reset.connect(_reset)
-	
 	current_level = choose_level()
 	
 	level_scene = levels[current_level]
@@ -19,14 +17,6 @@ func _ready():
 	
 	if is_multiplayer_authority():
 		spawn()
-
-func _reset():
-	for i in get_children():
-		i.queue_free()
-	
-	current_level = choose_level()
-	level_scene = levels[current_level]
-	spawn()
   
 func spawn_level(_data):
 	var p = level_scene.instantiate()
