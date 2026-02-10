@@ -1,11 +1,21 @@
-res://Scenes/Player.tscn
+res://Scenes/Main.tscn
 res://Recourses/Tileset.tres
 res://Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres
 res://Recourses/UI/WinBackground.tres
-res://Scenes/Main.tscn
 res://Scenes/PlayArea.tscn
+res://Scenes/Player.tscn
 res://Scenes/GlobalScript.tscn
 res://Scenes/PlayerSelector.tscn
 res://Scenes/MainUI.tscn
+res://Scenes/LiquidDrum.tscn
 res://Scripts/Player/player_script.gd
-res://Scripts/Player/camera.gd
+res://Scripts/UI/height_leaderboard.gd
+res://Scripts/Interactables/BaseInteractables.gd
+res://Scenes/Moving Platform.tscn
+res://Scripts/GlobalScript.gd
+res://Scripts/Goal/goal.gd
+res://Scripts/UI/win_menu.gd
+res://Scripts/UI/main_ui.gd
+res://Scripts/Player/Abilitys/ram.gd
+res://Scripts/Player/Abilitys/glide.gd
+res://Scripts/UI/pause_menu.gd

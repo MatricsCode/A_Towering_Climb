@@ -8,7 +8,7 @@ const MAX_GRAVITY = 10000
 
 ## --- Variables ---
 var current_state
-var current_outfit = 0
+var player = 0
 
 var sounds = {
 	"Walk" : preload("res://Sound Effects/Walking.mp3"),
@@ -17,7 +17,7 @@ var sounds = {
 	"Climb" : preload("res://Sound Effects/Climb.mp3"),}
 var main_vars = { ## Main ariables
 	ground_vars = {speed = 600},
-	jump_vars = {jump_power = 750, jump_increase = 1, gravity = 0, movement_direction = 0}, # Determins how fast the player increases in jump powe
+	jump_vars = {jump_power = 1000, jump_increase = 1, gravity = 0, movement_direction = 0}, # Determins how fast the player increases in jump powe
 	climbing_vars = {climbing_speed = 300},
 	
 	switching_vars = {switch_again = true},
@@ -29,13 +29,13 @@ var camera_changing : Tween
 
 var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
 var interactables = []
+var shaking_camera = 0
 
 ## --- Nodes ---
 #region Nodes
 @onready var cam = $Camera2D 
 @onready var sprite = $Sprite
 @onready var wall_detector = $Detectors/WallDetectors
-@onready var bump_detector = $Detectors/BumpDetectors
 @onready var edge_detector = $Detectors/EdgeDetectors
 @onready var sweat = $Sweat
 @onready var interact_detector = $InteractDetector
@@ -46,16 +46,21 @@ var interactables = []
 #region Inbuilt Functions
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scene
+	switch_costume()
+	
 	cam.enabled = is_multiplayer_authority() ## Checks if you are this player and grants/denies you the camera from this
 	
 	current_state = States.PAUSED
 	
-	cam.position = Vector2(-10000, -10000)
 	camera_changing = get_tree().create_tween()
-	camera_changing.set_ease(Tween.EASE_OUT)
-	camera_changing.tween_property(cam, "position", Vector2(position.x, position.y), 3)
 	
-	await camera_changing.finished
+	print_rich("[color=red][shake level=20][pulse][wave amp=100][b] YOU HAVE DEACTIVATED THE CAMERA START ANIMATION!!!")
+	
+	#cam.position = Vector2(-10000, -10000)
+	#camera_changing.set_ease(Tween.EASE_OUT)
+	#camera_changing.tween_property(cam, "position", Vector2(position.x, position.y), 3)
+	#
+	#await camera_changing.finished
 	
 	if is_multiplayer_authority():
 		$AudioListener2D.make_current()
@@ -65,6 +70,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scene
 	main_var_reset = main_vars.values() ## Loads all the values of main vars into main var reset, so that they are stored seperatly
 	
 	GlobalScript.paused.connect(pause_switch)
+	GlobalScript.winner.connect(won)
 
 func _physics_process(_delta):  ## Runs every physics frames
 	if not is_multiplayer_authority():
@@ -93,6 +99,12 @@ func _physics_process(_delta):  ## Runs every physics frames
 	if camera_changing.is_running() == false and current_state != States.PAUSED:
 		camera_move()
 	
+	if shaking_camera != 0:
+		camera_shake(shaking_camera)
+	
+	if shaking_camera == 0:
+		cam.offset = lerp(cam.offset, Vector2.ZERO, 0.002)
+	
 	move_and_slide()
 #endregion
 
@@ -111,14 +123,19 @@ func ground():
 		play_sound(sounds["Walk"])
 	
 	if interactables.is_empty() == false:
-		interacting.visible = true
+		for i in interactables:
+			for y in GlobalScript.player_abilitys.size():
+				if i.activator == y -1:
+					interacting.visible = true
 	
 	elif interactables.is_empty() == true:
 		interacting.visible = false
 	
 	if interactables.is_empty() == false and Input.is_action_just_pressed("Interact"):
 		for i in interactables:
-			i.interact(self)
+			for y in GlobalScript.player_abilitys.size():
+				if i.activator == y -1:
+					i.interact(self)
 	
 	move()
 	turn()
@@ -164,16 +181,19 @@ func air():
 			else:
 				velocity.x -= main_vars.jump_vars.jump_power / 100
 	
+	## Variable Jump Height is in Physiscs Process!
+	
 	var drop = func drop():
 		if velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
 			velocity.y += main_vars.jump_vars.gravity
 			main_vars.jump_vars.gravity += 1
 		
-		if velocity.y > -300:
-			main_vars.jump_vars.gravity += 9
+		#if velocity.y > -500:
+		#	main_vars.jump_vars.gravity += 10
+
 		
-		if velocity.y > -250 and velocity.y < 0:
-			velocity.y = 100
+		if velocity.y > -500 and velocity.y < 0:
+			velocity.y = 100 
 	#endregion
 	
 	## All of the different actions possible in the current state go here
@@ -259,6 +279,7 @@ func overidden():
 #endregion
 
 ## --- Signals ---
+
 #region Interact Detector Signals
 func _on_interact_detector_body_entered(body):
 	interactables.append(body)
@@ -269,6 +290,7 @@ func _on_interact_detector_body_exited(body):
 
 
 ## ---- Other Functions ----
+
 #region Main Other Functions
 func move():
 	var direction = Input.get_axis("Left", "Right")
@@ -295,6 +317,11 @@ func get_sprite_rotation():
 		return -1
 
 func switch(old_state, new_state):
+	if old_state == States.OVERIDDEN:
+		current_state = new_state
+		main_vars.jump_vars.gravity = 0
+		return
+	
 	if main_vars.switching_vars.switch_again == false:
 		return
 	
@@ -325,12 +352,12 @@ func switch(old_state, new_state):
 		
 		sprite.play("pre_jump")
 		
-		camera_zoom(true, 0.1)
+		shaking_camera = 2
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "velocity", Vector2(0,0), 0.1)
 		
 		await get_tree().create_timer(0.1).timeout
-		camera_zoom(false, 0.1)
+		shaking_camera = 0
 		
 		current_state = States.EMPTY
 		
@@ -376,35 +403,6 @@ func switch(old_state, new_state):
 	
 	main_vars.switching_vars.switch_again = true
 
-func camera_zoom(hold_on : bool, duration := 0.0, wave := true):
-	var background = get_tree().get_nodes_in_group("Background")
-	
-	if camera_changing:
-		camera_changing.kill()
-	
-	if hold_on:
-		camera_changing = get_tree().create_tween()
-		
-		camera_changing.tween_property(cam, "zoom", Vector2(0.6, 0.6), duration)
-		if wave:
-			camera_changing.set_parallel(true)
-			camera_changing.tween_property(background[0], "rotation", background_rotation(), duration)
-		
-		main_vars.background_wiggle_vars.background_changing = true
-		
-	
-	else:
-		camera_changing = get_tree().create_tween()
-		
-		camera_changing.tween_property(cam, "zoom", Vector2(0.5, 0.5), duration)
-		if wave:
-			camera_changing.set_parallel(true)
-			camera_changing.tween_property(background[0], "rotation", 0, duration)
-		
-		await camera_changing.finished
-		
-		main_vars.background_wiggle_vars.background_changing = false
-
 func camera_move():
 	var input = Input.get_vector("Left", "Right", "Up", "Down")
 	
@@ -416,18 +414,21 @@ func camera_move():
 		multiplier = 0.75
 	
 	if input.y < 0:
-		cam.position.y = lerp(cam.position.y, $CameraPositions/Up.position.y * multiplier, 0.05)
+		cam.position.y = lerp(cam.position.y, $CameraPositions/Up.position.y * multiplier, 0.01)
 	elif input.y > 0:
-		cam.position.y = lerp(cam.position.y, $CameraPositions/Down.position.y * multiplier, 0.05)
+		cam.position.y = lerp(cam.position.y, $CameraPositions/Down.position.y * multiplier, 0.01)
 	else:
-		cam.position.y = lerp(cam.position.y, $CameraPositions/Middle.position.y * multiplier, 0.05)
+		cam.position.y = lerp(cam.position.y, $CameraPositions/Middle.position.y * multiplier, 0.02)
 	
 	if input.x < 0:
-		cam.position.x = lerp(cam.position.x, $CameraPositions/Left.position.x * multiplier, 0.05)
+		cam.position.x = lerp(cam.position.x, $CameraPositions/Left.position.x * multiplier, 0.01)
 	elif input.x > 0:
-		cam.position.x = lerp(cam.position.x, $CameraPositions/Right.position.x * multiplier, 0.05)
+		cam.position.x = lerp(cam.position.x, $CameraPositions/Right.position.x * multiplier, 0.01)
 	else:
-		cam.position.x = lerp(cam.position.x, $CameraPositions/Middle.position.x * multiplier, 0.05)
+		cam.position.x = lerp(cam.position.x, $CameraPositions/Middle.position.x * multiplier, 0.02)
+
+func camera_shake(shake_intensity : int):
+	cam.offset = Vector2(randf_range(-shake_intensity * 10, shake_intensity * 10), randf_range(-shake_intensity * 10, shake_intensity * 10))
 
 func overide(overidden2 : bool):
 	if overidden2:
@@ -451,7 +452,7 @@ func pause_switch():
 	if current_state != States.PAUSED:
 		switch(current_state, States.PAUSED)
 	else:
-		switch(States.PAUSED, States.GROUND)
+		switch(States.PAUSED, States.AIR)
 
 func background_rotation():
 	if velocity.x < 600 and velocity.x > -600:
@@ -459,8 +460,12 @@ func background_rotation():
 	elif velocity.x >= 600 or velocity.x <= -600:
 		return velocity.x / 6000
 
+func won(winners_name):
+	switch(current_state, States.PAUSED)
+	camera_changing = get_tree().create_tween()
+	camera_changing.tween_property(cam, "position", GlobalScript.goal_position, 3)
+
 func switch_costume():
-	if is_multiplayer_authority():
-		current_outfit += 1
-		sprite.sprite_frames = GlobalScript.player_outfits[current_outfit]
+	sprite.sprite_frames = GlobalScript.all_player_outfits[GlobalScript.player_outfits[player -1]]
+	
 #endregion

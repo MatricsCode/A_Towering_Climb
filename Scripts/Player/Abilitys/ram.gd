@@ -4,15 +4,15 @@ var timer = 0
 
 var leaving = false
 
+
 func _physics_process(delta):
 	if Input.is_action_pressed("Ram") and player.current_state == activation_state:
-		
 		leaving = false
 		
 		var direction = player.get_sprite_rotation()
 		
-		if player.velocity.x * direction < 0:
-			player.velocity.x *= direction
+		#if player.velocity.x * direction < 0:
+			#player.velocity.x *= direction
 		
 		player.velocity.x = 500 * direction
 		$"../../Sprite".play("ram")
@@ -22,15 +22,11 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Ram") and in_action and timer < 10:
 		timer += 0.05
 	
-	if player.bump_detectors.bumped() and in_action:
+	if player.is_on_wall() and in_action:
 		leaving = true
 		
 		player.position.y += -50
 		player.position.x += -50 * player.get_sprite_rotation()
-		
-		player.camera_zoom(true, 0.1)
-		await get_tree().create_timer(0.1).timeout
-		player.camera_zoom(false, 0.05)
 		
 		player.velocity.y = timer * -150
 		player.velocity.x = timer * -500 * player.get_sprite_rotation()

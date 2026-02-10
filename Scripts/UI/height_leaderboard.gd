@@ -19,8 +19,10 @@ func _physics_process(_delta):
 			height_representor.step = 0.01
 			height_representor.editable = false
 			height_representor.tick_count = 5
-			height_representor.theme = themes[0]
-			height_representor.max_value = -1 * (GlobalScript.goal_position_y - 50)
+			
+			height_representor.theme = themes[GlobalScript.player_outfits[i]]
+			
+			height_representor.max_value = -1 * (GlobalScript.goal_position.y - 50)
 			height_representor.min_value = 0
 			
 			children.append(height_representor)

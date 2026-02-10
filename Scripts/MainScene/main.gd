@@ -34,8 +34,6 @@ func spawn_level(data):
 	return a
 
 func _on_host_pressed():
-	print(peer.get_lobby_id())
-	
 	#if peer.get_lobby_id() == 0:
 	peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
 	

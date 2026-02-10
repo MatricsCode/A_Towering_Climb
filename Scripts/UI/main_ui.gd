@@ -5,9 +5,14 @@ var ability_list = [preload("res://Art/Abilitys/Abilitys3.png"),
 	preload("res://Art/Abilitys/Abilitys5.png"),
 	preload("res://Art/Abilitys/Abilitys4.png"), 
 	preload("res://Art/Abilitys/Abilitys1.png")]
+@onready var timer = $StartTimer/Timer
+@onready var timer_text = $StartTimer/Timer_text
+var time_left = 3
 
 
 func _ready():
+	timer_text.text = "3"
+	
 	for i in get_child_count(true):
 		var child = get_child(i)
 		child.visible = true
@@ -17,6 +22,8 @@ func _ready():
 		ability.text = i
 		ability.name = i
 		
+		$Abilitys.add_child(ability)
+		
 		#var picture = Sprite2D.new()
 		#
 		#for y in GlobalScript.all_player_abilitys.size():
@@ -24,7 +31,6 @@ func _ready():
 			#if keys[y] == i:
 				#picture.texture = ability_list[y]
 		
-		$Abilitys.add_child(ability)
 		#picture.position.x = 75
 		#picture.position.y = 140 * ($Abilitys.get_child_count() -1)
 
@@ -34,20 +40,13 @@ func _on_leave_lobby_pressed():
 
 
 func _on_timer_timeout():
-	var timer = $StartTimer/Timer_text.text
+	time_left -= 1
+	timer_text.text = str(time_left)
 	
-	var time_left = int(timer) - 1
-	
-	print(time_left)
-	
-	$StartTimer/Timer_text.text = str(time_left)
-	
-	if time_left >= 0:
-		
-		if time_left == 0:
-			$StartTimer/Timer_text.text = "GO!!!"
-		
-		$StartTimer/Timer.start(1)
-	
-	if time_left < 0:
-		$StartTimer.queue_free()
+	if time_left > 0:
+		timer.start()
+	elif time_left == 0:
+		timer_text.text = "GO!"
+		timer.start()
+	else:
+		timer_text.text = ""

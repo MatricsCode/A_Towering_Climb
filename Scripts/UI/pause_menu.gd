@@ -34,6 +34,7 @@ func winner(names):
 
 func reset():
 	won = false
+	move_to_front()
 
 func _on_menu_1_pressed():
 	main.visible = not main.visible

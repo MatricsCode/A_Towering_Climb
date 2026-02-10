@@ -21,6 +21,8 @@ func spawn_player(data):
 	players[data] = p
 	p.position.y -= 100
 	
+	p.player = data
+	
 	return p
 func remove_player(data):
 	players[data].queue_free()

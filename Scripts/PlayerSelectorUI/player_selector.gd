@@ -27,8 +27,6 @@ func _physics_process(delta):
 
 
 func button_pressed(name):
-	print(name)
-	
 	if name != "Back":
 		ready_button.text = "Selecting Stuff"
 	
@@ -68,8 +66,6 @@ func button_pressed(name):
 		for i in outfits_container.get_children():
 			if i.name == name:
 				GlobalScript.player_outfits[current_player] = i.get_index()
-	
-	print(GlobalScript.player_abilitys)
 
 
 
