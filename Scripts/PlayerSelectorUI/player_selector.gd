@@ -13,11 +13,12 @@ var main_player = false
 @onready var sprite = $VBoxContainer/CenterContainer/AnimatedSprite2D
 
 @export var outfit = 0
-
-@export var text = "Ready?"
+@export var text = "Ready?" 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	
 	await get_tree().create_timer(0.1).timeout
 	
 	if main_player == false:

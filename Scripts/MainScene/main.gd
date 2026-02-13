@@ -15,6 +15,10 @@ var peer = SteamMultiplayerPeer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	print_rich("[color=red][shake level=20][wave amp=100][b] Multiplayer Syncronisers only sync from the Host!!!")
+	print_rich("[color=red][shake level=20][wave amp=100][b] You need to spawn the PlayerSelectors using a Multiplayer Spawner!!!")
+	
 	GlobalScript.left_lobby.connect(leave_lobby)
 	GlobalScript.reset.connect(reset)
 	

@@ -52,8 +52,6 @@ func _ready(): ## Runns as soon as the player is loaded into the scene
 	
 	current_state = States.PAUSED
 	
-	print_rich("[color=red][shake level=20][pulse][wave amp=100][b] YOU HAVE DEACTIVATED THE CAMERA START ANIMATION!!!")
-	
 	camera_changing = get_tree().create_tween()
 	cam.position = Vector2(-10000, -10000)
 	camera_changing.set_ease(Tween.EASE_OUT)
