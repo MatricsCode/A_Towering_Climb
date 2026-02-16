@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://qcca3v04ibwv"]
+[gd_scene load_steps=9 format=3 uid="uid://qcca3v04ibwv"]
 
 [ext_resource type="Script" uid="uid://cwnojcoqhgt44" path="res://Scripts/Interactables/liquid_drum.gd" id="1_xwc7i"]
 [ext_resource type="Texture2D" uid="uid://7ouqnqymspnj" path="res://Art/Liquid Drum/Industrial Drum4.png" id="2_da04d"]
+[ext_resource type="Texture2D" uid="uid://bnfx2kurr2dqv" path="res://Art/Liquid Drum/Industrial Drum5.png" id="2_kexb0"]
 [ext_resource type="Texture2D" uid="uid://b05n87ae7e08t" path="res://Art/Liquid Drum/Industrial Drum1.png" id="2_l6euv"]
 [ext_resource type="Texture2D" uid="uid://bn5fnuhqtrrx8" path="res://Art/Liquid Drum/Industrial Drum2.png" id="3_da04d"]
 [ext_resource type="Texture2D" uid="uid://6rhj6bm2oipt" path="res://Art/Liquid Drum/Industrial Drum3.png" id="4_kexb0"]
@@ -10,7 +11,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_da04d")
+"texture": ExtResource("2_kexb0")
 }],
 "loop": false,
 "name": &"Empty",
@@ -18,76 +19,52 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_da04d")
+"texture": ExtResource("4_kexb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_da04d")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_kexb0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_da04d")
+"texture": ExtResource("2_da04d")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_kexb0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_da04d")
+"texture": ExtResource("2_da04d")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_kexb0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_da04d")
+"texture": ExtResource("2_da04d")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_kexb0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_da04d")
+"texture": ExtResource("2_da04d")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_kexb0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_da04d")
+"texture": ExtResource("2_da04d")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_kexb0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_da04d")
+"texture": ExtResource("2_da04d")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_kexb0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_da04d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_kexb0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_da04d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_kexb0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_da04d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_kexb0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_da04d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_kexb0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_da04d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_kexb0")
+"texture": ExtResource("2_da04d")
 }],
 "loop": false,
 "name": &"Emptying",
@@ -100,10 +77,18 @@ animations = [{
 "loop": false,
 "name": &"Full",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_da04d")
+}],
+"loop": true,
+"name": &"Interactable",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3yqq0"]
-size = Vector2(250, 40)
+size = Vector2(250.423, 40)
 
 [node name="Liquid Drum" type="StaticBody2D"]
 scale = Vector2(1.0046, 0.996686)
@@ -113,18 +98,20 @@ script = ExtResource("1_xwc7i")
 activator = "Drum_Key"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -145)
+position = Vector2(-144.336, -259.861)
 sprite_frames = SubResource("SpriteFrames_jon1u")
 animation = &"Full"
+centered = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, -20)
+position = Vector2(0.211525, 20.133)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3yqq0")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -20)
+position = Vector2(0, 20.133)
 scale = Vector2(0.599999, 1)
 shape = SubResource("RectangleShape2D_3yqq0")

@@ -1,11 +1,11 @@
 extends Node
 
-var player_positions_y : Array[float]
 @export var player_outfits : Array[int]
 
 var all_player_outfits = [
 	preload("res://Recourses/PlayerSprites/Climber1.tres"),
 	preload("res://Recourses/PlayerSprites/Climber2.tres"),
+	preload("res://Recourses/PlayerSprites/Baker.tres"),
 ]
 var all_player_abilitys = {
 	"Glide" = preload("res://Scripts/Player/Abilitys/glide.gd"),
@@ -18,7 +18,9 @@ var all_player_abilitys = {
 var goal_position : Vector2
 var max_abilitys = 3
 
-var player_abilitys = []
+var player_abilitys = ["Glide", "Sky_Lift_Key", "Ram"]
+
+var player_positions_y : Array[float]
 
 signal winner (name)
 signal reset
@@ -28,3 +30,6 @@ signal paused
 func _physics_process(delta):
 	if Input.is_action_pressed("Dev1"):
 		winner.emit("Dave")
+
+func reset_now():
+	player_abilitys = [""]

@@ -5,6 +5,12 @@ extends Interactable
 
 var controler = preload("res://Scripts/LiquidDrum/slip_overider.gd")
 
+func entered(has_entered : bool):
+	if has_entered:
+		sprite.play("Interactable")
+	else:
+		sprite.play("Full")
+
 func action():
 	sprite.play("Emptying")
 	
@@ -18,26 +24,23 @@ func action():
 	area.body_exited.connect(player_slip_remove)
 
 func player_slip_add(body):
-	var key_search = body.get_children(true)
-	
-	var key = GlobalScript.all_player_abilitys.keys()
-	
 	var upgrade_node = null
 	
-	for i in key_search:
-		if i.name == "Upgrades":
-			upgrade_node = i
-	
-	for i in upgrade_node.get_children():
-		if i.name == key[4]:
-			return
-	
-	var slip_controler = Node.new()
-	slip_controler.name = "slip_overider"
-	slip_controler.set_script(controler)
-	
-	slip_controler.player = upgrade_node.main_player
-	upgrade_node.add_child(slip_controler)
+	if body.player == 0:
+		for i in GlobalScript.player_abilitys:
+			if i == GlobalScript.all_player_abilitys[3]:
+				return
+		
+		for i in body.get_children(true):
+			if i.name == "Upgrade":
+				upgrade_node = i
+		
+		var slip_controler = Node.new()
+		slip_controler.name = "slip_overider"
+		slip_controler.set_script(controler)
+		
+		slip_controler.player = upgrade_node.main_player
+		upgrade_node.add_child(slip_controler)
 
 func player_slip_remove(body):
 	var key_search = body.get_children(true)

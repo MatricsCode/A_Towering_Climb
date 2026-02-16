@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cam0eoq23msfi"]
+[gd_scene load_steps=36 format=3 uid="uid://cam0eoq23msfi"]
 
 [ext_resource type="Script" uid="uid://dw4ltxmxmvvfq" path="res://Scripts/PlayerSelectorUI/player_selector.gd" id="1_xs5nl"]
 [ext_resource type="Texture2D" uid="uid://b1b6lvxqcotts" path="res://Art/Player/Climber1/Climber22.png" id="2_b5r3k"]
@@ -17,20 +17,17 @@
 [ext_resource type="Texture2D" uid="uid://d0rkw81b6di2" path="res://Art/Player/Climber1/Climber6.png" id="15_yhnkq"]
 [ext_resource type="Texture2D" uid="uid://c8p2s1xdfqe06" path="res://Art/Player/Climber1/Climber7.png" id="16_rkvwc"]
 [ext_resource type="Texture2D" uid="uid://bwnfnfpusry3s" path="res://Art/Player/Climber1/Climber8.png" id="17_vojjo"]
+[ext_resource type="Texture2D" uid="uid://dt2ju2vngh7gp" path="res://Art/Player/Baker/Baker1.png" id="18_0fie2"]
 [ext_resource type="Texture2D" uid="uid://oxp7mb3jb8" path="res://Art/Player/Climber2/Climber1.png" id="18_2suyp"]
 [ext_resource type="Texture2D" uid="uid://cb7ugnetq4uar" path="res://Art/Player/Climber2/Climber2.png" id="19_1mebd"]
+[ext_resource type="Texture2D" uid="uid://b2b6dnpdgaxl" path="res://Art/Player/Baker/Baker2.png" id="19_ichg1"]
+[ext_resource type="Texture2D" uid="uid://dy4g034yesbgx" path="res://Art/Player/Baker/Baker3.png" id="20_802n4"]
 [ext_resource type="Texture2D" uid="uid://dr7b0lc1i6rst" path="res://Art/Player/Climber2/Climber3.png" id="20_htean"]
 [ext_resource type="Texture2D" uid="uid://dysrifmtfwj84" path="res://Art/Player/Climber2/Climber4.png" id="21_4kbex"]
 [ext_resource type="Texture2D" uid="uid://bisc4g1tst550" path="res://Art/Player/Climber2/Climber5.png" id="22_jx0fm"]
 [ext_resource type="Texture2D" uid="uid://dqyq32de2mie" path="res://Art/Player/Climber2/Climber6.png" id="23_7ub4j"]
 [ext_resource type="Texture2D" uid="uid://d0fvd5f0eamo4" path="res://Art/Player/Climber2/Climber7.png" id="24_g52h1"]
 [ext_resource type="Texture2D" uid="uid://rldeh7j488l6" path="res://Art/Player/Climber2/Climber8.png" id="25_8w0v5"]
-[ext_resource type="Texture2D" uid="uid://4goq44tv87vg" path="res://Art/Player/Climber2/Climber16.png" id="26_melfk"]
-[ext_resource type="Texture2D" uid="uid://bfk3tud6ipqaj" path="res://Art/Player/Climber2/Climber17.png" id="27_s6r65"]
-[ext_resource type="Texture2D" uid="uid://ddwocgsluoxds" path="res://Art/Player/Climber2/Climber18.png" id="28_2ka4b"]
-[ext_resource type="Texture2D" uid="uid://6376djgsneho" path="res://Art/Player/Climber2/Climber19.png" id="29_qqbyb"]
-[ext_resource type="Texture2D" uid="uid://ctpby74ckspso" path="res://Art/Player/Climber2/Climber20.png" id="30_2jwfs"]
-[ext_resource type="Texture2D" uid="uid://dui537e1l22pk" path="res://Art/Player/Climber2/Climber21.png" id="31_cddky"]
 [ext_resource type="Script" uid="uid://cncyjq3g5cty0" path="res://Scripts/Tools/base_button.gd" id="32_dye6n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0wkq"]
@@ -112,22 +109,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("26_melfk")
+"texture": ExtResource("18_0fie2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("27_s6r65")
+"texture": ExtResource("19_ichg1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("28_2ka4b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_qqbyb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_2jwfs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_cddky")
+"texture": ExtResource("20_802n4")
 }],
 "loop": true,
 "name": &"2",
@@ -170,23 +158,25 @@ animations = [{
 
 [sub_resource type="Theme" id="Theme_xs5nl"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xs5nl"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0fie2"]
 properties/0/path = NodePath(".:text")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 properties/1/path = NodePath(".:outfit")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath("VBoxContainer/CenterContainer/AnimatedSprite2D:animation")
+properties/2/spawn = true
+properties/2/replication_mode = 2
 
 [node name="PlayerSelect" type="Panel"]
 custom_minimum_size = Vector2(210, 0)
 anchors_preset = -1
-anchor_top = -0.432
-anchor_right = 0.182
-anchor_bottom = 0.427
-offset_top = 3.436
-offset_right = 0.335983
-offset_bottom = -0.196014
+anchor_top = -0.001
+anchor_bottom = -0.001
+offset_top = 0.148001
+offset_right = 210.0
+offset_bottom = 553.148
 theme = SubResource("Theme_uhaop")
 script = ExtResource("1_xs5nl")
 
@@ -218,8 +208,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jsrcl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/CenterContainer"]
 position = Vector2(298, 73)
 sprite_frames = SubResource("SpriteFrames_qon4y")
-animation = &"1"
+animation = &"2"
 autoplay = "0"
+frame_progress = 0.634755
 speed_scale = 3.0
 offset = Vector2(-298, -93)
 
@@ -311,12 +302,12 @@ theme_override_constants/separation = 20
 layout_mode = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_xs5nl")
-color = Color(1, 0, 0, 1)
+color = Color(0, 1, 0, 1)
 
 [node name="Sky_Lift_Key" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(1, 0, 0, 1)
+color = Color(0, 1, 0, 1)
 
 [node name="Climbers_Hook" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
 layout_mode = 2
@@ -331,7 +322,7 @@ color = Color(1, 0, 0, 1)
 [node name="Ram" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(1, 0, 0, 1)
+color = Color(0, 1, 0, 1)
 
 [node name="Outfits" type="VBoxContainer" parent="VBoxContainer"]
 visible = false
@@ -391,7 +382,7 @@ size_flags_vertical = 4
 text = "Ready?"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_xs5nl")
+replication_config = SubResource("SceneReplicationConfig_0fie2")
 
 [connection signal="mouse_entered" from="VBoxContainer/Ready" to="." method="_on_ready_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Ready" to="." method="_on_ready_mouse_exited"]

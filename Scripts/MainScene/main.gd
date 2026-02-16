@@ -16,8 +16,8 @@ var peer = SteamMultiplayerPeer.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	print_rich("[color=red][shake level=20][wave amp=100][b] Multiplayer Syncronisers only sync from the Host!!!")
-	print_rich("[color=red][shake level=20][wave amp=100][b] You need to spawn the PlayerSelectors using a Multiplayer Spawner!!!")
+	print_rich("[wave amps=100 frequency=20][color=red][tornado strength = 10] The PlayerSelection Boxes don't apear where they should!!!!")
+	
 	
 	GlobalScript.left_lobby.connect(leave_lobby)
 	GlobalScript.reset.connect(reset)
@@ -31,9 +31,12 @@ func _ready():
 var time = 0
 func _physics_process(delta):
 	if lobby_id == 0:
-		position.x += 1
+		position.x += 10
 		time += 0.1
-		position.y = sin(time) * 2
+		position.y = sin(time) * 10
+	else:
+		position.x = 0
+		position.y = 0
 
 func spawn_level(data):
 	var a = (load(data) as PackedScene).instantiate()
@@ -109,7 +112,6 @@ func leave_lobby():
 func _on_abilitys_pressed():
 	MainUI.visible = false
 	AbilitySelectorUI.visible = true
-
 
 func _on_ready_pressed():
 	ms.spawn("res://Scenes/PlayArea.tscn")

@@ -1,0 +1,139 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvgxox4xf14tm"]
+
+[ext_resource type="Script" uid="uid://cwr65tthifp3p" path="res://Scripts/MainScene/main.gd" id="1_idj7w"]
+[ext_resource type="Script" uid="uid://c5g2d6i58r61p" path="res://Scripts/MainScene/steam.gd" id="1_r150o"]
+[ext_resource type="PackedScene" uid="uid://cbnyp3hyfqj53" path="res://Scenes/Background.tscn" id="3_kln2b"]
+[ext_resource type="Script" uid="uid://dxnq6ejhtqvp2" path="res://Scripts/MainScene/player_ready_up.gd" id="5_pbw6q"]
+[ext_resource type="Script" uid="uid://bclb8lmymae8s" path="res://Scripts/MainScene/ability_selector_ui.gd" id="6_jw32o"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_idj7w")
+
+[node name="Steam" type="Node" parent="."]
+script = ExtResource("1_r150o")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_kln2b")]
+
+[node name="SelectorUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 47.0
+offset_top = -2121.0
+offset_right = 1199.0
+offset_bottom = -1473.0
+metadata/_edit_group_ = true
+
+[node name="HSplitContainer" type="HSplitContainer" parent="SelectorUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 576
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectorUI/HSplitContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Host" type="Button" parent="SelectorUI/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Host
+"
+
+[node name="Refresh" type="Button" parent="SelectorUI/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Refresh
+"
+
+[node name="Abilitys" type="Button" parent="SelectorUI/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Abilitys
+"
+
+[node name="LobbyContainer" type="ScrollContainer" parent="SelectorUI/HSplitContainer"]
+layout_mode = 2
+
+[node name="Lobbies" type="VBoxContainer" parent="SelectorUI/HSplitContainer/LobbyContainer"]
+layout_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="SelectorUI"]
+position = Vector2(576, 324)
+
+[node name="AbilitySelector UI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 47.0
+offset_top = -2121.0
+offset_right = 1199.0
+offset_bottom = -1473.0
+script = ExtResource("6_jw32o")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="AbilitySelector UI"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 768
+
+[node name="Buttons" type="VBoxContainer" parent="AbilitySelector UI/HSplitContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Selected" type="VBoxContainer" parent="AbilitySelector UI/HSplitContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PlayerReadyScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 47.0
+offset_top = -2121.0
+offset_right = 1199.0
+offset_bottom = -1473.0
+script = ExtResource("5_pbw6q")
+
+[node name="Background" type="Panel" parent="PlayerReadyScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ready" type="Button" parent="PlayerReadyScreen"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+disabled = true
+text = "Waiting..."
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="PlayerReadyScreen"]
+spawn_path = NodePath(".")
+
+[connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Refresh" to="." method="_on_refresh_pressed"]
+[connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Abilitys" to="." method="_on_abilitys_pressed"]
+[connection signal="pressed" from="PlayerReadyScreen/Ready" to="." method="_on_ready_pressed"]
+[connection signal="pressed" from="PlayerReadyScreen/Ready" to="PlayerReadyScreen" method="_on_ready_pressed"]

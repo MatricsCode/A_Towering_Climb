@@ -1,20 +1,77 @@
-[gd_scene load_steps=4 format=3 uid="uid://j0ml6gtwkiec"]
+[gd_scene load_steps=14 format=3 uid="uid://j0ml6gtwkiec"]
 
 [ext_resource type="Script" uid="uid://ufse1qjko4yu" path="res://Scripts/Box/box.gd" id="1_42nxc"]
-[ext_resource type="Texture2D" uid="uid://cpynj37pxhbjv" path="res://Art/Box/Box.png" id="2_mckbn"]
+[ext_resource type="Texture2D" uid="uid://cjj0ri1r83hx8" path="res://Art/Box/Wall1.png" id="2_unl27"]
+[ext_resource type="Texture2D" uid="uid://cwampl06rfhg" path="res://Art/Box/Wall2.png" id="3_lyd2v"]
+[ext_resource type="Texture2D" uid="uid://vwg6wc8o8hqh" path="res://Art/Box/Wall3.png" id="4_l17nc"]
+[ext_resource type="Texture2D" uid="uid://b5wdfj6rb6rlj" path="res://Art/Box/Wall4.png" id="5_tv6re"]
+[ext_resource type="Texture2D" uid="uid://b4caf3cr0ljxc" path="res://Art/Box/Wall5.png" id="6_8l60w"]
+[ext_resource type="Texture2D" uid="uid://dgoivc8f6a47c" path="res://Art/Box/Wall6.png" id="7_ols2t"]
+[ext_resource type="Texture2D" uid="uid://dr17vppyacpvv" path="res://Art/Box/Wall7.png" id="8_r3csf"]
+[ext_resource type="Texture2D" uid="uid://c1xffsbub1eff" path="res://Art/Box/Wall8.png" id="9_fd44n"]
+[ext_resource type="Texture2D" uid="uid://c6hmi63ffyi8f" path="res://Art/Box/Wall9.png" id="10_a7mjo"]
+[ext_resource type="Texture2D" uid="uid://daeetarmhggl1" path="res://Art/Box/Wall10.png" id="11_lhnev"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42nxc"]
-size = Vector2(330, 369)
+size = Vector2(30, 319)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tv6re"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_lhnev")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_unl27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lyd2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l17nc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tv6re")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8l60w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ols2t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r3csf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fd44n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a7mjo")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Box" type="StaticBody2D" groups=["Bumpable"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_42nxc")
 
-[node name="Box" type="Sprite2D" parent="."]
-position = Vector2(0, -185)
-texture = ExtResource("2_mckbn")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -185.5)
+position = Vector2(0, -159.5)
 shape = SubResource("RectangleShape2D_42nxc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -160)
+sprite_frames = SubResource("SpriteFrames_tv6re")
+speed_scale = 2.5
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

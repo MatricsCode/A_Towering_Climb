@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://deffkwaj6jy8s"]
 
 [ext_resource type="Script" uid="uid://7rnk5tl50grf" path="res://Scripts/Interactables/moving_platform.gd" id="1_qioah"]
-[ext_resource type="Texture2D" uid="uid://dng3lsxxhco41" path="res://Art/Moving Platform/Moving Platform.png" id="2_qioah"]
+[ext_resource type="Texture2D" uid="uid://c6yvs88h1q0fx" path="res://Art/Moving Platform/Moving Platform2.png" id="2_qioah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qioah"]
 size = Vector2(140, 140)
@@ -20,11 +20,11 @@ activator = "Sky_Lift_Key"
 metadata/_custom_type_script = "uid://c3pd3dg0vshs0"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -220)
+position = Vector2(0, -65)
 texture = ExtResource("2_qioah")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -70)
+position = Vector2(0, -30)
 shape = SubResource("RectangleShape2D_qioah")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

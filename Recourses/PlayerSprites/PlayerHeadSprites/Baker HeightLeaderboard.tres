@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ojodirq2l4ch"]
+
+[ext_resource type="Texture2D" uid="uid://c4ldc5il3mxo" path="res://Art/Player/BakerIcon.png" id="1_x3o8p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jsg8r"]
+
+[resource]
+VSlider/icons/grabber = ExtResource("1_x3o8p")
+VSlider/icons/grabber_disabled = ExtResource("1_x3o8p")
+VSlider/icons/grabber_highlight = ExtResource("1_x3o8p")
+VSlider/styles/slider = SubResource("StyleBoxEmpty_jsg8r")

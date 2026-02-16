@@ -1,67 +1,84 @@
-extends Control
+extends MultiplayerSpawner
 
-@onready var main_container = $VBoxContainer/MainContainer
+
+@onready var background = $"../Background"
+@onready var ready_button = $"../Background/Ready"
 
 const PLAYER_SELECTOR = preload("res://Scenes/PlayerSelector.tscn")
+var players = []
 
 var everyone_readyed = []
 
 var host = false
 
-func _physics_process(delta):
-	if main_container.get_child_count() < Steam.getNumLobbyMembers(get_parent().lobby_id):
-		everyone_readyed.append(false)
-		
-		var play_select = PLAYER_SELECTOR.instantiate()
-		
-		main_container.add_child(play_select)
-		
-		
-		if play_select.get_index() == 0:
-			play_select.main_player = true
-		else:
-			play_select.main_player = false
-		
-		play_select.main_screen = self
-		
-		GlobalScript.player_outfits.append(0)
-		
-	elif main_container.get_child_count() > Steam.getNumLobbyMembers(get_parent().lobby_id):
-		main_container.get_child(main_container.get_child_count() - 1).queue_free()
-		
-		GlobalScript.player_outfits.remove_at(GlobalScript.player_outfits.size())
+func _ready():
+	spawn_function = spawn_player_selector
 	
+	multiplayer.peer_connected.connect(spawn)
+	multiplayer.peer_disconnected.connect(despawn_player_selector)
+
+func _physics_process(delta):
 	if Input.is_action_pressed("Dev2"):
 		print(Steam.getNumLobbyMembers(get_parent().lobby_id))
 	elif Input.is_action_just_released("Dev2"):
 		print("-------")
 
 func start():
-	visible = true
+	background.visible = true
+	spawn(1)
 
 func reset():
-	visible = false
+	background.visible = false
 	
-	for i in main_container.get_children():
-		i.queue_free()
-
+	for i in get_children():
+		if i.get_index() > 1:
+			i.queue_free()
 
 func ready(readied : bool, index : int):
 	everyone_readyed[index] = readied
 	
 	if everyone_readyed.find(false) == -1 and host:
-		$VBoxContainer/Ready.disabled = false
-		$VBoxContainer/Ready.text = "Ready when you are"
+		ready_button.disabled = false
+		ready_button.text = "Ready when you are"
 	
 	elif everyone_readyed.find(false) == -1 and not host:
-		$VBoxContainer/Ready.disabled = true
-		$VBoxContainer/Ready.text = "Waiting for host"
+		ready_button.disabled = true
+		ready_button.text = "Waiting for host"
 	
 	else:
-		$VBoxContainer/Ready.disabled = true
-		$VBoxContainer/Ready.text = "Waiting..."
+		ready_button.disabled = true
+		ready_button.text = "Waiting..."
+
+func spawn_player_selector(data):
+	var play_select = PLAYER_SELECTOR.instantiate()
+	
+	players.append(data)
+	
+	if players.size() == 1:
+		play_select.main_player = true
+	
+	play_select.main_screen = $"."
+	
+	play_select.position = Vector2(70 + 220 * (data -1), -2101.0)
+	
+	GlobalScript.player_outfits.append(0)
+	
+	everyone_readyed.append(false)
+	
+	return play_select
+func despawn_player_selector(data):
+	get_child(players.find(data)).queue_free()
+	
+	players.erase(data)
+	
+	GlobalScript.player_outfits.remove_at(GlobalScript.player_outfits.size() - 1)
 
 # Main part of the code is in the Root node, Node2D!
 func _on_ready_pressed():
-	for i in main_container.get_children():
-		GlobalScript.player_outfits[i.get_index()] = i.outfit
+	for i in get_children():
+		GlobalScript.player_outfits.set(i.get_index(), i.outfit)
+		i.queue_free()
+		everyone_readyed.clear()
+		players.clear()
+		ready_button.text = "Waiting..."
+		ready_button.disabled = true

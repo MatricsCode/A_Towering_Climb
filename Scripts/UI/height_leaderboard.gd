@@ -4,8 +4,8 @@ var children = []
 
 var themes = [
 	preload("res://Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres"),
-	preload("res://Recourses/PlayerSprites/PlayerHeadSprites/Climber2 HeightLeaderboard.tres"),]
-
+	preload("res://Recourses/PlayerSprites/PlayerHeadSprites/Climber2 HeightLeaderboard.tres"),
+	preload("res://Recourses/PlayerSprites/PlayerHeadSprites/Baker HeightLeaderboard.tres"),]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):

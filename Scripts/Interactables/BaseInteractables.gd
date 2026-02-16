@@ -16,3 +16,6 @@ func interact(body):
 
 func action():
 	pass
+
+func entered(has_entered : bool):
+	pass

@@ -39,13 +39,12 @@ var shaking_camera = 0
 @onready var edge_detectors = $Detectors/EdgeDetectors
 @onready var sweat = $Sweat
 @onready var interact_detector = $InteractDetector
-@onready var interacting = $Interact
 #endregion
 
 ## ---- Functions ----
 #region Inbuilt Functions
 ## --- Inbuilt functions ---
-func _ready(): ## Runns as soon as the player is loaded into the scene
+func _ready(): ## Runns as soon as the player is loaded into the scenes
 	switch_costume()
 	
 	cam.enabled = is_multiplayer_authority() ## Checks if you are this player and grants/denies you the camera from this
@@ -118,15 +117,6 @@ func ground():
 	
 	if sprite.frame == 1 or sprite.frame == 5:
 		play_sound(sounds["Walk"])
-	
-	if interactables.is_empty() == false:
-		for i in interactables:
-			for y in GlobalScript.player_abilitys:
-				if i.activator == y:
-					interacting.visible = true
-	
-	elif interactables.is_empty() == true:
-		interacting.visible = false
 	
 	if interactables.is_empty() == false and Input.is_action_just_pressed("Interact"):
 		for i in interactables:
@@ -279,10 +269,14 @@ func overidden():
 
 #region Interact Detector Signals
 func _on_interact_detector_body_entered(body):
-	interactables.append(body)
+	for i in GlobalScript.player_abilitys:
+		if body.activator == i:
+			interactables.append(body)
+			body.entered(true)
 
 func _on_interact_detector_body_exited(body):
 	interactables.erase(body)
+	body.entered(false)
 #endregion
 
 
@@ -374,7 +368,7 @@ func switch(old_state, new_state):
 			main_vars.jump_vars.movement_direction = get_sprite_rotation() * -1
 			
 			velocity.x = main_vars.jump_vars.jump_power * main_vars.jump_vars.movement_direction
-			velocity.y = -main_vars.jump_vars.jump_power / 2
+			velocity.y = -main_vars.jump_vars.jump_power / 4
 			sprite.play("fall")
 		
 		current_state = new_state
@@ -389,7 +383,9 @@ func switch(old_state, new_state):
 		
 		else:
 			position.x += 50 * get_sprite_rotation()
-			position.y -= 50
+			position.y -= 40
+		
+		velocity = Vector2.ZERO
 		current_state = new_state
 	
 	else:
@@ -428,10 +424,8 @@ func camera_shake(shake_intensity : int):
 
 func overide(overidden2 : bool):
 	if overidden2:
-		print("Overide State")
 		switch(current_state, States.OVERIDDEN)
 	else:
-		print("Overide the overide : ", current_state)
 		switch(States.OVERIDDEN, States.AIR)
 #endregion
 

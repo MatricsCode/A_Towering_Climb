@@ -17,8 +17,6 @@ var main_player = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	
 	await get_tree().create_timer(0.1).timeout
 	
 	if main_player == false:
@@ -27,8 +25,6 @@ func _ready():
 			ready_button.disabled = true
 
 func _physics_process(delta):
-	GlobalScript.player_outfits[get_index()] = int(sprite.animation)
-	
 	ready_button.text = text
 	
 	if ready_button.disabled == true:
@@ -73,6 +69,7 @@ func button_pressed(name):
 					for y in indicator_container.get_children():
 						if y.name == name:
 							y.color = Color.RED
+				print(GlobalScript.player_abilitys)
 				return
 		
 		for i in outfits_container.get_children():
@@ -80,6 +77,8 @@ func button_pressed(name):
 				GlobalScript.player_outfits[0] = i.get_index()
 				sprite.animation = str(i.get_index())
 				outfit = i.get_index()
+
+
 
 func _on_ready_pressed():
 	if text == "Ready?":

@@ -1,5 +1,8 @@
 extends Interactable
 
+const MOVING_PLATFORM_INTERACTABLE = preload("res://Art/Moving Platform/Moving Platform1.png")
+const MOVING_PLATFORM_IDLE = preload("res://Art/Moving Platform/Moving Platform2.png")
+
 @export var speed := 1
 
 @export var path : PathFollow2D
@@ -25,8 +28,16 @@ func _physics_process(delta):
 				if i is CollisionShape2D:
 					i.disabled = false
 
+func entered(has_entered : bool):
+	if has_entered:
+		$Sprite2D.texture = MOVING_PLATFORM_INTERACTABLE
+	else:
+		$Sprite2D.texture = MOVING_PLATFORM_IDLE
+
 func action():
 	player.overide(true)
+	
+	$Sprite2D.texture = MOVING_PLATFORM_IDLE
 	
 	for i in player.get_children():
 		if i is CollisionShape2D:
