@@ -1,10 +1,8 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://cxjreg6tirxq3"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://cxjreg6tirxq3"]
 
 [ext_resource type="Texture2D" uid="uid://vu8lrnx8rw0u" path="res://Art/Tilemap/Beams.png" id="1_wvmsy"]
 [ext_resource type="Texture2D" uid="uid://b06baxs5t618j" path="res://Art/Tilemap/Signs.png" id="2_wmugh"]
 [ext_resource type="Texture2D" uid="uid://molm7urbf3d3" path="res://Art/Tilemap/WalledSections.png" id="3_mfarp"]
-[ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/LiquidDrum.tscn" id="4_yvkis"]
-[ext_resource type="PackedScene" uid="uid://j0ml6gtwkiec" path="res://Scenes/Box.tscn" id="6_2d88j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wmugh"]
 texture = ExtResource("1_wvmsy")
@@ -117,10 +115,6 @@ texture_region_size = Vector2i(80, 80)
 3:1/0/terrain_set = 0
 3:1/0/terrain = 1
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_oukul"]
-scenes/1/scene = ExtResource("4_yvkis")
-scenes/4/scene = ExtResource("6_2d88j")
-
 [resource]
 tile_size = Vector2i(80, 80)
 physics_layer_0/collision_layer = 6
@@ -133,4 +127,3 @@ terrain_set_0/terrain_1/color = Color(0.7, 0.679, 0.616, 1)
 sources/0 = SubResource("TileSetAtlasSource_wmugh")
 sources/1 = SubResource("TileSetAtlasSource_mfarp")
 sources/2 = SubResource("TileSetAtlasSource_ce64o")
-sources/3 = SubResource("TileSetScenesCollectionSource_oukul")

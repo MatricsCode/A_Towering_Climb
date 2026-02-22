@@ -5,6 +5,7 @@ var min_gliding_speed = 500
 func _physics_process(_delta):
 	if player.is_on_floor() and in_action:
 		reset()
+		print("Something else Glide 2.0")
 	
 	elif Input.is_action_pressed("Jump") and player.current_state == activation_state and player.velocity.y > min_gliding_speed:
 		overide()
@@ -12,7 +13,7 @@ func _physics_process(_delta):
 	
 	elif in_action and Input.is_action_pressed("Jump"):
 		$"../../Sprite".play("glide")
-		player.main_vars.jump_vars.gravity += 1
+		player.main_vars.air_vars.gravity += 1
 		player.velocity.y += 5
 		
 		air_movement()
@@ -21,6 +22,7 @@ func _physics_process(_delta):
 	
 	elif in_action:
 		reset()
+		print("something else Glide")
 
 func air_movement():
 	var direction = Input.get_axis("Left", "Right")

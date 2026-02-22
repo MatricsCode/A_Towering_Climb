@@ -23,6 +23,12 @@ func _ready():
 		for i in main_container.get_children():
 			i.disabled = true
 			ready_button.disabled = true
+	
+	
+	for i in indicator_container.get_children():
+		for y in GlobalScript.player_abilitys:
+			if i.name == y:
+				i.color = Color.from_hsv(90, 60, 65)
 
 func _physics_process(delta):
 	ready_button.text = text
@@ -63,12 +69,12 @@ func button_pressed(name):
 					
 					for y in indicator_container.get_children():
 						if y.name == name:
-							y.color = Color.GREEN
+							y.color = Color.from_hsv(90, 60, 65)
 				elif GlobalScript.player_abilitys.has(str(name)):
 					GlobalScript.player_abilitys.erase(str(name))
 					for y in indicator_container.get_children():
 						if y.name == name:
-							y.color = Color.RED
+							y.color = Color.from_hsv(11, 71, 81)
 				print(GlobalScript.player_abilitys)
 				return
 		

@@ -5,21 +5,19 @@ const MOVING_PLATFORM_IDLE = preload("res://Art/Moving Platform/Moving Platform2
 
 @export var speed := 1
 
-@export var path : PathFollow2D
-
 var direction = 1
 var moving = false
 
 func _ready():
-	path.loop = false
+	target.loop = false
 
 func _physics_process(delta):
 	if moving:
-		path.progress_ratio += speed * 0.01 * direction
-		player.position = path.position
-		position = path.position
+		target.progress_ratio += speed * 0.01 * direction
+		player.position = target.position
+		position = target.position
 		
-		if path.progress_ratio != 0 and path.progress_ratio != 1:
+		if target.progress_ratio != 0 and target.progress_ratio != 1:
 			pass
 		else:
 			moving = false
@@ -43,9 +41,9 @@ func action():
 		if i is CollisionShape2D:
 			i.disabled = true
 	
-	if path.progress_ratio == 0:
+	if target.progress_ratio == 0:
 		direction = 1
-	elif path.progress_ratio == 1:
+	elif target.progress_ratio == 1:
 		direction = -1
 	
 	moving = true

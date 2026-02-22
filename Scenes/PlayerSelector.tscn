@@ -302,27 +302,27 @@ theme_override_constants/separation = 20
 layout_mode = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_xs5nl")
-color = Color(0, 1, 0, 1)
+color = Color(1, 0.183333, 0, 1)
 
 [node name="Sky_Lift_Key" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(0, 1, 0, 1)
+color = Color(1, 0.183333, 0, 1)
 
 [node name="Climbers_Hook" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(1, 0, 0, 1)
+color = Color(1, 0.183333, 0, 1)
 
 [node name="Drum_Key" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(1, 0, 0, 1)
+color = Color(1, 0.183333, 0, 1)
 
 [node name="Ram" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(0, 1, 0, 1)
+color = Color(1, 0.183333, 0, 1)
 
 [node name="Outfits" type="VBoxContainer" parent="VBoxContainer"]
 visible = false

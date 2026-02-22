@@ -17,12 +17,6 @@ func _ready():
 	multiplayer.peer_connected.connect(spawn)
 	multiplayer.peer_disconnected.connect(despawn_player_selector)
 
-func _physics_process(delta):
-	if Input.is_action_pressed("Dev2"):
-		print(Steam.getNumLobbyMembers(get_parent().lobby_id))
-	elif Input.is_action_just_released("Dev2"):
-		print("-------")
-
 func start():
 	background.visible = true
 	spawn(1)

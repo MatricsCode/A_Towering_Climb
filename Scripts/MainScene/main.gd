@@ -15,10 +15,6 @@ var peer = SteamMultiplayerPeer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	print_rich("[wave amps=100 frequency=20][color=red][tornado strength = 10] The PlayerSelection Boxes don't apear where they should!!!!")
-	
-	
 	GlobalScript.left_lobby.connect(leave_lobby)
 	GlobalScript.reset.connect(reset)
 	
@@ -30,6 +26,7 @@ func _ready():
 
 var time = 0
 func _physics_process(delta):
+	
 	if lobby_id == 0:
 		position.x += 10
 		time += 0.1

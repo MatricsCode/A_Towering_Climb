@@ -1,8 +1,9 @@
+res://Scenes
+res://Scripts/Interactables/InteractablesSpawner
 C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports/DemoSaves
 C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports
 res://Scripts/Player
 res://Scripts/PlayerSelectorUI
-res://Scenes
 res://Scripts/MainScene
 C:/Users/Jayden/Desktop/GitTest
 res://Scripts/Player/Abilitys
@@ -19,5 +20,3 @@ res://Recourses/PlayerSprites/PlayerHeadSprites
 res://Recourses
 res://Recourses/PlayerSprites
 res://Scripts/BirdSpawner
-res://Recourses/Birds
-res://Scripts/Bird

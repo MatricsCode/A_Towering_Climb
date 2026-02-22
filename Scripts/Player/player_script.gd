@@ -15,21 +15,29 @@ var sounds = {
 	"Land" : preload("res://Sound Effects/Land.mp3"),
 	"Jump" : preload("res://Sound Effects/Jump.mp3"),
 	"Climb" : preload("res://Sound Effects/Climb.mp3"),}
-var main_vars = { ## Main ariables
-	ground_vars = {speed = 600},
-	jump_vars = {jump_power = 1000, jump_increase = 1, gravity = 0, movement_direction = 0}, # Determins how fast the player increases in jump powe
-	climbing_vars = {climbing_speed = 300},
+var main_vars = { ## Main variables
+	"ground_vars" : {speed = 600},
+	"air_vars" : {jump_power = 1000, jump_increase = 1, gravity = 0, gravity_increase = 1, movement_direction = 0}, # Determins how fast the player increases in jump powe
+	"climbing_vars" : {climbing_speed = 300},
 	
-	switching_vars = {switch_again = true},
+	"switching_vars" : {switch_again = true},
 	
-	background_wiggle_vars = {background_changing = false},
+	"background_wiggle_vars": {background_changing = false},
 	}
 
-var camera_changing : Tween
-
-var main_var_reset = [] ## The Array, gets auto-assigned in the ready function with the values of main_vars
+var main_var_reset = {
+	"ground_vars" : {speed = 600},
+	"air_vars" : {jump_power = 1000, jump_increase = 1, gravity = 0, gravity_increase = 1, movement_direction = 0}, # Determins how fast the player increases in jump powe
+	"climbing_vars" : {climbing_speed = 300},
+	
+	"switching_vars" : {switch_again = true},
+	
+	"background_wiggle_vars": {background_changing = false},
+	}
 var interactables = []
 var shaking_camera = 0
+
+var camera_changing : Tween
 
 ## --- Nodes ---
 #region Nodes
@@ -63,8 +71,6 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	
 	current_state = States.AIR ## Autoloads the normal state into the player
 	
-	main_var_reset = main_vars.values() ## Loads all the values of main vars into main var reset, so that they are stored seperatly
-	
 	GlobalScript.paused.connect(pause_switch)
 	GlobalScript.winner.connect(won)
 
@@ -74,7 +80,7 @@ func _physics_process(_delta):  ## Runs every physics frames
 	
 	if velocity.y != 0 and current_state == States.AIR:
 		if Input.is_action_just_released("Jump") and 0 >velocity.y:
-				main_vars.jump_vars.gravity += 50
+				main_vars.air_vars.gravity += 50
 	
 	match current_state:
 		States.GROUND:
@@ -135,7 +141,7 @@ func ground():
 	
 	if not is_on_floor() and not Input.is_action_pressed("Jump"):
 		await get_tree().create_timer(0.1).timeout
-		main_vars.jump_vars.gravity = 50
+		main_vars.air_vars.gravity_increase += 5
 		switch(States.GROUND, States.AIR)
 	
 	elif not is_on_floor() and Input.is_action_pressed("Jump"):
@@ -151,36 +157,37 @@ func air():
 	var air_movement = func air_movement():
 		var direction = Input.get_axis("Left", "Right")
 		
-		if direction == main_vars.jump_vars.movement_direction and main_vars.jump_vars.movement_direction != 0:
-			velocity.x = main_vars.jump_vars.jump_power * direction / 1.5
+		if direction == main_vars.air_vars.movement_direction and main_vars.air_vars.movement_direction != 0:
+			velocity.x = main_vars.air_vars.jump_power * direction / 1.5
 		
-		elif direction != main_vars.jump_vars.movement_direction and main_vars.jump_vars.movement_direction != 0:
-			velocity.x += direction * main_vars.jump_vars.jump_power / 20
-			velocity.x = clamp(velocity.x, -main_vars.jump_vars.jump_power, main_vars.jump_vars.jump_power)
+		elif direction != main_vars.air_vars.movement_direction and main_vars.air_vars.movement_direction != 0:
+			velocity.x += direction * main_vars.air_vars.jump_power / 20
+			velocity.x = clamp(velocity.x, -main_vars.air_vars.jump_power, main_vars.air_vars.jump_power)
 		
-		elif direction != main_vars.jump_vars.movement_direction and main_vars.jump_vars.movement_direction == 0:
-			velocity.x += direction * main_vars.jump_vars.jump_power / 30
-			velocity.x = clamp(velocity.x, -main_vars.jump_vars.jump_power, main_vars.jump_vars.jump_power)
+		elif direction != main_vars.air_vars.movement_direction and main_vars.air_vars.movement_direction == 0:
+			velocity.x += direction * main_vars.air_vars.jump_power / 30
+			velocity.x = clamp(velocity.x, -main_vars.air_vars.jump_power, main_vars.air_vars.jump_power)
 		
 		elif direction == 0 and velocity.x != 0:
 			if velocity.x > 0:
-				velocity.x += main_vars.jump_vars.jump_power / 100
+				velocity.x += main_vars.air_vars.jump_power / 100
 			else:
-				velocity.x -= main_vars.jump_vars.jump_power / 100
+				velocity.x -= main_vars.air_vars.jump_power / 100
 	
 	## Variable Jump Height is in Physiscs Process!
 	
 	var drop = func drop():
 		if velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
-			velocity.y += main_vars.jump_vars.gravity
-			main_vars.jump_vars.gravity += 1
+			velocity.y += main_vars.air_vars.gravity
+			main_vars.air_vars.gravity += main_vars.air_vars.gravity_increase
+			main_vars.air_vars.gravity_increase += 0.01
 		
 		#if velocity.y > -500:
-		#	main_vars.jump_vars.gravity += 10
+		#	main_vars.air_vars.gravity += 10
 
 		
 		if velocity.y > -500 and velocity.y < 0:
-			velocity.y = 100 
+			velocity.y = 100
 	#endregion
 	
 	## All of the different actions possible in the current state go here
@@ -246,8 +253,8 @@ func paused():
 	if wall_detector.touching_wall() == false and not is_on_floor():
 	
 		if velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
-			velocity.y += main_vars.jump_vars.gravity
-			main_vars.jump_vars.gravity += 1
+			velocity.y += main_vars.air_vars.gravity
+			main_vars.air_vars.gravity += 1
 			sprite.play("fall")
 	
 	elif wall_detector.touching_wall() == true and not is_on_floor():
@@ -310,7 +317,8 @@ func get_sprite_rotation():
 func switch(old_state, new_state):
 	if old_state == States.OVERIDDEN:
 		current_state = new_state
-		main_vars.jump_vars.gravity = 0
+		main_vars.air_vars.gravity = 0
+		print(velocity)
 		return
 	
 	if main_vars.switching_vars.switch_again == false:
@@ -319,7 +327,7 @@ func switch(old_state, new_state):
 	main_vars.switching_vars.switch_again = false
 	
 	if new_state == States.AIR:
-		main_vars.jump_vars.gravity = 0
+		main_vars.air_vars.gravity = 0
 	
 	if old_state == States.GROUND and new_state == States.AIR:
 		reset_main_vars(0)
@@ -328,13 +336,13 @@ func switch(old_state, new_state):
 			play_sound(sounds["Jump"])
 			
 			if velocity.x > 0:
-				main_vars.jump_vars.movement_direction = 1
+				main_vars.air_vars.movement_direction = 1
 			elif velocity.x < 0:
-				main_vars.jump_vars.movement_direction = -1
+				main_vars.air_vars.movement_direction = -1
 			else:
-				main_vars.jump_vars.movement_direction = 0
+				main_vars.air_vars.movement_direction = 0
 			
-			velocity.y = -main_vars.jump_vars.jump_power
+			velocity.y = -main_vars.air_vars.jump_power
 		
 		current_state = new_state
 	
@@ -361,14 +369,18 @@ func switch(old_state, new_state):
 		current_state = new_state
 	
 	elif old_state == States.CLIMB and new_state == States.AIR:
+		reset_main_vars(0)
 		reset_main_vars(1)
 		reset_main_vars(2)
 		
+		main_vars.air_vars.gravity = 20
+		main_vars.air_vars.gravity_increase = 10
+		
 		if Input.is_action_pressed("Jump"):
-			main_vars.jump_vars.movement_direction = get_sprite_rotation() * -1
+			main_vars.air_vars.movement_direction = get_sprite_rotation() * -1
 			
-			velocity.x = main_vars.jump_vars.jump_power * main_vars.jump_vars.movement_direction
-			velocity.y = -main_vars.jump_vars.jump_power / 4
+			velocity.x = main_vars.air_vars.jump_power * main_vars.air_vars.movement_direction
+			velocity.y = -main_vars.air_vars.jump_power / 4
 			sprite.play("fall")
 		
 		current_state = new_state
@@ -433,10 +445,17 @@ func overide(overidden2 : bool):
 ## 0 = Ground, 1 = Air, 2 = Climb
 func reset_main_vars(key : int):
 	var keys = main_vars.keys()
+	var keys_2 = main_var_reset.keys()
+	
+	print(keys)
+	
+	var temp = main_var_reset
 	
 	for i in main_vars.size():
 		if i == key:
-			main_vars[keys[i]] = main_var_reset[i]
+			var temp2 = temp.get(str(keys_2[i])) 
+			
+			main_vars.set(keys[i], temp) 
 
 func pause_switch():
 	if current_state != States.PAUSED:

@@ -1,8 +1,4 @@
-res://Scenes/PlayArea.tscn
+res://Scenes/player.tscn
 res://Recourses/Tileset.tres
 res://Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres
 res://Recourses/UI/WinBackground.tres
-res://Scenes/Main.tscn
-res://Scenes/GlobalScript.tscn
-res://Scenes/Box.tscn
-res://Scenes/Levels/level_1.tscn
