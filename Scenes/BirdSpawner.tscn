@@ -7,5 +7,3 @@
 spawn_path = NodePath(".")
 script = ExtResource("1_4qnch")
 bird_scene = ExtResource("2_c3ytk")
-
-[node name="Camera2D" type="Camera2D" parent="."]

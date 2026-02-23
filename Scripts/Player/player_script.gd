@@ -16,25 +16,16 @@ var sounds = {
 	"Jump" : preload("res://Sound Effects/Jump.mp3"),
 	"Climb" : preload("res://Sound Effects/Climb.mp3"),}
 var main_vars = { ## Main variables
-	"ground_vars" : {speed = 600},
-	"air_vars" : {jump_power = 1000, jump_increase = 1, gravity = 0, gravity_increase = 1, movement_direction = 0}, # Determins how fast the player increases in jump powe
-	"climbing_vars" : {climbing_speed = 300},
+	"ground_vars" : {"speed" : 600},
+	"air_vars" : {"jump_power" : 1000, "jump_increase" : 1, "gravity" : 0, "gravity_increase" : 1, "movement_direction" : 0},
+	"climbing_vars" : {"climbing_speed" : 300},
 	
-	"switching_vars" : {switch_again = true},
+	"switching_vars" : {"switch_again" : true},
 	
-	"background_wiggle_vars": {background_changing = false},
+	"background_wiggle_vars" : {"background_changing" : false},
 	}
-
-var main_var_reset = {
-	"ground_vars" : {speed = 600},
-	"air_vars" : {jump_power = 1000, jump_increase = 1, gravity = 0, gravity_increase = 1, movement_direction = 0}, # Determins how fast the player increases in jump powe
-	"climbing_vars" : {climbing_speed = 300},
-	
-	"switching_vars" : {switch_again = true},
-	
-	"background_wiggle_vars": {background_changing = false},
-	}
-var interactables = []
+var main_vars_reset = []
+var interactables = {}
 var shaking_camera = 0
 
 var camera_changing : Tween
@@ -53,6 +44,12 @@ var camera_changing : Tween
 #region Inbuilt Functions
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scenes
+	for i in main_vars:
+		for y in main_vars[i]:
+			main_vars_reset.append(main_vars.get(i).get(y))
+	
+	print(main_vars_reset)
+	
 	switch_costume()
 	
 	cam.enabled = is_multiplayer_authority() ## Checks if you are this player and grants/denies you the camera from this
@@ -79,7 +76,8 @@ func _physics_process(_delta):  ## Runs every physics frames
 		return ## Checks if you are this player, and grants/denies you control acordingly
 	
 	if velocity.y != 0 and current_state == States.AIR:
-		if Input.is_action_just_released("Jump") and 0 >velocity.y:
+		if Input.is_action_just_released("Jump") and 0 > velocity.y:
+				main_vars.air_vars.gravity_increase += 5
 				main_vars.air_vars.gravity += 50
 	
 	match current_state:
@@ -141,7 +139,7 @@ func ground():
 	
 	if not is_on_floor() and not Input.is_action_pressed("Jump"):
 		await get_tree().create_timer(0.1).timeout
-		main_vars.air_vars.gravity_increase += 5
+		main_vars.air_vars.gravity_increase += 3
 		switch(States.GROUND, States.AIR)
 	
 	elif not is_on_floor() and Input.is_action_pressed("Jump"):
@@ -158,10 +156,10 @@ func air():
 		var direction = Input.get_axis("Left", "Right")
 		
 		if direction == main_vars.air_vars.movement_direction and main_vars.air_vars.movement_direction != 0:
-			velocity.x = main_vars.air_vars.jump_power * direction / 1.5
+			velocity.x = main_vars.air_vars.jump_power * direction / 2
 		
 		elif direction != main_vars.air_vars.movement_direction and main_vars.air_vars.movement_direction != 0:
-			velocity.x += direction * main_vars.air_vars.jump_power / 20
+			velocity.x += direction * main_vars.air_vars.jump_power / 10
 			velocity.x = clamp(velocity.x, -main_vars.air_vars.jump_power, main_vars.air_vars.jump_power)
 		
 		elif direction != main_vars.air_vars.movement_direction and main_vars.air_vars.movement_direction == 0:
@@ -169,10 +167,7 @@ func air():
 			velocity.x = clamp(velocity.x, -main_vars.air_vars.jump_power, main_vars.air_vars.jump_power)
 		
 		elif direction == 0 and velocity.x != 0:
-			if velocity.x > 0:
-				velocity.x += main_vars.air_vars.jump_power / 100
-			else:
-				velocity.x -= main_vars.air_vars.jump_power / 100
+			lerpf(velocity.x, 0.0, 0.005)
 	
 	## Variable Jump Height is in Physiscs Process!
 	
@@ -180,11 +175,7 @@ func air():
 		if velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
 			velocity.y += main_vars.air_vars.gravity
 			main_vars.air_vars.gravity += main_vars.air_vars.gravity_increase
-			main_vars.air_vars.gravity_increase += 0.01
-		
-		#if velocity.y > -500:
-		#	main_vars.air_vars.gravity += 10
-
+			main_vars.air_vars.gravity_increase += 0.05
 		
 		if velocity.y > -500 and velocity.y < 0:
 			velocity.y = 100
@@ -369,7 +360,6 @@ func switch(old_state, new_state):
 		current_state = new_state
 	
 	elif old_state == States.CLIMB and new_state == States.AIR:
-		reset_main_vars(0)
 		reset_main_vars(1)
 		reset_main_vars(2)
 		
@@ -442,20 +432,23 @@ func overide(overidden2 : bool):
 #endregion
 
 #region Secondary Other Functions
-## 0 = Ground, 1 = Air, 2 = Climb
-func reset_main_vars(key : int):
+func reset_main_vars(key : int): ## 0 = Ground, 1 = Air, 2 = Climb
 	var keys = main_vars.keys()
-	var keys_2 = main_var_reset.keys()
+	var current_key = keys[key]
 	
-	print(keys)
+	var current_item = 0
 	
-	var temp = main_var_reset
-	
-	for i in main_vars.size():
-		if i == key:
-			var temp2 = temp.get(str(keys_2[i])) 
+	for i in main_vars:
+		
+		for y in main_vars.get(i).size():
 			
-			main_vars.set(keys[i], temp) 
+			if current_key == i:
+				var temp = main_vars_reset.get(current_item)
+				var keys_2 = main_vars.get(i).keys()
+				
+				main_vars.get(i).set(keys_2[y], temp)
+			
+			current_item += 1
 
 func pause_switch():
 	if current_state != States.PAUSED:
@@ -476,5 +469,4 @@ func won(winners_name):
 
 func switch_costume():
 	sprite.sprite_frames = GlobalScript.all_player_outfits[GlobalScript.player_outfits[player -1]]
-	
 #endregion

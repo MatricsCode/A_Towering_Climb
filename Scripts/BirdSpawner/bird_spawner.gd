@@ -1,11 +1,8 @@
 extends MultiplayerSpawner
 
 @export var bird_scene : PackedScene
-
 @export var spawn_position : Vector2
-
 @export var max_birds : int
-
 @export var positional_change : int
 
 var spacer = 0

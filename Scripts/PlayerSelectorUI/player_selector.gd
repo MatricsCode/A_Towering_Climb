@@ -16,7 +16,7 @@ var main_player = false
 @export var text = "Ready?" 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _enter_tree():
 	await get_tree().create_timer(0.1).timeout
 	
 	if main_player == false:
@@ -24,11 +24,12 @@ func _ready():
 			i.disabled = true
 			ready_button.disabled = true
 	
-	
 	for i in indicator_container.get_children():
 		for y in GlobalScript.player_abilitys:
 			if i.name == y:
-				i.color = Color.from_hsv(90, 60, 65)
+				print(i.color)
+				i.color = Color.html("#74a642")
+				print(i.color)
 
 func _physics_process(delta):
 	ready_button.text = text
@@ -69,12 +70,12 @@ func button_pressed(name):
 					
 					for y in indicator_container.get_children():
 						if y.name == name:
-							y.color = Color.from_hsv(90, 60, 65)
+							y.color = Color.html("#74a642")
 				elif GlobalScript.player_abilitys.has(str(name)):
 					GlobalScript.player_abilitys.erase(str(name))
 					for y in indicator_container.get_children():
 						if y.name == name:
-							y.color = Color.from_hsv(11, 71, 81)
+							y.color = Color.html("#ff2f00")
 				print(GlobalScript.player_abilitys)
 				return
 		
