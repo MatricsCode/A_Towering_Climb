@@ -25,7 +25,7 @@ var main_vars = { ## Main variables
 	"background_wiggle_vars" : {"background_changing" : false},
 	}
 var main_vars_reset = []
-var interactables = {}
+var interactables = []
 var shaking_camera = 0
 
 var camera_changing : Tween
@@ -47,8 +47,6 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	for i in main_vars:
 		for y in main_vars[i]:
 			main_vars_reset.append(main_vars.get(i).get(y))
-	
-	print(main_vars_reset)
 	
 	switch_costume()
 	
@@ -309,7 +307,6 @@ func switch(old_state, new_state):
 	if old_state == States.OVERIDDEN:
 		current_state = new_state
 		main_vars.air_vars.gravity = 0
-		print(velocity)
 		return
 	
 	if main_vars.switching_vars.switch_again == false:

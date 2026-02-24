@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbd4mefv24ifl"]
+[gd_scene load_steps=2 format=3 uid="uid://dbd4mefv24ifl"]
 
 [ext_resource type="Script" uid="uid://dy32smmeh3nm4" path="res://Scripts/BirdSpawner/bird_spawner.gd" id="1_4qnch"]
-[ext_resource type="PackedScene" uid="uid://ibhv3ulgppft" path="res://Scenes/Bird.tscn" id="2_c3ytk"]
 
 [node name="BirdSpawner" type="MultiplayerSpawner"]
 spawn_path = NodePath(".")
 script = ExtResource("1_4qnch")
-bird_scene = ExtResource("2_c3ytk")
+spawn_positions = Array[Array]([[Vector2(-154, -9), Vector2(-152.945, -7.91)], [Vector2(-154, -9), Vector2(-170, -10.2)], [Vector2(1.94651e+10, 4.71365e+08), Vector2(1.20736e+12, 9.16238e+08)]])

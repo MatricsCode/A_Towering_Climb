@@ -1,3 +1,6 @@
+Node2D
+Node
+Line2D
 MultiplayerSpawner
 CollisionShape2D
 Area2D
@@ -8,7 +11,4 @@ Sprite2D
 Control
 MultiplayerSynchronizer
 RayCast2D
-Node2D
 ColorRect
-Panel
-Camera2D

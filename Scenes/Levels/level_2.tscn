@@ -55,3 +55,4 @@ targets = [NodePath("../Path2D2/PathFollow2D"), NodePath("../Path2D/PathFollow2D
 positions = Array[Vector2]([Vector2(-1276, -3881), Vector2(2861, -1400), Vector2(281, -1800), Vector2(-650, -2840), Vector2(-669, -6840), Vector2(2207, -1365)])
 
 [node name="BirdSpawner" parent="." instance=ExtResource("7_fphuk")]
+max_birds = 20

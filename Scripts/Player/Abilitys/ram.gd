@@ -6,9 +6,6 @@ var current_speed = 0
 var gravity = 100
 
 func _physics_process(delta):
-	if Input.is_action_pressed("Dev2"):
-		print(flying)
-	
 	if Input.is_action_pressed("Ram") and player.current_state == activation_state and player.is_on_floor():
 		flying = false
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bb64cr50jmhs8"]
+[gd_scene load_steps=10 format=4 uid="uid://bb64cr50jmhs8"]
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Recourses/Tileset.tres" id="1_tlcug"]
 [ext_resource type="PackedScene" uid="uid://deffkwaj6jy8s" path="res://Scenes/Moving Platform.tscn" id="2_4dpyx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Goal.tscn" id="5_cyadu"]
 [ext_resource type="PackedScene" uid="uid://bqn3jg2ms8eig" path="res://Scenes/InteractablesSpawner.tscn" id="5_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/LiquidDrum.tscn" id="6_xgxfi"]
+[ext_resource type="PackedScene" uid="uid://dbd4mefv24ifl" path="res://Scenes/BirdSpawner.tscn" id="7_5f3p6"]
 
 [sub_resource type="Curve2D" id="Curve2D_cyadu"]
 _data = {
@@ -52,3 +53,9 @@ loop = false
 interactables = Array[PackedScene]([ExtResource("2_4dpyx"), ExtResource("2_4dpyx"), ExtResource("6_xgxfi"), ExtResource("6_xgxfi"), ExtResource("4_iixi8")])
 targets = [NodePath("../Path2D/PathFollow2D"), NodePath("../Path2D2/PathFollow2D"), NodePath(".."), NodePath(".."), NodePath("..")]
 positions = Array[Vector2]([Vector2(-1051, -1400), Vector2(3127, -3399), Vector2(1061, -2840), Vector2(418, -4600), Vector2(0, 0)])
+
+[node name="BirdSpawner" parent="." instance=ExtResource("7_5f3p6")]
+max_birds = 20
+
+[node name="Node2D" type="Node2D" parent="BirdSpawner"]
+position = Vector2(-154, -9)

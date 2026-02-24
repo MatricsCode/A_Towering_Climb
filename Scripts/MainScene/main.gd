@@ -26,7 +26,6 @@ func _ready():
 
 var time = 0
 func _physics_process(delta):
-	
 	if lobby_id == 0:
 		position.x += 10
 		time += 0.1

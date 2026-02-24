@@ -15,6 +15,8 @@ var fly_speed = Vector2(0, 0)
 func _ready():
 	position.y = positionY
 	
+	prints(name, position)
+	
 	var color = randi_range(0, 4)
 	match color:
 		0:
@@ -35,9 +37,11 @@ func _physics_process(_delta):
 
 func _on_area_2d_body_entered(body):
 	run(body)
+	print(body.name)
 
 func _on_area_2d_area_entered(area):
 	run(area)
+	print(name, " is following another bird")
 
 func run(detected):
 	var run_rotation = 0
@@ -54,4 +58,4 @@ func run(detected):
 	velocity.x = randf_range(300, 700) * run_rotation
 	
 	
-	#$PlayerDetector.set_collision_layer_value(1, true)
+	$PlayerDetector.set_collision_layer_value(1, true)

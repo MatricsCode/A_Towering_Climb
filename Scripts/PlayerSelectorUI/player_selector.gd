@@ -27,9 +27,7 @@ func _enter_tree():
 	for i in indicator_container.get_children():
 		for y in GlobalScript.player_abilitys:
 			if i.name == y:
-				print(i.color)
 				i.color = Color.html("#74a642")
-				print(i.color)
 
 func _physics_process(delta):
 	ready_button.text = text
