@@ -3,9 +3,10 @@ extends MultiplayerSpawner
 const BIRD = preload("res://Scenes/Bird.tscn")
 
 @export var spawn_positions : Array[Array]
-@export var max_birds : int
 
-var current_position = 0
+var birds_required = 0
+
+var current_position = []
 var positions = [Vector2(0, 0)]
 var spawning = true
 
@@ -15,6 +16,8 @@ var birds_spawned = 0
 func _ready():
 	positions.append(spawn_positions.get(0).get(0))
 	
+	var    areas = spawn_positions.size()
+	
 	if is_multiplayer_authority():
 		spawn_function = spawn_bird
 		
@@ -22,7 +25,7 @@ func _ready():
 			push_error("You didn't assing the positional node to the birdspawner called: ", name)
 		
 		while spawning == true:
-			if birds_spawned > 20:
+			if birds_spawned > spawn_positions.size():
 				spawning = false
 			
 			birds_spawned += 1

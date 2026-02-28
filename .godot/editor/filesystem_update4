@@ -1,8 +1,8 @@
-res://Scenes/player.tscn
+res://Scenes/Blockade.tscn
 res://Recourses/Tileset.tres
 res://Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres
 res://Recourses/UI/WinBackground.tres
-res://Scenes/Blockade.tscn
+res://Scenes/player.tscn
 res://Scenes/LiquidDrum.tscn
 res://Scenes/Moving Platform.tscn
 res://Scenes/Main.tscn
@@ -13,5 +13,4 @@ res://Scenes/PlayerSelector.tscn
 res://Scenes/Levels/level_2.tscn
 res://Scenes/BirdSpawner.tscn
 res://Scenes/Bird.tscn
-res://Scripts/Player/player_script.gd
 res://Scripts/BirdSpawner/bird_spawner.gd
