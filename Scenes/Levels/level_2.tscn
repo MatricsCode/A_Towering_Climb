@@ -10,13 +10,13 @@
 
 [sub_resource type="Curve2D" id="Curve2D_ovj6s"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2874, -1350, -372, -384, 372, 384, 3742, -2610, 140.419, 58.3134, -140.419, -58.3134, 2010, -2301, 0, 0, 0, 0, 1828, -2870)
+"points": PackedVector2Array(0, 0, 0, 0, 2856, -1360, -663.018, -292.7, 663.018, 292.7, 3671, -2822, 140.419, 58.3134, -140.419, -58.3134, 2700, -2073, 0, 0, 0, 0, 1812, -2880)
 }
 point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_8qsmg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1356, -3829, 239.58, -617.584, -239.58, 617.584, -1975, -4987, 0, 0, 0, 0, -906, -5110)
+"points": PackedVector2Array(0, 0, 0, 0, -1299, -3841, 239.58, -617.584, -239.58, 617.584, -1975, -4987, 0, 0, 0, 0, -911, -5120)
 }
 point_count = 3
 
@@ -36,23 +36,23 @@ position = Vector2(1075, -6841)
 curve = SubResource("Curve2D_ovj6s")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(2874, -1350)
-rotation = -0.967566
+position = Vector2(2856, -1360)
+rotation = -1.06225
 loop = false
 
 [node name="Path2D2" type="Path2D" parent="."]
 curve = SubResource("Curve2D_8qsmg")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(-1356, -3829)
-rotation = -2.06169
+position = Vector2(-1299, -3841)
+rotation = -2.10374
 scale = Vector2(1.0091, 1.0244)
 loop = false
 
 [node name="InteractablesSpawner" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("3_oylv5")]
 interactables = Array[PackedScene]([ExtResource("4_8qsmg"), ExtResource("4_8qsmg"), ExtResource("5_fphuk"), ExtResource("5_fphuk"), ExtResource("5_fphuk"), ExtResource("4_ovj6s")])
 targets = [NodePath("../Path2D2/PathFollow2D"), NodePath("../Path2D/PathFollow2D"), NodePath(".."), NodePath(".."), NodePath(".."), NodePath("..")]
-positions = Array[Vector2]([Vector2(-1276, -3881), Vector2(2861, -1400), Vector2(281, -1800), Vector2(-650, -2840), Vector2(-669, -6840), Vector2(2207, -1365)])
+positions = Array[Vector2]([Vector2(-1299, -3841), Vector2(2856, -1360), Vector2(281, -1800), Vector2(-650, -2840), Vector2(-669, -6840), Vector2(2207, -1365)])
 
 [node name="BirdSpawner" parent="." instance=ExtResource("7_fphuk")]
-max_birds = 20
+spawn_positions = Array[Array]([[Vector2(-2155, -1761), Vector2(-809, -1761)], [Vector2(467, -2880), Vector2(2517, -2880)]])

@@ -8,14 +8,15 @@ const WHITE = preload("res://Recourses/Birds/White.tres")
 
 @onready var sprite = $Sprite
 
-var positionY = 0
-
 var fly_speed = Vector2(0, 0)
+var message_others : int
 
 func _ready():
-	position.y = positionY
+	message_others = randi_range(-3, 1)
 	
-	prints(name, position)
+	prints(name, position, message_others)
+	
+	
 	
 	var color = randi_range(0, 4)
 	match color:
@@ -57,5 +58,5 @@ func run(detected):
 	velocity.y = randf_range(300, 700) * -1
 	velocity.x = randf_range(300, 700) * run_rotation
 	
-	
-	$PlayerDetector.set_collision_layer_value(1, true)
+	if message_others == 1:
+		$PlayerDetector.set_collision_layer_value(1, true)

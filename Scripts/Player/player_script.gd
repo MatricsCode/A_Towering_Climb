@@ -17,7 +17,7 @@ var sounds = {
 	"Climb" : preload("res://Sound Effects/Climb.mp3"),}
 var main_vars = { ## Main variables
 	"ground_vars" : {"speed" : 600},
-	"air_vars" : {"jump_power" : 1000, "jump_increase" : 1, "gravity" : 0, "gravity_increase" : 1, "movement_direction" : 0},
+	"air_vars" : {"jump_power" : 1250, "jump_increase" : 1, "gravity" : 0, "gravity_increase" : 1, "movement_direction" : 0},
 	"climbing_vars" : {"climbing_speed" : 300},
 	
 	"switching_vars" : {"switch_again" : true},
@@ -38,6 +38,7 @@ var camera_changing : Tween
 @onready var edge_detectors = $Detectors/EdgeDetectors
 @onready var sweat = $Sweat
 @onready var interact_detector = $InteractDetector
+@onready var interaction_indicator = $InteractionIndicator
 #endregion
 
 ## ---- Functions ----
@@ -75,8 +76,8 @@ func _physics_process(_delta):  ## Runs every physics frames
 	
 	if velocity.y != 0 and current_state == States.AIR:
 		if Input.is_action_just_released("Jump") and 0 > velocity.y:
-				main_vars.air_vars.gravity_increase += 5
-				main_vars.air_vars.gravity += 50
+				main_vars.air_vars.gravity_increase += 2
+				main_vars.air_vars.gravity += 10
 	
 	match current_state:
 		States.GROUND:
@@ -124,6 +125,7 @@ func ground():
 		for i in interactables:
 			for y in GlobalScript.player_abilitys:
 				if i.activator == y:
+					interaction_indicator.visible = false
 					i.interact(self)
 	
 	move()
@@ -148,24 +150,19 @@ func ground():
 	
 	#endregion
 
-func air(): 
+func air():
 	#region Functions
 	var air_movement = func air_movement():
 		var direction = Input.get_axis("Left", "Right")
 		
-		if direction == main_vars.air_vars.movement_direction and main_vars.air_vars.movement_direction != 0:
-			velocity.x = main_vars.air_vars.jump_power * direction / 2
+		if direction == main_vars.air_vars.movement_direction and main_vars.air_vars.movement_direction != 0 and velocity.x * direction <= main_vars.ground_vars.speed:
+				velocity.x = main_vars.ground_vars.speed * direction
 		
-		elif direction != main_vars.air_vars.movement_direction and main_vars.air_vars.movement_direction != 0:
-			velocity.x += direction * main_vars.air_vars.jump_power / 10
-			velocity.x = clamp(velocity.x, -main_vars.air_vars.jump_power, main_vars.air_vars.jump_power)
-		
-		elif direction != main_vars.air_vars.movement_direction and main_vars.air_vars.movement_direction == 0:
-			velocity.x += direction * main_vars.air_vars.jump_power / 30
-			velocity.x = clamp(velocity.x, -main_vars.air_vars.jump_power, main_vars.air_vars.jump_power)
+		elif direction != main_vars.air_vars.movement_direction and direction != 0:
+			velocity.x = lerp(velocity.x, main_vars.ground_vars.speed * direction, 0.1)
 		
 		elif direction == 0 and velocity.x != 0:
-			lerpf(velocity.x, 0.0, 0.005)
+			velocity.x = lerpf(velocity.x, 0.0, 0.005)
 	
 	## Variable Jump Height is in Physiscs Process!
 	
@@ -173,9 +170,9 @@ func air():
 		if velocity.y < MAX_GRAVITY: # Checks and adjusts the current gravity
 			velocity.y += main_vars.air_vars.gravity
 			main_vars.air_vars.gravity += main_vars.air_vars.gravity_increase
-			main_vars.air_vars.gravity_increase += 0.05
+			main_vars.air_vars.gravity_increase += 0.1
 		
-		if velocity.y > -500 and velocity.y < 0:
+		if velocity.y > -300 and velocity.y < 0:
 			velocity.y = 100
 	#endregion
 	
@@ -267,11 +264,14 @@ func overidden():
 func _on_interact_detector_body_entered(body):
 	for i in GlobalScript.player_abilitys:
 		if body.activator == i:
+			interaction_indicator.visible = true
 			interactables.append(body)
 			body.entered(true)
 
 func _on_interact_detector_body_exited(body):
 	interactables.erase(body)
+	if interactables.is_empty():
+		interaction_indicator.visible = false
 	body.entered(false)
 #endregion
 
@@ -366,8 +366,8 @@ func switch(old_state, new_state):
 		if Input.is_action_pressed("Jump"):
 			main_vars.air_vars.movement_direction = get_sprite_rotation() * -1
 			
-			velocity.x = main_vars.air_vars.jump_power * main_vars.air_vars.movement_direction
-			velocity.y = -main_vars.air_vars.jump_power / 4
+			velocity.x = main_vars.ground_vars.speed * main_vars.air_vars.movement_direction * 2
+			velocity.y = -main_vars.air_vars.jump_power
 			sprite.play("fall")
 		
 		current_state = new_state
@@ -377,6 +377,9 @@ func switch(old_state, new_state):
 		current_state = new_state
 		
 	elif old_state == States.CLIMB and new_state == States.GROUND:
+		reset_main_vars(1)
+		reset_main_vars(2)
+		
 		if edge_detectors.on_edge():
 			position.x += 20 * get_sprite_rotation() * -1
 		

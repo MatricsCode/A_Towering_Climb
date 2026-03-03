@@ -20,11 +20,11 @@ activator = "Sky_Lift_Key"
 metadata/_custom_type_script = "uid://c3pd3dg0vshs0"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -65)
+position = Vector2(0, -97)
 texture = ExtResource("2_qioah")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -30)
+position = Vector2(0, -62)
 shape = SubResource("RectangleShape2D_qioah")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

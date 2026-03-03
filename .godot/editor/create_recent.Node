@@ -1,4 +1,6 @@
+Control
 Node2D
+Label
 Node
 Line2D
 MultiplayerSpawner
@@ -8,7 +10,5 @@ GPUParticles2D
 Timer
 AnimatedSprite2D
 Sprite2D
-Control
 MultiplayerSynchronizer
 RayCast2D
-ColorRect

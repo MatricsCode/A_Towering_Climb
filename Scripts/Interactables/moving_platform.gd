@@ -14,17 +14,21 @@ func _ready():
 func _physics_process(delta):
 	if moving:
 		target.progress_ratio += speed * 0.01 * direction
-		player.position = target.position
+		if direction == 1:
+			player.position = target.position
 		position = target.position
 		
-		if target.progress_ratio != 0 and target.progress_ratio != 1:
-			pass
-		else:
-			moving = false
+		if target.progress_ratio == 1:
+			direction = -1
 			player.overide(false)
 			for i in player.get_children():
 				if i is CollisionShape2D:
 					i.disabled = false
+		
+		elif target.progress_ratio == 0:
+			moving = false
+			$CollisionShape2D.disabled = false
+			
 
 func entered(has_entered : bool):
 	if has_entered:
@@ -41,9 +45,10 @@ func action():
 		if i is CollisionShape2D:
 			i.disabled = true
 	
-	if target.progress_ratio == 0:
-		direction = 1
-	elif target.progress_ratio == 1:
-		direction = -1
+	$CollisionShape2D.disabled = true
+	
+	direction = 1
+	
+	
 	
 	moving = true

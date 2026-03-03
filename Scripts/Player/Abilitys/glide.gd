@@ -13,7 +13,7 @@ func _physics_process(_delta):
 	elif in_action and Input.is_action_pressed("Jump"):
 		$"../../Sprite".play("glide")
 		player.main_vars.air_vars.gravity += 1
-		player.velocity.y += 5
+		player.velocity.y += 1
 		
 		air_movement()
 		

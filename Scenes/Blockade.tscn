@@ -59,7 +59,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unl27"]
-size = Vector2(98, 319)
+size = Vector2(162, 319)
 
 [node name="Blockade" type="StaticBody2D" groups=["Bumpable"]]
 collision_layer = 2
