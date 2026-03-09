@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bb64cr50jmhs8"]
+[gd_scene load_steps=11 format=4 uid="uid://bb64cr50jmhs8"]
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Recourses/Tileset.tres" id="1_tlcug"]
 [ext_resource type="PackedScene" uid="uid://deffkwaj6jy8s" path="res://Scenes/Moving Platform.tscn" id="2_4dpyx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bqn3jg2ms8eig" path="res://Scenes/InteractablesSpawner.tscn" id="5_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/LiquidDrum.tscn" id="6_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://dbd4mefv24ifl" path="res://Scenes/BirdSpawner.tscn" id="7_5f3p6"]
+[ext_resource type="PackedScene" uid="uid://cn07xety6vi3e" path="res://Test.tscn" id="8_jv26f"]
 
 [sub_resource type="Curve2D" id="Curve2D_cyadu"]
 _data = {
@@ -56,3 +57,6 @@ positions = Array[Vector2]([Vector2(-1051, -1400), Vector2(3127, -3399), Vector2
 
 [node name="BirdSpawner" parent="." instance=ExtResource("7_5f3p6")]
 spawn_positions = Array[Array]([[Vector2(445, -2800), Vector2(1713, -2800)], [Vector2(-1109, -4081), Vector2(-123, -4081)]])
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("8_jv26f")]
+position = Vector2(-534, -101)

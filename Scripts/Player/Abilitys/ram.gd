@@ -5,6 +5,8 @@ var current_speed = 0
 
 var gravity = 100
 
+var position = Vector2.ZERO
+
 func _physics_process(delta):
 	if Input.is_action_pressed("Ram") and player.current_state == activation_state and player.is_on_floor():
 		flying = false
@@ -17,12 +19,7 @@ func _physics_process(delta):
 		
 		overide()
 	
-	if Input.is_action_pressed("Ram") and in_action and !flying:
-		var direction = player.get_sprite_rotation()
-		current_speed = lerp(current_speed, 1500.0 * float(direction), 0.02)
-		player.velocity.x = current_speed
-	
-	if player.is_on_wall() and in_action:
+	if position == player.position and in_action:
 		flying = true
 		
 		player.position.y += -50
@@ -43,6 +40,16 @@ func _physics_process(delta):
 	elif not player.is_on_floor() and in_action and !flying:
 		reset()
 	
+	if Input.is_action_pressed("Ram") and in_action and !flying:
+		var direction = player.get_sprite_rotation()
+		current_speed = lerp(current_speed, 1500.0 * float(direction), 0.02)
+		player.velocity.x = current_speed
+		if player.velocity.x < -50 or player.velocity.x > 50:
+			pass
+			#position = player.position
+	
+	print(flying)
+	
 	if flying:
 		fly()
 
@@ -56,7 +63,7 @@ func fly():
 	
 	await get_tree().create_timer(0.1).timeout
 	
-	if player.is_on_floor() or player.is_on_wall():
+	if player.is_on_floor() or position == player.position:
 		reset()
 		gravity = 100
 		flying = false

@@ -1,5 +1,6 @@
-res://Scenes/player.tscn
+res://Test.tscn
 res://Recourses/Tileset.tres
+res://Scenes/player.tscn
 res://Scenes/Bird.tscn
 res://Scenes/Blockade.tscn
 res://Scenes/Levels/level_2.tscn
