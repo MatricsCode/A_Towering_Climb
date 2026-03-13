@@ -71,6 +71,11 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	GlobalScript.winner.connect(won)
 
 func _physics_process(_delta):  ## Runs every physics frames
+	if wall_detector.touching_wall():
+		set_collision_layer_value(2,true)
+	else:
+		set_collision_layer_value(2,false)
+	
 	if not is_multiplayer_authority():
 		return ## Checks if you are this player, and grants/denies you control acordingly
 	
@@ -136,6 +141,8 @@ func ground():
 	#region Exits
 	if Input.is_action_pressed("Jump"):
 		switch(States.GROUND, States.AIR)
+	
+	is_on_wall()
 	
 	if not is_on_floor() and not Input.is_action_pressed("Jump"):
 		await get_tree().create_timer(0.1).timeout
@@ -255,7 +262,7 @@ func paused():
 		velocity.x = lerp(velocity.x, 0.0, 0.4)
 
 func overidden():
-	pass
+	print("player velocity : ", velocity)
 #endregion
 
 ## --- Signals ---
@@ -304,6 +311,7 @@ func get_sprite_rotation():
 		return -1
 
 func switch(old_state, new_state):
+	
 	if old_state == States.OVERIDDEN:
 		current_state = new_state
 		main_vars.air_vars.gravity = 0
@@ -373,6 +381,12 @@ func switch(old_state, new_state):
 		current_state = new_state
 	
 	elif old_state == States.GROUND and new_state == States.CLIMB:
+		if wall_detector.touching_wall(true) != get_sprite_rotation():
+			if sprite.flip_h == false:
+				sprite.flip_h = true
+			else:
+				sprite.flip_h = false
+		
 		position.y -= 20
 		current_state = new_state
 		

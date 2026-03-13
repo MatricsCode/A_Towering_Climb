@@ -74,7 +74,6 @@ func button_pressed(name):
 					for y in indicator_container.get_children():
 						if y.name == name:
 							y.color = Color.html("#ff2f00")
-				print(GlobalScript.player_abilitys)
 				return
 		
 		for i in outfits_container.get_children():

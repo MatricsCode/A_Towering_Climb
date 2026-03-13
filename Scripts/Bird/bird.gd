@@ -14,10 +14,6 @@ var message_others : int
 func _ready():
 	message_others = randi_range(-3, 1)
 	
-	prints(name, position, message_others)
-	
-	
-	
 	var color = randi_range(0, 4)
 	match color:
 		0:
@@ -42,7 +38,6 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_area_entered(area):
 	run(area)
-	print(name, " is following another bird")
 
 func run(detected):
 	var run_rotation = 0

@@ -93,10 +93,11 @@ Dev2={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Ground"
-2d_physics/layer_3="Climbable"
+2d_physics/layer_3="Ramable"
 2d_physics/layer_4="Collectible"
 2d_physics/layer_5="Interactable"
 2d_physics/layer_6="Birds"
+2d_physics/layer_32="WallCollisionDetector"
 
 [rendering]
 

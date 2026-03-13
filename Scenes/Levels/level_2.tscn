@@ -59,4 +59,7 @@ positions = Array[Vector2]([Vector2(-1299, -3841), Vector2(2856, -1360), Vector2
 spawn_positions = Array[Array]([[Vector2(-2155, -1761), Vector2(-809, -1761)], [Vector2(467, -2880), Vector2(2517, -2880)]])
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("8_pnnky")]
-position = Vector2(-1058, -101)
+position = Vector2(-826, -49)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("8_pnnky")]
+position = Vector2(-1516, -50)

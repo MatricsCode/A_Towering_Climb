@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dvnr5lwr2t2n8" path="res://Scripts/Player/edge_detectors.gd" id="28_utwlt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
-size = Vector2(60, 150)
+size = Vector2(79, 150)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cvnsp"]
 properties/0/path = NodePath("Sprite:animation")
@@ -55,6 +55,7 @@ color_ramp = SubResource("GradientTexture1D_megsn")
 size = Vector2(74, 78)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 5
 collision_mask = 14
 script = ExtResource("1_kih0c")
 
@@ -67,7 +68,7 @@ speed_scale = 3.0
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, -76)
+position = Vector2(5.5, -76)
 shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -85,15 +86,15 @@ position = Vector2(0, -136)
 script = ExtResource("27_u7x0b")
 
 [node name="WallDetector1" type="RayCast2D" parent="Detectors/WallDetectors"]
-position = Vector2(-26, 57)
+position = Vector2(-50, 57)
 target_position = Vector2(0, 77)
-collision_mask = 4
+collision_mask = 2
 hit_from_inside = true
 
 [node name="WallDetector2" type="RayCast2D" parent="Detectors/WallDetectors"]
-position = Vector2(36, 57)
+position = Vector2(60, 57)
 target_position = Vector2(0, 77)
-collision_mask = 4
+collision_mask = 2
 hit_from_inside = true
 
 [node name="EdgeDetectors" type="Node2D" parent="Detectors"]
