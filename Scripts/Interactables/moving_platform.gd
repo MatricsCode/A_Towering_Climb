@@ -28,7 +28,6 @@ func _physics_process(delta):
 		elif target.progress_ratio == 0:
 			moving = false
 			$CollisionShape2D.disabled = false
-			
 
 func entered(has_entered : bool):
 	if has_entered:

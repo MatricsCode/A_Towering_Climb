@@ -9,6 +9,7 @@ var timer = 0
 var position = Vector2.ZERO
 
 func _physics_process(delta):
+	
 	if Input.is_action_pressed("Ram") and player.current_state == activation_state and player.is_on_floor():
 		player.set_collision_mask_value(3, false)
 		flying = false
@@ -21,17 +22,6 @@ func _physics_process(delta):
 		$"../../Sprite".play("ram")
 		
 		overide()
-	
-	elif not Input.is_action_pressed("Ram") and in_action and !flying:
-		reset()
-		timer = 0
-		player.velocity.x = 0
-		player.set_collision_mask_value(3, true)
-	
-	elif not player.is_on_floor() and in_action and !flying:
-		reset()
-		timer = 0
-		player.set_collision_mask_value(3, true)
 	
 	if Input.is_action_pressed("Ram") and in_action and !flying:
 		var range
@@ -60,6 +50,17 @@ func _physics_process(delta):
 		
 		position = player.position
 	
+	if not Input.is_action_pressed("Ram") and in_action and !flying:
+		reset()
+		timer = 0
+		player.velocity.x = 0
+		player.set_collision_mask_value(3, true)
+	
+	elif player.position.y != position.y and in_action and !flying:
+		reset()
+		timer = 0
+		player.set_collision_mask_value(3, true)
+	
 	if flying:
 		fly()
 		timer += 0.1
@@ -74,10 +75,13 @@ func fly():
 	if player.velocity.y > -500 and player.velocity.y < 0:
 			player.velocity.y = 100 
 	
-	if position == player.position and timer > 1:
-		reset()
+	if player.velocity.x != -1.5 * current_speed:
+		player.velocity.x = -1.5 * current_speed
+	
+	if player.is_on_floor() and timer > 1:
 		gravity = 100
 		timer = 0
 		flying = false
+		current_speed = player.velocity.x
 	
 	position = player.position

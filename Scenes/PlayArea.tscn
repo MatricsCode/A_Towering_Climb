@@ -10,14 +10,14 @@ size = Vector2(4838, 20)
 
 [node name="PlayArea" type="Node"]
 
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath(".")
+script = ExtResource("5_aqo4u")
+
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="." groups=["PlayerSpawner"]]
 spawn_path = NodePath(".")
 script = ExtResource("1_1wwee")
 player_scene = ExtResource("2_aqo4u")
-
-[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath(".")
-script = ExtResource("5_aqo4u")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2

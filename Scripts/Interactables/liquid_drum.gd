@@ -8,20 +8,13 @@ var controler = preload("res://Scripts/LiquidDrum/slip_overider.gd")
 func entered(has_entered : bool):
 	if has_entered:
 		sprite.play("Interactable")
-	else:
+	elif not has_entered and not interacted:
 		sprite.play("Full")
 
 func action():
 	sprite.play("Emptying")
 	
 	set_collision_layer_value(5, false)
-	
-	await sprite.animation_finished
-	
-	sprite.play("Empty")
-	
-	area.body_entered.connect(player_slip_add)
-	area.body_exited.connect(player_slip_remove)
 
 func player_slip_add(body):
 	var upgrade_node = null
@@ -56,3 +49,11 @@ func player_slip_remove(body):
 				y.reset()
 				y.queue_free()
 				return
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if sprite.frame == 15:
+			sprite.play("Empty")
+			
+			area.body_entered.connect(player_slip_add)
+			area.body_exited.connect(player_slip_remove)

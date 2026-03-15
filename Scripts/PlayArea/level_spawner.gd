@@ -24,11 +24,12 @@ func spawn_level(_data):
 
 func choose_level():
 	var chosen_level = randi_range(0, levels.size() - 1)
+	
 	if chosen_level == previouse_level:
-		if previouse_level == 0:
-			chosen_level = 1
-		elif previouse_level != 0:
-			chosen_level = previouse_level - 1
+		chosen_level += 1
+		if chosen_level > levels.size() -1:
+			chosen_level -= 2
+	
 	previouse_level = chosen_level
 	
 	return chosen_level

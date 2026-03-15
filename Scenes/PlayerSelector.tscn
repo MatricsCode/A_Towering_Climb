@@ -174,9 +174,9 @@ custom_minimum_size = Vector2(210, 0)
 anchors_preset = -1
 anchor_top = -0.001
 anchor_bottom = -0.001
-offset_top = 0.148001
+offset_top = 0.648
 offset_right = 210.0
-offset_bottom = 553.148
+offset_bottom = 553.648
 theme = SubResource("Theme_uhaop")
 script = ExtResource("1_xs5nl")
 
@@ -210,7 +210,7 @@ position = Vector2(298, 73)
 sprite_frames = SubResource("SpriteFrames_qon4y")
 animation = &"2"
 autoplay = "0"
-frame_progress = 0.634755
+frame = 2
 speed_scale = 3.0
 offset = Vector2(-298, -93)
 

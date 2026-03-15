@@ -55,6 +55,7 @@ color_ramp = SubResource("GradientTexture1D_megsn")
 size = Vector2(74, 78)
 
 [node name="Player" type="CharacterBody2D"]
+visibility_layer = 2
 collision_layer = 5
 collision_mask = 14
 script = ExtResource("1_kih0c")
@@ -86,14 +87,14 @@ position = Vector2(0, -136)
 script = ExtResource("27_u7x0b")
 
 [node name="WallDetector1" type="RayCast2D" parent="Detectors/WallDetectors"]
-position = Vector2(-50, 57)
-target_position = Vector2(0, 77)
+position = Vector2(-60, 65)
+target_position = Vector2(0, 60)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="WallDetector2" type="RayCast2D" parent="Detectors/WallDetectors"]
-position = Vector2(60, 57)
-target_position = Vector2(0, 77)
+position = Vector2(70, 65)
+target_position = Vector2(0, 60)
 collision_mask = 2
 hit_from_inside = true
 
@@ -102,13 +103,13 @@ position = Vector2(0, -136)
 script = ExtResource("28_utwlt")
 
 [node name="EdgeDetector1" type="RayCast2D" parent="Detectors/EdgeDetectors"]
-position = Vector2(42, 55)
+position = Vector2(70, 55)
 target_position = Vector2(3, 0)
 collision_mask = 4
 hit_from_inside = true
 
 [node name="EdgeDetector2" type="RayCast2D" parent="Detectors/EdgeDetectors"]
-position = Vector2(-32, 55)
+position = Vector2(-60, 55)
 target_position = Vector2(-3, 0)
 collision_mask = 4
 hit_from_inside = true
