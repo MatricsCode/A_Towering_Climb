@@ -1,4 +1,4 @@
-res://Scenes/LiquidDrum.tscn
+res://Scenes/player.tscn
 res://Recourses/Tileset.tres
 res://Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres
 res://Recourses/UI/WinBackground.tres

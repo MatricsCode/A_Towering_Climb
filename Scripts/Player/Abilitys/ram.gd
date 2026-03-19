@@ -9,7 +9,6 @@ var timer = 0
 var position = Vector2.ZERO
 
 func _physics_process(delta):
-	
 	if Input.is_action_pressed("Ram") and player.current_state == activation_state and player.is_on_floor():
 		player.set_collision_mask_value(3, false)
 		flying = false
@@ -37,6 +36,9 @@ func _physics_process(delta):
 			player.velocity.y = -2 * current_speed * player.get_sprite_rotation()
 			player.velocity.x = 1.5 * current_speed
 			
+			clamp(player.velocity.y, -10000, 100000)
+			clamp(player.velocity.x, -10000, 100000)
+			
 			print("----------------------")
 			
 			if player.get_sprite_rotation() == -1:
@@ -56,7 +58,7 @@ func _physics_process(delta):
 		player.velocity.x = 0
 		player.set_collision_mask_value(3, true)
 	
-	elif player.position.y != position.y and in_action and !flying:
+	elif not player.is_on_floor() and in_action and !flying:
 		reset()
 		timer = 0
 		player.set_collision_mask_value(3, true)
