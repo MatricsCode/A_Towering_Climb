@@ -44,9 +44,11 @@ func spawn_bird(data = null):
 	
 	if current_horizontal_position < spawn_positions.get(spawn_area).get(1).x:
 		current_horizontal_position += randf_range(60, 120)
+	
 	elif spawn_area < spawn_positions.size() - 1:
 		spawn_area += 1
 		current_horizontal_position = spawn_positions.get(spawn_area).get(0).x
+	
 	else:
 		spawning = false
 	
@@ -54,6 +56,11 @@ func spawn_bird(data = null):
 	bird.position.y = bird_position.y
 	
 	return bird
+
+
+
+
+
 
 
 

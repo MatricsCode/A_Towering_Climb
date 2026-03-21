@@ -15,6 +15,8 @@ func _ready():
 				ability.activation_state = 1
 			"Ram":
 				ability.activation_state = 0
+			"Sandwich":
+				ability.activation_state = 0
 			_:
 				print("No Ability Specified!")
 				ability.activation_state = -1

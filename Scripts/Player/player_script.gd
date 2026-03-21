@@ -325,6 +325,14 @@ func switch(old_state, new_state):
 	if new_state == States.AIR:
 		main_vars.air_vars.gravity = 0
 	
+	printerr("You have made a workaround for the sprite flipping bug, but you commented it out to show how you did it in the devlog! It is in the switch function!")
+	
+	#if new_state == States.CLIMB:
+		#var orrientation = wall_detector.touching_wall(true)
+		#
+		#if orrientation != get_sprite_rotation():
+			#sprite.flip_h = not sprite.flip_h
+	
 	if old_state == States.GROUND and new_state == States.AIR:
 		reset_main_vars(0)
 		
@@ -395,7 +403,7 @@ func switch(old_state, new_state):
 		reset_main_vars(2)
 		
 		if edge_detectors.on_edge():
-			position.x += 20 * get_sprite_rotation() * -1
+			position.x += 50 * get_sprite_rotation() * -1
 		
 		else:
 			position.x += 50 * get_sprite_rotation()

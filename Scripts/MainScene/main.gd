@@ -8,10 +8,11 @@ var peer = SteamMultiplayerPeer.new()
 
 @onready var MainUI = $SelectorUI
 @onready var PlayerReadyScreen = $PlayerReadyScreen
-@onready var AbilitySelectorUI = $"AbilitySelector UI"
 
 @onready var host = $SelectorUI/HSplitContainer/VBoxContainer/Host
 @onready var refresh = $SelectorUI/HSplitContainer/VBoxContainer/Refresh
+
+@onready var id_field = $SelectorUI/HSplitContainer/VBoxContainer/VBoxContainer/IDField
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,21 +65,32 @@ func open_lobby_list():
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
 	Steam.requestLobbyList()
 func on_lobby_match_list(lobbies2):
-	for lobby in lobbies2:
-		var lobby_name = Steam.getLobbyData(lobby, "name")
-		var lobby_mem = Steam.getNumLobbyMembers(lobby)
-		
-		var but = Button.new()
-		but.set_text(str(lobby_name ," | Playercount :", lobby_mem))
-		but.set_size(Vector2(100, 5))
-		but.connect("pressed", Callable(self, "join_lobby").bind(lobby))
-		
-		lobbies.add_child(but)
-
+		for lobby in lobbies2:
+			var lobby_name = Steam.getLobbyData(lobby, "name")
+			var lobby_mem = Steam.getNumLobbyMembers(lobby)
+			
+			if id_field.text == "" or lobby_name.containsn(id_field.text):
+			
+				var but = Button.new()
+				but.set_text(str(lobby_name ," | Playercount :", lobby_mem))
+				but.set_size(Vector2(100, 5))
+				but.connect("pressed", Callable(self, "join_lobby").bind(lobby))
+				
+				lobbies.add_child(but)
 func _on_refresh_pressed():
 	if lobbies.get_child_count():
 		for i in lobbies.get_children():
 			i.queue_free()
+	
+	
+	id_field.text = ""
+	
+	open_lobby_list()
+func _on_search_pressed():
+	if lobbies.get_child_count():
+		for i in lobbies.get_children():
+			i.queue_free()
+	
 	open_lobby_list()
 
 func leave_lobby():
@@ -104,10 +116,6 @@ func leave_lobby():
 	MainUI.show()
 	PlayerReadyScreen.reset()
 	$SelectorUI/Camera2D.enabled = true
-
-func _on_abilitys_pressed():
-	MainUI.visible = false
-	AbilitySelectorUI.visible = true
 
 func _on_ready_pressed():
 	ms.spawn("res://Scenes/PlayArea.tscn")

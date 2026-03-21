@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dbd4mefv24ifl"]
 
-[ext_resource type="Script" uid="uid://dy32smmeh3nm4" path="res://Scripts/BirdSpawner/bird_spawner.gd" id="1_4qnch"]
+[ext_resource type="Script" uid="uid://dy32smmeh3nm4" path="res://Scripts/Bird/bird_spawner.gd" id="1_4qnch"]
 
 [node name="BirdSpawner" type="MultiplayerSpawner"]
 spawn_path = NodePath(".")

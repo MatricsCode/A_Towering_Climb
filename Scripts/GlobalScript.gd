@@ -12,15 +12,22 @@ var all_player_abilitys = {
 	"Sky_Lift_Key" = preload("res://Scripts/Player/Abilitys/ability_moduel.gd"),
 	"Climbers_Hook" = preload("res://Scripts/Player/Abilitys/climbers_hook.gd"), 
 	"Drum_Key" = preload("res://Scripts/Player/Abilitys/ability_moduel.gd"),
-	"Ram" = preload("res://Scripts/Player/Abilitys/ram.gd")
+	"Ram" = preload("res://Scripts/Player/Abilitys/ram.gd"),
+	"Sandwich" = preload("res://Scripts/Player/Abilitys/sandwich.gd"),
+}
+
+var all_projectiles = {
+	"Sandwich" = preload("res://Scenes/Sandwich.tscn"),
 }
 
 var goal_position : Vector2
 var max_abilitys = 3
 
-var player_abilitys = ["Glide", "Sky_Lift_Key", "Ram"]
+var player_abilitys = ["Glide", "Sky_Lift_Key", "Sandwich"]
 
 var player_positions_y : Array[float]
+
+signal projectile (type)
 
 signal winner (name)
 signal reset

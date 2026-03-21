@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dvnr5lwr2t2n8" path="res://Scripts/Player/edge_detectors.gd" id="28_utwlt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
-size = Vector2(79, 150)
+size = Vector2(69, 150)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cvnsp"]
 properties/0/path = NodePath("Sprite:animation")
@@ -52,9 +52,9 @@ scale_curve = SubResource("CurveTexture_ksbbd")
 color_ramp = SubResource("GradientTexture1D_megsn")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52ee3"]
-size = Vector2(74, 78)
+size = Vector2(64, 78)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 visibility_layer = 2
 collision_layer = 5
 collision_mask = 14
@@ -66,10 +66,11 @@ sprite_frames = ExtResource("2_5ixxa")
 animation = &"walk"
 frame_progress = 0.595083
 speed_scale = 3.0
+flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5.5, -76)
+position = Vector2(0.5, -76)
 shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -93,7 +94,7 @@ collision_mask = 2
 hit_from_inside = true
 
 [node name="WallDetector2" type="RayCast2D" parent="Detectors/WallDetectors"]
-position = Vector2(70, 65)
+position = Vector2(60, 65)
 target_position = Vector2(0, 60)
 collision_mask = 2
 hit_from_inside = true
@@ -103,7 +104,7 @@ position = Vector2(0, -136)
 script = ExtResource("28_utwlt")
 
 [node name="EdgeDetector1" type="RayCast2D" parent="Detectors/EdgeDetectors"]
-position = Vector2(70, 55)
+position = Vector2(60, 55)
 target_position = Vector2(3, 0)
 collision_mask = 4
 hit_from_inside = true
@@ -153,7 +154,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractDetector"]
-position = Vector2(5, -42)
+position = Vector2(0, -42)
 shape = SubResource("RectangleShape2D_52ee3")
 
 [node name="InteractionIndicator" type="Label" parent="."]

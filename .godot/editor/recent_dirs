@@ -1,7 +1,9 @@
-res://
-res://Scenes
-res://Scripts/Interactables/InteractablesSpawner
 C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports/DemoSaves
+res://Scenes
+res://Scripts/Sandwich/Projectile Spawner
+res://Scripts/Sandwich
+res://
+res://Scripts/Interactables/InteractablesSpawner
 C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports
 res://Scripts/Player
 res://Scripts/PlayerSelectorUI
@@ -18,5 +20,3 @@ res://Scenes/Levels
 res://Scripts/Goal
 res://Recourses/PlayerSprites/PlayerHeadSprites
 res://Recourses
-res://Recourses/PlayerSprites
-res://Scripts/BirdSpawner

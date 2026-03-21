@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5yjcgursml8f"]
+
+[ext_resource type="Script" uid="uid://cu2343rcba378" path="res://Scripts/Projectiles/sandwich.gd" id="1_if25b"]
+[ext_resource type="Texture2D" uid="uid://cjg64eyyotllh" path="res://Art/Sandwich/Sandwich1.png" id="1_qwkdi"]
+[ext_resource type="Texture2D" uid="uid://b7pr8b6dvxdb2" path="res://Art/Sandwich/Sandwich2.png" id="2_if25b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g7352"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qwkdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_if25b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wr2kf"]
+size = Vector2(120, 70)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_if25b"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimatedSprite2D:frame")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("AnimatedSprite2D:flip_h")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_if25b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g7352")
+autoplay = "default"
+frame_progress = 0.213463
+speed_scale = 2.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_wr2kf")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_if25b")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

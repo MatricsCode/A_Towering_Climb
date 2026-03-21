@@ -30,6 +30,7 @@ Bumpable=""
 PlayerSpawner=""
 PlayerOutfit=""
 Background=""
+Player=""
 
 [input]
 
