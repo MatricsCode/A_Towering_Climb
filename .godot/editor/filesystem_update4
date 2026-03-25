@@ -1,11 +1,2 @@
-res://Scenes/player.tscn
-res://Recourses/Tileset.tres
-res://Scenes/Sandwich.tscn
-res://Scenes/Levels/level_1.tscn
-res://Scenes/Levels/level_2.tscn
-res://Scenes/ProjectileSpawner.tscn
-res://Scenes/GlobalScript.tscn
 res://Scenes/BirdSpawner.tscn
-res://Test.tscn
-res://Scenes/PlayerSelector.tscn
-res://Scenes/Main.tscn
+res://Recourses/Tileset.tres

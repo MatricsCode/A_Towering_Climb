@@ -285,6 +285,36 @@ func _on_interact_detector_body_exited(body):
 
 ## ---- Other Functions ----
 
+
+
+
+
+
+
+
+func test_array():
+	var DictionaryMain = {
+		"Dictionary1" : {"One" : 1, 
+		"Two" : 2},
+		
+		"Dictionary2" : {"One" : "Fred", 
+		"Two" : "Dave"},
+		
+		"Dictionary3" : {"One" :  [1,2,3], 
+		  "Two" : [2,4,8]},
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 #region Main Other Functions
 func move():
 	var direction = Input.get_axis("Left", "Right")
@@ -327,11 +357,11 @@ func switch(old_state, new_state):
 	
 	printerr("You have made a workaround for the sprite flipping bug, but you commented it out to show how you did it in the devlog! It is in the switch function!")
 	
-	#if new_state == States.CLIMB:
-		#var orrientation = wall_detector.touching_wall(true)
-		#
-		#if orrientation != get_sprite_rotation():
-			#sprite.flip_h = not sprite.flip_h
+	if new_state == States.CLIMB:
+		var orrientation = wall_detector.touching_wall(true)
+		
+		if orrientation != get_sprite_rotation():
+			sprite.flip_h = not sprite.flip_h
 	
 	if old_state == States.GROUND and new_state == States.AIR:
 		reset_main_vars(0)
