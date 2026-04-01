@@ -30,8 +30,6 @@ func _ready():
 
 func _physics_process(_delta):
 	move_and_slide()
-	
-	rotation += randf_range(-10, 10)
 
 
 func _on_area_2d_body_entered(body):

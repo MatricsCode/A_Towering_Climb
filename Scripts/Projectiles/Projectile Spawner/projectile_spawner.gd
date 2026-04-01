@@ -8,7 +8,7 @@ func _ready():
 func spawn_projectile(data):
 	var projectile = data.get(0).instantiate()
 	
-	projectile.position.x = data.get(1).x + 100 * data.get(2) 
+	projectile.position.x = data.get(1).x + 150 * data.get(2) 
 	projectile.position.y = data.get(1).y - 100
 	
 	projectile.direction = data.get(2)
