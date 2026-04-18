@@ -18,7 +18,7 @@ var peer = SteamMultiplayerPeer.new()
 func _ready():
 	GlobalScript.left_lobby.connect(leave_lobby)
 	GlobalScript.reset.connect(reset)
-	
+	host.grab_focus()
 	
 	ms.spawn_function = spawn_level
 	peer.lobby_created.connect(on_lobby_created)
@@ -26,6 +26,7 @@ func _ready():
 	open_lobby_list()
 
 var time = 0
+
 func _physics_process(delta):
 	if lobby_id == 0:
 		position.x += 10
@@ -34,6 +35,9 @@ func _physics_process(delta):
 	else:
 		position.x = 0
 		position.y = 0
+	
+	if Input.is_action_pressed("Dev1"):
+		print(lobby_id)
 
 func spawn_level(data):
 	var a = (load(data) as PackedScene).instantiate()

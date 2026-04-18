@@ -1,7 +1,11 @@
-res://Scenes/player.tscn
+res://Scenes/PlayerSelector.tscn
 res://Recourses/Tileset.tres
+res://Recourses/UI/PauseBackground.tres
 res://Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres
 res://Recourses/UI/WinBackground.tres
+res://Scenes/MainUI.tscn
+res://Scripts/UI/height_indicator.gd
+res://Scenes/player.tscn
 res://Scenes/Sandwich.tscn
 res://Scenes/Levels/level_1.tscn
 res://Scenes/Levels/level_2.tscn
@@ -9,10 +13,8 @@ res://Scenes/ProjectileSpawner.tscn
 res://Scenes/GlobalScript.tscn
 res://Scenes/BirdSpawner.tscn
 res://Test.tscn
-res://Scenes/PlayerSelector.tscn
 res://Scenes/Main.tscn
 res://Scenes/Bird.tscn
-res://Scripts/Bird/bird.gd
-res://Scripts/Projectiles/sandwich.gd
-res://Scripts/Projectiles/Projectile Spawner/projectile_spawner.gd
-res://Scripts/Player/Abilitys/sandwich.gd
+res://Scripts/MainScene/player_ready_up.gd
+res://Scripts/GlobalScript.gd
+res://Scripts/UI/height_leaderboard.gd

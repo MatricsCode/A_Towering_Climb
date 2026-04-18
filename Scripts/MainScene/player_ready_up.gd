@@ -19,7 +19,8 @@ func _ready():
 
 func start():
 	background.visible = true
-	spawn(1)
+	
+	spawn(get_parent().peer.get_unique_id())
 
 func reset():
 	background.visible = false
@@ -46,9 +47,11 @@ func ready(readied : bool, index : int):
 func spawn_player_selector(data):
 	var play_select = PLAYER_SELECTOR.instantiate()
 	
+	print(data)
+	
 	players.append(data)
 	
-	if players.size() == 1:
+	if players.size() == Steam.getNumLobbyMembers(get_parent().lobby_id) -1:
 		play_select.main_player = true
 	
 	play_select.main_screen = $"."
@@ -58,6 +61,9 @@ func spawn_player_selector(data):
 	GlobalScript.player_outfits.append(0)
 	
 	everyone_readyed.append(false)
+	
+	if get_child(0).get_child_count() == 0:
+		play_select.main_player = true
 	
 	return play_select
 func despawn_player_selector(data):
@@ -69,7 +75,7 @@ func despawn_player_selector(data):
 
 # Main part of the code is in the Root node, Node2D!
 func _on_ready_pressed():
-	for i in get_children():
+	for i in get_child(0).get_children():
 		GlobalScript.player_outfits.set(i.get_index(), i.outfit)
 		i.queue_free()
 		everyone_readyed.clear()

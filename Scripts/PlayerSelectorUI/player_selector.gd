@@ -19,17 +19,25 @@ var main_player = false
 func _enter_tree():
 	await get_tree().create_timer(0.1).timeout
 	
+	if main_player:
+		$VBoxContainer/Main/Abilitys.grab_focus()
+	
 	if main_player == false:
 		for i in main_container.get_children():
 			i.disabled = true
-			ready_button.disabled = true
+		
+		ready_button.disabled = true
 	
 	for i in indicator_container.get_children():
 		for y in GlobalScript.player_abilitys:
 			if i.name == y:
 				i.color = Color.html("#74a642")
+	
+	print($MultiplayerSynchronizer.root_path)
 
 func _physics_process(delta):
+	print("Outfit needs to be a Integer")
+	
 	ready_button.text = text
 	
 	if ready_button.disabled == true:
@@ -44,17 +52,21 @@ func _physics_process(delta):
 func button_pressed(name):
 	if name != ready_button.name:
 		text = "Back"
+		$VBoxContainer/Main/Abilitys.grab_focus()
 	
 	if name == "Abilitys":
 		
 		main_container.visible = false
 		abilitys_container.visible = true
+		$VBoxContainer/Abilitys/HSplitContainer/Buttons/Glide.grab_focus()
 		
 		return
 	elif name == "Outfits":
 		
 		main_container.visible = false
 		outfits_container.visible = true
+		
+		$VBoxContainer/Outfits/Climber1.grab_focus()
 		
 		return
 	 

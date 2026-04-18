@@ -43,6 +43,8 @@ frame_progress = 0.210308
 speed_scale = 2.0
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(27, 3)

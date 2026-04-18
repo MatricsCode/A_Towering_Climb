@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnt4usslrchfy"]
+[gd_scene load_steps=7 format=3 uid="uid://bnt4usslrchfy"]
 
 [ext_resource type="Script" uid="uid://bevxwl1n2p71r" path="res://Scripts/UI/pause_menu.gd" id="1_xh0hd"]
 [ext_resource type="Script" uid="uid://lugaf8yhlsla" path="res://Scripts/UI/main_ui.gd" id="1_yd0xa"]
+[ext_resource type="Script" uid="uid://hrghadurkx2h" path="res://Scripts/UI/height_indicator.gd" id="2_1rfkw"]
 [ext_resource type="Script" uid="uid://ba6n6ohx1qr25" path="res://Scripts/UI/height_leaderboard.gd" id="3_3ngb3"]
 [ext_resource type="Script" uid="uid://blkue12vglqdr" path="res://Scripts/UI/settings.gd" id="3_8dqd8"]
 [ext_resource type="Script" uid="uid://du0w16lun2fuy" path="res://Scripts/UI/win_menu.gd" id="3_c3bvd"]
@@ -31,6 +32,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HeightIndicator" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1rfkw")
 
 [node name="HeightLeaderboard" type="HBoxContainer" parent="." groups=["PlayerOutfit"]]
 layout_mode = 1

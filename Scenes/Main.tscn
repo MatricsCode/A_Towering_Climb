@@ -34,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 30
 
 [node name="Spacer" type="AspectRatioContainer" parent="SelectorUI/HSplitContainer"]
 layout_mode = 2
@@ -136,8 +137,20 @@ disabled = true
 text = "Waiting..."
 
 [node name="PlayerReadyScreen" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath(".")
+spawn_path = NodePath("HBoxContainer")
 script = ExtResource("5_pbw6q")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerReadyScreen"]
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = -3.273
+anchor_right = 1.041
+anchor_bottom = -2.261
+offset_left = -0.232002
+offset_top = 30.9041
+offset_right = -0.232056
+offset_bottom = -78.8719
+alignment = 1
 
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Refresh" to="." method="_on_refresh_pressed"]

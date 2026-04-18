@@ -3,6 +3,7 @@ extends Control
 @onready var background = $"../Background"
 @onready var win_ui = $VBoxContainer
 @onready var timer_text = $"../StartTimer/Timer_text"
+@onready var again = $VBoxContainer/Again
 
 const WIN_BACKGROUND = preload("res://Recourses/UI/WinBackground.tres")
 
@@ -15,6 +16,8 @@ func won(player_name):
 	background.texture = WIN_BACKGROUND
 	
 	await get_tree().create_timer(1).timeout
+	
+	again.grab_focus()
 	
 	move_to_front()
 	win_ui.visible = true

@@ -251,7 +251,8 @@ func paused():
 			sprite.play("fall")
 	
 	elif wall_detector.touching_wall() == true and not is_on_floor():
-		sprite.set_animation("climb")
+		#sprite.stop()
+		velocity.y = 0
 	
 	elif wall_detector.touching_wall() == true and is_on_floor():
 		position.x += get_sprite_rotation() * -1 * 20
@@ -284,36 +285,6 @@ func _on_interact_detector_body_exited(body):
 
 
 ## ---- Other Functions ----
-
-
-
-
-
-
-
-
-func test_array():
-	var DictionaryMain = {
-		"Dictionary1" : {"One" : 1, 
-		"Two" : 2},
-		
-		"Dictionary2" : {"One" : "Fred", 
-		"Two" : "Dave"},
-		
-		"Dictionary3" : {"One" :  [1,2,3], 
-		  "Two" : [2,4,8]},
-	}
-
-
-
-
-
-
-
-
-
-
-
 
 #region Main Other Functions
 func move():
@@ -354,8 +325,6 @@ func switch(old_state, new_state):
 	
 	if new_state == States.AIR:
 		main_vars.air_vars.gravity = 0
-	
-	printerr("You have made a workaround for the sprite flipping bug, but you commented it out to show how you did it in the devlog! It is in the switch function!")
 	
 	if new_state == States.CLIMB:
 		var orrientation = wall_detector.touching_wall(true)
