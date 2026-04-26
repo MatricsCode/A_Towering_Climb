@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://j0ml6gtwkiec"]
 
-[ext_resource type="Script" uid="uid://ufse1qjko4yu" path="res://Scripts/Blockade/blockade.gd" id="1_42nxc"]
+[ext_resource type="Script" uid="uid://ufse1qjko4yu" path="res://Scripts/LevelStuff/Interactables/blockade.gd" id="1_42nxc"]
 [ext_resource type="Texture2D" uid="uid://cjj0ri1r83hx8" path="res://Art/Box/Wall1.png" id="2_unl27"]
 [ext_resource type="Texture2D" uid="uid://cwampl06rfhg" path="res://Art/Box/Wall2.png" id="3_lyd2v"]
 [ext_resource type="Texture2D" uid="uid://vwg6wc8o8hqh" path="res://Art/Box/Wall3.png" id="4_l17nc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c1xffsbub1eff" path="res://Art/Box/Wall8.png" id="9_fd44n"]
 [ext_resource type="Texture2D" uid="uid://c6hmi63ffyi8f" path="res://Art/Box/Wall9.png" id="10_a7mjo"]
 [ext_resource type="Texture2D" uid="uid://daeetarmhggl1" path="res://Art/Box/Wall10.png" id="11_lhnev"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42nxc"]
 size = Vector2(14, 319)

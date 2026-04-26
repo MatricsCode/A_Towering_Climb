@@ -1,11 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://qcca3v04ibwv"]
 
-[ext_resource type="Script" uid="uid://cwnojcoqhgt44" path="res://Scripts/Interactables/liquid_drum.gd" id="1_xwc7i"]
+[ext_resource type="Script" uid="uid://cwnojcoqhgt44" path="res://Scripts/LevelStuff/Interactables/liquid_drum.gd" id="1_xwc7i"]
 [ext_resource type="Texture2D" uid="uid://7ouqnqymspnj" path="res://Art/Liquid Drum/Industrial Drum4.png" id="2_da04d"]
 [ext_resource type="Texture2D" uid="uid://bnfx2kurr2dqv" path="res://Art/Liquid Drum/Industrial Drum5.png" id="2_kexb0"]
 [ext_resource type="Texture2D" uid="uid://b05n87ae7e08t" path="res://Art/Liquid Drum/Industrial Drum1.png" id="2_l6euv"]
 [ext_resource type="Texture2D" uid="uid://bn5fnuhqtrrx8" path="res://Art/Liquid Drum/Industrial Drum2.png" id="3_da04d"]
 [ext_resource type="Texture2D" uid="uid://6rhj6bm2oipt" path="res://Art/Liquid Drum/Industrial Drum3.png" id="4_kexb0"]
+
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jon1u"]
 animations = [{

@@ -1,23 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbujddwjermfm"]
+[gd_scene load_steps=11 format=3 uid="uid://cbujddwjermfm"]
 
-[ext_resource type="Texture2D" uid="uid://b8a6j8ve6mch5" path="res://Art/Bird/Bird1.png" id="1_7hjqj"]
-[ext_resource type="Script" uid="uid://daclwstfoi30d" path="res://Scripts/Goal/goal.gd" id="1_ugxcw"]
+[ext_resource type="Script" uid="uid://daclwstfoi30d" path="res://Scripts/LevelStuff/Goal/goal.gd" id="1_ugxcw"]
+[ext_resource type="Texture2D" uid="uid://d0ipodc0dawvt" path="res://Art/Tilemap/Finish1.png" id="2_l2h7g"]
+[ext_resource type="Texture2D" uid="uid://rmhu6l8corh4" path="res://Art/Tilemap/Finish2.png" id="3_1vpyn"]
+[ext_resource type="Texture2D" uid="uid://flo16nqhigxf" path="res://Art/Tilemap/Finish3.png" id="4_lxehk"]
+[ext_resource type="Texture2D" uid="uid://jf1f2roimsxl" path="res://Art/Tilemap/Finish4.png" id="5_1f377"]
+[ext_resource type="Texture2D" uid="uid://658gbahojf81" path="res://Art/Tilemap/Finish5.png" id="6_5ocuh"]
+[ext_resource type="Texture2D" uid="uid://02lsioewivt8" path="res://Art/Tilemap/Finish6.png" id="7_2j5es"]
+[ext_resource type="Texture2D" uid="uid://b4n076qartmlm" path="res://Art/Tilemap/Finish7.png" id="8_f4lbq"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ugxcw"]
-radius = 36.0
+[sub_resource type="SpriteFrames" id="SpriteFrames_3tk07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l2h7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1vpyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lxehk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1f377")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5ocuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2j5es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_f4lbq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2h7g"]
+size = Vector2(180, 298)
 
 [node name="Goal" type="StaticBody2D"]
 script = ExtResource("1_ugxcw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -160)
 scale = Vector2(2, 2)
-texture = ExtResource("1_7hjqj")
+sprite_frames = SubResource("SpriteFrames_3tk07")
+autoplay = "default"
+frame_progress = 0.253229
+speed_scale = 3.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(2, 2)
-shape = SubResource("CircleShape2D_ugxcw")
+position = Vector2(0, -150)
+shape = SubResource("RectangleShape2D_l2h7g")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

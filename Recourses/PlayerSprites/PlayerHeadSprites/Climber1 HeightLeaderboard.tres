@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://bdjgx5pmdia66"]
 
-[ext_resource type="Texture2D" uid="uid://g3go1fgefanm" path="res://Art/Player/ClimberIcon.png" id="1_6p7o2"]
+[ext_resource type="Texture2D" uid="uid://g3go1fgefanm" path="res://Art/Markers/ClimberIcon.png" id="1_6p7o2"]
 
 [sub_resource type="Gradient" id="Gradient_6p7o2"]
 offsets = PackedFloat32Array(1)

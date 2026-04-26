@@ -1,8 +1,8 @@
+res://Scenes
+res://Recourses/UI
 res://Scripts/UI
 C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports/DemoSaves
-res://Scenes
 res://
-res://Scripts/Interactables/InteractablesSpawner
 C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports
 res://Scripts/Player
 res://Scripts/PlayerSelectorUI
@@ -12,9 +12,7 @@ res://Scripts/Player/Abilitys
 res://Scripts/LiquidDrum
 res://Scenes/Tools
 res://Scripts/Tools
-res://Recourses/UI
 res://Scripts/PlayArea
 res://Scenes/Levels
-res://Scripts/Goal
 res://Recourses/PlayerSprites/PlayerHeadSprites
 res://Recourses

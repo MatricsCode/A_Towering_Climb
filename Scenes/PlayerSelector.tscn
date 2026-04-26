@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cam0eoq23msfi"]
+[gd_scene load_steps=37 format=3 uid="uid://cam0eoq23msfi"]
 
 [ext_resource type="Script" uid="uid://dw4ltxmxmvvfq" path="res://Scripts/PlayerSelectorUI/player_selector.gd" id="1_xs5nl"]
 [ext_resource type="Texture2D" uid="uid://b1b6lvxqcotts" path="res://Art/Player/Climber1/Climber22.png" id="2_b5r3k"]
@@ -28,10 +28,11 @@
 [ext_resource type="Texture2D" uid="uid://dqyq32de2mie" path="res://Art/Player/Climber2/Climber6.png" id="23_7ub4j"]
 [ext_resource type="Texture2D" uid="uid://d0fvd5f0eamo4" path="res://Art/Player/Climber2/Climber7.png" id="24_g52h1"]
 [ext_resource type="Texture2D" uid="uid://rldeh7j488l6" path="res://Art/Player/Climber2/Climber8.png" id="25_8w0v5"]
+[ext_resource type="Theme" uid="uid://btyhh0yr7u81f" path="res://Recourses/UI/buttons.tres" id="29_ichg1"]
 [ext_resource type="Script" uid="uid://cncyjq3g5cty0" path="res://Scripts/Tools/base_button.gd" id="32_dye6n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0wkq"]
-bg_color = Color(0.12, 0.12, 0.12, 1)
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -208,7 +209,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jsrcl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/CenterContainer"]
 position = Vector2(298, 73)
 sprite_frames = SubResource("SpriteFrames_qon4y")
-animation = &"2"
+animation = &"4"
 autoplay = "0"
 speed_scale = 3.0
 offset = Vector2(-298, -93)
@@ -222,7 +223,8 @@ alignment = 1
 [node name="Abilitys" type="Button" parent="VBoxContainer/Main" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
-text = "Abilitys"
+theme = ExtResource("29_ichg1")
+text = "Abilites"
 script = ExtResource("32_dye6n")
 parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
@@ -230,6 +232,7 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 [node name="Outfits" type="Button" parent="VBoxContainer/Main" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 text = "Outfits"
 script = ExtResource("32_dye6n")
 parent = NodePath("../../..")
@@ -254,6 +257,7 @@ theme_override_constants/separation = 10
 
 [node name="Glide" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Glide"
 script = ExtResource("32_dye6n")
@@ -262,6 +266,7 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
 [node name="Sky_Lift_Key" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Sky Lift Key"
 script = ExtResource("32_dye6n")
@@ -270,6 +275,7 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
 [node name="Climbers_Hook" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Climbers Hook"
 script = ExtResource("32_dye6n")
@@ -278,6 +284,7 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
 [node name="Drum_Key" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Drum Key"
 script = ExtResource("32_dye6n")
@@ -286,6 +293,7 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
 [node name="Ram" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Ram"
 script = ExtResource("32_dye6n")
@@ -294,6 +302,7 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
 [node name="Sandwich" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Sandwich
 "
@@ -347,6 +356,7 @@ alignment = 2
 [node name="Climber1" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Climber 1"
 script = ExtResource("32_dye6n")
@@ -356,6 +366,7 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 [node name="Climber2" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Climber 2"
 script = ExtResource("32_dye6n")
@@ -365,6 +376,7 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 [node name="DonutBaker" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Donut Baker"
 script = ExtResource("32_dye6n")
@@ -374,6 +386,7 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 [node name="Builder" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Builder"
 script = ExtResource("32_dye6n")
@@ -383,6 +396,7 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 [node name="Augius" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
+theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Augius"
 script = ExtResource("32_dye6n")
@@ -392,6 +406,7 @@ metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 [node name="Ready" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("29_ichg1")
 text = "Ready?"
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

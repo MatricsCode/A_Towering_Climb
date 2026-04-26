@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c037k8akblf5k"]
+
+[ext_resource type="Script" uid="uid://bt86jl5ricc4c" path="res://Scripts/LevelStuff/Middpoint/Middpoint.gd" id="1_dvm1j"]
+[ext_resource type="Texture2D" uid="uid://bjlscvq7o16m2" path="res://icon.svg" id="2_orq0n"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_dvm1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_orq0n")

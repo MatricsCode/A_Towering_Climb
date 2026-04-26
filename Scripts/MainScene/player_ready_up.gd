@@ -17,6 +17,10 @@ func _ready():
 	multiplayer.peer_connected.connect(spawn)
 	multiplayer.peer_disconnected.connect(despawn_player_selector)
 
+func _physics_process(delta):
+	if Input.is_action_pressed("Dev1"):
+		spawn(randi())
+
 func start():
 	background.visible = true
 	

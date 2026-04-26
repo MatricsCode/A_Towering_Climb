@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ibhv3ulgppft"]
 
-[ext_resource type="Script" uid="uid://cjmoi3rtnx4vu" path="res://Scripts/Bird/bird.gd" id="1_806kn"]
+[ext_resource type="Script" uid="uid://cjmoi3rtnx4vu" path="res://Scripts/LevelStuff/Bird/bird.gd" id="1_806kn"]
 [ext_resource type="SpriteFrames" uid="uid://duo0cm7k7dn1g" path="res://Recourses/Birds/White.tres" id="2_806kn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_806kn"]

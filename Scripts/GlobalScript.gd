@@ -20,7 +20,7 @@ var all_projectiles = {
 	"Sandwich" = preload("res://Scenes/Sandwich.tscn"),
 }
 
-var goal_position : Vector2
+var important_positions = { }
 var max_abilitys = 3
 
 var player_abilitys = ["Glide", "Sky_Lift_Key", "Sandwich"]

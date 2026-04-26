@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4ldc5il3mxo"
-path="res://.godot/imported/BakerIcon.png-9ba84a142a2549c89127fea3da560d0e.ctex"
+uid="uid://02lsioewivt8"
+path="res://.godot/imported/Finish6.png-36bc5e19291c84960cb6e157aae17e22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Player/BakerIcon.png"
-dest_files=["res://.godot/imported/BakerIcon.png-9ba84a142a2549c89127fea3da560d0e.ctex"]
+source_file="res://Art/Tilemap/Finish6.png"
+dest_files=["res://.godot/imported/Finish6.png-36bc5e19291c84960cb6e157aae17e22.ctex"]
 
 [params]
 

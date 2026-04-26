@@ -35,9 +35,6 @@ func _physics_process(delta):
 	else:
 		position.x = 0
 		position.y = 0
-	
-	if Input.is_action_pressed("Dev1"):
-		print(lobby_id)
 
 func spawn_level(data):
 	var a = (load(data) as PackedScene).instantiate()

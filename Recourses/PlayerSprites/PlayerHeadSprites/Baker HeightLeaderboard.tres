@@ -1,6 +1,7 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://ojodirq2l4ch"]
 
-[ext_resource type="Texture2D" uid="uid://c4ldc5il3mxo" path="res://Art/Player/BakerIcon.png" id="1_x3o8p"]
+[ext_resource type="Texture2D" uid="uid://c4ldc5il3mxo" path="res://Art/Markers/BakerIcon.png" id="1_x3o8p"]
+
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jsg8r"]
 

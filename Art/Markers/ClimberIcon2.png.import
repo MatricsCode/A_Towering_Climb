@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g3go1fgefanm"
-path="res://.godot/imported/ClimberIcon.png-6310af146f8fd99a252db204591f4cae.ctex"
+uid="uid://l5ciqi18p0us"
+path="res://.godot/imported/ClimberIcon2.png-943ba7cd3dc013663104255e66f66f3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Player/ClimberIcon.png"
-dest_files=["res://.godot/imported/ClimberIcon.png-6310af146f8fd99a252db204591f4cae.ctex"]
+source_file="res://Art/Markers/ClimberIcon2.png"
+dest_files=["res://.godot/imported/ClimberIcon2.png-943ba7cd3dc013663104255e66f66f3f.ctex"]
 
 [params]
 
