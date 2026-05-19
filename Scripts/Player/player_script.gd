@@ -28,6 +28,7 @@ var main_vars_reset = []
 var interactables = []
 var shaking_camera = 0
 
+var current_outfit
 var camera_changing : Tween
 
 ## --- Nodes ---
@@ -45,11 +46,13 @@ var camera_changing : Tween
 #region Inbuilt Functions
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scenes
+	print(GlobalScript.player_positions.get(name)[0])
+	current_outfit = GlobalScript.player_positions.get(name)[0]
+	sprite.sprite_frames = GlobalScript.all_outfits[current_outfit]
+	
 	for i in main_vars:
 		for y in main_vars[i]:
 			main_vars_reset.append(main_vars.get(i).get(y))
-	
-	switch_costume()
 	
 	cam.enabled = is_multiplayer_authority() ## Checks if you are this player and grants/denies you the camera from this
 	
@@ -158,6 +161,8 @@ func ground():
 	#endregion
 
 func air():
+	GlobalScript.player_positions[name] = [current_outfit, position]
+	
 	#region Functions
 	var air_movement = func air_movement():
 		var direction = Input.get_axis("Left", "Right")
@@ -210,6 +215,8 @@ func air():
 	#endregion
 
 func climb():
+	GlobalScript.player_positions[name] = [current_outfit, position]
+	
 	## All of the different actions possible in the current state go here
 	#region Main
 	var input = Input.get_axis("Up", "Down") ## Accesses the current input
@@ -486,8 +493,15 @@ func background_rotation():
 func won(winners_name):
 	switch(current_state, States.PAUSED)
 	camera_changing = get_tree().create_tween()
-	camera_changing.tween_property(cam, "position", GlobalScript.goal_position, 3)
-
-func switch_costume():
-	sprite.sprite_frames = GlobalScript.all_player_outfits[GlobalScript.player_outfits[player -1]]
+	GlobalScript.important_positions.keys()
+	
+	
+	var goal_pos
+	
+	for i in GlobalScript.important_positions.keys():
+		print(i)
+		if GlobalScript.important_positions.get(i) == 4:
+			goal_pos = i
+	
+	camera_changing.tween_property(cam, "position", goal_pos, 4)
 #endregion

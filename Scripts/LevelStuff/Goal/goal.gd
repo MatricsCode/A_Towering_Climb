@@ -3,7 +3,7 @@ extends StaticBody2D
 @onready var sprite = $Sprite2D
 
 func _ready():
-	GlobalScript.important_positions[position] = load("res://Art/Markers/Goal.png")
+	GlobalScript.important_positions[position] = 4
 	
 	var flip = randi_range(0, 1)
 	if flip == 1:

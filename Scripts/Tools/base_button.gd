@@ -2,14 +2,21 @@ extends Button
 
 class_name Base_Button
 
-@export var parent : Node
+@export var func_parent : Node
 
 var original_size = custom_minimum_size
 
 var sizer : Tween
 
 func _ready():
-	await get_tree().create_timer(0.1).timeout
+	visible = false
+	
+	await get_tree().create_timer(0.05).timeout
+	
+	if func_parent == null:
+		func_parent = get_parent()
+	
+	visible = true
 	
 	if disabled == false:
 		pressed.connect(has_pressed)
@@ -18,7 +25,7 @@ func _ready():
 	
 
 func has_pressed():
-	parent.button_pressed(name)
+	func_parent.button_pressed(name)
 
 func mouse_hover():
 	sizer = get_tree().create_tween()

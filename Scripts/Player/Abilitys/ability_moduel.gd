@@ -5,6 +5,8 @@ class_name abilitys
 @export var activation_state = 0
 @export var player : CharacterBody2D
 
+var input : String
+
 var in_action = false
 
 func overide():

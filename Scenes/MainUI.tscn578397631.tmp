@@ -1,0 +1,296 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnt4usslrchfy"]
+
+[ext_resource type="Script" uid="uid://bevxwl1n2p71r" path="res://Scripts/UI/pause_menu.gd" id="1_xh0hd"]
+[ext_resource type="Script" uid="uid://lugaf8yhlsla" path="res://Scripts/UI/main_ui.gd" id="1_yd0xa"]
+[ext_resource type="Script" uid="uid://hrghadurkx2h" path="res://Scripts/UI/height_indicator.gd" id="2_1rfkw"]
+[ext_resource type="Texture2D" uid="uid://cmc6tinolodum" path="res://Art/Markers/Tower.png" id="3_1rfkw"]
+[ext_resource type="Script" uid="uid://blkue12vglqdr" path="res://Scripts/UI/settings.gd" id="3_8dqd8"]
+[ext_resource type="Script" uid="uid://du0w16lun2fuy" path="res://Scripts/UI/win_menu.gd" id="3_c3bvd"]
+[ext_resource type="Script" uid="uid://cg053s8d1g1c6" path="res://Scripts/UI/remap_menu.gd" id="7_uwgue"]
+
+[node name="MainUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yd0xa")
+
+[node name="Abilitys" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeightIndicator" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -315.0
+offset_right = 197.0
+grow_vertical = 0
+script = ExtResource("2_1rfkw")
+
+[node name="Objects" type="Control" parent="HeightIndicator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Map" type="TextureRect" parent="HeightIndicator"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("3_1rfkw")
+stretch_mode = 1
+
+[node name="Players" type="Control" parent="HeightIndicator"]
+layout_mode = 2
+
+[node name="StartTimer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="StartTimer"]
+one_shot = true
+autostart = true
+
+[node name="Timer_text" type="Label" parent="StartTimer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -204.5
+offset_right = 85.5
+offset_bottom = 204.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 300
+text = "3"
+horizontal_alignment = 1
+
+[node name="WinMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_c3bvd")
+
+[node name="MarginContainer" type="MarginContainer" parent="WinMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Winner" type="Label" parent="WinMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Player Won"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Again" type="Button" parent="WinMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Again"
+
+[node name="LeaveLobby" type="Button" parent="WinMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Leave Lobby"
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_xh0hd")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 50
+
+[node name="Main" type="VBoxContainer" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Paused" type="Label" parent="PauseMenu/MarginContainer/Main"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "    Paused    "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Unpause" type="Button" parent="PauseMenu/MarginContainer/Main"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Unpause"
+
+[node name="Menu1" type="Button" parent="PauseMenu/MarginContainer/Main"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="LeaveLobby" type="Button" parent="PauseMenu/MarginContainer/Main"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Leave Lobby"
+
+[node name="Settings" type="VBoxContainer" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+script = ExtResource("3_8dqd8")
+
+[node name="Settings" type="Label" parent="PauseMenu/MarginContainer/Settings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "  Settings  "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu1" type="Button" parent="PauseMenu/MarginContainer/Settings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer/Settings"]
+layout_mode = 2
+
+[node name="MainAudio" type="HBoxContainer" parent="PauseMenu/MarginContainer/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Main" type="HSlider" parent="PauseMenu/MarginContainer/Settings/VBoxContainer/MainAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Label" type="Label" parent="PauseMenu/MarginContainer/Settings/VBoxContainer/MainAudio"]
+layout_mode = 2
+text = " Main "
+
+[node name="PlayerAudio" type="HBoxContainer" parent="PauseMenu/MarginContainer/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Player" type="HSlider" parent="PauseMenu/MarginContainer/Settings/VBoxContainer/PlayerAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Label" type="Label" parent="PauseMenu/MarginContainer/Settings/VBoxContainer/PlayerAudio"]
+layout_mode = 2
+text = "Player"
+
+[node name="Effects" type="HBoxContainer" parent="PauseMenu/MarginContainer/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="BG SFX" type="HSlider" parent="PauseMenu/MarginContainer/Settings/VBoxContainer/Effects"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Label" type="Label" parent="PauseMenu/MarginContainer/Settings/VBoxContainer/Effects"]
+layout_mode = 2
+text = " Cars  "
+
+[node name="Music" type="HBoxContainer" parent="PauseMenu/MarginContainer/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Music" type="HSlider" parent="PauseMenu/MarginContainer/Settings/VBoxContainer/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Label" type="Label" parent="PauseMenu/MarginContainer/Settings/VBoxContainer/Music"]
+layout_mode = 2
+text = "Music"
+
+[node name="RemapMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_uwgue")
+
+[node name="MarginContainer" type="MarginContainer" parent="RemapMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RemapMenu/MarginContainer"]
+layout_mode = 2
+
+[connection signal="timeout" from="StartTimer/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="WinMenu/MarginContainer/VBoxContainer/Again" to="WinMenu" method="_on_again_pressed"]
+[connection signal="pressed" from="WinMenu/MarginContainer/VBoxContainer/LeaveLobby" to="." method="_on_leave_lobby_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/Main/Unpause" to="PauseMenu" method="_on_unpause_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/Main/Menu1" to="PauseMenu" method="_on_menu_1_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/Main/LeaveLobby" to="." method="_on_leave_lobby_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/Settings/Menu1" to="PauseMenu" method="_on_menu_1_pressed"]
+[connection signal="value_changed" from="PauseMenu/MarginContainer/Settings/VBoxContainer/MainAudio/Main" to="PauseMenu/MarginContainer/Settings" method="_on_main_value_changed"]
+[connection signal="value_changed" from="PauseMenu/MarginContainer/Settings/VBoxContainer/PlayerAudio/Player" to="PauseMenu/MarginContainer/Settings" method="_on_player_value_changed"]
+[connection signal="value_changed" from="PauseMenu/MarginContainer/Settings/VBoxContainer/Effects/BG SFX" to="PauseMenu/MarginContainer/Settings" method="_on_bg_sfx_value_changed"]
+[connection signal="value_changed" from="PauseMenu/MarginContainer/Settings/VBoxContainer/Music/Music" to="PauseMenu/MarginContainer/Settings" method="_on_music_value_changed"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://b7w851wnif2io"]
 
-[ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_kih0c"]
-[ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="2_5ixxa"]
-[ext_resource type="Script" uid="uid://c22ccct5h31um" path="res://Scripts/Player/abillity_manager.gd" id="6_52ee3"]
-[ext_resource type="Texture2D" uid="uid://cp5ug06icbkxv" path="res://Art/Player/Sweat.png" id="7_52ee3"]
-[ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Scripts/Player/wall_detectors.gd" id="27_u7x0b"]
-[ext_resource type="Script" uid="uid://dvnr5lwr2t2n8" path="res://Scripts/Player/edge_detectors.gd" id="28_utwlt"]
+[ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_nn08x"]
+[ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="2_52ee3"]
+[ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Scripts/Player/wall_detectors.gd" id="3_bhhdu"]
+[ext_resource type="Script" uid="uid://dvnr5lwr2t2n8" path="res://Scripts/Player/edge_detectors.gd" id="4_megsn"]
+[ext_resource type="Script" uid="uid://c22ccct5h31um" path="res://Scripts/Player/abillity_manager.gd" id="5_yoq75"]
+[ext_resource type="Texture2D" uid="uid://cp5ug06icbkxv" path="res://Art/Player/Sweat.png" id="6_ksbbd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(69, 150)
@@ -58,13 +58,12 @@ size = Vector2(64, 78)
 visibility_layer = 2
 collision_layer = 5
 collision_mask = 14
-script = ExtResource("1_kih0c")
+script = ExtResource("1_nn08x")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -136)
-sprite_frames = ExtResource("2_5ixxa")
-animation = &"walk"
-frame_progress = 0.595083
+sprite_frames = ExtResource("2_52ee3")
+animation = &"climb"
 speed_scale = 3.0
 flip_h = true
 metadata/_edit_lock_ = true
@@ -85,7 +84,7 @@ replication_config = SubResource("SceneReplicationConfig_cvnsp")
 
 [node name="WallDetectors" type="Node2D" parent="Detectors"]
 position = Vector2(0, -136)
-script = ExtResource("27_u7x0b")
+script = ExtResource("3_bhhdu")
 
 [node name="WallDetector1" type="RayCast2D" parent="Detectors/WallDetectors"]
 position = Vector2(-60, 65)
@@ -101,7 +100,7 @@ hit_from_inside = true
 
 [node name="EdgeDetectors" type="Node2D" parent="Detectors"]
 position = Vector2(0, -136)
-script = ExtResource("28_utwlt")
+script = ExtResource("4_megsn")
 
 [node name="EdgeDetector1" type="RayCast2D" parent="Detectors/EdgeDetectors"]
 position = Vector2(60, 55)
@@ -133,7 +132,7 @@ position = Vector2(0, -127)
 position = Vector2(0, 378)
 
 [node name="Upgrades" type="Node" parent="." node_paths=PackedStringArray("main_player")]
-script = ExtResource("6_52ee3")
+script = ExtResource("5_yoq75")
 main_player = NodePath("..")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
@@ -146,7 +145,7 @@ bus = &"Player"
 position = Vector2(2, -133)
 emitting = false
 amount = 4
-texture = ExtResource("7_52ee3")
+texture = ExtResource("6_ksbbd")
 process_material = SubResource("ParticleProcessMaterial_glx4g")
 
 [node name="InteractDetector" type="Area2D" parent="."]

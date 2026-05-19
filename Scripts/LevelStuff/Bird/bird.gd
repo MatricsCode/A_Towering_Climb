@@ -14,6 +14,11 @@ var message_others : int
 func _ready():
 	message_others = randi_range(-3, 1)
 	
+	var twist = randi_range(0, 1)
+	
+	if twist == 0:
+		sprite.flip_h = true
+	
 	var color = randi_range(0, 4)
 	match color:
 		0:
@@ -34,7 +39,6 @@ func _physics_process(_delta):
 
 func _on_area_2d_body_entered(body):
 	run(body)
-	print(body.name)
 
 func _on_area_2d_area_entered(area):
 	run(area)

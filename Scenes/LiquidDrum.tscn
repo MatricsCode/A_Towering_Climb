@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bn5fnuhqtrrx8" path="res://Art/Liquid Drum/Industrial Drum2.png" id="3_da04d"]
 [ext_resource type="Texture2D" uid="uid://6rhj6bm2oipt" path="res://Art/Liquid Drum/Industrial Drum3.png" id="4_kexb0"]
 
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_jon1u"]
 animations = [{
 "frames": [{

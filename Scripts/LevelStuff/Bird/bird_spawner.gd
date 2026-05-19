@@ -30,9 +30,6 @@ func _ready():
 	spawn_function = spawn_bird
 	
 	while spawning:
-		if Input.is_action_pressed("Dev1"):
-			spawning = false
-		
 		total_spawned_birds += 1
 		spawn("null")
 

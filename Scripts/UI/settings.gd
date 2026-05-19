@@ -5,7 +5,6 @@ var player_bus = AudioServer.get_bus_index("Player")
 var music_bus = AudioServer.get_bus_index("Music")
 var background_bus = AudioServer.get_bus_index("Background")
 
-
 func _on_main_value_changed(value_changed):
 	AudioServer.set_bus_volume_db(main_bus, linear_to_db(value_changed))
 

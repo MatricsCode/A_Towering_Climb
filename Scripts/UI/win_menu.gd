@@ -1,9 +1,9 @@
 extends Control
 
 @onready var background = $"../Background"
-@onready var win_ui = $VBoxContainer
+@onready var win_ui = $MarginContainer/VBoxContainer
 @onready var timer_text = $"../StartTimer/Timer_text"
-@onready var again = $VBoxContainer/Again
+@onready var again = $MarginContainer/VBoxContainer/Again
 
 const WIN_BACKGROUND = preload("res://Recourses/UI/WinBackground.tres")
 

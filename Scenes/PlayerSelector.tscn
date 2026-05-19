@@ -1,10 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://cam0eoq23msfi"]
+[gd_scene load_steps=41 format=3 uid="uid://cam0eoq23msfi"]
 
 [ext_resource type="Script" uid="uid://dw4ltxmxmvvfq" path="res://Scripts/PlayerSelectorUI/player_selector.gd" id="1_xs5nl"]
-[ext_resource type="Texture2D" uid="uid://b1b6lvxqcotts" path="res://Art/Player/Climber1/Climber22.png" id="2_b5r3k"]
-[ext_resource type="Texture2D" uid="uid://hhm8b0ana2ql" path="res://Art/Player/Climber1/Climber23.png" id="3_800ha"]
-[ext_resource type="Texture2D" uid="uid://cgeuq8qxxuf34" path="res://Art/Player/Climber1/Climber24.png" id="4_nyrgn"]
-[ext_resource type="Texture2D" uid="uid://bltuj4owjd2fx" path="res://Art/Player/Climber1/Climber25.png" id="5_sofy2"]
 [ext_resource type="Texture2D" uid="uid://b5yxoskdspugl" path="res://Art/Player/Climber1/Climber12.png" id="6_yd8kd"]
 [ext_resource type="Texture2D" uid="uid://g7kvj74jxr8y" path="res://Art/Player/Climber1/Climber13.png" id="7_gwj3k"]
 [ext_resource type="Texture2D" uid="uid://d0704c7trp3mq" path="res://Art/Player/Climber1/Climber14.png" id="8_nchna"]
@@ -24,11 +20,19 @@
 [ext_resource type="Texture2D" uid="uid://dy4g034yesbgx" path="res://Art/Player/Baker/Baker3.png" id="20_802n4"]
 [ext_resource type="Texture2D" uid="uid://dr7b0lc1i6rst" path="res://Art/Player/Climber2/Climber3.png" id="20_htean"]
 [ext_resource type="Texture2D" uid="uid://dysrifmtfwj84" path="res://Art/Player/Climber2/Climber4.png" id="21_4kbex"]
+[ext_resource type="Texture2D" uid="uid://6hexce05gvii" path="res://Art/Player/Heinrich/Heinrich1.png" id="21_800ha"]
 [ext_resource type="Texture2D" uid="uid://bisc4g1tst550" path="res://Art/Player/Climber2/Climber5.png" id="22_jx0fm"]
+[ext_resource type="Texture2D" uid="uid://dunwb71r6evs5" path="res://Art/Player/Heinrich/Heinrich2.png" id="22_nyrgn"]
 [ext_resource type="Texture2D" uid="uid://dqyq32de2mie" path="res://Art/Player/Climber2/Climber6.png" id="23_7ub4j"]
+[ext_resource type="Texture2D" uid="uid://x6hwvg73rvs1" path="res://Art/Player/Heinrich/Heinrich3.png" id="23_sofy2"]
 [ext_resource type="Texture2D" uid="uid://d0fvd5f0eamo4" path="res://Art/Player/Climber2/Climber7.png" id="24_g52h1"]
+[ext_resource type="Texture2D" uid="uid://peoe0fo5poox" path="res://Art/Player/Heinrich/Heinrich4.png" id="24_yd8kd"]
 [ext_resource type="Texture2D" uid="uid://rldeh7j488l6" path="res://Art/Player/Climber2/Climber8.png" id="25_8w0v5"]
-[ext_resource type="Theme" uid="uid://btyhh0yr7u81f" path="res://Recourses/UI/buttons.tres" id="29_ichg1"]
+[ext_resource type="Texture2D" uid="uid://closi0pnhpx60" path="res://Art/Player/Heinrich/Heinrich5.png" id="25_gwj3k"]
+[ext_resource type="Texture2D" uid="uid://dgu8fkhs3iohe" path="res://Art/Player/Heinrich/Heinrich6.png" id="26_nchna"]
+[ext_resource type="Texture2D" uid="uid://dgcym4vqovgea" path="res://Art/Player/Heinrich/Heinrich7.png" id="27_luge1"]
+[ext_resource type="Texture2D" uid="uid://c4jgjmjiu2ko4" path="res://Art/Player/Heinrich/Heinrich8.png" id="28_755lh"]
+[ext_resource type="Theme" uid="uid://btyhh0yr7u81f" path="res://Recourses/UI/main.tres" id="29_ichg1"]
 [ext_resource type="Script" uid="uid://cncyjq3g5cty0" path="res://Scripts/Tools/base_button.gd" id="32_dye6n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0wkq"]
@@ -42,7 +46,7 @@ corner_radius_bottom_left = 20
 Panel/styles/panel = SubResource("StyleBoxFlat_b0wkq")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsrcl"]
-bg_color = Color(0.5168, 0.695147, 0.76, 1)
+bg_color = Color(0.309804, 0.560784, 0.729412, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -124,16 +128,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_b5r3k")
+"texture": ExtResource("21_800ha")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_800ha")
+"texture": ExtResource("22_nyrgn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_nyrgn")
+"texture": ExtResource("23_sofy2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_sofy2")
+"texture": ExtResource("24_yd8kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_gwj3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_nchna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_luge1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_755lh")
 }],
 "loop": true,
 "name": &"3",
@@ -209,7 +225,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jsrcl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/CenterContainer"]
 position = Vector2(298, 73)
 sprite_frames = SubResource("SpriteFrames_qon4y")
-animation = &"4"
+animation = &"3"
 autoplay = "0"
 speed_scale = 3.0
 offset = Vector2(-298, -93)
@@ -220,25 +236,25 @@ layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Abilitys" type="Button" parent="VBoxContainer/Main" node_paths=PackedStringArray("parent")]
+[node name="Abilities" type="Button" parent="VBoxContainer/Main" node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 theme = ExtResource("29_ichg1")
-text = "Abilites"
+text = "Abilities"
 script = ExtResource("32_dye6n")
-parent = NodePath("../../..")
+func_parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Outfits" type="Button" parent="VBoxContainer/Main" node_paths=PackedStringArray("parent")]
+[node name="Outfits" type="Button" parent="VBoxContainer/Main" node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 theme = ExtResource("29_ichg1")
 text = "Outfits"
 script = ExtResource("32_dye6n")
-parent = NodePath("../../..")
+func_parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Abilitys" type="VBoxContainer" parent="VBoxContainer"]
+[node name="Abilities" type="VBoxContainer" parent="VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(160, 320)
 layout_mode = 2
@@ -247,101 +263,101 @@ size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/Abilitys"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/Abilities"]
 layout_mode = 2
 split_offset = 120
 
-[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/Abilitys/HSplitContainer"]
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/Abilities/HSplitContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Glide" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
+[node name="Glide" type="Button" parent="VBoxContainer/Abilities/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
 layout_mode = 2
 theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Glide"
 script = ExtResource("32_dye6n")
-parent = NodePath("../../../../..")
+func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Sky_Lift_Key" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
+[node name="Sky_Lift_Key" type="Button" parent="VBoxContainer/Abilities/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
 layout_mode = 2
 theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Sky Lift Key"
 script = ExtResource("32_dye6n")
-parent = NodePath("../../../../..")
+func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Climbers_Hook" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
+[node name="Climbers_Hook" type="Button" parent="VBoxContainer/Abilities/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
 layout_mode = 2
 theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Climbers Hook"
 script = ExtResource("32_dye6n")
-parent = NodePath("../../../../..")
+func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Drum_Key" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
+[node name="Drum_Key" type="Button" parent="VBoxContainer/Abilities/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
 layout_mode = 2
 theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Drum Key"
 script = ExtResource("32_dye6n")
-parent = NodePath("../../../../..")
+func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Ram" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
+[node name="Ram" type="Button" parent="VBoxContainer/Abilities/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
 layout_mode = 2
 theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Ram"
 script = ExtResource("32_dye6n")
-parent = NodePath("../../../../..")
+func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Sandwich" type="Button" parent="VBoxContainer/Abilitys/HSplitContainer/Buttons" node_paths=PackedStringArray("parent")]
+[node name="Sandwich" type="Button" parent="VBoxContainer/Abilities/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
 layout_mode = 2
 theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Sandwich
 "
 script = ExtResource("32_dye6n")
-parent = NodePath("../../../../..")
+func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Indicators" type="VBoxContainer" parent="VBoxContainer/Abilitys/HSplitContainer"]
+[node name="Indicators" type="VBoxContainer" parent="VBoxContainer/Abilities/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="Glide" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
+[node name="Glide" type="ColorRect" parent="VBoxContainer/Abilities/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_xs5nl")
 color = Color(1, 0.184314, 0, 1)
 
-[node name="Sky_Lift_Key" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
+[node name="Sky_Lift_Key" type="ColorRect" parent="VBoxContainer/Abilities/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(1, 0.183333, 0, 1)
 
-[node name="Climbers_Hook" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
+[node name="Climbers_Hook" type="ColorRect" parent="VBoxContainer/Abilities/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(1, 0.183333, 0, 1)
 
-[node name="Drum_Key" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
+[node name="Drum_Key" type="ColorRect" parent="VBoxContainer/Abilities/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(1, 0.183333, 0, 1)
 
-[node name="Ram" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
+[node name="Ram" type="ColorRect" parent="VBoxContainer/Abilities/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(1, 0.183333, 0, 1)
 
-[node name="Sandwich" type="ColorRect" parent="VBoxContainer/Abilitys/HSplitContainer/Indicators"]
+[node name="Sandwich" type="ColorRect" parent="VBoxContainer/Abilities/HSplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(1, 0.183333, 0, 1)
@@ -353,54 +369,54 @@ layout_mode = 2
 size_flags_horizontal = 4
 alignment = 2
 
-[node name="Climber1" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
+[node name="Climber1" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Climber 1"
 script = ExtResource("32_dye6n")
-parent = NodePath("../../..")
+func_parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Climber2" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
+[node name="Climber2" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Climber 2"
 script = ExtResource("32_dye6n")
-parent = NodePath("../../..")
+func_parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="DonutBaker" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
+[node name="DonutBaker" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Donut Baker"
 script = ExtResource("32_dye6n")
-parent = NodePath("../../..")
+func_parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Builder" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
-custom_minimum_size = Vector2(120, 40)
-layout_mode = 2
-theme = ExtResource("29_ichg1")
-theme_override_font_sizes/font_size = 10
-text = "Builder"
-script = ExtResource("32_dye6n")
-parent = NodePath("../../..")
-metadata/_custom_type_script = "uid://cncyjq3g5cty0"
-
-[node name="Augius" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("parent")]
+[node name="Augius" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 theme = ExtResource("29_ichg1")
 theme_override_font_sizes/font_size = 10
 text = "Augius"
 script = ExtResource("32_dye6n")
-parent = NodePath("../../..")
+func_parent = NodePath("../../..")
+metadata/_custom_type_script = "uid://cncyjq3g5cty0"
+
+[node name="Builder" type="Button" parent="VBoxContainer/Outfits" node_paths=PackedStringArray("func_parent")]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme = ExtResource("29_ichg1")
+theme_override_font_sizes/font_size = 10
+text = "Builder"
+script = ExtResource("32_dye6n")
+func_parent = NodePath("../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
 [node name="Ready" type="Button" parent="VBoxContainer"]

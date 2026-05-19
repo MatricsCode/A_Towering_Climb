@@ -5,6 +5,9 @@ extends Interactable
 
 var controler = preload("res://Scripts/LiquidDrum/slip_overider.gd")
 
+func _ready():
+	GlobalScript.important_positions[position] = 5
+
 func entered(has_entered : bool):
 	if has_entered:
 		sprite.play("Interactable")

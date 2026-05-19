@@ -1,5 +1,0 @@
-extends StaticBody2D
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	GlobalScript.important_positions[position] = load("res://icon.svg")

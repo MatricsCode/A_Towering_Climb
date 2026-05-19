@@ -18,8 +18,6 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.is_class("CharacterBody2D"):
-		print("Player")
-		
 		body.velocity.x = 500 * direction
 		body.velocity.y = -250
 	

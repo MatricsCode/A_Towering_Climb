@@ -22,7 +22,7 @@ position = Vector2(1006, -5961)
 
 [node name="InteractablesSpawner" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("3_dl55b")]
 interactables = Array[PackedScene]([ExtResource("4_osqx1"), ExtResource("4_osqx1"), ExtResource("5_sy7oa"), ExtResource("5_sy7oa"), ExtResource("6_md4x4")])
-targets = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+targets = [null, null, null, null, null]
 positions = Array[Vector2]([Vector2(-1051, -1400), Vector2(3127, -3399), Vector2(1061, -2840), Vector2(418, -4600), Vector2(2581, -2400)])
 
 [node name="BirdSpawner" parent="." instance=ExtResource("7_1hf40")]

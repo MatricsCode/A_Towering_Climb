@@ -1,0 +1,97 @@
+[gd_scene load_steps=22 format=3 uid="uid://dp06o4fd4o2h"]
+
+[ext_resource type="Texture2D" uid="uid://8ssrlh2pwmy7" path="res://Art/Beans/Beans1.png" id="1_cp3cy"]
+[ext_resource type="Script" uid="uid://dxkpechod5tmj" path="res://Scripts/Beans/beans.gd" id="1_vmle7"]
+[ext_resource type="Texture2D" uid="uid://cacplwt5gmbvw" path="res://Art/Beans/Beans2.png" id="2_vmle7"]
+[ext_resource type="Texture2D" uid="uid://dpg23o4dxdj2c" path="res://Art/Beans/Beans3.png" id="3_ma1m0"]
+[ext_resource type="Texture2D" uid="uid://cgerrkg8l8wo4" path="res://Art/Beans/Beans4.png" id="4_sraw2"]
+[ext_resource type="Texture2D" uid="uid://cb4sxwbwp747g" path="res://Art/Beans/Beans5.png" id="5_qoyee"]
+[ext_resource type="Texture2D" uid="uid://c5lrb6oq3ah3y" path="res://Art/Beans/Beans6.png" id="6_1ui1t"]
+[ext_resource type="Texture2D" uid="uid://ct01akrt3wicl" path="res://Art/Beans/Beans7.png" id="7_5alkh"]
+[ext_resource type="Texture2D" uid="uid://cspsg8ene6lm0" path="res://Art/Beans/Beans8.png" id="8_ka5aq"]
+[ext_resource type="Texture2D" uid="uid://iodxbyc1x4rx" path="res://Art/Beans/Beans9.png" id="9_i2x5n"]
+[ext_resource type="Texture2D" uid="uid://cuipv6mwep0fl" path="res://Art/Beans/Beans10.png" id="10_a1p2r"]
+[ext_resource type="Texture2D" uid="uid://8r6sv7cm2480" path="res://Art/Beans/Beans11.png" id="11_ucurw"]
+[ext_resource type="Texture2D" uid="uid://dknbvpo42xwl2" path="res://Art/Beans/Beans12.png" id="12_bn7cm"]
+[ext_resource type="Texture2D" uid="uid://cv1emkm7jehol" path="res://Art/Beans/Beans13.png" id="13_cj3yu"]
+[ext_resource type="Texture2D" uid="uid://b0i1i7hbnwtnj" path="res://Art/Beans/Beans14.png" id="14_xk4ks"]
+[ext_resource type="Texture2D" uid="uid://scsge6qtjvhv" path="res://Art/Beans/Beans15.png" id="15_hxbi6"]
+[ext_resource type="Texture2D" uid="uid://dasp8abbvj7o3" path="res://Art/Beans/Beans16.png" id="16_l6nwq"]
+[ext_resource type="Texture2D" uid="uid://h4nngghxrqby" path="res://Art/Beans/Beans17.png" id="17_02hqu"]
+[ext_resource type="Texture2D" uid="uid://cri8xsctnuxcw" path="res://Art/Beans/Beans18.png" id="18_dt3mf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w1vs8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cp3cy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vmle7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ma1m0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sraw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qoyee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1ui1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5alkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ka5aq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_i2x5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_a1p2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ucurw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bn7cm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cj3yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xk4ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_hxbi6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_l6nwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_02hqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_dt3mf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cp3cy"]
+size = Vector2(40, 50)
+
+[node name="Beans" type="StaticBody2D"]
+script = ExtResource("1_vmle7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w1vs8")
+autoplay = "default"
+speed_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cp3cy")
