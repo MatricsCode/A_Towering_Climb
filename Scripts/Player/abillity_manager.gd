@@ -24,6 +24,12 @@ func _ready():
 			"Sandwich":
 				ability.activation_state = 0
 				ability.input = keys()
+			"Drum_Key":
+				ability.input = keys()
+			"Sky_Lift_Key":
+				ability.input = keys()
+			"Climbers_Hook":
+				ability.input = keys()
 			_:
 				print("No Ability Specified!")
 				ability.activation_state = -1

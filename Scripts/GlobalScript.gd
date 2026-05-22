@@ -18,9 +18,9 @@ var markers = [
 
 var all_player_abilitys = {
 	"Glide" = preload("res://Scripts/Player/Abilitys/glide.gd"),
-	"Sky_Lift_Key" = preload("res://Scripts/Player/Abilitys/ability_moduel.gd"),
+	"Sky_Lift_Key" = preload("res://Scripts/Player/Abilitys/skylift_key.gd"),
 	"Climbers_Hook" = preload("res://Scripts/Player/Abilitys/climbers_hook.gd"), 
-	"Drum_Key" = preload("res://Scripts/Player/Abilitys/ability_moduel.gd"),
+	"Drum_Key" = preload("res://Scripts/Player/Abilitys/drum_key.gd"),
 	"Ram" = preload("res://Scripts/Player/Abilitys/ram.gd"),
 	"Sandwich" = preload("res://Scripts/Player/Abilitys/sandwich.gd"),
 }
@@ -32,7 +32,7 @@ var all_projectiles = {
 var important_positions = {}
 var max_abilitys = 3
 
-var player_abilitys = ["Glide", "Sky_Lift_Key", "Sandwich"]
+var player_abilitys = []
 
 var player_positions = {}
 

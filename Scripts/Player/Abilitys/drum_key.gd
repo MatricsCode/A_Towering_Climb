@@ -1,25 +1,44 @@
 extends abilitys
 
 var interactable
+var area
 
 func _ready():
 	var scanner = Area2D.new()
-	scanner.body_entered.connect(activate)
-	scanner.body_exited.connect(activate)
 	
-	scanner.set_collision_mask_value(0, false)
-	scanner.set_collision_mask_value(23, true)
+	scanner.body_entered.connect(interact)
+	scanner.body_exited.connect(interact)
 	
 	var hit_area = CollisionShape2D.new()
 	
-	hit_area.position.y = -181.0
 	hit_area.shape = RectangleShape2D.new()
+	hit_area.position.y -= 50
+	hit_area.debug_color = Color.BLACK
 	
 	add_child(scanner)
+	
+	area = get_child(0)
+	
+	scanner.set_collision_mask_value(1, false)
+	scanner.set_collision_layer_value(1, false)
+	
+	scanner.set_collision_mask_value(24, true)
+	
+	scanner.add_child(hit_area)
 
 func _physics_process(delta):
+	if area != null:
+		area.position = player.position
+	
 	if interactable != null and Input.is_action_pressed(input):
-		interactable.action()
+		interactable.interact(self)
 
-func activate(body):
-	interactable = body
+func interact(body):
+	print("Interactable")
+	
+	if interactable == null:
+		interactable = body
+		body.entered(true)
+	else:
+		interactable = null
+		body.entered(false)

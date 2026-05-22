@@ -143,6 +143,9 @@ Ability3={
 2d_physics/layer_4="Collectible"
 2d_physics/layer_5="Interactable"
 2d_physics/layer_6="Birds"
+2d_physics/layer_23="SkyLift"
+2d_physics/layer_24="Drum"
+2d_physics/layer_25="Beans"
 2d_physics/layer_32="WallCollisionDetector"
 
 [rendering]

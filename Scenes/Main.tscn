@@ -64,6 +64,12 @@ theme_override_font_sizes/font_size = 64
 text = "Refresh
 "
 
+[node name="Customiser" type="Button" parent="SelectorUI/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Customiser
+"
+
 [node name="VBoxContainer" type="HBoxContainer" parent="SelectorUI/HSplitContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -154,6 +160,7 @@ alignment = 1
 
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Refresh" to="." method="_on_refresh_pressed"]
+[connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Customiser" to="." method="_on_customiser_pressed"]
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/VBoxContainer/Search" to="." method="_on_search_pressed"]
 [connection signal="pressed" from="Background/Ready" to="." method="_on_ready_pressed"]
 [connection signal="pressed" from="Background/Ready" to="PlayerReadyScreen" method="_on_ready_pressed"]

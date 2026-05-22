@@ -134,3 +134,7 @@ func reset():
 	
 	$SelectorUI/Camera2D.enabled = true
 	PlayerReadyScreen.start()
+
+
+func _on_customiser_pressed():
+	pass # Replace with function body.

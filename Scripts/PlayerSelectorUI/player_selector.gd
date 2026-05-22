@@ -3,6 +3,8 @@ extends Panel
 var main_screen
 var main_player = false
 
+var tenmp_ability_list = []
+
 @onready var ready_button = $VBoxContainer/Ready
 
 @onready var main_container = $VBoxContainer/Main
@@ -33,7 +35,7 @@ func _enter_tree():
 		ready_button.disabled = true
 	
 	for i in indicator_container.get_children():
-		for y in GlobalScript.player_abilitys:
+		for y in tenmp_ability_list:
 			if i.name == y:
 				i.color = Color.html("#74a642")
 
@@ -75,14 +77,14 @@ func button_pressed(button_name):
 			
 			if button_name == str(i):
 				
-				if not GlobalScript.player_abilitys.has(str(button_name)) and GlobalScript.player_abilitys.size() < 3:
-					GlobalScript.player_abilitys.append(str(button_name))
+				if not tenmp_ability_list.has(str(button_name)) and tenmp_ability_list.size() < 3:
+					tenmp_ability_list.append(str(button_name))
 					
 					for y in indicator_container.get_children():
 						if y.name == button_name:
 							y.color = Color.html("#74a642")
-				elif GlobalScript.player_abilitys.has(str(button_name)):
-					GlobalScript.player_abilitys.erase(str(button_name))
+				elif tenmp_ability_list.has(str(button_name)):
+					tenmp_ability_list.erase(str(button_name))
 					for y in indicator_container.get_children():
 						if y.name == button_name:
 							y.color = Color.html("#ff2f00")
