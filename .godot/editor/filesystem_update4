@@ -1,15 +1,11 @@
-res://Scenes/Moving Platform.tscn
+res://Scenes/Main.tscn
 res://Recourses/UI/main.tres
 res://Recourses/UI/PauseBackground.tres
 res://Recourses/UI/WinBackground.tres
-res://Scenes/Main.tscn
-res://Scenes/MainUI.tscn
-res://Scenes/PlayerSelector.tscn
-res://Scenes/Player.tscn
+res://Recourses/Tileset.tres
 res://Scenes/Beans.tscn
 res://Scenes/LiquidDrum.tscn
+res://Scenes/PlayerSelector.tscn
 res://Scenes/GlobalScript.tscn
-res://Scripts/Player/abillity_manager.gd
-res://Scripts/MainScene/main.gd
-res://Scripts/PlayerSelectorUI/player_selector.gd
-res://Scripts/GlobalScript.gd
+res://Scenes/MainUI.tscn
+res://Scenes/PlayArea.tscn

@@ -8,6 +8,7 @@ var peer = SteamMultiplayerPeer.new()
 
 @onready var MainUI = $SelectorUI
 @onready var PlayerReadyScreen = $PlayerReadyScreen
+@onready var CustomiserUI = $CustomiserUI
 
 @onready var host = $SelectorUI/HSplitContainer/VBoxContainer/Host
 @onready var refresh = $SelectorUI/HSplitContainer/VBoxContainer/Refresh
@@ -118,7 +119,10 @@ func leave_lobby():
 	PlayerReadyScreen.reset()
 	$SelectorUI/Camera2D.enabled = true
 
-func _on_ready_pressed():
+func start():
+	for i in get_children():
+		if i.name == "PlayArea":
+			return
 	ms.spawn("res://Scenes/PlayArea.tscn")
 	$SelectorUI/Camera2D.enabled = false
 	PlayerReadyScreen.reset()
@@ -137,4 +141,5 @@ func reset():
 
 
 func _on_customiser_pressed():
-	pass # Replace with function body.
+	CustomiserUI.visible = true
+	MainUI.visible = false

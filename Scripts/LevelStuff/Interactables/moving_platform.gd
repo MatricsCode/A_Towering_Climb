@@ -48,6 +48,4 @@ func action():
 	
 	direction = 1
 	
-	
-	
 	moving = true

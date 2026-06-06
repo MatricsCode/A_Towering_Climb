@@ -13,6 +13,7 @@ var won = false
 
 @onready var background = $"../Background"
 
+var paused = false
 
 func _ready():
 	GlobalScript.winner.connect(winner)
@@ -22,20 +23,26 @@ func _ready():
 		i.visible = false
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("Pause") and get_tree().paused == false:
+	if Input.is_action_just_pressed("Pause") and paused == false:
 		GlobalScript.paused.emit()
+		main.visible = true
 		unpause.grab_focus()
-
-func change():
-	if settings.visible == true:
-		settings.visible = false
+		paused = true
+		
+	elif Input.is_action_just_pressed("Pause") and paused == true:
+		GlobalScript.paused.emit()
+		main.visible = false
+		unpause.grab_focus()
+		paused = false
 	
-	if background.texture == null:
-		background.texture = PAUSE_BACKGROUND
-	else:
+	if paused == false:
+		main.visible = false
+		settings.visible = false
+		remap_menu.visible = false
 		background.texture = null
 	
-	main.visible = not main.visible
+	elif paused == true:
+		background.texture = PAUSE_BACKGROUND
 
 func _on_unpause_pressed():
 	GlobalScript.paused.emit()
@@ -43,20 +50,21 @@ func _on_unpause_pressed():
 func winner(names):
 	won = true
 
-func _on_menu_1_pressed():
-	main.visible = not main.visible
-	settings.visible = not settings.visible
-	background.texture = null
-	$MarginContainer/Settings/Menu1.grab_focus()
+func change():
+	if paused == true:
+		paused = false
+	else:
+		paused = true
 
-
-func _on_remap_pressed():
+func _on_back_pressed():
+	main.visible = true
 	settings.visible = false
-	remap_menu.visible = true
-	$MarginContainer/RemapMenu/HBoxContainer/Button_container.get_child(0).grab_focus()
-
-
-func _on_remap_back_pressed():
+	remap_menu.visible = false
+func _on_settings_pressed():
+	main.visible = false
 	settings.visible = true
 	remap_menu.visible = false
-	$MarginContainer/Settings/Menu1.grab_focus()
+func _on_remap_pressed():
+	main.visible = false
+	settings.visible = false
+	remap_menu.visible = true

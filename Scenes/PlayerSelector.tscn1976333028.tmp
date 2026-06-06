@@ -45,38 +45,6 @@ corner_radius_bottom_left = 20
 [sub_resource type="Theme" id="Theme_uhaop"]
 Panel/styles/panel = SubResource("StyleBoxFlat_b0wkq")
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0fie2"]
-properties/0/path = NodePath("VBoxContainer/CenterContainer/AnimatedSprite2D:animation")
-properties/0/spawn = true
-properties/0/replication_mode = 2
-properties/1/path = NodePath(".:outfit")
-properties/1/spawn = true
-properties/1/replication_mode = 2
-properties/2/path = NodePath(".:text")
-properties/2/spawn = true
-properties/2/replication_mode = 2
-properties/3/path = NodePath("VBoxContainer/ScrollContainer/HSplitContainer/Indicators/Glide:color")
-properties/3/spawn = true
-properties/3/replication_mode = 1
-properties/4/path = NodePath("VBoxContainer/ScrollContainer/HSplitContainer/Indicators/Sky_Lift_Key:color")
-properties/4/spawn = true
-properties/4/replication_mode = 1
-properties/5/path = NodePath("VBoxContainer/ScrollContainer/HSplitContainer/Indicators/Climbers_Hook:color")
-properties/5/spawn = true
-properties/5/replication_mode = 1
-properties/6/path = NodePath("VBoxContainer/ScrollContainer/HSplitContainer/Indicators/Drum_Key:color")
-properties/6/spawn = true
-properties/6/replication_mode = 1
-properties/7/path = NodePath("VBoxContainer/ScrollContainer/HSplitContainer/Indicators/Ram:color")
-properties/7/spawn = true
-properties/7/replication_mode = 1
-properties/8/path = NodePath("VBoxContainer/ScrollContainer/HSplitContainer/Indicators/Sandwich:color")
-properties/8/spawn = true
-properties/8/replication_mode = 1
-properties/9/path = NodePath("VBoxContainer/ScrollContainer/HSplitContainer/Indicators/Bean_Opener:color")
-properties/9/spawn = true
-properties/9/replication_mode = 1
-
 [sub_resource type="Theme" id="Theme_xs5nl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsrcl"]
@@ -207,6 +175,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0fie2"]
+properties/0/path = NodePath("VBoxContainer/CenterContainer/AnimatedSprite2D:animation")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:outfit")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:text")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
 [node name="PlayerSelect" type="Panel"]
 custom_minimum_size = Vector2(210, 0)
 anchors_preset = -1
@@ -217,9 +196,6 @@ offset_right = 210.0
 offset_bottom = 553.648
 theme = SubResource("Theme_uhaop")
 script = ExtResource("1_xs5nl")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_0fie2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -428,6 +404,9 @@ animation = &"2"
 autoplay = "0"
 speed_scale = 3.0
 offset = Vector2(-298, -93)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0fie2")
 
 [connection signal="mouse_entered" from="VBoxContainer/Ready" to="." method="_on_ready_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Ready" to="." method="_on_ready_mouse_exited"]

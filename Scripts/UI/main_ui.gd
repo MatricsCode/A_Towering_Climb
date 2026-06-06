@@ -13,6 +13,8 @@ var time_left = 3
 func _ready():
 	timer_text.text = "3"
 	
+	await get_tree().create_timer(0.1).timeout
+	
 	for i in get_child_count(true):
 		var child = get_child(i)
 		child.visible = true

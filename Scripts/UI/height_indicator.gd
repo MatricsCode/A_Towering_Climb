@@ -25,6 +25,8 @@ func _ready():
 			add_indicator(players, GlobalScript.player_positions.get(i)[0] * -1, i)
 
 func _physics_process(delta):
+	await get_tree().create_timer(3)
+	
 	if p1 != "":
 		objects.get_child(objects.get_child_count() -1).value = GlobalScript.player_positions.get(p1)[1].y * -1
 		

@@ -29,7 +29,7 @@ func has_pressed():
 
 func mouse_hover():
 	sizer = get_tree().create_tween()
-	sizer.tween_property(self, "custom_minimum_size", Vector2(original_size.x, original_size.y * 2), 0.05)
+	sizer.tween_property(self, "custom_minimum_size", Vector2(original_size.x, original_size.y * 1.2), 0.05)
 
 func mouse_gone():
 	sizer = get_tree().create_tween()

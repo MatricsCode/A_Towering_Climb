@@ -14,14 +14,16 @@ func _ready():
 
 func won(player_name):
 	background.texture = WIN_BACKGROUND
+	background.visible = true
 	
 	await get_tree().create_timer(1).timeout
 	
+	GlobalScript.paused.emit()
 	again.grab_focus()
 	
 	move_to_front()
 	win_ui.visible = true
-	$VBoxContainer/Winner.text = str(player_name, " Won!")
+	$MarginContainer/VBoxContainer/Winner.text = str(player_name, " Won!")
 
 func reset():
 	background.texture = null

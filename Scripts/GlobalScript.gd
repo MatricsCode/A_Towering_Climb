@@ -23,6 +23,7 @@ var all_player_abilitys = {
 	"Drum_Key" = preload("res://Scripts/Player/Abilitys/drum_key.gd"),
 	"Ram" = preload("res://Scripts/Player/Abilitys/ram.gd"),
 	"Sandwich" = preload("res://Scripts/Player/Abilitys/sandwich.gd"),
+	"Bean_Opener" = preload("res://Scripts/Player/Abilitys/bean_opener.gd"),
 }
 
 var all_projectiles = {
@@ -33,6 +34,7 @@ var important_positions = {}
 var max_abilitys = 3
 
 var player_abilitys = []
+var player_costume = 0
 
 var player_positions = {}
 

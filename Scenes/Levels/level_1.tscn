@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bb64cr50jmhs8"]
+[gd_scene load_steps=13 format=4 uid="uid://bb64cr50jmhs8"]
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Recourses/Tileset.tres" id="1_tlcug"]
 [ext_resource type="PackedScene" uid="uid://deffkwaj6jy8s" path="res://Scenes/Moving Platform.tscn" id="2_4dpyx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bqn3jg2ms8eig" path="res://Scenes/InteractablesSpawner.tscn" id="5_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/LiquidDrum.tscn" id="6_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://dbd4mefv24ifl" path="res://Scenes/BirdSpawner.tscn" id="7_5f3p6"]
+[ext_resource type="PackedScene" uid="uid://dp06o4fd4o2h" path="res://Scenes/Beans.tscn" id="7_u5ghp"]
 [ext_resource type="PackedScene" uid="uid://cn07xety6vi3e" path="res://Test.tscn" id="8_jv26f"]
 [ext_resource type="PackedScene" uid="uid://bbp13fc5trd3u" path="res://Scenes/ProjectileSpawner.tscn" id="8_rb0md"]
 
@@ -52,9 +53,9 @@ rotation = -1.01663
 loop = false
 
 [node name="InteractablesSpawner" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("5_xgxfi")]
-interactables = Array[PackedScene]([ExtResource("2_4dpyx"), ExtResource("2_4dpyx"), ExtResource("6_xgxfi"), ExtResource("6_xgxfi"), ExtResource("4_iixi8")])
-targets = [NodePath("../Path2D/PathFollow2D"), NodePath("../Path2D2/PathFollow2D"), NodePath(".."), NodePath(".."), NodePath("..")]
-positions = Array[Vector2]([Vector2(-1051, -1400), Vector2(3127, -3399), Vector2(1061, -2840), Vector2(418, -4600), Vector2(2581, -2400)])
+interactables = Array[PackedScene]([ExtResource("2_4dpyx"), ExtResource("2_4dpyx"), ExtResource("6_xgxfi"), ExtResource("6_xgxfi"), ExtResource("4_iixi8"), ExtResource("7_u5ghp")])
+targets = [NodePath("../Path2D/PathFollow2D"), NodePath("../Path2D2/PathFollow2D"), NodePath(".."), NodePath(".."), NodePath(".."), NodePath("..")]
+positions = Array[Vector2]([Vector2(-1051, -1400), Vector2(3127, -3399), Vector2(1061, -2840), Vector2(418, -4600), Vector2(2581, -2400), Vector2(403, -3974)])
 
 [node name="BirdSpawner" parent="." instance=ExtResource("7_5f3p6")]
 spawn_positions = Array[Array]([[Vector2(445, -2800), Vector2(1713, -2800)], [Vector2(-1109, -4081), Vector2(-123, -4081)]])
@@ -66,3 +67,6 @@ position = Vector2(-529, -101)
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("8_jv26f")]
 position = Vector2(-316, -101)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(403, -3974)

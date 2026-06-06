@@ -1,20 +1,19 @@
 extends Panel
 
 var main_screen
-var main_player = false
+var main_player = 0
 
-var tenmp_ability_list = []
+var temp_ability_list = ["Glide", "Ram", "Sandwich"]
 
 @onready var ready_button = $VBoxContainer/Ready
+@onready var back_button = $VBoxContainer/Back
 
-@onready var main_container = $VBoxContainer/Main
-@onready var abilitys_container = $VBoxContainer/Abilities
-@onready var outfits_container = $VBoxContainer/Outfits
-@onready var indicator_container = $VBoxContainer/Abilities/HSplitContainer/Indicators
+@onready var abilitys_container = $VBoxContainer/ScrollContainer/HSplitContainer
+@onready var button_container = $VBoxContainer/ScrollContainer/HSplitContainer/Buttons
+@onready var indicator_container = $VBoxContainer/ScrollContainer/HSplitContainer/Indicators
 
-@onready var sprite = $VBoxContainer/CenterContainer/AnimatedSprite2D
+@onready var sprite = $CenterContainer/AnimatedSprite2D
 
-@export var outfit = 0
 @export var text = "Ready?" 
 
 @export var readied_up = false
@@ -25,76 +24,46 @@ func _enter_tree():
 	
 	GlobalScript.player_positions[name] = [0]
 	
-	if main_player:
-		$VBoxContainer/Main/Abilities.grab_focus()
-	
-	if main_player == false:
-		for i in main_container.get_children():
+	if main_player != Steam.getSteamID():
+		for i in button_container.get_children():
 			i.disabled = true
 		
+		back_button.disabled = true
 		ready_button.disabled = true
 	
 	for i in indicator_container.get_children():
-		for y in tenmp_ability_list:
+		for y in temp_ability_list:
 			if i.name == y:
 				i.color = Color.html("#74a642")
+	button_container.get_child(0).grab_focus()
 
 func _physics_process(delta):
 	ready_button.text = text
 	
-	if ready_button.disabled == true:
+	if main_player == Steam.getSteamID():
 		if text == "Geared Up!":
 			main_screen.ready(true, get_index())
 			
 		elif text == "Ready?":
 			main_screen.ready(false, get_index())
-		
-		sprite.animation = str(outfit)
 
 func button_pressed(button_name):
-	if button_name != ready_button.text:
-		text = "Back"
-		$VBoxContainer/Main/Abilities.grab_focus()
-	
-	if button_name == "Abilities":
-		
-		main_container.visible = false
-		abilitys_container.visible = true
-		$VBoxContainer/Abilities/HSplitContainer/Buttons/Glide.grab_focus()
-		
-		return
-	elif button_name == "Outfits":
-		
-		main_container.visible = false
-		outfits_container.visible = true
-		
-		$VBoxContainer/Outfits/Climber1.grab_focus()
-		
-		return
-	 
-	else:
 		for i in GlobalScript.all_player_abilitys:
 			
 			if button_name == str(i):
 				
-				if not tenmp_ability_list.has(str(button_name)) and tenmp_ability_list.size() < 3:
-					tenmp_ability_list.append(str(button_name))
+				if not temp_ability_list.has(str(button_name)) and temp_ability_list.size() < 3:
+					temp_ability_list.append(str(button_name))
 					
 					for y in indicator_container.get_children():
 						if y.name == button_name:
 							y.color = Color.html("#74a642")
-				elif tenmp_ability_list.has(str(button_name)):
-					tenmp_ability_list.erase(str(button_name))
+				elif temp_ability_list.has(str(button_name)):
+					temp_ability_list.erase(str(button_name))
 					for y in indicator_container.get_children():
 						if y.name == button_name:
 							y.color = Color.html("#ff2f00")
 				return
-		
-		for i in outfits_container.get_children():
-			if i.name == button_name:
-				GlobalScript.player_positions[name] = [i.get_index()]
-				sprite.animation = str(i.get_index())
-				outfit = i.get_index()
 
 
 
@@ -102,7 +71,7 @@ func _on_ready_pressed():
 	if text == "Ready?":
 		text = "Geared Up!"
 		
-		for i in main_container.get_children():
+		for i in button_container.get_children():
 			i.disabled = true
 		
 		main_screen.ready(true, get_index())
@@ -110,17 +79,28 @@ func _on_ready_pressed():
 	elif text == "Changed my mind...":
 		text = "Ready?"
 		
-		for i in main_container.get_children():
+		for i in button_container.get_children():
 			i.disabled = false
 		
 		main_screen.ready(false, get_index())
 	
-	elif text == "Back":
-		main_container.visible = true
-		abilitys_container.visible = false
-		outfits_container.visible = false
-		
-		text = "Ready?"
+	var sort_array = []
+	
+	for y in temp_ability_list:
+		sort_array.append(GlobalScript.all_player_abilitys.keys().find(y))
+	
+	while sort_array[sort_array.size() -2] > sort_array[sort_array.size() -1] or sort_array[0] > sort_array[1]:
+		for i in sort_array.size() -1:
+			if sort_array[i+1] < sort_array[i]:
+				var temp = sort_array[i+1]
+				sort_array[i+1] = sort_array[i]
+				sort_array[i] = temp
+				
+				var temp2 = temp_ability_list[i+1]
+				temp_ability_list[i+1] = temp_ability_list[i]
+				temp_ability_list[i] = temp2
+	
+	GlobalScript.player_abilitys = temp_ability_list
 
 func _on_ready_mouse_entered():
 	if text == "Geared Up!":

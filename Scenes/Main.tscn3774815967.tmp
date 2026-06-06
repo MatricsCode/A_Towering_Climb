@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bvgxox4xf14tm"]
+[gd_scene load_steps=39 format=3 uid="uid://bvgxox4xf14tm"]
 
 [ext_resource type="Script" uid="uid://cwr65tthifp3p" path="res://Scripts/MainScene/main.gd" id="1_idj7w"]
 [ext_resource type="Script" uid="uid://c5g2d6i58r61p" path="res://Scripts/MainScene/steam.gd" id="1_r150o"]
@@ -39,14 +39,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgh2o"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6heos"]
-bg_color = Color(0.309804, 0.560784, 0.729412, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vvnwx"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_yn2g2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -276,56 +269,20 @@ text = "This is a Spacer"
 position = Vector2(576, 324)
 
 [node name="CustomiserUI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = 48.0
-offset_top = -2118.0
-offset_right = 1200.0
-offset_bottom = -1473.0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("4_pbw6q")
 
 [node name="Button_container" type="VBoxContainer" parent="CustomiserUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 81.0
-offset_top = 41.0
-offset_right = -497.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="CenterContainer" type="CenterContainer" parent="CustomiserUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.576771
-anchor_top = -0.0813954
-anchor_right = 1.04253
-anchor_bottom = 1.26047
-offset_left = 114.56
-offset_top = 322.5
-offset_right = -151.0
-offset_bottom = -246.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-use_top_left = true
-metadata/_edit_use_anchors_ = true
-metadata/_edit_group_ = true
-
-[node name="Background2" type="Panel" parent="CustomiserUI/CenterContainer"]
-custom_minimum_size = Vector2(180, 240)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6heos")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="CustomiserUI/CenterContainer"]
-position = Vector2(298, 73)
-sprite_frames = SubResource("SpriteFrames_vvnwx")
-animation = &"1"
+[node name="Sprite" type="AnimatedSprite2D" parent="CustomiserUI"]
+position = Vector2(1207, -1701)
+sprite_frames = SubResource("SpriteFrames_yn2g2")
+animation = &"3"
 autoplay = "0"
 speed_scale = 3.0
 offset = Vector2(-298, -93)

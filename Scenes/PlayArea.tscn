@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://mxplkon28xxc" path="res://Scripts/PlayArea/level_spawner.gd" id="5_aqo4u"]
 [ext_resource type="PackedScene" uid="uid://bnt4usslrchfy" path="res://Scenes/MainUI.tscn" id="5_wgbis"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rbpu"]
 size = Vector2(4838, 20)
 

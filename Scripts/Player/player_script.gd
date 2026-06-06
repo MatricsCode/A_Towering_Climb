@@ -46,9 +46,8 @@ var camera_changing : Tween
 #region Inbuilt Functions
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scenes
-	print(GlobalScript.player_positions.get(name)[0])
 	current_outfit = GlobalScript.player_positions.get(name)[0]
-	sprite.sprite_frames = GlobalScript.all_outfits[current_outfit]
+	sprite.sprite_frames = GlobalScript.all_outfits[GlobalScript.player_costume]
 	
 	for i in main_vars:
 		for y in main_vars[i]:
@@ -74,6 +73,8 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	GlobalScript.winner.connect(won)
 
 func _physics_process(_delta):  ## Runs every physics frames
+	GlobalScript.player_positions[name] = [current_outfit, position]
+	
 	if wall_detector.touching_wall():
 		set_collision_layer_value(2,true)
 	else:
@@ -161,8 +162,6 @@ func ground():
 	#endregion
 
 func air():
-	GlobalScript.player_positions[name] = [current_outfit, position]
-	
 	#region Functions
 	var air_movement = func air_movement():
 		var direction = Input.get_axis("Left", "Right")
@@ -215,8 +214,6 @@ func air():
 	#endregion
 
 func climb():
-	GlobalScript.player_positions[name] = [current_outfit, position]
-	
 	## All of the different actions possible in the current state go here
 	#region Main
 	var input = Input.get_axis("Up", "Down") ## Accesses the current input

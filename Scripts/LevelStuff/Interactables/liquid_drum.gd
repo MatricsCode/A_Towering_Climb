@@ -43,8 +43,7 @@ func slip_remove(body):
 
 
 func entered(has_entered : bool):
-	if sprite.animation == "Full":
-		if has_entered:
-			sprite.play("Interactable")
-		elif not has_entered and not interacted:
-			sprite.play("Full")
+	if has_entered and sprite.play("Full"):
+		sprite.play("Interactable")
+	elif has_entered == false and not interacted:
+		sprite.play("Full")

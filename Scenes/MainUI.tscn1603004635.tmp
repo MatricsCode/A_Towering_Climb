@@ -39,8 +39,8 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -189.0
-offset_right = 112.0
+offset_top = -315.0
+offset_right = 197.0
 grow_vertical = 0
 script = ExtResource("2_1rfkw")
 
@@ -172,15 +172,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Unpause"
 
-[node name="Settings" type="Button" parent="PauseMenu/MarginContainer/Main"]
+[node name="Menu1" type="Button" parent="PauseMenu/MarginContainer/Main"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Settings"
-
-[node name="Remap" type="Button" parent="PauseMenu/MarginContainer/Main"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Remap Inputs"
 
 [node name="LeaveLobby" type="Button" parent="PauseMenu/MarginContainer/Main"]
 layout_mode = 2
@@ -198,7 +193,7 @@ text = "  Settings  "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Back" type="Button" parent="PauseMenu/MarginContainer/Settings"]
+[node name="Menu1" type="Button" parent="PauseMenu/MarginContainer/Settings"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Back"
@@ -266,6 +261,11 @@ value = 0.5
 layout_mode = 2
 text = "Music"
 
+[node name="Remap" type="Button" parent="PauseMenu/MarginContainer/Settings"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Remap Inputs"
+
 [node name="RemapMenu" type="VBoxContainer" parent="PauseMenu/MarginContainer"]
 layout_mode = 2
 script = ExtResource("7_uwgue")
@@ -281,7 +281,48 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Back" type="Button" parent="PauseMenu/MarginContainer/RemapMenu"]
+[node name="RemapBack" type="Button" parent="PauseMenu/MarginContainer/RemapMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="RemapMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RemapMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RemapMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RemapMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button_container" type="VBoxContainer" parent="RemapMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Letter_container" type="VBoxContainer" parent="RemapMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Back" type="Button" parent="RemapMenu/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
@@ -291,12 +332,12 @@ text = "Back"
 [connection signal="pressed" from="WinMenu/MarginContainer/VBoxContainer/Again" to="WinMenu" method="_on_again_pressed"]
 [connection signal="pressed" from="WinMenu/MarginContainer/VBoxContainer/LeaveLobby" to="." method="_on_leave_lobby_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/Main/Unpause" to="PauseMenu" method="_on_unpause_pressed"]
-[connection signal="pressed" from="PauseMenu/MarginContainer/Main/Settings" to="PauseMenu" method="_on_settings_pressed"]
-[connection signal="pressed" from="PauseMenu/MarginContainer/Main/Remap" to="PauseMenu" method="_on_remap_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/Main/Menu1" to="PauseMenu" method="_on_menu_1_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/Main/LeaveLobby" to="." method="_on_leave_lobby_pressed"]
-[connection signal="pressed" from="PauseMenu/MarginContainer/Settings/Back" to="PauseMenu" method="_on_back_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/Settings/Menu1" to="PauseMenu" method="_on_menu_1_pressed"]
 [connection signal="value_changed" from="PauseMenu/MarginContainer/Settings/VBoxContainer/MainAudio/Main" to="PauseMenu/MarginContainer/Settings" method="_on_main_value_changed"]
 [connection signal="value_changed" from="PauseMenu/MarginContainer/Settings/VBoxContainer/PlayerAudio/Player" to="PauseMenu/MarginContainer/Settings" method="_on_player_value_changed"]
 [connection signal="value_changed" from="PauseMenu/MarginContainer/Settings/VBoxContainer/Effects/BG SFX" to="PauseMenu/MarginContainer/Settings" method="_on_bg_sfx_value_changed"]
 [connection signal="value_changed" from="PauseMenu/MarginContainer/Settings/VBoxContainer/Music/Music" to="PauseMenu/MarginContainer/Settings" method="_on_music_value_changed"]
-[connection signal="pressed" from="PauseMenu/MarginContainer/RemapMenu/Back" to="PauseMenu" method="_on_back_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/Settings/Remap" to="PauseMenu" method="_on_remap_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/RemapMenu/RemapBack" to="PauseMenu" method="_on_remap_back_pressed"]
