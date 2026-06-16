@@ -1,20 +1,7 @@
 extends Node
 
-var all_outfits = [
-	preload("res://Recourses/PlayerSprites/Climber1.tres"),
-	preload("res://Recourses/PlayerSprites/Climber2.tres"),
-	preload("res://Recourses/PlayerSprites/Baker.tres"),
-	preload("res://Recourses/PlayerSprites/Heinrich.tres"),
-]
-
-var markers = [
-	preload("res://Art/Markers/ClimberIcon.png"),
-	preload("res://Art/Markers/ClimberIcon2.png"),
-	preload("res://Art/Markers/BakerIcon.png"),
-	preload("res://Art/Markers/HeinrichIcon.png"),
-	preload("res://Art/Markers/Goal.png"),
-	preload("res://Art/Markers/Drum.png"),
-]
+var player_ID = 0
+var countdown_timer = 5
 
 var all_player_abilitys = {
 	"Glide" = preload("res://Scripts/Player/Abilitys/glide.gd"),
@@ -26,17 +13,11 @@ var all_player_abilitys = {
 	"Bean_Opener" = preload("res://Scripts/Player/Abilitys/bean_opener.gd"),
 }
 
-var all_projectiles = {
-	"Sandwich" = preload("res://Scenes/Sandwich.tscn"),
-}
-
 var important_positions = {}
 var max_abilitys = 3
 
-var player_abilitys = []
-var player_costume = 0
-
-var player_positions = {}
+## It is {"ID" : {"Position" : Vector2, "Costume" : 0, "Abilities" : []}
+var player_attributes = {}
 
 signal projectile (type)
 
@@ -44,7 +25,7 @@ signal winner (name)
 signal reset
 signal left_lobby
 signal paused
+signal start
 
 func reset_now():
-	player_positions.clear()
-	player_abilitys = [""]
+	player_attributes.clear()

@@ -7,7 +7,6 @@ var peer = SteamMultiplayerPeer.new()
 @onready var lobbies = $SelectorUI/HSplitContainer/LobbyContainer/Lobbies
 
 @onready var MainUI = $SelectorUI
-@onready var PlayerReadyScreen = $PlayerReadyScreen
 @onready var CustomiserUI = $CustomiserUI
 
 @onready var host = $SelectorUI/HSplitContainer/VBoxContainer/Host
@@ -47,15 +46,16 @@ func _on_host_pressed():
 	
 	multiplayer.multiplayer_peer = peer
 	
-	PlayerReadyScreen.start()
-	PlayerReadyScreen.host = true
+	start()
 	MainUI.hide()
 func join_lobby(id):
 	peer.connect_lobby(id)
 	multiplayer.multiplayer_peer = peer
 	lobby_id = id
 	
-	PlayerReadyScreen.start()
+	GlobalScript.player_ID = peer.get_unique_id()
+	
+	start()
 	MainUI.hide()
 
 func on_lobby_created(connected, id):
@@ -116,7 +116,6 @@ func leave_lobby():
 	peer.close()
 	get_child(get_child_count() - 1).queue_free()
 	MainUI.show()
-	PlayerReadyScreen.reset()
 	$SelectorUI/Camera2D.enabled = true
 
 func start():
@@ -125,7 +124,6 @@ func start():
 			return
 	ms.spawn("res://Scenes/PlayArea.tscn")
 	$SelectorUI/Camera2D.enabled = false
-	PlayerReadyScreen.reset()
 	
 	peer.set_lobby_joinable(false)
 
@@ -137,7 +135,6 @@ func reset():
 	peer.set_lobby_joinable(true)
 	
 	$SelectorUI/Camera2D.enabled = true
-	PlayerReadyScreen.start()
 
 
 func _on_customiser_pressed():

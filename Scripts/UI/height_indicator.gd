@@ -6,18 +6,29 @@ extends HBoxContainer
 
 var main_theme = preload("res://Recourses/UI/main.tres")
 
+var markers = [
+	preload("res://Art/Markers/ClimberIcon.png"),
+	preload("res://Art/Markers/ClimberIcon2.png"),
+	preload("res://Art/Markers/BakerIcon.png"),
+	preload("res://Art/Markers/HeinrichIcon.png"),
+	preload("res://Art/Markers/Goal.png"),
+	preload("res://Art/Markers/Drum.png"),
+]
+
 var p1 = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	await get_tree().create_timer(3.1).timeout
+	GlobalScript.start.connect(start_spawning)
+
+func start_spawning():
 	for i in GlobalScript.important_positions.keys():
 		add_indicator(objects, GlobalScript.important_positions[i])
 		
 		var index = GlobalScript.important_positions.keys()
 		objects.get_child(objects.get_child_count() -1).value = i.y * -1
 	
-	for i in GlobalScript.player_positions.keys():
+	for i in GlobalScript.player_attributes.get(GlobalScript.player_ID)["Position"]:
 		if p1 == "":
 			p1 = i
 			add_indicator(objects, GlobalScript.player_positions.get(i)[0] * -1, p1)
@@ -35,7 +46,6 @@ func _physics_process(delta):
 			print(i.value)
 
 func add_indicator(parent : Node, outfit, _name = ""):
-	
 	var level_height = 0
 	for i in GlobalScript.important_positions.keys():
 		if GlobalScript.important_positions.get(i) == 4:
@@ -51,7 +61,7 @@ func add_indicator(parent : Node, outfit, _name = ""):
 	
 	indicator.theme = main_theme
 	
-	indicator.add_theme_icon_override("grabber", GlobalScript.markers[outfit])
+	indicator.add_theme_icon_override("grabber", markers[outfit])
 	indicator.add_theme_stylebox_override("grabber_area", StyleBoxEmpty.new())
 	
 	parent.add_child(indicator)

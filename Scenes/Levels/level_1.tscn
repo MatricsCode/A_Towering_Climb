@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bb64cr50jmhs8"]
+[gd_scene load_steps=14 format=4 uid="uid://bb64cr50jmhs8"]
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Recourses/Tileset.tres" id="1_tlcug"]
 [ext_resource type="PackedScene" uid="uid://deffkwaj6jy8s" path="res://Scenes/Moving Platform.tscn" id="2_4dpyx"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dp06o4fd4o2h" path="res://Scenes/Beans.tscn" id="7_u5ghp"]
 [ext_resource type="PackedScene" uid="uid://cn07xety6vi3e" path="res://Test.tscn" id="8_jv26f"]
 [ext_resource type="PackedScene" uid="uid://bbp13fc5trd3u" path="res://Scenes/ProjectileSpawner.tscn" id="8_rb0md"]
+[ext_resource type="PackedScene" uid="uid://g5vtuvmyw7d" path="res://Scenes/CinematicCamera.tscn" id="11_hwvp3"]
 
 [sub_resource type="Curve2D" id="Curve2D_cyadu"]
 _data = {
@@ -70,3 +71,6 @@ position = Vector2(-316, -101)
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(403, -3974)
+
+[node name="Cinema-Cam" parent="." instance=ExtResource("11_hwvp3")]
+position = Vector2(1008, -5961)

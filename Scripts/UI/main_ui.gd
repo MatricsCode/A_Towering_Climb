@@ -7,11 +7,11 @@ var ability_list = [preload("res://Art/Abilitys/Abilitys3.png"),
 	preload("res://Art/Abilitys/Abilitys1.png")]
 @onready var timer = $StartTimer/Timer
 @onready var timer_text = $StartTimer/Timer_text
-var time_left = 3
+var time_left = GlobalScript.countdown_timer
 
 
 func _ready():
-	timer_text.text = "3"
+	timer_text.text = str(time_left)
 	
 	await get_tree().create_timer(0.1).timeout
 	
@@ -19,12 +19,12 @@ func _ready():
 		var child = get_child(i)
 		child.visible = true
 	
-	for i in GlobalScript.player_abilitys:
-		var ability = Label.new()
-		ability.text = i
-		ability.name = i
-		
-		$Abilitys.add_child(ability)
+	#for i in GlobalScript.player_attributes.keys():
+		#var ability = Label.new()
+		#ability.text = i
+		#ability.name = i
+		#
+		#$Abilitys.add_child(ability)
 		
 		#var picture = Sprite2D.new()
 		#

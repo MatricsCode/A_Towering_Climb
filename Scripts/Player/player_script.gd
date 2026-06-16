@@ -5,16 +5,23 @@ enum States {GROUND, AIR, CLIMB, PAUSED, OVERIDDEN, EMPTY}
 
 ## --- Constants ---
 const MAX_GRAVITY = 10000
-
-## --- Variables ---
-var current_state
-var player = 0
-
+var outfits = [
+	preload("res://Recourses/PlayerSprites/Climber1.tres"),
+	preload("res://Recourses/PlayerSprites/Climber2.tres"),
+	preload("res://Recourses/PlayerSprites/Baker.tres"),
+	preload("res://Recourses/PlayerSprites/Heinrich.tres"),]
+var projectiles = {
+	"Sandwich" = preload("res://Scenes/Sandwich.tscn"),}
 var sounds = {
 	"Walk" : preload("res://Sound Effects/Walking.mp3"),
 	"Land" : preload("res://Sound Effects/Land.mp3"),
 	"Jump" : preload("res://Sound Effects/Jump.mp3"),
 	"Climb" : preload("res://Sound Effects/Climb.mp3"),}
+
+## --- Variables ---
+var current_state
+var ID
+
 var main_vars = { ## Main variables
 	"ground_vars" : {"speed" : 600},
 	"air_vars" : {"jump_power" : 1250, "jump_increase" : 1, "gravity" : 0, "gravity_increase" : 1, "movement_direction" : 0},
@@ -47,7 +54,7 @@ var camera_changing : Tween
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scenes
 	current_outfit = GlobalScript.player_positions.get(name)[0]
-	sprite.sprite_frames = GlobalScript.all_outfits[GlobalScript.player_costume]
+	sprite.sprite_frames = outfits[GlobalScript.player_attributes.get(ID)["Outfit"]]
 	
 	for i in main_vars:
 		for y in main_vars[i]:
@@ -73,7 +80,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	GlobalScript.winner.connect(won)
 
 func _physics_process(_delta):  ## Runs every physics frames
-	GlobalScript.player_positions[name] = [current_outfit, position]
+	GlobalScript.player_attributes.get(ID)["Position"] = position
 	
 	if wall_detector.touching_wall():
 		set_collision_layer_value(2,true)

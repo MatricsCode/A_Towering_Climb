@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://g5vtuvmyw7d"]
+
+[ext_resource type="Script" uid="uid://b7vdpintqxmcr" path="res://Scripts/Cinematic Camera/cinema_cam.gd" id="1_idivh"]
+
+[node name="Cinema-Cam" type="Camera2D"]
+zoom = Vector2(0.2, 0.2)
+limit_bottom = 0
+script = ExtResource("1_idivh")

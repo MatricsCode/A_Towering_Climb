@@ -1,11 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://bvgxox4xf14tm"]
+[gd_scene load_steps=39 format=3 uid="uid://bvgxox4xf14tm"]
 
 [ext_resource type="Script" uid="uid://cwr65tthifp3p" path="res://Scripts/MainScene/main.gd" id="1_idj7w"]
 [ext_resource type="Script" uid="uid://c5g2d6i58r61p" path="res://Scripts/MainScene/steam.gd" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://cbnyp3hyfqj53" path="res://Scenes/Background.tscn" id="3_kln2b"]
 [ext_resource type="Script" uid="uid://47a3pp3gxhdc" path="res://Scripts/MainScene/customiser_selector_ui.gd" id="4_pbw6q"]
 [ext_resource type="Texture2D" uid="uid://v2n6mouri1as" path="res://Art/Player/Climber1/Climber1.png" id="5_6heos"]
-[ext_resource type="Script" uid="uid://dxnq6ejhtqvp2" path="res://Scripts/MainScene/player_ready_up.gd" id="5_pbw6q"]
 [ext_resource type="Texture2D" uid="uid://blsk3uj75ilc7" path="res://Art/Player/Climber1/Climber2.png" id="6_vvnwx"]
 [ext_resource type="Texture2D" uid="uid://d3hgjamg108p3" path="res://Art/Player/Climber1/Climber3.png" id="7_btbly"]
 [ext_resource type="Texture2D" uid="uid://brq55ibfgpg2y" path="res://Art/Player/Climber1/Climber4.png" id="8_vs04g"]
@@ -341,22 +340,6 @@ offset_right = 1199.0
 offset_bottom = -1473.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="PlayerReadyScreen" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("HBoxContainer")
-script = ExtResource("5_pbw6q")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerReadyScreen"]
-anchors_preset = -1
-anchor_left = 0.041
-anchor_top = -3.273
-anchor_right = 1.041
-anchor_bottom = -2.261
-offset_left = -0.232002
-offset_top = 30.9041
-offset_right = -0.232056
-offset_bottom = -78.8719
-alignment = 1
 
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Refresh" to="." method="_on_refresh_pressed"]
