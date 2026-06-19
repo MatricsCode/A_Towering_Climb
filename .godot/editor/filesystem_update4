@@ -1,20 +1,9 @@
-res://Scenes/Main.tscn
+res://Scenes/PlayerSelector.tscn
 res://Recourses/UI/main.tres
 res://Recourses/UI/PauseBackground.tres
 res://Recourses/UI/WinBackground.tres
-res://Recourses/Tileset.tres
-res://Scenes/Beans.tscn
-res://Scenes/LiquidDrum.tscn
-res://Scenes/PlayerSelector.tscn
 res://Scenes/GlobalScript.tscn
 res://Scenes/MainUI.tscn
-res://Scenes/PlayArea.tscn
-res://Scripts/MainScene/main.gd
-res://Scripts/GlobalScript.gd
-res://Scripts/Player/player_script.gd
-res://Scripts/PlayArea/multiplayer_spawner.gd
-res://Scenes/CinematicCamera.tscn
-res://Scripts/Cinematic Camera/cinema_cam.gd
-res://Scenes/Levels/level_1.tscn
-res://Scripts/UI/main_ui.gd
-res://Scripts/UI/height_indicator.gd
+res://Scenes/Tools/BaseButton.tscn
+res://Scripts/PlayerSelectorUI/vitaliser.gd
+res://Scripts/Tools/base_button.gd

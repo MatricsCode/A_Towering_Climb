@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c04puj7j1jrp"]
+[gd_scene load_steps=14 format=4 uid="uid://c04puj7j1jrp"]
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Recourses/Tileset.tres" id="1_7qxk6"]
 [ext_resource type="PackedScene" uid="uid://bqn3jg2ms8eig" path="res://Scenes/InteractablesSpawner.tscn" id="3_oylv5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dbd4mefv24ifl" path="res://Scenes/BirdSpawner.tscn" id="7_fphuk"]
 [ext_resource type="PackedScene" uid="uid://bbp13fc5trd3u" path="res://Scenes/ProjectileSpawner.tscn" id="8_blpqv"]
 [ext_resource type="PackedScene" uid="uid://cn07xety6vi3e" path="res://Test.tscn" id="8_pnnky"]
+[ext_resource type="PackedScene" uid="uid://g5vtuvmyw7d" path="res://Scenes/CinematicCamera.tscn" id="11_u40f0"]
 
 [sub_resource type="Curve2D" id="Curve2D_ovj6s"]
 _data = {
@@ -24,6 +25,9 @@ _data = {
 point_count = 3
 
 [node name="Level2" type="StaticBody2D"]
+
+[node name="Cinema-Cam" parent="." instance=ExtResource("11_u40f0")]
+position = Vector2(1075, -6799)
 
 [node name="Goal" parent="." instance=ExtResource("4_w2ac1")]
 z_index = 2

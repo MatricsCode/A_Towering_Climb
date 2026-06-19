@@ -1,0 +1,184 @@
+[gd_scene load_steps=9 format=3 uid="uid://cam0eoq23msfi"]
+
+[ext_resource type="SpriteFrames" uid="uid://d0p8c383sa7h3" path="res://Recourses/PlayerSprites/Baker.tres" id="1_i78j7"]
+[ext_resource type="Script" uid="uid://n0k8hsrj2410" path="res://Scripts/PlayerSelectorUI/player_selector.gd" id="1_xs5nl"]
+[ext_resource type="Script" uid="uid://yhp81sc8f8pp" path="res://Scripts/PlayerSelectorUI/vitaliser.gd" id="3_cx46x"]
+[ext_resource type="PackedScene" uid="uid://cfbb7qud3xkp3" path="res://Scenes/Tools/BaseButton.tscn" id="4_4g1oj"]
+[ext_resource type="Script" uid="uid://b1to0dglnhcn5" path="res://Scripts/PlayerSelectorUI/customiser.gd" id="4_ivr4c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bpm6"]
+bg_color = Color(0.309804, 0.560784, 0.729412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i78j7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivr4c"]
+bg_color = Color(0.458824, 0.654902, 0.262745, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 0.331
+anchor_bottom = 1.701
+offset_right = -0.312042
+offset_bottom = -0.248047
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xs5nl")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Visualiser" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Visualiser"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8bpm6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Visualiser"]
+position = Vector2(195, 260)
+sprite_frames = ExtResource("1_i78j7")
+animation = &"ram"
+autoplay = "walk"
+frame_progress = 0.421524
+speed_scale = 3.0
+
+[node name="HSeparator" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i78j7")
+
+[node name="Buttonisniser" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("4_ivr4c")
+
+[node name="Vitaliser" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_cx46x")
+
+[node name="SplitContainer" type="HSplitContainer" parent="VBoxContainer/Vitaliser"]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/Vitaliser/SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Glide" parent="VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Glide"
+func_parent = NodePath("../../..")
+
+[node name="Sky_Lift_Key" parent="VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Sky Lift Key"
+func_parent = NodePath("../../..")
+
+[node name="Climbers_Hook" parent="VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Climbers Hook"
+func_parent = NodePath("../../..")
+
+[node name="Drum_Key" parent="VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Drum Key"
+func_parent = NodePath("../../..")
+
+[node name="Ram" parent="VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Ram"
+func_parent = NodePath("../../..")
+
+[node name="Sandwich" parent="VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Sandwich"
+func_parent = NodePath("../../..")
+
+[node name="Can_Opener" parent="VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Can Opener"
+func_parent = NodePath("../../..")
+
+[node name="Main" type="VBoxContainer" parent="VBoxContainer/Vitaliser/SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel1" type="Panel" parent="VBoxContainer/Vitaliser/SplitContainer/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ivr4c")
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/Vitaliser/SplitContainer/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ivr4c")
+
+[node name="Panel3" type="Panel" parent="VBoxContainer/Vitaliser/SplitContainer/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ivr4c")
+
+[node name="Panel4" type="Panel" parent="VBoxContainer/Vitaliser/SplitContainer/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ivr4c")
+
+[node name="Panel5" type="Panel" parent="VBoxContainer/Vitaliser/SplitContainer/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ivr4c")
+
+[node name="Panel6" type="Panel" parent="VBoxContainer/Vitaliser/SplitContainer/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ivr4c")
+
+[node name="Panel7" type="Panel" parent="VBoxContainer/Vitaliser/SplitContainer/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ivr4c")
+
+[node name="HSeparator2" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i78j7")

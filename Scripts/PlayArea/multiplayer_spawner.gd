@@ -4,6 +4,9 @@ extends MultiplayerSpawner
 
 var players = {}
 
+func _ready():
+	GlobalScript.start.connect(spawn_player)
+
 func spawn_players():
 	spawn_function = spawn_player
 	if is_multiplayer_authority():

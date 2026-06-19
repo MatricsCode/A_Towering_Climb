@@ -124,7 +124,7 @@ func start():
 			return
 	ms.spawn("res://Scenes/PlayArea.tscn")
 	$SelectorUI/Camera2D.enabled = false
-	
+	print($SelectorUI/Camera2D.enabled)
 	peer.set_lobby_joinable(false)
 
 func reset():

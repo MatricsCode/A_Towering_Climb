@@ -4,11 +4,12 @@ class_name Base_Button
 
 @export var func_parent : Node
 
-var original_size = custom_minimum_size
+var original_size
 
 var sizer : Tween
 
 func _ready():
+	original_size = get_size()
 	visible = false
 	
 	await get_tree().create_timer(0.05).timeout
