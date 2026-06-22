@@ -7,6 +7,8 @@ extends MultiplayerSpawner
 func _ready():
 	spawn_function = spawning
 	
+	set_multiplayer_authority(GlobalScript.peer_ID)
+	
 	for i in interactables.size():
 		spawn(i)
 

@@ -9,17 +9,16 @@ var inputs = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	await get_tree().create_timer(0.1).timeout
 	
-	if "Sky_Lift_Key" in GlobalScript.player_abilitys:
+	if "Sky_Lift_Key" in GlobalScript.player_attributes.get(GlobalScript.peer_ID).get("Abilities").values():
 		inputs["Ability1"] = true
-	elif "Drum_Key" in GlobalScript.player_abilitys:
+	elif "Drum_Key" in GlobalScript.player_attributes.get(GlobalScript.peer_ID).get("Abilities").values():
 		inputs["Ability1"] = true
-	elif "Bean_Opener" in GlobalScript.player_abilitys:
+	elif "Bean_Opener" in GlobalScript.player_attributes.get(GlobalScript.peer_ID).get("Abilities").values():
 		inputs["Ability1"] = true
 	
-	for i in GlobalScript.player_abilitys:
+	for i in GlobalScript.player_attributes.get(GlobalScript.peer_ID).get("Abilities").values():
 		var ability = Node.new()
 		ability.set_script(GlobalScript.all_player_abilitys.get(i, null))
 		ability.name = i

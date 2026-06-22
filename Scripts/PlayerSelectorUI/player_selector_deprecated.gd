@@ -24,7 +24,7 @@ func _enter_tree():
 	
 	GlobalScript.player_attributes.get_or_add(player, {"Position" : Vector2.ZERO, "Costume" : 0, "Abilities" : []})
 	
-	if player != Steam.getSteamID():
+	if player != GlobalScript.peer_ID:
 		for i in button_container.get_children():
 			i.disabled = true
 		
@@ -40,7 +40,7 @@ func _enter_tree():
 func _physics_process(delta):
 	ready_button.text = text
 	
-	if player == Steam.getSteamID():
+	if player == GlobalScript.peer_ID:
 		if text == "Geared Up!":
 			main_screen.ready(true, get_index())
 			

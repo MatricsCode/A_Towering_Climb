@@ -1,7 +1,8 @@
 extends Node
 
-var player_ID = 0
-var countdown_timer = 5
+var peer_ID = 0
+var user_ID = 0
+var countdown_timer = 0.1
 
 var important_positions = {}
 var max_abilitys = 3
@@ -16,7 +17,7 @@ var all_player_abilitys = {
 	"Can_Opener" = preload("res://Scripts/Player/Abilitys/bean_opener.gd"),
 }
 
-## It is {"ID" : {"Position" : Vector2, "Costume" : 0, "Abilities" : []}}
+## It is {"ID" : {"Position" : Vector2, "Costume" : 0, "Abilities" : {"Key" : Ability}}}
 var player_attributes = {}
 
 signal projectile (type)
@@ -25,7 +26,7 @@ signal winner (name)
 signal reset
 signal left_lobby
 signal paused
-signal start
+signal start (Something : int)
 
 func reset_now():
 	player_attributes.clear()

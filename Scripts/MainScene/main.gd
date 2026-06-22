@@ -7,7 +7,6 @@ var peer = SteamMultiplayerPeer.new()
 @onready var lobbies = $SelectorUI/HSplitContainer/LobbyContainer/Lobbies
 
 @onready var MainUI = $SelectorUI
-@onready var CustomiserUI = $CustomiserUI
 
 @onready var host = $SelectorUI/HSplitContainer/VBoxContainer/Host
 @onready var refresh = $SelectorUI/HSplitContainer/VBoxContainer/Refresh
@@ -16,6 +15,8 @@ var peer = SteamMultiplayerPeer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GlobalScript.user_ID = Steam.getSteamID()
+	
 	GlobalScript.left_lobby.connect(leave_lobby)
 	GlobalScript.reset.connect(reset)
 	host.grab_focus()
@@ -46,14 +47,17 @@ func _on_host_pressed():
 	
 	multiplayer.multiplayer_peer = peer
 	
+	GlobalScript.peer_ID = peer.get_unique_id()
+	
 	start()
 	MainUI.hide()
 func join_lobby(id):
 	peer.connect_lobby(id)
 	multiplayer.multiplayer_peer = peer
-	lobby_id = id
 	
-	GlobalScript.player_ID = peer.get_unique_id()
+	GlobalScript.peer_ID = peer.get_unique_id()
+	
+	lobby_id = id
 	
 	start()
 	MainUI.hide()
@@ -100,7 +104,6 @@ func leave_lobby():
 		Steam.leaveLobby(lobby_id)
 		
 		lobby_id = 0
-	GlobalScript.player_positions.clear()
 	
 	
 	var lobby_members = peer.get_peer_map()
@@ -122,6 +125,10 @@ func start():
 	for i in get_children():
 		if i.name == "PlayArea":
 			return
+	
+	set_multiplayer_authority(GlobalScript.peer_ID)
+	print(get_multiplayer_authority())
+	
 	ms.spawn("res://Scenes/PlayArea.tscn")
 	$SelectorUI/Camera2D.enabled = false
 	print($SelectorUI/Camera2D.enabled)
@@ -135,8 +142,3 @@ func reset():
 	peer.set_lobby_joinable(true)
 	
 	$SelectorUI/Camera2D.enabled = true
-
-
-func _on_customiser_pressed():
-	CustomiserUI.visible = true
-	MainUI.visible = false

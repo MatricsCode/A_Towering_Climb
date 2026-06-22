@@ -49,6 +49,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Map" type="TextureRect" parent="HeightIndicator"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4

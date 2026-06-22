@@ -29,9 +29,9 @@ func _ready():
 	
 	spawn_function = spawn_bird
 	
-	while spawning:
-		total_spawned_birds += 1
-		spawn("null")
+	#while spawning:
+		#total_spawned_birds += 1
+		#spawn("null")
 
 func spawn_bird(data = null):
 	var bird = BIRD.instantiate()

@@ -34,8 +34,6 @@ func _physics_process(delta):
 		interactable.interact(self)
 
 func interact(body):
-	print("Interactable")
-	
 	if interactable == null:
 		interactable = body
 		body.entered(true)

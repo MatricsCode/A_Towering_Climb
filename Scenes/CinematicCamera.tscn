@@ -11,10 +11,15 @@ limit_smoothed = true
 script = ExtResource("1_idivh")
 
 [node name="PlayerSelectorSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("../Container")
+spawn_path = NodePath("../CanvasLayer/Container")
 script = ExtResource("2_c1o1f")
 
-[node name="Container" type="HBoxContainer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+follow_viewport_enabled = true
+
+[node name="Background" type="Panel" parent="CanvasLayer"]
+visible = false
 top_level = true
 anchors_preset = -1
 anchor_left = -1.0
@@ -22,7 +27,20 @@ anchor_top = -3.5
 anchor_right = 1.0
 anchor_bottom = -1.5
 offset_top = 0.000244141
-offset_bottom = 6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Container" type="HBoxContainer" parent="CanvasLayer"]
+visible = false
+top_level = true
+anchors_preset = -1
+anchor_left = -1.0
+anchor_top = -3.5
+anchor_right = 1.0
+anchor_bottom = -1.5
+offset_top = 0.000244141
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 metadata/_edit_use_anchors_ = true

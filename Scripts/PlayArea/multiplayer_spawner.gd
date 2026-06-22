@@ -5,9 +5,9 @@ extends MultiplayerSpawner
 var players = {}
 
 func _ready():
-	GlobalScript.start.connect(spawn_player)
+	GlobalScript.start.connect(spawn_players)
 
-func spawn_players():
+func spawn_players(data):
 	spawn_function = spawn_player
 	if is_multiplayer_authority():
 		spawn(1)
@@ -22,7 +22,7 @@ func spawn_player(data):
 	players[data] = p
 	p.position.y -= 100
 	
-	p.player = data
+	p.ID = GlobalScript.peer_ID
 	
 	return p
 func remove_player(data):

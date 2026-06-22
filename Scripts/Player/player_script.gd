@@ -53,8 +53,9 @@ var camera_changing : Tween
 #region Inbuilt Functions
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scenes
-	current_outfit = GlobalScript.player_positions.get(name)[0]
-	sprite.sprite_frames = outfits[GlobalScript.player_attributes.get(ID)["Outfit"]]
+	cam.make_current()
+	
+	sprite.sprite_frames = outfits[GlobalScript.player_attributes.get(ID)["Costume"]]
 	
 	for i in main_vars:
 		for y in main_vars[i]:
@@ -62,14 +63,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	
 	cam.enabled = is_multiplayer_authority() ## Checks if you are this player and grants/denies you the camera from this
 	
-	current_state = States.PAUSED
-	
 	camera_changing = get_tree().create_tween()
-	cam.position = Vector2(-10000, -10000)
-	camera_changing.set_ease(Tween.EASE_OUT)
-	camera_changing.tween_property(cam, "position", Vector2(position.x, position.y), 3)
-	
-	await camera_changing.finished
 	
 	if is_multiplayer_authority():
 		$AudioListener2D.make_current()
@@ -274,7 +268,7 @@ func paused():
 		velocity.x = lerp(velocity.x, 0.0, 0.4)
 
 func overidden():
-	print("player velocity : ", velocity)
+	pass
 #endregion
 
 ## --- Signals ---
@@ -503,7 +497,6 @@ func won(winners_name):
 	var goal_pos
 	
 	for i in GlobalScript.important_positions.keys():
-		print(i)
 		if GlobalScript.important_positions.get(i) == 4:
 			goal_pos = i
 	

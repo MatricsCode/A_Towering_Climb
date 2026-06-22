@@ -39,8 +39,6 @@ func _physics_process(delta):
 			clamp(player.velocity.y, -10000, 100000)
 			clamp(player.velocity.x, -10000, 100000)
 			
-			print("----------------------")
-			
 			if player.get_sprite_rotation() == -1:
 				player.sprite.flip_h = false
 			else:
