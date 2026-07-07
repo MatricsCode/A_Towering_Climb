@@ -1,39 +1,33 @@
 extends abilitys
 
-var interactable = null
 var area = null
+var speed = 0
+var climbing_speed
 
 func _ready():
-	var scanner = Area2D.new()
+	speed = player.main_vars_reset[0]
+	climbing_speed = player.main_vars_reset[6]
 	
-	scanner.body_entered.connect(interact)
-	scanner.body_exited.connect(interact)
-	
-	var hit_area = CollisionShape2D.new()
-	
-	hit_area.shape = RectangleShape2D.new()
-	hit_area.position.y -= 50
-	hit_area.debug_color = Color.BLACK
-	
-	add_child(scanner)
-	
+	add_area_2D(25)
 	area = get_child(0)
-	
-	scanner.set_collision_mask_value(1, false)
-	scanner.set_collision_layer_value(1, false)
-	
-	scanner.set_collision_mask_value(25, true)
-	
-	scanner.add_child(hit_area)
 
 func _physics_process(delta):
-	if interactable != null and Input.is_action_pressed(input):
-		interactable.interact(player)
 	if area != null:
 		area.position = player.position
+	
+	if player.current_state == activation_state and Input.is_action_pressed("Jump"):
+		player.main_vars.ground_vars["speed"] = speed
+		player.main_vars_reset[0] = speed
+		
+		player.main_vars.climbing_vars["speed"] = climbing_speed
+		player.main_vars_reset[6] = climbing_speed
 
-func interact(body):
-	if interactable == null:
-		interactable = body
-	else:
-		interactable = null
+
+func area_interact(body):
+	body.queue_free()
+	
+	player.main_vars.ground_vars["speed"] *= 1.2
+	player.main_vars_reset[0] *= 1.2
+	
+	player.main_vars.climbing_vars["speed"] *= 1.2
+	player.main_vars_reset[6] *= 1.2

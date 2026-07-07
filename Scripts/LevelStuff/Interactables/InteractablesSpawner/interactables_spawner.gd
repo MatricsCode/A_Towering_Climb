@@ -19,4 +19,6 @@ func spawning(number):
 	child.target = targets[number]
 	child.position = positions[number]
 	
+	child.set_multiplayer_authority(1)
+	
 	return child

@@ -32,3 +32,11 @@ func button_pressed(data):
 	visible = false
 	vitaliser.visible = true
 	$"../Vitaliser/SplitContainer/Buttons/Glide".grab_focus()
+
+func check(abilities : Dictionary):
+	print(abilities)
+	for i in indicators.get_children():
+		i.color = Color.RED
+		for y in abilities.keys():
+			if buttons.get_child(i.get_index()).name == y:
+				i.color = Color.GREEN

@@ -275,7 +275,7 @@ func overidden():
 
 #region Interact Detector Signals
 func _on_interact_detector_body_entered(body):
-	for i in GlobalScript.player_abilitys:
+	for i in GlobalScript.player_attributes.get(ID).get("Abilities"):
 		if body.activator == i:
 			interaction_indicator.visible = true
 			interactables.append(body)

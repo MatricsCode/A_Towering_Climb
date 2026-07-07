@@ -22,11 +22,16 @@ func _start():
 	
 	set_multiplayer_authority(GlobalScript.peer_ID)
 	
-	spawn(GlobalScript.peer_ID)
+	if GlobalScript.peer_ID == 1:
+		spawn(1)
 func reset():
 	for i in get_children():
 		if i.get_index() > 1:
 			i.queue_free()
+
+func _physics_process(delta):
+	if Input.is_action_just_pressed("Dev"):
+		spawn(randi())
 
 func ready(readied : bool, index : int):
 	if readied:
@@ -42,6 +47,7 @@ func spawn_player_selector(data):
 	players.append(data)
 	
 	play_select.player = data
+	play_select.set_multiplayer_authority(data)
 	
 	play_select.main_screen = self
 	
@@ -51,9 +57,9 @@ func spawn_player_selector(data):
 	
 	play_select.func_parent = self
 	
-	return play_select
+	readied_up[data] = false
 	
-	readied_up[play_select.name] = false
+	return play_select
 func despawn_player_selector(data):
 	players.erase(data)
 	
@@ -62,8 +68,10 @@ func despawn_player_selector(data):
 			i.queue_free()
 
 
-func _readied_up(_name, data):
-	readied_up[_name] = data
+func _readied_up(ID, data):
+	readied_up[ID] = data
 	
-	if readied_up.values().find(false) == -1:
+	var temp = readied_up.values()
+	
+	if temp.find(false) == -1:
 		GlobalScript.start.emit(1)

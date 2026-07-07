@@ -13,4 +13,6 @@ func spawn_projectile(data):
 	
 	projectile.direction = data.get(2)
 	
+	projectile.set_multiplayer_authority(1)
+	
 	return projectile

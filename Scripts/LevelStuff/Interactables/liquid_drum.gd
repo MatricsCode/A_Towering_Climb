@@ -6,7 +6,7 @@ extends Interactable
 var speed = {}
 var jump_power = {}
 
-var controler = preload("res://Scripts/LiquidDrum/slip_overider.gd")
+#var controler = preload("res://Scripts/LiquidDrum/slip_overider.gd")
 
 func _ready():
 	area.body_entered.connect(slip_add)

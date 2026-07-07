@@ -16,3 +16,27 @@ func overide():
 func reset():
 	in_action = false
 	get_parent().get_parent().overide(false)
+
+func add_area_2D(collision_mask : int):
+	var scanner = Area2D.new()
+	
+	scanner.body_entered.connect(area_interact)
+	scanner.body_exited.connect(area_interact)
+	
+	var hit_area = CollisionShape2D.new()
+	
+	hit_area.shape = RectangleShape2D.new()
+	hit_area.position.y -= 50
+	hit_area.debug_color = Color.BLACK
+	
+	add_child(scanner)
+	
+	scanner.set_collision_mask_value(1, false)
+	scanner.set_collision_layer_value(1, false)
+	
+	scanner.set_collision_mask_value(collision_mask, true)
+	
+	scanner.add_child(hit_area)
+
+func area_interact(body):
+	pass

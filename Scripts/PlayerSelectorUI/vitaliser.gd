@@ -20,12 +20,14 @@ func _ready():
 
 func button_pressed(data):
 	if abilities.values().find(data) != -1:
-		return
-	
-	abilities[current_button] = data
+		abilities.erase(abilities.keys().get(abilities.values().find(data)))
+		abilities[current_button] = data
+	else:
+		abilities[current_button] = data
 	
 	visible = false
 	key_selector.visible = true
+	key_selector.check(abilities)
 	$"../Key Selector/SplitContainer/Buttons".get_child(0).grab_focus()
 	activate(data)
 	sort()

@@ -31,9 +31,9 @@ func _ready():
 	
 	#while spawning:
 		#total_spawned_birds += 1
-		#spawn("null")
+		#spawn(GlobalScript.peer_ID)
 
-func spawn_bird(data = null):
+func spawn_bird(data):
 	var bird = BIRD.instantiate()
 	var bird_position : Vector2
 	
@@ -51,6 +51,8 @@ func spawn_bird(data = null):
 	
 	bird.position.x = bird_position.x
 	bird.position.y = bird_position.y
+	
+	bird.set_multiplayer_authority(data)
 	
 	return bird
 

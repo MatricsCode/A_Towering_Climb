@@ -34,8 +34,8 @@ func button_pressed(data):
 	
 	elif ready_button.text == "Ready?":
 		ready_button.text = "Readied!"
-		func_parent._readied_up(name, true)
+		func_parent._readied_up(player, true)
 	
 	elif ready_button.text == "Readied!":
 		ready_button.text = "Ready?"
-		func_parent._readied_up(name, false)
+		func_parent._readied_up(player, false)
