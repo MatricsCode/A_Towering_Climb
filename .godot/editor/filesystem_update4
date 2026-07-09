@@ -5,3 +5,4 @@ res://Scenes/Main.tscn
 res://Scenes/ProjectileSpawner.tscn
 res://Scenes/Beans.tscn
 res://Scenes/Player.tscn
+res://Scripts/Player/abillity_manager.gd
