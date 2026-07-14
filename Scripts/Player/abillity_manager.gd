@@ -2,33 +2,25 @@ extends Node
 
 @export var main_player : CharacterBody2D
 
-var inputs = {
-	"Ability1" = false,
-	"Ability2" = false,
-	"Ability3" = false}
+var inputs = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await get_tree().create_timer(0.1).timeout
 	
-	#if "Sky_Lift_Key" in GlobalScript.player_attributes.get(GlobalScript.peer_ID).get("Abilities").values():
-		#inputs["Ability1"] = true
-	#elif "Drum_Key" in GlobalScript.player_attributes.get(GlobalScript.peer_ID).get("Abilities").values():
-		#inputs["Ability1"] = true
-	#elif "Bean_Opener" in GlobalScript.player_attributes.get(GlobalScript.peer_ID).get("Abilities").values():
-		#inputs["Ability1"] = true
+	for i in InputMap.get_actions():
+		if i.contains("Ability"):
+			inputs[InputMap.action_get_events(i)[0].as_text().replace(" (Physical)", "")] = i
 	
 	var ability_dict = GlobalScript.player_attributes.get(GlobalScript.peer_ID).get("Abilities")
 	
 	for i in ability_dict.keys():
-		var ability = ability_dict[i]
-		ability.set_script(GlobalScript.all_player_abilitys.get(i, null))
-		ability.name = i
+		var ability = abilitys.new()
+		ability.set_script(GlobalScript.all_player_abilitys.get(ability_dict[i], null))
+		ability.name = ability_dict[i]
 		ability.player = main_player
-		#for y in GlobalScript.player_attributes.get(GlobalScript.peer_ID).get("Abilities").keys():
-			#if GlobalScript.player_attributes.get(GlobalScript.peer_ID).get("Abilities")[y] = 
 		
-		ability.input = i
+		ability.input = inputs[i]
 		
 		match i:
 			"Glide":

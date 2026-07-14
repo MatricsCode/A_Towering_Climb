@@ -1,8 +1,12 @@
-res://Scenes/CinematicCamera.tscn
-res://Recourses/UI/main.tres
-res://Recourses/Tileset.tres
-res://Scenes/Main.tscn
 res://Scenes/ProjectileSpawner.tscn
+res://Recourses/UI/main.tres
+res://Recourses/UI/PauseBackground.tres
+res://Recourses/UI/WinBackground.tres
+res://Scenes/CinematicCamera.tscn
+res://Scenes/Main.tscn
 res://Scenes/Beans.tscn
 res://Scenes/Player.tscn
-res://Scripts/Player/abillity_manager.gd
+res://Scenes/GlobalScript.tscn
+res://Scenes/PlayerSelector.tscn
+res://Scenes/MainUI.tscn
+res://default_bus_layout.tres

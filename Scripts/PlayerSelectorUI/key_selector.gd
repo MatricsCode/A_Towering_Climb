@@ -4,6 +4,8 @@ extends VBoxContainer
 @onready var indicators = $SplitContainer/Indicators
 @onready var vitaliser = $"../Vitaliser"
 
+var abilities = {}
+
 func _ready():
 	for i in indicators.get_children():
 		i.color = Color.RED
@@ -14,7 +16,7 @@ func _ready():
 		if i.contains("Ability"):
 			for y in buttons.get_children():
 				if y.text == "":
-					y.text = str("Button : ", InputMap.action_get_events(i)[0].as_text().replace(" (Physical)", ""))
+					y.text = str(InputMap.action_get_events(i)[0].as_text().replace(" (Physical)", ""), " Key")
 					y.name = InputMap.action_get_events(i)[0].as_text().replace(" (Physical)", "")
 					break
 	

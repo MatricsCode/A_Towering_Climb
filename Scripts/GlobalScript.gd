@@ -2,7 +2,10 @@ extends Node
 
 var peer_ID = 0
 var user_ID = 0
-var countdown_timer = 0.1
+var countdown_timer = 0.25
+
+
+
 
 var important_positions = {}
 var max_abilitys = 3

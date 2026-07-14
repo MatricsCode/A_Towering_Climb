@@ -18,7 +18,8 @@ func _ready():
 
 func _start():
 	selectors.visible = true
-	$"../CanvasLayer/Background".visible = true
+	
+	$"../Background".visible = true
 	
 	set_multiplayer_authority(GlobalScript.peer_ID)
 	
@@ -28,10 +29,6 @@ func reset():
 	for i in get_children():
 		if i.get_index() > 1:
 			i.queue_free()
-
-func _physics_process(delta):
-	if Input.is_action_just_pressed("Dev"):
-		spawn(randi())
 
 func ready(readied : bool, index : int):
 	if readied:

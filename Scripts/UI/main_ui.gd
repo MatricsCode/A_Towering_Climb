@@ -14,22 +14,24 @@ func _ready():
 		var child = get_child(i)
 		child.visible = true
 	
-	#for i in GlobalScript.player_attributes.keys():
-		#var ability = Label.new()
-		#ability.text = i
-		#ability.name = i
-		#
-		#$Abilitys.add_child(ability)
-		
-		#var picture = Sprite2D.new()
-		#
-		#for y in GlobalScript.all_player_abilitys.size():
-			#var keys = GlobalScript.all_player_abilitys.keys() 
-			#if keys[y] == i:
-				#picture.texture = ability_list[y]
-		
-		#picture.position.x = 75
-		#picture.position.y = 140 * ($Abilitys.get_child_count() -1)
+		#for i in GlobalScript.player_attributes:
+			#for y in i:
+				#if y is Dictionary:
+					#for x in y.keys():
+						#var ability = Label.new()
+						#ability.text = x
+						#ability.name = x
+						#$Abilitys.add_child(ability)
+	
+	#var picture = Sprite2D.new()
+	#
+	#for y in GlobalScript.all_player_abilitys.size():
+		#var keys = GlobalScript.all_player_abilitys.keys() 
+		#if keys[y] == i:
+			#picture.texture = ability_list[y]
+	
+	#picture.position.x = 75
+	#picture.position.y = 140 * ($Abilitys.get_child_count() -1)
 
 func _on_leave_lobby_pressed():
 	get_tree().paused = false

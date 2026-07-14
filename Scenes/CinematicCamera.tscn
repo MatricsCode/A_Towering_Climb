@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://g5vtuvmyw7d"]
+[gd_scene load_steps=5 format=3 uid="uid://g5vtuvmyw7d"]
 
 [ext_resource type="Script" uid="uid://b7vdpintqxmcr" path="res://Scripts/Cinematic Camera/cinema_cam.gd" id="1_idivh"]
 [ext_resource type="Script" uid="uid://dxnq6ejhtqvp2" path="res://Scripts/Cinematic Camera/player_ready_up.gd" id="2_c1o1f"]
+
+[sub_resource type="Gradient" id="Gradient_c1o1f"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.06, 0.06, 0.06, 0.498039)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tgk4k"]
+gradient = SubResource("Gradient_c1o1f")
+width = 1
 
 [node name="Cinema-Cam" type="Camera2D"]
 position = Vector2(0, -1620)
@@ -10,6 +18,12 @@ limit_bottom = 0
 limit_smoothed = true
 script = ExtResource("1_idivh")
 
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-22, 132.5)
+scale = Vector2(6804, 3733)
+texture = SubResource("GradientTexture1D_tgk4k")
+
 [node name="PlayerSelectorSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("../CanvasLayer/Container")
 script = ExtResource("2_c1o1f")
@@ -17,19 +31,6 @@ script = ExtResource("2_c1o1f")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
 follow_viewport_enabled = true
-
-[node name="Background" type="Panel" parent="CanvasLayer"]
-visible = false
-top_level = true
-anchors_preset = -1
-anchor_left = -1.0
-anchor_top = -3.5
-anchor_right = 1.0
-anchor_bottom = -1.5
-offset_top = 0.000244141
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Container" type="HBoxContainer" parent="CanvasLayer"]
 visible = false

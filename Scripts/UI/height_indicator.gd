@@ -37,6 +37,8 @@ func start_spawning(data):
 		else:
 			add_indicator(players, GlobalScript.player_attributes.get(i).get("Costume") * -1, i)
 
+var clock = 0
+
 func _physics_process(delta):
 	if p1 != 0:
 		objects.get_child(objects.get_child_count() -1).value = GlobalScript.player_attributes.get(GlobalScript.peer_ID).get("Position").y * -1
