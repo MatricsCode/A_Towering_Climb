@@ -7,9 +7,9 @@ extends VBoxContainer
 
 func _ready():
 	for i in indicators.get_children():
-		i.color = Color.RED
+		i.color = control.red
 	
-	indicators.get_child(0).color = Color.GREEN
+	indicators.get_child(0).color = control.green
 
 
 func button_pressed(data):
@@ -19,4 +19,4 @@ func button_pressed(data):
 			control.costume = i.get_index()
 			sprite.play(str(i.get_index()))
 		else:
-			i.color = Color.RED
+			i.color = control.red

@@ -11,6 +11,7 @@ var markers = [
 	preload("res://Art/Markers/ClimberIcon2.png"),
 	preload("res://Art/Markers/BakerIcon.png"),
 	preload("res://Art/Markers/HeinrichIcon.png"),
+	preload("res://Art/Markers/GaryIcon.png"),
 	preload("res://Art/Markers/Goal.png"),
 	preload("res://Art/Markers/Drum.png"),
 ]

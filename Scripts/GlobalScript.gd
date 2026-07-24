@@ -2,9 +2,7 @@ extends Node
 
 var peer_ID = 0
 var user_ID = 0
-var countdown_timer = 0.25
-
-
+var countdown_timer = 0.5
 
 
 var important_positions = {}
@@ -18,6 +16,8 @@ var all_player_abilitys = {
 	"Ram" = preload("res://Scripts/Player/Abilitys/ram.gd"),
 	"Sandwich" = preload("res://Scripts/Player/Abilitys/sandwich.gd"),
 	"Can_Opener" = preload("res://Scripts/Player/Abilitys/bean_opener.gd"),
+	"Repair" = preload("res://Scripts/Player/Abilitys/repair.gd"),
+	"Punch" = preload("res://Scripts/Player/Abilitys/punch.gd"),
 }
 
 ## It is {"ID" : {"Position" : Vector2, "Costume" : 0, "Abilities" : {"Key" : Ability}}}

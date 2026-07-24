@@ -10,8 +10,8 @@ var player : int
 var costume : int
 var abilities = {}
 
-var green = Color.html("#74a642")
-var red = Color.html("#ff2f00")
+var green = Color.hex(0x74a642)
+var red = Color.hex(0xcf573c)
 
 func _ready():
 	print("---------------------")

@@ -9,6 +9,8 @@ var original_size
 var sizer : Tween
 
 func _ready():
+	CORNER_BOTTOM_LEFT
+	
 	original_size = get_size()
 	visible = false
 	

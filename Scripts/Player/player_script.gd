@@ -9,7 +9,8 @@ var outfits = [
 	preload("res://Recourses/PlayerSprites/Climber1.tres"),
 	preload("res://Recourses/PlayerSprites/Climber2.tres"),
 	preload("res://Recourses/PlayerSprites/Baker.tres"),
-	preload("res://Recourses/PlayerSprites/Heinrich.tres"),]
+	preload("res://Recourses/PlayerSprites/Heinrich.tres"),
+	preload("res://Recourses/PlayerSprites/Gary.tres"),]
 var projectiles = {
 	"Sandwich" = preload("res://Scenes/Sandwich.tscn"),}
 var sounds = {

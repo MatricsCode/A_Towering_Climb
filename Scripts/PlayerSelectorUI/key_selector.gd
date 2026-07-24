@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+@onready var control = $"."
+
 @onready var buttons = $SplitContainer/Buttons
 @onready var indicators = $SplitContainer/Indicators
 @onready var vitaliser = $"../Vitaliser"
@@ -8,7 +10,7 @@ var abilities = {}
 
 func _ready():
 	for i in indicators.get_children():
-		i.color = Color.RED
+		i.color = control.red
 	
 	buttons.get_child(0).grab_focus()
 	
@@ -23,22 +25,21 @@ func _ready():
 	for i in $"../Vitaliser".abilities.keys():
 		for y in buttons.get_children():
 			if y.name == i:
-				indicators.get_child(y.get_index()).color = Color.GREEN
+				indicators.get_child(y.get_index()).color = control.green
 
 func button_pressed(data):
 	for i in buttons.get_children():
 		if i.name == data:
-			indicators.get_child(i.get_index()).color = Color.GREEN
+			indicators.get_child(i.get_index()).color = control.green
 	
 	vitaliser.current_button = data
 	visible = false
 	vitaliser.visible = true
-	$"../Vitaliser/SplitContainer/Buttons/Glide".grab_focus()
 
 func check(abilities : Dictionary):
 	print(abilities)
 	for i in indicators.get_children():
-		i.color = Color.RED
+		i.color = control.red
 		for y in abilities.keys():
 			if buttons.get_child(i.get_index()).name == y:
-				i.color = Color.GREEN
+				i.color = control.green

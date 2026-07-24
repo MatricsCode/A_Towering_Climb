@@ -37,6 +37,8 @@ func add_area_2D(collision_mask : int):
 	scanner.set_collision_mask_value(collision_mask, true)
 	
 	scanner.add_child(hit_area)
+	
+	return scanner
 
 func area_interact(body):
 	pass

@@ -1,8 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://cam0eoq23msfi"]
+[gd_scene load_steps=38 format=3 uid="uid://cam0eoq23msfi"]
 
 [ext_resource type="Script" uid="uid://n0k8hsrj2410" path="res://Scripts/PlayerSelectorUI/player_selector.gd" id="1_xs5nl"]
 [ext_resource type="Texture2D" uid="uid://dt2ju2vngh7gp" path="res://Art/Player/Baker/Baker1.png" id="2_e5v4a"]
-[ext_resource type="Script" uid="uid://dyo05k0v8la20" path="res://Scripts/PlayerSelectorUI/key_selector.gd" id="3_aw7wt"]
 [ext_resource type="Script" uid="uid://yhp81sc8f8pp" path="res://Scripts/PlayerSelectorUI/vitaliser.gd" id="3_cx46x"]
 [ext_resource type="Texture2D" uid="uid://b2b6dnpdgaxl" path="res://Art/Player/Baker/Baker2.png" id="3_q1uvm"]
 [ext_resource type="PackedScene" uid="uid://cfbb7qud3xkp3" path="res://Scenes/Tools/BaseButton.tscn" id="4_4g1oj"]
@@ -31,14 +30,13 @@
 [ext_resource type="Texture2D" uid="uid://closi0pnhpx60" path="res://Art/Player/Heinrich/Heinrich5.png" id="25_4kbex"]
 [ext_resource type="Texture2D" uid="uid://dgu8fkhs3iohe" path="res://Art/Player/Heinrich/Heinrich6.png" id="26_jx0fm"]
 [ext_resource type="Texture2D" uid="uid://dgcym4vqovgea" path="res://Art/Player/Heinrich/Heinrich7.png" id="27_7ub4j"]
+[ext_resource type="Script" uid="uid://bkaxgra801fsr" path="res://Scripts/PlayerSelectorUI/ability_selector.gd" id="28_b5r3k"]
 [ext_resource type="Theme" uid="uid://btyhh0yr7u81f" path="res://Recourses/UI/main.tres" id="29_ichg1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs5nl"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
 corner_radius_top_left = 100
 corner_radius_top_right = 100
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xs5nl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bpm6"]
 bg_color = Color(0.309804, 0.560784, 0.729412, 1)
@@ -213,12 +211,7 @@ metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 25
-
-[node name="HSeparator4" type="Panel" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_xs5nl")
+theme_override_constants/separation = 15
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -249,62 +242,62 @@ custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i78j7")
 
-[node name="Key Selector" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 256)
+[node name="Ability Selector" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-script = ExtResource("3_aw7wt")
+script = ExtResource("28_b5r3k")
 
-[node name="SplitContainer" type="SplitContainer" parent="MarginContainer/VBoxContainer/Key Selector"]
+[node name="SplitContainer" type="SplitContainer" parent="MarginContainer/VBoxContainer/Ability Selector"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Key Selector/SplitContainer"]
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("29_ichg1")
 
-[node name="Ability1" parent="MarginContainer/VBoxContainer/Key Selector/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
-custom_minimum_size = Vector2(225, 70)
+[node name="Ability1" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 140)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 20
 func_parent = NodePath("../../..")
 
-[node name="Ability2" parent="MarginContainer/VBoxContainer/Key Selector/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
-custom_minimum_size = Vector2(225, 70)
+[node name="PassiveAbility1" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 35)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 20
+text = "Passive Ability 1"
 func_parent = NodePath("../../..")
 
-[node name="Ability3" parent="MarginContainer/VBoxContainer/Key Selector/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
-custom_minimum_size = Vector2(225, 70)
+[node name="PassiveAbility2" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 35)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 20
+text = "Passive Ability 2"
 func_parent = NodePath("../../..")
 
-[node name="Indicators" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Key Selector/SplitContainer"]
+[node name="Indicators" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("29_ichg1")
 
-[node name="Ability1" type="ColorRect" parent="MarginContainer/VBoxContainer/Key Selector/SplitContainer/Indicators"]
+[node name="Ability1" type="ColorRect" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Indicators"]
+custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.81, 0.340335, 0.2349, 1)
 
-[node name="Ability2" type="ColorRect" parent="MarginContainer/VBoxContainer/Key Selector/SplitContainer/Indicators"]
+[node name="Ability2" type="ColorRect" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.81, 0.340335, 0.2349, 1)
 
-[node name="Ability3" type="ColorRect" parent="MarginContainer/VBoxContainer/Key Selector/SplitContainer/Indicators"]
+[node name="Ability3" type="ColorRect" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.81, 0.340335, 0.2349, 1)
@@ -315,25 +308,17 @@ layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("3_cx46x")
 
-[node name="SplitContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer/Vitaliser"]
+[node name="key_abilities" type="HSplitContainer" parent="MarginContainer/VBoxContainer/Vitaliser"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer"]
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("29_ichg1")
 
-[node name="Glide" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
-custom_minimum_size = Vector2(225, 25)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 20
-text = "Glide"
-func_parent = NodePath("../../..")
-
-[node name="Sky_Lift_Key" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+[node name="Sky_Lift_Key" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
 custom_minimum_size = Vector2(225, 25)
 layout_mode = 2
 size_flags_vertical = 3
@@ -342,7 +327,7 @@ theme_override_font_sizes/font_size = 20
 text = "Sky Lift Key"
 func_parent = NodePath("../../..")
 
-[node name="Climbers_Hook" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+[node name="Climbers_Hook" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
 custom_minimum_size = Vector2(225, 25)
 layout_mode = 2
 size_flags_vertical = 3
@@ -351,16 +336,7 @@ theme_override_font_sizes/font_size = 20
 text = "Climbers Hook"
 func_parent = NodePath("../../..")
 
-[node name="Drum_Key" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
-custom_minimum_size = Vector2(225, 25)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 20
-text = "Drum Key"
-func_parent = NodePath("../../..")
-
-[node name="Ram" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+[node name="Ram" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
 custom_minimum_size = Vector2(225, 25)
 layout_mode = 2
 size_flags_vertical = 3
@@ -369,7 +345,7 @@ theme_override_font_sizes/font_size = 20
 text = "Ram"
 func_parent = NodePath("../../..")
 
-[node name="Sandwich" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+[node name="Sandwich" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
 custom_minimum_size = Vector2(225, 25)
 layout_mode = 2
 size_flags_vertical = 3
@@ -378,7 +354,45 @@ theme_override_font_sizes/font_size = 20
 text = "Sandwich"
 func_parent = NodePath("../../..")
 
-[node name="Can_Opener" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+[node name="Drum_Key" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Drum Key"
+func_parent = NodePath("../../..")
+
+[node name="Punch" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Punch
+"
+func_parent = NodePath("../../..")
+
+[node name="passive_abilities" type="HSplitContainer" parent="MarginContainer/VBoxContainer/Vitaliser"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("29_ichg1")
+
+[node name="Glide" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Glide"
+func_parent = NodePath("../../..")
+
+[node name="Can_Opener" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
 custom_minimum_size = Vector2(225, 25)
 layout_mode = 2
 size_flags_vertical = 3
@@ -387,45 +401,31 @@ theme_override_font_sizes/font_size = 20
 text = "Can Opener"
 func_parent = NodePath("../../..")
 
-[node name="Indicators" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer"]
+[node name="Repair" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Repair"
+func_parent = NodePath("../../..")
+
+[node name="Indicators" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("29_ichg1")
 
-[node name="Glide" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Indicators"]
+[node name="Glide" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(0.81, 0.340335, 0.2349, 1)
 
-[node name="Sky_Lift_Key" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Indicators"]
+[node name="Can_Opener" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(0.81, 0.340335, 0.2349, 1)
 
-[node name="Climbers_Hook" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Indicators"]
+[node name="Repair" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
-color = Color(0.81, 0.340335, 0.2349, 1)
-
-[node name="Drum_Key" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Indicators"]
-layout_mode = 2
-size_flags_vertical = 3
-color = Color(0.81, 0.340335, 0.2349, 1)
-
-[node name="Ram" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Indicators"]
-layout_mode = 2
-size_flags_vertical = 3
-color = Color(0.81, 0.340335, 0.2349, 1)
-
-[node name="Sandwich" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Indicators"]
-layout_mode = 2
-size_flags_vertical = 3
-color = Color(0.81, 0.340335, 0.2349, 1)
-
-[node name="Can_Opener" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/SplitContainer/Indicators"]
-layout_mode = 2
-size_flags_vertical = 3
-color = Color(0.81, 0.340335, 0.2349, 1)
 
 [node name="HSeparator2" type="Panel" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
@@ -483,6 +483,15 @@ theme_override_font_sizes/font_size = 20
 text = "Heinrich"
 func_parent = NodePath("../../..")
 
+[node name="Gary" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Gary"
+func_parent = NodePath("../../..")
+
 [node name="Builder" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Buttons" node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
 custom_minimum_size = Vector2(225, 25)
 layout_mode = 2
@@ -513,6 +522,11 @@ size_flags_vertical = 3
 color = Color(0.81, 0.340335, 0.2349, 1)
 
 [node name="Heinrich" type="ColorRect" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.81, 0.340335, 0.2349, 1)
+
+[node name="Gary" type="ColorRect" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.81, 0.340335, 0.2349, 1)

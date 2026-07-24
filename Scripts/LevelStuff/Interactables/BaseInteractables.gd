@@ -9,6 +9,15 @@ class_name Interactable
 var passer
 var interacted = false
 var player
+var extra_data : Array
+
+func _ready():
+	await get_tree().create_timer(0.5).timeout
+	
+	interactable_ready()
+
+func interactable_ready():
+	pass
 
 func interact(body):
 	player = body
@@ -20,3 +29,8 @@ func action():
 
 func entered(has_entered : bool):
 	pass
+
+func check_abilities(body_ID, ability):
+	for i in GlobalScript.player_attributes.get(body_ID).get("Abilities"):
+		if i == ability:
+			return true

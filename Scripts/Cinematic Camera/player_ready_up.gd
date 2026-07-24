@@ -38,6 +38,10 @@ func ready(readied : bool, index : int):
 			players.clear()
 			get_parent().start()
 
+func _physics_process(delta):
+	if Input.is_action_just_pressed("Dev1"):
+		spawn(randi_range(100, 10000000))
+
 func spawn_player_selector(data):
 	var play_select = PLAYER_SELECTOR.instantiate()
 	

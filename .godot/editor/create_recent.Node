@@ -1,7 +1,9 @@
+TileMapLayer
+TileMap
+VBoxContainer
 VSlider
 Label
 Button
-VBoxContainer
 Sprite2D
 MultiplayerSynchronizer
 SplitContainer
@@ -11,5 +13,3 @@ Control
 ColorRect
 MarginContainer
 TextureRect
-HBoxContainer
-HSplitContainer

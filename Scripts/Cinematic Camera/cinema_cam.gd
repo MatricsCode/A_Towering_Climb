@@ -11,7 +11,7 @@ var sin_number = 0
 
 func _ready():
 	GlobalScript.start.connect(has_started)
-	
+	#
 	target_position = position.y
 	position.y = 0
 	
@@ -23,7 +23,7 @@ func _ready():
 	await tween.step_finished
 	
 	tween = get_tree().create_tween()
-	tween.tween_property(self, "position", Vector2(position.x, -1620.0), 1.5).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "position", Vector2(position.x, -1620.0), 0.1).set_ease(Tween.EASE_IN_OUT)
 	
 	await tween.step_finished
 	started = true

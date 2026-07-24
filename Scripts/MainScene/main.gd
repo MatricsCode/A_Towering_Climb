@@ -127,11 +127,11 @@ func start():
 			return
 	
 	set_multiplayer_authority(GlobalScript.peer_ID)
-	print(get_multiplayer_authority())
+	#print(get_multiplayer_authority())
 	
 	ms.spawn("res://Scenes/PlayArea.tscn")
 	$SelectorUI/Camera2D.enabled = false
-	print($SelectorUI/Camera2D.enabled)
+	#print($SelectorUI/Camera2D.enabled)
 	peer.set_lobby_joinable(false)
 
 func reset():

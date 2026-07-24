@@ -2,15 +2,16 @@
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Recourses/Tileset.tres" id="1_7qxk6"]
 [ext_resource type="PackedScene" uid="uid://bqn3jg2ms8eig" path="res://Scenes/InteractablesSpawner.tscn" id="3_oylv5"]
-[ext_resource type="PackedScene" uid="uid://deffkwaj6jy8s" path="res://Scenes/Moving Platform.tscn" id="4_8qsmg"]
-[ext_resource type="PackedScene" uid="uid://j0ml6gtwkiec" path="res://Scenes/Blockade.tscn" id="4_ovj6s"]
+[ext_resource type="PackedScene" uid="uid://deffkwaj6jy8s" path="res://Scenes/Interactables/Moving Platform.tscn" id="4_8qsmg"]
+[ext_resource type="PackedScene" uid="uid://j0ml6gtwkiec" path="res://Art/Blockade.tscn" id="4_ovj6s"]
 [ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Goal.tscn" id="4_w2ac1"]
-[ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/LiquidDrum.tscn" id="5_fphuk"]
-[ext_resource type="PackedScene" uid="uid://dp06o4fd4o2h" path="res://Scenes/Beans.tscn" id="7_1jlnc"]
+[ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/Interactables/LiquidDrum.tscn" id="5_fphuk"]
+[ext_resource type="PackedScene" uid="uid://dp06o4fd4o2h" path="res://Scenes/Interactables/Beans.tscn" id="7_1jlnc"]
 [ext_resource type="PackedScene" uid="uid://dbd4mefv24ifl" path="res://Scenes/BirdSpawner.tscn" id="7_fphuk"]
 [ext_resource type="PackedScene" uid="uid://bbp13fc5trd3u" path="res://Scenes/ProjectileSpawner.tscn" id="8_blpqv"]
 [ext_resource type="PackedScene" uid="uid://cn07xety6vi3e" path="res://Test.tscn" id="8_pnnky"]
 [ext_resource type="PackedScene" uid="uid://g5vtuvmyw7d" path="res://Scenes/CinematicCamera.tscn" id="11_u40f0"]
+
 
 [sub_resource type="Curve2D" id="Curve2D_ovj6s"]
 _data = {

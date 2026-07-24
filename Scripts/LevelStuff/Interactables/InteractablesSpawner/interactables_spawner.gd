@@ -19,6 +19,11 @@ func spawning(number):
 	child.target = targets[number]
 	child.position = positions[number]
 	
+	#for i in extras:
+		#for y in i:
+			#if y[0] == number:
+				#child.extra_data = y
+	
 	child.set_multiplayer_authority(1)
 	
 	return child

@@ -9,7 +9,7 @@ var previouse_level
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	current_level = choose_level()
+	current_level = 1#choose_level()
 	
 	level_scene = levels[current_level]
 	
