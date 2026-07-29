@@ -9,7 +9,7 @@ var timer = 0
 var position = Vector2.ZERO
 
 func _physics_process(delta):
-	if Input.is_action_pressed(input) and player.current_state == activation_state and player.is_on_floor():
+	if Input.is_action_pressed("Ability") and player.current_state == activation_state and player.is_on_floor():
 		player.set_collision_mask_value(3, false)
 		flying = false
 		
@@ -22,7 +22,7 @@ func _physics_process(delta):
 		
 		overide()
 	
-	if Input.is_action_pressed(input) and in_action and !flying:
+	if Input.is_action_pressed("Ability") and in_action and !flying:
 		var range
 		
 		range = player.position.x - position.x
@@ -50,7 +50,7 @@ func _physics_process(delta):
 		
 		position = player.position
 	
-	if not Input.is_action_pressed(input) and in_action and !flying:
+	if not Input.is_action_pressed("Ability") and in_action and !flying:
 		reset()
 		timer = 0
 		player.velocity.x = 0

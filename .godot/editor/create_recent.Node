@@ -1,15 +1,14 @@
+ColorRect
+Sprite2D
 TileMapLayer
 TileMap
 VBoxContainer
 VSlider
 Label
 Button
-Sprite2D
 MultiplayerSynchronizer
 SplitContainer
 Panel
 CanvasLayer
 Control
-ColorRect
 MarginContainer
-TextureRect

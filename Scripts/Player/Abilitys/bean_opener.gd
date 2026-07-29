@@ -8,7 +8,7 @@ func _ready():
 	speed = player.main_vars_reset[0]
 	climbing_speed = player.main_vars_reset[6]
 	
-	add_area_2D(25)
+	add_area_2D(25, area_interact)
 	area = get_child(0)
 
 func _physics_process(delta):

@@ -27,7 +27,7 @@ func _ready():
 func _physics_process(_delta):
 	area.position = player.position
 	
-	if to_throw.size() != 0 and Input.is_action_pressed(input):
+	if to_throw.size() != 0 and Input.is_action_pressed("Ability"):
 		for i in to_throw:
 			i.position.x = 5 * player.get_sprite_rotation() * -1
 			i.velocity.x = player.get_sprite_rotation() * player.main_vars.climbing_vars.climbing_speed * -10

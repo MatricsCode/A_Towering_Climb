@@ -3,17 +3,4 @@ res://Recourses/Tileset.tres
 res://Recourses/UI/main.tres
 res://Recourses/UI/PauseBackground.tres
 res://Recourses/UI/WinBackground.tres
-res://Scenes/Main.tscn
-res://Scenes/InteractablesSpawner.tscn
-res://Scenes/Levels/level_1.tscn
-res://Art/Blockade.tscn
-res://Scenes/PlayerSelector.tscn
-res://Scenes/GlobalScript.tscn
-res://Scenes/MainUI.tscn
-res://Scripts/PlayerSelectorUI/vitaliser.gd
-res://Scripts/GlobalScript.gd
-res://Scripts/LevelStuff/Interactables/blockade.gd
-res://Scripts/LevelStuff/Interactables/BaseInteractables.gd
-res://Scripts/MainScene/main.gd
-res://Scripts/LevelStuff/Interactables/InteractablesSpawner/interactables_spawner.gd
 res://Scripts/Player/Abilitys/punch.gd

@@ -5,8 +5,6 @@ class_name abilitys
 @export var activation_state = 0
 @export var player : CharacterBody2D
 
-var input : String
-
 var in_action = false
 
 func overide():
@@ -17,11 +15,22 @@ func reset():
 	in_action = false
 	get_parent().get_parent().overide(false)
 
-func add_area_2D(collision_mask : int):
+func add_timer(start_time : float, one_shot : bool, function : Callable):
+	
+	var timer = Timer.new()
+	timer.wait_time = start_time
+	timer.one_shot = one_shot
+	timer.timeout.connect(function)
+	
+	add_child(timer)
+	
+	return timer
+
+func add_area_2D(collision_mask : int, function : Callable):
 	var scanner = Area2D.new()
 	
-	scanner.body_entered.connect(area_interact)
-	scanner.body_exited.connect(area_interact)
+	scanner.body_entered.connect(function)
+	scanner.body_exited.connect(function)
 	
 	var hit_area = CollisionShape2D.new()
 	
@@ -39,6 +48,3 @@ func add_area_2D(collision_mask : int):
 	scanner.add_child(hit_area)
 	
 	return scanner
-
-func area_interact(body):
-	pass

@@ -77,6 +77,7 @@ shape = SubResource("RectangleShape2D_cvnsp")
 position = Vector2(0, -136)
 zoom = Vector2(0.5, 0.5)
 limit_bottom = 250
+rotation_smoothing_enabled = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_cvnsp")

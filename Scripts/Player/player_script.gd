@@ -448,6 +448,10 @@ func camera_move():
 	else:
 		cam.position.x = lerp(cam.position.x, $CameraPositions/Middle.position.x * multiplier, 0.02)
 
+func camera_zoom(intensity : float,  duration : float):
+	var cam_tween = get_tree().create_tween()
+	cam_tween.set_parallel(true)
+	cam_tween.tween_property(cam, "zoom", Vector2(intensity,intensity), duration)
 func camera_shake(shake_intensity : int):
 	cam.offset = Vector2(randf_range(-shake_intensity * 10, shake_intensity * 10), randf_range(-shake_intensity * 10, shake_intensity * 10))
 

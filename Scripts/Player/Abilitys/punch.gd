@@ -1,59 +1,63 @@
 extends abilitys
 
-var area1
-var area2
-
-var timer 
-
-var grip : Tween
-
-func _ready():
-	timer = Timer.new()
-	add_child(timer)
-	
-	grip = get_tree().create_tween()
-	
-	area1 = add_area_2D(1)
-	
-	area1.body_entered.connect(area1_colliding)
-	
-	timer.timeout.connect(stop_punch)
-
-func _physics_process(delta):
-	print(player.velocity)
-	
-	if Input.is_action_pressed(input) and player.current_state == activation_state:
-		overide()
-		timer.start(0.2)
-		player.velocity.x += 3000 * player.get_sprite_rotation()
-	
-	elif in_action and Input.is_action_pressed(input):
-		grip.kill()
-		grip = get_tree().create_tween()
-		grip.tween_property(player, "velocity", Vector2.ZERO, 0.2)
-	
-	elif Input.is_action_just_released(input):
-		in_action = false
-	
-	if grip.is_running() and in_action == false:
-		grip.kill()
-		grip = get_tree().create_tween()
-		grip.tween_property(player, "velocity", Vector2.ZERO, 0.1)
-		
-		if player.velocity.x < 10 and player.velocity.x > -10:
-			stop_punch()
-	
-	area1.position.x = player.position.x + 75 * player.get_sprite_rotation()
-	area1.position.y = player.position.y
-	
-
-func area1_colliding(body):
-	if in_action:
-		body.velocity = Vector2(100 * player.get_sprite_rotation(), -700)
-	stop_punch()
-
-func stop_punch():
-	grip.stop()
-	reset()
-	player.velocity = Vector2(0,0)
-	timer.stop()
+#var punching = false
+#var punch_force = 0
+#
+#var grip : Tween
+#var timer : Timer
+#var punch_area : Area2D
+#
+#func _ready():
+	#timer = add_timer(1, false, increase_punch_strength)
+	#punch_area = add_area_2D(1, area1_colliding)
+#
+#func _physics_process(delta):
+	#if Input.is_action_pressed("Ability") and player.current_state == activation_state and not in_action and not punching:
+		#overide()
+		#player.velocity.x = 0
+		#increase_punch_strength()
+	#
+	#if Input.is_action_just_released("Ability") and in_action and ! punching:
+		#timer.stop()
+		#punch()
+	#
+	#if player.is_on_wall() and in_action:
+		#punching = false
+		#grip.kill()
+		#player.velocity = Vector2(0,0)
+		#punch_force = 0
+		#reset()
+	#
+	#punch_area.position.x = player.position.x + 75 * player.get_sprite_rotation()
+	#punch_area.position.y = player.position.y
+	#
+#
+#func increase_punch_strength():
+	#if Input.is_action_pressed("Ability") and in_action and punch_force < 3:
+		#punch_force += 1
+		#player.camera_zoom(0.5 + punch_force / 5, 0.9)
+		#timer.start()
+	#else:
+		#punch()
+#
+#func punch():
+	#player.position.y -= 1
+	#player.velocity.x = 2000 * punch_force * player.get_sprite_rotation()
+	#punching = true
+	#
+	#grip = get_tree().create_tween()
+	#grip.tween_property(player, "velocity", Vector2(0,0), 0.2 * punch_force).set_ease(Tween.EASE_OUT)
+	#
+	#player.camera_zoom(0.5, 0.2 * punch_force)
+	#
+	#await grip.finished
+	#
+	#punching = false
+	#grip.kill()
+	#player.velocity = Vector2(0,0)
+	#punch_force = 0
+	#reset()
+#
+#func area1_colliding(body):
+	#if in_action:
+		#body.velocity = Vector2(1000000000 * player.get_sprite_rotation(), -700)

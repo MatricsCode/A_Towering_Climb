@@ -30,7 +30,7 @@ func _physics_process(delta):
 	if area != null:
 		area.position = player.position
 	
-	if interactable != null and Input.is_action_pressed(input):
+	if interactable != null and Input.is_action_pressed("Ability"):
 		interactable.interact(self)
 
 func interact(body):

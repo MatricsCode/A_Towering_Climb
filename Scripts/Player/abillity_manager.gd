@@ -21,11 +21,6 @@ func _ready():
 		ability.name = i
 		ability.player = main_player
 		
-		if "PassiveAbility" in ability_dict.get(i):
-			pass
-		else:
-			ability.input = input
-		
 		match i:
 			"Glide":
 				ability.activation_state = 1
