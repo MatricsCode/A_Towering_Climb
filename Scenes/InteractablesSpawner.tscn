@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqn3jg2ms8eig"]
 
-[ext_resource type="Script" uid="uid://ci36pfrutwlfx" path="res://Scripts/LevelStuff/Interactables/InteractablesSpawner/interactables_spawner.gd" id="1_exkxp"]
+[ext_resource type="Script" uid="uid://ci36pfrutwlfx" path="res://Scripts/Interactables/InteractablesSpawner/interactables_spawner.gd" id="1_exkxp"]
 
 [node name="InteractablesSpawner" type="MultiplayerSpawner"]
 spawn_path = NodePath(".")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://deffkwaj6jy8s"]
 
-[ext_resource type="Script" uid="uid://7rnk5tl50grf" path="res://Scripts/LevelStuff/Interactables/moving_platform.gd" id="1_qioah"]
+[ext_resource type="Script" uid="uid://7rnk5tl50grf" path="res://Scripts/Interactables/moving_platform.gd" id="1_qioah"]
 [ext_resource type="Texture2D" uid="uid://c6yvs88h1q0fx" path="res://Art/Moving Platform/Moving Platform2.png" id="2_qioah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qioah"]
@@ -23,7 +23,9 @@ metadata/_custom_type_script = "uid://c3pd3dg0vshs0"
 position = Vector2(0, -97)
 texture = ExtResource("2_qioah")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -62)
 shape = SubResource("RectangleShape2D_qioah")
 

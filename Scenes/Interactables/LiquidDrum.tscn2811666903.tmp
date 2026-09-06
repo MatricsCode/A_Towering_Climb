@@ -82,10 +82,10 @@ centered = false
 
 [node name="PlayerScanner" type="Area2D" parent="."]
 script = ExtResource("7_7gor8")
-ability = "Drum_Key"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerScanner"]
 position = Vector2(0.211525, 20.133)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3yqq0")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
