@@ -1,7 +1,7 @@
 extends Node2D
 
 var lobby_id = 0
-var peer = SteamMultiplayerPeer.new()
+var peer : MultiplayerPeer
 
 @onready var ms = $MultiplayerSpawner
 @onready var lobbies = $SelectorUI/HSplitContainer/LobbyContainer/Lobbies
@@ -15,7 +15,7 @@ var peer = SteamMultiplayerPeer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GlobalScript.user_ID = Steam.getSteamID()
+	GlobalScript.user_ID = SteamServer.getSteamID()
 	
 	GlobalScript.left_lobby.connect(leave_lobby)
 	GlobalScript.reset.connect(reset)
@@ -23,7 +23,7 @@ func _ready():
 	
 	ms.spawn_function = spawn_level
 	peer.lobby_created.connect(on_lobby_created)
-	Steam.lobby_match_list.connect(on_lobby_match_list)
+	SteamServer.lobby_match_list.connect(on_lobby_match_list)
 	open_lobby_list()
 
 var time = 0
@@ -65,15 +65,15 @@ func join_lobby(id):
 func on_lobby_created(connected, id):
 	if connected:
 		lobby_id = id
-		Steam.setLobbyData(lobby_id,"name",str(Steam.getPersonaName()+"'s lobby"))
-		Steam.setLobbyJoinable(lobby_id, true)
+		SteamServer.setLobbyData(lobby_id,"name",str(SteamServer.getPersonaName()+"'s lobby"))
+		SteamServer.setLobbyJoinable(lobby_id, true)
 func open_lobby_list():
-	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
-	Steam.requestLobbyList()
+	SteamServer.addRequestLobbyListDistanceFilter(SteamServer.LOBBY_DISTANCE_FILTER_WORLDWIDE)
+	SteamServer.requestLobbyList()
 func on_lobby_match_list(lobbies2):
 		for lobby in lobbies2:
-			var lobby_name = Steam.getLobbyData(lobby, "name")
-			var lobby_mem = Steam.getNumLobbyMembers(lobby)
+			var lobby_name = SteamServer.getLobbyData(lobby, "name")
+			var lobby_mem = SteamServer.getNumLobbyMembers(lobby)
 			
 			if id_field.text == "" or lobby_name.containsn(id_field.text):
 			
@@ -101,7 +101,7 @@ func _on_search_pressed():
 
 func leave_lobby():
 	if lobby_id != 0:
-		Steam.leaveLobby(lobby_id)
+		SteamServer.leaveLobby(lobby_id)
 		
 		lobby_id = 0
 	
@@ -111,9 +111,9 @@ func leave_lobby():
 	var IDs = lobby_members.keys()
 	
 	for i in IDs.size():
-		Steam.closeP2PSessionWithUser(IDs[i])
+		SteamServer.closeP2PSessionWithUser(IDs[i])
 	
-	Steam.leaveLobby(peer.get_lobby_id())
+	SteamServer.leaveLobby(peer.get_lobby_id())
 	peer.set_lobby_data("ID", "0")
 	
 	peer.close()

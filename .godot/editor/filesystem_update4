@@ -1,5 +1,6 @@
-res://Scenes/Interactables/LiquidDrum.tscn
+res://Scenes/Main.tscn
 res://Recourses/Tileset.tres
 res://Recourses/UI/main.tres
 res://Recourses/UI/PauseBackground.tres
 res://Recourses/UI/WinBackground.tres
+res://Scripts/MainScene/main.gd

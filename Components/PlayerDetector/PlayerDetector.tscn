@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://tmi6u840y2ij"]
+
+[ext_resource type="Script" uid="uid://cj8il6d6cwnnk" path="res://Components/PlayerDetector/player_detector.gd" id="1_dcwjp"]
+
+[node name="PlayerDetector" type="Area2D"]
+script = ExtResource("1_dcwjp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

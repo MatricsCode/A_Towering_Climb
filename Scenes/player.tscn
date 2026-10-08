@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7w851wnif2io"]
+[gd_scene format=3 uid="uid://b7w851wnif2io"]
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_nn08x"]
 [ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="2_52ee3"]
@@ -54,14 +54,14 @@ color_ramp = SubResource("GradientTexture1D_megsn")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52ee3"]
 size = Vector2(64, 78)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=399334221 groups=["Player"]]
 process_mode = 3
 visibility_layer = 2
 collision_layer = 5
 collision_mask = 14
 script = ExtResource("1_nn08x")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1227623305]
 position = Vector2(0, -136)
 sprite_frames = ExtResource("2_52ee3")
 animation = &"climb"
@@ -69,96 +69,96 @@ speed_scale = 3.0
 flip_h = true
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=974936812]
 position = Vector2(0.5, -76)
 shape = SubResource("RectangleShape2D_cvnsp")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1521123546]
 position = Vector2(0, -136)
 zoom = Vector2(0.5, 0.5)
 limit_bottom = 250
 rotation_smoothing_enabled = true
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=966742209]
 replication_config = SubResource("SceneReplicationConfig_cvnsp")
 
-[node name="Detectors" type="Node2D" parent="."]
+[node name="Detectors" type="Node2D" parent="." unique_id=624981414]
 
-[node name="WallDetectors" type="Node2D" parent="Detectors"]
+[node name="WallDetectors" type="Node2D" parent="Detectors" unique_id=44892161]
 position = Vector2(0, -136)
 script = ExtResource("3_bhhdu")
 
-[node name="WallDetector1" type="RayCast2D" parent="Detectors/WallDetectors"]
+[node name="WallDetector1" type="RayCast2D" parent="Detectors/WallDetectors" unique_id=985429886]
 position = Vector2(-60, 65)
 target_position = Vector2(0, 60)
 collision_mask = 2
 hit_from_inside = true
 
-[node name="WallDetector2" type="RayCast2D" parent="Detectors/WallDetectors"]
+[node name="WallDetector2" type="RayCast2D" parent="Detectors/WallDetectors" unique_id=1384691904]
 position = Vector2(60, 65)
 target_position = Vector2(0, 60)
 collision_mask = 2
 hit_from_inside = true
 
-[node name="EdgeDetectors" type="Node2D" parent="Detectors"]
+[node name="EdgeDetectors" type="Node2D" parent="Detectors" unique_id=417370771]
 position = Vector2(0, -136)
 script = ExtResource("4_megsn")
 
-[node name="EdgeDetector1" type="RayCast2D" parent="Detectors/EdgeDetectors"]
+[node name="EdgeDetector1" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=599898341]
 position = Vector2(60, 55)
 target_position = Vector2(3, 0)
 collision_mask = 4
 hit_from_inside = true
 
-[node name="EdgeDetector2" type="RayCast2D" parent="Detectors/EdgeDetectors"]
+[node name="EdgeDetector2" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=2047404016]
 position = Vector2(-60, 55)
 target_position = Vector2(-3, 0)
 collision_mask = 4
 hit_from_inside = true
 
-[node name="CameraPositions" type="Node2D" parent="."]
+[node name="CameraPositions" type="Node2D" parent="." unique_id=233291279]
 
-[node name="Up" type="Node2D" parent="CameraPositions"]
+[node name="Up" type="Node2D" parent="CameraPositions" unique_id=15939837]
 position = Vector2(0, -317)
 
-[node name="Left" type="Node2D" parent="CameraPositions"]
+[node name="Left" type="Node2D" parent="CameraPositions" unique_id=404464836]
 position = Vector2(-440, -127)
 
-[node name="Right" type="Node2D" parent="CameraPositions"]
+[node name="Right" type="Node2D" parent="CameraPositions" unique_id=1486112547]
 position = Vector2(440, -127)
 
-[node name="Middle" type="Node2D" parent="CameraPositions"]
+[node name="Middle" type="Node2D" parent="CameraPositions" unique_id=334116500]
 position = Vector2(0, -127)
 
-[node name="Down" type="Node2D" parent="CameraPositions"]
+[node name="Down" type="Node2D" parent="CameraPositions" unique_id=29331287]
 position = Vector2(0, 378)
 
-[node name="Upgrades" type="Node" parent="." node_paths=PackedStringArray("main_player")]
+[node name="Upgrades" type="Node" parent="." unique_id=2001463068 node_paths=PackedStringArray("main_player")]
 script = ExtResource("5_yoq75")
 main_player = NodePath("..")
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1387906588]
 volume_db = 5.0
 bus = &"Player"
 
-[node name="AudioListener2D" type="AudioListener2D" parent="."]
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1138320826]
 
-[node name="Sweat" type="GPUParticles2D" parent="."]
+[node name="Sweat" type="GPUParticles2D" parent="." unique_id=854942168]
 position = Vector2(2, -133)
 emitting = false
 amount = 4
 texture = ExtResource("6_ksbbd")
 process_material = SubResource("ParticleProcessMaterial_glx4g")
 
-[node name="InteractDetector" type="Area2D" parent="."]
+[node name="InteractDetector" type="Area2D" parent="." unique_id=1390379217]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractDetector" unique_id=216211038]
 position = Vector2(0, -42)
 shape = SubResource("RectangleShape2D_52ee3")
 
-[node name="InteractionIndicator" type="Label" parent="."]
+[node name="InteractionIndicator" type="Label" parent="." unique_id=1503091666]
 visible = false
 offset_left = -75.0
 offset_top = -614.0

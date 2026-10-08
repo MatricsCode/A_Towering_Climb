@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpb8mverj34y"]
+
+[ext_resource type="Script" uid="uid://duc5pxya3mgoc" path="res://Components/PlayerOverider/player_overider.gd" id="1_4337b"]
+
+[node name="PlayerOverider" type="Node2D"]
+script = ExtResource("1_4337b")

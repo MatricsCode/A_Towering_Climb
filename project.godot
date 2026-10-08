@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="A Towering Climb Try 2"
 run/main_scene="uid://bvgxox4xf14tm"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/image="uid://v2n6mouri1as"
 config/icon="res://icon.svg"
 
@@ -24,10 +28,15 @@ GlobalScript="*res://Scenes/GlobalScript.tscn"
 
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
 "res://Art/": "orange",
+"res://Components/": "red",
 "res://Recourses/": "gray",
 "res://Scenes/": "blue",
 "res://Scripts/": "green",
