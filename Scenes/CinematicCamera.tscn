@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://g5vtuvmyw7d"]
+[gd_scene format=3 uid="uid://g5vtuvmyw7d"]
 
 [ext_resource type="Script" uid="uid://b7vdpintqxmcr" path="res://Scripts/Cinematic Camera/cinema_cam.gd" id="1_idivh"]
 [ext_resource type="Script" uid="uid://dxnq6ejhtqvp2" path="res://Scripts/Cinematic Camera/player_ready_up.gd" id="2_c1o1f"]
@@ -11,28 +11,28 @@ colors = PackedColorArray(0.06, 0.06, 0.06, 0.498039)
 gradient = SubResource("Gradient_c1o1f")
 width = 1
 
-[node name="Cinema-Cam" type="Camera2D"]
+[node name="Cinema-Cam" type="Camera2D" unique_id=886608460]
 position = Vector2(0, -1620)
 zoom = Vector2(0.2, 0.2)
 limit_bottom = 0
 limit_smoothed = true
 script = ExtResource("1_idivh")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=673744945]
 visible = false
 position = Vector2(-22, 132.5)
 scale = Vector2(6804, 3733)
 texture = SubResource("GradientTexture1D_tgk4k")
 
-[node name="PlayerSelectorSpawner" type="MultiplayerSpawner" parent="."]
+[node name="PlayerSelectorSpawner" type="MultiplayerSpawner" parent="." unique_id=1320419511]
 spawn_path = NodePath("../CanvasLayer/Container")
 script = ExtResource("2_c1o1f")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2067509936]
 layer = 3
 follow_viewport_enabled = true
 
-[node name="Container" type="HBoxContainer" parent="CanvasLayer"]
+[node name="Container" type="HBoxContainer" parent="CanvasLayer" unique_id=969111194]
 visible = false
 top_level = true
 anchors_preset = -1

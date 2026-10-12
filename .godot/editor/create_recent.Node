@@ -1,3 +1,5 @@
+Camera2D
+CanvasLayer
 HoverButton
 Button
 Panel
@@ -11,5 +13,3 @@ Node
 Area2D
 ColorRect
 Sprite2D
-TileMapLayer
-TileMap

@@ -24,3 +24,6 @@ res://Scripts/UI/Main.gd
 res://Scripts/UI/LobbyUI.gd
 res://Scenes/UI/Buttons/Main.tscn
 res://Scripts/UI/Button/ButtonClass.gd
+res://Scenes/Camera/Camera.tscn
+res://Scenes/CinematicCamera.tscn
+res://Scripts/Camera/MainCamera.gd

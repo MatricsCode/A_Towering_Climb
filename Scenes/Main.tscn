@@ -1,23 +1,26 @@
 [gd_scene format=3 uid="uid://bvgxox4xf14tm"]
 
 [ext_resource type="Script" uid="uid://ya3pjcvr6pbw" path="res://Scripts/LobbyUI/LobbyUIMain.gd" id="1_kln2b"]
-[ext_resource type="Script" path="res://Scripts/MainScene/steam.gd" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://cbnyp3hyfqj53" path="res://Scenes/Background.tscn" id="3_kln2b"]
+[ext_resource type="PackedScene" uid="uid://bnt4usslrchfy" path="res://Scenes/MainUI.tscn" id="3_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://n84h7ds41dm6" path="res://Scenes/Camera/Camera.tscn" id="4_rgh2o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgh2o"]
 
-[node name="Node2D" type="Node2D" unique_id=1591334068]
+[node name="Main" type="Node2D" unique_id=1591334068]
 script = ExtResource("1_kln2b")
-
-[node name="Steam" type="Node" parent="." unique_id=1191712412]
-script = ExtResource("1_r150o")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1671365010]
 spawn_path = NodePath("..")
 
 [node name="ParallaxBackground" parent="." unique_id=124851353 instance=ExtResource("3_kln2b")]
 
-[node name="SelectorUI" type="Control" parent="." unique_id=1439460637]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1979416858]
+
+[node name="MainUI" parent="CanvasLayer" unique_id=1863751565 instance=ExtResource("3_rgh2o")]
+
+[node name="SelectorUI_OLD" type="Control" parent="." unique_id=1439460637]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 47.0
@@ -26,7 +29,7 @@ offset_right = 1199.0
 offset_bottom = -1473.0
 metadata/_edit_group_ = true
 
-[node name="HSplitContainer" type="HBoxContainer" parent="SelectorUI" unique_id=1974613724]
+[node name="HSplitContainer" type="HBoxContainer" parent="SelectorUI_OLD" unique_id=1974613724]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,38 +38,38 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="Spacer" type="AspectRatioContainer" parent="SelectorUI/HSplitContainer" unique_id=676324759]
+[node name="Spacer" type="AspectRatioContainer" parent="SelectorUI_OLD/HSplitContainer" unique_id=676324759]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SelectorUI/HSplitContainer/Spacer" unique_id=1190564317]
+[node name="Label" type="Label" parent="SelectorUI_OLD/HSplitContainer/Spacer" unique_id=1190564317]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rgh2o")
 text = "This is a Spacer"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SelectorUI/HSplitContainer" unique_id=1173209739]
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectorUI_OLD/HSplitContainer" unique_id=1173209739]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Host" type="Button" parent="SelectorUI/HSplitContainer/VBoxContainer" unique_id=298722444]
+[node name="Host" type="Button" parent="SelectorUI_OLD/HSplitContainer/VBoxContainer" unique_id=298722444]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Host
 "
 
-[node name="Refresh" type="Button" parent="SelectorUI/HSplitContainer/VBoxContainer" unique_id=1079230998]
+[node name="Refresh" type="Button" parent="SelectorUI_OLD/HSplitContainer/VBoxContainer" unique_id=1079230998]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Refresh
 "
 
-[node name="VBoxContainer" type="HBoxContainer" parent="SelectorUI/HSplitContainer/VBoxContainer" unique_id=201405760]
+[node name="VBoxContainer" type="HBoxContainer" parent="SelectorUI_OLD/HSplitContainer/VBoxContainer" unique_id=201405760]
 layout_mode = 2
 
-[node name="IDField" type="TextEdit" parent="SelectorUI/HSplitContainer/VBoxContainer/VBoxContainer" unique_id=1846698556]
+[node name="IDField" type="TextEdit" parent="SelectorUI_OLD/HSplitContainer/VBoxContainer/VBoxContainer" unique_id=1846698556]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
@@ -80,46 +83,34 @@ virtual_keyboard_enabled = false
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
-[node name="Search" type="Button" parent="SelectorUI/HSplitContainer/VBoxContainer/VBoxContainer" unique_id=1215123703]
+[node name="Search" type="Button" parent="SelectorUI_OLD/HSplitContainer/VBoxContainer/VBoxContainer" unique_id=1215123703]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 text = "Search"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="SelectorUI/HSplitContainer" unique_id=118863018]
+[node name="VBoxContainer2" type="VBoxContainer" parent="SelectorUI_OLD/HSplitContainer" unique_id=118863018]
 layout_mode = 2
 
-[node name="LobbyContainer" type="ScrollContainer" parent="SelectorUI/HSplitContainer" unique_id=1325976184]
+[node name="LobbyContainer" type="ScrollContainer" parent="SelectorUI_OLD/HSplitContainer" unique_id=1325976184]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Lobbies" type="VBoxContainer" parent="SelectorUI/HSplitContainer/LobbyContainer" unique_id=40801770]
+[node name="Lobbies" type="VBoxContainer" parent="SelectorUI_OLD/HSplitContainer/LobbyContainer" unique_id=40801770]
 layout_mode = 2
 
-[node name="Spacer2" type="AspectRatioContainer" parent="SelectorUI/HSplitContainer" unique_id=2113078959]
+[node name="Spacer2" type="AspectRatioContainer" parent="SelectorUI_OLD/HSplitContainer" unique_id=2113078959]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SelectorUI/HSplitContainer/Spacer2" unique_id=1639874748]
+[node name="Label" type="Label" parent="SelectorUI_OLD/HSplitContainer/Spacer2" unique_id=1639874748]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rgh2o")
 text = "This is a Spacer"
 
-[node name="Camera2D" type="Camera2D" parent="SelectorUI" unique_id=1678732591]
-position = Vector2(576, 324)
+[node name="CameraControl" parent="." unique_id=445707866 instance=ExtResource("4_rgh2o")]
+position = Vector2(0, -521)
 
-[node name="Background" type="Panel" parent="." unique_id=1356241947]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 47.0
-offset_top = -2121.0
-offset_right = 1199.0
-offset_bottom = -1473.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/Refresh" to="." method="_on_refresh_pressed"]
-[connection signal="pressed" from="SelectorUI/HSplitContainer/VBoxContainer/VBoxContainer/Search" to="." method="_on_search_pressed"]
+[connection signal="pressed" from="SelectorUI_OLD/HSplitContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="SelectorUI_OLD/HSplitContainer/VBoxContainer/Refresh" to="." method="_on_refresh_pressed"]
+[connection signal="pressed" from="SelectorUI_OLD/HSplitContainer/VBoxContainer/VBoxContainer/Search" to="." method="_on_search_pressed"]
