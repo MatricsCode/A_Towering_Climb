@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://j0ml6gtwkiec"]
+[gd_scene format=3 uid="uid://j0ml6gtwkiec"]
 
 [ext_resource type="Script" uid="uid://ufse1qjko4yu" path="res://Scripts/Interactables/blockade.gd" id="1_42nxc"]
 [ext_resource type="Texture2D" uid="uid://brmw82ejg3pk5" path="res://Art/Wall/BrickWall2.png" id="2_hdp8l"]
@@ -23,7 +23,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_hdp8l")
 }],
-"loop": true,
+"loop": 1,
 "name": &"broken_brick",
 "speed": 5.0
 }, {
@@ -31,7 +31,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_lhnev")
 }],
-"loop": true,
+"loop": 1,
 "name": &"broken_glass",
 "speed": 5.0
 }, {
@@ -39,7 +39,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_c38df")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default_brick",
 "speed": 5.0
 }, {
@@ -71,7 +71,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_a7mjo")
 }],
-"loop": false,
+"loop": 0,
 "name": &"default_glass",
 "speed": 5.0
 }]
@@ -79,27 +79,27 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unl27"]
 size = Vector2(162, 319)
 
-[node name="Blockade" type="StaticBody2D" groups=["Bumpable"]]
+[node name="Blockade" type="StaticBody2D" unique_id=364449725 groups=["Bumpable"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_42nxc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=672044357]
 position = Vector2(0, -159.5)
 shape = SubResource("RectangleShape2D_42nxc")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2135071439]
 position = Vector2(0, -160)
 sprite_frames = SubResource("SpriteFrames_tv6re")
 animation = &"broken_brick"
 speed_scale = 2.5
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1207546950]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=355057191]
 collision_layer = 0
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1431959114]
 position = Vector2(0, -159.5)
 shape = SubResource("RectangleShape2D_unl27")
 

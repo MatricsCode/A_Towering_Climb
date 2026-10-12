@@ -1,0 +1,302 @@
+[gd_scene format=3 uid="uid://fncklescmf13"]
+
+[ext_resource type="Script" uid="uid://bc8og5lgrcpvd" path="res://Scripts/UI/Main.gd" id="1_5sfh5"]
+[ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Recources/MainTheme.tres" id="1_fr3bv"]
+[ext_resource type="Script" uid="uid://bldy0yf23ma7b" path="res://Scripts/UI/LobbyUI.gd" id="3_dfu8n"]
+[ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_qyh0x"]
+
+[sub_resource type="Animation" id="Animation_ollii"]
+resource_name = "Open_CharacterSelectorUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaracterSelectorUI/MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ialnu"]
+resource_name = "Open_LobbyUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LobbyUI/MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1so4l"]
+resource_name = "Open_MainUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainUI/MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ljmu1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaracterSelectorUI/MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LobbyUI/MarginContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainUI/MarginContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ual16"]
+_data = {
+&"Open_CharacterSelectorUI": SubResource("Animation_ollii"),
+&"Open_LobbyUI": SubResource("Animation_ialnu"),
+&"Open_MainUI": SubResource("Animation_1so4l"),
+&"RESET": SubResource("Animation_ljmu1")
+}
+
+[sub_resource type="Animation" id="Animation_5sfh5"]
+resource_name = "Close_CharacterSelectorUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaracterSelectorUI/MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_dfu8n"]
+resource_name = "Close_LobbyUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LobbyUI/MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_qyh0x"]
+resource_name = "Close_MainUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainUI/MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ual16"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LobbyUI/MarginContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainUI/MarginContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CaracterSelectorUI/MarginContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ollii"]
+_data = {
+&"Close_CharacterSelectorUI": SubResource("Animation_5sfh5"),
+&"Close_LobbyUI": SubResource("Animation_dfu8n"),
+&"Close_MainUI": SubResource("Animation_qyh0x"),
+&"RESET": SubResource("Animation_ual16")
+}
+
+[node name="UI Main" type="Control" unique_id=1690030602]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5sfh5")
+
+[node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "quit_button")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_dfu8n")
+host_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Host")
+join_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Join")
+quit_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Quit")
+
+[node name="MarginContainer" type="MarginContainer" parent="LobbyUI" unique_id=724424861]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fr3bv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LobbyUI/MarginContainer" unique_id=379970624]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer" unique_id=1509610350]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Host" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2009285236]
+layout_mode = 2
+text = "Host"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Join" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=729775698]
+layout_mode = 2
+text = "Join"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Quit" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=646461725]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer" unique_id=1824711636]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="MainUI" type="Panel" parent="." unique_id=1298416990]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fr3bv")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI" unique_id=2119276923]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fr3bv")
+
+[node name="CaracterSelectorUI" type="Panel" parent="." unique_id=1133005552]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fr3bv")
+
+[node name="MarginContainer" type="MarginContainer" parent="CaracterSelectorUI" unique_id=727420391]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fr3bv")
+
+[node name="AnimationPlayerOpen" type="AnimationPlayer" parent="." unique_id=399376621]
+libraries/ = SubResource("AnimationLibrary_ual16")
+
+[node name="AnimationPlayerClose" type="AnimationPlayer" parent="." unique_id=826531250]
+libraries/ = SubResource("AnimationLibrary_ollii")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1687521403]
+anim_player = NodePath("../AnimationPlayerClose")

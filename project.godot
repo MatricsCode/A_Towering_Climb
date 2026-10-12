@@ -22,7 +22,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalScript="*res://Scenes/GlobalScript.tscn"
+GlobalScript="*res://Scenes/Autoloads/GlobalScript.tscn"
+Networking="*uid://bdyvv3gq3720o"
+Signals="*uid://q4fkgi45ld4m"
 
 [display]
 
@@ -36,8 +38,8 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 folder_colors={
 "res://Art/": "orange",
-"res://Components/": "red",
-"res://Recourses/": "gray",
+"res://Old/Components/": "red",
+"res://Old/Recourses/": "gray",
 "res://Scenes/": "blue",
 "res://Scripts/": "green",
 "res://Sound Effects/": "purple"
@@ -167,3 +169,11 @@ Dev2={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[steam]
+
+initialization/app_data/app_id=480
+initialization/app_data/demo_id=480
+initialization/app_data/playtest_id=480
+initialization/app_data/tool_id=480
+initialization/processes/initialize_on_startup=true

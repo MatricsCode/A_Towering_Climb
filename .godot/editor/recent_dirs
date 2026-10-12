@@ -1,21 +1,15 @@
-res://Scripts/Interactables/Components
-res://Scripts/PlayerSelectorUI
-C:/Users/Jayden/Desktop/GitTest/Main Export
-D:/NextCloud/Sicherung/Kodumaster/GodotSteam/GodotSteamMultipayerPeer
-res://Scenes
-res://Scripts/Cinematic Camera
-C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports/DemoSaves
-res://Scripts/UI
-res://Scripts/MainScene
-res://Recourses/UI
+res://Scenes/UI/Buttons/
+res://Scripts/UI/Button/
+res://Scripts/UI/
+res://Recources/
+res://Scripts/AutoLoads/
+res://Scripts/LobbyUI/
+res://Scripts/Interactables/Components/
+res://Scripts/PlayerSelectorUI/
+res://Scripts/Cinematic Camera/
+res://Scripts/MainScene/
 res://
-C:/Users/Jayden/Desktop/GitTest/SteamMultiplayerTest/NewExports
-res://Scripts/Player
-C:/Users/Jayden/Desktop/GitTest
-res://Scripts/Player/Abilitys
-res://Scenes/Tools
-res://Scripts/Tools
-res://Scripts/PlayArea
-res://Scenes/Levels
-res://Recourses/PlayerSprites/PlayerHeadSprites
-res://Recourses
+res://Scripts/Player/
+res://Scripts/Player/Abilitys/
+res://Scripts/Tools/
+res://Scripts/PlayArea/

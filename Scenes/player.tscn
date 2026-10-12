@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7w851wnif2io"]
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_nn08x"]
-[ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Recourses/PlayerSprites/Climber1.tres" id="2_52ee3"]
+[ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Old/Recourses/PlayerSprites/Climber1.tres" id="2_52ee3"]
 [ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Scripts/Player/wall_detectors.gd" id="3_bhhdu"]
 [ext_resource type="Script" uid="uid://dvnr5lwr2t2n8" path="res://Scripts/Player/edge_detectors.gd" id="4_megsn"]
 [ext_resource type="Script" uid="uid://c22ccct5h31um" path="res://Scripts/Player/abillity_manager.gd" id="5_yoq75"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn07xety6vi3e"]
+[gd_scene format=3 uid="uid://cn07xety6vi3e"]
 
 [ext_resource type="Texture2D" uid="uid://bjlscvq7o16m2" path="res://icon.svg" id="1_myinc"]
 [ext_resource type="Script" uid="uid://bp8t6o5i5cf1u" path="res://test.gd" id="1_njov2"]
@@ -7,31 +7,31 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2au82"]
 size = Vector2(79, 150)
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1370979668 groups=["Player"]]
 collision_layer = 5
 collision_mask = 14
 script = ExtResource("1_njov2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1267678042]
 position = Vector2(4, -69)
 scale = Vector2(0.631586, 1.06999)
 texture = ExtResource("1_myinc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721249139]
 position = Vector2(5.5, -76)
 shape = SubResource("RectangleShape2D_2au82")
 
-[node name="WallDetectors" type="Node2D" parent="."]
+[node name="WallDetectors" type="Node2D" parent="." unique_id=649128214]
 position = Vector2(0, -136)
 script = ExtResource("3_2au82")
 
-[node name="WallDetector1" type="RayCast2D" parent="WallDetectors"]
+[node name="WallDetector1" type="RayCast2D" parent="WallDetectors" unique_id=1742244144]
 position = Vector2(-50, 57)
 target_position = Vector2(0, 77)
 collision_mask = 2
 hit_from_inside = true
 
-[node name="WallDetector2" type="RayCast2D" parent="WallDetectors"]
+[node name="WallDetector2" type="RayCast2D" parent="WallDetectors" unique_id=1940424754]
 position = Vector2(60, 57)
 target_position = Vector2(0, 77)
 collision_mask = 2

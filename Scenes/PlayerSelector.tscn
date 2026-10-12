@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cam0eoq23msfi"]
+[gd_scene format=3 uid="uid://cam0eoq23msfi"]
 
 [ext_resource type="Script" uid="uid://n0k8hsrj2410" path="res://Scripts/PlayerSelectorUI/player_selector.gd" id="1_xs5nl"]
 [ext_resource type="Texture2D" uid="uid://dt2ju2vngh7gp" path="res://Art/Player/Baker/Baker1.png" id="2_e5v4a"]
@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://dgu8fkhs3iohe" path="res://Art/Player/Heinrich/Heinrich6.png" id="26_jx0fm"]
 [ext_resource type="Texture2D" uid="uid://dgcym4vqovgea" path="res://Art/Player/Heinrich/Heinrich7.png" id="27_7ub4j"]
 [ext_resource type="Script" uid="uid://bkaxgra801fsr" path="res://Scripts/PlayerSelectorUI/ability_selector.gd" id="28_b5r3k"]
-[ext_resource type="Theme" uid="uid://btyhh0yr7u81f" path="res://Recourses/UI/main.tres" id="29_ichg1"]
+[ext_resource type="Theme" uid="uid://btyhh0yr7u81f" path="res://Old/Recourses/UI/main.tres" id="29_ichg1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs5nl"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)

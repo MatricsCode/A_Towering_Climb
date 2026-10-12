@@ -1,7 +1,7 @@
-[gd_scene load_steps=41 format=3 uid="uid://coyb4dm7dvh0w"]
+[gd_scene format=3 uid="uid://coyb4dm7dvh0w"]
 
 [ext_resource type="Script" uid="uid://dw4ltxmxmvvfq" path="res://Scripts/PlayerSelectorUI/player_selector_deprecated.gd" id="1_s0u7s"]
-[ext_resource type="Theme" uid="uid://btyhh0yr7u81f" path="res://Recourses/UI/main.tres" id="2_qvtvi"]
+[ext_resource type="Theme" uid="uid://btyhh0yr7u81f" path="res://Old/Recourses/UI/main.tres" id="2_qvtvi"]
 [ext_resource type="Script" uid="uid://cncyjq3g5cty0" path="res://Scripts/Tools/base_button.gd" id="3_1i328"]
 [ext_resource type="Texture2D" uid="uid://v2n6mouri1as" path="res://Art/Player/Climber1/Climber1.png" id="4_jkftt"]
 [ext_resource type="Texture2D" uid="uid://blsk3uj75ilc7" path="res://Art/Player/Climber1/Climber2.png" id="5_e356u"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://g7kvj74jxr8y" path="res://Art/Player/Climber1/Climber13.png" id="32_qpwia"]
 [ext_resource type="Texture2D" uid="uid://d0704c7trp3mq" path="res://Art/Player/Climber1/Climber14.png" id="33_8iwg6"]
 [ext_resource type="Texture2D" uid="uid://c23dyki441stt" path="res://Art/Player/Climber1/Climber15.png" id="34_0owtb"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0wkq"]
 bg_color = Color(0.117647, 0.117647, 0.117647, 1)

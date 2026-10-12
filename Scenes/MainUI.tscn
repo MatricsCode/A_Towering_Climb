@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnt4usslrchfy"]
+[gd_scene format=3 uid="uid://bnt4usslrchfy"]
 
-[ext_resource type="Script" uid="uid://bevxwl1n2p71r" path="res://Scripts/UI/pause_menu.gd" id="1_xh0hd"]
-[ext_resource type="Script" uid="uid://lugaf8yhlsla" path="res://Scripts/UI/main_ui.gd" id="1_yd0xa"]
-[ext_resource type="Script" uid="uid://hrghadurkx2h" path="res://Scripts/UI/height_indicator.gd" id="2_1rfkw"]
+[ext_resource type="Script" uid="uid://bevxwl1n2p71r" path="res://Scripts/UI_Old/pause_menu.gd" id="1_xh0hd"]
+[ext_resource type="Script" uid="uid://lugaf8yhlsla" path="res://Scripts/UI_Old/main_ui.gd" id="1_yd0xa"]
+[ext_resource type="Script" uid="uid://hrghadurkx2h" path="res://Scripts/UI_Old/height_indicator.gd" id="2_1rfkw"]
 [ext_resource type="Texture2D" uid="uid://cmc6tinolodum" path="res://Art/Markers/Tower.png" id="3_1rfkw"]
-[ext_resource type="Script" uid="uid://blkue12vglqdr" path="res://Scripts/UI/settings.gd" id="3_8dqd8"]
-[ext_resource type="Script" uid="uid://du0w16lun2fuy" path="res://Scripts/UI/win_menu.gd" id="3_c3bvd"]
-[ext_resource type="Script" uid="uid://cg053s8d1g1c6" path="res://Scripts/UI/remap_menu.gd" id="7_uwgue"]
+[ext_resource type="Script" uid="uid://blkue12vglqdr" path="res://Scripts/UI_Old/settings.gd" id="3_8dqd8"]
+[ext_resource type="Script" uid="uid://du0w16lun2fuy" path="res://Scripts/UI_Old/win_menu.gd" id="3_c3bvd"]
+[ext_resource type="Script" uid="uid://cg053s8d1g1c6" path="res://Scripts/UI_Old/remap_menu.gd" id="7_uwgue"]
 
 [node name="MainUI" type="Control"]
 process_mode = 3
