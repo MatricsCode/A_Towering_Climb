@@ -10,6 +10,6 @@ func _ready():
 		sprite.flip_h = true
 
 func _on_area_2d_body_entered(body):
-	GlobalScript.winner.emit(body.name)
+	Signals.winner.emit(body.name)
 	get_tree().paused = true
 	queue_free()

@@ -1,6 +1,6 @@
 extends Control
 
-const PAUSE_BACKGROUND = preload("res://Recourses/UI/PauseBackground.tres")
+const PAUSE_BACKGROUND = preload("res://Old/Recourses/UI/PauseBackground.tres")
 
 var won = false
 
@@ -16,21 +16,21 @@ var won = false
 var paused = false
 
 func _ready():
-	GlobalScript.winner.connect(winner)
-	GlobalScript.paused.connect(change)
+	Signals.winner.connect(winner)
+	Signals.paused.connect(change)
 	
 	for i in margin_container.get_children():
 		i.visible = false
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("Pause") and paused == false:
-		GlobalScript.paused.emit()
+		Signals.paused.emit()
 		main.visible = true
 		unpause.grab_focus()
 		paused = true
 		
 	elif Input.is_action_just_pressed("Pause") and paused == true:
-		GlobalScript.paused.emit()
+		Signals.paused.emit()
 		main.visible = false
 		unpause.grab_focus()
 		paused = false
@@ -45,7 +45,7 @@ func _physics_process(_delta):
 		background.texture = PAUSE_BACKGROUND
 
 func _on_unpause_pressed():
-	GlobalScript.paused.emit()
+	Signals.paused.emit()
 
 func winner(names):
 	won = true

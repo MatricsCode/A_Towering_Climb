@@ -10,7 +10,7 @@ var started = false
 var sin_number = 0
 
 func _ready():
-	GlobalScript.start.connect(has_started)
+	Signals.start.connect(has_started)
 	#
 	target_position = position.y
 	position.y = 0

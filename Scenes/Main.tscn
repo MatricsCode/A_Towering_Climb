@@ -110,7 +110,3 @@ text = "This is a Spacer"
 
 [node name="CameraControl" parent="." unique_id=445707866 instance=ExtResource("4_rgh2o")]
 position = Vector2(0, -521)
-
-[connection signal="pressed" from="SelectorUI_OLD/HSplitContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="SelectorUI_OLD/HSplitContainer/VBoxContainer/Refresh" to="." method="_on_refresh_pressed"]
-[connection signal="pressed" from="SelectorUI_OLD/HSplitContainer/VBoxContainer/VBoxContainer/Search" to="." method="_on_search_pressed"]

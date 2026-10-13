@@ -17,8 +17,8 @@ var peer : MultiplayerPeer
 func _ready():
 	GlobalScript.user_ID = SteamServer.getSteamID()
 	
-	GlobalScript.left_lobby.connect(leave_lobby)
-	GlobalScript.reset.connect(reset)
+	Signals.left_lobby.connect(leave_lobby)
+	Signals.reset.connect(reset)
 	host.grab_focus()
 	
 	ms.spawn_function = spawn_level

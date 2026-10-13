@@ -4,10 +4,10 @@ extends Control
 @onready var win_ui = $MarginContainer/VBoxContainer
 @onready var again = $MarginContainer/VBoxContainer/Again
 
-const WIN_BACKGROUND = preload("res://Recourses/UI/WinBackground.tres")
+const WIN_BACKGROUND = preload("res://Old/Recourses/UI/WinBackground.tres")
 
 func _ready():
-	GlobalScript.winner.connect(won)
+	Signals.winner.connect(won)
 	
 	reset()
 
@@ -17,7 +17,7 @@ func won(player_name):
 	
 	await get_tree().create_timer(1).timeout
 	
-	GlobalScript.paused.emit()
+	Signals.paused.emit()
 	again.grab_focus()
 	
 	move_to_front()
@@ -30,6 +30,6 @@ func reset():
 
 
 func _on_again_pressed():
-	GlobalScript.reset.emit()
+	Signals.reset.emit()
 	get_tree().paused = false
 	await get_tree().create_timer(0.5).timeout

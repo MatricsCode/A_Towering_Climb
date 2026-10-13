@@ -71,8 +71,8 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	
 	current_state = States.AIR ## Autoloads the normal state into the player
 	
-	GlobalScript.paused.connect(pause_switch)
-	GlobalScript.winner.connect(won)
+	Signals.paused.connect(pause_switch)
+	Signals.winner.connect(won)
 
 func _physics_process(_delta):  ## Runs every physics frames
 	GlobalScript.player_attributes.get(ID)["Position"] = position

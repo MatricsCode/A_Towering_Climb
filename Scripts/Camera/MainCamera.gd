@@ -1,8 +1,9 @@
 extends Node2D
 
-var bouncing := true
-
 @onready var cam = $Camera2D
+
+var bouncing := true
+var bouncing_time = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,8 +11,9 @@ func _ready():
 
 func _physics_process(delta):
 	if bouncing:
-		position.x += 0.1
-		position.y += sin(delta*2) * 10
+		position.x += 1
+		position.y = 500 + sin(bouncing_time)
+		bouncing_time += 0.01
 
 func _start_animation():
 	var movement = get_tree().create_tween()

@@ -35,4 +35,4 @@ func _ready():
 
 func _on_leave_lobby_pressed():
 	get_tree().paused = false
-	GlobalScript.left_lobby.emit()
+	Signals.left_lobby.emit()

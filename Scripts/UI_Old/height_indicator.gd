@@ -4,7 +4,7 @@ extends HBoxContainer
 @onready var map = $Map
 @onready var players = $Players
 
-var main_theme = preload("res://Recourses/UI/main.tres")
+var main_theme = preload("res://Old/Recourses/UI/main.tres")
 
 var markers = [
 	preload("res://Art/Markers/ClimberIcon.png"),
@@ -19,8 +19,8 @@ var markers = [
 var p1 = 0
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	GlobalScript.start.connect(start_spawning)
+#func _ready():
+	#GlobalScript.start.connect(start_spawning)
 
 func start_spawning(data):
 	$Map.visible = true

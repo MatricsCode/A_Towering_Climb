@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-const BLUE = preload("res://Recourses/Birds/Blue.tres")
-const GREEN = preload("res://Recourses/Birds/Green.tres")
-const PINK = preload("res://Recourses/Birds/Pink.tres")
-const RED = preload("res://Recourses/Birds/Red.tres")
-const WHITE = preload("res://Recourses/Birds/White.tres")
+const BLUE = preload("res://Old/Recourses/Birds/Blue.tres")
+const GREEN = preload("res://Old/Recourses/Birds/Green.tres")
+const PINK = preload("res://Old/Recourses/Birds/Pink.tres")
+const RED = preload("res://Old/Recourses/Birds/Red.tres")
+const WHITE = preload("res://Old/Recourses/Birds/White.tres")
 
 @onready var sprite = $Sprite
 

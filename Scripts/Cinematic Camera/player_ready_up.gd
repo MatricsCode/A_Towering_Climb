@@ -75,4 +75,4 @@ func _readied_up(ID, data):
 	var temp = readied_up.values()
 	
 	if temp.find(false) == -1:
-		GlobalScript.start.emit(1)
+		Signals.start.emit(1)

@@ -5,7 +5,7 @@ extends MultiplayerSpawner
 var players = {}
 
 func _ready():
-	GlobalScript.start.connect(spawn_players)
+	Signals.start.connect(spawn_players)
 
 func spawn_players(data):
 	spawn_function = spawn_player
