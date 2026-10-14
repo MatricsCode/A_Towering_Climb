@@ -11,9 +11,11 @@ func _ready():
 	#Signals.host_created.connect()
 	Signals.lobby_joined.connect(_lobby_joined)
 	
-	lobby_ui.visible = true
+	lobby_ui.visible = false
 	main_ui.visible = false
 	caracter_selector_ui.visible = false
+	
+	anim_open.play("Open_LobbyUI")
 
 func _lobby_joined(_lobby_id):
 	_change_ui("LobbyUI", "CharacterSelectorUI")

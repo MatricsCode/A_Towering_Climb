@@ -199,7 +199,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5sfh5")
 
-[node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "quit_button", "lobby_list")]
+[node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "quit_button", "reload_lobbies_button", "lobby_list")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -210,6 +210,7 @@ script = ExtResource("3_dfu8n")
 host_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Host")
 join_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Join")
 quit_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Quit")
+reload_lobbies_button = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/ReloadLobbies")
 lobby_list = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer/LobbyButtonContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="LobbyUI" unique_id=724424861]
@@ -266,11 +267,18 @@ theme_override_constants/margin_right = 100
 
 [node name="ScrollContainer" type="ScrollContainer" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector/LobbyButtons" unique_id=127344654]
 layout_mode = 2
+horizontal_scroll_mode = 0
 
 [node name="LobbyButtonContainer" type="VBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer" unique_id=1355659897]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="ReloadLobbies" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector" unique_id=479383756]
+layout_mode = 2
+text = "Search"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
 [node name="MainUI" type="Panel" parent="." unique_id=1298416990]
 layout_mode = 1

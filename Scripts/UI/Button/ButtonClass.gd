@@ -6,10 +6,16 @@ var time := 1.0
 var hovering := false
 
 func _ready():
+	visible = false
+	
+	await _spawn()
+	
 	time = randf_range(-100.0,100.0)
 	pivot_offset_ratio = Vector2(0.5,0.5)
 	mouse_entered.connect(_mouse_entered)
 	mouse_exited.connect(_mouse_exited)
+	
+	_spawn()
 
 func _physics_process(delta):
 	if !hovering:
@@ -35,3 +41,25 @@ func _mouse_exited():
 	tweener.set_parallel().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tweener.tween_property(self, "scale", Vector2(1,1), 0.05)
 	tweener.tween_property(self, "custom_minimum_size", Vector2(1,1), 0.05)
+
+func _spawn():
+	self_modulate.a = 0
+	scale = Vector2.ZERO
+	var tweener = get_tree().create_tween()
+	tweener.set_parallel().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE)
+	visible = true
+	tweener.tween_property(self, "scale", Vector2.ONE, 0.3)
+	tweener.tween_property(self, "self_modulate", Color.WHITE, 0.3)
+	
+	await tweener.finished
+	
+	return
+func _remove():
+	var tweener = get_tree().create_tween()
+	tweener.set_parallel().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE)
+	tweener.tween_property(self, "scale", Vector2.ZERO, 0.1)
+	tweener.tween_property(self, "self_modulate", Color.TRANSPARENT, 0.1)
+	
+	await tweener.finished
+	
+	queue_free()

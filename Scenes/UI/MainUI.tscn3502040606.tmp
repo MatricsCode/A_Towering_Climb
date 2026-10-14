@@ -1,0 +1,342 @@
+[gd_scene format=3 uid="uid://fncklescmf13"]
+
+[ext_resource type="Script" uid="uid://bc8og5lgrcpvd" path="res://Scripts/UI/Main.gd" id="1_5sfh5"]
+[ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Recources/MainTheme.tres" id="1_fr3bv"]
+[ext_resource type="Script" uid="uid://bldy0yf23ma7b" path="res://Scripts/UI/LobbyUI.gd" id="3_dfu8n"]
+[ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_qyh0x"]
+[ext_resource type="Script" uid="uid://c0up8lhfcq1jh" path="res://Scripts/UI/CharacterSelectorUI.gd" id="5_upwrp"]
+
+[sub_resource type="Animation" id="Animation_ollii"]
+resource_name = "Open_CharacterSelectorUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaracterSelectorUI:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ialnu"]
+resource_name = "Open_LobbyUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LobbyUI:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1so4l"]
+resource_name = "Open_MainUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainUI:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ljmu1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LobbyUI:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CaracterSelectorUI:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ual16"]
+_data = {
+&"Open_CharacterSelectorUI": SubResource("Animation_ollii"),
+&"Open_LobbyUI": SubResource("Animation_ialnu"),
+&"Open_MainUI": SubResource("Animation_1so4l"),
+&"RESET": SubResource("Animation_ljmu1")
+}
+
+[sub_resource type="Animation" id="Animation_5sfh5"]
+resource_name = "Close_CharacterSelectorUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaracterSelectorUI:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_dfu8n"]
+resource_name = "Close_LobbyUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LobbyUI:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_qyh0x"]
+resource_name = "Close_MainUI"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainUI:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ual16"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaracterSelectorUI:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LobbyUI:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ollii"]
+_data = {
+&"Close_CharacterSelectorUI": SubResource("Animation_5sfh5"),
+&"Close_LobbyUI": SubResource("Animation_dfu8n"),
+&"Close_MainUI": SubResource("Animation_qyh0x"),
+&"RESET": SubResource("Animation_ual16")
+}
+
+[node name="UI Main" type="Control" unique_id=1690030602]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5sfh5")
+
+[node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "quit_button", "reload_lobbies_button", "lobby_list")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_dfu8n")
+host_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Host")
+join_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Join")
+quit_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Quit")
+reload_lobbies_button = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/ReloadLobbies")
+lobby_list = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer/LobbyButtonContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="LobbyUI" unique_id=724424861]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fr3bv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LobbyUI/MarginContainer" unique_id=379970624]
+layout_mode = 2
+alignment = 1
+
+[node name="MainButtons" type="VBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer" unique_id=1509610350]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Host" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/MainButtons" unique_id=2009285236]
+layout_mode = 2
+text = "Host"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Join" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/MainButtons" unique_id=729775698]
+layout_mode = 2
+text = "Join"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Quit" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/MainButtons" unique_id=646461725]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="LobbiesSelector" type="VBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer" unique_id=1824711636]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="LobbiesLabel" type="Label" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector" unique_id=116104933]
+layout_mode = 2
+text = "Lobbies:"
+horizontal_alignment = 1
+
+[node name="LobbyButtons" type="MarginContainer" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector" unique_id=1421440796]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector/LobbyButtons" unique_id=127344654]
+layout_mode = 2
+
+[node name="LobbyButtonContainer" type="VBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer" unique_id=1355659897]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ReloadLobbies" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector" unique_id=479383756]
+layout_mode = 2
+text = "Search"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="MainUI" type="Panel" parent="." unique_id=1298416990]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fr3bv")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI" unique_id=2119276923]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fr3bv")
+
+[node name="CaracterSelectorUI" type="Panel" parent="." unique_id=1133005552]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fr3bv")
+script = ExtResource("5_upwrp")
+
+[node name="MarginContainer" type="MarginContainer" parent="CaracterSelectorUI" unique_id=727420391]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fr3bv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CaracterSelectorUI/MarginContainer" unique_id=171550527]
+layout_mode = 2
+theme = ExtResource("1_fr3bv")
+
+[node name="User" type="Label" parent="CaracterSelectorUI/MarginContainer/VBoxContainer" unique_id=1386615777]
+layout_mode = 2
+theme = ExtResource("1_fr3bv")
+horizontal_alignment = 1
+
+[node name="ID" type="LineEdit" parent="CaracterSelectorUI/MarginContainer/VBoxContainer" unique_id=927188721]
+layout_mode = 2
+theme = ExtResource("1_fr3bv")
+placeholder_text = "ID:"
+alignment = 1
+editable = false
+
+[node name="AnimationPlayerOpen" type="AnimationPlayer" parent="." unique_id=399376621]
+libraries/ = SubResource("AnimationLibrary_ual16")
+
+[node name="AnimationPlayerClose" type="AnimationPlayer" parent="." unique_id=826531250]
+libraries/ = SubResource("AnimationLibrary_ollii")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1687521403]
+anim_player = NodePath("../AnimationPlayerClose")
