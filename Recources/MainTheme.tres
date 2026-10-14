@@ -1,7 +1,30 @@
 [gd_resource type="Theme" format=3 uid="uid://cdqnrw5rcouf5"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgh2o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0r01f"]
+bg_color = Color(0.25929368, 0.25929374, 0.2592936, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 20
+border_color = Color(0.04303915, 0.043039158, 0.04303913, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [resource]
+Button/font_sizes/font_size = 32
+Button/styles/pressed = SubResource("StyleBoxFlat_rgh2o")
 HBoxContainer/constants/separation = 15
+Label/font_sizes/font_size = 32
+Label/styles/focus = SubResource("StyleBoxFlat_0r01f")
+Label/styles/normal = SubResource("StyleBoxFlat_0r01f")
+LineEdit/font_sizes/font_size = 32
+LineEdit/styles/focus = SubResource("StyleBoxFlat_0r01f")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_0r01f")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_0r01f")
 MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20

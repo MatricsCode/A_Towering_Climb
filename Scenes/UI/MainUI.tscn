@@ -4,13 +4,14 @@
 [ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Recources/MainTheme.tres" id="1_fr3bv"]
 [ext_resource type="Script" uid="uid://bldy0yf23ma7b" path="res://Scripts/UI/LobbyUI.gd" id="3_dfu8n"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_qyh0x"]
+[ext_resource type="Script" uid="uid://c0up8lhfcq1jh" path="res://Scripts/UI/CharacterSelectorUI.gd" id="5_upwrp"]
 
 [sub_resource type="Animation" id="Animation_ollii"]
 resource_name = "Open_CharacterSelectorUI"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CaracterSelectorUI/MarginContainer:visible")
+tracks/0/path = NodePath("CaracterSelectorUI:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +26,7 @@ resource_name = "Open_LobbyUI"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LobbyUI/MarginContainer:visible")
+tracks/0/path = NodePath("LobbyUI:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +41,7 @@ resource_name = "Open_MainUI"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainUI/MarginContainer:visible")
+tracks/0/path = NodePath("MainUI:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,7 +56,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CaracterSelectorUI/MarginContainer:visible")
+tracks/0/path = NodePath("LobbyUI:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -67,7 +68,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LobbyUI/MarginContainer:visible")
+tracks/1/path = NodePath("MainUI:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -79,7 +80,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MainUI/MarginContainer:visible")
+tracks/2/path = NodePath("CaracterSelectorUI:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -102,7 +103,7 @@ resource_name = "Close_CharacterSelectorUI"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CaracterSelectorUI/MarginContainer:visible")
+tracks/0/path = NodePath("CaracterSelectorUI:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -117,7 +118,7 @@ resource_name = "Close_LobbyUI"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LobbyUI/MarginContainer:visible")
+tracks/0/path = NodePath("LobbyUI:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -132,7 +133,7 @@ resource_name = "Close_MainUI"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainUI/MarginContainer:visible")
+tracks/0/path = NodePath("MainUI:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -147,38 +148,38 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LobbyUI/MarginContainer:visible")
+tracks/0/path = NodePath("CaracterSelectorUI:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MainUI/MarginContainer:visible")
+tracks/1/path = NodePath("MainUI:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CaracterSelectorUI/MarginContainer:visible")
+tracks/2/path = NodePath("LobbyUI:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ollii"]
@@ -198,7 +199,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5sfh5")
 
-[node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "quit_button")]
+[node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "quit_button", "lobby_list")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -206,12 +207,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_dfu8n")
-host_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Host")
-join_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Join")
-quit_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Quit")
+host_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Host")
+join_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Join")
+quit_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Quit")
+lobby_list = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer/LobbyButtonContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="LobbyUI" unique_id=724424861]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -224,36 +225,54 @@ theme = ExtResource("1_fr3bv")
 layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer" unique_id=1509610350]
+[node name="MainButtons" type="VBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer" unique_id=1509610350]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Host" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=2009285236]
+[node name="Host" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/MainButtons" unique_id=2009285236]
 layout_mode = 2
 text = "Host"
 script = ExtResource("4_qyh0x")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
-[node name="Join" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=729775698]
+[node name="Join" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/MainButtons" unique_id=729775698]
 layout_mode = 2
 text = "Join"
 script = ExtResource("4_qyh0x")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
-[node name="Quit" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/VBoxContainer" unique_id=646461725]
+[node name="Quit" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/MainButtons" unique_id=646461725]
 layout_mode = 2
 text = "Quit"
 script = ExtResource("4_qyh0x")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer" unique_id=1824711636]
+[node name="LobbiesSelector" type="VBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer" unique_id=1824711636]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
+[node name="LobbiesLabel" type="Label" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector" unique_id=116104933]
+layout_mode = 2
+text = "Lobbies:"
+horizontal_alignment = 1
+
+[node name="LobbyButtons" type="MarginContainer" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector" unique_id=1421440796]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector/LobbyButtons" unique_id=127344654]
+layout_mode = 2
+
+[node name="LobbyButtonContainer" type="VBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer" unique_id=1355659897]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="MainUI" type="Panel" parent="." unique_id=1298416990]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -263,7 +282,6 @@ grow_vertical = 2
 theme = ExtResource("1_fr3bv")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainUI" unique_id=2119276923]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -273,7 +291,16 @@ grow_vertical = 2
 theme = ExtResource("1_fr3bv")
 
 [node name="CaracterSelectorUI" type="Panel" parent="." unique_id=1133005552]
-visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fr3bv")
+script = ExtResource("5_upwrp")
+
+[node name="MarginContainer" type="MarginContainer" parent="CaracterSelectorUI" unique_id=727420391]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -282,15 +309,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_fr3bv")
 
-[node name="MarginContainer" type="MarginContainer" parent="CaracterSelectorUI" unique_id=727420391]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="CaracterSelectorUI/MarginContainer" unique_id=171550527]
+layout_mode = 2
 theme = ExtResource("1_fr3bv")
+
+[node name="User" type="Label" parent="CaracterSelectorUI/MarginContainer/VBoxContainer" unique_id=1386615777]
+layout_mode = 2
+theme = ExtResource("1_fr3bv")
+horizontal_alignment = 1
+
+[node name="ID" type="LineEdit" parent="CaracterSelectorUI/MarginContainer/VBoxContainer" unique_id=927188721]
+layout_mode = 2
+theme = ExtResource("1_fr3bv")
+placeholder_text = "ID:"
+alignment = 1
+editable = false
 
 [node name="AnimationPlayerOpen" type="AnimationPlayer" parent="." unique_id=399376621]
 libraries/ = SubResource("AnimationLibrary_ual16")

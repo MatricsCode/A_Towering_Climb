@@ -12,7 +12,7 @@ func _ready():
 func _physics_process(delta):
 	if bouncing:
 		position.x += 1
-		position.y = 500 + sin(bouncing_time)
+		position.y = -5000 + sin(bouncing_time) * 100
 		bouncing_time += 0.01
 
 func _start_animation():

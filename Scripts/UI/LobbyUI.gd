@@ -1,14 +1,18 @@
-extends MarginContainer
+extends Panel
 
 @export var host_button : HoverButton
 @export var join_button : HoverButton
 @export var quit_button : HoverButton
+
+@export var lobby_list : VBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	host_button.pressed.connect(_host_pressed)
 	join_button.pressed.connect(_join_pressed)
 	quit_button.pressed.connect(_quit_pressed)
+	
+	Signals.lobby_match_list.connect(_lobby_match_list)
 
 func _host_pressed():
 	Networking._host_lobby()
@@ -16,3 +20,16 @@ func _join_pressed():
 	pass
 func _quit_pressed():
 	get_tree().quit()
+
+func _join_lobby_button_pressed():
+	pass
+
+func _lobby_match_list(lobbies : Array):
+	for lobby in lobbies:
+		var button = HoverButton.new()
+		
+		button.name = str(lobby)
+		button.text = str(lobby)
+		button.pressed.connect(_join_lobby_button_pressed)
+		
+		lobby_list.add_child(button)

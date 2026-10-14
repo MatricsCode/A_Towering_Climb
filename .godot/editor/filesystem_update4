@@ -1,6 +1,14 @@
-res://Scenes/Camera/Camera.tscn
-res://Old/Recourses/UI/PauseBackground.tres
+res://Scenes/UI/Buttons/MainButtons.tscn
+res://Recources/MainTheme.tres
 res://Old/Recourses/UI/main.tres
-res://Old/Recourses/UI/WinBackground.tres
 res://addons/godotsteam/editor/updater.tres
 res://Old/Recourses/Tileset.tres
+res://Old/Recourses/UI/PauseBackground.tres
+res://Old/Recourses/UI/WinBackground.tres
+res://Scripts/AutoLoads/Networking.gd
+res://Scenes/Autoloads/Networking.tscn
+res://Scenes/Autoloads/Signals.tscn
+res://Scripts/AutoLoads/Signals.gd
+res://Scenes/UI/MainUI.tscn
+res://Scripts/UI/LobbyUI.gd
+res://Scripts/UI/Button/ButtonClass.gd
