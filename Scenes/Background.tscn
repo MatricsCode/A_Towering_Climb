@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbnyp3hyfqj53"]
+[gd_scene format=3 uid="uid://cbnyp3hyfqj53"]
 
 [ext_resource type="Texture2D" uid="uid://c55lhug7ik44j" path="res://Art/Background/Paralax Backround11.png" id="1_8sjso"]
 [ext_resource type="Texture2D" uid="uid://cgy5aq6l3q62q" path="res://Art/Background/Paralax Backround9.png" id="1_rqs8y"]
@@ -12,12 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://clca7782awsl1" path="res://Art/Background/Paralax Backround2.png" id="8_ni1bc"]
 [ext_resource type="Texture2D" uid="uid://cm4s2xhs2nbxe" path="res://Art/Background/Paralax Backround1.png" id="9_q11sa"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" groups=["Background"]]
+[node name="ParallaxBackground" type="ParallaxBackground" unique_id=1906733348 groups=["Background"]]
 
-[node name="Sky3" type="ParallaxLayer" parent="."]
+[node name="Sky3" type="ParallaxLayer" parent="." unique_id=419369770]
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Sky3"]
+[node name="TextureRect" type="TextureRect" parent="Sky3" unique_id=1586892957]
 offset_top = -10877.0
 offset_right = 4290.0
 offset_bottom = 363.0
@@ -25,11 +25,11 @@ pivot_offset = Vector2(-609, 11468)
 texture = ExtResource("1_8sjso")
 stretch_mode = 1
 
-[node name="Sky2" type="ParallaxLayer" parent="."]
+[node name="Sky2" type="ParallaxLayer" parent="." unique_id=2043944111]
 motion_offset = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Sky2"]
+[node name="TextureRect" type="TextureRect" parent="Sky2" unique_id=377702408]
 offset_top = -10877.0
 offset_right = 4290.0
 offset_bottom = 363.0
@@ -37,11 +37,11 @@ pivot_offset = Vector2(-609, 11468)
 texture = ExtResource("1_vxnle")
 stretch_mode = 1
 
-[node name="Sky1" type="ParallaxLayer" parent="."]
+[node name="Sky1" type="ParallaxLayer" parent="." unique_id=2130563155]
 motion_offset = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Sky1"]
+[node name="TextureRect" type="TextureRect" parent="Sky1" unique_id=1516049866]
 offset_top = -10877.0
 offset_right = 4290.0
 offset_bottom = 363.0
@@ -49,10 +49,10 @@ pivot_offset = Vector2(-609, 11468)
 texture = ExtResource("1_rqs8y")
 stretch_mode = 1
 
-[node name="Towers5" type="ParallaxLayer" parent="."]
+[node name="Towers5" type="ParallaxLayer" parent="." unique_id=1569767067]
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Towers5"]
+[node name="TextureRect" type="TextureRect" parent="Towers5" unique_id=680720051]
 offset_top = -10877.0
 offset_right = 4290.0
 offset_bottom = 363.0
@@ -60,10 +60,10 @@ pivot_offset = Vector2(-609, 11468)
 texture = ExtResource("2_vxnle")
 stretch_mode = 1
 
-[node name="Towers4" type="ParallaxLayer" parent="."]
+[node name="Towers4" type="ParallaxLayer" parent="." unique_id=1755513999]
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Towers4"]
+[node name="TextureRect" type="TextureRect" parent="Towers4" unique_id=1361556890]
 offset_top = -10877.0
 offset_right = 4290.0
 offset_bottom = 363.0
@@ -71,10 +71,10 @@ pivot_offset = Vector2(-609, 11468)
 texture = ExtResource("3_8sjso")
 stretch_mode = 1
 
-[node name="Towers3" type="ParallaxLayer" parent="."]
+[node name="Towers3" type="ParallaxLayer" parent="." unique_id=2087728205]
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Towers3"]
+[node name="TextureRect" type="TextureRect" parent="Towers3" unique_id=504739341]
 offset_top = -10877.0
 offset_right = 4290.0
 offset_bottom = 363.0
@@ -82,10 +82,10 @@ pivot_offset = Vector2(-609, 11468)
 texture = ExtResource("4_6s3s0")
 stretch_mode = 1
 
-[node name="Towers2" type="ParallaxLayer" parent="."]
+[node name="Towers2" type="ParallaxLayer" parent="." unique_id=1300776440]
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Towers2"]
+[node name="TextureRect" type="TextureRect" parent="Towers2" unique_id=1337873518]
 offset_top = -10877.0
 offset_right = 4290.0
 offset_bottom = 363.0
@@ -93,10 +93,10 @@ pivot_offset = Vector2(-609, 11468)
 texture = ExtResource("5_cboml")
 stretch_mode = 1
 
-[node name="Towers1" type="ParallaxLayer" parent="."]
+[node name="Towers1" type="ParallaxLayer" parent="." unique_id=532800031]
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Towers1"]
+[node name="TextureRect" type="TextureRect" parent="Towers1" unique_id=65682035]
 offset_top = -10877.0
 offset_right = 4290.0
 offset_bottom = 363.0
@@ -104,10 +104,10 @@ pivot_offset = Vector2(-609, 11468)
 texture = ExtResource("6_jwwbk")
 stretch_mode = 1
 
-[node name="Backroads" type="ParallaxLayer" parent="."]
+[node name="Backroads" type="ParallaxLayer" parent="." unique_id=871778178]
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Backroads"]
+[node name="TextureRect" type="TextureRect" parent="Backroads" unique_id=36670544]
 offset_top = -10877.0
 offset_right = 4290.0
 offset_bottom = 363.0
@@ -115,10 +115,10 @@ pivot_offset = Vector2(-609, 11468)
 texture = ExtResource("7_dvy6d")
 stretch_mode = 1
 
-[node name="Walkway" type="ParallaxLayer" parent="."]
+[node name="Walkway" type="ParallaxLayer" parent="." unique_id=1198593387]
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Walkway"]
+[node name="TextureRect" type="TextureRect" parent="Walkway" unique_id=1030534243]
 offset_top = -10877.0
 offset_right = 4290.0
 offset_bottom = 363.0
@@ -126,10 +126,10 @@ pivot_offset = Vector2(-609, 11468)
 texture = ExtResource("8_ni1bc")
 stretch_mode = 1
 
-[node name="Roads" type="ParallaxLayer" parent="."]
+[node name="Roads" type="ParallaxLayer" parent="." unique_id=690942944]
 motion_mirroring = Vector2(4290, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Roads"]
+[node name="TextureRect" type="TextureRect" parent="Roads" unique_id=371666787]
 offset_top = -10877.0
 offset_right = 4290.0
 offset_bottom = 363.0
@@ -137,10 +137,10 @@ pivot_offset = Vector2(-609, 11468)
 texture = ExtResource("9_q11sa")
 stretch_mode = 1
 
-[node name="Background" type="ParallaxLayer" parent="."]
+[node name="Background" type="ParallaxLayer" parent="." unique_id=825642524]
 motion_mirroring = Vector2(4290, 0)
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=515677499]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

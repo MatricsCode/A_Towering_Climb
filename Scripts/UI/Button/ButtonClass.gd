@@ -6,8 +6,6 @@ var time := 1.0
 var hovering := false
 
 func _ready():
-	visible = false
-	
 	await _spawn()
 	
 	time = randf_range(-100.0,100.0)

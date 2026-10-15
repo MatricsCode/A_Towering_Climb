@@ -9,6 +9,11 @@ extends Panel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	host_button.visible = false
+	join_button.visible = false
+	quit_button.visible = false
+	reload_lobbies_button.visible = false
+	
 	host_button.pressed.connect(_host_pressed)
 	join_button.pressed.connect(_join_pressed)
 	quit_button.pressed.connect(_quit_pressed)
@@ -39,3 +44,5 @@ func _lobby_match_list(lobbies : Array):
 		button.pressed.connect(_join_lobby_button_pressed)
 		
 		lobby_list.add_child(button)
+		
+		button.visible = false

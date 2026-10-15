@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cam0eoq23msfi"]
 
 [ext_resource type="Script" uid="uid://n0k8hsrj2410" path="res://Scripts/PlayerSelectorUI/player_selector.gd" id="1_xs5nl"]
+[ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Recources/MainTheme.tres" id="2_b5r3k"]
 [ext_resource type="Texture2D" uid="uid://dt2ju2vngh7gp" path="res://Art/Player/Baker/Baker1.png" id="2_e5v4a"]
 [ext_resource type="Script" uid="uid://yhp81sc8f8pp" path="res://Scripts/PlayerSelectorUI/vitaliser.gd" id="3_cx46x"]
 [ext_resource type="Texture2D" uid="uid://b2b6dnpdgaxl" path="res://Art/Player/Baker/Baker2.png" id="3_q1uvm"]
@@ -151,8 +152,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i78j7"]
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xs5nl"]
 properties/0/path = NodePath("MarginContainer/VBoxContainer/Visualiser/sprite:animation")
 properties/0/spawn = true
@@ -220,6 +219,7 @@ horizontal_alignment = 1
 [node name="Visualiser" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=910583039]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_b5r3k")
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
@@ -237,13 +237,9 @@ animation = &"1"
 autoplay = "0"
 speed_scale = 3.0
 
-[node name="HSeparator" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=107008240]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i78j7")
-
 [node name="Ability Selector" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=311679293]
 layout_mode = 2
+theme = ExtResource("2_b5r3k")
 script = ExtResource("28_b5r3k")
 
 [node name="SplitContainer" type="SplitContainer" parent="MarginContainer/VBoxContainer/Ability Selector" unique_id=396098344]
@@ -306,6 +302,7 @@ color = Color(0.81, 0.340335, 0.2349, 1)
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_b5r3k")
 script = ExtResource("3_cx46x")
 
 [node name="key_abilities" type="HSplitContainer" parent="MarginContainer/VBoxContainer/Vitaliser" unique_id=1476118413]
@@ -427,14 +424,10 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HSeparator2" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=1123994740]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i78j7")
-
 [node name="Customiser" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=296294639]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_b5r3k")
 script = ExtResource("4_ivr4c")
 
 [node name="SplitContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer/Customiser" unique_id=1757772312]
@@ -535,11 +528,6 @@ color = Color(0.81, 0.340335, 0.2349, 1)
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.81, 0.340335, 0.2349, 1)
-
-[node name="HSeparator3" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=2095558890]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i78j7")
 
 [node name="Ready" parent="MarginContainer/VBoxContainer" unique_id=317454667 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
 custom_minimum_size = Vector2(150, 25)
