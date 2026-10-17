@@ -28,9 +28,9 @@ func _join_pressed():
 	pass
 func _quit_pressed():
 	get_tree().quit()
-
-func _join_lobby_button_pressed():
-	pass
+func _join_lobby_button_pressed(lobby_id : String):
+	var int_lobby_id := int(lobby_id)
+	Steam.joinLobby(int_lobby_id)
 
 func _lobby_match_list(lobbies : Array):
 	for i in lobby_list.get_children():
@@ -41,7 +41,9 @@ func _lobby_match_list(lobbies : Array):
 		
 		button.name = str(lobby)
 		button.text = str(Steam.getLobbyData(lobby, "name"))
-		button.pressed.connect(_join_lobby_button_pressed)
+		button.return_name = true
+		
+		button.returning_name.connect(_join_lobby_button_pressed)
 		
 		lobby_list.add_child(button)
 		

@@ -35,7 +35,6 @@
 [ext_resource type="Texture2D" uid="uid://d0704c7trp3mq" path="res://Art/Player/Climber1/Climber14.png" id="33_8iwg6"]
 [ext_resource type="Texture2D" uid="uid://c23dyki441stt" path="res://Art/Player/Climber1/Climber15.png" id="34_0owtb"]
 
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0wkq"]
 bg_color = Color(0.117647, 0.117647, 0.117647, 1)
 corner_radius_top_left = 20
@@ -114,7 +113,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_txpqk")
 }],
-"loop": true,
+"loop": 1,
 "name": &"0",
 "speed": 5.0
 }, {
@@ -143,7 +142,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_y5s7s")
 }],
-"loop": true,
+"loop": 1,
 "name": &"1",
 "speed": 5.0
 }, {
@@ -157,7 +156,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("22_e0ssl")
 }],
-"loop": true,
+"loop": 1,
 "name": &"2",
 "speed": 5.0
 }, {
@@ -186,7 +185,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("30_6d8yj")
 }],
-"loop": true,
+"loop": 1,
 "name": &"3",
 "speed": 5.0
 }, {
@@ -203,12 +202,12 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("34_0owtb")
 }],
-"loop": true,
+"loop": 1,
 "name": &"4",
 "speed": 5.0
 }]
 
-[node name="PlayerSelect" type="Panel"]
+[node name="PlayerSelect" type="Panel" unique_id=738691476]
 custom_minimum_size = Vector2(210, 0)
 anchors_preset = -1
 anchor_top = -0.001
@@ -219,10 +218,10 @@ offset_bottom = 553.648
 theme = SubResource("Theme_uhaop")
 script = ExtResource("1_s0u7s")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=883292796]
 replication_config = SubResource("SceneReplicationConfig_0fie2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=943138268]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.057
@@ -239,23 +238,24 @@ pivot_offset = Vector2(-386, -37)
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=1254950894]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/ScrollContainer" unique_id=1656058848]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
-split_offset = 120
+split_offsets = PackedInt32Array(120)
 dragging_enabled = false
 dragger_visibility = 1
+split_offset = 120
 
-[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HSplitContainer"]
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HSplitContainer" unique_id=27955009]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="Glide" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
+[node name="Glide" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" unique_id=112420371 node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -267,7 +267,7 @@ script = ExtResource("3_1i328")
 func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Sky_Lift_Key" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
+[node name="Sky_Lift_Key" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" unique_id=1638352309 node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -279,7 +279,7 @@ script = ExtResource("3_1i328")
 func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Climbers_Hook" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
+[node name="Climbers_Hook" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" unique_id=1560526867 node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -291,7 +291,7 @@ script = ExtResource("3_1i328")
 func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Drum_Key" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
+[node name="Drum_Key" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" unique_id=1417662577 node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -303,7 +303,7 @@ script = ExtResource("3_1i328")
 func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Ram" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
+[node name="Ram" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" unique_id=275863579 node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -315,7 +315,7 @@ script = ExtResource("3_1i328")
 func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Sandwich" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
+[node name="Sandwich" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" unique_id=888798691 node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -328,7 +328,7 @@ script = ExtResource("3_1i328")
 func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Bean_Opener" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" node_paths=PackedStringArray("func_parent")]
+[node name="Bean_Opener" type="Button" parent="VBoxContainer/ScrollContainer/HSplitContainer/Buttons" unique_id=988771380 node_paths=PackedStringArray("func_parent")]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -340,12 +340,12 @@ script = ExtResource("3_1i328")
 func_parent = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cncyjq3g5cty0"
 
-[node name="Indicators" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HSplitContainer"]
+[node name="Indicators" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HSplitContainer" unique_id=1611063555]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 5
 
-[node name="Glide" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators"]
+[node name="Glide" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators" unique_id=919919124]
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -353,62 +353,62 @@ size_flags_vertical = 3
 theme = SubResource("Theme_xs5nl")
 color = Color(1, 0.184314, 0, 1)
 
-[node name="Sky_Lift_Key" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators"]
+[node name="Sky_Lift_Key" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators" unique_id=2142169313]
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 color = Color(1, 0.183333, 0, 1)
 
-[node name="Climbers_Hook" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators"]
+[node name="Climbers_Hook" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators" unique_id=1579141546]
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 color = Color(1, 0.183333, 0, 1)
 
-[node name="Drum_Key" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators"]
+[node name="Drum_Key" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators" unique_id=1168190686]
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 color = Color(1, 0.183333, 0, 1)
 
-[node name="Ram" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators"]
+[node name="Ram" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators" unique_id=159890431]
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 color = Color(1, 0.183333, 0, 1)
 
-[node name="Sandwich" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators"]
+[node name="Sandwich" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators" unique_id=1577838749]
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 color = Color(1, 0.183333, 0, 1)
 
-[node name="Bean_Opener" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators"]
+[node name="Bean_Opener" type="ColorRect" parent="VBoxContainer/ScrollContainer/HSplitContainer/Indicators" unique_id=1127797469]
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 color = Color(1, 0.183333, 0, 1)
 
-[node name="Ready" type="Button" parent="VBoxContainer"]
+[node name="Ready" type="Button" parent="VBoxContainer" unique_id=2024573596]
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("2_qvtvi")
 text = "Ready?"
 
-[node name="Back" type="Button" parent="VBoxContainer"]
+[node name="Back" type="Button" parent="VBoxContainer" unique_id=1761240099]
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("2_qvtvi")
 text = "Leave lobby?"
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 2
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=15088707]
+layout_mode = 0
 offset_left = 105.0
 offset_top = 140.0
 offset_right = 105.0
@@ -417,12 +417,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 use_top_left = true
 
-[node name="Background2" type="Panel" parent="CenterContainer"]
+[node name="Background2" type="Panel" parent="CenterContainer" unique_id=233288352]
 custom_minimum_size = Vector2(180, 240)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jsrcl")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer" unique_id=1908892907]
 position = Vector2(298, 73)
 sprite_frames = SubResource("SpriteFrames_qon4y")
 animation = &"2"

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cam0eoq23msfi"]
 
 [ext_resource type="Script" uid="uid://n0k8hsrj2410" path="res://Scripts/PlayerSelectorUI/player_selector.gd" id="1_xs5nl"]
-[ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Recources/MainTheme.tres" id="2_b5r3k"]
+[ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="2_b5r3k"]
 [ext_resource type="Texture2D" uid="uid://dt2ju2vngh7gp" path="res://Art/Player/Baker/Baker1.png" id="2_e5v4a"]
 [ext_resource type="Script" uid="uid://yhp81sc8f8pp" path="res://Scripts/PlayerSelectorUI/vitaliser.gd" id="3_cx46x"]
 [ext_resource type="Texture2D" uid="uid://b2b6dnpdgaxl" path="res://Art/Player/Baker/Baker2.png" id="3_q1uvm"]

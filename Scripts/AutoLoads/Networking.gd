@@ -8,7 +8,6 @@ var current_lobby
 var peer : MultiplayerPeer
 
 func _ready():
-	
 	Signals.request_lobby_list.connect(_request_lobby_list)
 	
 	Steam.initRelayNetworkAccess()
@@ -18,7 +17,6 @@ func _ready():
 	Steam.lobby_match_list.connect(func(lobbies : Array) : Signals.lobby_match_list.emit(lobbies))
 	
 	_request_lobby_list()
-	
 
 func _physics_process(_delta):
 	Steam.run_callbacks()
@@ -39,11 +37,11 @@ func _on_lobby_joined(lobby_id : int, _permissions : int, _locked : bool, respon
 		if Steam.getLobbyOwner(lobby_id) == Steam.getSteamID():
 			return
 		Signals.lobby_joined.emit(lobby_id)
-		peer.multiplayer = SteamMultiplayerPeer.new()
+		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
-		peer.create_client()
+		peer.create_client(Steam.getLobbyOwner(lobby_id))
 		multiplayer.multiplayer_peer = peer
-		Signals.lobby_joined.emit()
+		Signals.lobby_joined.emit(lobby_id)
 func _on_join_request(lobby_id : int, _steam_id : int) -> void:
 	Steam.joinLobby(lobby_id)
 

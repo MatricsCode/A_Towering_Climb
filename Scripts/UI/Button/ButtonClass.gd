@@ -1,9 +1,12 @@
 extends Button
 class_name HoverButton
 
+signal returning_name(my_name : String)
+
 var time := 1.0
 
 var hovering := false
+var return_name := false
 
 func _ready():
 	await _spawn()
@@ -18,7 +21,7 @@ func _ready():
 func _physics_process(delta):
 	if !hovering:
 		time += 1.0
-		rotation_degrees = cos(time/20) * (size.x / 300)
+		rotation_degrees = (cos(time/20) / (size.x)) * 750
 
 func _mouse_entered():
 	hovering = true
@@ -61,3 +64,7 @@ func _remove():
 	await tweener.finished
 	
 	queue_free()
+
+func _pressed():
+	if return_name:
+		returning_name.emit(name)

@@ -1,3 +1,7 @@
+TextureRect
+ColorRect
+Panel
+AnimationPlayer
 MarginContainer
 HoverButton
 VBoxContainer
@@ -9,6 +13,3 @@ TextEdit
 Camera2D
 CanvasLayer
 Button
-Panel
-HBoxContainer
-AnimationTree

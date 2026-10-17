@@ -3,7 +3,6 @@ var peer_ID = 0
 var user_ID = 0
 var countdown_timer = 0.5
 
-
 var important_positions = {}
 var max_abilitys = 3
 
@@ -21,6 +20,8 @@ var all_player_abilitys = {
 
 ## It is {"ID" : {"Position" : Vector2, "Costume" : 0, "Abilities" : {"Key" : Ability}}}
 var player_attributes = {}
+
+var player_prefab = []
 
 func reset_now():
 	player_attributes.clear()

@@ -1,0 +1,109 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bl7fd60qs8x7s"]
+
+[ext_resource type="Texture2D" uid="uid://7nqqsy0r6u5v" path="res://Art/Player/Baker.png" id="1_ycnj4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yili"]
+atlas = ExtResource("1_ycnj4")
+region = Rect2(3840, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqxr6"]
+atlas = ExtResource("1_ycnj4")
+region = Rect2(4480, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6thw6"]
+atlas = ExtResource("1_ycnj4")
+region = Rect2(5120, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep4xd"]
+atlas = ExtResource("1_ycnj4")
+region = Rect2(5760, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0opqo"]
+atlas = ExtResource("1_ycnj4")
+region = Rect2(3200, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bggi1"]
+atlas = ExtResource("1_ycnj4")
+region = Rect2(6400, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvlle"]
+atlas = ExtResource("1_ycnj4")
+region = Rect2(7040, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uylr"]
+atlas = ExtResource("1_ycnj4")
+region = Rect2(7680, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuwke"]
+atlas = ExtResource("1_ycnj4")
+region = Rect2(8320, 0, 640, 640)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yili")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqxr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6thw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep4xd")
+}],
+"loop": 1,
+"name": &"climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0opqo")
+}],
+"loop": 1,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bggi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvlle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uylr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuwke")
+}],
+"loop": 1,
+"name": &"glide",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"pre_jump",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"ram",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]

@@ -22,6 +22,7 @@ func _bouncing():
 	position.x += 1
 	position.y = -5000 + sin(bouncing_time) * 100
 	bouncing_time += 0.01
+	cam.zoom = Vector2(1 + cos(bouncing_time/2) * 0.1, 1 + cos(bouncing_time/2) * 0.1)
 func _following_player():
 	pass
 
@@ -31,6 +32,6 @@ func _start_animation():
 	current_state = States.FOLLOWING_PLAYER
 	
 	movement.set_ease(Tween.EASE_IN_OUT)
-	movement.set_trans(Tween.TRANS_ELASTIC)
-	movement.tween_property(self, "position", Vector2.ZERO, 3)
-	movement.tween_property(cam, "zoom", Vector2.ONE, 3)
+	movement.set_parallel()
+	movement.tween_property(cam, "zoom", Vector2(0.5,0.5), 1.5)
+	movement.tween_property(self, "position", Vector2(0,get_window().size.y), 3)

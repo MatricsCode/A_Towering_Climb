@@ -18,12 +18,14 @@ func _ready():
 	make_current()
 	
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", Vector2(position.x, target_position), GlobalScript.countdown_timer).set_ease(Tween.EASE_IN_OUT)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "position", Vector2(position.x, target_position), GlobalScript.countdown_timer)
 	
 	await tween.step_finished
 	
 	tween = get_tree().create_tween()
-	tween.tween_property(self, "position", Vector2(position.x, -1620.0), 0.1).set_ease(Tween.EASE_IN_OUT)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "position", Vector2(position.x, -1620.0), 0.1)
 	
 	await tween.step_finished
 	started = true
@@ -32,7 +34,8 @@ func _ready():
 	
 	$Background.visible = true
 	tween = get_tree().create_tween()
-	tween.tween_property(self, "zoom", Vector2(0.5, 0.5), 2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(self, "zoom", Vector2(0.5, 0.5), 2)
 
 func _physics_process(delta):
 	var PosX = position.x - 1152.0 
@@ -43,11 +46,13 @@ func _physics_process(delta):
 	if started == true:
 		if position.y == -1620.0:
 			var tween = get_tree().create_tween()
-			tween.tween_property(self, "position", Vector2(position.x, target_position), 30).set_ease(Tween.EASE_IN_OUT)
+			tween.set_ease(Tween.EASE_IN)
+			tween.tween_property(self, "position", Vector2(position.x, target_position), 30)
 			
 		elif position.y == target_position:
 			var tween = get_tree().create_tween()
-			tween.tween_property(self, "position", Vector2(position.x, -1620.0), 30).set_ease(Tween.EASE_IN_OUT)
+			tween.set_ease(Tween.EASE_IN)
+			tween.tween_property(self, "position", Vector2(position.x, -1620.0), 30)
 
 func has_started(data):
-	queue_free()
+	started = true
