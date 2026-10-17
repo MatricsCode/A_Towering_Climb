@@ -1,18 +1,12 @@
 extends CharacterBody2D
 
+@export var player : PlayerSource
+
 ## --- Enums ---
 enum States {GROUND, AIR, CLIMB, PAUSED, OVERIDDEN, EMPTY}
 
 ## --- Constants ---
 const MAX_GRAVITY = 10000
-var outfits = [
-	preload("res://Recourses/PlayerSprites/Climber1.tres"),
-	preload("res://Recourses/PlayerSprites/Climber2.tres"),
-	preload("res://Recourses/PlayerSprites/Baker.tres"),
-	preload("res://Recourses/PlayerSprites/Heinrich.tres"),
-	preload("res://Recourses/PlayerSprites/Gary.tres"),]
-var projectiles = {
-	"Sandwich" = preload("res://Scenes/Sandwich.tscn"),}
 var sounds = {
 	"Walk" : preload("res://Sound Effects/Walking.mp3"),
 	"Land" : preload("res://Sound Effects/Land.mp3"),
@@ -41,7 +35,6 @@ var camera_changing : Tween
 
 ## --- Nodes ---
 #region Nodes
-@onready var cam = $Camera2D 
 @onready var sprite = $Sprite
 @onready var wall_detector = $Detectors/WallDetectors
 @onready var edge_detectors = $Detectors/EdgeDetectors
@@ -54,15 +47,11 @@ var camera_changing : Tween
 #region Inbuilt Functions
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scenes
-	cam.make_current()
-	
-	sprite.sprite_frames = outfits[GlobalScript.player_attributes.get(ID)["Costume"]]
+	sprite.sprite_frames = player.outfits[GlobalScript.player_attributes.get(ID)["Costume"]]
 	
 	for i in main_vars:
 		for y in main_vars[i]:
 			main_vars_reset.append(main_vars.get(i).get(y))
-	
-	cam.enabled = is_multiplayer_authority() ## Checks if you are this player and grants/denies you the camera from this
 	
 	camera_changing = get_tree().create_tween()
 	
@@ -106,14 +95,14 @@ func _physics_process(_delta):  ## Runs every physics frames
 		_:
 			printerr("A unidentified state has been entered")
 	
-	if camera_changing.is_running() == false and current_state != States.PAUSED:
-		camera_move()
-	
-	if shaking_camera != 0:
-		camera_shake(shaking_camera)
-	
-	if shaking_camera == 0:
-		cam.offset = lerp(cam.offset, Vector2.ZERO, 0.002)
+	#if camera_changing.is_running() == false and current_state != States.PAUSED:
+		#camera_move()
+	#
+	#if shaking_camera != 0:
+		#camera_shake(shaking_camera)
+	#
+	#if shaking_camera == 0:
+		#cam.offset = lerp(cam.offset, Vector2.ZERO, 0.002)
 	
 	move_and_slide()
 #endregion
@@ -424,36 +413,36 @@ func switch(old_state, new_state):
 	
 	main_vars.switching_vars.switch_again = true
 
-func camera_move():
-	var input = Input.get_vector("Left", "Right", "Up", "Down")
-	
-	var multiplier
-	
-	if input.y == 0 or input.x == 0:
-		multiplier = 1
-	else:
-		multiplier = 0.75
-	
-	if input.y < 0:
-		cam.position.y = lerp(cam.position.y, $CameraPositions/Up.position.y * multiplier, 0.01)
-	elif input.y > 0:
-		cam.position.y = lerp(cam.position.y, $CameraPositions/Down.position.y * multiplier, 0.01)
-	else:
-		cam.position.y = lerp(cam.position.y, $CameraPositions/Middle.position.y * multiplier, 0.02)
-	
-	if input.x < 0:
-		cam.position.x = lerp(cam.position.x, $CameraPositions/Left.position.x * multiplier, 0.01)
-	elif input.x > 0:
-		cam.position.x = lerp(cam.position.x, $CameraPositions/Right.position.x * multiplier, 0.01)
-	else:
-		cam.position.x = lerp(cam.position.x, $CameraPositions/Middle.position.x * multiplier, 0.02)
-
-func camera_zoom(intensity : float,  duration : float):
-	var cam_tween = get_tree().create_tween()
-	cam_tween.set_parallel(true)
-	cam_tween.tween_property(cam, "zoom", Vector2(intensity,intensity), duration)
-func camera_shake(shake_intensity : int):
-	cam.offset = Vector2(randf_range(-shake_intensity * 10, shake_intensity * 10), randf_range(-shake_intensity * 10, shake_intensity * 10))
+#func camera_move():
+	#var input = Input.get_vector("Left", "Right", "Up", "Down")
+	#
+	#var multiplier
+	#
+	#if input.y == 0 or input.x == 0:
+		#multiplier = 1
+	#else:
+		#multiplier = 0.75
+	#
+	#if input.y < 0:
+		#cam.position.y = lerp(cam.position.y, $CameraPositions/Up.position.y * multiplier, 0.01)
+	#elif input.y > 0:
+		#cam.position.y = lerp(cam.position.y, $CameraPositions/Down.position.y * multiplier, 0.01)
+	#else:
+		#cam.position.y = lerp(cam.position.y, $CameraPositions/Middle.position.y * multiplier, 0.02)
+	#
+	#if input.x < 0:
+		#cam.position.x = lerp(cam.position.x, $CameraPositions/Left.position.x * multiplier, 0.01)
+	#elif input.x > 0:
+		#cam.position.x = lerp(cam.position.x, $CameraPositions/Right.position.x * multiplier, 0.01)
+	#else:
+		#cam.position.x = lerp(cam.position.x, $CameraPositions/Middle.position.x * multiplier, 0.02)
+#
+#func camera_zoom(intensity : float,  duration : float):
+	#var cam_tween = get_tree().create_tween()
+	#cam_tween.set_parallel(true)
+	#cam_tween.tween_property(cam, "zoom", Vector2(intensity,intensity), duration)
+#func camera_shake(shake_intensity : int):
+	#cam.offset = Vector2(randf_range(-shake_intensity * 10, shake_intensity * 10), randf_range(-shake_intensity * 10, shake_intensity * 10))
 
 func overide(overidden2 : bool):
 	if overidden2:
