@@ -3,7 +3,11 @@ extends Panel
 @export var host_button : HoverButton
 @export var join_button : HoverButton
 @export var quit_button : HoverButton
+
 @export var reload_lobbies_button : HoverButton
+
+@export var id_button : HoverButton
+@export var lobby_input_field : LineEdit
 
 @export var lobby_list : VBoxContainer
 
@@ -18,7 +22,10 @@ func _ready():
 	join_button.pressed.connect(_join_pressed)
 	quit_button.pressed.connect(_quit_pressed)
 	
+	id_button.pressed.connect(func(): lobby_input_field.clear())
 	reload_lobbies_button.pressed.connect(func() : Signals.request_lobby_list.emit())
+	
+	lobby_input_field.text_changed.connect(_search_request)
 	
 	Signals.lobby_match_list.connect(_lobby_match_list)
 
@@ -48,3 +55,21 @@ func _lobby_match_list(lobbies : Array):
 		lobby_list.add_child(button)
 		
 		button.visible = false
+
+func _search_request(new_text : String):
+	var is_id = new_text.substr(0,1)
+	var lobby_id = new_text.substr(3,-1)
+	
+	if id_button.button_pressed:
+		for button in lobby_list.get_children():
+			if button.name.find(lobby_id) != -1 and lobby_id != null:
+				button.visible = true
+			else:
+				button.visible = false
+	
+	else:
+		for button in lobby_list.get_children():
+			if button.text.find(lobby_id) != -1:
+				button.visible = true
+			else:
+				button.visible = false

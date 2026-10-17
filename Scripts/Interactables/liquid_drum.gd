@@ -63,7 +63,7 @@ func player_exited(player):
 func _ready():
 	GlobalScript.important_positions[position] = 5
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if players.is_empty() == false and sprite.animation == "Full":
 		sprite.play("Emptying")
 		

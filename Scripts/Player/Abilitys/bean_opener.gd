@@ -11,7 +11,7 @@ func _ready():
 	add_area_2D(25, area_interact)
 	area = get_child(0)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if area != null:
 		area.position = player.position
 	

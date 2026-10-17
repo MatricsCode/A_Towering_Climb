@@ -805,7 +805,7 @@ lobby_ui = NodePath("LobbyUI")
 game_ui = NodePath("GameUI")
 caracter_selector_ui = NodePath("CaracterSelectorUI")
 
-[node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "quit_button", "reload_lobbies_button", "lobby_list")]
+[node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "quit_button", "reload_lobbies_button", "id_button", "lobby_input_field", "lobby_list")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -817,6 +817,8 @@ host_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Host")
 join_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Join")
 quit_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Quit")
 reload_lobbies_button = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/ReloadLobbies")
+id_button = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/HBoxContainer/Container/SwitchToID")
+lobby_input_field = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/HBoxContainer/LobbyName")
 lobby_list = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer/LobbyButtonContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="LobbyUI" unique_id=724424861]
@@ -864,6 +866,27 @@ alignment = 1
 layout_mode = 2
 text = "Lobbies:"
 horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector" unique_id=1079137944]
+layout_mode = 2
+
+[node name="Container" type="Container" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector/HBoxContainer" unique_id=1031466259]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="SwitchToID" type="Button" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector/HBoxContainer/Container" unique_id=1678100639]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "  ID:  "
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="LobbyName" type="LineEdit" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector/HBoxContainer" unique_id=33992665]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Lobby Name"
+alignment = 1
 
 [node name="LobbyButtons" type="MarginContainer" parent="LobbyUI/MarginContainer/HBoxContainer/LobbiesSelector" unique_id=1421440796]
 layout_mode = 2

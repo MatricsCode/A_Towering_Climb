@@ -1,7 +1,6 @@
 extends Node2D
 
-
-func touching_wall(exact = false):
+func _touching_wall(exact = false):
 	if exact == false:
 		if $WallDetector1.is_colliding() or $WallDetector2.is_colliding():
 			return true

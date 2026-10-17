@@ -18,7 +18,7 @@ func _ready():
 	
 	_spawn()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !hovering:
 		time += 1.0
 		rotation_degrees = (cos(time/20) / (size.x)) * 750

@@ -27,7 +27,7 @@ func player_entered(player):
 func player_exited(player):
 	sprite.texture = MOVING_PLATFORM_IDLE
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_pressed("Ability") and not players.is_empty():
 		sprite.texture = MOVING_PLATFORM_IDLE
 		moving = true

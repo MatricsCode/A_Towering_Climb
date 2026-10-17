@@ -3,7 +3,7 @@ extends abilitys
 var can_throw = false
 var counter = 0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	counter += 0.01
 	
 	if Input.is_action_pressed("Ability") and counter > 100 and player.current_state == activation_state:

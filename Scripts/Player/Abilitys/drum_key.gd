@@ -26,7 +26,7 @@ func _ready():
 	
 	scanner.add_child(hit_area)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if area != null:
 		area.position = player.position
 	

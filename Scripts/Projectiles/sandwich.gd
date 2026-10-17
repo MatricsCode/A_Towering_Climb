@@ -12,7 +12,7 @@ func _ready():
 	
 	#$Area2D.monitoring = true
 
-func _process(delta):
+func _process(_delta):
 	position.x += speed * direction 
 
 

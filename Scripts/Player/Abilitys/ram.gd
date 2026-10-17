@@ -8,7 +8,7 @@ var timer = 0
 
 var position = Vector2.ZERO
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_pressed("Ability") and player.current_state == activation_state and player.is_on_floor():
 		player.set_collision_mask_value(3, false)
 		flying = false
