@@ -8,8 +8,13 @@ var time := 1.0
 var hovering := false
 var return_name := false
 
+var min_size := Vector2.ONE
+
 func _ready():
 	await _spawn()
+	
+	if custom_minimum_size != Vector2.ZERO:
+		min_size = custom_minimum_size
 	
 	time = randf_range(-100.0,100.0)
 	pivot_offset_ratio = Vector2(0.5,0.5)
@@ -34,14 +39,14 @@ func _mouse_entered():
 	tweener.set_parallel().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tweener.tween_property(self, "rotation_degrees", 0, 0.05)
 	tweener.tween_property(self, "scale", Vector2(1.3,1.3), 0.05)
-	tweener.tween_property(self, "custom_minimum_size", Vector2(1.3,1.3), 0.05)
+	tweener.tween_property(self, "custom_minimum_size", Vector2(min_size.x * 1.3, min_size.y * 1.3), 0.05)
 func _mouse_exited():
 	hovering = false
 	time += randf_range(-100.0,100.0)
 	var tweener = get_tree().create_tween()
 	tweener.set_parallel().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tweener.tween_property(self, "scale", Vector2(1,1), 0.05)
-	tweener.tween_property(self, "custom_minimum_size", Vector2(1,1), 0.05)
+	tweener.tween_property(self, "custom_minimum_size", min_size, 0.05)
 
 func _spawn():
 	self_modulate.a = 0

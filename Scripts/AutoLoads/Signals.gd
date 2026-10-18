@@ -11,8 +11,6 @@ signal lobby_start_game()
 signal lobby_pause_game()
 signal lobby_finished_game(winner : int)
 
-signal player_list(player_prefab : PlayerSource)
-
 signal projectile (type)
 
 signal winner (name)

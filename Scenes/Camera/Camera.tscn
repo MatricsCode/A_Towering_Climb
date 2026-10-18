@@ -6,3 +6,4 @@
 script = ExtResource("1_0jrrr")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=243259360]
+limit_bottom = 0

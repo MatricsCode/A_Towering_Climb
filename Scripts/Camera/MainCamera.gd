@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var cam = $Camera2D
 
-enum States {BOUNCING, FOLLOWING_PLAYER, FOLLOWING_WINNER}
+enum States {BOUNCING, STARTING_ANIMATION, FOLLOWING_PLAYER}
 var current_state = States.BOUNCING
 
 var bouncing_time = 0
@@ -15,6 +15,8 @@ func _physics_process(_delta):
 	match current_state:
 		States.BOUNCING:
 			_bouncing()
+		States.STARTING_ANIMATION:
+			pass
 		States.FOLLOWING_PLAYER:
 			_following_player()
 
@@ -27,11 +29,33 @@ func _following_player():
 	pass
 
 func _start_animation():
+	current_state = States.STARTING_ANIMATION
+	
 	var movement = get_tree().create_tween()
-	
-	current_state = States.FOLLOWING_PLAYER
-	
-	movement.set_ease(Tween.EASE_IN_OUT)
 	movement.set_parallel()
-	movement.tween_property(cam, "zoom", Vector2(0.5,0.5), 1.5)
-	movement.tween_property(self, "position", Vector2(0,get_window().size.y*-1), 3)
+	movement.set_ease(Tween.EASE_OUT)
+	movement.tween_property(self, "position", Vector2(0, -10000), 2)
+	movement.tween_property(cam, "zoom", Vector2(0.2, 0.2), 2)
+	
+	await get_tree().create_timer(2.5).timeout
+	movement.kill()
+	movement = get_tree().create_tween()
+	movement.set_ease(Tween.EASE_OUT)
+	movement.tween_property(self, "position", Vector2(0,0), 5)
+	
+	await get_tree().create_timer(5.5).timeout
+	movement.kill()
+	movement = get_tree().create_tween()
+	movement.set_ease(Tween.EASE_OUT)
+	movement.tween_property(self, "position", Vector2(0,-10000), 5)
+	
+	await get_tree().create_timer(5.5).timeout
+	
+	movement.kill()
+	movement = get_tree().create_tween()
+	movement.set_parallel()
+	movement.set_ease(Tween.EASE_OUT)
+	movement.tween_property(self, "position", Vector2(0,0), 2)
+	movement.tween_property(cam, "zoom", Vector2(0.6,0.6), 2)
+	
+	

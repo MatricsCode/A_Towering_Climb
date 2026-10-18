@@ -10,7 +10,7 @@
 [node name="Main" type="Node2D" unique_id=1591334068]
 script = ExtResource("1_kln2b")
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1671365010]
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="." unique_id=1671365010]
 spawn_path = NodePath("..")
 
 [node name="ParallaxBackground" parent="." unique_id=124851353 instance=ExtResource("3_kln2b")]
@@ -110,3 +110,8 @@ text = "This is a Spacer"
 
 [node name="CameraControl" parent="." unique_id=445707866 instance=ExtResource("4_rgh2o")]
 position = Vector2(688, -5191)
+
+[node name="Players" type="Node2D" parent="." unique_id=120732521]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Players" unique_id=1970020386]
+spawn_path = NodePath("..")

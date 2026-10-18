@@ -1,14 +1,15 @@
 extends Node
 
-const LOBBY_TYPE := Steam.LobbyType.LOBBY_TYPE_FRIENDS_ONLY
+const LOBBY_TYPE := Steam.LobbyType.LOBBY_TYPE_PUBLIC
 const MAX_PLAYERS := 4
 
-var current_lobby
+var current_lobby : int
 
 var peer : MultiplayerPeer
 
 func _ready():
 	Signals.request_lobby_list.connect(_request_lobby_list)
+	Signals.lobby_start_game.connect(func(): Steam.setLobbyJoinable(current_lobby, false))
 	
 	Steam.initRelayNetworkAccess()
 	Steam.lobby_created.connect(_on_lobby_created)
@@ -26,24 +27,36 @@ func _host_lobby():
 
 func _on_lobby_created(connected : int, lobby_id : int) -> void:
 	if connected == Steam.RESULT_OK:
-		Signals.lobby_joined.emit(lobby_id)
+		
 		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
 		peer.create_host()
 		multiplayer.multiplayer_peer = peer
 		Signals.host_created.emit(lobby_id)
-		print(Steam.getPersonaName())
-		Steam.setLobbyData(lobby_id, "name", str(Steam.getPersonaName(), "'s lobby"))
+		current_lobby = lobby_id
+		
+		Steam.setLobbyData(lobby_id, "name", "Kodumaster's lobby")
+		Steam.setLobbyJoinable(lobby_id, true)
+		
+		print(Steam.getSteamID())
+
 func _on_lobby_joined(lobby_id : int, _permissions : int, _locked : bool, response : int) -> void:
 	if response == Steam.CHAT_ROOM_ENTER_RESPONSE_SUCCESS:
-		if Steam.getLobbyOwner(lobby_id) == Steam.getSteamID():
-			return
+		
+
 		Signals.lobby_joined.emit(lobby_id)
-		peer = SteamMultiplayerPeer.new()
-		peer.server_relay = true
-		peer.create_client(Steam.getLobbyOwner(lobby_id))
-		multiplayer.multiplayer_peer = peer
-		Signals.lobby_joined.emit(lobby_id)
+		
+		if Steam.getLobbyOwner(lobby_id) != Steam.getSteamID():
+			peer = SteamMultiplayerPeer.new()
+			peer.server_relay = true
+			multiplayer.multiplayer_peer = peer
+			Signals.host_created.emit(lobby_id)
+			current_lobby = lobby_id
+			
+			peer.create_client(Steam.getLobbyOwner(lobby_id))
+			Signals.lobby_joined.emit(lobby_id)
+			
+		
 func _on_join_request(lobby_id : int, _steam_id : int) -> void:
 	Steam.joinLobby(lobby_id)
 

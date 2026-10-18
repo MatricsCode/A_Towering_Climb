@@ -15,12 +15,15 @@ corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
 [resource]
+Button/constants/outline_size = 10
 Button/font_sizes/font_size = 32
 Button/styles/pressed = SubResource("StyleBoxFlat_rgh2o")
 HBoxContainer/constants/separation = 15
+Label/constants/outline_size = 10
 Label/font_sizes/font_size = 32
 Label/styles/focus = SubResource("StyleBoxFlat_0r01f")
 Label/styles/normal = SubResource("StyleBoxFlat_0r01f")
+LineEdit/constants/outline_size = 10
 LineEdit/font_sizes/font_size = 32
 LineEdit/styles/focus = SubResource("StyleBoxFlat_0r01f")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_0r01f")
