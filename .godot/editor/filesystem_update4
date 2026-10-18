@@ -1,3 +1,10 @@
 res://Scenes/UI/MainUI.tscn
 res://Components/Themes/MainTheme.tres
 res://Old/Recourses/Tileset.tres
+res://Scenes/PlayerSelectorTEST.tscn
+res://addons/godotsteam/editor/updater.tres
+res://Scripts/UI/CharacterSelector/CharacterSelectorMain.gd
+res://Scripts/UI/CharacterSelectorUI.gd
+res://Old/Recourses/UI/main.tres
+res://Old/Recourses/UI/PauseBackground.tres
+res://Old/Recourses/UI/WinBackground.tres

@@ -38,6 +38,9 @@ func _add_player():
 			_add_player())
 		player_selector.loaded.connect(func():
 			_add_player())
+		player_selector.start.connect(func():
+			if Steam.getLobbyOwner(Networking.current_lobby) == Steam.getSteamID():
+				_start.rpc())
 		player_selectors.add_child(player_selector)
 
 @rpc("authority", "call_local", "reliable")

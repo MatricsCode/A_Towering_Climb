@@ -2,6 +2,7 @@ extends Control
 
 signal loaded
 signal remove
+signal start
 
 @export var selected_character : PlayerSource
 
@@ -9,21 +10,25 @@ signal remove
 @export var CharacterSelector : MarginContainer
 
 @export var remove_button : HoverButton
+@export var loadbutton : HoverButton
+
 @export var start_button : HoverButton
 
 func _ready():
 	
 	background.visible = true
 	CharacterSelector.visible = false
-	start_button.visible = true
+	loadbutton.visible = true
 	
 	remove_button.pressed.connect(func(): 
 		remove.emit()
 		queue_free())
-	start_button.pressed.connect(_load)
+	loadbutton.pressed.connect(_load)
+	start_button.pressed.connect(func():
+		start.emit())
 
 func _load():
-	start_button.visible = false
+	loadbutton.visible = false
 	CharacterSelector.visible = true
 	
 	loaded.emit()

@@ -30,7 +30,7 @@ corner_radius_bottom_left = 60
 [sub_resource type="Theme" id="Theme_hqh25"]
 Panel/styles/panel = SubResource("StyleBoxFlat_gkc0f")
 
-[node name="CharacterSelector" type="Control" unique_id=976446751 node_paths=PackedStringArray("background", "CharacterSelector", "remove_button", "start_button")]
+[node name="CharacterSelector" type="Control" unique_id=976446751 node_paths=PackedStringArray("background", "CharacterSelector", "remove_button", "loadbutton", "start_button")]
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -45,7 +45,8 @@ script = ExtResource("1_rtt77")
 background = NodePath("MarginContainer/Background")
 CharacterSelector = NodePath("MarginContainer/MainCharacterContainer")
 remove_button = NodePath("MarginContainer/MainCharacterContainer/VBoxContainer/RemoveButton")
-start_button = NodePath("MarginContainer/LoadButton")
+loadbutton = NodePath("MarginContainer/LoadButton")
+start_button = NodePath("MarginContainer/MainCharacterContainer/VBoxContainer/StartButton")
 
 [node name="MarginContainer" type="Control" parent="." unique_id=1858508110]
 layout_mode = 1
