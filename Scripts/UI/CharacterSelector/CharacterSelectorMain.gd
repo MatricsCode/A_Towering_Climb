@@ -1,44 +1,59 @@
 extends Control
 
-signal remove()
-signal loaded()
-signal start()
+signal finished()
 
 enum States {SPAWN, CHARACTER, ABILITIES, FINISHED}
 
 var current_state =  States.SPAWN
 
+@onready var animations = $AnimationPlayer
+
 @export var selected_character : PlayerSource
 
 @export var background : Panel
 @export var CharacterSelector : MarginContainer
+@export var AbilitiySelector : MarginContainer
 
 @export var remove_buttons : Array[HoverButton]
-@export var load_button : HoverButton
 
 @export var start_button : HoverButton
+@export var costume_buttons : Array[HoverButton]
+@export var ability_buttons : Array[HoverButton]
+@export var finished_button : HoverButton
 
-
+var loaded := false
+var active := false
 
 func _ready():
-	background.visible = true
-	CharacterSelector.visible = false
-	load_button.visible = true
+	animations.play("Start")
 	
 	for remove_button in remove_buttons:
 		remove_button.pressed.connect(func(): 
-			remove.emit()
-			queue_free())
+			loaded = false
+			active = false
+			animations.play("RemoveInput"))
 	
-	load_button.pressed.connect(_load)
-	start_button.pressed.connect(func():
-		start.emit())
+	start_button.pressed.connect(_start)
+	for ability_button in ability_buttons:
+		ability_button.pressed.connect(func():
+			active = false
+			animations.play("ToAbilities"))
+	for costume_button in costume_buttons:
+		costume_button.pressed.connect(func():
+			active = false
+			animations.play("ToCostumes"))
+	finished_button.pressed.connect(func():
+		active = true
+		animations.play("Finished")
+		finished.emit())
 
-func _load():
+func _start():
+	start_button.visible = false
+	
 	selected_character = PlayerSource.new()
+	animations.play("SpawnIn")
 	
-	
-	loaded.emit()
+	loaded = true
 
 
 

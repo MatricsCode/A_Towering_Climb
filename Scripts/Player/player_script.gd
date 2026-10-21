@@ -5,6 +5,9 @@ extends CharacterBody2D
 @export var wall_detector : Node2D
 @export var edge_detectors : Node2D
 
+var steam_user : int
+var character_user : int
+
 ## --- Enums ---
 enum States {GROUND, AIR, CLIMB, PAUSED, OVERIDDEN, EMPTY}
 

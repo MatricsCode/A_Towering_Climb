@@ -7,6 +7,8 @@ var current_lobby : int
 
 var peer : MultiplayerPeer
 
+var host := false
+
 func _ready():
 	Signals.request_lobby_list.connect(_request_lobby_list)
 	Signals.lobby_start_game.connect(func(): Steam.setLobbyJoinable(current_lobby, false))
@@ -23,6 +25,7 @@ func _physics_process(_delta):
 	Steam.run_callbacks()
 
 func _host_lobby():
+	host = true
 	Steam.createLobby(LOBBY_TYPE, MAX_PLAYERS)
 
 func _on_lobby_created(connected : int, lobby_id : int) -> void:

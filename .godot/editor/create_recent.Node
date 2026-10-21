@@ -1,8 +1,8 @@
-AnimationPlayer
+HoverButton
 VBoxContainer
 MarginContainer
+AnimationPlayer
 Label
-HoverButton
 HBoxContainer
 TextureRect
 Control
@@ -12,4 +12,3 @@ Button
 CenterContainer
 Panel
 ColorRect
-MultiplayerSpawner

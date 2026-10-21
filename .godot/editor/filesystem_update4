@@ -6,3 +6,11 @@ res://addons/godotsteam/editor/updater.tres
 res://Scenes/PlayerSelectorTEST.tscn
 res://Scripts/UI/CharacterSelector/CharacterSelectorMain.gd
 res://Scripts/UI/CharacterSelector/Customiser.gd
+res://Scenes/Player.tscn
+res://Scripts/Player/player_script.gd
+res://Scenes/Main.tscn
+res://Scripts/LobbyUI/LobbyUIMain.gd
+res://Scenes/Autoloads/Networking.tscn
+res://Scripts/AutoLoads/Networking.gd
+res://Scenes/Autoloads/GlobalScript.tscn
+res://Scripts/AutoLoads/GlobalScript.gd
