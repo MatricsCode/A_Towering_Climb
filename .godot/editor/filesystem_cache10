@@ -1,7 +1,7 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1792347745
+::res://::1792561038
 default_bus_layout.tres::AudioBusLayout::698027414198536659::1792309861::0::1::::<><><>0<>0<><>::
-export_presets.cfg::TextFile/TextFile::-1::1785331056::0::1::::<><><>0<>0<><>::
+export_presets.cfg::TextFile::-1::1792349453::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::3041926038368580319::1754591159::1754591168::1::::<><><>0<>0<>2d6f129e0168ad32ec413d66709c61f3<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 test.gd::GDScript::3508587568695867276::1792258873::0::1::::<>CharacterBody2D<><>0<>0<><>::
 Test.tscn::PackedScene::5738890036137853620::1792257739::0::1::::<><><>0<>0<><>::uid://bjlscvq7o16m2::::res://icon.svg<>uid://bp8t6o5i5cf1u::::res://test.gd<>uid://t2ada3fb8vts::::res://Scripts/Player/wall_detectors.gd
@@ -13,8 +13,8 @@ license.md::TextFile::-1::1791718703::0::1::::<><><>0<>0<><>::
 plugin.cfg::TextFile::-1::1791718703::0::1::::<><><>0<>0<><>::
 readme.md::TextFile::-1::1791718703::0::1::::<><><>0<>0<><>::
 ::res://addons/godotsteam/androidarm64/::1791718704
-::res://addons/godotsteam/editor/::1792345162
-updater.tres::Theme::3010334859058173464::1792345162::0::1::::<><><>0<>0<><>::
+::res://addons/godotsteam/editor/::1792519463
+updater.tres::Theme::3010334859058173464::1792519463::0::1::::<><><>0<>0<><>::
 updating.gd::GDScript::6963905025587561942::1791718704::0::1::::<>PopupPanel<><>0<>1<><>::
 updating.tscn::PackedScene::4844468035779095226::1791718704::0::1::::<><><>0<>0<><>::uid://bi5h1mi6a0inw::::res://addons/godotsteam/editor/updater.tres<>uid://c6hmq7cphoksk::::res://addons/godotsteam/editor/updating.gd
 ::res://addons/godotsteam/linux32/::1791718703
@@ -22,7 +22,7 @@ updating.tscn::PackedScene::4844468035779095226::1791718704::0::1::::<><><>0<>0<
 ::res://addons/godotsteam/linuxarm64/::1791718703
 ::res://addons/godotsteam/osx/::1791718703
 ::res://addons/godotsteam/win32/::1791718703
-::res://addons/godotsteam/win64/::1792347740
+::res://addons/godotsteam/win64/::1792561034
 ::res://addons/godot_super-wakatime/::1791483379
 api_key_prompt.tscn::PackedScene::3919262858641749045::1791483358::0::1::::<><><>0<>0<><>::
 counter.tscn::PackedScene::6849360014225833986::1791483358::0::1::::<><><>0<>0<><>::
@@ -292,8 +292,8 @@ PlayerResource.gd::GDScript::2539432147955320951::1792077156::0::1::::PlayerSour
 ::res://Components/SpriteFrames/Players/::1792166463
 Baker.tres::SpriteFrames::3224868661783227542::1792166463::0::1::::<><><>0<>0<><>::uid://7nqqsy0r6u5v::::res://Art/Player/Baker.png
 PlayerPrefab.tres::SpriteFrames::2091156018547199444::1785331055::0::1::::<><><>0<>0<><>::
-::res://Components/Themes/::1792345162
-MainTheme.tres::Theme::5017258824401087048::1792345162::0::1::::<><><>0<>0<><>::
+::res://Components/Themes/::1792521601
+MainTheme.tres::Theme::5017258824401087048::1792521601::0::1::::<><><>0<>0<><>::
 ::res://Old/::1791820540
 ::res://Old/Components/::1788724759
 ::res://Old/Components/PlayerDetector/::1792166307
@@ -305,8 +305,8 @@ player_mover.gd::GDScript::7527332062844281891::1788724778::0::1::::<>Node2D<><>
 ::res://Old/Components/PlayerOverider/::1792166307
 PlayerOverider.tscn::PackedScene::101274821066498042::1792166307::0::1::::<><><>0<>0<><>::uid://duc5pxya3mgoc::::res://Old/Components/PlayerOverider/player_overider.gd
 player_overider.gd::GDScript::8569017221189893526::1788724803::0::1::::<>Node2D<><>0<>0<><>::
-::res://Old/Recourses/::1792345162
-Tileset.tres::TileSet::6406803866803831232::1792345162::0::1::::<><><>0<>0<><>::uid://vu8lrnx8rw0u::::res://Art/Tilemap/Beams.png<>uid://b06baxs5t618j::::res://Art/Tilemap/Signs.png<>uid://molm7urbf3d3::::res://Art/Tilemap/WalledSections.png
+::res://Old/Recourses/::1792519463
+Tileset.tres::TileSet::6406803866803831232::1792519463::0::1::::<><><>0<>0<><>::uid://vu8lrnx8rw0u::::res://Art/Tilemap/Beams.png<>uid://b06baxs5t618j::::res://Art/Tilemap/Signs.png<>uid://molm7urbf3d3::::res://Art/Tilemap/WalledSections.png
 ::res://Old/Recourses/Birds/::1787590799
 Blue.tres::SpriteFrames::8111509120944559250::1785331055::0::1::::<><><>0<>0<><>::uid://q1l1clpdw3vv::::res://Art/Bird/Bird2.png<>uid://ckrb8wkunj0hl::::res://Art/Bird/Bird3.png<>uid://dcyds2tqxjeu4::::res://Art/Bird/Bird4.png<>uid://dmutg8ofaksxe::::res://Art/Bird/Bird5.png<>uid://b8a6j8ve6mch5::::res://Art/Bird/Bird1.png
 Green.tres::SpriteFrames::8298267444499444618::1785331055::0::1::::<><><>0<>0<><>::uid://dxh83l04ih4vs::::res://Art/Bird/Bird7.png<>uid://mofp4o61bglv::::res://Art/Bird/Bird8.png<>uid://bilvunskk5ae1::::res://Art/Bird/Bird9.png<>uid://8ycssksiic6c::::res://Art/Bird/Bird10.png<>uid://dmeta1ojki2ci::::res://Art/Bird/Bird6.png
@@ -323,11 +323,11 @@ Heinrich.tres::SpriteFrames::334568117528493319::1785331055::0::1::::<><><>0<>0<
 Baker HeightLeaderboard.tres::Theme::1002079053211426567::1785331055::0::1::::<><><>0<>0<><>::uid://c4ldc5il3mxo::::res://Art/Markers/BakerIcon.png
 Climber1 HeightLeaderboard.tres::Theme::2615973589032267757::1785331055::0::1::::<><><>0<>0<><>::uid://g3go1fgefanm::::res://Art/Markers/ClimberIcon.png
 Climber2 HeightLeaderboard.tres::Theme::3358148732751592330::1785331055::0::1::::<><><>0<>0<><>::uid://l5ciqi18p0us::::res://Art/Markers/ClimberIcon2.png
-::res://Old/Recourses/UI/::1792345162
-main.tres::Theme::3769992649394900157::1792345162::0::1::::<><><>0<>0<><>::
-PauseBackground.tres::GradientTexture2D::4937319959609435997::1792345162::0::1::::<><><>0<>0<><>::
-WinBackground.tres::GradientTexture2D::6837227110911362756::1792345162::0::1::::<><><>0<>0<><>::
-::res://Scenes/::1792345739
+::res://Old/Recourses/UI/::1792519463
+main.tres::Theme::3769992649394900157::1792519463::0::1::::<><><>0<>0<><>::
+PauseBackground.tres::GradientTexture2D::4937319959609435997::1792519463::0::1::::<><><>0<>0<><>::
+WinBackground.tres::GradientTexture2D::6837227110911362756::1792519463::0::1::::<><><>0<>0<><>::
+::res://Scenes/::1792521601
 Background.tscn::PackedScene::4871352599127187276::1791999096::0::1::::<><><>0<>0<><>::uid://c55lhug7ik44j::::res://Art/Background/Paralax Backround11.png<>uid://cgy5aq6l3q62q::::res://Art/Background/Paralax Backround9.png<>uid://jaeaok86etry::::res://Art/Background/Paralax Backround10.png<>uid://dlyek5n3t831i::::res://Art/Background/Paralax Backround8.png<>uid://d3ksc7ujvucu4::::res://Art/Background/Paralax Backround7.png<>uid://cicvb34mq5aub::::res://Art/Background/Paralax Backround6.png<>uid://c6oxsra8qjq65::::res://Art/Background/Paralax Backround5.png<>uid://y006iehw7qa5::::res://Art/Background/Paralax Backround4.png<>uid://cscmgmrei7k7t::::res://Art/Background/Paralax Backround3.png<>uid://clca7782awsl1::::res://Art/Background/Paralax Backround2.png<>uid://cm4s2xhs2nbxe::::res://Art/Background/Paralax Backround1.png
 Bird.tscn::PackedScene::564039149537994033::1792166307::0::1::::<><><>0<>0<><>::uid://cjmoi3rtnx4vu::::res://Scripts/LevelStuff/Bird/bird.gd<>uid://duo0cm7k7dn1g::::res://Old/Recourses/Birds/White.tres
 BirdSpawner.tscn::PackedScene::7237426469105397965::1785331055::0::1::::<><><>0<>0<><>::uid://dy32smmeh3nm4::::res://Scripts/LevelStuff/Bird/bird_spawner.gd
@@ -339,7 +339,7 @@ MainUI.tscn::PackedScene::3339896310732359518::1791905820::0::1::::<><><>0<>0<><
 PlayArea.tscn::PackedScene::1714093245346357326::1791820540::0::1::::<><><>0<>0<><>::uid://ceh88qybxg6et::::res://Scripts/PlayArea/multiplayer_spawner.gd<>uid://b7w851wnif2io::::res://Scenes/Player.tscn<>uid://mxplkon28xxc::::res://Scripts/PlayArea/level_spawner.gd<>uid://bnt4usslrchfy::::res://Scenes/MainUI.tscn
 Player.tscn::PackedScene::4679938625472272722::1792309139::0::1::::<><><>0<>0<><>::uid://ck5jp4kr670ps::::res://Scripts/Player/player_script.gd<>uid://cm6254juvje6s::::res://Old/Recourses/PlayerSprites/Climber1.tres<>uid://cfhqtcjpmpt2f::::res://Scripts/Player/StateMachine/Ground.gd<>uid://t2ada3fb8vts::::res://Scripts/Player/wall_detectors.gd<>uid://b0cyxdudk1n30::::res://Scripts/Player/StateMachine/Air.gd<>uid://dvnr5lwr2t2n8::::res://Scripts/Player/edge_detectors.gd<>uid://cpewpue8xd833::::res://Scripts/Player/StateMachine/Climb.gd<>uid://qbo6p8gv1xdl::::res://Scripts/Player/StateMachine/Pause.gd<>uid://c22ccct5h31um::::res://Scripts/Player/abillity_manager.gd<>uid://cp5ug06icbkxv::::res://Art/Player/Sweat.png
 PlayerSelector.tscn::PackedScene::4799139729738139770::1792166555::0::1::::<><><>0<>0<><>::uid://n0k8hsrj2410::::res://Scripts/PlayerSelectorUI/player_selector.gd<>uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>uid://dt2ju2vngh7gp::::res://Art/Player/Baker/Baker1.png<>uid://yhp81sc8f8pp::::res://Scripts/PlayerSelectorUI/vitaliser.gd<>uid://b2b6dnpdgaxl::::res://Art/Player/Baker/Baker2.png<>uid://cfbb7qud3xkp3::::res://Scenes/Tools/BaseButton.tscn<>uid://dy4g034yesbgx::::res://Art/Player/Baker/Baker3.png<>uid://b1to0dglnhcn5::::res://Scripts/PlayerSelectorUI/customiser.gd<>uid://v2n6mouri1as::::res://Art/Player/Climber1/Climber1.png<>uid://blsk3uj75ilc7::::res://Art/Player/Climber1/Climber2.png<>uid://d3hgjamg108p3::::res://Art/Player/Climber1/Climber3.png<>uid://brq55ibfgpg2y::::res://Art/Player/Climber1/Climber4.png<>uid://dkbvrbfuu2tvb::::res://Art/Player/Climber1/Climber5.png<>uid://d0rkw81b6di2::::res://Art/Player/Climber1/Climber6.png<>uid://c8p2s1xdfqe06::::res://Art/Player/Climber1/Climber7.png<>uid://bwnfnfpusry3s::::res://Art/Player/Climber1/Climber8.png<>uid://oxp7mb3jb8::::res://Art/Player/Climber2/Climber1.png<>uid://cb7ugnetq4uar::::res://Art/Player/Climber2/Climber2.png<>uid://dr7b0lc1i6rst::::res://Art/Player/Climber2/Climber3.png<>uid://dysrifmtfwj84::::res://Art/Player/Climber2/Climber4.png<>uid://bisc4g1tst550::::res://Art/Player/Climber2/Climber5.png<>uid://dqyq32de2mie::::res://Art/Player/Climber2/Climber6.png<>uid://d0fvd5f0eamo4::::res://Art/Player/Climber2/Climber7.png<>uid://rldeh7j488l6::::res://Art/Player/Climber2/Climber8.png<>uid://6hexce05gvii::::res://Art/Player/Heinrich/Heinrich1.png<>uid://dunwb71r6evs5::::res://Art/Player/Heinrich/Heinrich2.png<>uid://x6hwvg73rvs1::::res://Art/Player/Heinrich/Heinrich3.png<>uid://peoe0fo5poox::::res://Art/Player/Heinrich/Heinrich4.png<>uid://closi0pnhpx60::::res://Art/Player/Heinrich/Heinrich5.png<>uid://dgu8fkhs3iohe::::res://Art/Player/Heinrich/Heinrich6.png<>uid://dgcym4vqovgea::::res://Art/Player/Heinrich/Heinrich7.png<>uid://bkaxgra801fsr::::res://Scripts/PlayerSelectorUI/ability_selector.gd<>uid://btyhh0yr7u81f::::res://Old/Recourses/UI/main.tres
-PlayerSelectorTEST.tscn::PackedScene::5805142926998578908::1792345739::0::1::::<><><>0<>0<><>::uid://dw4ltxmxmvvfq::::res://Scripts/UI/CharacterSelector/CharacterSelectorMain.gd<>uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>uid://c8ngd8ierrftp::::res://Scripts/UI/Button/ButtonClass.gd<>uid://di7tapp7bawh1::::res://Scripts/UI/CharacterSelector/Customiser.gd
+PlayerSelectorTEST.tscn::PackedScene::5805142926998578908::1792521601::0::1::::<><><>0<>0<><>::uid://dw4ltxmxmvvfq::::res://Scripts/UI/CharacterSelector/CharacterSelectorMain.gd<>uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>uid://c8ngd8ierrftp::::res://Scripts/UI/Button/ButtonClass.gd<>uid://di7tapp7bawh1::::res://Scripts/UI/CharacterSelector/Customiser.gd
 ProjectileSpawner.tscn::PackedScene::2489204104778780496::1785331056::0::1::::<><><>0<>0<><>::uid://bxjl61umx10xr::::res://Scripts/Projectiles/Projectile Spawner/projectile_spawner.gd
 Sandwich.tscn::PackedScene::4542181430287346099::1785331056::0::1::::<><><>0<>0<><>::uid://cu2343rcba378::::res://Scripts/Projectiles/sandwich.gd<>uid://cjg64eyyotllh::::res://Art/Sandwich/Sandwich1.png<>uid://b7pr8b6dvxdb2::::res://Art/Sandwich/Sandwich2.png<>uid://b33i0iw7spmb2::::res://Art/Sandwich/Bagle/Bagle1.png<>uid://dah4htacvndyf::::res://Art/Sandwich/Sandwich3.png<>uid://ucstx68cn55j::::res://Art/Sandwich/Sandwich4.png<>uid://c3ty0f5buwba1::::res://Art/Sandwich/Bagle/Bagle2.png<>uid://jhll6f23nos1::::res://Art/Sandwich/Bagle/Bagle3.png<>uid://otgdv58ship8::::res://Art/Sandwich/Bagle/Bagle4.png<>uid://bfhhsgtvbhupu::::res://Art/Sandwich/Donut/Donut1.png<>uid://csajajqmen863::::res://Art/Sandwich/Donut/Donut2.png<>uid://dgxgpsla1vke5::::res://Art/Sandwich/Donut/Donut3.png<>uid://cekg1704s6abr::::res://Art/Sandwich/Donut/Donut4.png<>uid://cnxl86dbrvep5::::res://Art/Sandwich/Sword/Sword1.png<>uid://dr8d1kvdilra1::::res://Art/Sandwich/Sword/Sword2.png<>uid://bir4gcfsmcxwo::::res://Art/Sandwich/Sword/Sword3.png<>uid://bnkknipscqtle::::res://Art/Sandwich/Sword/Sword4.png<>uid://bq2b387aamxo1::::res://Art/Sandwich/Sword/Sword5.png<>uid://bsjgfqh8nqncn::::res://Art/Sandwich/Sword/Sword6.png<>uid://bxtrugvabe2ph::::res://Art/Sandwich/Sword/Sword7.png<>uid://dcn85skn0fy45::::res://Art/Sandwich/Sword/Sword8.png<>uid://dgx7o6r4ox5bs::::res://Art/Sandwich/Sword/Sword9.png
 steam_settup.gd::GDScript::3965781606682886132::1791817429::0::1::::<>Node<><>0<>0<><>::
@@ -359,8 +359,8 @@ level_2.tscn::PackedScene::193775776663596181::1792239862::0::1::::<><><>0<>0<><
 level_3.tscn::PackedScene::5754909420152186682::1792317510::0::1::::<><><>0<>0<><>::uid://cxjreg6tirxq3::::res://Old/Recourses/Tileset.tres<>uid://cbujddwjermfm::::res://Scenes/Goal.tscn
 ::res://Scenes/Tools/::1792344657
 BaseButton.tscn::PackedScene::5125968697172477338::1792344657::0::1::::<><><>0<>0<><>::uid://cncyjq3g5cty0::::res://Scripts/Tools/base_button.gd
-::res://Scenes/UI/::1792346176
-MainUI.tscn::PackedScene::377921005674578788::1792346176::0::1::::<><><>0<>0<><>::uid://bc8og5lgrcpvd::::res://Scripts/UI/Main.gd<>uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>uid://bldy0yf23ma7b::::res://Scripts/UI/LobbyUI.gd<>uid://c8ngd8ierrftp::::res://Scripts/UI/Button/ButtonClass.gd<>uid://c0up8lhfcq1jh::::res://Scripts/UI/CharacterSelectorUI.gd<>uid://bcgecunh1q8yd::::res://Components/Resources/PlayerResource.gd<>uid://b0imh5jcjfvpr::::res://Scripts/Player/Abilitys/ram.gd<>uid://d0y0w2hbe3jwq::::res://Scripts/Player/Abilitys/glide.gd<>uid://bfd4tahblhaqb::::res://Scripts/Player/Abilitys/repair.gd<>uid://cm6254juvje6s::::res://Old/Recourses/PlayerSprites/Climber1.tres<>uid://dm3jvtcmp62ii::::res://Scripts/Player/Abilitys/sandwich.gd
+::res://Scenes/UI/::1792522311
+MainUI.tscn::PackedScene::377921005674578788::1792522311::0::1::::<><><>0<>0<><>::uid://bc8og5lgrcpvd::::res://Scripts/UI/Main.gd<>uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>uid://bldy0yf23ma7b::::res://Scripts/UI/LobbyUI.gd<>uid://c8ngd8ierrftp::::res://Scripts/UI/Button/ButtonClass.gd<>uid://c0up8lhfcq1jh::::res://Scripts/UI/CharacterSelectorUI.gd<>uid://bcgecunh1q8yd::::res://Components/Resources/PlayerResource.gd<>uid://b0imh5jcjfvpr::::res://Scripts/Player/Abilitys/ram.gd<>uid://d0y0w2hbe3jwq::::res://Scripts/Player/Abilitys/glide.gd<>uid://bfd4tahblhaqb::::res://Scripts/Player/Abilitys/repair.gd<>uid://cm6254juvje6s::::res://Old/Recourses/PlayerSprites/Climber1.tres<>uid://dm3jvtcmp62ii::::res://Scripts/Player/Abilitys/sandwich.gd
 ::res://Scenes/UI/Buttons/::1792344836
 MainButtons.tscn::PackedScene::2027980552560319286::1792344836::0::1::::<><><>0<>0<><>::uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>uid://c8ngd8ierrftp::::res://Scripts/UI/Button/ButtonClass.gd
 ::res://Scripts/::1791822870
@@ -432,14 +432,14 @@ sandwich.gd::GDScript::6234109800334886497::1792258872::0::1::::<>StaticBody2D<>
 projectile_spawner.gd::GDScript::4020068130766071235::1791828537::0::1::::<>MultiplayerSpawner<><>0<>0<><>::
 ::res://Scripts/Tools/::1787590800
 base_button.gd::GDScript/GDScript::5690899254101211845::1785331056::0::1::::Base_Button<>Button<><>0<>0<><>::
-::res://Scripts/UI/::1792346153
-CharacterSelectorUI.gd::GDScript::6569820288309557281::1792346153::0::1::::<>Panel<><>0<>0<><>::
+::res://Scripts/UI/::1792522310
+CharacterSelectorUI.gd::GDScript::6569820288309557281::1792522310::0::1::::<>Panel<><>0<>0<><>::
 LobbyUI.gd::GDScript::3166194219196726273::1792313955::0::1::::<>Panel<><>0<>0<><>::
 Main.gd::GDScript::2595785182504078121::1792232616::0::1::::<>Control<><>0<>0<><>::
 ::res://Scripts/UI/Button/::1792344804
 ButtonClass.gd::GDScript::7116281523416485441::1792344804::0::1::::HoverButton<>Button<><>0<>0<><>::
-::res://Scripts/UI/CharacterSelector/::1792345739
-CharacterSelectorMain.gd::GDScript::8763986610624980182::1792345739::0::1::::<>Control<><>0<>0<><>::
+::res://Scripts/UI/CharacterSelector/::1792521199
+CharacterSelectorMain.gd::GDScript::8763986610624980182::1792521199::0::1::::<>Control<><>0<>0<><>::
 Customiser.gd::GDScript::7787987323653651888::1792344280::0::1::::<>MarginContainer<><>0<>0<><>::
 ::res://Scripts/UI_Old/::1791828537
 height_indicator.gd::GDScript::526793135365435929::1791828424::0::1::::<>HBoxContainer<><>0<>0<><>::

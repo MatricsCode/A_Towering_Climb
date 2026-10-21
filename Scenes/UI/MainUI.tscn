@@ -926,6 +926,7 @@ theme = ExtResource("1_fr3bv")
 
 [node name="LobbyData" type="LineEdit" parent="CaracterSelectorUI/MarginContainer/VBoxContainer" unique_id=927188721]
 layout_mode = 2
+size_flags_vertical = 4
 theme = ExtResource("1_fr3bv")
 placeholder_text = "Lobby Data"
 alignment = 1

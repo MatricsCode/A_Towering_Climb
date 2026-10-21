@@ -9,8 +9,6 @@ const PLAYER_SELECTOR_TEST = preload("uid://coyb4dm7dvh0w")
 
 var host := false
 
-var has_unloaded_player_selector := false
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Signals.host_created.connect(func(lobby_id : int):
@@ -27,21 +25,42 @@ func _ready():
 		
 		if Steam.getLobbyOwner(Networking.current_lobby) == Steam.getSteamID():
 			_start.rpc())
-	_add_player()
+	
+	for i in 4:
+		_add_player()
 
-func _add_player():
-	if player_selectors.get_child_count() < 4:
-		var player_selector = PLAYER_SELECTOR_TEST.instantiate()
-		player_selector.remove.connect(func():
-			if !has_unloaded_player_selector:
-				has_unloaded_player_selector = true
-			_add_player())
-		player_selector.loaded.connect(func():
-			_add_player())
-		player_selector.start.connect(func():
-			if Steam.getLobbyOwner(Networking.current_lobby) == Steam.getSteamID():
-				_start.rpc())
-		player_selectors.add_child(player_selector)
+func _add_player(index = -1):
+	var player_selector = PLAYER_SELECTOR_TEST.instantiate()
+	
+	player_selector.start.connect(func():
+		_start.rpc())
+	player_selector.loaded.connect(func():
+		lobby_text.visible = false)
+	player_selector.remove.connect(func():
+		_add_player(player_selector.get_index()))
+	
+	player_selectors.add_child(player_selector)
+	if index != -1:
+		player_selectors.move_child(player_selector, index)
+
+	#var loaded_player_selectors := 0
+	#
+	#for i in player_selectors.get_children():
+		#if i.has_loaded:
+			#loaded_player_selectors += 1
+	#
+	#if loaded_player_selectors < 4:
+		#var player_selector = PLAYER_SELECTOR_TEST.instantiate()
+		#player_selector.start.connect(func():
+			#if Steam.getLobbyOwner(Networking.current_lobby) == Steam.getSteamID():
+				#lobby_text.visible = false
+				#_start.rpc())
+		#player_selector.loaded.connect(func():
+			#_add_player())
+		#player_selector.remove.connect(func():
+			#if loaded_player_selectors == 4:
+				#_add_player())
+		#player_selectors.add_child(player_selector)
 
 @rpc("authority", "call_local", "reliable")
 func _sending_player_prefab(prefab : PlayerSource):

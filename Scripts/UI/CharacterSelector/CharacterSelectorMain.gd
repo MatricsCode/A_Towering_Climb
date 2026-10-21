@@ -1,35 +1,42 @@
 extends Control
 
-signal loaded
-signal remove
-signal start
+signal remove()
+signal loaded()
+signal start()
+
+enum States {SPAWN, CHARACTER, ABILITIES, FINISHED}
+
+var current_state =  States.SPAWN
 
 @export var selected_character : PlayerSource
 
 @export var background : Panel
 @export var CharacterSelector : MarginContainer
 
-@export var remove_button : HoverButton
-@export var loadbutton : HoverButton
+@export var remove_buttons : Array[HoverButton]
+@export var load_button : HoverButton
 
 @export var start_button : HoverButton
 
+
+
 func _ready():
-	
 	background.visible = true
 	CharacterSelector.visible = false
-	loadbutton.visible = true
+	load_button.visible = true
 	
-	remove_button.pressed.connect(func(): 
-		remove.emit()
-		queue_free())
-	loadbutton.pressed.connect(_load)
+	for remove_button in remove_buttons:
+		remove_button.pressed.connect(func(): 
+			remove.emit()
+			queue_free())
+	
+	load_button.pressed.connect(_load)
 	start_button.pressed.connect(func():
 		start.emit())
 
 func _load():
-	loadbutton.visible = false
-	CharacterSelector.visible = true
+	selected_character = PlayerSource.new()
+	
 	
 	loaded.emit()
 
