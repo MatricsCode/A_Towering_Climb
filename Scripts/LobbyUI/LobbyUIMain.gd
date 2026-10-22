@@ -16,6 +16,6 @@ func _level_select():
 	add_child(level)
 
 func _spawn_players():
-	while GlobalScript.player_prefab.size() != Steam.getLobbyData(Networking.current_lobby, "peer_count")
-	
+	while GlobalScript.player_prefab.size() != int(Steam.getLobbyData(Networking.current_lobby, "peer_count")):
+		print("dave")
 	

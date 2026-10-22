@@ -894,7 +894,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_fr3bv")
 
 [node name="CaracterSelectorUI" type="Panel" parent="." unique_id=1133005552 node_paths=PackedStringArray("ready_button", "lobby_text", "player_selectors")]
 modulate = Color(1, 1, 1, 0)

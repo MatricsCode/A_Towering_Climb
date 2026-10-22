@@ -1,5 +1,9 @@
 extends Node
-var player_prefab : Dictionary[int , Array]
+
+var peers : Array[int]
+
+var players : Dictionary[int , Array]
+var peers_ready : Array[int]
 
 
 
@@ -7,8 +11,15 @@ var player_prefab : Dictionary[int , Array]
 
 
 
+func _ready():
+	Signals.peer_joined.connect(func(ID : int): 
+		peers.append(ID))
+	Signals.peer_left.connect(func(ID : int):
+		peers.erase(ID))
+	Signals.peer_readied.connect(_check_start)
 
-
+func _check_start():
+	pass
 
 
 

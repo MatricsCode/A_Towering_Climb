@@ -15,8 +15,6 @@ extends Panel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Dave")
-	
 	host_button.visible = false
 	join_button.visible = false
 	quit_button.visible = false
@@ -96,6 +94,9 @@ func _lobby_match_list(lobbies : Array):
 		lobby_list.add_child(button)
 		
 		button.visible = false
+	
+	if lobby_search_field.text != "":
+		_search_request(lobby_search_field.text)
 
 func _search_request(new_text : String):
 	#var lobby_id = new_text.substr(2,-1)

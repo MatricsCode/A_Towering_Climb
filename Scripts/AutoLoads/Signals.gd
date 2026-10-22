@@ -11,6 +11,13 @@ signal lobby_start_game()
 signal lobby_pause_game()
 signal lobby_finished_game(winner : int)
 
+signal peer_left(ID : int)
+signal peer_joined(ID : int)
+signal peer_readied(ID : int)
+signal peer_waiting(ID : int)
+
+#-----------------------------------
+
 signal projectile (type)
 
 signal winner (name)

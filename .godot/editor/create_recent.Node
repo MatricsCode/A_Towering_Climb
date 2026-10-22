@@ -1,10 +1,10 @@
+TextureRect
+MarginContainer
 HoverButton
 VBoxContainer
-MarginContainer
 AnimationPlayer
 Label
 HBoxContainer
-TextureRect
 Control
 PanelContainer
 Container

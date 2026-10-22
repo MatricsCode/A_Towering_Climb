@@ -4,12 +4,14 @@ extends Control
 @export var anim_open : AnimationPlayer
 
 @export var lobby_ui : Panel
+@export var offline_ui : Panel
 @export var game_ui : MarginContainer
 @export var caracter_selector_ui : Panel
 
 func _ready():
-	#Signals.host_created.connect()
-	Signals.lobby_joined.connect(func(lobbby_id): _change_ui("LobbyUI", "CharacterSelectorUI"))
+	#Signals.host_created.connect()D
+	Signals.lobby_joined.connect(func(lobby_id): 
+		_change_ui("LobbyUI", "CharacterSelectorUI"))
 	Signals.lobby_start_game.connect(func():_change_ui("CharacterSelectorUI", "MainUI"))
 	
 	lobby_ui.visible = false

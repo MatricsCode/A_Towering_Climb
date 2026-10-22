@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bdyvv3gq3720o"]
+
+[ext_resource type="Script" uid="uid://demexmm07xxlb" path="res://Scripts/AutoLoads/Networking.gd" id="1_bw3if"]
+
+[node name="Networking" type="Node2D" unique_id=1341579902]
+script = ExtResource("1_bw3if")
