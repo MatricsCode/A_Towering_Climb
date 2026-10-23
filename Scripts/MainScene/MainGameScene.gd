@@ -1,5 +1,7 @@
 extends Node
 
+const PLAYER = preload("uid://c2kbb3vdndd4g")
+
 var levels = [preload("uid://cn8yrub2tv3vi")] #[preload("uid://bb64cr50jmhs8"),
 	#preload("uid://c04puj7j1jrp"),
 	#preload("uid://cn8yrub2tv3vi"),]
@@ -30,13 +32,15 @@ func _spawn_players():
 		var player_data : Array
 		player_data = GlobalScript.players[player_ID]
 		for players in player_data:
-			var child = Player.new()
+			var child = PLAYER.instantiate()
 			var player_data_2 : PlayerSource
 			player_data_2 = players
 			
-			child.player = player_data_2
+			child.player_source = player_data_2
 			
 			player_placements.add_child(child)
+			
+			child.start.emit()
 	
 	
 	

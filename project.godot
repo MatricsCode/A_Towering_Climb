@@ -17,7 +17,6 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="A Towering Climb Try 2"
 run/main_scene="uid://bvgxox4xf14tm"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-boot_splash/image="uid://v2n6mouri1as"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -28,7 +27,6 @@ Signals="*uid://q4fkgi45ld4m"
 
 [display]
 
-window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

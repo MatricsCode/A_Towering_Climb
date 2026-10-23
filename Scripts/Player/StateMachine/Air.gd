@@ -51,9 +51,9 @@ func _main():
 	## All of the different ways of exiting the current state go here
 	#region Exits
 	if player.is_on_floor():
-		player.switch(player.States.AIR, player.States.GROUND)
+		player._switch(player.States.AIR, player.States.GROUND)
 	
-	if player.wall_detector.touching_wall():
+	if player.wall_detector._touching_wall():
 		player.position.y -= 5
 		player.switch(player.States.AIR, player.States.CLIMB)
 	#endregion

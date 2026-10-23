@@ -46,7 +46,6 @@ func _add_player():
 
 func _is_peer_ready():
 	players.clear()
-	print(players)
 	
 	for i in player_selectors.get_children():
 		if i.loaded and !i.active:
@@ -57,5 +56,4 @@ func _is_peer_ready():
 			character = i.selected_character
 			
 			players.append(character)
-	print(players)
 	Networking._peer_ready.rpc(players)

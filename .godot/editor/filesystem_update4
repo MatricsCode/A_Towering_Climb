@@ -11,3 +11,14 @@ res://Scenes/UI/MainUI.tscn
 res://Components/SpriteFrames/Players/Baker.tres
 res://Components/SpriteFrames/Players/Climber1.tres
 res://Components/SpriteFrames/Players/Climber2.tres
+res://Scenes/player.tscn
+res://Old/Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres
+res://Scenes/PlayerSelectorTEST.tscn
+res://Scripts/UI/CharacterSelector/CharacterSelectorMain.gd
+res://Scripts/AutoLoads/GlobalScript.gd
+res://Components/Resources/PlayerSource.gd
+res://Scripts/Player/player_script.gd
+res://Scenes/Main.tscn
+res://Scripts/Player/StateMachine/Climb.gd
+res://Scripts/Player/StateMachine/Air.gd
+res://Scripts/Player/abillity_manager.gd

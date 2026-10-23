@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c2kbb3vdndd4g"]
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_nn08x"]
-[ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Old/Recourses/PlayerSprites/Climber1.tres" id="2_52ee3"]
 [ext_resource type="Script" uid="uid://cfhqtcjpmpt2f" path="res://Scripts/Player/StateMachine/Ground.gd" id="2_bhhdu"]
 [ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Scripts/Player/wall_detectors.gd" id="3_bhhdu"]
 [ext_resource type="Script" uid="uid://b0cyxdudk1n30" path="res://Scripts/Player/StateMachine/Air.gd" id="3_megsn"]
@@ -10,6 +9,7 @@
 [ext_resource type="Script" uid="uid://qbo6p8gv1xdl" path="res://Scripts/Player/StateMachine/Pause.gd" id="5_ksbbd"]
 [ext_resource type="Script" uid="uid://c22ccct5h31um" path="res://Scripts/Player/abillity_manager.gd" id="5_yoq75"]
 [ext_resource type="Texture2D" uid="uid://cp5ug06icbkxv" path="res://Art/Player/Sweat.png" id="6_ksbbd"]
+[ext_resource type="SpriteFrames" uid="uid://bl7fd60qs8x7s" path="res://Components/SpriteFrames/Players/Baker.tres" id="6_tx1dd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(69, 150)
@@ -58,12 +58,15 @@ color_ramp = SubResource("GradientTexture1D_megsn")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52ee3"]
 size = Vector2(64, 78)
 
-[node name="Player" type="CharacterBody2D" unique_id=399334221 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=399334221 node_paths=PackedStringArray("sprite", "wall_detector", "edge_detectors") groups=["Player"]]
 process_mode = 3
 visibility_layer = 2
 collision_layer = 5
 collision_mask = 14
 script = ExtResource("1_nn08x")
+sprite = NodePath("Sprite")
+wall_detector = NodePath("Detectors/WallDetectors")
+edge_detectors = NodePath("Detectors/EdgeDetectors")
 
 [node name="States" type="Node" parent="." unique_id=542146053]
 
@@ -72,18 +75,28 @@ script = ExtResource("2_bhhdu")
 player = NodePath("../..")
 sprite = NodePath("../../Sprite")
 
-[node name="Air" type="Node" parent="States" unique_id=738846656]
+[node name="Air" type="Node" parent="States" unique_id=738846656 node_paths=PackedStringArray("player", "sprite")]
 script = ExtResource("3_megsn")
+player = NodePath("../..")
+sprite = NodePath("../../Sprite")
 
-[node name="Climb" type="Node" parent="States" unique_id=558835932]
+[node name="Climb" type="Node" parent="States" unique_id=558835932 node_paths=PackedStringArray("player", "sprite", "wall_detectors", "edge_detectors")]
 script = ExtResource("4_yoq75")
+player = NodePath("../..")
+sprite = NodePath("../../Sprite")
+wall_detectors = NodePath("../../Detectors/WallDetectors")
+edge_detectors = NodePath("../../Detectors/EdgeDetectors")
 
-[node name="Pause" type="Node" parent="States" unique_id=1917950217]
+[node name="Pause" type="Node" parent="States" unique_id=1917950217 node_paths=PackedStringArray("player", "sprite", "edge_detectors", "wall_detectors")]
 script = ExtResource("5_ksbbd")
+player = NodePath("../..")
+sprite = NodePath("../../Sprite")
+edge_detectors = NodePath("../../Detectors/WallDetectors")
+wall_detectors = NodePath("../../Detectors/EdgeDetectors")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1227623305]
-position = Vector2(0, -136)
-sprite_frames = ExtResource("2_52ee3")
+position = Vector2(0, -160)
+sprite_frames = ExtResource("6_tx1dd")
 animation = &"walk"
 speed_scale = 3.0
 flip_h = true

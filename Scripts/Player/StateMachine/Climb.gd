@@ -5,9 +5,8 @@ const CLIMB_SFX = preload("res://Sound Effects/Climb.mp3")
 
 @export var player : CharacterBody2D
 @export var sprite : AnimatedSprite2D
-@export var edge_detectors : Node2D
 @export var wall_detectors : Node2D
-
+@export var edge_detectors : Node2D
 
 func _physics_process(_delta):
 	if player.current_state == player.States.CLIMB:

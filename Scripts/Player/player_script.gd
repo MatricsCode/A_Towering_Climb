@@ -1,8 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
-@export var player : PlayerSource
-@export var sprite : Sprite2D
+signal start()
+
+@export var player_source : PlayerSource
+@export var sprite : AnimatedSprite2D
 @export var wall_detector : Node2D
 @export var edge_detectors : Node2D
 
@@ -40,23 +42,26 @@ var main_vars_reset = []
 #region Inbuilt Functions
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scenes
-	sprite.sprite_frames = player.outfits[GlobalScript.player_attributes.get(ID)["Costume"]]
-	
-	for i in main_vars:
-		for y in main_vars[i]:
-			main_vars_reset.append(main_vars.get(i).get(y))
-	
-	if is_multiplayer_authority():
-		$AudioListener2D.make_current()
-	
-	current_state = States.AIR ## Autoloads the normal state into the player
-	
-	Signals.paused.connect(pause_switch)
-	Signals.winner.connect(won)
+	start.connect(func():
+		sprite.sprite_frames = player_source.sprite_frame
+		
+		
+		for i in main_vars:
+			for y in main_vars[i]:
+				main_vars_reset.append(main_vars.get(i).get(y))
+		
+		if is_multiplayer_authority():
+			$AudioListener2D.make_current()
+		
+		current_state = States.AIR ## Autoloads the normal state into the player
+		
+		#Signals.paused.connect(pause_switch)
+		#Signals.winner.connect(won)
+		)
 
 func _physics_process(_delta):  ## Runs every physics frames
-	GlobalScript.player_attributes.get(ID)["Position"] = position
-	
+	#GlobalScript.player_attributes.get(ID)["Position"] = position
+	#
 	#if wall_detector.touching_wall():
 		#set_collision_layer_value(2,true)
 	#else:
@@ -300,8 +305,8 @@ func background_rotation():
 	elif velocity.x >= 600 or velocity.x <= -600:
 		return velocity.x / 6000
 
-func won(winners_name):
-	switch(current_state, States.PAUSED)
+#func won(winners_name):
+	#switch(current_state, States.PAUSED)
 	#camera_changing = get_tree().create_tween()
 	#GlobalScript.important_positions.keys()
 	#

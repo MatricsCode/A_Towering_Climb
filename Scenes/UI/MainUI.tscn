@@ -5,16 +5,14 @@
 [ext_resource type="Script" uid="uid://bldy0yf23ma7b" path="res://Scripts/UI/LobbyUI.gd" id="3_dfu8n"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_qyh0x"]
 [ext_resource type="Script" uid="uid://c0up8lhfcq1jh" path="res://Scripts/UI/CharacterSelectorUI.gd" id="5_upwrp"]
-[ext_resource type="Script" uid="uid://bcgecunh1q8yd" path="res://Components/Resources/PlayerResource.gd" id="6_mxqpb"]
-[ext_resource type="Script" uid="uid://b0imh5jcjfvpr" path="res://Scripts/Player/Abilitys/ram.gd" id="6_uwavw"]
-[ext_resource type="Script" uid="uid://d0y0w2hbe3jwq" path="res://Scripts/Player/Abilitys/glide.gd" id="7_7uoew"]
-[ext_resource type="Script" uid="uid://bfd4tahblhaqb" path="res://Scripts/Player/Abilitys/repair.gd" id="8_tt03y"]
-[ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Old/Recourses/PlayerSprites/Climber1.tres" id="8_vryf0"]
-[ext_resource type="Script" uid="uid://dm3jvtcmp62ii" path="res://Scripts/Player/Abilitys/sandwich.gd" id="10_7uoew"]
+[ext_resource type="Script" uid="uid://bcgecunh1q8yd" path="res://Components/Resources/PlayerSource.gd" id="6_mxqpb"]
+[ext_resource type="Script" uid="uid://b0imh5jcjfvpr" path="res://Scripts/Abilitys/MainAbilities/ram.gd" id="6_uwavw"]
+[ext_resource type="Script" uid="uid://d0y0w2hbe3jwq" path="res://Scripts/Abilitys/SecondaryAbilities/glide.gd" id="7_7uoew"]
+[ext_resource type="Script" uid="uid://bfd4tahblhaqb" path="res://Scripts/Abilitys/SecondaryAbilities/repair.gd" id="8_tt03y"]
+[ext_resource type="Script" uid="uid://dm3jvtcmp62ii" path="res://Scripts/Abilitys/MainAbilities/sandwich.gd" id="10_7uoew"]
 
 [sub_resource type="Resource" id="Resource_upwrp"]
 script = ExtResource("6_mxqpb")
-sprites = ExtResource("8_vryf0")
 main_ability = ExtResource("6_uwavw")
 passive_ability_1 = ExtResource("7_7uoew")
 passive_ability_2 = ExtResource("8_tt03y")
