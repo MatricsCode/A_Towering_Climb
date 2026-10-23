@@ -49,7 +49,8 @@ func _is_peer_ready():
 	
 	for i in player_selectors.get_children():
 		if i.loaded and ! i.active:
-			_peer_ready(false)
+			_peer_ready.rpc(true)
+			return
 		elif i.loaded and i.active:
 			players.append(i.selected_character)
 	
@@ -65,7 +66,7 @@ func _peer_ready(is_ready : bool):
 	
 	if is_ready:
 		GlobalScript.peers_ready.append(ID)
-		Signals.peer_readied.emit(ID)
+		Signals.readied_peer.emit(ID)
 	else:
 		GlobalScript.peers_ready.erase(ID)
 		Signals.peer_waiting.emit(ID)

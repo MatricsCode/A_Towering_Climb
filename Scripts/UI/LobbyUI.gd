@@ -94,10 +94,6 @@ func _lobby_match_list(lobbies : Array):
 		lobby_list.add_child(button)
 		
 		button.visible = false
-	
-	if lobby_search_field.text != "":
-		_search_request(lobby_search_field.text)
-
 func _search_request(new_text : String):
 	#var lobby_id = new_text.substr(2,-1)
 	
@@ -113,6 +109,8 @@ func _search_request(new_text : String):
 			button.visible = true
 		else:
 			button.visible = false
+	
+	lobby_search_field.text = ""
 	
 	#for button in lobby_list.get_children():
 		#if button.name.find(lobby_id) != -1 and lobby_id != null:

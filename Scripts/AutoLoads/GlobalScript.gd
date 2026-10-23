@@ -16,10 +16,40 @@ func _ready():
 		peers.append(ID))
 	Signals.peer_left.connect(func(ID : int):
 		peers.erase(ID))
-	Signals.peer_readied.connect(_check_start)
+	Signals.readied_peer.connect(_check_start)
 
-func _check_start():
-	pass
+func _check_start(ID):
+	if Networking.host:
+		if peers_ready.size() == peers.size():
+			Networking._start_game.rpc()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

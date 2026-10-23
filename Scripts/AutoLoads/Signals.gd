@@ -13,7 +13,7 @@ signal lobby_finished_game(winner : int)
 
 signal peer_left(ID : int)
 signal peer_joined(ID : int)
-signal peer_readied(ID : int)
+signal readied_peer(ID : int)
 signal peer_waiting(ID : int)
 
 #-----------------------------------

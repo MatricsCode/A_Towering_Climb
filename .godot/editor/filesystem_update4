@@ -1,7 +1,10 @@
-res://Scenes/PlayerSelectorTEST.tscn
+res://Scenes/Autoloads/GlobalScript.tscn
 res://Old/Recourses/Tileset.tres
 res://Components/Themes/MainTheme.tres
 res://addons/godotsteam/editor/updater.tres
 res://Old/Recourses/UI/main.tres
 res://Old/Recourses/UI/PauseBackground.tres
 res://Old/Recourses/UI/WinBackground.tres
+res://Scenes/Autoloads/Networking.tscn
+res://Scenes/UI/MainUI.tscn
+res://Scripts/UI/LobbyUI.gd

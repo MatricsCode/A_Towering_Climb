@@ -12,7 +12,7 @@ var host := false
 func _ready():
 	Signals.request_lobby_list.connect(_request_lobby_list)
 	Signals.lobby_start_game.connect(func(): Steam.setLobbyJoinable(current_lobby, false))
-	Signals.peer_readied.connect(_check_peers)
+	Signals.readied_peer.connect(_check_peers)
 	
 	Steam.initRelayNetworkAccess()
 	Steam.lobby_created.connect(_on_lobby_created)
@@ -39,6 +39,8 @@ func _on_lobby_created(connected : int, lobby_id : int) -> void:
 		Signals.host_created.emit(lobby_id)
 		current_lobby = lobby_id
 		
+		_peer_joined.rpc()
+		
 		Steam.setLobbyData(lobby_id, "name", "Kodumaster's lobby")
 		Steam.setLobbyJoinable(lobby_id, true)
 	
@@ -47,6 +49,9 @@ func _on_lobby_created(connected : int, lobby_id : int) -> void:
 		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
 		peer.create_host()
+		
+		_peer_joined.rpc()
+		
 		multiplayer.multiplayer_peer = peer
 		Signals.host_created.emit(lobby_id)
 		current_lobby = lobby_id
@@ -74,11 +79,23 @@ func _request_lobby_list():
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
 	Steam.requestLobbyList()
 
-func _check_peers():
+func _check_peers(ID):
 	if host:
 		print(GlobalScript.peers_ready)
 		Steam.getLobbyData(current_lobby, "peers")
 
 @rpc("authority", "call_local", "reliable")
 func _start():
+	Signals.lobby_start_game.emit()
+
+@rpc("any_peer", "call_local", "reliable")
+func _peer_joined():
+	Signals.peer_joined.emit(Steam.getSteamID())
+
+@rpc("any_peer", "call_local", "reliable")
+func _peer_left():
+	Signals.peer_left.emit(Steam.getSteamID())
+
+@rpc("authority", "call_local", "reliable")
+func _start_game():
 	Signals.lobby_start_game.emit()
