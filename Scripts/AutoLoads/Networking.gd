@@ -19,6 +19,7 @@ func _ready():
 	Steam.lobby_joined.connect(_on_lobby_joined)
 	Steam.join_requested.connect(_on_join_request)
 	Steam.lobby_match_list.connect(func(lobbies : Array) : Signals.lobby_match_list.emit(lobbies))
+	Steam.lobby_chat_update.connect(_lobby_message_recieved)
 	
 	_request_lobby_list()
 
@@ -39,7 +40,6 @@ func _on_lobby_created(connected : int, lobby_id : int) -> void:
 		Signals.host_created.emit(lobby_id)
 		current_lobby = lobby_id
 		
-		_peer_joined.rpc()
 		
 		Steam.setLobbyData(lobby_id, "name", "Kodumaster's lobby")
 		Steam.setLobbyJoinable(lobby_id, true)
@@ -50,7 +50,6 @@ func _on_lobby_created(connected : int, lobby_id : int) -> void:
 		peer.server_relay = true
 		peer.create_host()
 		
-		_peer_joined.rpc()
 		
 		multiplayer.multiplayer_peer = peer
 		Signals.host_created.emit(lobby_id)
@@ -81,21 +80,36 @@ func _request_lobby_list():
 
 func _check_peers(ID):
 	if host:
-		print(GlobalScript.peers_ready)
 		Steam.getLobbyData(current_lobby, "peers")
 
-@rpc("authority", "call_local", "reliable")
-func _start():
-	Signals.lobby_start_game.emit()
 
-@rpc("any_peer", "call_local", "reliable")
-func _peer_joined():
-	Signals.peer_joined.emit(Steam.getSteamID())
-
-@rpc("any_peer", "call_local", "reliable")
-func _peer_left():
-	Signals.peer_left.emit(Steam.getSteamID())
+func _lobby_message_recieved(lobby_id: int, changed_id: int, making_change_id: int, chat_state: int):
+	if chat_state == Steam.ChatMemberStateChange.CHAT_MEMBER_STATE_CHANGE_ENTERED and host:
+		_peer_joined.rpc(changed_id)
+	elif chat_state == Steam.ChatMemberStateChange.CHAT_MEMBER_STATE_CHANGE_ENTERED and host:
+		_peer_left.rpc(changed_id)
 
 @rpc("authority", "call_local", "reliable")
 func _start_game():
 	Signals.lobby_start_game.emit()
+
+@rpc("authority", "call_local", "reliable")
+func _peer_joined(ID : int):
+	Signals.peer_joined.emit(ID)
+
+@rpc("authority", "call_local", "reliable")
+func _peer_left(ID : int):
+	Signals.peer_left.emit(ID)
+
+@rpc("any_peer", "call_local", "reliable")
+func _peer_ready(player_prefabs : Array):
+	var ID = Steam.getSteamID()
+	
+	if player_prefabs.size() == 0:
+		GlobalScript.peers_ready.erase(ID)
+		Signals.peer_waiting.emit(ID)
+		return
+	
+	GlobalScript.peers_ready.append(ID)
+	GlobalScript.players[Steam.getSteamID()] = player_prefabs
+	Signals.readied_peer.emit(ID)

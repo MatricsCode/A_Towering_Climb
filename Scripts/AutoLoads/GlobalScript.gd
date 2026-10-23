@@ -5,12 +5,6 @@ var peers : Array[int]
 var players : Dictionary[int , Array]
 var peers_ready : Array[int]
 
-
-
-
-
-
-
 func _ready():
 	Signals.peer_joined.connect(func(ID : int): 
 		peers.append(ID))
@@ -18,9 +12,9 @@ func _ready():
 		peers.erase(ID))
 	Signals.readied_peer.connect(_check_start)
 
-func _check_start(ID):
+func _check_start(ID : int):
 	if Networking.host:
-		if peers_ready.size() == peers.size():
+		if peers_ready.size() == int(Steam.getLobbyData(Networking.current_lobby, "player_count")) + 1:
 			Networking._start_game.rpc()
 
 

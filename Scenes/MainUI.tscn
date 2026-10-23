@@ -27,7 +27,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HeightIndicator" type="HBoxContainer" parent="." unique_id=1684088412]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -53,7 +52,6 @@ layout_mode = 2
 
 [node name="WinMenu" type="Control" parent="." unique_id=1925285693]
 process_mode = 3
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,7 +96,6 @@ text = "Leave Lobby"
 
 [node name="PauseMenu" type="Control" parent="." unique_id=2006098837]
 process_mode = 3
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

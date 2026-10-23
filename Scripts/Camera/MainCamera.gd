@@ -34,22 +34,22 @@ func _start_animation():
 	var movement = get_tree().create_tween()
 	movement.set_parallel()
 	movement.set_ease(Tween.EASE_OUT)
-	movement.tween_property(self, "position", Vector2(0, -10000), 2)
+	movement.tween_property(self, "position", Vector2(0, -7000), 2)
 	movement.tween_property(cam, "zoom", Vector2(0.2, 0.2), 2)
 	
 	await get_tree().create_timer(2.5).timeout
 	movement.kill()
 	movement = get_tree().create_tween()
 	movement.set_ease(Tween.EASE_OUT)
-	movement.tween_property(self, "position", Vector2(0,0), 5)
+	movement.tween_property(self, "position", Vector2(0,0), 2)
 	
-	await get_tree().create_timer(5.5).timeout
+	await get_tree().create_timer(2.2).timeout
 	movement.kill()
 	movement = get_tree().create_tween()
 	movement.set_ease(Tween.EASE_OUT)
-	movement.tween_property(self, "position", Vector2(0,-10000), 5)
+	movement.tween_property(self, "position", Vector2(0,-7000), 2)
 	
-	await get_tree().create_timer(5.5).timeout
+	await get_tree().create_timer(2.2).timeout
 	
 	movement.kill()
 	movement = get_tree().create_tween()

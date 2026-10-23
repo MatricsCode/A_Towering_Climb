@@ -28,6 +28,7 @@ Signals="*uid://q4fkgi45ld4m"
 
 [display]
 
+window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

@@ -6,8 +6,6 @@ enum States {SPAWN, CHARACTER, ABILITIES, FINISHED}
 
 var current_state =  States.SPAWN
 
-@onready var animations = $AnimationPlayer
-
 @export var selected_character : PlayerSource
 
 @export var background : Panel
@@ -21,6 +19,8 @@ var current_state =  States.SPAWN
 @export var ability_buttons : Array[HoverButton]
 @export var finished_button : HoverButton
 
+@onready var animations = $AnimationPlayer
+
 var loaded := false
 var active := false
 
@@ -31,6 +31,7 @@ func _ready():
 		remove_button.pressed.connect(func(): 
 			loaded = false
 			active = false
+			selected_character = null
 			animations.play("RemoveInput"))
 	
 	start_button.pressed.connect(_start)

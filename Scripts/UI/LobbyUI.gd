@@ -86,7 +86,7 @@ func _lobby_match_list(lobbies : Array):
 		var button = HoverButton.new()
 		
 		button.name = str(lobby)
-		button.text = str(Steam.getLobbyData(lobby, "name"))
+		button.text = str(Steam.getLobbyData(lobby, "name"), " | ", Steam.getLobbyData(lobby, "player_count"))
 		button.return_name = true
 		
 		button.returning_name.connect(_join_lobby)

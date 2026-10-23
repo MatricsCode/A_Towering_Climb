@@ -46,27 +46,16 @@ func _add_player():
 
 func _is_peer_ready():
 	players.clear()
+	print(players)
 	
 	for i in player_selectors.get_children():
-		if i.loaded and ! i.active:
-			_peer_ready.rpc(true)
+		if i.loaded and !i.active:
+			Networking._peer_ready.rpc([])
 			return
 		elif i.loaded and i.active:
-			players.append(i.selected_character)
-	
-	_peer_ready.rpc(true)
-
-@rpc("authority", "call_local", "reliable")
-func _sending_player_prefab():
-	GlobalScript.players[Steam.getSteamID()] = players
-
-@rpc("any_peer", "call_local", "reliable")
-func _peer_ready(is_ready : bool):
-	var ID = Steam.getSteamID()
-	
-	if is_ready:
-		GlobalScript.peers_ready.append(ID)
-		Signals.readied_peer.emit(ID)
-	else:
-		GlobalScript.peers_ready.erase(ID)
-		Signals.peer_waiting.emit(ID)
+			var character : PlayerSource
+			character = i.selected_character
+			
+			players.append(character)
+	print(players)
+	Networking._peer_ready.rpc(players)
