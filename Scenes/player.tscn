@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b7w851wnif2io"]
+[gd_scene format=3 uid="uid://c2kbb3vdndd4g"]
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_nn08x"]
 [ext_resource type="SpriteFrames" uid="uid://cm6254juvje6s" path="res://Old/Recourses/PlayerSprites/Climber1.tres" id="2_52ee3"]
