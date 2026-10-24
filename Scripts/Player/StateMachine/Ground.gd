@@ -2,6 +2,8 @@ extends Node
 
 const WALK_SFX = preload("res://Sound Effects/Walking.mp3")
 
+signal switch(new_state, additional)
+
 @export var player : CharacterBody2D
 @export var sprite : AnimatedSprite2D
 
@@ -19,15 +21,17 @@ func _main():
 	
 	## All of the different ways of exiting the current state go her
 	if Input.is_action_pressed("Jump"):
-		player.switch(player.States.GROUND, player.States.AIR, "Jump")
+		switch.emit(player.States.AIR, "Jump")
 	
-	if not player.is_on_floor() and not Input.is_action_pressed("Jump"):
+	if not player.is_on_floor():# and not Input.is_action_pressed("Jump"):
 		await get_tree().create_timer(0.1).timeout
-		player.switch(player.States.GROUND, player.States.AIR, "Fall")
-	elif not player.is_on_floor() and Input.is_action_pressed("Jump"):
-		player.switch(player.States.GROUND, player.States.AIR, "Jump")
-	elif player.wall_detector.touching_wall():
-		player.switch(player.States.GROUND, player.States.CLIMB)
+		switch.emit(player.States.AIR, "Fall")
+	
+	#elif not player.is_on_floor() and Input.is_action_pressed("Jump"):
+		#switch.emit(player.States.AIR, "Jump")
+	
+	elif player.wall_detector._touching_wall():
+		switch.emit(player.States.CLIMB)
 
 func _animation():
 	if player.velocity.x != 0:

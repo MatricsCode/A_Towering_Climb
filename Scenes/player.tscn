@@ -58,7 +58,7 @@ color_ramp = SubResource("GradientTexture1D_megsn")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52ee3"]
 size = Vector2(64, 78)
 
-[node name="Player" type="CharacterBody2D" unique_id=399334221 node_paths=PackedStringArray("sprite", "wall_detector", "edge_detectors") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=399334221 node_paths=PackedStringArray("sprite", "wall_detector", "edge_detectors", "ground", "air", "climb", "pause") groups=["Player"]]
 process_mode = 3
 visibility_layer = 2
 collision_layer = 5
@@ -67,6 +67,10 @@ script = ExtResource("1_nn08x")
 sprite = NodePath("Sprite")
 wall_detector = NodePath("Detectors/WallDetectors")
 edge_detectors = NodePath("Detectors/EdgeDetectors")
+ground = NodePath("States/Ground")
+air = NodePath("States/Air")
+climb = NodePath("States/Climb")
+pause = NodePath("States/Pause")
 
 [node name="States" type="Node" parent="." unique_id=542146053]
 

@@ -1,12 +1,19 @@
 extends Node
 
+signal switch(new_state, additional)
+
 @export var player : CharacterBody2D
 @export var sprite : AnimatedSprite2D
 
+var clock := Timer
+
+var fall_speed = 0
+
 func _physics_process(_delta):
+	_animation()
+	
 	if player.current_state == player.States.AIR:
 		_main()
-
 
 func _main():
 	#region Functions
@@ -44,18 +51,18 @@ func _main():
 	if not player.is_on_floor(): #elif not is_on_floor():
 		air_movement.call()
 		
-		turn()
+		_turn()
 		drop.call()
 	#endregion
 	
 	## All of the different ways of exiting the current state go here
 	#region Exits
 	if player.is_on_floor():
-		player._switch(player.States.AIR, player.States.GROUND)
+		switch.emit(player.States.GROUND)
 	
 	if player.wall_detector._touching_wall():
 		player.position.y -= 5
-		player.switch(player.States.AIR, player.States.CLIMB)
+		switch.emit(player.States.CLIMB)
 	#endregion
 
 func _animation():
@@ -64,7 +71,7 @@ func _animation():
 			sprite.play("fall") # Plays the fall animation if you are traveling downward
 		elif player.velocity.y < 0:
 			sprite.play("jump")# Plays the jump animation if you are traveling upward
-func turn():
+func _turn():
 	if player.velocity.x > 0:
 		sprite.flip_h = false
 	elif player.velocity.x < 0:

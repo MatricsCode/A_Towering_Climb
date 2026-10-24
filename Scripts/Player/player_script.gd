@@ -3,10 +3,17 @@ class_name Player
 
 signal start()
 
+@export_category("Nodes")
 @export var player_source : PlayerSource
 @export var sprite : AnimatedSprite2D
 @export var wall_detector : Node2D
 @export var edge_detectors : Node2D
+
+@export_category("States")
+@export var ground : Node
+@export var air : Node
+@export var climb : Node
+@export var pause : Node
 
 var steam_user : int
 var character_user : int
@@ -42,6 +49,11 @@ var main_vars_reset = []
 #region Inbuilt Functions
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scenes
+	ground.switch.connect(_switch_ground)
+	air.switch.connect(_switch_air)
+	climb.switch.connect(_switch_climb)
+	pause.switch.connect(_switch_pause)
+	
 	start.connect(func():
 		sprite.sprite_frames = player_source.sprite_frame
 		
@@ -54,6 +66,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 			$AudioListener2D.make_current()
 		
 		current_state = States.AIR ## Autoloads the normal state into the player
+		
 		
 		#Signals.paused.connect(pause_switch)
 		#Signals.winner.connect(won)
@@ -121,6 +134,27 @@ func _physics_process(_delta):  ## Runs every physics frames
 #endregion
 
 
+func _switch_ground(new_state : States, additional = ""):
+	current_state = new_state
+	if additional == "":
+		pass
+	else:
+		pass
+func _switch_air(new_state : States, fall_speed = 0):
+	current_state = new_state
+func _switch_climb(new_state : States, additional = ""):
+	current_state = new_state
+	if additional == "":
+		pass
+	else:
+		pass
+func _switch_pause(new_state : States, additional = ""):
+	current_state = new_state
+	if additional == "":
+		pass
+	else:
+		pass
+
 #region Main Other Functions
 func _play_sound(sound : Resource):
 	$SFX.stream = sound
@@ -133,7 +167,7 @@ func get_sprite_rotation():
 	else:
 		return -1
 
-func switch(old_state, new_state):
+func _switch(old_state, new_state):
 	
 	if old_state == States.OVERIDDEN:
 		current_state = new_state
@@ -219,6 +253,7 @@ func switch(old_state, new_state):
 		reset_main_vars(1)
 		reset_main_vars(2)
 		
+		
 		if edge_detectors.on_edge():
 			position.x += 50 * get_sprite_rotation() * -1
 		
@@ -269,9 +304,9 @@ func switch(old_state, new_state):
 
 func overide(overidden2 : bool):
 	if overidden2:
-		switch(current_state, States.OVERIDDEN)
+		_switch(current_state, States.OVERIDDEN)
 	else:
-		switch(States.OVERIDDEN, States.AIR)
+		_switch(States.OVERIDDEN, States.AIR)
 #endregion
 
 #region Secondary Other Functions
@@ -295,9 +330,9 @@ func reset_main_vars(key : int): ## 0 = Ground, 1 = Air, 2 = Climb
 
 func pause_switch():
 	if current_state != States.PAUSED:
-		switch(current_state, States.PAUSED)
+		_switch(current_state, States.PAUSED)
 	else:
-		switch(States.PAUSED, States.AIR)
+		_switch(States.PAUSED, States.AIR)
 
 func background_rotation():
 	if velocity.x < 600 and velocity.x > -600:

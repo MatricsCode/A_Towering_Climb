@@ -1,5 +1,7 @@
 extends Node
 
+signal switch(new_state, additional)
+
 @export var player : CharacterBody2D
 @export var sprite : AnimatedSprite2D
 @export var edge_detectors : Node2D

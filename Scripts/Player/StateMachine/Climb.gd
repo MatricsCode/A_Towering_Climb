@@ -2,6 +2,7 @@ extends Node
 
 const CLIMB_SFX = preload("res://Sound Effects/Climb.mp3")
 
+signal switch(new_state, additional)
 
 @export var player : CharacterBody2D
 @export var sprite : AnimatedSprite2D
