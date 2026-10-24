@@ -1,7 +1,8 @@
+res://Scripts/Player/
+res://Scripts/Player/StateMachine/
 res://Art/Player/
 D:/NextCloud/Sicherung/Kodumaster/Exports/A Towering Climb/
 res://Scripts/UI/CharacterSelector/
-res://Scripts/Player/StateMachine/
 res://Scripts/UI/
 res://Scripts/Camera/
 res://Scenes/Camera/
@@ -14,7 +15,5 @@ res://Scripts/PlayerSelectorUI/
 res://Scripts/Cinematic Camera/
 res://Scripts/MainScene/
 res://
-res://Scripts/Player/
-res://Scripts/Player/Abilitys/
 res://Scripts/Tools/
 res://Scripts/PlayArea/

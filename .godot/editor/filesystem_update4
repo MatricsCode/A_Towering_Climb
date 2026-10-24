@@ -9,3 +9,7 @@ res://Old/Recourses/UI/PauseBackground.tres
 res://Old/Recourses/UI/WinBackground.tres
 res://Scripts/Player/StateMachine/Air.gd
 res://Scripts/Player/player_script.gd
+res://Scripts/Player/StateMachine/Animations.gd
+res://Scripts/Player/StateMachine/Ground.gd
+res://Scripts/Player/StateMachine/Climb.gd
+res://Scripts/Player/Detectors.gd

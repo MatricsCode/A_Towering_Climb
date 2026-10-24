@@ -49,24 +49,23 @@ var main_vars_reset = []
 #region Inbuilt Functions
 ## --- Inbuilt functions ---
 func _ready(): ## Runns as soon as the player is loaded into the scenes
+	current_state = States.GROUND
+	
 	ground.switch.connect(_switch_ground)
 	air.switch.connect(_switch_air)
 	climb.switch.connect(_switch_climb)
 	pause.switch.connect(_switch_pause)
 	
+	for i in main_vars:
+		for y in main_vars[i]:
+			main_vars_reset.append(main_vars.get(i).get(y))
+	
+	if is_multiplayer_authority():
+		$AudioListener2D.make_current()
+	
 	start.connect(func():
 		sprite.sprite_frames = player_source.sprite_frame
-		
-		
-		for i in main_vars:
-			for y in main_vars[i]:
-				main_vars_reset.append(main_vars.get(i).get(y))
-		
-		if is_multiplayer_authority():
-			$AudioListener2D.make_current()
-		
-		current_state = States.AIR ## Autoloads the normal state into the player
-		
+		## Autoloads the normal state into the player
 		
 		#Signals.paused.connect(pause_switch)
 		#Signals.winner.connect(won)

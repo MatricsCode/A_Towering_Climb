@@ -6,14 +6,29 @@ signal switch(new_state, additional)
 
 @export var player : CharacterBody2D
 @export var sprite : AnimatedSprite2D
-@export var wall_detectors : Node2D
-@export var edge_detectors : Node2D
+@export var detectors : Node2D
+
+var current := false
 
 func _physics_process(_delta):
-	if player.current_state == player.States.CLIMB:
-		_main()
+	if player.current_state != player.States.CLIMB:
+		current = false
+		return
+	else:
+		current = true
+	
+	detectors.on_ground.connect(func(on_ground):
+		if !current or !on_ground:
+			return
+		switch.emit(player.States.GROUND, "Finish"))
+	detectors.on_edge.connect(func(on_edge):
+		if !current or !on_edge:
+			return
+		switch.emit(player.States.GROUND, "OnEdge"))
+	
+	_climb()
 
-func _main():
+func _climb():
 	## All of the different actions possible in the current state go here
 	#region Main
 	var direction = Input.get_axis("Up", "Down") ## Accesses the current input
@@ -33,15 +48,15 @@ func _main():
 	
 	## All of the different ways of exiting the current state go here
 	#region Exits
-	if not edge_detectors.on_edge():
-		player.switch(player.States.CLIMB, player.States.GROUND)
-	
-	if Input.is_action_just_pressed("Jump"):
-		player.switch(player.States.CLIMB, player.States.AIR)
-	
-	if player.is_on_floor():
-		player.switch(player.States.CLIMB, player.States.GROUND)
-	
-	elif wall_detectors.touching_wall() == false:
-		player.switch(player.States.CLIMB, player.States.AIR)
+	#if not player.is_on_wall_only():
+		#switch.emit(player.States.GROUND, "LedgeClimb")
+	#
+	#if Input.is_action_just_pressed("Jump"):
+		#switch.emit(player.States.AIR, "Jump")
+	#
+	#if player.is_on_floor():
+		#switch.emit(player.States.GROUND, "Finished")
+	#
+	#elif wall_detectors.touching_wall() == false:
+		#switch.emit(player.States.AIR, "NoWall")
 	#endregion

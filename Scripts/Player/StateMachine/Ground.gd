@@ -20,17 +20,17 @@ func _main():
 		player._play_sound(WALK_SFX)
 	
 	## All of the different ways of exiting the current state go her
-	if Input.is_action_pressed("Jump"):
-		switch.emit(player.States.AIR, "Jump")
-	
-	if not player.is_on_floor():# and not Input.is_action_pressed("Jump"):
-		await get_tree().create_timer(0.1).timeout
-		switch.emit(player.States.AIR, "Fall")
+	#if Input.is_action_pressed("Jump"):
+		#switch.emit(player.States.AIR, "Jump")
+	#
+	#if not player.is_on_floor():# and not Input.is_action_pressed("Jump"):
+		#await get_tree().create_timer(0.1).timeout
+		#switch.emit(player.States.AIR, "Fall")
 	
 	#elif not player.is_on_floor() and Input.is_action_pressed("Jump"):
 		#switch.emit(player.States.AIR, "Jump")
 	
-	elif player.wall_detector._touching_wall():
+	elif player.is_on_wall():
 		switch.emit(player.States.CLIMB)
 
 func _animation():
