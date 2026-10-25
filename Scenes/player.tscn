@@ -74,15 +74,18 @@ pause = NodePath("States/Pause")
 
 [node name="States" type="Node" parent="." unique_id=542146053]
 
-[node name="Ground" type="Node" parent="States" unique_id=2026003696 node_paths=PackedStringArray("player", "sprite")]
+[node name="Ground" type="Node" parent="States" unique_id=2026003696 node_paths=PackedStringArray("player", "sprite", "detectors")]
 script = ExtResource("2_bhhdu")
+wait_time = 0.03
 player = NodePath("../..")
 sprite = NodePath("../../Sprite")
+detectors = NodePath("../../Detectors")
 
-[node name="Air" type="Node" parent="States" unique_id=738846656 node_paths=PackedStringArray("player", "sprite")]
+[node name="Air" type="Node" parent="States" unique_id=738846656 node_paths=PackedStringArray("player", "sprite", "detectors")]
 script = ExtResource("3_megsn")
 player = NodePath("../..")
 sprite = NodePath("../../Sprite")
+detectors = NodePath("../../Detectors")
 
 [node name="Climb" type="Node" parent="States" unique_id=558835932 node_paths=PackedStringArray("player", "sprite", "detectors")]
 script = ExtResource("4_yoq75")
@@ -97,8 +100,14 @@ sprite = NodePath("../../Sprite")
 edge_detectors = NodePath("../../Detectors/WallDetectors")
 wall_detectors = NodePath("../../Detectors/EdgeDetectors")
 
-[node name="Animations" type="Node" parent="States" unique_id=512623372]
+[node name="Animations" type="Node" parent="States" unique_id=512623372 node_paths=PackedStringArray("player", "sprite", "ground", "air", "climb", "pause")]
 script = ExtResource("6_gymyn")
+player = NodePath("../..")
+sprite = NodePath("../../Sprite")
+ground = NodePath("../Ground")
+air = NodePath("../Air")
+climb = NodePath("../Climb")
+pause = NodePath("../Pause")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1227623305]
 position = Vector2(0, -160)
@@ -116,10 +125,11 @@ shape = SubResource("RectangleShape2D_cvnsp")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=966742209]
 replication_config = SubResource("SceneReplicationConfig_cvnsp")
 
-[node name="Detectors" type="Node2D" parent="." unique_id=624981414 node_paths=PackedStringArray("left_ground", "right_ground", "left_wall", "right_wall", "left_edge", "right_edge")]
+[node name="Detectors" type="Node2D" parent="." unique_id=624981414 node_paths=PackedStringArray("player", "left_ground", "right_ground", "left_wall", "right_wall", "left_edge", "right_edge")]
 script = ExtResource("8_tx1dd")
-left_ground = NodePath("FloorDetectors/WallDetector1")
-right_ground = NodePath("FloorDetectors/WallDetector2")
+player = NodePath("..")
+left_ground = NodePath("FloorDetectors/GroundDetector1")
+right_ground = NodePath("FloorDetectors/GroundDetector2")
 left_wall = NodePath("WallDetectors/WallDetector1")
 right_wall = NodePath("WallDetectors/WallDetector2")
 left_edge = NodePath("EdgeDetectors/EdgeDetector1")
@@ -127,17 +137,15 @@ right_edge = NodePath("EdgeDetectors/EdgeDetector2")
 
 [node name="FloorDetectors" type="Node2D" parent="Detectors" unique_id=256314108]
 
-[node name="WallDetector1" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=1627784674]
+[node name="GroundDetector1" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=1627784674]
 position = Vector2(-34, 0)
-target_position = Vector2(0, 2)
+target_position = Vector2(0, 10)
 collision_mask = 2
-hit_from_inside = true
 
-[node name="WallDetector2" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=577187749]
+[node name="GroundDetector2" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=577187749]
 position = Vector2(34, 0)
-target_position = Vector2(0, 2)
+target_position = Vector2(0, 10)
 collision_mask = 2
-hit_from_inside = true
 
 [node name="WallDetectors" type="Node2D" parent="Detectors" unique_id=44892161]
 position = Vector2(0, -71)

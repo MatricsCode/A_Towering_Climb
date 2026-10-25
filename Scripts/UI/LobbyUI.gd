@@ -1,12 +1,12 @@
 extends Panel
 
-@export_category("Create/Join")
+@export_group("Create/Join")
 @export var host_button : HoverButton
 @export var join_button : HoverButton
 @export var lobby_join_id : LineEdit
 @export var quit_button : HoverButton
 
-@export_category("Lobby Search")
+@export_group("Lobby Search")
 @export var reload_lobbies_button : HoverButton
 @export var id_button : HoverButton
 @export var lobby_search_field : LineEdit

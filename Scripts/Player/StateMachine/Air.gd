@@ -4,16 +4,52 @@ signal switch(new_state, additional)
 
 @export var player : CharacterBody2D
 @export var sprite : AnimatedSprite2D
+@export var detectors : Node2D
 
+@export_range(0.01, 0.3,0.01) var wait_time : float
 var clock := Timer
 
 var fall_speed = 0
 
-func _physics_process(_delta):
-	_animation()
+var coyote_timer : Timer
+
+var current := false
+
+func _ready():
+	detectors.on_ground.connect(func(is_true : bool):
+		if !current or !is_true:
+			return
+		switch.emit(player.States.GROUND, "Land"))
+	detectors.on_wall.connect(func(is_true : bool):
+		if !current or !is_true:
+			return
+		switch.emit(player.States.CLIMB, "WallHit"))
 	
-	if player.current_state == player.States.AIR:
-		_main()
+	
+	
+	#coyote_timer = Timer.new()
+	#
+	#add_child(coyote_timer)
+	#coyote_timer.timeout.connect(func():
+		#switch.emit(player.States.AIR, "Fall"))
+	#coyote_timer.wait_time = wait_time
+	#coyote_timer.one_shot = true
+
+func _physics_process(_delta):
+	if player.current_state != player.States.AIR:
+		current = false
+		return
+	elif player.current_state == player.States.AIR:
+		current = true
+	
+	_air()
+
+func _air():
+	if fall_speed < player.MAX_GRAVITY:
+		fall_speed += player.main_vars.air_vars.gravity_increase
+		player.main_vars.air_vars.gravity = fall_speed
+	
+	player.velocity.y = fall_speed
 
 func _main():
 	#region Functions
@@ -65,14 +101,14 @@ func _main():
 		switch.emit(player.States.CLIMB)
 	#endregion
 
-func _animation():
-	if not player.is_on_floor(): #elif not is_on_floor():
-		if player.velocity.y > 0:
-			sprite.play("fall") # Plays the fall animation if you are traveling downward
-		elif player.velocity.y < 0:
-			sprite.play("jump")# Plays the jump animation if you are traveling upward
+func _coyote_time():
+	coyote_timer.start()
+
 func _turn():
 	if player.velocity.x > 0:
 		sprite.flip_h = false
 	elif player.velocity.x < 0:
 		sprite.flip_h = true
+#func _jump():
+	#player.velocity.y = -player.main_vars.air_vars.jump_strength
+	#player.velocity.x = (player.main_vars.ground_vars.speed / 2) * player.get_sprite_rotation()

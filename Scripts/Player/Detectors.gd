@@ -4,6 +4,10 @@ signal on_ground(is_true : bool)
 signal on_wall(is_true : bool)
 signal on_edge(is_true : bool)
 
+@export_group("Others")
+@export var player : CharacterBody2D
+
+@export_group("RayCasts")
 @export var left_ground : RayCast2D
 @export var right_ground : RayCast2D
 @export var left_wall : RayCast2D
@@ -30,6 +34,7 @@ func _on_ground():
 	
 	if current_situation != is_on_ground:
 		on_ground.emit(current_situation)
+		is_on_ground = current_situation
 func _on_wall():
 	var current_situation : bool
 	
@@ -40,6 +45,7 @@ func _on_wall():
 	
 	if current_situation != is_on_wall:
 		on_wall.emit(current_situation)
+		is_on_wall = current_situation
 func _on_edge():
 	var current_situation : bool
 	
@@ -50,3 +56,4 @@ func _on_edge():
 	
 	if current_situation != is_on_edge:
 		on_edge.emit(current_situation)
+		is_on_edge = current_situation

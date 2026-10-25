@@ -7,6 +7,8 @@ var current_state = States.BOUNCING
 
 var bouncing_time = 0
 
+var movement : Tween
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Signals.lobby_start_game.connect(_start_animation)
@@ -31,7 +33,7 @@ func _following_player():
 func _start_animation():
 	current_state = States.STARTING_ANIMATION
 	
-	var movement = get_tree().create_tween()
+	movement = get_tree().create_tween()
 	movement.set_parallel()
 	movement.set_ease(Tween.EASE_OUT)
 	movement.tween_property(self, "position", Vector2(0, -7000), 2)
@@ -50,12 +52,8 @@ func _start_animation():
 	movement.tween_property(self, "position", Vector2(0,-7000), 2)
 	
 	await get_tree().create_timer(2.2).timeout
-	
-	movement.kill()
 	movement = get_tree().create_tween()
 	movement.set_parallel()
 	movement.set_ease(Tween.EASE_OUT)
 	movement.tween_property(self, "position", Vector2(0,0), 2)
 	movement.tween_property(cam, "zoom", Vector2(0.6,0.6), 2)
-	
-	

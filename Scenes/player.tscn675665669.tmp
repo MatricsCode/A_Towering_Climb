@@ -1,0 +1,217 @@
+[gd_scene format=3 uid="uid://c2kbb3vdndd4g"]
+
+[ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/player_script.gd" id="1_nn08x"]
+[ext_resource type="Script" uid="uid://cfhqtcjpmpt2f" path="res://Scripts/Player/StateMachine/Ground.gd" id="2_bhhdu"]
+[ext_resource type="Script" uid="uid://b0cyxdudk1n30" path="res://Scripts/Player/StateMachine/Air.gd" id="3_megsn"]
+[ext_resource type="Script" uid="uid://cpewpue8xd833" path="res://Scripts/Player/StateMachine/Climb.gd" id="4_yoq75"]
+[ext_resource type="Script" uid="uid://qbo6p8gv1xdl" path="res://Scripts/Player/StateMachine/Pause.gd" id="5_ksbbd"]
+[ext_resource type="Script" uid="uid://c22ccct5h31um" path="res://Scripts/Player/abillity_manager.gd" id="5_yoq75"]
+[ext_resource type="Script" uid="uid://mcnni8yg2jru" path="res://Scripts/Player/StateMachine/Animations.gd" id="6_gymyn"]
+[ext_resource type="Texture2D" uid="uid://cp5ug06icbkxv" path="res://Art/Player/Sweat.png" id="6_ksbbd"]
+[ext_resource type="SpriteFrames" uid="uid://c2turr7b108g7" path="res://Components/SpriteFrames/Players/Climber1.tres" id="7_f1ek2"]
+[ext_resource type="Script" uid="uid://5ld7a65652d1" path="res://Scripts/Player/Detectors.gd" id="8_tx1dd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(80, 150)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cvnsp"]
+properties/0/path = NodePath("Sprite:animation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Sprite:frame")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Sprite:flip_h")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_bhhdu"]
+offsets = PackedFloat32Array(0, 0.625, 0.785714, 0.964286)
+colors = PackedColorArray(0.0901961, 0.12549, 0.219608, 1, 0.643137, 0.866667, 0.858824, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_megsn"]
+gradient = SubResource("Gradient_bhhdu")
+
+[sub_resource type="Curve" id="Curve_yoq75"]
+_data = [Vector2(0, 0.640449), 0.0, 0.0, 0, 0, Vector2(0.768293, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ksbbd"]
+curve = SubResource("Curve_yoq75")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_glx4g"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(20, 5, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 116.67
+initial_velocity_max = 185.52
+gravity = Vector3(0, 250, 0)
+damping_max = 12.5
+scale_curve = SubResource("CurveTexture_ksbbd")
+color_ramp = SubResource("GradientTexture1D_megsn")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52ee3"]
+size = Vector2(64, 78)
+
+[node name="Player" type="CharacterBody2D" unique_id=399334221 node_paths=PackedStringArray("sprite", "wall_detector", "edge_detectors", "ground", "air", "climb", "pause") groups=["Player"]]
+process_mode = 3
+visibility_layer = 2
+collision_layer = 5
+collision_mask = 14
+script = ExtResource("1_nn08x")
+sprite = NodePath("Sprite")
+wall_detector = NodePath("Detectors/WallDetectors")
+edge_detectors = NodePath("Detectors/EdgeDetectors")
+ground = NodePath("States/Ground")
+air = NodePath("States/Air")
+climb = NodePath("States/Climb")
+pause = NodePath("States/Pause")
+
+[node name="States" type="Node" parent="." unique_id=542146053]
+
+[node name="Ground" type="Node" parent="States" unique_id=2026003696 node_paths=PackedStringArray("player", "sprite", "detectors")]
+script = ExtResource("2_bhhdu")
+wait_time = 1.0
+player = NodePath("../..")
+sprite = NodePath("../../Sprite")
+detectors = NodePath("../../Detectors")
+
+[node name="Air" type="Node" parent="States" unique_id=738846656 node_paths=PackedStringArray("player", "sprite")]
+script = ExtResource("3_megsn")
+player = NodePath("../..")
+sprite = NodePath("../../Sprite")
+
+[node name="Climb" type="Node" parent="States" unique_id=558835932 node_paths=PackedStringArray("player", "sprite", "detectors")]
+script = ExtResource("4_yoq75")
+player = NodePath("../..")
+sprite = NodePath("../../Sprite")
+detectors = NodePath("../../Detectors")
+
+[node name="Pause" type="Node" parent="States" unique_id=1917950217 node_paths=PackedStringArray("player", "sprite", "edge_detectors", "wall_detectors")]
+script = ExtResource("5_ksbbd")
+player = NodePath("../..")
+sprite = NodePath("../../Sprite")
+edge_detectors = NodePath("../../Detectors/WallDetectors")
+wall_detectors = NodePath("../../Detectors/EdgeDetectors")
+
+[node name="Animations" type="Node" parent="States" unique_id=512623372 node_paths=PackedStringArray("player", "sprite", "ground", "air", "climb", "pause")]
+script = ExtResource("6_gymyn")
+player = NodePath("../..")
+sprite = NodePath("../../Sprite")
+ground = NodePath("../Ground")
+air = NodePath("../Air")
+climb = NodePath("../Climb")
+pause = NodePath("../Pause")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1227623305]
+position = Vector2(0, -160)
+sprite_frames = ExtResource("7_f1ek2")
+animation = &"walk"
+frame_progress = 0.0083151525
+speed_scale = 2.0
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=974936812]
+position = Vector2(0, -75)
+shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=966742209]
+replication_config = SubResource("SceneReplicationConfig_cvnsp")
+
+[node name="Detectors" type="Node2D" parent="." unique_id=624981414 node_paths=PackedStringArray("player", "left_ground", "right_ground", "left_wall", "right_wall", "left_edge", "right_edge")]
+script = ExtResource("8_tx1dd")
+player = NodePath("..")
+left_ground = NodePath("FloorDetectors/GroundDetector1")
+right_ground = NodePath("FloorDetectors/GroundDetector2")
+left_wall = NodePath("WallDetectors/WallDetector1")
+right_wall = NodePath("WallDetectors/WallDetector2")
+left_edge = NodePath("EdgeDetectors/EdgeDetector1")
+right_edge = NodePath("EdgeDetectors/EdgeDetector2")
+
+[node name="FloorDetectors" type="Node2D" parent="Detectors" unique_id=256314108]
+
+[node name="GroundDetector1" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=1627784674]
+position = Vector2(-34, 0)
+target_position = Vector2(0, 10)
+collision_mask = 2
+
+[node name="GroundDetector2" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=577187749]
+position = Vector2(34, 0)
+target_position = Vector2(0, 10)
+collision_mask = 2
+
+[node name="WallDetectors" type="Node2D" parent="Detectors" unique_id=44892161]
+position = Vector2(0, -71)
+
+[node name="WallDetector1" type="RayCast2D" parent="Detectors/WallDetectors" unique_id=985429886]
+position = Vector2(-60, 0)
+target_position = Vector2(0, 60)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="WallDetector2" type="RayCast2D" parent="Detectors/WallDetectors" unique_id=1384691904]
+position = Vector2(60, 0)
+target_position = Vector2(0, 60)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="EdgeDetectors" type="Node2D" parent="Detectors" unique_id=417370771]
+position = Vector2(0, -81)
+
+[node name="EdgeDetector1" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=2047404016]
+position = Vector2(-60, 0)
+target_position = Vector2(-3, 0)
+collision_mask = 4
+hit_from_inside = true
+
+[node name="EdgeDetector2" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=599898341]
+position = Vector2(60, 0)
+target_position = Vector2(3, 0)
+collision_mask = 4
+hit_from_inside = true
+
+[node name="Upgrades" type="Node" parent="." unique_id=2001463068 node_paths=PackedStringArray("main_player")]
+script = ExtResource("5_yoq75")
+main_player = NodePath("..")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1387906588]
+volume_db = 5.0
+bus = &"Player"
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1138320826]
+
+[node name="Sweat" type="GPUParticles2D" parent="." unique_id=854942168]
+position = Vector2(2, -133)
+emitting = false
+amount = 4
+texture = ExtResource("6_ksbbd")
+process_material = SubResource("ParticleProcessMaterial_glx4g")
+
+[node name="InteractDetector" type="Area2D" parent="." unique_id=1390379217]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractDetector" unique_id=216211038]
+position = Vector2(0, -42)
+shape = SubResource("RectangleShape2D_52ee3")
+
+[node name="InteractionIndicator" type="Label" parent="." unique_id=1503091666]
+visible = false
+offset_left = -75.0
+offset_top = -614.0
+offset_right = 92.0
+offset_bottom = -205.0
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 300
+text = "E"
+
+[connection signal="body_entered" from="InteractDetector" to="." method="_on_interact_detector_body_entered"]
+[connection signal="body_exited" from="InteractDetector" to="." method="_on_interact_detector_body_exited"]

@@ -3,13 +3,13 @@ class_name Player
 
 signal start()
 
-@export_category("Nodes")
+@export_group("Nodes")
 @export var player_source : PlayerSource
 @export var sprite : AnimatedSprite2D
 @export var wall_detector : Node2D
 @export var edge_detectors : Node2D
 
-@export_category("States")
+@export_group("States")
 @export var ground : Node
 @export var air : Node
 @export var climb : Node
@@ -19,7 +19,7 @@ var steam_user : int
 var character_user : int
 
 ## --- Enums ---
-enum States {GROUND, AIR, CLIMB, PAUSED, OVERIDDEN, EMPTY}
+enum States {GROUND, AIR, CLIMB, PAUSE, OVERIDDEN, EMPTY}
 
 ## --- Constants ---
 
@@ -38,7 +38,7 @@ var main_vars = { ## Main variables
 	"air_vars" : {"jump_power" : 1250, "jump_increase" : 1, "gravity" : 0, "gravity_increase" : 1, "movement_direction" : 0},
 	"climbing_vars" : {"climbing_speed" : 300},
 	
-	"switching_vars" : {"switch_again" : true},}
+	"switching_vars" : {"can_switch" : true},}
 
 var main_vars_reset = []
 
@@ -94,7 +94,7 @@ func _physics_process(_delta):  ## Runs every physics frames
 			#air()
 		#States.CLIMB:
 			#climb()
-		#States.PAUSED:
+		#States.PAUSE:
 			#paused()
 		#States.OVERIDDEN:
 			#overidden()
@@ -103,7 +103,7 @@ func _physics_process(_delta):  ## Runs every physics frames
 		#_:
 			#printerr("A unidentified state has been entered")
 	
-	#if camera_changing.is_running() == false and current_state != States.PAUSED:
+	#if camera_changing.is_running() == false and current_state != States.PAUSE:
 		#camera_move()
 	#
 	#if shaking_camera != 0:
@@ -133,44 +133,62 @@ func _physics_process(_delta):  ## Runs every physics frames
 #endregion
 
 
-func _switch_ground(new_state : States, additional = ""):
-	if !main_vars.get("switching_vars")["switch_again"]:
+func _switch_ground(new_state : States, additional := ""):
+	if !main_vars.get("switching_vars")["can_switch"]:
 		return
 	
 	if new_state == States.AIR:
-		pass
-	elif new_state == States.CLIMB:
-		position.y -= 10
+		if additional == "Jump":
+			pass
+		elif additional == "Fall":
+			pass
 		current_state = new_state
-func _switch_air(new_state : States, fall_speed = 0):
-	if !main_vars.get("switching_vars")["switch_again"]:
+	elif new_state == States.CLIMB:
+		position.y -= 25
+		current_state = new_state
+	_switch_timeout()
+func _switch_air(new_state : States, fall_speed := 0.0):
+	if !main_vars.get("switching_vars")["can_switch"]:
 		return
 	
+	if fall_speed == 0.1:
+		pass
+	
 	current_state = new_state
-func _switch_climb(new_state : States, additional = ""):
-	if !main_vars.get("switching_vars")["switch_again"]:
+	_switch_timeout()
+func _switch_climb(new_state : States, additional := ""):
+	if !main_vars.get("switching_vars")["can_switch"]:
 		return
 	
 	if new_state == States.GROUND:
-		if additional == "Finish":
-			position.x += 1000 * get_sprite_rotation()
+		if additional == "Finished":
+			position.x += 25 * get_sprite_rotation() * -1
 		elif additional == "OnEdge":
-			position.y -= 81.0
-			position.x += 1000 * get_sprite_rotation()
+			position.y -= 82.0
+			position.x += 50 * get_sprite_rotation()
+			velocity = Vector2.ZERO
 		
 		
 		current_state = new_state
-	
-	if additional == "":
+		_switch_timeout()
+	elif new_state == States.AIR:
+		if additional == "Jump":
+			air.jump()
+		
+		
 		current_state = new_state
-
-func _switch_pause(new_state : States, additional = ""):
+		_switch_timeout()
+func _switch_pause(new_state : States, additional := ""):
 	current_state = new_state
 	if additional == "":
 		pass
 	else:
 		pass
 
+func _switch_timeout():
+	main_vars.switching_vars.can_switch = false
+	await get_tree().create_timer(0.1).timeout
+	main_vars.switching_vars.can_switch = true
 
 #region Main Other Functions
 func _play_sound(sound : Resource):
@@ -346,10 +364,10 @@ func reset_main_vars(key : int): ## 0 = Ground, 1 = Air, 2 = Climb
 			current_item += 1
 
 func pause_switch():
-	if current_state != States.PAUSED:
-		_switch(current_state, States.PAUSED)
+	if current_state != States.PAUSE:
+		_switch(current_state, States.PAUSE)
 	else:
-		_switch(States.PAUSED, States.AIR)
+		_switch(States.PAUSE, States.AIR)
 
 func background_rotation():
 	if velocity.x < 600 and velocity.x > -600:
@@ -358,7 +376,7 @@ func background_rotation():
 		return velocity.x / 6000
 
 #func won(winners_name):
-	#switch(current_state, States.PAUSED)
+	#switch(current_state, States.PAUSE)
 	#camera_changing = get_tree().create_tween()
 	#GlobalScript.important_positions.keys()
 	#

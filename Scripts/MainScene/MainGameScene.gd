@@ -39,6 +39,7 @@ func _spawn_players():
 			child.player_source = player_data_2
 			
 			player_placements.add_child(child)
+			child.position.y = -10
 			
 			child.start.emit()
 	

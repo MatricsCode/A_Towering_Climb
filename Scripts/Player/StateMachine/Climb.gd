@@ -20,7 +20,11 @@ func _physics_process(_delta):
 	detectors.on_ground.connect(func(on_ground):
 		if !current or !on_ground:
 			return
-		switch.emit(player.States.GROUND, "Finish"))
+		switch.emit(player.States.GROUND, "Finished"))
+	detectors.on_wall.connect(func(on_wall):
+		if !current or on_wall:
+			return
+		switch.emit(player.States.AIR, "Fall"))
 	detectors.on_edge.connect(func(on_edge):
 		if !current or on_edge:
 			return
