@@ -104,7 +104,7 @@ script = ExtResource("6_gymyn")
 position = Vector2(0, -160)
 sprite_frames = ExtResource("7_f1ek2")
 animation = &"walk"
-frame_progress = 0.2529209
+frame_progress = 0.0083151525
 speed_scale = 2.0
 flip_h = true
 metadata/_edit_lock_ = true
@@ -126,46 +126,45 @@ left_edge = NodePath("EdgeDetectors/EdgeDetector1")
 right_edge = NodePath("EdgeDetectors/EdgeDetector2")
 
 [node name="FloorDetectors" type="Node2D" parent="Detectors" unique_id=256314108]
-position = Vector2(0, -136)
 
 [node name="WallDetector1" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=1627784674]
-position = Vector2(-34, 135)
+position = Vector2(-34, 0)
 target_position = Vector2(0, 2)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="WallDetector2" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=577187749]
-position = Vector2(34, 135)
+position = Vector2(34, 0)
 target_position = Vector2(0, 2)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="WallDetectors" type="Node2D" parent="Detectors" unique_id=44892161]
-position = Vector2(0, -136)
+position = Vector2(0, -71)
 
 [node name="WallDetector1" type="RayCast2D" parent="Detectors/WallDetectors" unique_id=985429886]
-position = Vector2(-60, 65)
+position = Vector2(-60, 0)
 target_position = Vector2(0, 60)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="WallDetector2" type="RayCast2D" parent="Detectors/WallDetectors" unique_id=1384691904]
-position = Vector2(60, 65)
+position = Vector2(60, 0)
 target_position = Vector2(0, 60)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="EdgeDetectors" type="Node2D" parent="Detectors" unique_id=417370771]
-position = Vector2(0, -136)
+position = Vector2(0, -81)
 
 [node name="EdgeDetector1" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=2047404016]
-position = Vector2(-60, 55)
+position = Vector2(-60, 0)
 target_position = Vector2(-3, 0)
 collision_mask = 4
 hit_from_inside = true
 
 [node name="EdgeDetector2" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=599898341]
-position = Vector2(60, 55)
+position = Vector2(60, 0)
 target_position = Vector2(3, 0)
 collision_mask = 4
 hit_from_inside = true

@@ -1108,7 +1108,6 @@ grow_vertical = 2
 theme = ExtResource("2_gkc0f")
 
 [node name="CharacterSelect" type="MarginContainer" parent="MarginContainer" unique_id=564343480]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1147,6 +1146,7 @@ script = ExtResource("3_3n8ge")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
 [node name="AbilitySelect" type="MarginContainer" parent="MarginContainer" unique_id=920714062]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1245,6 +1245,7 @@ script = ExtResource("3_3n8ge")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
 [node name="FinishedSelect" type="MarginContainer" parent="MarginContainer" unique_id=970110426]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

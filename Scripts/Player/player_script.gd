@@ -134,25 +134,43 @@ func _physics_process(_delta):  ## Runs every physics frames
 
 
 func _switch_ground(new_state : States, additional = ""):
-	current_state = new_state
-	if additional == "":
+	if !main_vars.get("switching_vars")["switch_again"]:
+		return
+	
+	if new_state == States.AIR:
 		pass
-	else:
-		pass
+	elif new_state == States.CLIMB:
+		position.y -= 10
+		current_state = new_state
 func _switch_air(new_state : States, fall_speed = 0):
+	if !main_vars.get("switching_vars")["switch_again"]:
+		return
+	
 	current_state = new_state
 func _switch_climb(new_state : States, additional = ""):
-	current_state = new_state
+	if !main_vars.get("switching_vars")["switch_again"]:
+		return
+	
+	if new_state == States.GROUND:
+		if additional == "Finish":
+			position.x += 1000 * get_sprite_rotation()
+		elif additional == "OnEdge":
+			position.y -= 81.0
+			position.x += 1000 * get_sprite_rotation()
+		
+		
+		current_state = new_state
+	
 	if additional == "":
-		pass
-	else:
-		pass
+		current_state = new_state
+
 func _switch_pause(new_state : States, additional = ""):
 	current_state = new_state
 	if additional == "":
 		pass
 	else:
 		pass
+
 
 #region Main Other Functions
 func _play_sound(sound : Resource):

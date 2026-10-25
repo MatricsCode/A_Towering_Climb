@@ -1,15 +1,9 @@
 res://Scenes/player.tscn
-res://Components/SpriteFrames/Players/Baker.tres
+res://Components/SpriteFrames/Players/Climber1.tres
 res://Old/Recourses/Tileset.tres
 res://Components/Themes/MainTheme.tres
-res://Components/SpriteFrames/Players/Climber1.tres
 res://addons/godotsteam/editor/updater.tres
 res://Old/Recourses/UI/main.tres
 res://Old/Recourses/UI/PauseBackground.tres
 res://Old/Recourses/UI/WinBackground.tres
-res://Scripts/Player/StateMachine/Air.gd
 res://Scripts/Player/player_script.gd
-res://Scripts/Player/StateMachine/Animations.gd
-res://Scripts/Player/StateMachine/Ground.gd
-res://Scripts/Player/StateMachine/Climb.gd
-res://Scripts/Player/Detectors.gd

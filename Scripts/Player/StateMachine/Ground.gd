@@ -6,6 +6,7 @@ signal switch(new_state, additional)
 
 @export var player : CharacterBody2D
 @export var sprite : AnimatedSprite2D
+@export var detectors : Node2D
 
 func _physics_process(_delta):
 	if player.current_state == player.States.GROUND:

@@ -22,7 +22,7 @@ func _physics_process(_delta):
 			return
 		switch.emit(player.States.GROUND, "Finish"))
 	detectors.on_edge.connect(func(on_edge):
-		if !current or !on_edge:
+		if !current or on_edge:
 			return
 		switch.emit(player.States.GROUND, "OnEdge"))
 	
