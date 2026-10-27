@@ -1,9 +1,11 @@
-Hi, this is my ReadMe!
+"A Towering Climb" is a fast paced, multiplayer climbing game where you compete against your friends to reach the top of a building as fast as possible.
+To help you hinder your opponents, an array of abilities is at your disposal, like a sandwich throw or spilling beans on the building.
 
-My first one actually, as I don't really use Github for public projects 
-(or judging from my commit history against my time spent working, not really at all, as I like working... without backups apparently)!
+Prerequisit: Steam running with an active Steam account.
 
-Now, for my game, which is currently a glorified UI simulator, you need to download everything from the release, put it all in one folder, have steam online (+ internet) and let it do it's magic :D!
+To play: Download all of the files, put all files into one folder, start up steam and click on the .exe file.
 
-By the way, this is the latest update about the project, which I would like to change in the next 12 weeks!
-https://www.youtube.com/watch?v=MzgHmjQecUw
+During the development process of "A Towering Climb" uses the Steam ID of "SpaceWars", which is spesifically provided by steam for such multiplayer testing purposes.
+
+About the developer:
+I have been working on this game for over one year now. I reworked it several times to match with my increasing skill level!
