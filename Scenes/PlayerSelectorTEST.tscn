@@ -4,6 +4,8 @@
 [ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="2_gkc0f"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="3_3n8ge"]
 [ext_resource type="Script" uid="uid://di7tapp7bawh1" path="res://Scripts/UI/CharacterSelector/Customiser.gd" id="3_rtt77"]
+[ext_resource type="SpriteFrames" uid="uid://bl7fd60qs8x7s" path="res://Components/SpriteFrames/Players/Baker.tres" id="4_rook8"]
+[ext_resource type="SpriteFrames" uid="uid://c2turr7b108g7" path="res://Components/SpriteFrames/Players/Climber1.tres" id="5_b1keh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0wkq"]
 bg_color = Color(0.117647, 0.117647, 0.117647, 1)
@@ -29,6 +31,94 @@ corner_radius_bottom_left = 60
 
 [sub_resource type="Theme" id="Theme_hqh25"]
 Panel/styles/panel = SubResource("StyleBoxFlat_gkc0f")
+
+[sub_resource type="Animation" id="Animation_74avo"]
+resource_name = "Anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Panel/MarginContainer/Panel/AnimSprite2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.20000845, 0.834919, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-357, 165), Vector2(636, 165), Vector2(536, 165)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Panel/MarginContainer/Panel/AnimSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1023299, 0.70235527),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(536, 165), Vector2(489, 165), Vector2(1439, 165)]
+}
+
+[sub_resource type="Animation" id="Animation_6f2ri"]
+resource_name = "Anim2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Panel/MarginContainer/Panel/AnimSprite2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(536, 165), Vector2(489, 165), Vector2(1439, 165)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Panel/MarginContainer/Panel/AnimSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.8333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-357, 165), Vector2(636, 165), Vector2(536, 165)]
+}
+
+[sub_resource type="Animation" id="Animation_ly6c2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Panel/MarginContainer/Panel/AnimSprite2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(536, 165)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Panel/MarginContainer/Panel/AnimSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(536, 165)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ly6c2"]
+_data = {
+&"Anim1": SubResource("Animation_74avo"),
+&"Anim2": SubResource("Animation_6f2ri"),
+&"RESET": SubResource("Animation_ly6c2")
+}
 
 [sub_resource type="Animation" id="Animation_rtt77"]
 resource_name = "Finished"
@@ -274,7 +364,7 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.5, 0.5)]
+"values": [Vector2(1, 1)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -1116,7 +1206,6 @@ offset_right = 0.00048828125
 offset_bottom = -0.0012207031
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("3_rtt77")
 
@@ -1127,11 +1216,33 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Panel" type="Panel" parent="MarginContainer/CharacterSelect/VBoxContainer" unique_id=824386643]
-clip_children = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_hqh25")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel" unique_id=376026756]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 40
+
+[node name="Panel" type="Panel" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/MarginContainer" unique_id=1818353201]
+clip_children = 1
+layout_mode = 2
+
+[node name="AnimSprite2" type="AnimatedSprite2D" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/MarginContainer/Panel" unique_id=1622247079]
+position = Vector2(536, 165)
+sprite_frames = ExtResource("4_rook8")
+animation = &"climb"
+
+[node name="AnimSprite" type="AnimatedSprite2D" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/MarginContainer/Panel" unique_id=1853707796]
+position = Vector2(536, 165)
+sprite_frames = ExtResource("5_b1keh")
+animation = &"climb"
 
 [node name="AbilitiesButton" type="Button" parent="MarginContainer/CharacterSelect/VBoxContainer" unique_id=44613366]
 layout_mode = 2
@@ -1144,6 +1255,9 @@ layout_mode = 2
 text = "Remove Input"
 script = ExtResource("3_3n8ge")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="SpriteMover" type="AnimationPlayer" parent="MarginContainer/CharacterSelect" unique_id=1482159896]
+libraries/ = SubResource("AnimationLibrary_ly6c2")
 
 [node name="AbilitySelect" type="MarginContainer" parent="MarginContainer" unique_id=920714062]
 visible = false

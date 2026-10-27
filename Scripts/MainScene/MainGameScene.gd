@@ -42,6 +42,3 @@ func _spawn_players():
 			player.position.y = -10
 			
 			player.start.emit()
-	
-	
-	
