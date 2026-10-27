@@ -6,8 +6,8 @@ signal start()
 @export_group("Nodes")
 @export var player_source : PlayerSource
 @export var sprite : AnimatedSprite2D
-@export var wall_detector : Node2D
-@export var edge_detectors : Node2D
+@export var detectors : Node2D
+@export var animations : Node
 
 @export_group("States")
 @export var ground : Node
@@ -128,7 +128,17 @@ func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
 	if additional == "Climb":
 		pass
 	elif additional == "Land":
-		_land(fall_speed)
+		var crouch_time = fall_speed / 9600
+		animations.overide = true
+		sprite.play("land")
+		
+		
+		velocity = Vector2.ZERO
+		current_state = States.OVERIDDEN
+		
+		await get_tree().create_timer(crouch_time).timeout
+		animations.overide = false
+		
 		_reset_main_vars()
 	
 	current_state = new_state
@@ -197,7 +207,3 @@ func _get_sprite_rotation():
 		return 1
 	else:
 		return -1
-
-func _land(time := 0.0):
-	var crouch_time = time / 10
-	

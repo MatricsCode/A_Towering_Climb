@@ -9,3 +9,7 @@ res://Scripts/Abilitys/MainAbilities/ram.gd
 res://Scripts/Abilitys/MainAbilities/sandwich.gd
 res://Scripts/Player/StateMachine/Air.gd
 res://Scripts/Player/StateMachine/Pause.gd
+res://Scripts/Player/StateMachine/Animations.gd
+res://Components/SpriteFrames/Players/PlayerPrefab.tres
+res://Components/SpriteFrames/Players/Climber2.tres
+res://Components/SpriteFrames/Players/Baker.tres

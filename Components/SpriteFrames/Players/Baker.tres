@@ -143,7 +143,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_507o1")
 }],
 "loop": 1,
-"name": &"pre_jump",
+"name": &"land",
 "speed": 5.0
 }, {
 "frames": [{

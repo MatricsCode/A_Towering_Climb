@@ -18,7 +18,7 @@ func _ready():
 	detectors.on_ground.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
-		switch.emit(player.States.GROUND, "Land"))
+		switch.emit(player.States.GROUND, "Land", fall_speed))
 	detectors.on_wall.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
@@ -45,6 +45,7 @@ func _physics_process(_delta):
 		coyote_timer.stop()
 		_jump()
 	
+	_variable_jump()
 	_air()
 
 func _air():
@@ -74,21 +75,14 @@ func _air():
 	
 	air_movement.call()
 	drop.call()
-	_turn()
-	_variable_jump()
 
 
 func _coyote_time():
 	coyote_timer.start()
 func _variable_jump():
 	if Input.is_action_just_released("Jump") and fall_speed > 0:
-		fall_speed -= 100
+		fall_speed -= 200
 
-func _turn():
-	if player.velocity.x > 0:
-		sprite.flip_h = false
-	elif player.velocity.x < 0:
-		sprite.flip_h = true
 func _jump(climbing : bool = false):
 	fall_speed = -player.main_vars.air_vars.jump_strength
 	player._reset_main_vars(1)
@@ -97,4 +91,4 @@ func _jump(climbing : bool = false):
 	if climbing:
 		player.velocity.x = -player.main_vars.ground_vars.speed * player._get_sprite_rotation()
 		player.position.x -= 10 * player._get_sprite_rotation()
-		player.main_vars.air_vars.gravity = 100
+		#player.main_vars.air_vars.gravity = 100

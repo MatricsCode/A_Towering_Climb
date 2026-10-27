@@ -8,7 +8,12 @@ extends Node
 @export var climb : Node
 @export var pause : Node
 
+var overide := false
+
 func _physics_process(delta):
+	if overide:
+		return
+	
 	if player.current_state == player.States.GROUND:
 		_anim_ground()
 	elif player.current_state == player.States.AIR:
