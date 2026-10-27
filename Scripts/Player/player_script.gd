@@ -20,7 +20,6 @@ enum States {GROUND, AIR, CLIMB, PAUSE, OVERIDDEN, EMPTY}
 
 ## --- Constants ---
 
-const MAX_GRAVITY := 20
 const TERMINAL_VELOCITY := 1200
 
 var sounds = {
@@ -105,7 +104,7 @@ func _physics_process(_delta):  ## Runs every physics frames
 		#cam.offset = lerp(cam.offset, Vector2.ZERO, 0.002)
 	
 	move_and_slide()
-	
+
 ## -- Switch Functions --
 func _switch_ground(new_state : States, additional := ""):
 	if !main_vars.get("switching_vars")["can_switch"]:
@@ -113,20 +112,23 @@ func _switch_ground(new_state : States, additional := ""):
 	
 	if new_state == States.AIR:
 		if additional == "Jump":
-			pass
+			air._jump()
 		elif additional == "Fall":
-			pass
-		current_state = new_state
+			air._coyote_time()
+		
 	elif new_state == States.CLIMB:
 		position.y -= 25
-		current_state = new_state
+	
+	current_state = new_state
 	_switch_timeout()
 func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
 	if !main_vars.get("switching_vars")["can_switch"]:
 		return
 	
-	if fall_speed == 0.1:
+	if additional == "Climb":
 		pass
+	elif additional == "Land":
+		_land(fall_speed)
 	
 	current_state = new_state
 	_switch_timeout()
@@ -188,3 +190,7 @@ func get_sprite_rotation():
 		return 1
 	else:
 		return -1
+
+func _land(time := 0.0):
+	var crouch_time = time / 10
+	

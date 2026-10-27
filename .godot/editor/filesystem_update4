@@ -7,6 +7,4 @@ res://Old/Recourses/UI/main.tres
 res://Old/Recourses/UI/PauseBackground.tres
 res://Old/Recourses/UI/WinBackground.tres
 res://Scenes/Camera/Camera.tscn
-res://Scripts/Camera/MainCamera.gd
 res://Scripts/Player/StateMachine/Air.gd
-res://Scripts/Player/player_script.gd

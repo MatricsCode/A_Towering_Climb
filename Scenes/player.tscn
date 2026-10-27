@@ -55,7 +55,7 @@ script = ExtResource("3_megsn")
 player = NodePath("../..")
 sprite = NodePath("../../Sprite")
 detectors = NodePath("../../Detectors")
-wait_time = 0.11
+wait_time = 0.2
 
 [node name="Climb" type="Node" parent="States" unique_id=558835932 node_paths=PackedStringArray("player", "sprite", "detectors")]
 script = ExtResource("4_yoq75")

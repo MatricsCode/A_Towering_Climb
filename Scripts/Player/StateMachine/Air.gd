@@ -6,7 +6,7 @@ signal switch(new_state, additional)
 @export var sprite : AnimatedSprite2D
 @export var detectors : Node2D
 
-@export_range(0.1, 0.3,0.01) var wait_time : float
+@export var wait_time : float
 var clock := Timer
 
 var fall_speed := 0.0
@@ -24,8 +24,6 @@ func _ready():
 			return
 		switch.emit(player.States.CLIMB, "WallHit"))
 	
-	
-	
 	coyote_timer = Timer.new()
 	
 	add_child(coyote_timer)
@@ -39,7 +37,8 @@ func _physics_process(_delta):
 	elif player.current_state == player.States.AIR:
 		current = true
 	
-	if Input.is_action_pressed("Jump"): #and coyote_timer.wait_time != 0:
+	if Input.is_action_pressed("Jump") and !coyote_timer.is_stopped():
+		coyote_timer.stop()
 		_jump()
 	
 	_air()
@@ -59,25 +58,20 @@ func _air():
 		
 		elif direction == 0 and player.velocity.x != 0:
 			player.velocity.x = lerpf(player.velocity.x, 0.0, 0.005)
-	
 	var drop = func drop():
-		if fall_speed < player.MAX_GRAVITY: # Checks and adjusts the current gravity
+		if fall_speed < player.TERMINAL_VELOCITY: # Checks and adjusts the current gravity
 			fall_speed += player.main_vars.air_vars.gravity
 			player.main_vars.air_vars.gravity += player.main_vars.air_vars.gravity_increase
 		
 		if fall_speed > -150 and fall_speed < 0:
 			fall_speed = 100
 		
-		if player.velocity.y < player.TERMINAL_VELOCITY:
-			player.velocity.y += fall_speed
-	
-	
+		player.velocity.y = fall_speed
 	
 	air_movement.call()
 	drop.call()
 	_turn()
 	_variable_jump()
-	
 
 
 func _coyote_time():
@@ -92,7 +86,7 @@ func _turn():
 	elif player.velocity.x < 0:
 		sprite.flip_h = true
 func _jump(climbing : bool = false):
-	player.velocity.y = -player.main_vars.air_vars.jump_strength
+	fall_speed = -player.main_vars.air_vars.jump_strength
 	player._reset_main_vars(1)
 	
 	
