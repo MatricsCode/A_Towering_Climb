@@ -63,10 +63,14 @@ func _air():
 		
 		elif direction == 0 and player.velocity.x != 0:
 			player.velocity.x = lerpf(player.velocity.x, 0.0, 0.005)
+		
 	var drop = func drop():
 		if fall_speed < player.TERMINAL_VELOCITY: # Checks and adjusts the current gravity
 			fall_speed += player.main_vars.air_vars.gravity
 			player.main_vars.air_vars.gravity += player.main_vars.air_vars.gravity_increase
+		
+		if Input.is_action_pressed("Down"):
+			fall_speed += player.main_vars.air_vars.gravity
 		
 		if fall_speed > -150 and fall_speed < 0:
 			fall_speed = 100
@@ -75,6 +79,7 @@ func _air():
 	
 	air_movement.call()
 	drop.call()
+	_turn()
 
 
 func _coyote_time():
@@ -92,3 +97,8 @@ func _jump(climbing : bool = false):
 		player.velocity.x = -player.main_vars.ground_vars.speed * player._get_sprite_rotation()
 		player.position.x -= 10 * player._get_sprite_rotation()
 		#player.main_vars.air_vars.gravity = 100
+func _turn():
+	if player.velocity.x > 0:
+		sprite.flip_h = false
+	elif player.velocity.x < 0:
+		sprite.flip_h = true
