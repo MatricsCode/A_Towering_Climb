@@ -20,7 +20,8 @@ enum States {GROUND, AIR, CLIMB, PAUSE, OVERIDDEN, EMPTY}
 
 ## --- Constants ---
 
-const MAX_GRAVITY = 1200
+const MAX_GRAVITY := 20
+const TERMINAL_VELOCITY := 1200
 
 var sounds = {
 	"Land" : preload("res://Sound Effects/Land.mp3"),

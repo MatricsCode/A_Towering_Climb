@@ -2,7 +2,7 @@ extends Node
 
 signal switch(new_state, additional)
 
-@export var player : CharacterBody2D
+@export var player : Player
 @export var sprite : AnimatedSprite2D
 @export var detectors : Node2D
 
@@ -39,7 +39,7 @@ func _physics_process(_delta):
 	elif player.current_state == player.States.AIR:
 		current = true
 	
-	if Input.is_action_pressed("Jump") and coyote_timer.wait_time != 0:
+	if Input.is_action_pressed("Jump"): #and coyote_timer.wait_time != 0:
 		_jump()
 	
 	_air()
@@ -64,12 +64,12 @@ func _air():
 		if fall_speed < player.MAX_GRAVITY: # Checks and adjusts the current gravity
 			fall_speed += player.main_vars.air_vars.gravity
 			player.main_vars.air_vars.gravity += player.main_vars.air_vars.gravity_increase
-			player.main_vars.air_vars.gravity_increase += 0.1
 		
-		if fall_speed > -300 and fall_speed < 0:
+		if fall_speed > -150 and fall_speed < 0:
 			fall_speed = 100
 		
-		player.velocity.y = fall_speed
+		if player.velocity.y < player.TERMINAL_VELOCITY:
+			player.velocity.y += fall_speed
 	
 	
 	
@@ -93,6 +93,8 @@ func _turn():
 		sprite.flip_h = true
 func _jump(climbing : bool = false):
 	player.velocity.y = -player.main_vars.air_vars.jump_strength
+	player._reset_main_vars(1)
+	
 	
 	if climbing:
 		player.velocity.x = (player.main_vars.ground_vars.speed / 2) * player.get_sprite_rotation()
