@@ -20,7 +20,7 @@ enum States {GROUND, AIR, CLIMB, PAUSE, OVERIDDEN, EMPTY}
 
 ## --- Constants ---
 
-const TERMINAL_VELOCITY := 1200
+const TERMINAL_VELOCITY := 2400
 
 var sounds = {
 	"Land" : preload("res://Sound Effects/Land.mp3"),
@@ -33,7 +33,7 @@ var ID
 var main_vars = { ## Main variables
 	"ground_vars" : {"speed" : 600},
 	"air_vars" : {"jump_strength" : 1250, "jump_increase" : 1, 
-		"gravity" : 0, "gravity_increase" : 1, "movement_direction" : 0},
+		"gravity" : 0, "gravity_increase" : 2, "movement_direction" : 0},
 	"climbing_vars" : {"climbing_speed" : 300},
 	
 	"switching_vars" : {"can_switch" : true},}

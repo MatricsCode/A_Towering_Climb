@@ -13,9 +13,10 @@ var current_state := States.BOUNCING
 
 var bouncing_time = 0
 
+var easing :float = 1.0
+
 var cam_x : float = 0
 var cam_y : float = 0
-
 
 var player : Player = null
 
@@ -108,4 +109,4 @@ func _following_player():
 		cam_x = target_x
 		cam_y = target_y
 		
-		cam_movement.tween_property(cam, "position", Vector2(cam_x, cam_y), 0.5)
+		cam_movement.tween_property(cam, "position", Vector2(cam_x, cam_y), easing)

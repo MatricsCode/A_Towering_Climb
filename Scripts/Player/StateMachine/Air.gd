@@ -23,6 +23,10 @@ func _ready():
 		if !current or !is_true:
 			return
 		switch.emit(player.States.CLIMB, "WallHit"))
+	detectors.on_roof.connect(func(is_true : bool):
+		if !current or !is_true:
+			return
+		fall_speed = -25)
 	
 	coyote_timer = Timer.new()
 	

@@ -45,16 +45,8 @@ func _ground():
 	if sprite.frame == 1 or sprite.frame == 5:
 		player._play_sound(WALK_SFX)
 	
-	## All of the different ways of exiting the current state go her
-	#if Input.is_action_pressed("Jump"):
-		#switch.emit(player.States.AIR, "Jump")
-	
-	#if not player.is_on_floor():# and not Input.is_action_pressed("Jump"):
-		#await get_tree().create_timer(0.1).timeout
-		#switch.emit(player.States.AIR, "Fall")
-	
-	#elif not player.is_on_floor() and Input.is_action_pressed("Jump"):
-		#switch.emit(player.States.AIR, "Jump")
+	if Input.is_action_pressed("Jump"):
+		switch.emit(player.States.AIR, "Jump")
 
 func _move():
 	var direction = Input.get_axis("Left", "Right")

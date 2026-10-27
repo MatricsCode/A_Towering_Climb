@@ -95,15 +95,30 @@ shape = SubResource("RectangleShape2D_cvnsp")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=966742209]
 replication_config = SubResource("SceneReplicationConfig_cvnsp")
 
-[node name="Detectors" type="Node2D" parent="." unique_id=624981414 node_paths=PackedStringArray("player", "left_ground", "right_ground", "left_wall", "right_wall", "left_edge", "right_edge")]
+[node name="Detectors" type="Node2D" parent="." unique_id=624981414 node_paths=PackedStringArray("player", "left_roof", "right_roof", "left_ground", "right_ground", "left_wall", "right_wall", "left_edge", "right_edge")]
 script = ExtResource("8_tx1dd")
 player = NodePath("..")
+left_roof = NodePath("RoofDetectors/RoofDetector1")
+right_roof = NodePath("RoofDetectors/RoofDetector2")
 left_ground = NodePath("FloorDetectors/GroundDetector1")
 right_ground = NodePath("FloorDetectors/GroundDetector2")
 left_wall = NodePath("WallDetectors/WallDetector1")
 right_wall = NodePath("WallDetectors/WallDetector2")
 left_edge = NodePath("EdgeDetectors/EdgeDetector1")
 right_edge = NodePath("EdgeDetectors/EdgeDetector2")
+
+[node name="RoofDetectors" type="Node2D" parent="Detectors" unique_id=982708386]
+position = Vector2(0, -150)
+
+[node name="RoofDetector1" type="RayCast2D" parent="Detectors/RoofDetectors" unique_id=1862768453]
+position = Vector2(-34, 0)
+target_position = Vector2(0, -10)
+collision_mask = 2
+
+[node name="RoofDetector2" type="RayCast2D" parent="Detectors/RoofDetectors" unique_id=2101390143]
+position = Vector2(34, 0)
+target_position = Vector2(0, -10)
+collision_mask = 2
 
 [node name="FloorDetectors" type="Node2D" parent="Detectors" unique_id=256314108]
 
