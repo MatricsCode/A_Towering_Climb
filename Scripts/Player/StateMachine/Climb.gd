@@ -55,8 +55,8 @@ func _climb():
 	#if not player.is_on_wall_only():
 		#switch.emit(player.States.GROUND, "LedgeClimb")
 	#
-	#if Input.is_action_just_pressed("Jump"):
-		#switch.emit(player.States.AIR, "Jump")
+	if Input.is_action_pressed("Jump"):
+		switch.emit(player.States.AIR, "Jump")
 	#
 	#if player.is_on_floor():
 		#switch.emit(player.States.GROUND, "Finished")

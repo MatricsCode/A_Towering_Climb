@@ -129,6 +129,7 @@ func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
 		pass
 	elif additional == "Land":
 		_land(fall_speed)
+		_reset_main_vars()
 	
 	current_state = new_state
 	_switch_timeout()
@@ -138,16 +139,15 @@ func _switch_climb(new_state : States, additional := ""):
 	
 	if new_state == States.GROUND:
 		if additional == "Finished":
-			position.x += 25 * get_sprite_rotation() * -1
+			position.x += 25 * _get_sprite_rotation() * -1
 		elif additional == "OnEdge":
 			position.y -= 82.0
-			position.x += 50 * get_sprite_rotation()
+			position.x += 50 * _get_sprite_rotation()
 			velocity = Vector2.ZERO
 		
 	elif new_state == States.AIR:
 		if additional == "Jump":
-			air.jump()
-		
+			air._jump(true)
 	
 	current_state = new_state
 	_switch_timeout()
@@ -163,7 +163,7 @@ func _switch_timeout():
 	await get_tree().create_timer(0.1).timeout
 	main_vars.switching_vars.can_switch = true
 
-func _reset_main_vars(key : int): ## 0 = Ground, 1 = Air, 2 = Climb
+func _reset_main_vars(key : int = -1): ## 0 = Ground, 1 = Air, 2 = Climb
 	var keys = main_vars.keys()
 	var current_key = keys[key]
 	
@@ -173,11 +173,18 @@ func _reset_main_vars(key : int): ## 0 = Ground, 1 = Air, 2 = Climb
 		
 		for y in main_vars.get(i).size():
 			
-			if current_key == i:
+			if key != -1 and  current_key == i:
 				var temp = main_vars_reset.get(current_item)
 				var keys_2 = main_vars.get(i).keys()
 				
 				main_vars.get(i).set(keys_2[y], temp)
+			
+			else:
+				var temp = main_vars_reset.get(current_item)
+				var keys_2 = main_vars.get(i).keys()
+				
+				main_vars.get(i).set(keys_2[y], temp)
+			
 			
 			current_item += 1
 
@@ -185,7 +192,7 @@ func _play_sound(sound : Resource):
 	$SFX.stream = sound
 	$SFX.play()
 	$SFX.pitch_scale = randf_range(0.95, 1.15)
-func get_sprite_rotation():
+func _get_sprite_rotation():
 	if sprite.flip_h == false:
 		return 1
 	else:

@@ -95,4 +95,6 @@ func _jump(climbing : bool = false):
 	
 	
 	if climbing:
-		player.velocity.x = (player.main_vars.ground_vars.speed / 2) * player.get_sprite_rotation()
+		player.velocity.x = -player.main_vars.ground_vars.speed * player._get_sprite_rotation()
+		player.position.x -= 10 * player._get_sprite_rotation()
+		player.main_vars.air_vars.gravity = 100

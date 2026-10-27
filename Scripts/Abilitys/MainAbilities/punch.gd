@@ -28,7 +28,7 @@ extends abilitys
 		#punch_force = 0
 		#reset()
 	#
-	#punch_area.position.x = player.position.x + 75 * player.get_sprite_rotation()
+	#punch_area.position.x = player.position.x + 75 * player._get_sprite_rotation()
 	#punch_area.position.y = player.position.y
 	#
 #
@@ -42,7 +42,7 @@ extends abilitys
 #
 #func punch():
 	#player.position.y -= 1
-	#player.velocity.x = 2000 * punch_force * player.get_sprite_rotation()
+	#player.velocity.x = 2000 * punch_force * player._get_sprite_rotation()
 	#punching = true
 	#
 	#grip = get_tree().create_tween()
@@ -60,4 +60,4 @@ extends abilitys
 #
 #func area1_colliding(body):
 	#if in_action:
-		#body.velocity = Vector2(1000000000 * player.get_sprite_rotation(), -700)
+		#body.velocity = Vector2(1000000000 * player._get_sprite_rotation(), -700)

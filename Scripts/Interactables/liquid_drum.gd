@@ -17,7 +17,7 @@ func player_entered(player):
 		
 		await get_tree().create_timer(0.2).timeout
 		
-		player.velocity.x = 100 * player.get_sprite_rotation()
+		player.velocity.x = 100 * player._get_sprite_rotation()
 		player.sprite.play("walk")
 
 func player_exited(player):

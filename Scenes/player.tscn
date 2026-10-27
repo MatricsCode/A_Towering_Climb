@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://5ld7a65652d1" path="res://Scripts/Player/Detectors.gd" id="8_tx1dd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
-size = Vector2(80, 150)
+size = Vector2(80, 160)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cvnsp"]
 properties/0/path = NodePath("Sprite:animation")
@@ -82,14 +82,13 @@ pause = NodePath("../Pause")
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1227623305]
 position = Vector2(0, -160)
 sprite_frames = ExtResource("7_f1ek2")
-animation = &"walk"
-frame_progress = 0.0083151525
+animation = &"idle"
 speed_scale = 2.0
 flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=974936812]
-position = Vector2(0, -75)
+position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=966742209]
@@ -108,16 +107,16 @@ left_edge = NodePath("EdgeDetectors/EdgeDetector1")
 right_edge = NodePath("EdgeDetectors/EdgeDetector2")
 
 [node name="RoofDetectors" type="Node2D" parent="Detectors" unique_id=982708386]
-position = Vector2(0, -150)
+position = Vector2(0, -160)
 
 [node name="RoofDetector1" type="RayCast2D" parent="Detectors/RoofDetectors" unique_id=1862768453]
 position = Vector2(-34, 0)
-target_position = Vector2(0, -10)
+target_position = Vector2(0, -25)
 collision_mask = 2
 
 [node name="RoofDetector2" type="RayCast2D" parent="Detectors/RoofDetectors" unique_id=2101390143]
 position = Vector2(34, 0)
-target_position = Vector2(0, -10)
+target_position = Vector2(0, -25)
 collision_mask = 2
 
 [node name="FloorDetectors" type="Node2D" parent="Detectors" unique_id=256314108]

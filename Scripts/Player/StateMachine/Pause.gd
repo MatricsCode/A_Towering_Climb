@@ -20,7 +20,7 @@ func _main():
 		player.velocity.y = 0
 	
 	elif player.wall_detectors.touching_wall() == true and player.is_on_floor():
-		player.position.x += player.get_sprite_rotation() * -1 * 20
+		player.position.x += player._get_sprite_rotation() * -1 * 20
 		sprite.play("idle")
 	
 	else:

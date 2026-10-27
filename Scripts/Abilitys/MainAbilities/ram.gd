@@ -13,7 +13,7 @@ func _physics_process(_delta):
 		player.set_collision_mask_value(3, false)
 		flying = false
 		
-		player.velocity.x += 100 * player.get_sprite_rotation()
+		player.velocity.x += 100 * player._get_sprite_rotation()
 		current_speed = player.velocity.x
 		
 		#if player.velocity.x * direction < 0:
@@ -31,20 +31,20 @@ func _physics_process(_delta):
 			flying = true
 			
 			player.position.y += -50
-			player.position.x += -70 * player.get_sprite_rotation()
+			player.position.x += -70 * player._get_sprite_rotation()
 			
-			player.velocity.y = -2 * current_speed * player.get_sprite_rotation()
+			player.velocity.y = -2 * current_speed * player._get_sprite_rotation()
 			player.velocity.x = 1.5 * current_speed
 			
 			clamp(player.velocity.y, -10000, 100000)
 			clamp(player.velocity.x, -10000, 100000)
 			
-			if player.get_sprite_rotation() == -1:
+			if player._get_sprite_rotation() == -1:
 				player.sprite.flip_h = false
 			else:
 				player.sprite.flip_h = true
 		
-		var direction = player.get_sprite_rotation()
+		var direction = player._get_sprite_rotation()
 		current_speed = lerp(current_speed, 1500.0 * float(direction), 0.02)
 		player.velocity.x = current_speed
 		
