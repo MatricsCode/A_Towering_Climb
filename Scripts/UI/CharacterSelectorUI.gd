@@ -46,6 +46,7 @@ func _add_player():
 
 func _is_peer_ready():
 	players.clear()
+	var count = 0
 	
 	for i in player_selectors.get_children():
 		if i.loaded and !i.active:
@@ -54,6 +55,9 @@ func _is_peer_ready():
 		elif i.loaded and i.active:
 			var character : PlayerSource
 			character = i.selected_character
+			count += 1
+			character.player_ID = count
+			character.steam_ID = Steam.getSteamID()
 			
 			players.append(character)
 	Networking._peer_ready.rpc(players)

@@ -32,16 +32,16 @@ func _spawn_players():
 		var player_data : Array
 		player_data = GlobalScript.players[player_ID]
 		for players in player_data:
-			var child = PLAYER.instantiate()
+			var player = PLAYER.instantiate()
 			var player_data_2 : PlayerSource
 			player_data_2 = players
 			
-			child.player_source = player_data_2
+			player.player_source = player_data_2
 			
-			player_placements.add_child(child)
-			child.position.y = -10
+			player_placements.add_child(player)
+			player.position.y = -10
 			
-			child.start.emit()
+			player.start.emit()
 	
 	
 	

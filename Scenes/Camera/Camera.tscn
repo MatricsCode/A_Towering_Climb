@@ -2,8 +2,24 @@
 
 [ext_resource type="Script" uid="uid://osbh2v6gcw0m" path="res://Scripts/Camera/MainCamera.gd" id="1_0jrrr"]
 
-[node name="CameraControl" type="Node2D" unique_id=445707866]
+[node name="CameraControl" type="Node2D" unique_id=445707866 node_paths=PackedStringArray("indicator_up", "indicator_down", "indicator_left", "indicator_right")]
 script = ExtResource("1_0jrrr")
+indicator_up = NodePath("Up")
+indicator_down = NodePath("Down")
+indicator_left = NodePath("Left")
+indicator_right = NodePath("Right")
+
+[node name="Up" type="Node2D" parent="." unique_id=181306014]
+position = Vector2(0, -288)
+
+[node name="Right" type="Node2D" parent="." unique_id=1246239565]
+position = Vector2(288, 0)
+
+[node name="Left" type="Node2D" parent="." unique_id=504431575]
+position = Vector2(-288, 0)
+
+[node name="Down" type="Node2D" parent="." unique_id=1401159899]
+position = Vector2(0, 288)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=243259360]
 limit_bottom = 320

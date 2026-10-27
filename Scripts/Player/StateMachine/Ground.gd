@@ -17,9 +17,10 @@ var coyote_timer : Timer
 var current := false
 
 func _ready():
-	#detectors.on_ground.connect(func(is_true):
-		#if !current or is_true:
-			#switch.emit(player.States.AIR, "Fall"))
+	detectors.on_ground.connect(func(is_true):
+		if !current or is_true:
+			return
+		switch.emit(player.States.AIR, "Fall"))
 	detectors.on_wall.connect(func(is_true):
 		if !current or !is_true:
 			return
@@ -45,8 +46,8 @@ func _ground():
 		player._play_sound(WALK_SFX)
 	
 	## All of the different ways of exiting the current state go her
-	if Input.is_action_pressed("Jump"):
-		switch.emit(player.States.AIR, "Jump")
+	#if Input.is_action_pressed("Jump"):
+		#switch.emit(player.States.AIR, "Jump")
 	
 	#if not player.is_on_floor():# and not Input.is_action_pressed("Jump"):
 		#await get_tree().create_timer(0.1).timeout

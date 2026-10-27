@@ -6,11 +6,10 @@ signal switch(new_state, additional)
 @export var sprite : AnimatedSprite2D
 @export var detectors : Node2D
 
-@export_range(0.01, 0.3,0.01) var wait_time : float
+@export_range(0.1, 0.3,0.01) var wait_time : float
 var clock := Timer
 
-var fall_speed = 0
-
+var fall_speed := 0.0
 var coyote_timer : Timer
 
 var current := false
@@ -27,13 +26,11 @@ func _ready():
 	
 	
 	
-	#coyote_timer = Timer.new()
-	#
-	#add_child(coyote_timer)
-	#coyote_timer.timeout.connect(func():
-		#switch.emit(player.States.AIR, "Fall"))
-	#coyote_timer.wait_time = wait_time
-	#coyote_timer.one_shot = true
+	coyote_timer = Timer.new()
+	
+	add_child(coyote_timer)
+	coyote_timer.wait_time = wait_time
+	coyote_timer.one_shot = true
 
 func _physics_process(_delta):
 	if player.current_state != player.States.AIR:
@@ -42,17 +39,12 @@ func _physics_process(_delta):
 	elif player.current_state == player.States.AIR:
 		current = true
 	
+	if Input.is_action_pressed("Jump") and coyote_timer.wait_time != 0:
+		_jump()
+	
 	_air()
 
 func _air():
-	if fall_speed < player.MAX_GRAVITY:
-		fall_speed += player.main_vars.air_vars.gravity_increase
-		player.main_vars.air_vars.gravity = fall_speed
-	
-	player.velocity.y = fall_speed
-
-func _main():
-	#region Functions
 	var air_movement = func air_movement():
 		var direction = Input.get_axis("Left", "Right")
 		
@@ -68,47 +60,39 @@ func _main():
 		elif direction == 0 and player.velocity.x != 0:
 			player.velocity.x = lerpf(player.velocity.x, 0.0, 0.005)
 	
-	## Variable Jump Height is in Physiscs Process!
-	
 	var drop = func drop():
-		if player.velocity.y < player.MAX_GRAVITY: # Checks and adjusts the current gravity
-			player.velocity.y += player.main_vars.air_vars.gravity
+		if fall_speed < player.MAX_GRAVITY: # Checks and adjusts the current gravity
+			fall_speed += player.main_vars.air_vars.gravity
 			player.main_vars.air_vars.gravity += player.main_vars.air_vars.gravity_increase
 			player.main_vars.air_vars.gravity_increase += 0.1
 		
-		if player.velocity.y > -300 and player.velocity.y < 0:
-			player.velocity.y = 100
-	#endregion
-	
-	## All of the different actions possible in the current state go here
-	#region Main
-	
-	## Checks if you are mid jump and falling
-	if not player.is_on_floor(): #elif not is_on_floor():
-		air_movement.call()
+		if fall_speed > -300 and fall_speed < 0:
+			fall_speed = 100
 		
-		_turn()
-		drop.call()
-	#endregion
+		player.velocity.y = fall_speed
 	
-	## All of the different ways of exiting the current state go here
-	#region Exits
-	if player.is_on_floor():
-		switch.emit(player.States.GROUND)
 	
-	if player.wall_detector._touching_wall():
-		player.position.y -= 5
-		switch.emit(player.States.CLIMB)
-	#endregion
+	
+	air_movement.call()
+	drop.call()
+	_turn()
+	_variable_jump()
+	
+
 
 func _coyote_time():
 	coyote_timer.start()
+func _variable_jump():
+	if Input.is_action_just_released("Jump") and fall_speed > 0:
+		fall_speed -= 100
 
 func _turn():
 	if player.velocity.x > 0:
 		sprite.flip_h = false
 	elif player.velocity.x < 0:
 		sprite.flip_h = true
-#func _jump():
-	#player.velocity.y = -player.main_vars.air_vars.jump_strength
-	#player.velocity.x = (player.main_vars.ground_vars.speed / 2) * player.get_sprite_rotation()
+func _jump(climbing : bool = false):
+	player.velocity.y = -player.main_vars.air_vars.jump_strength
+	
+	if climbing:
+		player.velocity.x = (player.main_vars.ground_vars.speed / 2) * player.get_sprite_rotation()
