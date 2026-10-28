@@ -1,5 +1,5 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1793215197
+::res://::1793215492
 default_bus_layout.tres::AudioBusLayout::698027414198536659::1793206970::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1793206970::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::3041926038368580319::1754591159::1754591168::1::::<><><>0<>0<>2d6f129e0168ad32ec413d66709c61f3<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
@@ -13,8 +13,8 @@ license.md::TextFile::-1::1793206969::0::1::::<><><>0<>0<><>::
 plugin.cfg::TextFile::-1::1793206970::0::1::::<><><>0<>0<><>::
 readme.md::TextFile::-1::1793206970::0::1::::<><><>0<>0<><>::
 ::res://addons/godotsteam/androidarm64/::1793206969
-::res://addons/godotsteam/editor/::1793214722
-updater.tres::Theme::3010334859058173464::1793214722::0::1::::<><><>0<>0<><>::
+::res://addons/godotsteam/editor/::1793215307
+updater.tres::Theme::3010334859058173464::1793215306::0::1::::<><><>0<>0<><>::
 updating.gd::GDScript::6963905025587561942::1793206969::0::1::::<>PopupPanel<><>0<>1<><>::
 updating.tscn::PackedScene::4844468035779095226::1793206969::0::1::::<><><>0<>0<><>::uid://bi5h1mi6a0inw::::res://addons/godotsteam/editor/updater.tres<>uid://c6hmq7cphoksk::::res://addons/godotsteam/editor/updating.gd
 ::res://addons/godotsteam/linux32/::1793206969
@@ -22,7 +22,7 @@ updating.tscn::PackedScene::4844468035779095226::1793206969::0::1::::<><><>0<>0<
 ::res://addons/godotsteam/linuxarm64/::1793206969
 ::res://addons/godotsteam/osx/::1793206970
 ::res://addons/godotsteam/win32/::1793206970
-::res://addons/godotsteam/win64/::1793215190
+::res://addons/godotsteam/win64/::1793215487
 ::res://addons/godot_super-wakatime/::1791483379
 api_key_prompt.tscn::PackedScene::3919262858641749045::1791483358::0::1::::<><><>0<>0<><>::
 counter.tscn::PackedScene::6849360014225833986::1791483358::0::1::::<><><>0<>0<><>::
@@ -179,17 +179,17 @@ Wall10.png::CompressedTexture2D/CompressedTexture2D::7167796386967298824::178533
 ::res://Components/Resources/::1793206969
 PlayerSource.gd::GDScript::2539432147955320951::1793206969::0::1::::PlayerSource<>Resource<><>0<>0<><>::
 ::res://Components/SpriteFrames/::1793206969
-::res://Components/SpriteFrames/IntroSpriteFrames/::1793214722
-Baker.tres::SpriteFrames::3036053616082410484::1793214722::0::1::::<><><>0<>0<><>::uid://7nqqsy0r6u5v::::res://Art/Player/Baker.png
-Climber1.tres::SpriteFrames::653017456937446818::1793214722::0::1::::<><><>0<>0<><>::uid://dpxyl2byx1n7::::res://Art/Player/Climber.png
-IntroSpriteFrames.tres::SpriteFrames::743777762384692543::1793214487::0::1::::<><><>0<>0<><>::
-::res://Components/SpriteFrames/Players/::1793214722
-Baker.tres::SpriteFrames::3224868661783227542::1793214722::0::1::::<><><>0<>0<><>::uid://7nqqsy0r6u5v::::res://Art/Player/Baker.png
-Climber1.tres::SpriteFrames::6708408963703819640::1793214722::0::1::::<><><>0<>0<><>::uid://dpxyl2byx1n7::::res://Art/Player/Climber.png
+::res://Components/SpriteFrames/IntroSpriteFrames/::1793215468
+Baker.tres::SpriteFrames::3036053616082410484::1793215468::0::1::::<><><>0<>0<><>::uid://7nqqsy0r6u5v::::res://Art/Player/Baker.png
+Climber1.tres::SpriteFrames::653017456937446818::1793215468::0::1::::<><><>0<>0<><>::uid://dpxyl2byx1n7::::res://Art/Player/Climber.png
+IntroSpriteFrames.tres::SpriteFrames::743777762384692543::1793215468::0::1::::<><><>0<>0<><>::
+::res://Components/SpriteFrames/Players/::1793215306
+Baker.tres::SpriteFrames::3224868661783227542::1793215306::0::1::::<><><>0<>0<><>::uid://7nqqsy0r6u5v::::res://Art/Player/Baker.png
+Climber1.tres::SpriteFrames::6708408963703819640::1793215306::0::1::::<><><>0<>0<><>::uid://dpxyl2byx1n7::::res://Art/Player/Climber.png
 Climber2.tres::SpriteFrames::5154086206977140550::1793206969::0::1::::<><><>0<>0<><>::uid://cohbjhla1v7x2::::res://Art/Player/Climber2.png
 PlayerSpriteFrames.tres::SpriteFrames::2091156018547199444::1793206969::0::1::::<><><>0<>0<><>::
-::res://Components/Themes/::1793214722
-MainTheme.tres::Theme::5017258824401087048::1793214722::0::1::::<><><>0<>0<><>::
+::res://Components/Themes/::1793215306
+MainTheme.tres::Theme::5017258824401087048::1793215306::0::1::::<><><>0<>0<><>::
 ::res://Old/::1793206969
 bump_detectors.gd::GDScript::3464483183720560012::1793206969::0::1::::<>Node2D<><>0<>0<><>::
 DEPRICATED UI.tscn::PackedScene::3339896310732359518::1793206969::0::1::::<><><>0<>0<><>::uid://lugaf8yhlsla::::res://Old/UI_Old/main_ui.gd<>uid://hrghadurkx2h::::res://Old/UI_Old/height_indicator.gd<>uid://cmc6tinolodum::::res://Art/Markers/Tower.png<>uid://du0w16lun2fuy::::res://Old/UI_Old/win_menu.gd<>uid://bevxwl1n2p71r::::res://Old/UI_Old/pause_menu.gd<>uid://blkue12vglqdr::::res://Old/UI_Old/settings.gd<>uid://cg053s8d1g1c6::::res://Old/UI_Old/remap_menu.gd
@@ -197,9 +197,9 @@ edge_detectors.gd::GDScript::8661151053526747567::1793206969::0::1::::<>Node2D<>
 MainScene_DEPRICATD.gd::GDScript::6354027177458728139::1793206969::0::1::::<>Node2D<><>0<>0<><>::
 PlayerSelectorDEPRICATED.tscn::PackedScene::4799139729738139770::1793206969::0::1::::<><><>0<>0<><>::uid://n0k8hsrj2410::::res://Scripts/UI/PlayerSelectorUI/player_selector.gd<>uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>res://Art/Player/Baker/Baker1.png<>uid://yhp81sc8f8pp::::res://Scripts/UI/PlayerSelectorUI/vitaliser.gd<>res://Art/Player/Baker/Baker2.png<>res://Scenes/Tools/BaseButton.tscn<>res://Art/Player/Baker/Baker3.png<>uid://b1to0dglnhcn5::::res://Scripts/UI/PlayerSelectorUI/PlayerOutfits.gd<>res://Art/Player/Climber1/Climber1.png<>res://Art/Player/Climber1/Climber2.png<>res://Art/Player/Climber1/Climber3.png<>res://Art/Player/Climber1/Climber4.png<>res://Art/Player/Climber1/Climber5.png<>res://Art/Player/Climber1/Climber6.png<>res://Art/Player/Climber1/Climber7.png<>res://Art/Player/Climber1/Climber8.png<>res://Art/Player/Climber2/Climber1.png<>res://Art/Player/Climber2/Climber2.png<>res://Art/Player/Climber2/Climber3.png<>res://Art/Player/Climber2/Climber4.png<>res://Art/Player/Climber2/Climber5.png<>res://Art/Player/Climber2/Climber6.png<>res://Art/Player/Climber2/Climber7.png<>res://Art/Player/Climber2/Climber8.png<>res://Art/Player/Heinrich/Heinrich1.png<>res://Art/Player/Heinrich/Heinrich2.png<>res://Art/Player/Heinrich/Heinrich3.png<>res://Art/Player/Heinrich/Heinrich4.png<>res://Art/Player/Heinrich/Heinrich5.png<>res://Art/Player/Heinrich/Heinrich6.png<>res://Art/Player/Heinrich/Heinrich7.png<>uid://bkaxgra801fsr::::res://Scripts/UI/PlayerSelectorUI/ability_selector.gd<>uid://btyhh0yr7u81f::::res://Old/Recourses/UI/main.tres
 wall_detectors.gd::GDScript::1389331629348303012::1793206969::0::1::::<>Node2D<><>0<>0<><>::
-::res://Old/CharacterSelector/::1793215169
+::res://Old/CharacterSelector/::1793215424
 CharacterSelectorMain.gd::GDScript::8763986610624980182::1793206969::0::1::::<>Control<><>0<>0<><>::
-Customiser.gd::GDScript::7787987323653651888::1793215169::0::1::::<>MarginContainer<><>0<>0<><>::
+Customiser.gd::GDScript::7787987323653651888::1793215424::0::1::::<>MarginContainer<><>0<>0<><>::
 ::res://Old/Cinematic Camera/::1793206969
 player_ready_up.gd::GDScript::8801469421392872637::1793206969::0::1::::<>MultiplayerSpawner<><>0<>0<><>::
 ::res://Old/Components/::1793206969
@@ -212,8 +212,8 @@ player_mover.gd::GDScript::7527332062844281891::1793206969::0::1::::<>Node2D<><>
 ::res://Old/Components/PlayerOverider/::1793206969
 PlayerOverider.tscn::PackedScene::101274821066498042::1793206969::0::1::::<><><>0<>0<><>::uid://duc5pxya3mgoc::::res://Old/Components/PlayerOverider/player_overider.gd
 player_overider.gd::GDScript::8569017221189893526::1793206969::0::1::::<>Node2D<><>0<>0<><>::
-::res://Old/Recourses/::1793214722
-Tileset.tres::TileSet::6406803866803831232::1793214722::0::1::::<><><>0<>0<><>::uid://vu8lrnx8rw0u::::res://Art/Tilemap/Beams.png<>uid://b06baxs5t618j::::res://Art/Tilemap/Signs.png<>uid://molm7urbf3d3::::res://Art/Tilemap/WalledSections.png
+::res://Old/Recourses/::1793215306
+Tileset.tres::TileSet::6406803866803831232::1793215306::0::1::::<><><>0<>0<><>::uid://vu8lrnx8rw0u::::res://Art/Tilemap/Beams.png<>uid://b06baxs5t618j::::res://Art/Tilemap/Signs.png<>uid://molm7urbf3d3::::res://Art/Tilemap/WalledSections.png
 ::res://Old/Recourses/Birds/::1793206969
 Blue.tres::SpriteFrames::8111509120944559250::1793206969::0::1::::<><><>0<>0<><>::uid://q1l1clpdw3vv::::res://Art/Bird/Bird2.png<>uid://ckrb8wkunj0hl::::res://Art/Bird/Bird3.png<>uid://dcyds2tqxjeu4::::res://Art/Bird/Bird4.png<>uid://dmutg8ofaksxe::::res://Art/Bird/Bird5.png<>uid://b8a6j8ve6mch5::::res://Art/Bird/Bird1.png
 Green.tres::SpriteFrames::8298267444499444618::1793206969::0::1::::<><><>0<>0<><>::uid://dxh83l04ih4vs::::res://Art/Bird/Bird7.png<>uid://mofp4o61bglv::::res://Art/Bird/Bird8.png<>uid://bilvunskk5ae1::::res://Art/Bird/Bird9.png<>uid://8ycssksiic6c::::res://Art/Bird/Bird10.png<>uid://dmeta1ojki2ci::::res://Art/Bird/Bird6.png
@@ -225,10 +225,10 @@ White.tres::SpriteFrames::8593462389014952966::1793206969::0::1::::<><><>0<>0<><
 Baker HeightLeaderboard.tres::Theme::1002079053211426567::1793206969::0::1::::<><><>0<>0<><>::uid://c4ldc5il3mxo::::res://Art/Markers/BakerIcon.png
 Climber1 HeightLeaderboard.tres::Theme::2615973589032267757::1793206969::0::1::::<><><>0<>0<><>::uid://g3go1fgefanm::::res://Art/Markers/ClimberIcon.png
 Climber2 HeightLeaderboard.tres::Theme::3358148732751592330::1793206969::0::1::::<><><>0<>0<><>::uid://l5ciqi18p0us::::res://Art/Markers/ClimberIcon2.png
-::res://Old/Recourses/UI/::1793214722
-main.tres::Theme::3769992649394900157::1793214722::0::1::::<><><>0<>0<><>::
-PauseBackground.tres::GradientTexture2D::4937319959609435997::1793214722::0::1::::<><><>0<>0<><>::
-WinBackground.tres::GradientTexture2D::6837227110911362756::1793214722::0::1::::<><><>0<>0<><>::
+::res://Old/Recourses/UI/::1793215307
+main.tres::Theme::3769992649394900157::1793215307::0::1::::<><><>0<>0<><>::
+PauseBackground.tres::GradientTexture2D::4937319959609435997::1793215307::0::1::::<><><>0<>0<><>::
+WinBackground.tres::GradientTexture2D::6837227110911362756::1793215307::0::1::::<><><>0<>0<><>::
 ::res://Old/Tools/::1793206969
 base_button.gd::GDScript::5690899254101211845::1793206969::0::1::::Base_Button<>Button<><>0<>0<><>::
 ::res://Old/UI_Old/::1793206969
@@ -267,10 +267,10 @@ level_3.tscn::PackedScene::5754909420152186682::1793206969::0::1::::<><><>0<>0<>
 BirdSpawner.tscn::PackedScene::7237426469105397965::1793206969::0::1::::<><><>0<>0<><>::uid://dy32smmeh3nm4::::res://Scripts/Levels/Props/Bird/bird_spawner.gd
 InteractablesSpawner.tscn::PackedScene::3537995598067402510::1793206969::0::1::::<><><>0<>0<><>::uid://ci36pfrutwlfx::::res://Scripts/Levels/Spawners/interactables_spawner.gd
 ProjectileSpawner.tscn::PackedScene::2489204104778780496::1793206969::0::1::::<><><>0<>0<><>::uid://bxjl61umx10xr::::res://Scripts/Projectiles/Projectile Spawner/projectile_spawner.gd
-::res://Scenes/UI/::1793215011
+::res://Scenes/UI/::1793215468
 CharacterSwitchAnimation.gd::GDScript::7070356622821781699::1793206969::0::1::::<>Panel<><>0<>0<><>::
 MainUI.tscn::PackedScene::377921005674578788::1793214885::0::1::::<><><>0<>0<><>::uid://bc8og5lgrcpvd::::res://Scripts/UI/Main.gd<>uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>uid://bldy0yf23ma7b::::res://Scripts/UI/LobbyUI.gd<>uid://c8ngd8ierrftp::::res://Scripts/UI/Button/ButtonClass.gd<>uid://c0up8lhfcq1jh::::res://Scripts/UI/CharacterSelectorUI.gd<>uid://bcgecunh1q8yd::::res://Components/Resources/PlayerSource.gd<>uid://b0imh5jcjfvpr::::res://Scripts/Abilitys/MainAbilities/ram.gd<>uid://d0y0w2hbe3jwq::::res://Scripts/Abilitys/SecondaryAbilities/glide.gd<>uid://bfd4tahblhaqb::::res://Scripts/Abilitys/SecondaryAbilities/repair.gd<>uid://dm3jvtcmp62ii::::res://Scripts/Abilitys/MainAbilities/sandwich.gd
-PlayerSelector.tscn::PackedScene::5805142926998578908::1793215011::0::1::::<><><>0<>0<><>::uid://dw4ltxmxmvvfq::::res://Old/CharacterSelector/CharacterSelectorMain.gd<>uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>uid://c8ngd8ierrftp::::res://Scripts/UI/Button/ButtonClass.gd<>uid://di7tapp7bawh1::::res://Old/CharacterSelector/Customiser.gd<>uid://bjixmhtfjc485::::res://Components/SpriteFrames/IntroSpriteFrames/Baker.tres
+PlayerSelector.tscn::PackedScene::5805142926998578908::1793215468::0::1::::<><><>0<>0<><>::uid://dw4ltxmxmvvfq::::res://Old/CharacterSelector/CharacterSelectorMain.gd<>uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>uid://c8ngd8ierrftp::::res://Scripts/UI/Button/ButtonClass.gd<>uid://di7tapp7bawh1::::res://Old/CharacterSelector/Customiser.gd<>uid://bjixmhtfjc485::::res://Components/SpriteFrames/IntroSpriteFrames/Baker.tres
 ::res://Scenes/UI/Buttons/::1793206969
 Button.tscn::PackedScene::2027980552560319286::1793206969::0::1::::<><><>0<>0<><>::uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>uid://c8ngd8ierrftp::::res://Scripts/UI/Button/ButtonClass.gd
 ::res://Scripts/::1793206969

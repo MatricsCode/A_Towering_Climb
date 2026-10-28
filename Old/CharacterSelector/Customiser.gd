@@ -24,8 +24,6 @@ func _ready():
 	sprite.animation_finished.connect(func():
 		if sprite.animation == "exit":
 			sprite.sprite_frames = ANIMATIONS[current_outfit]
-			sprite.play("enter")
-			anim_outfit = current_outfit
 		elif sprite.animation == "enter" and anim_outfit == current_outfit:
 			sprite.play("idle")
 		elif sprite.animation == "enter" and anim_outfit != current_outfit:
@@ -33,7 +31,8 @@ func _ready():
 			anim_outfit = current_outfit)
 	
 	sprite.sprite_frames_changed.connect(func():
-		pass)
+		sprite.play("enter")
+		anim_outfit = current_outfit)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

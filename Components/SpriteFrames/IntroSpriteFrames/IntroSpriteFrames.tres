@@ -4,7 +4,7 @@
 animations = [{
 "frames": [],
 "loop": 0,
-"name": &"entrance",
+"name": &"enter",
 "speed": 5.0
 }, {
 "frames": [],
