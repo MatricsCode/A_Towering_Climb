@@ -122,12 +122,12 @@ collision_mask = 2
 [node name="FloorDetectors" type="Node2D" parent="Detectors" unique_id=256314108]
 
 [node name="GroundDetector1" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=1627784674]
-position = Vector2(-34, 0)
+position = Vector2(-40, 0)
 target_position = Vector2(0, 10)
 collision_mask = 2
 
 [node name="GroundDetector2" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=577187749]
-position = Vector2(34, 0)
+position = Vector2(40, 0)
 target_position = Vector2(0, 10)
 collision_mask = 2
 

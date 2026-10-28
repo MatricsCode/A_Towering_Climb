@@ -10,6 +10,9 @@ func _ready():
 		sprite.flip_h = true
 
 func _on_area_2d_body_entered(body):
-	Signals.winner.emit(body.name)
-	get_tree().paused = true
-	queue_free()
+	if Networking.host:
+		_won.rpc(body)
+
+@rpc("authority", "call_local", "reliable")
+func _won(body : Player):
+	Signals.lobby_finished_game.emit(body)

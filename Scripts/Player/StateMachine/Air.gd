@@ -9,7 +9,7 @@ signal switch(new_state, additional)
 @export var wait_time : float
 var clock := Timer
 
-var fall_speed := 0.0
+var fall_speed := 25.0
 var coyote_timer : Timer
 
 var current := false
@@ -20,11 +20,13 @@ func _ready():
 	detectors.on_ground.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
+		fall_speed = 25
 		hit_head = false
 		switch.emit(player.States.GROUND, "Land", fall_speed))
 	detectors.on_wall.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
+		fall_speed = 25
 		hit_head = false
 		switch.emit(player.States.CLIMB, "WallHit"))
 	detectors.on_roof.connect(func(is_true : bool):

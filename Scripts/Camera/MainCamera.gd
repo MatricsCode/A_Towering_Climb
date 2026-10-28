@@ -1,6 +1,9 @@
 extends Node2D
 
 @export var player_node : Node2D
+@export var item_node : Node2D
+@export var win_node : Node2D
+
 @export var indicator_up : Node2D
 @export var indicator_down : Node2D
 @export var indicator_left : Node2D
@@ -25,6 +28,7 @@ func _ready():
 	current_state = States.BOUNCING
 	
 	Signals.lobby_start_game.connect(_start_animation)
+	Signals.lobby_finished_game.connect(_game_finished)
 
 func _physics_process(_delta):
 	match current_state:
@@ -110,3 +114,5 @@ func _following_player():
 		cam_y = target_y
 		
 		cam_movement.tween_property(cam, "position", Vector2(cam_x, cam_y), easing)
+func _game_finished(winner : Player):
+	pass

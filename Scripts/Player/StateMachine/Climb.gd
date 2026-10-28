@@ -30,6 +30,8 @@ func _physics_process(_delta):
 			return
 		switch.emit(player.States.GROUND, "OnEdge"))
 	
+	player.velocity.x = 0
+	
 	_climb()
 
 func _climb():

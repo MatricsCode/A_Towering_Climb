@@ -14,131 +14,131 @@ var peer : MultiplayerPeer
 @onready var id_field = $SelectorUI/HSplitContainer/VBoxContainer/VBoxContainer/IDField
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	GlobalScript.user_ID = SteamServer.getSteamID()
-	
-	Signals.left_lobby.connect(leave_lobby)
-	Signals.reset.connect(reset)
-	host.grab_focus()
-	
-	ms.spawn_function = spawn_level
-	peer.lobby_created.connect(on_lobby_created)
-	SteamServer.lobby_match_list.connect(on_lobby_match_list)
-	open_lobby_list()
-
-var time = 0
-
-func _physics_process(delta):
-	if lobby_id == 0:
-		position.x += 10
-		time += 0.1
-		position.y = sin(time) * 10
-	else:
-		position.x = 0
-		position.y = 0
-
-func spawn_level(data):
-	var a = (load(data) as PackedScene).instantiate()
-	return a
-
-func _on_host_pressed():
-	#if peer.get_lobby_id() == 0:
-	peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
-	
-	multiplayer.multiplayer_peer = peer
-	
-	GlobalScript.peer_ID = peer.get_unique_id()
-	
-	start()
-	MainUI.hide()
-func join_lobby(id):
-	peer.connect_lobby(id)
-	multiplayer.multiplayer_peer = peer
-	
-	GlobalScript.peer_ID = peer.get_unique_id()
-	
-	lobby_id = id
-	
-	start()
-	MainUI.hide()
-
-func on_lobby_created(connected, id):
-	if connected:
-		lobby_id = id
-		SteamServer.setLobbyData(lobby_id,"name",str(SteamServer.getPersonaName()+"'s lobby"))
-		SteamServer.setLobbyJoinable(lobby_id, true)
-func open_lobby_list():
-	SteamServer.addRequestLobbyListDistanceFilter(SteamServer.LOBBY_DISTANCE_FILTER_WORLDWIDE)
-	SteamServer.requestLobbyList()
-func on_lobby_match_list(lobbies2):
-		for lobby in lobbies2:
-			var lobby_name = SteamServer.getLobbyData(lobby, "name")
-			var lobby_mem = SteamServer.getNumLobbyMembers(lobby)
-			
-			if id_field.text == "" or lobby_name.containsn(id_field.text):
-			
-				var but = Button.new()
-				but.set_text(str(lobby_name ," | Playercount :", lobby_mem))
-				but.set_size(Vector2(100, 5))
-				but.connect("pressed", Callable(self, "join_lobby").bind(lobby))
-				
-				lobbies.add_child(but)
-func _on_refresh_pressed():
-	if lobbies.get_child_count():
-		for i in lobbies.get_children():
-			i.queue_free()
-	
-	
-	id_field.text = ""
-	
-	open_lobby_list()
-func _on_search_pressed():
-	if lobbies.get_child_count():
-		for i in lobbies.get_children():
-			i.queue_free()
-	
-	open_lobby_list()
-
-func leave_lobby():
-	if lobby_id != 0:
-		SteamServer.leaveLobby(lobby_id)
-		
-		lobby_id = 0
-	
-	
-	var lobby_members = peer.get_peer_map()
-	
-	var IDs = lobby_members.keys()
-	
-	for i in IDs.size():
-		SteamServer.closeP2PSessionWithUser(IDs[i])
-	
-	SteamServer.leaveLobby(peer.get_lobby_id())
-	peer.set_lobby_data("ID", "0")
-	
-	peer.close()
-	get_child(get_child_count() - 1).queue_free()
-	MainUI.show()
-	$SelectorUI/Camera2D.enabled = true
-
-func start():
-	for i in get_children():
-		if i.name == "PlayArea":
-			return
-	
-	set_multiplayer_authority(GlobalScript.peer_ID)
-	#print(get_multiplayer_authority())
-	
-	ms.spawn("res://Scenes/PlayArea.tscn")
-	$SelectorUI/Camera2D.enabled = false
-	#print($SelectorUI/Camera2D.enabled)
-	peer.set_lobby_joinable(false)
-
-func reset():
-	for i in get_children():
-		if i.get_index() == get_child_count() -1:
-			i.queue_free()
-	
-	peer.set_lobby_joinable(true)
-	
-	$SelectorUI/Camera2D.enabled = true
+#func _ready():
+	#GlobalScript.user_ID = SteamServer.getSteamID()
+	#
+	#Signals.left_lobby.connect(leave_lobby)
+	#Signals.reset.connect(reset)
+	#host.grab_focus()
+	#
+	#ms.spawn_function = spawn_level
+	#peer.lobby_created.connect(on_lobby_created)
+	#SteamServer.lobby_match_list.connect(on_lobby_match_list)
+	#open_lobby_list()
+#
+#var time = 0
+#
+#func _physics_process(delta):
+	#if lobby_id == 0:
+		#position.x += 10
+		#time += 0.1
+		#position.y = sin(time) * 10
+	#else:
+		#position.x = 0
+		#position.y = 0
+#
+#func spawn_level(data):
+	#var a = (load(data) as PackedScene).instantiate()
+	#return a
+#
+#func _on_host_pressed():
+	##if peer.get_lobby_id() == 0:
+	#peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
+	#
+	#multiplayer.multiplayer_peer = peer
+	#
+	#GlobalScript.peer_ID = peer.get_unique_id()
+	#
+	#start()
+	#MainUI.hide()
+#func join_lobby(id):
+	#peer.connect_lobby(id)
+	#multiplayer.multiplayer_peer = peer
+	#
+	#GlobalScript.peer_ID = peer.get_unique_id()
+	#
+	#lobby_id = id
+	#
+	#start()
+	#MainUI.hide()
+#
+#func on_lobby_created(connected, id):
+	#if connected:
+		#lobby_id = id
+		#SteamServer.setLobbyData(lobby_id,"name",str(SteamServer.getPersonaName()+"'s lobby"))
+		#SteamServer.setLobbyJoinable(lobby_id, true)
+#func open_lobby_list():
+	#SteamServer.addRequestLobbyListDistanceFilter(SteamServer.LOBBY_DISTANCE_FILTER_WORLDWIDE)
+	#SteamServer.requestLobbyList()
+#func on_lobby_match_list(lobbies2):
+		#for lobby in lobbies2:
+			#var lobby_name = SteamServer.getLobbyData(lobby, "name")
+			#var lobby_mem = SteamServer.getNumLobbyMembers(lobby)
+			#
+			#if id_field.text == "" or lobby_name.containsn(id_field.text):
+			#
+				#var but = Button.new()
+				#but.set_text(str(lobby_name ," | Playercount :", lobby_mem))
+				#but.set_size(Vector2(100, 5))
+				#but.connect("pressed", Callable(self, "join_lobby").bind(lobby))
+				#
+				#lobbies.add_child(but)
+#func _on_refresh_pressed():
+	#if lobbies.get_child_count():
+		#for i in lobbies.get_children():
+			#i.queue_free()
+	#
+	#
+	#id_field.text = ""
+	#
+	#open_lobby_list()
+#func _on_search_pressed():
+	#if lobbies.get_child_count():
+		#for i in lobbies.get_children():
+			#i.queue_free()
+	#
+	#open_lobby_list()
+#
+#func leave_lobby():
+	#if lobby_id != 0:
+		#SteamServer.leaveLobby(lobby_id)
+		#
+		#lobby_id = 0
+	#
+	#
+	#var lobby_members = peer.get_peer_map()
+	#
+	#var IDs = lobby_members.keys()
+	#
+	#for i in IDs.size():
+		#SteamServer.closeP2PSessionWithUser(IDs[i])
+	#
+	#SteamServer.leaveLobby(peer.get_lobby_id())
+	#peer.set_lobby_data("ID", "0")
+	#
+	#peer.close()
+	#get_child(get_child_count() - 1).queue_free()
+	#MainUI.show()
+	#$SelectorUI/Camera2D.enabled = true
+#
+#func start():
+	#for i in get_children():
+		#if i.name == "PlayArea":
+			#return
+	#
+	#set_multiplayer_authority(GlobalScript.peer_ID)
+	##print(get_multiplayer_authority())
+	#
+	#ms.spawn("res://Scenes/PlayArea.tscn")
+	#$SelectorUI/Camera2D.enabled = false
+	##print($SelectorUI/Camera2D.enabled)
+	#peer.set_lobby_joinable(false)
+#
+#func reset():
+	#for i in get_children():
+		#if i.get_index() == get_child_count() -1:
+			#i.queue_free()
+	#
+	#peer.set_lobby_joinable(true)
+	#
+	#$SelectorUI/Camera2D.enabled = true

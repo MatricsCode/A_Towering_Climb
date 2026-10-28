@@ -46,6 +46,16 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	
 	current_state = States.AIR
 	
+	Signals.lobby_finished_game.connect(func(winner : Player):
+		current_state = States.OVERIDDEN
+		velocity = Vector2.ZERO
+		animations.overide = true
+		
+		if winner == self:
+			_won()
+		else:
+			_lost())
+	
 	ground.switch.connect(_switch_ground)
 	air.switch.connect(_switch_air)
 	climb.switch.connect(_switch_climb)
@@ -60,10 +70,6 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	
 	start.connect(func():
 		sprite.sprite_frames = player_source.sprite_frame
-		## Autoloads the normal state into the player
-		
-		#Signals.paused.connect(pause_switch)
-		#Signals.winner.connect(won)
 		)
 
 func _physics_process(_delta):  ## Runs every physics frames
@@ -207,3 +213,8 @@ func _get_sprite_rotation():
 		return 1
 	else:
 		return -1
+
+func _won():
+	sprite.play("jump")
+func _lost():
+	sprite.play("fall")

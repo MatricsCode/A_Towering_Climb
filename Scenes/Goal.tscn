@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbujddwjermfm"]
+[gd_scene format=3 uid="uid://cbujddwjermfm"]
 
 [ext_resource type="Script" uid="uid://daclwstfoi30d" path="res://Scripts/LevelStuff/Goal/goal.gd" id="1_ugxcw"]
 [ext_resource type="Texture2D" uid="uid://d0ipodc0dawvt" path="res://Art/Tilemap/Finish1.png" id="2_l2h7g"]
@@ -33,30 +33,30 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("8_f4lbq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2h7g"]
-size = Vector2(180, 298)
+size = Vector2(180, 269)
 
-[node name="Goal" type="StaticBody2D"]
+[node name="Goal" type="StaticBody2D" unique_id=1097038857]
 script = ExtResource("1_ugxcw")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -160)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=415158819]
+position = Vector2(0, -80)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3tk07")
 autoplay = "default"
-frame_progress = 0.253229
-speed_scale = 3.0
+frame_progress = 0.37961566
+speed_scale = 2.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1478792981]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -150)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1062799922]
+position = Vector2(5, -135)
 shape = SubResource("RectangleShape2D_l2h7g")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
