@@ -1,7 +1,9 @@
+res://Art/Player/
+res://Components/SpriteFrames/IntroSpriteFrames/
+res://Scenes/UI/
 D:/NextCloud/Sicherung/Kodumaster/Exports/A Towering Climb/
 res://Scripts/Player/
 res://Scripts/Player/StateMachine/
-res://Art/Player/
 res://Scripts/UI/CharacterSelector/
 res://Scripts/UI/
 res://Scripts/Camera/
@@ -10,10 +12,7 @@ res://Scenes/UI/Buttons/
 res://Scripts/UI/Button/
 res://Scripts/AutoLoads/
 res://Scripts/LobbyUI/
-res://Scripts/Interactables/Components/
 res://Scripts/PlayerSelectorUI/
-res://Scripts/Cinematic Camera/
 res://Scripts/MainScene/
 res://
-res://Scripts/Tools/
 res://Scripts/PlayArea/

@@ -17,3 +17,33 @@ res://Scenes/Autoloads/Signals.tscn
 res://Scripts/AutoLoads/Signals.gd
 res://Scenes/player.tscn
 res://Scripts/Player/player_script.gd
+res://Scenes/Autoloads/GlobalScript.tscn
+res://Scenes/DEPRICATED UI.tscn
+res://Scenes/Main.tscn
+res://Scenes/LevelPresets/level_3.tscn
+res://Scripts/Cinematic Camera/player_ready_up.gd
+res://Old/DEPRICATED UI.tscn
+res://Scenes/LevelPresets/Spawners/BirdSpawner.tscn
+res://Scripts/Levels/Goal/goal.gd
+res://Scripts/Levels/Goal/Goal.gd
+res://Scripts/Levels/Interactables/beans.gd
+res://Scripts/Levels/Interactables/Beans.gd
+res://Scripts/Levels/Interactables/blockade.gd
+res://Scripts/Levels/Interactables/Blockade.gd
+res://Scripts/Abilitys/MainAbilities/punch.gd
+res://Scripts/Abilitys/MainAbilities/Punch.gd
+res://Scripts/Abilitys/MainAbilities/ram.gd
+res://Scripts/Abilitys/MainAbilities/Ram.gd
+res://Scripts/Abilitys/MainAbilities/sandwich.gd
+res://Scripts/Abilitys/MainAbilities/Sandwich.gd
+res://Scripts/Abilitys/SecondaryAbilities/glide.gd
+res://Scripts/Abilitys/SecondaryAbilities/Glide.gd
+res://Scripts/Abilitys/SecondaryAbilities/repair.gd
+res://Scripts/Abilitys/SecondaryAbilities/Repair.gd
+res://Scenes/UI/PlayerSelector.tscn
+res://Scenes/UI/CharacterSwitchAnimation.gd
+res://Components/SpriteFrames/IntroSpriteFrames/IntroSpriteFrames.tres
+res://Components/SpriteFrames/IntroSpriteFrames/Climber1.tres
+res://Components/SpriteFrames/IntroSpriteFrames/Baker.tres
+res://Scripts/UI/CharacterSelector/Customiser.gd
+res://Old/CharacterSelector/Customiser.gd

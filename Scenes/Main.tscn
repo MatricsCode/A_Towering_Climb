@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://bvgxox4xf14tm"]
 
 [ext_resource type="Script" uid="uid://ya3pjcvr6pbw" path="res://Scripts/MainScene/MainGameScene.gd" id="1_kln2b"]
-[ext_resource type="PackedScene" uid="uid://cbnyp3hyfqj53" path="res://Scenes/Background.tscn" id="3_kln2b"]
+[ext_resource type="PackedScene" uid="uid://cbnyp3hyfqj53" path="res://Scenes/Camera/Background.tscn" id="3_kln2b"]
 [ext_resource type="PackedScene" uid="uid://fncklescmf13" path="res://Scenes/UI/MainUI.tscn" id="3_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://n84h7ds41dm6" path="res://Scenes/Camera/Camera.tscn" id="4_rgh2o"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgh2o"]
 
 [node name="Main" type="Node2D" unique_id=1591334068 node_paths=PackedStringArray("player_placements")]
 script = ExtResource("1_kln2b")
@@ -20,95 +18,6 @@ spawn_path = NodePath("..")
 
 [node name="UI Main" parent="CanvasLayer" unique_id=1690030602 instance=ExtResource("3_rgh2o")]
 
-[node name="SelectorUI_OLD" type="Control" parent="." unique_id=1439460637]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 47.0
-offset_top = -2121.0
-offset_right = 1199.0
-offset_bottom = -1473.0
-metadata/_edit_group_ = true
-
-[node name="HSplitContainer" type="HBoxContainer" parent="SelectorUI_OLD" unique_id=1974613724]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 30
-
-[node name="Spacer" type="AspectRatioContainer" parent="SelectorUI_OLD/HSplitContainer" unique_id=676324759]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="SelectorUI_OLD/HSplitContainer/Spacer" unique_id=1190564317]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_rgh2o")
-text = "This is a Spacer"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SelectorUI_OLD/HSplitContainer" unique_id=1173209739]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_override_constants/separation = 50
-alignment = 1
-
-[node name="Host" type="Button" parent="SelectorUI_OLD/HSplitContainer/VBoxContainer" unique_id=298722444]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Host
-"
-
-[node name="Refresh" type="Button" parent="SelectorUI_OLD/HSplitContainer/VBoxContainer" unique_id=1079230998]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Refresh
-"
-
-[node name="VBoxContainer" type="HBoxContainer" parent="SelectorUI_OLD/HSplitContainer/VBoxContainer" unique_id=201405760]
-layout_mode = 2
-
-[node name="IDField" type="TextEdit" parent="SelectorUI_OLD/HSplitContainer/VBoxContainer/VBoxContainer" unique_id=1846698556]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 32
-placeholder_text = "Insert Lobby Name"
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-drag_and_drop_selection_enabled = false
-empty_selection_clipboard_enabled = false
-virtual_keyboard_enabled = false
-scroll_fit_content_height = true
-scroll_fit_content_width = true
-
-[node name="Search" type="Button" parent="SelectorUI_OLD/HSplitContainer/VBoxContainer/VBoxContainer" unique_id=1215123703]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 32
-text = "Search"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="SelectorUI_OLD/HSplitContainer" unique_id=118863018]
-layout_mode = 2
-
-[node name="LobbyContainer" type="ScrollContainer" parent="SelectorUI_OLD/HSplitContainer" unique_id=1325976184]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Lobbies" type="VBoxContainer" parent="SelectorUI_OLD/HSplitContainer/LobbyContainer" unique_id=40801770]
-layout_mode = 2
-
-[node name="Spacer2" type="AspectRatioContainer" parent="SelectorUI_OLD/HSplitContainer" unique_id=2113078959]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="SelectorUI_OLD/HSplitContainer/Spacer2" unique_id=1639874748]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_rgh2o")
-text = "This is a Spacer"
-
 [node name="CameraControl" parent="." unique_id=445707866 node_paths=PackedStringArray("player_node") instance=ExtResource("4_rgh2o")]
 position = Vector2(688, -5191)
 player_node = NodePath("../Players")
@@ -117,3 +26,7 @@ player_node = NodePath("../Players")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Players" unique_id=1970020386]
 spawn_path = NodePath("..")
+
+[node name="Obstacles" type="Node2D" parent="." unique_id=1923602623]
+
+[node name="POI" type="Node2D" parent="." unique_id=1937250899]

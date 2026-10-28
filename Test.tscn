@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bjlscvq7o16m2" path="res://icon.svg" id="1_myinc"]
 [ext_resource type="Script" uid="uid://bp8t6o5i5cf1u" path="res://test.gd" id="1_njov2"]
-[ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Scripts/Player/wall_detectors.gd" id="3_2au82"]
+[ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Old/wall_detectors.gd" id="3_2au82"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2au82"]
 size = Vector2(79, 150)

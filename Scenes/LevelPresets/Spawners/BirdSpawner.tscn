@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dbd4mefv24ifl"]
+
+[ext_resource type="Script" uid="uid://dy32smmeh3nm4" path="res://Scripts/Levels/Props/Bird/bird_spawner.gd" id="1_b4cut"]
+
+[node name="PropSpawner" type="MultiplayerSpawner" unique_id=760831414]
+spawn_path = NodePath(".")
+script = ExtResource("1_b4cut")
+spawn_positions = null

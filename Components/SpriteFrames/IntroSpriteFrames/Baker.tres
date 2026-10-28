@@ -1,0 +1,77 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bjixmhtfjc485"]
+
+[ext_resource type="Texture2D" uid="uid://7nqqsy0r6u5v" path="res://Art/Player/Baker.png" id="1_xq5vv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fml56"]
+atlas = ExtResource("1_xq5vv")
+region = Rect2(5760, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymfdd"]
+atlas = ExtResource("1_xq5vv")
+region = Rect2(5120, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldeh0"]
+atlas = ExtResource("1_xq5vv")
+region = Rect2(4480, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r60a"]
+atlas = ExtResource("1_xq5vv")
+region = Rect2(3840, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uwac"]
+atlas = ExtResource("1_xq5vv")
+region = Rect2(6400, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5rvh"]
+atlas = ExtResource("1_xq5vv")
+region = Rect2(7040, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wabvr"]
+atlas = ExtResource("1_xq5vv")
+region = Rect2(7680, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugqvm"]
+atlas = ExtResource("1_xq5vv")
+region = Rect2(8320, 0, 640, 640)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fml56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymfdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldeh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r60a")
+}],
+"loop": 1,
+"name": &"entrance",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uwac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5rvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wabvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugqvm")
+}],
+"loop": 1,
+"name": &"exit",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]

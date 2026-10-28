@@ -1,0 +1,541 @@
+[gd_scene format=3 uid="uid://cam0eoq23msfi"]
+
+[ext_resource type="Script" uid="uid://n0k8hsrj2410" path="res://Scripts/UI/PlayerSelectorUI/player_selector.gd" id="1_xs5nl"]
+[ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="2_b5r3k"]
+[ext_resource type="Texture2D" path="res://Art/Player/Baker/Baker1.png" id="2_e5v4a"]
+[ext_resource type="Script" uid="uid://yhp81sc8f8pp" path="res://Scripts/UI/PlayerSelectorUI/vitaliser.gd" id="3_cx46x"]
+[ext_resource type="Texture2D" path="res://Art/Player/Baker/Baker2.png" id="3_q1uvm"]
+[ext_resource type="PackedScene" path="res://Scenes/Tools/BaseButton.tscn" id="4_4g1oj"]
+[ext_resource type="Texture2D" path="res://Art/Player/Baker/Baker3.png" id="4_ao5bk"]
+[ext_resource type="Script" uid="uid://b1to0dglnhcn5" path="res://Scripts/UI/PlayerSelectorUI/PlayerOutfits.gd" id="4_ivr4c"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber1/Climber1.png" id="5_xs5nl"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber1/Climber2.png" id="6_b5r3k"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber1/Climber3.png" id="7_800ha"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber1/Climber4.png" id="8_nyrgn"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber1/Climber5.png" id="9_sofy2"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber1/Climber6.png" id="10_yd8kd"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber1/Climber7.png" id="11_gwj3k"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber1/Climber8.png" id="12_nchna"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber2/Climber1.png" id="13_luge1"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber2/Climber2.png" id="14_755lh"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber2/Climber3.png" id="15_d5pn0"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber2/Climber4.png" id="16_t7ov3"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber2/Climber5.png" id="17_7ngm7"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber2/Climber6.png" id="18_f3jc3"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber2/Climber7.png" id="19_yhnkq"]
+[ext_resource type="Texture2D" path="res://Art/Player/Climber2/Climber8.png" id="20_rkvwc"]
+[ext_resource type="Texture2D" path="res://Art/Player/Heinrich/Heinrich1.png" id="21_vojjo"]
+[ext_resource type="Texture2D" path="res://Art/Player/Heinrich/Heinrich2.png" id="22_2suyp"]
+[ext_resource type="Texture2D" path="res://Art/Player/Heinrich/Heinrich3.png" id="23_1mebd"]
+[ext_resource type="Texture2D" path="res://Art/Player/Heinrich/Heinrich4.png" id="24_htean"]
+[ext_resource type="Texture2D" path="res://Art/Player/Heinrich/Heinrich5.png" id="25_4kbex"]
+[ext_resource type="Texture2D" path="res://Art/Player/Heinrich/Heinrich6.png" id="26_jx0fm"]
+[ext_resource type="Texture2D" path="res://Art/Player/Heinrich/Heinrich7.png" id="27_7ub4j"]
+[ext_resource type="Script" uid="uid://bkaxgra801fsr" path="res://Scripts/UI/PlayerSelectorUI/ability_selector.gd" id="28_b5r3k"]
+[ext_resource type="Theme" uid="uid://btyhh0yr7u81f" path="res://Old/Recourses/UI/main.tres" id="29_ichg1"]
+
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs5nl"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bpm6"]
+bg_color = Color(0.309804, 0.560784, 0.729412, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4g1oj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_xs5nl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b5r3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_800ha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nyrgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sofy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yd8kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gwj3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_nchna")
+}],
+"loop": 1,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_luge1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_755lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_d5pn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_t7ov3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7ngm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_f3jc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_yhnkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_rkvwc")
+}],
+"loop": 1,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e5v4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q1uvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ao5bk")
+}],
+"loop": 1,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_vojjo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_2suyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_1mebd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_htean")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_4kbex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_jx0fm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_7ub4j")
+}],
+"loop": 1,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"4",
+"speed": 5.0
+}]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xs5nl"]
+properties/0/path = NodePath("MarginContainer/VBoxContainer/Visualiser/sprite:animation")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators/Climber1:color")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators/Climber2:color")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators/Baker:color")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators/Heinrich:color")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+properties/5/path = NodePath("MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators/Builder:color")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+properties/6/path = NodePath("MarginContainer/VBoxContainer/Ready:text")
+properties/6/spawn = true
+properties/6/replication_mode = 2
+
+[node name="PlayerSelector" type="Control" unique_id=113157081]
+custom_minimum_size = Vector2(381, 0)
+layout_mode = 3
+anchor_right = 0.331
+anchor_bottom = 1.701
+offset_right = -0.312042
+offset_bottom = -0.248047
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xs5nl")
+
+[node name="Panel" type="Panel" parent="." unique_id=670735157]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xs5nl")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1351596773]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=406429386]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1524264725]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Visualiser" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=910583039]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_b5r3k")
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Visualiser" unique_id=1976413091]
+custom_minimum_size = Vector2(0, 339)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8bpm6")
+
+[node name="sprite" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/Visualiser" unique_id=1240414143]
+position = Vector2(160, 162)
+sprite_frames = SubResource("SpriteFrames_4g1oj")
+animation = &"1"
+autoplay = "0"
+speed_scale = 3.0
+
+[node name="Ability Selector" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=311679293]
+layout_mode = 2
+theme = ExtResource("2_b5r3k")
+script = ExtResource("28_b5r3k")
+
+[node name="SplitContainer" type="SplitContainer" parent="MarginContainer/VBoxContainer/Ability Selector" unique_id=396098344]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer" unique_id=1922590918]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("29_ichg1")
+
+[node name="Ability1" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Buttons" unique_id=1518992666 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 140)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+func_parent = NodePath("../../..")
+
+[node name="PassiveAbility1" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Buttons" unique_id=127916457 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 35)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Passive Ability 1"
+func_parent = NodePath("../../..")
+
+[node name="PassiveAbility2" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Buttons" unique_id=745696561 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 35)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Passive Ability 2"
+func_parent = NodePath("../../..")
+
+[node name="Indicators" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer" unique_id=564940298]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("29_ichg1")
+
+[node name="Ability1" type="ColorRect" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Indicators" unique_id=597618562]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.81, 0.340335, 0.2349, 1)
+
+[node name="Ability2" type="ColorRect" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Indicators" unique_id=646232680]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.81, 0.340335, 0.2349, 1)
+
+[node name="Ability3" type="ColorRect" parent="MarginContainer/VBoxContainer/Ability Selector/SplitContainer/Indicators" unique_id=1842733757]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.81, 0.340335, 0.2349, 1)
+
+[node name="Vitaliser" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1981937020]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_b5r3k")
+script = ExtResource("3_cx46x")
+
+[node name="key_abilities" type="HSplitContainer" parent="MarginContainer/VBoxContainer/Vitaliser" unique_id=1476118413]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities" unique_id=221779409]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("29_ichg1")
+
+[node name="Sky_Lift_Key" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" unique_id=2143721106 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Sky Lift Key"
+func_parent = NodePath("../../..")
+
+[node name="Climbers_Hook" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" unique_id=1994745989 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Climbers Hook"
+func_parent = NodePath("../../..")
+
+[node name="Ram" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" unique_id=1811967578 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Ram"
+func_parent = NodePath("../../..")
+
+[node name="Sandwich" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" unique_id=1654654393 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Sandwich"
+func_parent = NodePath("../../..")
+
+[node name="Drum_Key" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" unique_id=542025718 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Drum Key"
+func_parent = NodePath("../../..")
+
+[node name="Punch" parent="MarginContainer/VBoxContainer/Vitaliser/key_abilities/Buttons" unique_id=1856609556 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Punch
+"
+func_parent = NodePath("../../..")
+
+[node name="passive_abilities" type="HSplitContainer" parent="MarginContainer/VBoxContainer/Vitaliser" unique_id=69162707]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities" unique_id=1034812229]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("29_ichg1")
+
+[node name="Glide" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Buttons" unique_id=164334415 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Glide"
+func_parent = NodePath("../../..")
+
+[node name="Can_Opener" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Buttons" unique_id=899479683 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Can Opener"
+func_parent = NodePath("../../..")
+
+[node name="Repair" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Buttons" unique_id=249409861 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Repair"
+func_parent = NodePath("../../..")
+
+[node name="Indicators" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities" unique_id=441300996]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("29_ichg1")
+
+[node name="Glide" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Indicators" unique_id=146332987]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Can_Opener" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Indicators" unique_id=838039593]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Repair" type="ColorRect" parent="MarginContainer/VBoxContainer/Vitaliser/passive_abilities/Indicators" unique_id=501999497]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Customiser" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=296294639]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_b5r3k")
+script = ExtResource("4_ivr4c")
+
+[node name="SplitContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer/Customiser" unique_id=1757772312]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer" unique_id=78227631]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("29_ichg1")
+
+[node name="Climber1" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Buttons" unique_id=1085273000 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Climber 1
+"
+func_parent = NodePath("../../..")
+
+[node name="Climber2" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Buttons" unique_id=2072558490 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Climber 2"
+func_parent = NodePath("../../..")
+
+[node name="Baker" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Buttons" unique_id=2070456214 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Baker"
+func_parent = NodePath("../../..")
+
+[node name="Heinrich" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Buttons" unique_id=2125324152 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Heinrich"
+func_parent = NodePath("../../..")
+
+[node name="Gary" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Buttons" unique_id=2044644565 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Gary"
+func_parent = NodePath("../../..")
+
+[node name="Builder" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Buttons" unique_id=1800085387 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(225, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Builder"
+func_parent = NodePath("../../..")
+
+[node name="Indicators" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer" unique_id=1967857806]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("29_ichg1")
+
+[node name="Climber1" type="ColorRect" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators" unique_id=634223138]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.454902, 0.65098, 0.258824, 1)
+
+[node name="Climber2" type="ColorRect" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators" unique_id=1943753160]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.81, 0.340335, 0.2349, 1)
+
+[node name="Baker" type="ColorRect" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators" unique_id=403170743]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.81, 0.340335, 0.2349, 1)
+
+[node name="Heinrich" type="ColorRect" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators" unique_id=1712398729]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.81, 0.340335, 0.2349, 1)
+
+[node name="Gary" type="ColorRect" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators" unique_id=949579286]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.81, 0.340335, 0.2349, 1)
+
+[node name="Builder" type="ColorRect" parent="MarginContainer/VBoxContainer/Customiser/SplitContainer/Indicators" unique_id=456594487]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.81, 0.340335, 0.2349, 1)
+
+[node name="Ready" parent="MarginContainer/VBoxContainer" unique_id=317454667 node_paths=PackedStringArray("func_parent") instance=ExtResource("4_4g1oj")]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Ready?"
+func_parent = NodePath("../../..")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1457742991]
+replication_config = SubResource("SceneReplicationConfig_xs5nl")

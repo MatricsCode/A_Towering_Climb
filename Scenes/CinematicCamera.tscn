@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://su027br6a4ty"]
 
-[ext_resource type="Script" uid="uid://dxnq6ejhtqvp2" path="res://Scripts/Cinematic Camera/player_ready_up.gd" id="2_c1o1f"]
+[ext_resource type="Script" uid="uid://dxnq6ejhtqvp2" path="res://Old/Cinematic Camera/player_ready_up.gd" id="1_idivh"]
 
 [sub_resource type="GDScript" id="GDScript_idivh"]
 script/source = "extends Camera2D
@@ -86,7 +86,7 @@ texture = SubResource("GradientTexture1D_tgk4k")
 
 [node name="PlayerSelectorSpawner" type="MultiplayerSpawner" parent="." unique_id=1320419511]
 spawn_path = NodePath("../CanvasLayer/Container")
-script = ExtResource("2_c1o1f")
+script = ExtResource("1_idivh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2067509936]
 layer = 3
