@@ -1,4 +1,4 @@
-extends abilitys
+extends Abilities
 
 var area = null
 var speed = 0

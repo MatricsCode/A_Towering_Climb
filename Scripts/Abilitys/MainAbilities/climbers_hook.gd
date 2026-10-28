@@ -1,4 +1,4 @@
-extends abilitys
+extends Abilities
 
 var to_throw = []
 

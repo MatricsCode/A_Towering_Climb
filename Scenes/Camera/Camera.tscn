@@ -22,4 +22,5 @@ position = Vector2(-288, 0)
 position = Vector2(0, 288)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=243259360]
+ignore_rotation = false
 limit_bottom = 320

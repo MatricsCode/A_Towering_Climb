@@ -14,18 +14,23 @@ var coyote_timer : Timer
 
 var current := false
 
+var hit_head := false
+
 func _ready():
 	detectors.on_ground.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
+		hit_head = false
 		switch.emit(player.States.GROUND, "Land", fall_speed))
 	detectors.on_wall.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
+		hit_head = false
 		switch.emit(player.States.CLIMB, "WallHit"))
 	detectors.on_roof.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
+		hit_head = true
 		fall_speed = -25)
 	
 	coyote_timer = Timer.new()
@@ -62,7 +67,7 @@ func _air():
 				player.main_vars.ground_vars.speed * direction, 0.1)
 		
 		elif direction == 0 and player.velocity.x != 0:
-			player.velocity.x = lerpf(player.velocity.x, 0.0, 0.005)
+			player.velocity.x = lerpf(player.velocity.x, 0.0, 0.01)
 		
 	var drop = func drop():
 		if fall_speed < player.TERMINAL_VELOCITY: # Checks and adjusts the current gravity
@@ -77,7 +82,10 @@ func _air():
 		
 		player.velocity.y = fall_speed
 	
-	air_movement.call()
+	if !hit_head:
+		air_movement.call()
+	else:
+		player.velocity.x = lerpf(player.velocity.x, 0.0, 0.01)
 	drop.call()
 	_turn()
 
@@ -85,8 +93,8 @@ func _air():
 func _coyote_time():
 	coyote_timer.start()
 func _variable_jump():
-	if Input.is_action_just_released("Jump") and fall_speed > 0:
-		fall_speed -= 200
+	if Input.is_action_just_released("Jump"):
+		player.main_vars.air_vars.gravity_increase += 10
 
 func _jump(climbing : bool = false):
 	fall_speed = -player.main_vars.air_vars.jump_strength

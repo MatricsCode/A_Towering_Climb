@@ -1,6 +1,6 @@
 extends Node
 
-class_name abilitys
+class_name Abilities
 
 @export var activation_state = 0
 @export var player : CharacterBody2D

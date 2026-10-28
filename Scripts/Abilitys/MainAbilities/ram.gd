@@ -1,4 +1,4 @@
-extends abilitys
+extends Abilities
 
 var flying = false
 var current_speed = 0

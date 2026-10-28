@@ -1,4 +1,4 @@
-extends abilitys
+extends Abilities
 
 var min_gliding_speed = 500
 

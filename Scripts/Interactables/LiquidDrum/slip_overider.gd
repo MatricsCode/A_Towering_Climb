@@ -1,4 +1,4 @@
-extends abilitys
+extends Abilities
 
 func _ready():
 	overide()
