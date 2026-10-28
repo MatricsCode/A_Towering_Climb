@@ -3,12 +3,12 @@
 [resource]
 animations = [{
 "frames": [],
-"loop": 1,
+"loop": 0,
 "name": &"entrance",
 "speed": 5.0
 }, {
 "frames": [],
-"loop": 1,
+"loop": 0,
 "name": &"exit",
 "speed": 5.0
 }, {

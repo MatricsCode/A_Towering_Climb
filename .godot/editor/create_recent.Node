@@ -1,6 +1,6 @@
+Control
 HoverButton
 AnimatedSprite2D
-Control
 TextureRect
 Node2D
 CollisionShape2D

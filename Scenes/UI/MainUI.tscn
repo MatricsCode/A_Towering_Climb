@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_qyh0x"]
 [ext_resource type="Script" uid="uid://c0up8lhfcq1jh" path="res://Scripts/UI/CharacterSelectorUI.gd" id="5_upwrp"]
 [ext_resource type="Script" uid="uid://bcgecunh1q8yd" path="res://Components/Resources/PlayerSource.gd" id="6_mxqpb"]
-[ext_resource type="Script" uid="uid://b0imh5jcjfvpr" path="res://Scripts/Abilitys/MainAbilities/Ram.gd" id="6_uwavw"]
-[ext_resource type="Script" uid="uid://d0y0w2hbe3jwq" path="res://Scripts/Abilitys/SecondaryAbilities/Glide.gd" id="7_7uoew"]
-[ext_resource type="Script" uid="uid://bfd4tahblhaqb" path="res://Scripts/Abilitys/SecondaryAbilities/Repair.gd" id="8_tt03y"]
-[ext_resource type="Script" uid="uid://dm3jvtcmp62ii" path="res://Scripts/Abilitys/MainAbilities/Sandwich.gd" id="10_7uoew"]
+[ext_resource type="Script" uid="uid://b0imh5jcjfvpr" path="res://Scripts/Abilitys/MainAbilities/ram.gd" id="6_uwavw"]
+[ext_resource type="Script" uid="uid://d0y0w2hbe3jwq" path="res://Scripts/Abilitys/SecondaryAbilities/glide.gd" id="7_7uoew"]
+[ext_resource type="Script" uid="uid://bfd4tahblhaqb" path="res://Scripts/Abilitys/SecondaryAbilities/repair.gd" id="8_tt03y"]
+[ext_resource type="Script" uid="uid://dm3jvtcmp62ii" path="res://Scripts/Abilitys/MainAbilities/sandwich.gd" id="10_7uoew"]
 
 [sub_resource type="Resource" id="Resource_upwrp"]
 script = ExtResource("6_mxqpb")
@@ -922,6 +922,7 @@ layout_mode = 2
 theme = ExtResource("1_fr3bv")
 
 [node name="LobbyData" type="LineEdit" parent="CaracterSelectorUI/MarginContainer/VBoxContainer" unique_id=927188721]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("1_fr3bv")

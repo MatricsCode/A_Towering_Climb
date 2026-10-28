@@ -36,10 +36,6 @@ func _add_player():
 	
 	player_selector.finished.connect(func():
 		_is_peer_ready())
-	#player_selector.loaded.connect(func():
-		#lobby_text.visible = false)
-	#player_selector.remove.connect(func():
-		#_everyone_ready())
 	
 	player_selectors.add_child(player_selector)
 

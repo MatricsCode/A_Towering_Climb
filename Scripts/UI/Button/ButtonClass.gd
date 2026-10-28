@@ -3,6 +3,8 @@ class_name HoverButton
 
 signal returning_name(my_name : String)
 
+@export var wiggle := true
+
 var time := 1.0
 
 var hovering := false
@@ -24,7 +26,7 @@ func _ready():
 	_spawn()
 
 func _physics_process(_delta):
-	if !hovering:
+	if !hovering and wiggle:
 		time += 1.0
 		rotation_degrees = (cos(time/20) / (size.x)) * 750
 
