@@ -3,13 +3,14 @@
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Old/Recourses/Tileset.tres" id="1_tlcug"]
 [ext_resource type="PackedScene" uid="uid://deffkwaj6jy8s" path="res://Scenes/Elements/Interactables/MovingPlatform.tscn" id="2_4dpyx"]
 [ext_resource type="PackedScene" uid="uid://j0ml6gtwkiec" path="res://Art/Blockade.tscn" id="4_iixi8"]
-[ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Elements/Goal.tscn" id="5_cyadu"]
+[ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Elements/Props/Goal.tscn" id="5_cyadu"]
 [ext_resource type="PackedScene" uid="uid://bqn3jg2ms8eig" path="res://Scenes/LevelPresets/Spawners/InteractablesSpawner.tscn" id="5_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/Elements/Interactables/LiquidDrum.tscn" id="6_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://dbd4mefv24ifl" path="res://Scenes/LevelPresets/Spawners/BirdSpawner.tscn" id="7_5f3p6"]
 [ext_resource type="PackedScene" uid="uid://dp06o4fd4o2h" path="res://Scenes/Elements/Interactables/Beans.tscn" id="7_u5ghp"]
 [ext_resource type="PackedScene" uid="uid://cn07xety6vi3e" path="res://Test.tscn" id="8_jv26f"]
 [ext_resource type="PackedScene" uid="uid://bbp13fc5trd3u" path="res://Scenes/LevelPresets/Spawners/ProjectileSpawner.tscn" id="8_rb0md"]
+
 
 
 [sub_resource type="Curve2D" id="Curve2D_cyadu"]

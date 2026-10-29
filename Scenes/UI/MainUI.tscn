@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="1_fr3bv"]
 [ext_resource type="Script" uid="uid://bldy0yf23ma7b" path="res://Scripts/UI/LobbyUI.gd" id="3_dfu8n"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_qyh0x"]
+[ext_resource type="Script" uid="uid://djlti40nuei7s" path="res://Scripts/UI/GameUI.gd" id="5_7uoew"]
 [ext_resource type="Script" uid="uid://c0up8lhfcq1jh" path="res://Scripts/UI/CharacterSelectorUI.gd" id="5_upwrp"]
 [ext_resource type="Script" uid="uid://bcgecunh1q8yd" path="res://Components/Resources/PlayerSource.gd" id="6_mxqpb"]
 [ext_resource type="Script" uid="uid://b0imh5jcjfvpr" path="res://Scripts/Abilitys/MainAbilities/ram.gd" id="6_uwavw"]
@@ -884,7 +885,7 @@ text = "Search"
 script = ExtResource("4_qyh0x")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
-[node name="GameUI" type="MarginContainer" parent="." unique_id=263238374]
+[node name="GameUI" type="MarginContainer" parent="." unique_id=263238374 node_paths=PackedStringArray("vignette")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -892,6 +893,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("5_7uoew")
+vignette = NodePath("Vignet")
+
+[node name="Vignet" type="TextureRect" parent="GameUI" unique_id=1069217859]
+layout_mode = 2
 
 [node name="CaracterSelectorUI" type="Panel" parent="." unique_id=1133005552 node_paths=PackedStringArray("ready_button", "lobby_text", "player_selectors")]
 modulate = Color(1, 1, 1, 0)

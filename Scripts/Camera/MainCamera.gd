@@ -11,7 +11,7 @@ extends Node2D
 
 @onready var cam = $Camera2D
 
-enum States {BOUNCING, STARTING_ANIMATION, FOLLOWING_PLAYER}
+enum States {BOUNCING, STARTING_ANIMATION, FOLLOWING_PLAYER, FINISHED}
 var current_state := States.BOUNCING
 
 var bouncing_time = 0
@@ -27,10 +27,17 @@ var player : Player = null
 func _ready():
 	current_state = States.BOUNCING
 	
+	
 	Signals.lobby_start_game.connect(_start_animation)
-	Signals.lobby_finished_game.connect(_game_finished)
+	Signals.lobby_finished_game.connect(func(winner : Player):
+		current_state = States.FINISHED
+		player = winner)
 
 func _physics_process(_delta):
+	
+	if Input.is_action_just_pressed("Dev1"):
+		Signals.vignette.emit(1)
+	
 	match current_state:
 		States.BOUNCING:
 			_bouncing()
@@ -38,6 +45,8 @@ func _physics_process(_delta):
 			pass
 		States.FOLLOWING_PLAYER:
 			_following_player()
+		States.FINISHED:
+			_finished()
 
 func _bouncing():
 	position.x += 1
@@ -114,5 +123,8 @@ func _following_player():
 		cam_y = target_y
 		
 		cam_movement.tween_property(cam, "position", Vector2(cam_x, cam_y), easing)
-func _game_finished(winner : Player):
+func _finished():
+	Signals.vignette.emit(1)
+
+func _finish_animation():
 	pass

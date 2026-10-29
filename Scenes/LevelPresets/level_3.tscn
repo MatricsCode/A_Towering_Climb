@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cn8yrub2tv3vi"]
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Old/Recourses/Tileset.tres" id="1_bov8p"]
-[ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Elements/Goal.tscn" id="2_a0ufr"]
+[ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Elements/Props/Goal.tscn" id="2_a0ufr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqh25"]
 size = Vector2(7186, 10)

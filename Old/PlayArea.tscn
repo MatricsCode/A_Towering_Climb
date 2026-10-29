@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://yok4okqr5xhe"]
+
+[ext_resource type="Script" uid="uid://mxplkon28xxc" path="res://Scripts/PlayArea/level_spawner.gd" id="1_xpxjo"]
+[ext_resource type="Script" uid="uid://ceh88qybxg6et" path="res://Scripts/PlayArea/multiplayer_spawner.gd" id="2_hwg8r"]
+[ext_resource type="PackedScene" uid="uid://c2kbb3vdndd4g" path="res://Scenes/Elements/player.tscn" id="3_napme"]
+[ext_resource type="PackedScene" uid="uid://bnt4usslrchfy" path="res://Old/DEPRICATED UI.tscn" id="4_jucm2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rbpu"]
+size = Vector2(4838, 20)
+
+[node name="PlayArea" type="Node" unique_id=905050013]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="." unique_id=356975641]
+spawn_path = NodePath(".")
+script = ExtResource("1_xpxjo")
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=805904976 groups=["PlayerSpawner"]]
+spawn_path = NodePath(".")
+script = ExtResource("2_hwg8r")
+player_scene = ExtResource("3_napme")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=165520928]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=29386870]
+shape = SubResource("RectangleShape2D_8rbpu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1313113890]
+
+[node name="MainUI" parent="CanvasLayer" unique_id=568886463 instance=ExtResource("4_jucm2")]
+metadata/_edit_use_anchors_ = true
