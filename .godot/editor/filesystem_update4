@@ -10,3 +10,4 @@ res://Old/Recourses/UI/main.tres
 res://Old/Recourses/UI/PauseBackground.tres
 res://Old/Recourses/UI/WinBackground.tres
 res://Scripts/Camera/MainCamera.gd
+res://Scenes/UI/MainUI.tscn

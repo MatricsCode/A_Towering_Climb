@@ -1,3 +1,4 @@
+Panel
 TextureRect
 Control
 AnimationPlayer
@@ -7,7 +8,6 @@ Node2D
 CollisionShape2D
 StaticBody2D
 MarginContainer
-Panel
 HBoxContainer
 Node
 VBoxContainer

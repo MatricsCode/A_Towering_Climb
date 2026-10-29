@@ -24,8 +24,8 @@ var cam_y : float = 0
 var player : Player = null
 var viewing_player : Player = null
 
-var move_time := 5.0
-var zoom_time := 5.0
+var move_time : float = 5.0
+var zoom_time : float = 20.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -174,7 +174,6 @@ func _finished():
 		
 		return
 	
-	_movement_anim.call()
 	await _movement_anim.call()
 	await _zoom_anim.call()
 	
