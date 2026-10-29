@@ -16,7 +16,7 @@ signal peer_joined(ID : int)
 signal readied_peer(ID : int)
 signal peer_waiting(ID : int)
 
-signal vignette()
+signal vignette(trans_time : float, wait_time : float)
 
 #-----------------------------------
 

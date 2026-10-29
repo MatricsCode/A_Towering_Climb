@@ -22,6 +22,7 @@ var cam_x : float = 0
 var cam_y : float = 0
 
 var player : Player = null
+var viewing_player : Player = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,12 +32,11 @@ func _ready():
 	Signals.lobby_start_game.connect(_start_animation)
 	Signals.lobby_finished_game.connect(func(winner : Player):
 		current_state = States.FINISHED
-		player = winner)
+		viewing_player = winner)
 
 func _physics_process(_delta):
-	
 	if Input.is_action_just_pressed("Dev1"):
-		Signals.vignette.emit(1)
+		Signals.vignette.emit(1, 1)
 	
 	match current_state:
 		States.BOUNCING:
@@ -88,11 +88,12 @@ func _start_animation():
 		for finding_player in player_node.get_children():
 			if finding_player is CharacterBody2D:
 				if finding_player.player_source.steam_ID == Steam.getSteamID():
-					self.reparent(finding_player)
 					player = finding_player
 	
 	current_state = States.FOLLOWING_PLAYER
 func _following_player():
+	position = player.position
+	
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
 	
 	var target_x : float = 0
@@ -124,7 +125,29 @@ func _following_player():
 		
 		cam_movement.tween_property(cam, "position", Vector2(cam_x, cam_y), easing)
 func _finished():
-	Signals.vignette.emit(1)
+	await _finish_animation()
+	
+	var index = viewing_player.get_index() + 1
+	if index > player_node.get_child_count()-1:
+		index = 1
+	viewing_player = player_node.get_child(index)
 
 func _finish_animation():
-	pass
+	var tweener = get_tree().create_tween()
+	
+	tweener.set_parallel()
+	tweener.set_ease(Tween.EASE_IN_OUT)
+	tweener.tween_property(self, "position", Vector2.ZERO, 2.5)
+	tweener.tween_property(cam, "zoom", Vector2(0.1, 0.1), 2.5)
+	
+	await tweener.finished
+	var tweener2 = get_tree().create_tween()
+	
+	tweener2.set_parallel()
+	tweener2.set_ease(Tween.EASE_IN_OUT)
+	tweener2.tween_property(self, "position", viewing_player.position, 2.5)
+	tweener2.tween_property(cam, "zoom", Vector2(1 ,1), 2.5)
+	
+	await tweener2.finished
+	
+	return

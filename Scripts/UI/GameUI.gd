@@ -12,8 +12,8 @@ func _ready():
 	_vignette_texture()
 	vignette.texture = vignette_texture
 	
-	Signals.vignette.connect(func(time : float):
-		_vignette_animation(time))
+	Signals.vignette.connect(func(tran_time : float, wait_time : float):
+		_vignette_animation(tran_time, wait_time))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,11 +38,11 @@ func _vignette_texture():
 	vignette_texture.gradient = vignette_gradient
 	vignette_texture.width = get_window().size.x
 	vignette_texture.height = get_window().size.y
-func _vignette_animation(time : float):
+func _vignette_animation(tran_time : float, wait_time : float):
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "vignette_gradient_offset", 0.0, time/2)
-	await get_tree().create_timer(time/1.7).timeout
+	tween.tween_property(self, "vignette_gradient_offset", 0.0, tran_time/2)
+	await get_tree().create_timer(wait_time).timeout
 	tween.stop()
 	tween.kill()
 	tween = get_tree().create_tween()
-	tween.tween_property(self, "vignette_gradient_offset", 1.0, time/2)
+	tween.tween_property(self, "vignette_gradient_offset", 1.0, tran_time/2)
