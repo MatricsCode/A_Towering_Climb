@@ -20,13 +20,19 @@ var current_sprite : AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	current_sprite = sprite1
+	#current_sprite = sprite1
 	sprite1.position = centre_point.position
-	sprite2.position = right_point.position
-	sprite3.position = left_point.position
-	
-	last_outfit_button.pressed.connect(func(): pass)
-	next_outfit_button.pressed.connect(func(): pass)
+	sprite1.sprite_frames = ANIMATIONS[current_outfit]
+	sprite1.play("idle")
+	#sprite2.position = right_point.position
+	#sprite3.position = left_point.position
+	#
+	last_outfit_button.pressed.connect(func(): 
+		sprite1.sprite_frames = ANIMATIONS[_check_outfits(1)]
+		sprite1.play("idle"))
+	next_outfit_button.pressed.connect(func(): 
+		sprite1.sprite_frames = ANIMATIONS[_check_outfits(-1)]
+		sprite1.play("idle"))
 	
 	#sprite.sprite_frames = ANIMATIONS[0]
 	#sprite.play("idle")
@@ -49,25 +55,24 @@ func _ready():
 		#sprite.play("enter")
 		#anim_outfit = current_outfit)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+#
+## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	sprite1.position = centre_point.position
 
-func _costume_anim_change(direction : int = 1):
-	pass
 
-#func _check_outfits(direction := -1):
-	#var value := 0
-	#
-	#if current_outfit + direction < 0:
-		#value = ANIMATIONS.size()-1
-	#elif current_outfit + direction > ANIMATIONS.size()-1:
-		#value = 0
-	#else:
-		#value = current_outfit + direction
-	#
+func _check_outfits(direction := -1):
+	var value := 0
+	
+	if current_outfit + direction < 0:
+		value = ANIMATIONS.size()-1
+	elif current_outfit + direction > ANIMATIONS.size()-1:
+		value = 0
+	else:
+		value = current_outfit + direction
+	
 	#if sprite.animation == "idle":
 		#sprite.play("exit")
-	#
-	#return value
+	
+	current_outfit = value
+	return current_outfit
