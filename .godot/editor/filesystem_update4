@@ -1,4 +1,4 @@
-res://Scenes/LevelPresets/level_3.tscn
+res://Scenes/MainScene.tscn
 res://Components/SpriteFrames/Players/Climber1.tres
 res://Old/Recourses/Tileset.tres
 res://Components/Themes/MainTheme.tres
@@ -9,7 +9,4 @@ res://addons/godotsteam/editor/updater.tres
 res://Old/Recourses/UI/main.tres
 res://Old/Recourses/UI/PauseBackground.tres
 res://Old/Recourses/UI/WinBackground.tres
-res://Scenes/UI/MainUI.tscn
-res://Scripts/UI/FinishedUI.gd
-res://Scenes/Camera/Camera.tscn
-res://Scripts/Camera/MainCamera.gd
+res://Scripts/MainScene/MainGameScene.gd

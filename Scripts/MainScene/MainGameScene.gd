@@ -28,6 +28,10 @@ func _spawn_players():
 	
 	await get_tree().create_timer(0.1).timeout
 	
+	for i in player_placements.get_children():
+		if i.get_index() != 0:
+			i.queue_free()
+	
 	for player_ID in GlobalScript.players:
 		var player_data : Array
 		player_data = GlobalScript.players[player_ID]
