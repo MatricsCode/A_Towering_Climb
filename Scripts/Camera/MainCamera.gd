@@ -25,7 +25,7 @@ var player : Player = null
 var viewing_player : Player = null
 
 var move_time : float = 5.0
-var zoom_time : float = 20.0
+var zoom_time : float = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -141,8 +141,8 @@ func _finished():
 	var _movement_anim := func():
 		var tweener = _return_tween.call()
 		
-		tweener.tween_property(self, "position", Vector2.ZERO, move_time/2)
-		tweener.tween_property(cam, "zoom", Vector2(0.1, 0.1), move_time/2)
+		tweener.tween_property(self, "position", Vector2(0,-5000), move_time/2)
+		tweener.tween_property(cam, "zoom", Vector2(0.25, 0.25), move_time/2)
 		tweener.tween_property(cam, "position", Vector2(0,0), move_time/2)
 		
 		await tweener.finished

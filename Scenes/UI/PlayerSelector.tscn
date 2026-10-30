@@ -4,7 +4,6 @@
 [ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="2_gkc0f"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="3_3n8ge"]
 [ext_resource type="Script" uid="uid://di7tapp7bawh1" path="res://Old/CharacterSelector/Customiser.gd" id="3_rtt77"]
-[ext_resource type="SpriteFrames" uid="uid://bjixmhtfjc485" path="res://Components/SpriteFrames/IntroSpriteFrames/Baker.tres" id="4_cxirj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0wkq"]
 bg_color = Color(0.117647, 0.117647, 0.117647, 1)
@@ -1108,7 +1107,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_gkc0f")
 
-[node name="CharacterSelect" type="MarginContainer" parent="MarginContainer" unique_id=564343480 node_paths=PackedStringArray("last_outfit_button", "next_outfit_button", "centre_point", "sprite")]
+[node name="CharacterSelect" type="MarginContainer" parent="MarginContainer" unique_id=564343480 node_paths=PackedStringArray("last_outfit_button", "next_outfit_button", "centre_point", "right_point", "left_point", "sprite1", "sprite2", "sprite3")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1122,7 +1121,11 @@ script = ExtResource("3_rtt77")
 last_outfit_button = NodePath("VBoxContainer/Panel/MarginContainer/LastOutfitButton")
 next_outfit_button = NodePath("VBoxContainer/Panel/MarginContainer/NextOutfitButton")
 centre_point = NodePath("VBoxContainer/Panel/Panel/CentrePoint")
-sprite = NodePath("VBoxContainer/Panel/Panel/Sprite1")
+right_point = NodePath("VBoxContainer/Panel/Panel/LeftPoint")
+left_point = NodePath("VBoxContainer/Panel/Panel/RightPoint")
+sprite1 = NodePath("VBoxContainer/Panel/Panel/Sprite1")
+sprite2 = NodePath("VBoxContainer/Panel/Panel/Sprite2")
+sprite3 = NodePath("VBoxContainer/Panel/Panel/Sprite3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CharacterSelect" unique_id=1752678414]
 layout_mode = 2
@@ -1148,8 +1151,19 @@ grow_vertical = 2
 [node name="Sprite1" type="AnimatedSprite2D" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/Panel" unique_id=797768449]
 position = Vector2(516, 99)
 scale = Vector2(0.75, 0.75)
-sprite_frames = ExtResource("4_cxirj")
-animation = &"exit"
+animation = &""
+speed_scale = 2.0
+
+[node name="Sprite2" type="AnimatedSprite2D" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/Panel" unique_id=342696921]
+position = Vector2(516, 99)
+scale = Vector2(0.75, 0.75)
+animation = &""
+speed_scale = 2.0
+
+[node name="Sprite3" type="AnimatedSprite2D" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/Panel" unique_id=332854037]
+position = Vector2(516, 99)
+scale = Vector2(0.75, 0.75)
+animation = &""
 speed_scale = 2.0
 
 [node name="CentrePoint" type="Control" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/Panel" unique_id=298621544]
@@ -1160,6 +1174,27 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPoint" type="Control" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/Panel" unique_id=1713472257]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 46.0
+offset_right = 46.0
+grow_vertical = 2
+
+[node name="RightPoint" type="Control" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/Panel" unique_id=1712229830]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_right = -46.0
+grow_horizontal = 0
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel" unique_id=376026756]

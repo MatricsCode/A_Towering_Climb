@@ -42,6 +42,7 @@ func _ready():
 	for ability_button in ability_buttons:
 		ability_button.pressed.connect(func():
 			active = false
+			selected_character.sprite_frame = CharacterSelector.OUTFITS[CharacterSelector.current_outfit]
 			animations.play("ToAbilities"))
 	for costume_button in costume_buttons:
 		costume_button.pressed.connect(func():
