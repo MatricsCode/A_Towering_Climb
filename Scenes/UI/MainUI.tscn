@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bc8og5lgrcpvd" path="res://Scripts/UI/Main.gd" id="1_5sfh5"]
 [ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="1_fr3bv"]
+[ext_resource type="Script" uid="uid://clmth84m3djfb" path="res://Scripts/UI/FinishedUI.gd" id="2_tt03y"]
 [ext_resource type="Script" uid="uid://bldy0yf23ma7b" path="res://Scripts/UI/LobbyUI.gd" id="3_dfu8n"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_qyh0x"]
 [ext_resource type="Script" uid="uid://djlti40nuei7s" path="res://Scripts/UI/GameUI.gd" id="5_7uoew"]
@@ -190,7 +191,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -701,7 +702,7 @@ game_ui = NodePath("GameUI")
 caracter_selector_ui = NodePath("CaracterSelectorUI")
 finished_ui = NodePath("FinishedUI")
 
-[node name="FinishedUI" type="Panel" parent="." unique_id=1432471743]
+[node name="FinishedUI" type="Panel" parent="." unique_id=1432471743 node_paths=PackedStringArray("continue_button", "change_character_button", "leave_lobby_button", "quit_button", "centre_point", "sprite", "main_ability", "sec1_ability", "sec2_ability")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -710,6 +711,112 @@ offset_bottom = -0.00048828125
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("2_tt03y")
+continue_button = NodePath("MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Continue")
+change_character_button = NodePath("MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/ChangeCharacter")
+leave_lobby_button = NodePath("MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/LeaveLobby")
+quit_button = NodePath("MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Quit")
+centre_point = NodePath("MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/Panel/CentrePoint")
+sprite = NodePath("MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/Panel/Sprite")
+main_ability = NodePath("MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/MainAbility")
+sec1_ability = NodePath("MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/SecondaryAbility1")
+sec2_ability = NodePath("MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/SecondaryAbility2")
+
+[node name="MarginContainer" type="MarginContainer" parent="FinishedUI" unique_id=1517162270]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FinishedUI/MarginContainer" unique_id=176247592]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="FinishedUI/MarginContainer/HBoxContainer" unique_id=1975028050]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_fr3bv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer2" unique_id=623129026]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Continue" type="Button" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1428951627]
+layout_mode = 2
+text = "Continue"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="ChangeCharacter" type="Button" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=671986684]
+layout_mode = 2
+text = "Change Character"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="LeaveLobby" type="Button" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=2049464000]
+layout_mode = 2
+text = "Leave Lobby"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Quit" type="Button" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=155618366]
+layout_mode = 2
+text = "): Quit :("
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="MarginContainer" type="MarginContainer" parent="FinishedUI/MarginContainer/HBoxContainer" unique_id=707100619]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_fr3bv")
+
+[node name="Panel" type="Panel" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer" unique_id=789560204]
+layout_mode = 2
+theme = ExtResource("1_fr3bv")
+
+[node name="MarginContainer" type="MarginContainer" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel" unique_id=1941335119]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer" unique_id=381576429]
+layout_mode = 2
+alignment = 1
+
+[node name="Panel" type="Panel" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1004971614]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CentrePoint" type="Control" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/Panel" unique_id=1642804657]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite" type="AnimatedSprite2D" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/Panel" unique_id=691194511]
+position = Vector2(-276, 173)
+
+[node name="MainAbility" type="Label" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1216226383]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="SecondaryAbility1" type="Label" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1872895504]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="SecondaryAbility2" type="Label" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=850702574]
+layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "lobby_join_id", "quit_button", "reload_lobbies_button", "id_button", "lobby_search_field", "lobby_list")]
 modulate = Color(1, 1, 1, 0)

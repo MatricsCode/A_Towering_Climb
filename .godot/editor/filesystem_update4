@@ -9,3 +9,5 @@ res://addons/godotsteam/editor/updater.tres
 res://Old/Recourses/UI/main.tres
 res://Old/Recourses/UI/PauseBackground.tres
 res://Old/Recourses/UI/WinBackground.tres
+res://Scenes/UI/MainUI.tscn
+res://Scripts/UI/FinishedUI.gd
