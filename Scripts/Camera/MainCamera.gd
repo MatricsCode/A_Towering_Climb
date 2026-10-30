@@ -11,7 +11,7 @@ extends Node2D
 
 @onready var cam = $Camera2D
 
-enum States {BOUNCING, STARTING_ANIMATION, FOLLOWING_PLAYER, FINISHED}
+enum States {BOUNCING, STARTING_ANIMATION, FOLLOWING_PLAYER, FINISHED, OVERIDE}
 var current_state := States.BOUNCING
 
 var bouncing_time = 0
@@ -27,8 +27,16 @@ var viewing_player : Player = null
 var move_time : float = 5.0
 var zoom_time : float = 10
 
+var finish_tweener : Tween
+var finish_tweener2 : Tween
+var finish_tweener3 : Tween
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	finish_tweener = get_tree().create_tween()
+	finish_tweener2 = get_tree().create_tween()
+	finish_tweener3 = get_tree().create_tween()
+	
 	current_state = States.BOUNCING
 	
 	
@@ -58,6 +66,10 @@ func _bouncing():
 	bouncing_time += 0.01
 	cam.zoom = Vector2(1 + cos(bouncing_time/2) * 0.1, 1 + cos(bouncing_time/2) * 0.1)
 func _start_animation():
+	finish_tweener.kill()
+	finish_tweener2.kill()
+	finish_tweener3.kill()
+	
 	current_state = States.STARTING_ANIMATION
 	var start_anim : Tween
 	
@@ -139,38 +151,38 @@ func _finished():
 		return tweener
 	
 	var _movement_anim := func():
-		var tweener = _return_tween.call()
+		finish_tweener = _return_tween.call()
 		
-		tweener.tween_property(self, "position", Vector2(0,-2000), move_time/2)
-		tweener.tween_property(cam, "zoom", Vector2(0.25, 0.25), move_time/2)
-		tweener.tween_property(cam, "position", Vector2(0,0), move_time/2)
+		finish_tweener.tween_property(self, "position", Vector2(0,-2000), move_time/2)
+		finish_tweener.tween_property(cam, "zoom", Vector2(0.25, 0.25), move_time/2)
+		finish_tweener.tween_property(cam, "position", Vector2(0,0), move_time/2)
 		
-		await tweener.finished
-		var tweener2 = _return_tween.call()
+		await finish_tweener.finished
+		var finish_tweener2 = _return_tween.call()
 		
-		tweener2.tween_property(self, "position", viewing_player.position, move_time/2)
-		tweener2.tween_property(cam, "zoom", Vector2(1 ,1), move_time/2)
+		finish_tweener2.tween_property(self, "position", viewing_player.position, move_time/2)
+		finish_tweener2.tween_property(cam, "zoom", Vector2(1 ,1), move_time/2)
 		
-		await tweener2.finished
+		await finish_tweener2.finished
 		
 		return
 	var _zoom_anim := func():
-		var tweener = _return_tween.call()
+		var finish_tweener3 = _return_tween.call()
 		
-		tweener.tween_property(cam, "position", indicator_up.position, zoom_time/5.0)
-		await tweener.finished
-		tweener = _return_tween.call()
-		tweener.tween_property(cam, "position", indicator_left.position, zoom_time/5.0)
-		await tweener.finished
-		tweener = _return_tween.call()
-		tweener.tween_property(cam, "position", indicator_down.position, zoom_time/5.0)
-		await tweener.finished
-		tweener = _return_tween.call()
-		tweener.tween_property(cam, "position", indicator_right.position, zoom_time/5.0)
-		await tweener.finished
-		tweener = _return_tween.call()
-		tweener.tween_property(cam, "position", Vector2.ZERO, zoom_time/5.0)
-		await tweener.finished
+		finish_tweener3.tween_property(cam, "position", indicator_up.position, zoom_time/5.0)
+		await finish_tweener3.finished
+		finish_tweener3 = _return_tween.call()
+		finish_tweener3.tween_property(cam, "position", indicator_left.position, zoom_time/5.0)
+		await finish_tweener3.finished
+		finish_tweener3 = _return_tween.call()
+		finish_tweener3.tween_property(cam, "position", indicator_down.position, zoom_time/5.0)
+		await finish_tweener3.finished
+		finish_tweener3 = _return_tween.call()
+		finish_tweener3.tween_property(cam, "position", indicator_right.position, zoom_time/5.0)
+		await finish_tweener3.finished
+		finish_tweener3 = _return_tween.call()
+		finish_tweener3.tween_property(cam, "position", Vector2.ZERO, zoom_time/5.0)
+		await finish_tweener3.finished
 		
 		return
 	
@@ -184,3 +196,13 @@ func _finished():
 	
 	if current_state == States.FINISHED:
 		_finished()
+
+
+func _on_camera_spotter_body_entered(body):
+	if body.is_class("CameraInteractable") and current_state == States.FOLLOWING_PLAYER:
+		current_state = States.OVERIDE
+
+
+func _on_camera_spotter_body_exited(body):
+	if body.is_class("CameraInteractable") and current_state == States.OVERIDE:
+		current_state = States.FOLLOWING_PLAYER

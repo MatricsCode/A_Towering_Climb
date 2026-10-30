@@ -1,3 +1,5 @@
+CollisionShape2D
+Area2D
 AnimatedSprite2D
 Control
 Label
@@ -9,6 +11,4 @@ HBoxContainer
 TextureRect
 AnimationPlayer
 Node2D
-CollisionShape2D
 StaticBody2D
-Node

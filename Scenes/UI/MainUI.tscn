@@ -800,11 +800,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_top = -64.5
+offset_bottom = -64.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/Panel" unique_id=691194511]
-position = Vector2(-276, 173)
+position = Vector2(-238, 352)
+animation = &""
 
 [node name="MainAbility" type="Label" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1216226383]
 layout_mode = 2
