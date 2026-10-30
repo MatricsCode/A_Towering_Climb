@@ -102,6 +102,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameUI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ialnu"]
 resource_name = "Open_LobbyUI"
@@ -212,6 +224,18 @@ tracks/6/path = NodePath("CaracterSelectorUI:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GameUI:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -944,20 +968,6 @@ text = "Search"
 script = ExtResource("4_qyh0x")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
-[node name="GameUI" type="MarginContainer" parent="." unique_id=263238374 node_paths=PackedStringArray("vignette")]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("5_7uoew")
-vignette = NodePath("Vignet")
-
-[node name="Vignet" type="TextureRect" parent="GameUI" unique_id=1069217859]
-layout_mode = 2
-
 [node name="CaracterSelectorUI" type="Panel" parent="." unique_id=1133005552 node_paths=PackedStringArray("ready_button", "lobby_text", "player_selectors")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -1027,6 +1037,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_hqh25")
+
+[node name="GameUI" type="MarginContainer" parent="." unique_id=263238374 node_paths=PackedStringArray("vignette")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_7uoew")
+vignette = NodePath("Vignette")
+
+[node name="Vignette" type="TextureRect" parent="GameUI" unique_id=1396566193]
+layout_mode = 2
 
 [node name="AnimationPlayerOpen" type="AnimationPlayer" parent="." unique_id=399376621]
 libraries/ = SubResource("AnimationLibrary_ual16")

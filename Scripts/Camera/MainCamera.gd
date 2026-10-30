@@ -24,8 +24,8 @@ var cam_y : float = 0
 var player : Player = null
 var viewing_player : Player = null
 
-var move_time : float = 5.0
-var zoom_time : float = 10
+var move_time : float = 2
+var zoom_time : float = 3
 
 var finish_tweener : Tween
 var finish_tweener2 : Tween
@@ -66,20 +66,15 @@ func _bouncing():
 	bouncing_time += 0.01
 	cam.zoom = Vector2(1 + cos(bouncing_time/2) * 0.1, 1 + cos(bouncing_time/2) * 0.1)
 func _start_animation():
-	finish_tweener.kill()
-	finish_tweener2.kill()
-	finish_tweener3.kill()
-	
 	current_state = States.STARTING_ANIMATION
 	var start_anim : Tween
 	
-	#start_anim = get_tree().create_tween()
-	#start_anim.set_parallel()
-	#start_anim.set_ease(Tween.EASE_OUT)
-	#start_anim.tween_property(self, "position", Vector2(0, -7000), 2)
-	#start_anim.tween_property(cam, "zoom", Vector2(0.2, 0.2), 2)
-	#
-	#await get_tree().create_timer(2.5).timeout
+	Signals.vignette.emit(1,1)
+	await get_tree().create_timer(1).timeout
+	position = Vector2.ZERO
+	cam.zoom = Vector2(0.25,0.25)
+	await get_tree().create_timer(1.5).timeout
+	
 	#start_anim.kill()
 	#start_anim = get_tree().create_tween()
 	#start_anim.set_ease(Tween.EASE_OUT)
@@ -141,62 +136,60 @@ func _following_player():
 		
 		cam_movement.tween_property(cam, "position", Vector2(cam_x, cam_y), easing)
 func _finished():
-	var _return_tween := func():
-		var tweener = get_tree().create_tween()
-		
-		tweener.set_parallel()
-		tweener.set_ease(Tween.EASE_OUT)
-		tweener.set_trans(Tween.TRANS_SINE)
-		
-		return tweener
+	#var _return_tween := func():
+		#var tweener = get_tree().create_tween()
+		#
+		#tweener.set_parallel()
+		#tweener.set_ease(Tween.EASE_OUT)
+		#tweener.set_trans(Tween.TRANS_SINE)
+		#
+		#if current_state != States.FINISHED:
+			#return null
+		#
+		#return tweener
 	
-	var _movement_anim := func():
-		finish_tweener = _return_tween.call()
-		
-		finish_tweener.tween_property(self, "position", Vector2(0,-2000), move_time/2)
-		finish_tweener.tween_property(cam, "zoom", Vector2(0.25, 0.25), move_time/2)
-		finish_tweener.tween_property(cam, "position", Vector2(0,0), move_time/2)
-		
-		await finish_tweener.finished
-		var finish_tweener2 = _return_tween.call()
-		
-		finish_tweener2.tween_property(self, "position", viewing_player.position, move_time/2)
-		finish_tweener2.tween_property(cam, "zoom", Vector2(1 ,1), move_time/2)
-		
-		await finish_tweener2.finished
-		
-		return
-	var _zoom_anim := func():
-		var finish_tweener3 = _return_tween.call()
-		
-		finish_tweener3.tween_property(cam, "position", indicator_up.position, zoom_time/5.0)
-		await finish_tweener3.finished
-		finish_tweener3 = _return_tween.call()
-		finish_tweener3.tween_property(cam, "position", indicator_left.position, zoom_time/5.0)
-		await finish_tweener3.finished
-		finish_tweener3 = _return_tween.call()
-		finish_tweener3.tween_property(cam, "position", indicator_down.position, zoom_time/5.0)
-		await finish_tweener3.finished
-		finish_tweener3 = _return_tween.call()
-		finish_tweener3.tween_property(cam, "position", indicator_right.position, zoom_time/5.0)
-		await finish_tweener3.finished
-		finish_tweener3 = _return_tween.call()
-		finish_tweener3.tween_property(cam, "position", Vector2.ZERO, zoom_time/5.0)
-		await finish_tweener3.finished
-		
-		return
+	#var _movement_anim := func():
+		#finish_tweener = _return_tween.call()
+		#
+		#finish_tweener.tween_property(self, "position", Vector2(0,-2000), move_time/2)
+		#finish_tweener.tween_property(cam, "zoom", Vector2(0.25, 0.25), move_time/2)
+		#finish_tweener.tween_property(cam, "position", Vector2(0,0), move_time/2)
+		#
+		#await finish_tweener.finished
+		#finish_tweener = _return_tween.call()
+		#
+		#finish_tweener.tween_property(self, "position", viewing_player.position, move_time/2)
+		#finish_tweener.tween_property(cam, "zoom", Vector2(1 ,1), move_time/2)
+		#
+		#await finish_tweener.finished
+		#
+		#return
 	
-	await _movement_anim.call()
-	await _zoom_anim.call()
+	#var _zoom_anim := func():
+		#finish_tweener = _return_tween.call()
+		#
+		#finish_tweener3 = _return_tween.call()
+		#finish_tweener3.tween_property(cam, "position", indicator_left.position, zoom_time/2.0)
+		#await finish_tweener3.finished
+		#finish_tweener3 = _return_tween.call()
+		#finish_tweener3.tween_property(cam, "position", indicator_right.position, zoom_time/2.0)
+		#await finish_tweener3.finished
+		#
+		#return
+	#
+	#await _movement_anim.call()
+	#await _zoom_anim.call()
 	
-	var index = viewing_player.get_index() + 1
-	if index > player_node.get_child_count()-1:
-		index = 1
-	viewing_player = player_node.get_child(index)
 	
-	if current_state == States.FINISHED:
-		_finished()
-
+	#var index = viewing_player.get_index() + 1
+	#if index > player_node.get_child_count()-1:
+		#index = 1
+	#viewing_player = player_node.get_child(index)
+	#
+	#if current_state == States.FINISHED:
+		#_finished()
+	
+	pass
 
 func _on_camera_spotter_body_entered(body):
 	if body.is_class("CameraInteractable") and current_state == States.FOLLOWING_PLAYER:

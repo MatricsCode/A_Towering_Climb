@@ -1,4 +1,4 @@
-res://Scenes/MainScene.tscn
+res://Scenes/Camera/Camera.tscn
 res://Components/SpriteFrames/Players/Climber1.tres
 res://Old/Recourses/Tileset.tres
 res://Components/Themes/MainTheme.tres
@@ -9,4 +9,14 @@ res://addons/godotsteam/editor/updater.tres
 res://Old/Recourses/UI/main.tres
 res://Old/Recourses/UI/PauseBackground.tres
 res://Old/Recourses/UI/WinBackground.tres
+res://Scripts/Camera/MainCamera.gd
+res://Scenes/MainScene.tscn
 res://Scripts/MainScene/MainGameScene.gd
+res://Scenes/Autoloads/Signals.tscn
+res://default_bus_layout.tres
+res://Scenes/LevelPresets/level_3.tscn
+res://Scenes/Autoloads/GlobalScript.tscn
+res://Scripts/AutoLoads/GlobalScript.gd
+res://Scripts/AutoLoads/Signals.gd
+res://Scenes/UI/MainUI.tscn
+res://Scripts/UI/GameUI.gd

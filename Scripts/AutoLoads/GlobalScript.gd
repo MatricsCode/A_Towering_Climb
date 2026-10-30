@@ -12,24 +12,10 @@ func _ready():
 		peers.erase(ID))
 	Signals.readied_peer.connect(_check_start)
 
-func _check_start(ID : int):
+func _check_start(_ID : int):
 	if Networking.host:
 		if peers_ready.size() == int(Steam.getLobbyData(Networking.current_lobby, "player_count")) + 1:
 			Networking._start_game.rpc()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

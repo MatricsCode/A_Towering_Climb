@@ -6,6 +6,8 @@ var levels = [preload("uid://cn8yrub2tv3vi")] #[preload("uid://bb64cr50jmhs8"),
 	#preload("uid://c04puj7j1jrp"),
 	#preload("uid://cn8yrub2tv3vi"),]
 
+var current_level = null
+
 @export var player_placements : Node2D
 
 func _ready():
@@ -14,10 +16,13 @@ func _ready():
 	Signals.lobby_start_game.connect(_spawn_players)
 
 func _level_select():
-	var level_number = levels[randi_range(0, levels.size()-1)]
-	var level = level_number.instantiate()
+	if current_level != null:
+		current_level.queue_free()
 	
-	add_child(level)
+	var level_number = levels[randi_range(0, levels.size()-1)]
+	current_level = level_number.instantiate()
+	
+	add_child(current_level)
 
 func _spawn_players():
 	var _owner = Steam.getLobbyOwner(Networking.current_lobby)
@@ -28,9 +33,10 @@ func _spawn_players():
 	
 	await get_tree().create_timer(0.1).timeout
 	
-	for i in player_placements.get_children():
-		if i.get_index() != 0:
-			i.queue_free()
+	var player_count = player_placements.get_children().size()
+	while player_count > 1:
+		player_placements.get_child(1).queue_free()
+		player_count -= 1
 	
 	for player_ID in GlobalScript.players:
 		var player_data : Array
