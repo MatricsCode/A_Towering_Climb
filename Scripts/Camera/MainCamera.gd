@@ -141,7 +141,7 @@ func _finished():
 	var _movement_anim := func():
 		var tweener = _return_tween.call()
 		
-		tweener.tween_property(self, "position", Vector2(0,-5000), move_time/2)
+		tweener.tween_property(self, "position", Vector2(0,-2000), move_time/2)
 		tweener.tween_property(cam, "zoom", Vector2(0.25, 0.25), move_time/2)
 		tweener.tween_property(cam, "position", Vector2(0,0), move_time/2)
 		
