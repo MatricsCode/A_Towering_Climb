@@ -8,19 +8,11 @@ signal switch(new_state, additional)
 @export var sprite : AnimatedSprite2D
 @export var detectors : Node2D
 
-var friction = 0.00005
-var fall_speed = 0.0
+var friction := 0.1
 var current := false
+var sliding := false
 
-func _physics_process(_delta):
-	if player.current_state != player.States.CLIMB:
-		current = false
-		return
-	else:
-		current = true
-	
-	fall_speed = lerp(fall_speed, 0.0, friction)
-	
+func _ready():
 	detectors.on_ground.connect(func(on_ground):
 		if !current or !on_ground:
 			return
@@ -33,6 +25,13 @@ func _physics_process(_delta):
 		if !current or on_edge:
 			return
 		switch.emit(player.States.GROUND, "OnEdge"))
+
+func _physics_process(_delta):
+	if player.current_state != player.States.CLIMB and !sliding:
+		current = false
+		return
+	else:
+		current = true
 	
 	player.velocity.x = 0
 	
@@ -44,13 +43,13 @@ func _climb():
 	var direction = Input.get_axis("Up", "Down") ## Accesses the current input
 	
 	if direction != 0:
-		player.velocity.y = player.main_vars.climbing_vars.climbing_speed * direction + fall_speed
+		player.velocity.y = player.main_vars.climbing_vars.climbing_speed * direction
 		sprite.play("climb")
 	
 	else:
 		sprite.play("climb")
 		sprite.stop()
-		player.velocity.y = 0 + fall_speed
+		player.velocity.y = 0
 	
 	if sprite.frame == 1 or sprite.frame == 3:
 		player._play_sound(CLIMB_SFX)
@@ -70,3 +69,14 @@ func _climb():
 	#elif wall_detectors.touching_wall() == false:
 		#switch.emit(player.States.AIR, "NoWall")
 	#endregion
+
+func _slide():
+	sliding = true
+	
+	var tweener = get_tree().create_tween()
+	tweener.set_ease(Tween.EASE_OUT)
+	tweener.tween_property(player, "velocity.y", 0.0, 0.05)
+	
+	await tweener.finished
+	
+	sliding = false
