@@ -24,11 +24,11 @@ func _ready():
 		hit_head = false
 		switch.emit(player.States.GROUND, "Land", fall_speed))
 	detectors.on_wall.connect(func(is_true : bool):
-		if !current or !is_true:
+		if !current or !is_true or Input.is_action_pressed("Down"):
 			return
 		fall_speed = 25
 		hit_head = false
-		switch.emit(player.States.CLIMB, "WallHit"))
+		switch.emit(player.States.CLIMB, "WallHit", fall_speed))
 	detectors.on_roof.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
@@ -51,6 +51,12 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("Jump") and !coyote_timer.is_stopped():
 		coyote_timer.stop()
 		_jump()
+	
+	if Input.is_action_just_released("Down") and detectors.is_on_wall:
+		
+		fall_speed = 25
+		hit_head = false
+		switch.emit(player.States.CLIMB, "WallHit")
 	
 	_variable_jump()
 	_air()

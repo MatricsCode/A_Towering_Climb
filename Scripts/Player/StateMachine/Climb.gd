@@ -8,6 +8,8 @@ signal switch(new_state, additional)
 @export var sprite : AnimatedSprite2D
 @export var detectors : Node2D
 
+var friction = 0.00005
+var fall_speed = 0.0
 var current := false
 
 func _physics_process(_delta):
@@ -16,6 +18,8 @@ func _physics_process(_delta):
 		return
 	else:
 		current = true
+	
+	fall_speed = lerp(fall_speed, 0.0, friction)
 	
 	detectors.on_ground.connect(func(on_ground):
 		if !current or !on_ground:
@@ -40,13 +44,13 @@ func _climb():
 	var direction = Input.get_axis("Up", "Down") ## Accesses the current input
 	
 	if direction != 0:
-		player.velocity.y = player.main_vars.climbing_vars.climbing_speed * direction
+		player.velocity.y = player.main_vars.climbing_vars.climbing_speed * direction + fall_speed
 		sprite.play("climb")
 	
 	else:
 		sprite.play("climb")
 		sprite.stop()
-		player.velocity.y = 0
+		player.velocity.y = 0 + fall_speed
 	
 	if sprite.frame == 1 or sprite.frame == 3:
 		player._play_sound(CLIMB_SFX)

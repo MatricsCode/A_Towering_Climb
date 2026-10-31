@@ -132,7 +132,7 @@ func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
 		return
 	
 	if additional == "Climb":
-		pass
+		climb.fall_speed = fall_speed
 	elif additional == "Land":
 		var crouch_time = fall_speed / 19200
 		animations.overide = true
