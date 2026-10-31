@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bldy0yf23ma7b" path="res://Scripts/UI/LobbyUI.gd" id="3_dfu8n"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_qyh0x"]
 [ext_resource type="Script" uid="uid://djlti40nuei7s" path="res://Scripts/UI/GameUI.gd" id="5_7uoew"]
+[ext_resource type="SpriteFrames" uid="uid://bl7fd60qs8x7s" path="res://Components/SpriteFrames/Players/Baker.tres" id="5_qy0ut"]
 [ext_resource type="Script" uid="uid://c0up8lhfcq1jh" path="res://Scripts/UI/CharacterSelectorUI.gd" id="5_upwrp"]
 [ext_resource type="Script" uid="uid://bcgecunh1q8yd" path="res://Components/Resources/PlayerSource.gd" id="6_mxqpb"]
 [ext_resource type="Script" uid="uid://b0imh5jcjfvpr" path="res://Scripts/Abilitys/MainAbilities/ram.gd" id="6_uwavw"]
@@ -338,30 +339,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FinishedUI:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FinishedUI:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 648)]
-}
 
 [sub_resource type="Animation" id="Animation_qyh0x"]
 resource_name = "Close_MainUI"
@@ -677,30 +654,6 @@ tracks/16/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("FinishedUI:scale")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("FinishedUI:position")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ollii"]
 _data = {
@@ -824,26 +777,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -64.5
-offset_bottom = -64.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite" type="AnimatedSprite2D" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/Panel" unique_id=691194511]
-position = Vector2(-238, 352)
-animation = &""
+position = Vector2(247, 161)
+sprite_frames = ExtResource("5_qy0ut")
+animation = &"walk"
 
 [node name="MainAbility" type="Label" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1216226383]
 layout_mode = 2
-size_flags_horizontal = 0
+text = "Main Ability"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SecondaryAbility1" type="Label" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1872895504]
 layout_mode = 2
-size_flags_horizontal = 0
+text = "Secondary Ability 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SecondaryAbility2" type="Label" parent="FinishedUI/MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=850702574]
 layout_mode = 2
-size_flags_horizontal = 0
+text = "Secondary Ability 2"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "lobby_join_id", "quit_button", "reload_lobbies_button", "id_button", "lobby_search_field", "lobby_list")]
 modulate = Color(1, 1, 1, 0)

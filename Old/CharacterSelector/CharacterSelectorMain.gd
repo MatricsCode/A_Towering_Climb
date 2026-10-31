@@ -29,7 +29,10 @@ var loaded := false
 var active := false
 
 func _ready():
+	await get_tree().create_timer(0.5).timeout
+	
 	animations.play("Start")
+	
 	
 	for remove_button in remove_buttons:
 		remove_button.pressed.connect(func(): 
@@ -54,6 +57,7 @@ func _ready():
 		finished.emit())
 
 func _start():
+	
 	start_button.visible = false
 	
 	selected_character = PlayerSource.new()

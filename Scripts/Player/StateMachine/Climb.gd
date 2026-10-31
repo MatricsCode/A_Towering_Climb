@@ -79,7 +79,7 @@ func _slide(fall_speed):
 	sliding = true
 	
 	var tweener = get_tree().create_tween()
-	var time = fall_speed / 10800.0
+	var time = fall_speed / 12000.0
 	tweener.tween_property(player, "velocity", Vector2.ZERO, time)
 	
 	await tweener.finished

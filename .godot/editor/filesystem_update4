@@ -18,3 +18,9 @@ res://Scenes/Camera/Camera.tscn
 res://Scenes/Elements/player.tscn
 res://Scenes/Autoloads/Signals.tscn
 res://Scripts/AutoLoads/Signals.gd
+res://Scenes/Autoloads/GlobalScript.tscn
+res://Scripts/AutoLoads/GlobalScript.gd
+res://Scripts/UI/FinishedUI.gd
+res://Scenes/UI/PlayerSelector.tscn
+res://Old/CharacterSelector/CharacterSelectorMain.gd
+res://Scripts/UI/CharacterSelectorUI.gd

@@ -32,10 +32,21 @@ func _display_winner(winner : Player):
 	var winner_display : PlayerSource
 	winner_display = winner.player_source
 	
-	sprite.position = centre_point.position
-	
+	sprite.modulate = Color.TRANSPARENT
+	sprite.scale = Vector2.ZERO
 	sprite.sprite_frames = winner_display.sprite_frame
 	sprite.play("walk")
+	
+	await get_tree().create_timer(0.1).timeout
+	
+	var tweener = get_tree().create_tween()
+	tweener.set_parallel().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_ELASTIC)
+	
+	tweener.tween_property(sprite, "modulate", Color.WHITE, 0.1)
+	tweener.tween_property(sprite, "scale", Vector2.ONE, 0.1)
+	tweener.tween_property(sprite, "position", centre_point.position, 0.1)
+	
+
 
 @rpc ("authority", "call_local", "reliable")
 func _continue():

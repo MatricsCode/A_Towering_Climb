@@ -36,8 +36,6 @@ func _check_start(_ID : int):
 
 
 
-
-
 var peer_ID = 0
 var user_ID = 0
 var countdown_timer = 0.5

@@ -1108,6 +1108,7 @@ grow_vertical = 2
 theme = ExtResource("2_gkc0f")
 
 [node name="CharacterSelect" type="MarginContainer" parent="MarginContainer" unique_id=564343480 node_paths=PackedStringArray("last_outfit_button", "next_outfit_button", "centre_point", "right_point", "left_point", "sprite1", "sprite2", "sprite3")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
