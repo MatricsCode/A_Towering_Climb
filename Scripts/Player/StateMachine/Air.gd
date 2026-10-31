@@ -20,15 +20,15 @@ func _ready():
 	detectors.on_ground.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
+		switch.emit(player.States.GROUND, "Land", fall_speed)
 		fall_speed = 25
-		hit_head = false
-		switch.emit(player.States.GROUND, "Land", fall_speed))
+		hit_head = false)
 	detectors.on_wall.connect(func(is_true : bool):
 		if !current or !is_true or Input.is_action_pressed("Down"):
 			return
+		switch.emit(player.States.CLIMB, "WallHit", fall_speed)
 		fall_speed = 25
-		hit_head = false
-		switch.emit(player.States.CLIMB, "WallHit", fall_speed))
+		hit_head = false)
 	detectors.on_roof.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
@@ -54,9 +54,9 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_released("Down") and detectors.is_on_wall:
 		
+		switch.emit(player.States.CLIMB, "WallHit", fall_speed)
 		fall_speed = 25
 		hit_head = false
-		switch.emit(player.States.CLIMB, "WallHit")
 	
 	_variable_jump()
 	_air()

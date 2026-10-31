@@ -27,11 +27,14 @@ func _ready():
 		switch.emit(player.States.GROUND, "OnEdge"))
 
 func _physics_process(_delta):
-	if player.current_state != player.States.CLIMB and !sliding:
+	if player.current_state != player.States.CLIMB:
 		current = false
 		return
 	else:
 		current = true
+	
+	if sliding:
+		return
 	
 	player.velocity.x = 0
 	
@@ -70,12 +73,14 @@ func _climb():
 		#switch.emit(player.States.AIR, "NoWall")
 	#endregion
 
-func _slide():
+func _slide(fall_speed):
+	player.velocity.y = fall_speed
+	player.velocity.x = 0.0
 	sliding = true
 	
 	var tweener = get_tree().create_tween()
-	tweener.set_ease(Tween.EASE_OUT)
-	tweener.tween_property(player, "velocity.y", 0.0, 0.05)
+	var time = fall_speed / 10800.0
+	tweener.tween_property(player, "velocity", Vector2.ZERO, time)
 	
 	await tweener.finished
 	

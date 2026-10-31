@@ -133,11 +133,11 @@ func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
 	if !main_vars.get("other_vars")["can_switch"]:
 		return
 	
-	if additional == "Climb":
-		climb._slide()
+	if additional == "WallHit":
+		climb._slide(fall_speed)
 	elif additional == "Land":
 		current_state = States.OVERIDDEN
-		var crouch_time = fall_speed / 1200.0
+		var crouch_time = fall_speed / 19200.0
 		animations.overide = true
 		sprite.play("land")
 		
