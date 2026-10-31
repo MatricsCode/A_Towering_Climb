@@ -35,5 +35,9 @@ collision_mask = 64
 scale = Vector2(45.254993, 25.450438)
 shape = SubResource("RectangleShape2D_hqh25")
 
+[node name="Timer" type="Timer" parent="." unique_id=2099716972]
+wait_time = 0.5
+
 [connection signal="body_entered" from="CameraSpotter" to="." method="_on_camera_spotter_body_entered"]
 [connection signal="body_exited" from="CameraSpotter" to="." method="_on_camera_spotter_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

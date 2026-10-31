@@ -10,6 +10,7 @@ extends Node2D
 @export var indicator_right : Node2D
 
 @onready var cam = $Camera2D
+@onready var timer = $Timer
 
 enum States {BOUNCING, STARTING_ANIMATION, FOLLOWING_PLAYER, FINISHED, OVERIDE}
 var current_state := States.BOUNCING
@@ -48,7 +49,7 @@ func _ready():
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("Dev1"):
-		Signals.vignette.emit(1, 1)
+		Signals.vignette.emit(0.5,1)
 	
 	match current_state:
 		States.BOUNCING:
@@ -69,8 +70,8 @@ func _start_animation():
 	current_state = States.STARTING_ANIMATION
 	var start_anim : Tween
 	
-	Signals.vignette.emit(1,1)
-	await get_tree().create_timer(1).timeout
+	Signals.vignette.emit(0.5,1)
+	await get_tree().create_timer(0.5).timeout
 	position = Vector2.ZERO
 	cam.zoom = Vector2(0.25,0.25)
 	await get_tree().create_timer(1.5).timeout
@@ -101,6 +102,7 @@ func _start_animation():
 				if finding_player.player_source.steam_ID == Steam.getSteamID():
 					player = finding_player
 	
+	Signals.start_anim_finished.emit()
 	current_state = States.FOLLOWING_PLAYER
 func _following_player():
 	position = player.position

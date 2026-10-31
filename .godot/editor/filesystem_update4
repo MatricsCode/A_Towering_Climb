@@ -13,3 +13,8 @@ res://Scenes/LevelPresets/Spawners/BirdSpawner.tscn
 res://Scripts/Player/StateMachine/Air.gd
 res://Scripts/Player/StateMachine/Climb.gd
 res://Scripts/Player/Player.gd
+res://Scripts/Camera/MainCamera.gd
+res://Scenes/Camera/Camera.tscn
+res://Scenes/Elements/player.tscn
+res://Scenes/Autoloads/Signals.tscn
+res://Scripts/AutoLoads/Signals.gd

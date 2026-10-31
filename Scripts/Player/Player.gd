@@ -16,7 +16,7 @@ signal start()
 @export var pause : Node
 
 ## --- Enums ---
-enum States {GROUND, AIR, CLIMB, PAUSE, OVERIDDEN, EMPTY}
+enum States {GROUND, AIR, CLIMB, PAUSE, OVERIDDEN, SWITCHING, EMPTY}
 
 ## --- Constants ---
 
@@ -36,7 +36,7 @@ var main_vars = { ## Main variables
 		"gravity" : 0, "gravity_increase" : 2, "movement_direction" : 0},
 	"climbing_vars" : {"climbing_speed" : 300},
 	
-	"switching_vars" : {"can_switch" : true},}
+	"other_vars" : {"can_switch" : true, "can_move" : false},}
 
 var main_vars_reset = []
 
@@ -55,6 +55,9 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 			_won()
 		else:
 			_lost())
+	
+	Signals.start_anim_finished.connect(func():
+		main_vars.get("other_vars")["can_move"] = true)
 	
 	ground.switch.connect(_switch_ground)
 	air.switch.connect(_switch_air)
@@ -80,9 +83,8 @@ func _physics_process(_delta):  ## Runs every physics frames
 	#else:
 		#set_collision_layer_value(2,false)
 	
-	if not is_multiplayer_authority():
+	if not is_multiplayer_authority() and main_vars.get("other_vars")["can_move"]:
 		return ## Checks if you are this player, and grants/denies you control acordingly
-	
 	
 	#match current_state:
 		#States.GROUND:
@@ -113,7 +115,7 @@ func _physics_process(_delta):  ## Runs every physics frames
 
 ## -- Switch Functions --
 func _switch_ground(new_state : States, additional := ""):
-	if !main_vars.get("switching_vars")["can_switch"]:
+	if !main_vars.get("other_vars")["can_switch"]:
 		return
 	
 	if new_state == States.AIR:
@@ -128,13 +130,14 @@ func _switch_ground(new_state : States, additional := ""):
 	current_state = new_state
 	_switch_timeout()
 func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
-	if !main_vars.get("switching_vars")["can_switch"]:
+	if !main_vars.get("other_vars")["can_switch"]:
 		return
 	
 	if additional == "Climb":
 		climb._slide()
 	elif additional == "Land":
-		var crouch_time = fall_speed / 19200
+		current_state = States.OVERIDDEN
+		var crouch_time = fall_speed / 1200.0
 		animations.overide = true
 		sprite.play("land")
 		
@@ -150,7 +153,7 @@ func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
 	current_state = new_state
 	_switch_timeout()
 func _switch_climb(new_state : States, additional := ""):
-	if !main_vars.get("switching_vars")["can_switch"]:
+	if !main_vars.get("other_vars")["can_switch"]:
 		return
 	
 	if new_state == States.GROUND:
@@ -175,9 +178,9 @@ func _switch_pause(new_state : States, additional := ""):
 		pass
 
 func _switch_timeout():
-	main_vars.switching_vars.can_switch = false
-	await get_tree().create_timer(0.1).timeout
-	main_vars.switching_vars.can_switch = true
+	main_vars.other_vars.can_switch = false
+	await get_tree().create_timer(0.025).timeout
+	main_vars.other_vars.can_switch = true
 
 func _reset_main_vars(key : int = -1): ## 0 = Ground, 1 = Air, 2 = Climb
 	var keys = main_vars.keys()
@@ -215,6 +218,10 @@ func _get_sprite_rotation():
 		return -1
 
 func _won():
-	sprite.play("jump")
+	sprite.play("fall")
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
 func _lost():
 	sprite.play("fall")
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
