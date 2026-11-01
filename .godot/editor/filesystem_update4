@@ -27,3 +27,4 @@ res://Scripts/Abilitys/MainAbilities/ClimbersHook.gd
 res://Scripts/Abilitys/MainAbilities/punch.gd
 res://Scripts/Abilitys/MainAbilities/sandwich.gd
 res://Components/Resources/PlayerSource.gd
+res://Scripts/Player/Player.gd

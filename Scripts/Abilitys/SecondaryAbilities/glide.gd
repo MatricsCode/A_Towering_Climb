@@ -4,13 +4,21 @@ var min_gliding_speed = 500
 
 func _ready():
 	activation_state = player.States.AIR
+	
+	detectors.on_ground.connect(func(is_true : bool):
+		if !is_true or !current:
+			return
+		_overide(false, player.States.GROUND))
+	
 
 func _physics_process(_delta):
 	if player.current_state != activation_state:
 		return
 	
-	if Input.is_action_pressed("Jump"):
-		_glide()
+	if Input.is_action_pressed("Jump") and player.velocity.y > min_gliding_speed and !current:
+		_overide(true)
+	elif Input.is_action_just_released("Jump"):
+		_overide(false)
 
 func _glide():
 	player.velocity.y = min_gliding_speed

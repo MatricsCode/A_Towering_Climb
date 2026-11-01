@@ -177,6 +177,12 @@ func _switch_pause(new_state : States, additional := ""):
 	else:
 		pass
 
+func _switch_overide(overide : bool, new_state : States):
+	if overide:
+		current_state = States.OVERIDDEN
+	else:
+		current_state = new_state
+
 func _switch_timeout():
 	main_vars.other_vars.can_switch = false
 	await get_tree().create_timer(0.025).timeout
