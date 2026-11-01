@@ -1,4 +1,4 @@
-extends Abilities
+extends Ability
 
 var interactable
 var area

@@ -1,4 +1,4 @@
-extends Abilities
+extends Ability
 
 var can_throw = false
 var counter = 0

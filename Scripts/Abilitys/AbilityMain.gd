@@ -1,11 +1,12 @@
 extends Node
 class_name Ability
 
-@export var activation_state = 0
+
 @export var player : CharacterBody2D
 @export var sprite : AnimatedSprite2D
-@export var detector : Node2D
+@export var detectors : Node2D
 
+var activation_state = 0
 var in_action := false
 
 func _ability(overide : bool):

@@ -18,3 +18,12 @@ res://Scripts/Abilitys/SecretAbilities/ClimberSecret.gd
 res://Scripts/Abilitys/SecretAbilities/SecretAbilityMain.gd
 res://Scripts/Abilitys/AbilityMain.gd
 res://Old/CharacterSelector/CharacterSelectorMain.gd
+res://Scripts/Abilitys/MainAbilities/ram.gd
+res://Scripts/Abilitys/SecondaryAbilities/DrumKey.gd
+res://Scripts/Abilitys/SecondaryAbilities/BeanOpener.gd
+res://Scripts/Abilitys/SecondaryAbilities/repair.gd
+res://Scripts/Abilitys/SecondaryAbilities/SkyLiftKey.gd
+res://Scripts/Abilitys/MainAbilities/ClimbersHook.gd
+res://Scripts/Abilitys/MainAbilities/punch.gd
+res://Scripts/Abilitys/MainAbilities/sandwich.gd
+res://Components/Resources/PlayerSource.gd

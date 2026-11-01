@@ -1,4 +1,4 @@
-extends Abilities
+extends Ability
 
 #var punching = false
 #var punch_force = 0

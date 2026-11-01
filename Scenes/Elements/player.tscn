@@ -167,9 +167,11 @@ target_position = Vector2(3, 0)
 collision_mask = 4
 hit_from_inside = true
 
-[node name="Upgrades" type="Node" parent="." unique_id=2001463068 node_paths=PackedStringArray("main_player")]
+[node name="Upgrades" type="Node" parent="." unique_id=2001463068 node_paths=PackedStringArray("player", "sprite", "detectors")]
 script = ExtResource("5_yoq75")
-main_player = NodePath("..")
+player = NodePath("..")
+sprite = NodePath("../Sprite")
+detectors = NodePath("../Detectors")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1387906588]
 volume_db = 5.0

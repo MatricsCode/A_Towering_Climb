@@ -1,1 +1,1 @@
-extends Abilities
+extends Ability
