@@ -20,7 +20,7 @@ func _physics_process(delta):
 		_anim_air()
 	elif player.current_state == player.States.CLIMB:
 		_anim_climb()
-	elif player.current_state == player.States.PAUSE:
+	elif player.current_state == player.States.PAUSED:
 		_anim_pause()
 
 func _anim_ground():

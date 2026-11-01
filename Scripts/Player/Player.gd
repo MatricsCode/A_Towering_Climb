@@ -16,7 +16,7 @@ signal start()
 @export var pause : Node
 
 ## --- Enums ---
-enum States {GROUND, AIR, CLIMB, PAUSE, OVERIDDEN, SWITCHING, EMPTY}
+enum States {GROUND, AIR, CLIMB, PAUSED, OVERIDDEN, SWITCHING, EMPTY}
 
 ## --- Constants ---
 
@@ -47,7 +47,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	position.y -= 25
 	
 	Signals.lobby_finished_game.connect(func(winner : Player):
-		current_state = States.OVERIDDEN
+		current_state = States.PAUSED
 		velocity = Vector2.ZERO
 		animations.overide = true
 		
@@ -93,7 +93,7 @@ func _physics_process(_delta):  ## Runs every physics frames
 			#air()
 		#States.CLIMB:
 			#climb()
-		#States.PAUSE:
+		#States.PAUSED:
 			#paused()
 		#States.OVERIDDEN:
 			#overidden()
@@ -102,7 +102,7 @@ func _physics_process(_delta):  ## Runs every physics frames
 		#_:
 			#printerr("A unidentified state has been entered")
 	
-	#if camera_changing.is_running() == false and current_state != States.PAUSE:
+	#if camera_changing.is_running() == false and current_state != States.PAUSED:
 		#camera_move()
 	#
 	#if shaking_camera != 0:

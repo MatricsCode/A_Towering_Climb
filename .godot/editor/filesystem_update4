@@ -17,3 +17,6 @@ res://Scenes/Autoloads/GlobalScript.tscn
 res://Scripts/AutoLoads/GlobalScript.gd
 res://Scenes/MainScene.tscn
 res://Scripts/Player/Detectors.gd
+res://Scripts/Player/StateMachine/Pause.gd
+res://Scripts/Player/StateMachine/Ground.gd
+res://Scripts/Player/StateMachine/Animations.gd

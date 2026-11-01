@@ -40,7 +40,7 @@ func _ground():
 	_move()
 	_turn()
 	
-	player.velocity.y = 10 #player.main_vars.air_vars.gravity
+	player.velocity.y = player.main_vars.air_vars.gravity
 	
 	if sprite.frame == 1 or sprite.frame == 5:
 		player._play_sound(WALK_SFX)

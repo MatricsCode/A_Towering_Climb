@@ -103,7 +103,6 @@ func _air():
 	drop.call()
 	_turn()
 
-
 func _coyote_time():
 	coyote_timer.start()
 func _variable_jump():

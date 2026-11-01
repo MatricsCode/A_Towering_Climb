@@ -4,25 +4,42 @@ signal switch(new_state, additional)
 
 @export var player : CharacterBody2D
 @export var sprite : AnimatedSprite2D
-@export var edge_detectors : Node2D
-@export var wall_detectors : Node2D
+@export var detectors : Node2D
 
-func _main():
-	if wall_detectors.touching_wall() == false and not player.is_on_floor():
+var current := false
+
+var fall_speed := 0.0
+
+func _physics_process(delta):
+	if player.current_state != player.States.PAUSED:
+		current = false
+		return
+	elif player.current_state == player.States.PAUSED:
+		current = true
 	
-		if player.velocity.y < player.MAX_GRAVITY: # Checks and adjusts the current gravity
-			player.velocity.y += player.main_vars.air_vars.gravity
-			player.main_vars.air_vars.gravity += 1
-			sprite.play("fall")
-	
-	elif player.wall_detectors.touching_wall() == true and not player.is_on_floor():
-		#sprite.stop()
+	_paused()
+
+func _paused():
+	if !detectors.is_on_wall and !detectors.is_on_floor:
+		
+		if fall_speed < player.TERMINAL_VELOCITY: # Checks and adjusts the current gravity
+			fall_speed += player.main_vars.air_vars.gravity
+			player.main_vars.air_vars.gravity += player.main_vars.air_vars.gravity_increase
+		
+		if fall_speed > -150 and fall_speed < 0:
+			fall_speed = 100
+		
+		player.velocity.y = fall_speed
+	elif detectors.is_on_wall and !detectors.is_on_floor:
+		player.velocity = Vector2.ZERO
+		sprite.play("climb")
+		sprite.stop()
 		player.velocity.y = 0
-	
-	elif player.wall_detectors.touching_wall() == true and player.is_on_floor():
+	elif detectors.is_on_wall and detectors.is_on_floor:
 		player.position.x += player._get_sprite_rotation() * -1 * 20
+		player.velocity = Vector2.ZERO
 		sprite.play("idle")
 	
 	else:
+		player.velocity = Vector2.ZERO
 		sprite.play("idle")
-		player.velocity.x = lerp(player.velocity.x, 0.0, 0.4)

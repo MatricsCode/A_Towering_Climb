@@ -36,7 +36,7 @@ collision_mask = 14
 script = ExtResource("1_nn08x")
 sprite = NodePath("Sprite")
 detectors = NodePath("Detectors")
-animations = NodePath("States/Animations")
+animations = NodePath("Animations")
 ground = NodePath("States/Ground")
 air = NodePath("States/Air")
 climb = NodePath("States/Climb")
@@ -64,27 +64,26 @@ player = NodePath("../..")
 sprite = NodePath("../../Sprite")
 detectors = NodePath("../../Detectors")
 
-[node name="Pause" type="Node" parent="States" unique_id=1917950217 node_paths=PackedStringArray("player", "sprite", "edge_detectors", "wall_detectors")]
+[node name="Pause" type="Node" parent="States" unique_id=1917950217 node_paths=PackedStringArray("player", "sprite", "detectors")]
 script = ExtResource("5_ksbbd")
 player = NodePath("../..")
 sprite = NodePath("../../Sprite")
-edge_detectors = NodePath("../../Detectors/WallDetectors")
-wall_detectors = NodePath("../../Detectors/EdgeDetectors")
-
-[node name="Animations" type="Node" parent="States" unique_id=512623372 node_paths=PackedStringArray("player", "sprite", "ground", "air", "climb", "pause")]
-script = ExtResource("6_gymyn")
-player = NodePath("../..")
-sprite = NodePath("../../Sprite")
-ground = NodePath("../Ground")
-air = NodePath("../Air")
-climb = NodePath("../Climb")
-pause = NodePath("../Pause")
+detectors = NodePath("../../Detectors")
 
 [node name="Debug" type="Node" parent="States" unique_id=933224509 node_paths=PackedStringArray("player", "sprite", "detectors")]
 script = ExtResource("7_bu0hs")
 player = NodePath("../..")
 sprite = NodePath("../../Sprite")
 detectors = NodePath("../../Detectors")
+
+[node name="Animations" type="Node" parent="." unique_id=512623372 node_paths=PackedStringArray("player", "sprite", "ground", "air", "climb", "pause")]
+script = ExtResource("6_gymyn")
+player = NodePath("..")
+sprite = NodePath("../Sprite")
+ground = NodePath("../States/Ground")
+air = NodePath("../States/Air")
+climb = NodePath("../States/Climb")
+pause = NodePath("../States/Pause")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1227623305]
 position = Vector2(0, -160)
