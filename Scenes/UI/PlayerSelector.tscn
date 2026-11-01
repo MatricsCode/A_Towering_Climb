@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="2_gkc0f"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="3_3n8ge"]
 [ext_resource type="Script" uid="uid://di7tapp7bawh1" path="res://Old/CharacterSelector/Customiser.gd" id="3_rtt77"]
+[ext_resource type="SpriteFrames" uid="uid://kuj58hb6cb0j" path="res://Components/SpriteFrames/IntroSpriteFrames/IntroSpriteFrames.tres" id="4_cxirj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0wkq"]
 bg_color = Color(0.117647, 0.117647, 0.117647, 1)
@@ -1152,19 +1153,22 @@ grow_vertical = 2
 [node name="Sprite1" type="AnimatedSprite2D" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/Panel" unique_id=797768449]
 position = Vector2(516, 99)
 scale = Vector2(0.75, 0.75)
-animation = &""
+sprite_frames = ExtResource("4_cxirj")
+animation = &"enter"
 speed_scale = 2.0
 
 [node name="Sprite2" type="AnimatedSprite2D" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/Panel" unique_id=342696921]
 position = Vector2(516, 99)
 scale = Vector2(0.75, 0.75)
-animation = &""
+sprite_frames = ExtResource("4_cxirj")
+animation = &"enter"
 speed_scale = 2.0
 
 [node name="Sprite3" type="AnimatedSprite2D" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/Panel" unique_id=332854037]
 position = Vector2(516, 99)
 scale = Vector2(0.75, 0.75)
-animation = &""
+sprite_frames = ExtResource("4_cxirj")
+animation = &"enter"
 speed_scale = 2.0
 
 [node name="CentrePoint" type="Control" parent="MarginContainer/CharacterSelect/VBoxContainer/Panel/Panel" unique_id=298621544]

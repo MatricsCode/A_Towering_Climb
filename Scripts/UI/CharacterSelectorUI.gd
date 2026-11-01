@@ -1,6 +1,6 @@
 extends Panel
 
-const PLAYER_SELECTOR_TEST = preload("uid://coyb4dm7dvh0w")
+const PLAYER_SELECTOR = preload("uid://coyb4dm7dvh0w")
 
 
 @export var ready_button : HoverButton
@@ -33,12 +33,12 @@ func _ready():
 		_add_player()
 
 func _add_player():
-	var player_selector = PLAYER_SELECTOR_TEST.instantiate()
+	var player_selector = PLAYER_SELECTOR.instantiate()
+	
+	player_selectors.add_child(player_selector)
 	
 	player_selector.finished.connect(func():
 		_is_peer_ready())
-	
-	player_selectors.add_child(player_selector)
 
 
 func _is_peer_ready():

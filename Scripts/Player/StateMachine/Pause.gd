@@ -20,7 +20,7 @@ func _physics_process(delta):
 	_paused()
 
 func _paused():
-	if !detectors.is_on_wall and !detectors.is_on_floor:
+	if !detectors.is_on_wall and !detectors.is_on_ground:
 		
 		if fall_speed < player.TERMINAL_VELOCITY: # Checks and adjusts the current gravity
 			fall_speed += player.main_vars.air_vars.gravity
@@ -30,12 +30,12 @@ func _paused():
 			fall_speed = 100
 		
 		player.velocity.y = fall_speed
-	elif detectors.is_on_wall and !detectors.is_on_floor:
+	elif detectors.is_on_wall and !detectors.is_on_ground:
 		player.velocity = Vector2.ZERO
 		sprite.play("climb")
 		sprite.stop()
 		player.velocity.y = 0
-	elif detectors.is_on_wall and detectors.is_on_floor:
+	elif detectors.is_on_wall and detectors.is_on_ground:
 		player.position.x += player._get_sprite_rotation() * -1 * 20
 		player.velocity = Vector2.ZERO
 		sprite.play("idle")

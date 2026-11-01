@@ -32,6 +32,16 @@ func _debug():
 		sprite.play("jump")
 	else:
 		sprite.flip_v = false
+	
+	if input_vector.x == -1:
+		sprite.flip_h = true
+	elif input_vector.x == 1:
+		sprite.flip_h = false
+	
+	if input_vector.x != 0 and input_vector.y == 0:
+		sprite.play("walk")
+	
+	if input_vector == Vector2.ZERO:
 		sprite.play("idle")
 	
 	if input_vector == Vector2.ZERO:

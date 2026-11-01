@@ -20,3 +20,5 @@ res://Scripts/Player/Detectors.gd
 res://Scripts/Player/StateMachine/Pause.gd
 res://Scripts/Player/StateMachine/Ground.gd
 res://Scripts/Player/StateMachine/Animations.gd
+res://Scripts/UI/CharacterSelectorUI.gd
+res://Scenes/UI/PlayerSelector.tscn
