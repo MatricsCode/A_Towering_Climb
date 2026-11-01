@@ -20,6 +20,8 @@ signal start_anim_finished()
 
 signal vignette(trans_time : float, wait_time : float)
 
+signal debug(is_debug : bool)
+
 #-----------------------------------
 
 signal projectile (type)

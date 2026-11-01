@@ -10,3 +10,10 @@ res://addons/godotsteam/editor/updater.tres
 res://Scripts/Player/Player.gd
 res://Scripts/Player/StateMachine/Climb.gd
 res://Scripts/Player/StateMachine/Air.gd
+res://Scripts/Player/StateMachine/Debug.gd
+res://Scenes/Autoloads/Signals.tscn
+res://Scripts/AutoLoads/Signals.gd
+res://Scenes/Autoloads/GlobalScript.tscn
+res://Scripts/AutoLoads/GlobalScript.gd
+res://Scenes/MainScene.tscn
+res://Scripts/Player/Detectors.gd

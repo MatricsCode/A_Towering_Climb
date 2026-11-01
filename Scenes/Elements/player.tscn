@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://qbo6p8gv1xdl" path="res://Scripts/Player/StateMachine/Pause.gd" id="5_ksbbd"]
 [ext_resource type="Script" uid="uid://c22ccct5h31um" path="res://Scripts/Player/StateMachine/AbilityManager.gd" id="5_yoq75"]
 [ext_resource type="Script" uid="uid://mcnni8yg2jru" path="res://Scripts/Player/StateMachine/Animations.gd" id="6_gymyn"]
+[ext_resource type="Script" uid="uid://uiuqna3h4o6m" path="res://Scripts/Player/StateMachine/Debug.gd" id="7_bu0hs"]
 [ext_resource type="SpriteFrames" uid="uid://c2turr7b108g7" path="res://Components/SpriteFrames/Players/Climber1.tres" id="7_f1ek2"]
 [ext_resource type="Script" uid="uid://5ld7a65652d1" path="res://Scripts/Player/Detectors.gd" id="8_tx1dd"]
 
@@ -78,6 +79,12 @@ ground = NodePath("../Ground")
 air = NodePath("../Air")
 climb = NodePath("../Climb")
 pause = NodePath("../Pause")
+
+[node name="Debug" type="Node" parent="States" unique_id=933224509 node_paths=PackedStringArray("player", "sprite", "detectors")]
+script = ExtResource("7_bu0hs")
+player = NodePath("../..")
+sprite = NodePath("../../Sprite")
+detectors = NodePath("../../Detectors")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1227623305]
 position = Vector2(0, -160)

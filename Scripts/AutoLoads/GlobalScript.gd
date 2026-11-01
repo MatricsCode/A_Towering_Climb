@@ -5,12 +5,19 @@ var peers : Array[int]
 var players : Dictionary[int , Array]
 var peers_ready : Array[int]
 
+var debug := false
+
 func _ready():
 	Signals.peer_joined.connect(func(ID : int): 
 		peers.append(ID))
 	Signals.peer_left.connect(func(ID : int):
 		peers.erase(ID))
 	Signals.readied_peer.connect(_check_start)
+
+func _physics_process(_delta):
+	if Input.is_action_just_pressed("Debug"):
+		Signals.debug.emit(!debug)
+		debug = !debug
 
 func _check_start(_ID : int):
 	if Networking.host:

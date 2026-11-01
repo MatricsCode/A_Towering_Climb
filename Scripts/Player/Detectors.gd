@@ -24,7 +24,12 @@ var is_on_ground := false
 var is_on_wall := false
 var is_on_edge := false
 
+var ignore := false
+
 func _physics_process(_delta):
+	if ignore:
+		return
+	
 	_on_roof()
 	_on_ground()
 	_on_wall()
