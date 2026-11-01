@@ -36,15 +36,15 @@ var main_vars = { ## Main variables
 		"gravity" : 0, "gravity_increase" : 2, "movement_direction" : 0},
 	"climbing_vars" : {"climbing_speed" : 300},
 	
-	"other_vars" : {"can_switch" : true, "can_move" : false},}
+	"other_vars" : {"can_switch" : true,},}
 
 var main_vars_reset = []
 
 ## ---- Functions ----
 func _ready(): ## Runns as soon as the player is loaded into the scenes
-	position.y -= 25
+	current_state = States.OVERIDDEN
 	
-	current_state = States.AIR
+	position.y -= 25
 	
 	Signals.lobby_finished_game.connect(func(winner : Player):
 		current_state = States.OVERIDDEN
@@ -57,7 +57,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 			_lost())
 	
 	Signals.start_anim_finished.connect(func():
-		main_vars.get("other_vars")["can_move"] = true)
+		current_state = States.GROUND)
 	
 	ground.switch.connect(_switch_ground)
 	air.switch.connect(_switch_air)
@@ -73,7 +73,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	
 	start.connect(func():
 		sprite.sprite_frames = player_source.sprite_frame
-		)
+		sprite.play("idle"))
 
 func _physics_process(_delta):  ## Runs every physics frames
 	#GlobalScript.player_attributes.get(ID)["Position"] = position
@@ -83,7 +83,7 @@ func _physics_process(_delta):  ## Runs every physics frames
 	#else:
 		#set_collision_layer_value(2,false)
 	
-	if not is_multiplayer_authority() and main_vars.get("other_vars")["can_move"]:
+	if not is_multiplayer_authority():
 		return ## Checks if you are this player, and grants/denies you control acordingly
 	
 	#match current_state:

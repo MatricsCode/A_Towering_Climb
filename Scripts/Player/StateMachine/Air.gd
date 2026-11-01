@@ -23,9 +23,15 @@ func _ready():
 		switch.emit(player.States.GROUND, "Land", fall_speed)
 		fall_speed = 25
 		hit_head = false)
-	detectors.on_wall.connect(func(is_true : bool):
+	detectors.on_edge.connect(func(is_true : bool):
 		if !current or !is_true or Input.is_action_pressed("Down"):
 			return
+		var count = 0
+		while !detectors.is_on_edge and count < 10:
+			await get_tree().create_timer(0.05).timeout
+			count += 1
+		
+		
 		switch.emit(player.States.CLIMB, "WallHit", fall_speed)
 		fall_speed = 25
 		hit_head = false)
@@ -52,7 +58,7 @@ func _physics_process(_delta):
 		coyote_timer.stop()
 		_jump()
 	
-	if Input.is_action_just_released("Down") and detectors.is_on_wall:
+	if Input.is_action_just_released("Down") and detectors.is_on_edge:
 		
 		switch.emit(player.States.CLIMB, "WallHit", fall_speed)
 		fall_speed = 25
