@@ -5,7 +5,9 @@ signal finished()
 enum States {SPAWN, CHARACTER, ABILITIES, FINISHED}
 
 const CLIMBER_1 = preload("uid://c2turr7b108g7")
-const RAM = preload("uid://b0imh5jcjfvpr")
+const GLIDE = preload("uid://d0y0w2hbe3jwq")
+
+#const RAM = preload("uid://b0imh5jcjfvpr")
 const CLIMBER_SECRET = preload("uid://dbqffofmlv0yn")
 
 var current_state =  States.SPAWN
@@ -62,9 +64,8 @@ func _start():
 	
 	selected_character = PlayerSource.new()
 	selected_character.sprite_frame = CLIMBER_1
-	selected_character.main_ability = RAM
-	selected_character.passive_ability_1 = RAM
-	selected_character.passive_ability_2 = RAM
+	selected_character.main_ability = GLIDE
+	selected_character.passive_ability = GLIDE
 	selected_character.secret_ability = CLIMBER_SECRET
 	
 	animations.play("SpawnIn")
