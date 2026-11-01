@@ -7,12 +7,17 @@ class_name Ability
 @export var detectors : Node2D
 
 var activation_state = 0
-var current := false
+var current_state := false
+var active := false
 
-func _overide(overide : bool, new_state := -1):
-	current = overide
-	player._switch_overide(overide, new_state)
+func _overide(overide : bool):
+	active = overide
+	player._switch_overide(player.States.OVERIDDEN)
 	
+
+func _switch_to_state(new_state : int, additional : String):
+	active = false
+	player._switch_overide(new_state, additional)
 
 #func overide():
 	#current = true

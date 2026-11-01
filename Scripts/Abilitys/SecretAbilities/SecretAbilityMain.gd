@@ -4,8 +4,6 @@ class_name SecretAbility
 @export var abilities_required_1 : Script = null
 @export var abilities_required_2 : Script = null
 
-var active := false
-
 func _check_other_abilities():
 	var combination = 0
 	var combin_minimum = 0

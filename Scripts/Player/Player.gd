@@ -177,11 +177,20 @@ func _switch_pause(new_state : States, additional := ""):
 	else:
 		pass
 
-func _switch_overide(overide : bool, new_state : States):
-	if overide:
+func _switch_overide(new_state : States, additional := ""):
+	if additional == "Glide" and new_state == States.GROUND:
+		animations.overide = true
+		sprite.play("land")
+		
+		velocity = Vector2.ZERO
 		current_state = States.OVERIDDEN
-	else:
-		current_state = new_state
+		
+		await get_tree().create_timer(0.1).timeout
+		animations.overide = false
+		
+		_reset_main_vars()
+	
+	current_state = new_state
 
 func _switch_timeout():
 	main_vars.other_vars.can_switch = false
