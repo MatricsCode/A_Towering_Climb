@@ -1,5 +1,32 @@
 extends Ability
-#
+
+func _ready():
+	activation_state = player.States.GROUND
+
+func _ram():
+	pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #var flying = false
 #var current_speed = 0
 #
