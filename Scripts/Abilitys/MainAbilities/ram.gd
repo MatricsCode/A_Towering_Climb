@@ -3,8 +3,11 @@ extends Ability
 const MAX_SPEED := 4000.0
 
 var ram_speed := 0.0
-var ramming_addition := -250.0
+var ramming_addition := -100.0
 var flying := false
+var fall_speed := 25.0
+var fall_gravity := 10.0
+var fall_increase := 25.0
 
 func _ready():
 	activation_state = player.States.GROUND
@@ -25,7 +28,8 @@ func _ready():
 			_switch_to_state(false, player.States.AIR, "Ram_Fling")
 		elif !flying:
 			flying = true
-			_fling())
+			player.velocity.x = ram_speed * player._get_sprite_rotation() * -0.45
+			fall_speed = ram_speed * -0.6)
 
 func _physics_process(delta):
 	if player.current_state != activation_state and player.current_state != player.States.ABILITY:
@@ -36,11 +40,14 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("Ability") and !active:
 		_switch_to_state()
-	elif Input.is_action_just_released("Ability") and active:
+	
+	elif Input.is_action_just_released("Ability") and active and !flying:
 		_switch_to_state(false, player.States.GROUND, "Ram")
 	
 	if active and !flying:
 		_ram()
+	elif active and flying:
+		_fall()
 
 func _ram():
 	ram_speed += ramming_addition * player._get_sprite_rotation()
@@ -155,10 +162,20 @@ func _ram():
 		#current_speed = player.velocity.x
 	#
 	#position = player.position
-func _fling():
-	player.velocity.x = ram_speed * player._get_sprite_rotation() * -0.25
-	player.velocity.y = ram_speed * -0.1
+func _fall():
+	if fall_speed < player.TERMINAL_VELOCITY: # Checks and adjusts the current gravity
+		fall_speed += fall_gravity
+		fall_gravity += fall_increase
+	
+	player.velocity.y = fall_speed
 
 func _reset_vars():
 	ram_speed = 0.0
-	ramming_addition = -250.0
+	ramming_addition = -100.0
+	flying = false
+	fall_speed = 25.0
+	fall_gravity = 10.0
+	fall_increase = 25.0
+	
+	
+	

@@ -58,7 +58,6 @@ func _debug_start():
 	player.set_collision_layer_value(1, false)
 	player.set_collision_layer_value(3, false)
 	player.set_collision_mask_value(2, false)
-	player.set_collision_mask_value(3, false)
 	player.set_collision_mask_value(4, false)
 	player.current_state = player.States.OVERIDDEN
 	detectors.ignore = true
@@ -68,7 +67,6 @@ func _debug_stop():
 	player.set_collision_layer_value(1, true)
 	player.set_collision_layer_value(3, true)
 	player.set_collision_mask_value(2, true)
-	player.set_collision_mask_value(3, true)
 	player.set_collision_mask_value(4, true)
 	player.current_state = player.States.AIR
 	detectors.ignore = false

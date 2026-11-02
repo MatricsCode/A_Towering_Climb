@@ -13,3 +13,4 @@ res://Scripts/Player/Player.gd
 res://Scripts/Abilitys/SecondaryAbilities/Glide.gd
 res://Scripts/Abilitys/MainAbilities/Ram.gd
 res://Scripts/Abilitys/AbilityMain.gd
+res://Scripts/Player/StateMachine/Debug.gd
