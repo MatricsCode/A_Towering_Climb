@@ -28,7 +28,7 @@ func _ready():
 			_switch_to_state(false, player.States.AIR, "Ram_Fling")
 		elif !flying:
 			flying = true
-			player.velocity.x = ram_speed * player._get_sprite_rotation() * -0.45
+			player.velocity.x = ram_speed * -0.45 * player._get_sprite_rotation()
 			fall_speed = ram_speed * -0.6)
 
 func _physics_process(delta):
@@ -50,12 +50,12 @@ func _physics_process(delta):
 		_fall()
 
 func _ram():
-	ram_speed += ramming_addition * player._get_sprite_rotation()
+	ram_speed += ramming_addition
 	ramming_addition += 25
 	
 	ram_speed = clamp(ram_speed, -MAX_SPEED, MAX_SPEED)
 	
-	player.velocity.x = ram_speed
+	player.velocity.x = ram_speed * player._get_sprite_rotation()
 
 
 

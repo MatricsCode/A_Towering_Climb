@@ -74,11 +74,15 @@ func _on_lobby_joined(lobby_id : int, _permissions : int, _locked : bool, respon
 func _on_join_request(lobby_id : int, _steam_id : int) -> void:
 	Steam.joinLobby(lobby_id)
 
+func _leave_lobby(_ID):
+	Steam.leaveLobby(current_lobby)
+
 func _request_lobby_list():
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
 	Steam.requestLobbyList()
 
-func _check_peers(ID):
+
+func _check_peers(_ID):
 	if host:
 		Steam.getLobbyData(current_lobby, "peers")
 

@@ -14,3 +14,5 @@ res://Scripts/Abilitys/SecondaryAbilities/Glide.gd
 res://Scripts/Abilitys/MainAbilities/Ram.gd
 res://Scripts/Abilitys/AbilityMain.gd
 res://Scripts/Player/StateMachine/Debug.gd
+res://Scenes/Autoloads/Networking.tscn
+res://Scripts/AutoLoads/Networking.gd
