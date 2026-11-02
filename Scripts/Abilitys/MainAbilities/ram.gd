@@ -4,15 +4,28 @@ const MAX_SPEED := 4000.0
 
 var ram_speed := 0.0
 var ramming_addition := -250.0
-
+var flying := false
 
 func _ready():
 	activation_state = player.States.GROUND
 	
 	detectors.on_ground.connect(func(is_true : bool):
-		if is_true or !active:
+		if !active:
 			return
-		_switch_to_state(false, player.States.AIR, "Ram"))
+		
+		if flying and is_true:
+			_switch_to_state(false, player.States.GROUND, "Ram_Fling")
+		elif !flying and !is_true:
+			_switch_to_state(false, player.States.AIR, "Ram"))
+	detectors.on_wall.connect(func(is_true : bool):
+		if !active or !is_true:
+			return
+		
+		if flying:
+			_switch_to_state(false, player.States.AIR, "Ram_Fling")
+		elif !flying:
+			flying = true
+			_fling())
 
 func _physics_process(delta):
 	if player.current_state != activation_state and player.current_state != player.States.ABILITY:
@@ -26,7 +39,7 @@ func _physics_process(delta):
 	elif Input.is_action_just_released("Ability") and active:
 		_switch_to_state(false, player.States.GROUND, "Ram")
 	
-	if active:
+	if active and !flying:
 		_ram()
 
 func _ram():
@@ -142,6 +155,9 @@ func _ram():
 		#current_speed = player.velocity.x
 	#
 	#position = player.position
+func _fling():
+	player.velocity.x = ram_speed * player._get_sprite_rotation() * -0.25
+	player.velocity.y = ram_speed * -0.1
 
 func _reset_vars():
 	ram_speed = 0.0
