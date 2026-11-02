@@ -9,28 +9,33 @@ func _ready():
 		if !is_true or !active:
 			return
 		active = false
-		_switch_to_state(player.States.GROUND, "Gliding"))
+		_switch_to_state(false, player.States.GROUND, "Glide"))
+	detectors.on_wall.connect(func(is_true : bool):
+		if !is_true or !active:
+			return
+		active = false
+		_switch_to_state(false, player.States.CLIMB, "Glide"))
 	
 
 func _physics_process(_delta):
-	if player.current_state != activation_state and player.current_state != player.States.OVERIDDEN:
+	if player.current_state != activation_state and player.current_state != player.States.ABILITY:
 		current_state = false
 		return
-	elif player.current_state == activation_state or player.current_state == player.States.OVERIDDEN:
+	elif player.current_state == activation_state or player.current_state == player.States.ABILITY:
 		current_state = true
 	
 	if player.velocity.y < min_gliding_speed:
 		return
 	
-	print("Checking")
-	
 	if !active and Input.is_action_pressed("Jump"):
 		player._reset_main_vars()
-		_overide(true)
+		_switch_to_state()
 	
 	if Input.is_action_just_released("Jump"):
 		player.air.fall_speed = 500
-		_switch_to_state(player.States.AIR, "Gliding")
+		player.main_vars.air_vars.gravity = 500.0
+		player.main_vars.air_vars.gravity_increase = 5.0
+		_switch_to_state(false, player.States.AIR, "Glide")
 	
 	if active:
 		_glide()
@@ -45,13 +50,32 @@ func _physics_process(_delta):
 		#_overide(false)
 
 func _glide():
-	print("Gliding")
+	var air_movement = func air_movement():
+		var direction = Input.get_axis("Left", "Right")
+		
+		if (direction == player.main_vars.air_vars.movement_direction and 
+			player.main_vars.air_vars.movement_direction != 0 and 
+			player.velocity.x * direction <= player.main_vars.ground_vars.speed):
+				player.velocity.x = player.main_vars.ground_vars.speed * direction
+		
+		elif direction != player.main_vars.air_vars.movement_direction and direction != 0:
+			player.velocity.x = lerp(player.velocity.x, 
+				player.main_vars.ground_vars.speed * direction, 0.1)
+		
+		elif direction == 0 and player.velocity.x != 0:
+			player.velocity.x = lerpf(player.velocity.x, 0.0, 0.01)
+	
+	air_movement.call()
 	sprite.play("glide")
 	player.velocity.y = min_gliding_speed
 	
-	
+	turn()
 
-
+func turn():
+	if player.velocity.x > 0:
+		sprite.flip_h = false
+	elif player.velocity.x < 0:
+		sprite.flip_h = true
 
 
 
@@ -111,9 +135,3 @@ func _glide():
 		#player.velocity.x = lerp(player.velocity.x, player.main_vars.ground_vars.speed * direction, 0.3)
 	#elif direction != current_direction:
 		#player.velocity.x = lerp(player.velocity.x, player.main_vars.ground_vars.speed * direction, 0.05)
-#
-#func turn():
-	#if player.velocity.x > 0:
-		#$"../../Sprite".flip_h = false
-	#elif player.velocity.x < 0:
-		#$"../../Sprite".flip_h = true

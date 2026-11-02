@@ -1,11 +1,41 @@
 extends Ability
 
+const MAX_SPEED := 4000.0
+
+var ram_speed := 0.0
+var ramming_addition := -250.0
+
+
 func _ready():
 	activation_state = player.States.GROUND
+	
+	detectors.on_ground.connect(func(is_true : bool):
+		if is_true or !active:
+			return
+		_switch_to_state(false, player.States.AIR, "Ram"))
+
+func _physics_process(delta):
+	if player.current_state != activation_state and player.current_state != player.States.ABILITY:
+		current_state = false
+		return
+	elif player.current_state == activation_state or player.current_state == player.States.ABILITY:
+		current_state = true
+	
+	if Input.is_action_pressed("Ability") and !active:
+		_switch_to_state()
+	elif Input.is_action_just_released("Ability") and active:
+		_switch_to_state(false, player.States.GROUND, "Ram")
+	
+	if active:
+		_ram()
 
 func _ram():
-	pass
-
+	ram_speed += ramming_addition * player._get_sprite_rotation()
+	ramming_addition += 25
+	
+	ram_speed = clamp(ram_speed, -MAX_SPEED, MAX_SPEED)
+	
+	player.velocity.x = ram_speed
 
 
 
@@ -112,3 +142,7 @@ func _ram():
 		#current_speed = player.velocity.x
 	#
 	#position = player.position
+
+func _reset_vars():
+	ram_speed = 0.0
+	ramming_addition = -250.0

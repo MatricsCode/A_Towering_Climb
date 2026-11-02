@@ -16,7 +16,7 @@ signal start()
 @export var pause : Node
 
 ## --- Enums ---
-enum States {GROUND, AIR, CLIMB, PAUSED, OVERIDDEN, SWITCHING, EMPTY}
+enum States {GROUND, AIR, CLIMB, PAUSED, ABILITY, OVERIDDEN, SWITCHING}
 
 ## --- Constants ---
 
@@ -150,6 +150,7 @@ func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
 		
 		_reset_main_vars()
 	
+	_reset_main_vars()
 	current_state = new_state
 	_switch_timeout()
 func _switch_climb(new_state : States, additional := ""):
@@ -177,7 +178,12 @@ func _switch_pause(new_state : States, additional := ""):
 	else:
 		pass
 
-func _switch_overide(new_state : States, additional := ""):
+func _switch_ability(new_state : States, additional := ""):
+	if additional == "":
+		pass
+	else:
+		pass
+	
 	if additional == "Glide" and new_state == States.GROUND:
 		animations.overide = true
 		sprite.play("land")
@@ -185,12 +191,15 @@ func _switch_overide(new_state : States, additional := ""):
 		velocity = Vector2.ZERO
 		current_state = States.OVERIDDEN
 		
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(500.0/19200.0).timeout
 		animations.overide = false
 		
 		_reset_main_vars()
+	elif additional == "Glide" and new_state == States.CLIMB:
+		pass
 	
 	current_state = new_state
+	_switch_timeout()
 
 func _switch_timeout():
 	main_vars.other_vars.can_switch = false

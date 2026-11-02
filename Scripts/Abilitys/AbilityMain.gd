@@ -10,14 +10,16 @@ var activation_state = 0
 var current_state := false
 var active := false
 
-func _overide(overide : bool):
+func _switch_to_state(overide := true, new_state := 0, additional := ""):
+	_reset_vars()
 	active = overide
-	player._switch_overide(player.States.OVERIDDEN)
-	
+	if overide:
+		player._switch_ability(player.States.ABILITY, additional)
+	else:
+		player._switch_ability(new_state, additional)
 
-func _switch_to_state(new_state : int, additional : String):
-	active = false
-	player._switch_overide(new_state, additional)
+func _reset_vars():
+	pass
 
 #func overide():
 	#current = true

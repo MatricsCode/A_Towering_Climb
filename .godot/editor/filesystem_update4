@@ -1,4 +1,4 @@
-res://Scenes/LevelPresets/level_3.tscn
+res://Scenes/Elements/player.tscn
 res://Components/SpriteFrames/Players/Climber1.tres
 res://Old/Recourses/Tileset.tres
 res://Components/Themes/MainTheme.tres
@@ -9,6 +9,7 @@ res://addons/godotsteam/editor/updater.tres
 res://Old/Recourses/UI/main.tres
 res://Old/Recourses/UI/PauseBackground.tres
 res://Old/Recourses/UI/WinBackground.tres
-res://Scenes/Elements/player.tscn
-res://Scripts/Abilitys/MainAbilities/ram.gd
+res://Scripts/Player/Player.gd
+res://Scripts/Abilitys/SecondaryAbilities/Glide.gd
 res://Scripts/Abilitys/MainAbilities/Ram.gd
+res://Scripts/Abilitys/AbilityMain.gd
