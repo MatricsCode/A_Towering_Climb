@@ -1,10 +1,14 @@
-extends StaticBody2D
+extends Node2D
 class_name Interactable
 
+@export_group("Main")
 @export var activator : Script
+@export var target : Node
+
+@export_group("Nodes")
 @export var area : Area2D
 @export var sprite : AnimatedSprite2D
-@export var target : Node
+
 
 var players := []
 
@@ -21,14 +25,50 @@ func _ready():
 			return false
 	
 	area.body_entered.connect(func(body : Node):
-		if check.call(body):
-			pass)
+		if !body.is_class("Playe"):
+			return
+		
+		elif check.call(body):
+			players.append(body)
+			_player_entered(body))
 	area.body_exited.connect(func(body : Node):
-		if check.call(body):
-			pass)
+		if !body.is_class("Player"):
+			return
+		
+		elif check.call(body):
+			players.erase(body)
+			_player_exited(body))
+	
+	var ground_detector = RayCast2D.new()
+	add_child(ground_detector)
+	
+	ground_detector.position = Vector2.ZERO
+	ground_detector.target_position = Vector2(0,200)
+	ground_detector.set_collision_mask_value(2, true)
+	ground_detector.set_collision_mask_value(1, false)
+	ground_detector.collide_with_bodies = true
+	ground_detector.collide_with_areas = false
+	ground_detector.hit_from_inside = true
+	
+	if ground_detector.get_collider() == null:
+		var error = str(name, " is not near enough to the ground")
+		push_error(error)
+		ground_detector.queue_free()
+	
+	else:
+		position = ground_detector.get_collision_point()
+	
+	#ground_detector.queue_free()
+	_interactable_ready()
 
+func _interactable_ready():
+	pass
 
+func _player_entered(_body : Player):
+	pass
 
+func _player_exited(_body : Player):
+	pass
 
 
 
