@@ -1,3 +1,4 @@
+StaticBody2D
 Node
 Timer
 TextureRect
@@ -12,4 +13,3 @@ VBoxContainer
 MarginContainer
 HBoxContainer
 AnimationPlayer
-Node2D

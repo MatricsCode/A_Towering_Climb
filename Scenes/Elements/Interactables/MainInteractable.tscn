@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://8tjgk0rqshwa"]
+
+[ext_resource type="Script" uid="uid://c3pd3dg0vshs0" path="res://Scripts/Levels/Interactables/BaseInteractables.gd" id="1_d0bqf"]
+
+[node name="MainInteractable" type="StaticBody2D" unique_id=573350427]
+script = ExtResource("1_d0bqf")

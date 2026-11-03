@@ -56,6 +56,8 @@ func _ram():
 	ram_speed = clamp(ram_speed, -MAX_SPEED, MAX_SPEED)
 	
 	player.velocity.x = ram_speed * player._get_sprite_rotation()
+	
+	sprite.play("ram")
 
 
 
@@ -163,6 +165,8 @@ func _ram():
 	#
 	#position = player.position
 func _fall():
+	sprite.play("fall")
+	
 	if fall_speed < player.TERMINAL_VELOCITY: # Checks and adjusts the current gravity
 		fall_speed += fall_gravity
 		fall_gravity += fall_increase
