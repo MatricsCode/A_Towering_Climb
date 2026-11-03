@@ -9,7 +9,6 @@ class_name Interactable
 @export var area : Area2D
 @export var sprite : AnimatedSprite2D
 
-
 var players := []
 
 func _ready():
@@ -50,23 +49,25 @@ func _ready():
 	ground_detector.collide_with_areas = false
 	ground_detector.hit_from_inside = true
 	
+	_interactable_ready()
+	await get_tree().create_timer(0.1).timeout
+	
 	if ground_detector.get_collider() == null:
 		var error = str(name, " is not near enough to the ground")
 		push_error(error)
-		ground_detector.queue_free()
+		
 	
 	else:
 		position = ground_detector.get_collision_point()
 	
-	#ground_detector.queue_free()
-	_interactable_ready()
+	ground_detector.queue_free()
+	
 
 func _interactable_ready():
 	pass
 
 func _player_entered(_body : Player):
 	pass
-
 func _player_exited(_body : Player):
 	pass
 

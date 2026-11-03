@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="3_3n8ge"]
 [ext_resource type="Script" uid="uid://di7tapp7bawh1" path="res://Old/CharacterSelector/Customiser.gd" id="3_rtt77"]
 [ext_resource type="SpriteFrames" uid="uid://kuj58hb6cb0j" path="res://Components/SpriteFrames/IntroSpriteFrames/IntroSpriteFrames.tres" id="4_cxirj"]
+[ext_resource type="Script" uid="uid://cgcnd65hfb1io" path="res://Scripts/UI/AbilitySelector.gd" id="6_4ljxh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0wkq"]
 bg_color = Color(0.117647, 0.117647, 0.117647, 1)
@@ -1238,8 +1239,7 @@ text = "Remove Input"
 script = ExtResource("3_3n8ge")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
-[node name="AbilitySelect" type="MarginContainer" parent="MarginContainer" unique_id=920714062]
-visible = false
+[node name="AbilitySelect" type="MarginContainer" parent="MarginContainer" unique_id=920714062 node_paths=PackedStringArray("next_main", "last_main", "text_main", "next_passive", "last_passive", "text_passive")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1248,6 +1248,13 @@ offset_bottom = 0.0012207031
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("6_4ljxh")
+next_main = NodePath("VBoxContainer/MainAbilitys/HoverButton")
+last_main = NodePath("VBoxContainer/MainAbilitys/HoverButton2")
+text_main = NodePath("VBoxContainer/MainAbilitys/Label")
+next_passive = NodePath("VBoxContainer/MainAbilitys2/HoverButton")
+last_passive = NodePath("VBoxContainer/MainAbilitys2/HoverButton2")
+text_passive = NodePath("VBoxContainer/MainAbilitys2/Label")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/AbilitySelect" unique_id=1087160596]
 layout_mode = 2
@@ -1298,6 +1305,7 @@ script = ExtResource("3_3n8ge")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
 [node name="MainAbilitys3" type="HBoxContainer" parent="MarginContainer/AbilitySelect/VBoxContainer" unique_id=102677482]
+visible = false
 layout_mode = 2
 
 [node name="HoverButton" type="Button" parent="MarginContainer/AbilitySelect/VBoxContainer/MainAbilitys3" unique_id=1454190745]

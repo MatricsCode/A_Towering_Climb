@@ -23,7 +23,6 @@ func _player_entered(body : Player):
 func _player_exited(body : Player):
 	_unstick_player(body)
 
-
 func _stick_player(player : Player):
 	player_stats[player] = player.main_vars.ground_vars.speed
 	player.main_vars.ground_vars.speed = 50

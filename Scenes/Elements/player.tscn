@@ -158,13 +158,13 @@ position = Vector2(0, -81)
 [node name="EdgeDetector1" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=2047404016]
 position = Vector2(-60, 0)
 target_position = Vector2(-3, 0)
-collision_mask = 4
+collision_mask = 2
 hit_from_inside = true
 
 [node name="EdgeDetector2" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=599898341]
 position = Vector2(60, 0)
 target_position = Vector2(3, 0)
-collision_mask = 4
+collision_mask = 2
 hit_from_inside = true
 
 [node name="Upgrades" type="Node" parent="." unique_id=2001463068 node_paths=PackedStringArray("player", "sprite", "detectors")]

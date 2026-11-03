@@ -1,3 +1,4 @@
+Area2D
 RayCast2D
 Node2D
 StaticBody2D
@@ -5,7 +6,6 @@ Node
 Timer
 TextureRect
 CollisionShape2D
-Area2D
 AnimatedSprite2D
 Control
 Label

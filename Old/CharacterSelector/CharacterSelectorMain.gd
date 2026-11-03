@@ -48,11 +48,16 @@ func _ready():
 	for ability_button in ability_buttons:
 		ability_button.pressed.connect(func():
 			active = false
-			selected_character.sprite_frame = CharacterSelector.OUTFITS[CharacterSelector.current_outfit]
+			selected_character.sprite_frame = (
+				CharacterSelector.OUTFITS[CharacterSelector.current_outfit])
 			animations.play("ToAbilities"))
 	for costume_button in costume_buttons:
 		costume_button.pressed.connect(func():
 			active = false
+			selected_character.main_ability = (
+				AbilitiySelector.main_abilities[AbilitiySelector.current_main_ability])
+			selected_character.passive_ability = (
+				AbilitiySelector.passive_abilities[AbilitiySelector.current_pass_ability])
 			animations.play("ToCostumes"))
 	finished_button.pressed.connect(func():
 		active = true
@@ -62,7 +67,6 @@ func _ready():
 func _start():
 	
 	start_button.visible = false
-	
 	selected_character = PlayerSource.new()
 	selected_character.sprite_frame = CLIMBER_1
 	selected_character.main_ability = RAM
