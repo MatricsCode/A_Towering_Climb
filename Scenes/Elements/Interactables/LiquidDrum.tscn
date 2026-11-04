@@ -71,6 +71,7 @@ size = Vector2(250.423, 40)
 scale = Vector2(1.0046, 0.996686)
 script = ExtResource("1_xwc7i")
 activator = ExtResource("2_61h7m")
+auto_setup_area = false
 area = NodePath("Area2D")
 sprite = NodePath("Sprite")
 

@@ -4,6 +4,7 @@ class_name Interactable
 @export_group("Main")
 @export var activator : Script
 @export var target : Node
+@export var auto_setup_area := true
 
 @export_group("Nodes")
 @export var area : Area2D
@@ -23,21 +24,22 @@ func _ready():
 		else:
 			return false
 	
-	area.body_entered.connect(func(body : Node):
-		print(body.get_class())
-		if !body.is_class("CharacterBody2D"):
-			return
-		
-		elif check.call(body):
-			players.append(body)
-			_player_entered(body))
-	area.body_exited.connect(func(body : Node):
-		if !body.is_class("CharacterBody2D"):
-			return
-		
-		elif check.call(body):
-			players.erase(body)
-			_player_exited(body))
+	if auto_setup_area:
+		area.body_entered.connect(func(body : Node):
+			print(body.get_class())
+			if !body.is_class("CharacterBody2D"):
+				return
+			
+			elif check.call(body):
+				players.append(body)
+				_player_entered(body))
+		area.body_exited.connect(func(body : Node):
+			if !body.is_class("CharacterBody2D"):
+				return
+			
+			elif check.call(body):
+				players.erase(body)
+				_player_exited(body))
 	
 	var ground_detector = RayCast2D.new()
 	add_child(ground_detector)

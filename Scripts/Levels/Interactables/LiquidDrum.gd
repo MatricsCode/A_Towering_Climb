@@ -9,7 +9,8 @@ var player_stats := {}
 
 func _interactable_ready():
 	sprite.play("Full")
-	
+	area.body_entered.connect(_player_entered)
+	area.body_exited.connect(_player_exited)
 	sprite.animation_changed.connect(func():
 		if sprite.animation == "Emptying":
 			sprite.play("Empty")
@@ -18,19 +19,30 @@ func _interactable_ready():
 				_stick_player(i))
 
 func _player_entered(body : Player):
-	if !spilled:
-		sprite.play("Emptying")
+	var player_source : PlayerSource
+	player_source = body.player_source
+	
+	## This line just checks if any of the ability scripts of the player matches the activator
+	if (player_source.main_ability == activator or
+	 player_source.passive_ability == activator or player_source.secret_ability == activator):
+		if !spilled:
+			sprite.play("Emptying")
+	else:
+		pass
+	_stick_player(body)
+	
 func _player_exited(body : Player):
 	_unstick_player(body)
 
 func _stick_player(player : Player):
+	player.position.y = position.y
+	player.current_state = player.States.GROUND
+	player.main_vars.other_vars.can_switch = false
 	player_stats[player] = player.main_vars.ground_vars.speed
 	player.main_vars.ground_vars.speed = 50
-	player.main_vars.other_vars.can_switch = false
-
 func _unstick_player(player : Player):
 	player.main_vars.ground_vars.speed = player_stats[player]
-	player.main_vars.other_vars.can_switch = false
+	player.main_vars.other_vars.can_switch = true
 
 #func player_entered(player):
 	#if sprite.animation == "Full":
