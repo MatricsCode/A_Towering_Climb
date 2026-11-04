@@ -17,21 +17,22 @@ func _ready():
 		player_stats = body.player_source
 		
 		## This line just checks if any of the ability scripts of the player matches the activator
-		if (player_stats.main_var == activator or
+		if (player_stats.main_ability == activator or
 		 player_stats.passive_ability == activator or player_stats.secret_ability == activator):
 			return true
 		else:
 			return false
 	
 	area.body_entered.connect(func(body : Node):
-		if !body.is_class("Player"):
+		print(body.get_class())
+		if !body.is_class("CharacterBody2D"):
 			return
 		
 		elif check.call(body):
 			players.append(body)
 			_player_entered(body))
 	area.body_exited.connect(func(body : Node):
-		if !body.is_class("Player"):
+		if !body.is_class("CharacterBody2D"):
 			return
 		
 		elif check.call(body):
