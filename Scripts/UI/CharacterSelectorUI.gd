@@ -5,7 +5,6 @@ const PLAYER_SELECTOR = preload("uid://coyb4dm7dvh0w")
 
 @export var ready_button : HoverButton
 @export var lobby_text : LineEdit
-@export var player_prefab : PlayerSource
 @export var player_selectors : HBoxContainer
 
 var host := false

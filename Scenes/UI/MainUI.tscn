@@ -8,15 +8,7 @@
 [ext_resource type="Script" uid="uid://djlti40nuei7s" path="res://Scripts/UI/GameUI.gd" id="5_7uoew"]
 [ext_resource type="SpriteFrames" uid="uid://bl7fd60qs8x7s" path="res://Components/SpriteFrames/Players/Baker.tres" id="5_qy0ut"]
 [ext_resource type="Script" uid="uid://c0up8lhfcq1jh" path="res://Scripts/UI/CharacterSelectorUI.gd" id="5_upwrp"]
-[ext_resource type="Script" uid="uid://bcgecunh1q8yd" path="res://Components/Resources/PlayerSource.gd" id="6_mxqpb"]
-[ext_resource type="Script" uid="uid://b0imh5jcjfvpr" path="res://Scripts/Abilitys/MainAbilities/Ram.gd" id="6_uwavw"]
-[ext_resource type="Script" uid="uid://dm3jvtcmp62ii" path="res://Scripts/Abilitys/MainAbilities/sandwich.gd" id="10_7uoew"]
 [ext_resource type="Script" uid="uid://blgp1f4rxq7ug" path="res://Scripts/UI/DebugUI.gd" id="12_tt03y"]
-
-[sub_resource type="Resource" id="Resource_upwrp"]
-script = ExtResource("6_mxqpb")
-main_ability = ExtResource("6_uwavw")
-secret_ability = ExtResource("10_7uoew")
 
 [sub_resource type="Gradient" id="Gradient_7uoew"]
 offsets = PackedFloat32Array(0.9895833, 1)
@@ -935,7 +927,6 @@ theme = ExtResource("1_fr3bv")
 script = ExtResource("5_upwrp")
 ready_button = NodePath("MarginContainer/VBoxContainer/MarginContainer/HoverButton")
 lobby_text = NodePath("MarginContainer/VBoxContainer/LobbyData")
-player_prefab = SubResource("Resource_upwrp")
 player_selectors = NodePath("MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="CaracterSelectorUI" unique_id=727420391]

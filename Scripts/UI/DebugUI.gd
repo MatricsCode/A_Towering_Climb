@@ -14,8 +14,20 @@ func _ready():
 	Signals.debug.connect(func(is_debug):
 		visible = is_debug
 		
-		var text1 = character_selector.player_prefab.main_ability
-		var text2 = character_selector.player_prefab.passive_ability
+		var text1 = str(character_selector.players.get(0).main_ability).split(":")
+		text1 = text1[1]
+		text1 = text1.split("/")
+		text1 = text1[text1.size()-1]
+		text1 = text1.split(".")
+		text1 = text1[0]
+		var text2 = str(character_selector.players.get(0).passive_ability)
+		#text2 = text2[1]
+		#text2 = text2.split("/")
+		#text2 = text2[text2.size()-1]
+		#text2 = text2.split(".")
+		#text2 = text2[0]
+		
+		print(character_selector.player_prefab.passive_ability)
 		
 		debug_label.text = "Debug"
 		main_ability_label.text = text1
