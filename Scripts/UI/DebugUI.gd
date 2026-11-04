@@ -1,0 +1,29 @@
+extends Control
+
+@export var character_selector : Control
+
+@export var debug_label : Label
+@export var main_ability_label : Label
+@export var passive_ability_label : Label
+@export var quit_button : HoverButton
+
+func _ready():
+	quit_button.pressed.connect(func():
+		get_tree().quit())
+	
+	Signals.debug.connect(func(is_debug):
+		visible = is_debug
+		
+		var text1 = character_selector.player_prefab.main_ability
+		var text2 = character_selector.player_prefab.passive_ability
+		
+		debug_label.text = "Debug"
+		main_ability_label.text = text1
+		passive_ability_label.text = text2)
+	
+	visible = false
+	
+	debug_label.visible = true
+	main_ability_label.visible = true
+	passive_ability_label.visible = true
+	quit_button.visible = true

@@ -29,7 +29,8 @@ func _player_entered(body : Player):
 			sprite.play("Emptying")
 	else:
 		pass
-	_stick_player(body)
+	if spilled:
+		_stick_player(body)
 	
 func _player_exited(body : Player):
 	_unstick_player(body)
@@ -41,6 +42,9 @@ func _stick_player(player : Player):
 	player_stats[player] = player.main_vars.ground_vars.speed
 	player.main_vars.ground_vars.speed = 50
 func _unstick_player(player : Player):
+	if player_stats.keys().find(player) == -1:
+		return
+	
 	player.main_vars.ground_vars.speed = player_stats[player]
 	player.main_vars.other_vars.can_switch = true
 

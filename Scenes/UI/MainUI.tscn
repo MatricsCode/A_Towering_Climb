@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bcgecunh1q8yd" path="res://Components/Resources/PlayerSource.gd" id="6_mxqpb"]
 [ext_resource type="Script" uid="uid://b0imh5jcjfvpr" path="res://Scripts/Abilitys/MainAbilities/Ram.gd" id="6_uwavw"]
 [ext_resource type="Script" uid="uid://dm3jvtcmp62ii" path="res://Scripts/Abilitys/MainAbilities/sandwich.gd" id="10_7uoew"]
+[ext_resource type="Script" uid="uid://blgp1f4rxq7ug" path="res://Scripts/UI/DebugUI.gd" id="12_tt03y"]
 
 [sub_resource type="Resource" id="Resource_upwrp"]
 script = ExtResource("6_mxqpb")
@@ -1005,6 +1006,55 @@ vignette = NodePath("Vignette")
 
 [node name="Vignette" type="TextureRect" parent="GameUI" unique_id=1396566193]
 layout_mode = 2
+
+[node name="DebugMenu" type="Control" parent="." unique_id=759007241 node_paths=PackedStringArray("character_selector", "debug_label", "main_ability_label", "passive_ability_label", "quit_button")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_tt03y")
+character_selector = NodePath("../CaracterSelectorUI")
+debug_label = NodePath("VBoxContainer/VBoxContainer/DebugLabel")
+main_ability_label = NodePath("VBoxContainer/VBoxContainer/MainAbility")
+passive_ability_label = NodePath("VBoxContainer/VBoxContainer/PassAbility")
+quit_button = NodePath("VBoxContainer/VBoxContainer/Quit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugMenu" unique_id=196672086]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugMenu/VBoxContainer" unique_id=1285584695]
+layout_mode = 2
+
+[node name="DebugLabel" type="Label" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=2106871353]
+layout_mode = 2
+theme = ExtResource("1_fr3bv")
+text = "DEBUG MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainAbility" type="Label" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=1557722329]
+layout_mode = 2
+theme = ExtResource("1_fr3bv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PassAbility" type="Label" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=1710641031]
+layout_mode = 2
+theme = ExtResource("1_fr3bv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=869933054]
+layout_mode = 2
+theme = ExtResource("1_fr3bv")
+text = "Quit"
+script = ExtResource("4_qyh0x")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
 [node name="AnimationPlayerOpen" type="AnimationPlayer" parent="." unique_id=399376621]
 libraries/ = SubResource("AnimationLibrary_ual16")
