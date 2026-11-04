@@ -54,11 +54,15 @@ func _ready():
 	for costume_button in costume_buttons:
 		costume_button.pressed.connect(func():
 			active = false
+			var keys_main = AbilitiySelector.main_abilities.keys()
+			var keys_passive = AbilitiySelector.passive_abilities.keys()
 			selected_character.main_ability = (
-				AbilitiySelector.main_abilities[AbilitiySelector.current_main_ability])
+				AbilitiySelector.main_abilities[keys_main[AbilitiySelector.current_main_ability]])
 			selected_character.passive_ability = (
-				AbilitiySelector.passive_abilities[AbilitiySelector.current_pass_ability])
+				AbilitiySelector.passive_abilities[keys_passive[AbilitiySelector.current_pass_ability]])
+			print("Dave")
 			animations.play("ToCostumes"))
+		
 	finished_button.pressed.connect(func():
 		active = true
 		animations.play("Finished")

@@ -40,8 +40,8 @@ func _on_lobby_created(connected : int, lobby_id : int) -> void:
 		Signals.host_created.emit(lobby_id)
 		current_lobby = lobby_id
 		
-		
-		Steam.setLobbyData(lobby_id, "name", "Kodumaster's lobby")
+		## Thank you Cloveian for reminding me of this :D
+		Steam.setLobbyData(lobby_id, "name", Steam.getPersonaName())
 		Steam.setLobbyJoinable(lobby_id, true)
 	
 	elif connected == Steam.RESULT_NO_CONNECTION:

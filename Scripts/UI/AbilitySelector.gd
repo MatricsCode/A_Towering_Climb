@@ -1,9 +1,12 @@
 extends MarginContainer
 
 var main_abilities = {"Ram" : "res://Scripts/Abilitys/MainAbilities/Ram.gd",
-	}
+	"Dummy" : "res://Scripts/Abilitys/SecondaryAbilities/SkyLiftKey.gd",
+	"Dummy2" : "res://Scripts/Abilitys/SecondaryAbilities/SkyLiftKey.gd"}
 var passive_abilities = {"Glide" : "res://Scripts/Abilitys/SecondaryAbilities/Glide.gd", 
-	"DrumKey" : "res://Scripts/Abilitys/SecondaryAbilities/DrumKey.gd"}
+	"DrumKey" : "res://Scripts/Abilitys/SecondaryAbilities/DrumKey.gd",
+	"Dummy" : "res://Scripts/Abilitys/SecondaryAbilities/SkyLiftKey.gd",
+	"Dummy2" : "res://Scripts/Abilitys/SecondaryAbilities/SkyLiftKey.gd"}
 
 var current_main_ability := 0
 var current_pass_ability := 0
