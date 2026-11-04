@@ -24,7 +24,7 @@ func _ready():
 			return false
 	
 	area.body_entered.connect(func(body : Node):
-		if !body.is_class("Playe"):
+		if !body.is_class("Player"):
 			return
 		
 		elif check.call(body):
