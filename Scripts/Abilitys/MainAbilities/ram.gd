@@ -38,6 +38,9 @@ func _physics_process(delta):
 	elif player.current_state == activation_state or player.current_state == player.States.ABILITY:
 		current_state = true
 	
+	if current_state and !did_switch:
+		return
+	
 	if Input.is_action_pressed("Ability") and !active:
 		_switch_to_state()
 	

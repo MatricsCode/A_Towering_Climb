@@ -6,12 +6,14 @@ class_name Ability
 @export var sprite : AnimatedSprite2D
 @export var detectors : Node2D
 
-var activation_state = 0
+var activation_state := 0
 var current_state := false
 var active := false
+var did_switch := false
 
 func _switch_to_state(overide := true, new_state := 0, additional := ""):
 	_reset_vars()
+	did_switch = overide
 	active = overide
 	if overide:
 		player._switch_ability(player.States.ABILITY, additional)
