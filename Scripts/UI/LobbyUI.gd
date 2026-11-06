@@ -151,7 +151,7 @@ func _left_lobby(_lobby_id : int):
 	lobby_select_ui.visible = true
 	lobby_main_ui.visible = false
 
-func _game_started(_ID):
+func _game_started():
 	visible = false
-func _game_stopped(_ID):
+func _game_stopped():
 	visible = false

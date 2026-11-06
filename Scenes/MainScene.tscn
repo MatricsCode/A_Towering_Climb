@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ya3pjcvr6pbw" path="res://Scripts/MainScene/MainGameScene.gd" id="1_7rqgy"]
 [ext_resource type="PackedScene" uid="uid://cbnyp3hyfqj53" path="res://Scenes/Elements/Background.tscn" id="2_qxria"]
-[ext_resource type="PackedScene" uid="uid://cefq6hcwel7wc" path="res://Scenes/Lobby/Lobby.tscn" id="5_qxria"]
 
 [node name="Main" type="Node2D" unique_id=1591334068 node_paths=PackedStringArray("player_placements")]
 script = ExtResource("1_7rqgy")
@@ -21,8 +20,6 @@ spawn_path = NodePath("..")
 [node name="Obstacles" type="Node2D" parent="." unique_id=1923602623]
 
 [node name="POI" type="Node2D" parent="." unique_id=1937250899]
-
-[node name="Lobby" parent="." unique_id=1207337759 instance=ExtResource("5_qxria")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1756513305]
 position = Vector2(-119, -1062)

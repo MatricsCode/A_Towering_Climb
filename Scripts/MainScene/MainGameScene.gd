@@ -1,23 +1,33 @@
 extends Node
 
 const PLAYER = preload("uid://c2kbb3vdndd4g")
+const LOBBY = preload("uid://cefq6hcwel7wc")
 
 var levels = [preload("uid://cn8yrub2tv3vi")] #[preload("uid://bb64cr50jmhs8"),
 	#preload("uid://c04puj7j1jrp"),
 	#preload("uid://cn8yrub2tv3vi"),]
 
 var current_level = null
+var lobby
 
 @export var player_placements : Node2D
 
 func _ready():
+	lobby = LOBBY.instantiate()
+	add_child(lobby)
+	
 	Signals.lobby_start_game.connect(_level_select)
+	Signals.lobby_finished_game.connect(func():
+		lobby = LOBBY.instantiate()
+		add_child(lobby))
 	#if Networking.peer.get_unique_id() == Steam.getLobbyOwner(Networking.current_lobby):
 	#Signals.lobby_start_game.connect(_spawn_players)
 	await get_tree().create_timer(0.1).timeout
 	_spawn_players()
+	move_child(player_placements, get_child_count()-1)
 
 func _level_select():
+	lobby.queue_free()
 	if current_level != null:
 		current_level.queue_free()
 	
@@ -25,6 +35,7 @@ func _level_select():
 	current_level = level_number.instantiate()
 	
 	add_child(current_level)
+	move_child(player_placements, get_child_count()-1)
 
 func _spawn_players():
 	var _owner = Steam.getLobbyOwner(Networking.current_lobby)

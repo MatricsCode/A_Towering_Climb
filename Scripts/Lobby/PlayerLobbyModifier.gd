@@ -7,8 +7,18 @@ var label : Label
 var ready_check : Sprite2D
 
 var is_ready := false
+var active = true
 
 func _ready():
+	Signals.lobby_start_game.connect(func():
+		active = false
+		is_ready = false
+		ready_check.visible = false)
+	Signals.lobby_finished_game.connect(func():
+		active = true
+		is_ready = false
+		ready_check.visible = false)
+	
 	player = get_parent()
 	label = player.steam_name
 	
@@ -24,6 +34,9 @@ func _ready():
 	ready_check.visible = is_ready
 
 func _physics_process(delta):
+	if !active:
+		return
+	
 	if Input.is_action_just_pressed("Interact"):
 		is_ready = !is_ready
 		ready_check.visible = is_ready
