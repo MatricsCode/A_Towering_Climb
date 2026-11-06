@@ -2,7 +2,7 @@ extends Node2D
 
 signal host_created(lobby_id : int) 
 signal lobby_joined(lobby_id : int)
-signal lobby_left()
+signal lobby_left(lobby_id : int)
 
 signal lobby_match_list(lobbies : Array)
 signal request_lobby_list()

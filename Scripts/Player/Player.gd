@@ -8,6 +8,7 @@ signal start()
 @export var sprite : AnimatedSprite2D
 @export var detectors : Node2D
 @export var animations : Node
+@export var steam_name : Label
 
 @export_group("States")
 @export var ground : Node
@@ -76,6 +77,8 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	start.connect(func():
 		sprite.sprite_frames = player_source.sprite_frame
 		sprite.play("idle"))
+	
+	steam_name.text = Steam.getPersonaName()
 
 func _physics_process(_delta):  ## Runs every physics frames
 	#GlobalScript.player_attributes.get(ID)["Position"] = position

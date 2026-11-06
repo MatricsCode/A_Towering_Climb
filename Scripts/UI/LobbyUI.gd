@@ -1,17 +1,24 @@
 extends Panel
 
-@export_group("Create/Join")
+@export_group("Create")
 @export var host_button : HoverButton
 @export var join_button : HoverButton
 @export var lobby_join_id : LineEdit
 @export var quit_button : HoverButton
 
+@export_group("UI Groups")
+@export var lobby_select_ui : MarginContainer
+@export var lobby_main_ui : MarginContainer
+
 @export_group("Lobby Search")
 @export var reload_lobbies_button : HoverButton
 @export var id_button : HoverButton
 @export var lobby_search_field : LineEdit
-
 @export var lobby_list : VBoxContainer
+
+@export_group("Lobby Main")
+@export var lobby_text : Label
+@export var leave_button : HoverButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,14 +33,15 @@ func _ready():
 	join_button.pressed.connect(_join_pressed)
 	quit_button.pressed.connect(_quit_pressed)
 	
-	id_button.pressed.connect(func(): 
-		lobby_search_field.text = ""
-		_search_request(""))
+	leave_button.pressed.connect(Networking._leave_lobby)
+	
 	reload_lobbies_button.pressed.connect(func() : Signals.request_lobby_list.emit())
 	
 	lobby_search_field.text_changed.connect(_search_request)
 	
 	Signals.lobby_match_list.connect(_lobby_match_list)
+	Signals.lobby_joined.connect(_joined_lobby)
+	Signals.lobby_left.connect(_left_lobby)
 
 func _host_pressed():
 	Networking._host_lobby()
@@ -131,3 +139,12 @@ func _search_request(new_text : String):
 				#button.visible = true
 			#else:
 				#button.visible = false
+
+func _joined_lobby(lobby_id : int):
+	lobby_select_ui.visible = false
+	lobby_main_ui.visible = true
+	var text = str(Steam.getLobbyData(lobby_id, "name"), "'s lobby | ", lobby_id)
+	lobby_text.text = text
+func _left_lobby(_lobby_id : int):
+	lobby_select_ui.visible = true
+	lobby_main_ui.visible = false

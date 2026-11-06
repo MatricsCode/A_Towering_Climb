@@ -21,6 +21,7 @@ func _ready():
 	Steam.lobby_match_list.connect(func(lobbies : Array) : Signals.lobby_match_list.emit(lobbies))
 	Steam.lobby_chat_update.connect(_lobby_message_recieved)
 	
+	
 	_request_lobby_list()
 
 func _physics_process(_delta):
@@ -65,15 +66,17 @@ func _on_lobby_joined(lobby_id : int, _permissions : int, _locked : bool, respon
 		if Steam.getLobbyOwner(lobby_id) != Steam.getSteamID():
 			peer = SteamMultiplayerPeer.new()
 			peer.server_relay = true
+			peer.create_client(Steam.getLobbyOwner(lobby_id))
 			multiplayer.multiplayer_peer = peer
 			current_lobby = lobby_id
 			
-			peer.create_client(Steam.getLobbyOwner(lobby_id))
 			Signals.lobby_joined.emit(lobby_id)
 func _on_join_request(lobby_id : int, _steam_id : int) -> void:
 	Steam.joinLobby(lobby_id)
 
-func _leave_lobby(_ID):
+func _leave_lobby():
+	peer.close()
+	Signals.lobby_left.emit(current_lobby)
 	Steam.leaveLobby(current_lobby)
 
 func _request_lobby_list():
