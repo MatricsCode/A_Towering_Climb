@@ -27,3 +27,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Interact"):
 		is_ready = !is_ready
 		ready_check.visible = is_ready
+		_send_data.rpc()
+
+@rpc("any_peer", "call_local", "reliable")
+func _send_data():
+	Signals.player_ready.emit([player, is_ready, player.player_source])

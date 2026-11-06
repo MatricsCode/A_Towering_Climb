@@ -42,6 +42,8 @@ func _ready():
 	Signals.lobby_match_list.connect(_lobby_match_list)
 	Signals.lobby_joined.connect(_joined_lobby)
 	Signals.lobby_left.connect(_left_lobby)
+	Signals.lobby_start_game.connect(_game_started)
+	Signals.lobby_finished_game.connect(_game_stopped)
 
 func _host_pressed():
 	Networking._host_lobby()
@@ -148,3 +150,8 @@ func _joined_lobby(lobby_id : int):
 func _left_lobby(_lobby_id : int):
 	lobby_select_ui.visible = true
 	lobby_main_ui.visible = false
+
+func _game_started(_ID):
+	visible = false
+func _game_stopped(_ID):
+	visible = false

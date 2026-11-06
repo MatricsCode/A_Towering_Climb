@@ -11,8 +11,20 @@ var host := false
 
 func _ready():
 	Signals.request_lobby_list.connect(_request_lobby_list)
-	Signals.lobby_start_game.connect(func(): Steam.setLobbyJoinable(current_lobby, false))
+	Signals.lobby_start_game.connect(func(): 
+		Steam.setLobbyJoinable(current_lobby, false))
 	Signals.readied_peer.connect(_check_peers)
+	Signals.player_ready.connect(func(info : Array):
+		GlobalScript.players_ready[info[0]] = info[1]
+		var all_ready := true
+		
+		for i in GlobalScript.players_ready.keys():
+			if GlobalScript.players_ready[i] == false:
+				all_ready = false
+		
+		if all_ready:
+			_start_game.rpc())
+	
 	
 	Steam.initRelayNetworkAccess()
 	Steam.lobby_created.connect(_on_lobby_created)
@@ -98,24 +110,22 @@ func _lobby_message_recieved(lobby_id: int, changed_id: int, making_change_id: i
 @rpc("authority", "call_local", "reliable")
 func _start_game():
 	Signals.lobby_start_game.emit()
-
 @rpc("authority", "call_local", "reliable")
 func _peer_joined(ID : int):
 	Signals.peer_joined.emit(ID)
-
 @rpc("authority", "call_local", "reliable")
 func _peer_left(ID : int):
 	Signals.peer_left.emit(ID)
 
-@rpc("any_peer", "call_local", "reliable")
-func _peer_ready(player_prefabs : Array):
-	var ID = Steam.getSteamID()
-	
-	if player_prefabs.size() == 0:
-		GlobalScript.peers_ready.erase(ID)
-		Signals.peer_waiting.emit(ID)
-		return
-	
-	GlobalScript.peers_ready.append(ID)
-	GlobalScript.players[Steam.getSteamID()] = player_prefabs
-	Signals.readied_peer.emit(ID)
+#@rpc("any_peer", "call_local", "reliable")
+#func _peer_ready(player_prefabs : Array):
+	#var ID = Steam.getSteamID()
+	#
+	#if player_prefabs.size() == 0:
+		#GlobalScript.peers_ready.erase(ID)
+		#Signals.peer_waiting.emit(ID)
+		#return
+	#
+	#GlobalScript.peers_ready.append(ID)
+	#GlobalScript.players[Steam.getSteamID()] = player_prefabs
+	#Signals.readied_peer.emit(ID)

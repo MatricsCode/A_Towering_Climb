@@ -3,7 +3,7 @@ extends Node
 var peers : Array[int]
 
 var players : Dictionary[int , Array]
-var peers_ready : Array[int]
+var players_ready : Dictionary[Player, bool]
 
 var debug := false
 
@@ -21,7 +21,7 @@ func _physics_process(_delta):
 
 func _check_start(_ID : int):
 	if Networking.host:
-		if peers_ready.size() == int(Steam.getLobbyData(Networking.current_lobby, "player_count")) + 1:
+		if players_ready.size() == int(Steam.getLobbyData(Networking.current_lobby, "player_count")) + 1:
 			Networking._start_game.rpc()
 
 
