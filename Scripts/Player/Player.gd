@@ -56,8 +56,10 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 		else:
 			_lost())
 	
-	Signals.start_anim_finished.connect(func():
-		current_state = States.GROUND)
+	current_state = States.AIR
+	
+	#Signals.start_anim_finished.connect(func():
+		#current_state = States.GROUND)
 	
 	ground.switch.connect(_switch_ground)
 	air.switch.connect(_switch_air)

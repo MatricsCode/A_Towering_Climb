@@ -56,7 +56,6 @@ func _on_lobby_created(connected : int, lobby_id : int) -> void:
 		current_lobby = lobby_id
 		
 		Signals.lobby_joined.emit(lobby_id)
-		
 
 func _on_lobby_joined(lobby_id : int, _permissions : int, _locked : bool, response : int) -> void:
 	if response == Steam.CHAT_ROOM_ENTER_RESPONSE_SUCCESS:

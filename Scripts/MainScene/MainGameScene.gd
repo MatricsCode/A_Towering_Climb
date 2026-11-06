@@ -13,7 +13,9 @@ var current_level = null
 func _ready():
 	Signals.lobby_start_game.connect(_level_select)
 	#if Networking.peer.get_unique_id() == Steam.getLobbyOwner(Networking.current_lobby):
-	Signals.lobby_start_game.connect(_spawn_players)
+	#Signals.lobby_start_game.connect(_spawn_players)
+	await get_tree().create_timer(0.1).timeout
+	_spawn_players()
 
 func _level_select():
 	if current_level != null:
@@ -28,7 +30,7 @@ func _spawn_players():
 	var _owner = Steam.getLobbyOwner(Networking.current_lobby)
 	var _self = Steam.getSteamID()
 	
-	if Steam.getSteamID() != Steam.getLobbyOwner(Networking.current_lobby):
+	if !Networking.host and player_placements.get_child_count() > 1:#Steam.getSteamID() != Steam.getLobbyOwner(Networking.current_lobby):
 		return
 	
 	await get_tree().create_timer(0.1).timeout
@@ -38,17 +40,24 @@ func _spawn_players():
 		player_placements.get_child(1).queue_free()
 		player_count -= 1
 	
-	for player_ID in GlobalScript.players:
-		var player_data : Array
-		player_data = GlobalScript.players[player_ID]
-		for players in player_data:
-			var player = PLAYER.instantiate()
-			var player_data_2 : PlayerSource
-			player_data_2 = players
-			
-			player.player_source = player_data_2
-			
-			player_placements.add_child(player)
-			player.position.y = -10
-			
-			player.start.emit()
+	var player = PLAYER.instantiate()
+	
+	player_placements.add_child(player)
+	player.position.y = -250
+	
+	player.start.emit()
+	
+	#for player_ID in GlobalScript.players:
+		#var player_data : Array
+		#player_data = GlobalScript.players[player_ID]
+		#for players in player_data:
+			#var player = PLAYER.instantiate()
+			#var player_data_2 : PlayerSource
+			#player_data_2 = players
+			#
+			#player.player_source = player_data_2
+			#
+			#player_placements.add_child(player)
+			#player.position.y = -10
+			#
+			#player.start.emit()

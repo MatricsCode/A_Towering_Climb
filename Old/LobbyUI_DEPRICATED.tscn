@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://mxplkon28xxc" path="res://Scripts/PlayArea/level_spawner.gd" id="1_xpxjo"]
 [ext_resource type="Script" uid="uid://ceh88qybxg6et" path="res://Scripts/PlayArea/multiplayer_spawner.gd" id="2_hwg8r"]
 [ext_resource type="PackedScene" uid="uid://c2kbb3vdndd4g" path="res://Scenes/Elements/player.tscn" id="3_napme"]
-[ext_resource type="PackedScene" uid="uid://bnt4usslrchfy" path="res://Old/DEPRICATED UI.tscn" id="4_jucm2"]
+[ext_resource type="PackedScene" uid="uid://bnt4usslrchfy" path="res://Old/UI_Old/DEPRICATED UI.tscn" id="4_jucm2"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rbpu"]
 size = Vector2(4838, 20)
