@@ -2,13 +2,17 @@ extends Node
 
 const PLAYER = preload("uid://c2kbb3vdndd4g")
 const LOBBY = preload("uid://cefq6hcwel7wc")
+const CAMERA = preload("uid://n84h7ds41dm6")
 
 var levels = [preload("uid://cn8yrub2tv3vi")] #[preload("uid://bb64cr50jmhs8"),
 	#preload("uid://c04puj7j1jrp"),
 	#preload("uid://cn8yrub2tv3vi"),]
 
-var current_level = null
-var lobby
+var lobby : Node2D
+var level : Node2D
+var camera : Node2D
+
+var spawned_player_count := 0
 
 @export var player_placements : Node2D
 
@@ -27,14 +31,22 @@ func _ready():
 	move_child(player_placements, get_child_count()-1)
 
 func _level_select():
+	camera = CAMERA.instantiate()
+	#for i in GlobalScript.players:
+		#pass
+	
 	lobby.queue_free()
-	if current_level != null:
-		current_level.queue_free()
+	if level != null:
+		level.queue_free()
 	
 	var level_number = levels[randi_range(0, levels.size()-1)]
-	current_level = level_number.instantiate()
+	level = level_number.instantiate()
 	
-	add_child(current_level)
+	add_child(level)
+	
+	await player_placements._count()
+	add_child(camera)
+	
 	move_child(player_placements, get_child_count()-1)
 
 func _spawn_players():
@@ -54,9 +66,12 @@ func _spawn_players():
 	var player = PLAYER.instantiate()
 	
 	player_placements.add_child(player)
-	player.position.y = -250
 	
-	player.start.emit()
+	player.position.y = -250
+	spawned_player_count += 1
+	
+	player.start.emit(str(Steam.getPersonaName(), "_", 
+		spawned_player_count), Steam.getSteamID(), spawned_player_count)
 	
 	#for player_ID in GlobalScript.players:
 		#var player_data : Array
@@ -72,3 +87,5 @@ func _spawn_players():
 			#player.position.y = -10
 			#
 			#player.start.emit()
+func _remove_players(Number : int):
+	pass

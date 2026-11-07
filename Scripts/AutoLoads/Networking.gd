@@ -9,17 +9,22 @@ var peer : MultiplayerPeer
 
 var host := false
 
+var ready_players : Dictionary[Player, bool]
+
 func _ready():
 	Signals.request_lobby_list.connect(_request_lobby_list)
 	Signals.lobby_start_game.connect(func(): 
 		Steam.setLobbyJoinable(current_lobby, false))
-	Signals.readied_peer.connect(_check_peers)
+	#Signals.readied_peer.connect(_check_peers)
 	Signals.player_ready.connect(func(info : Array):
-		GlobalScript.players_ready[info[0]] = info[1]
+		ready_players[info[0]] = info[1]
 		var all_ready := true
 		
-		for i in GlobalScript.players_ready.keys():
-			if GlobalScript.players_ready[i] == false:
+		if ready_players.size() < int(Steam.getLobbyData(Networking.current_lobby, "player_count")) + 1:
+			return
+		
+		for i in ready_players.keys():
+			if ready_players[i] == false:
 				all_ready = false
 		
 		if all_ready:
@@ -96,9 +101,9 @@ func _request_lobby_list():
 	Steam.requestLobbyList()
 
 
-func _check_peers(_ID):
-	if host:
-		Steam.getLobbyData(current_lobby, "peers")
+#func _check_peers(_ID):
+	#if host:
+		#Steam.getLobbyData(current_lobby, "peers")
 
 
 func _lobby_message_recieved(lobby_id: int, changed_id: int, making_change_id: int, chat_state: int):

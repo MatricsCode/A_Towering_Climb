@@ -3,7 +3,6 @@ extends Node
 var peers : Array[int]
 
 var players : Dictionary[int , Array]
-var players_ready : Dictionary[Player, bool]
 
 var debug := false
 
@@ -12,17 +11,17 @@ func _ready():
 		peers.append(ID))
 	Signals.peer_left.connect(func(ID : int):
 		peers.erase(ID))
-	Signals.readied_peer.connect(_check_start)
+	#Signals.readied_peer.connect(_check_start)
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("Debug"):
 		Signals.debug.emit(!debug)
 		debug = !debug
 
-func _check_start(_ID : int):
-	if Networking.host:
-		if players_ready.size() == int(Steam.getLobbyData(Networking.current_lobby, "player_count")) + 1:
-			Networking._start_game.rpc()
+#func _check_start(_ID : int):
+	#if Networking.host:
+		#if players_ready.size() == int(Steam.getLobbyData(Networking.current_lobby, "player_count")) + 1:
+			#Networking._start_game.rpc()
 
 
 

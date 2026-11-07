@@ -34,11 +34,11 @@ var finish_tweener3 : Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	finish_tweener = get_tree().create_tween()
-	finish_tweener2 = get_tree().create_tween()
-	finish_tweener3 = get_tree().create_tween()
+	#finish_tweener = get_tree().create_tween()
+	#finish_tweener2 = get_tree().create_tween()
+	#finish_tweener3 = get_tree().create_tween()
 	
-	current_state = States.BOUNCING
+	current_state = States.FOLLOWING_PLAYER
 	
 	
 	Signals.lobby_start_game.connect(_start_animation)

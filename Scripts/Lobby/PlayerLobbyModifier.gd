@@ -24,6 +24,10 @@ func _ready():
 	
 	await get_tree().create_timer(0.1).timeout
 	
+	player.update_source.connect(func():
+		player.sprite.sprite_frames = player.player_source.sprite_frame
+		player.sprite.play("idle"))
+	
 	ready_check = Sprite2D.new()
 	
 	ready_check.texture = TEST

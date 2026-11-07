@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal start()
+signal update_source()
 
 @export_group("Nodes")
 @export var player_source : PlayerSource
@@ -43,7 +44,6 @@ var main_vars_reset = []
 
 ## ---- Functions ----
 func _ready(): ## Runns as soon as the player is loaded into the scenes
-	player_source.player_name = str(Steam.getPersonaName(), " ", player_source.player_number)
 	current_state = States.OVERIDDEN
 	
 	position.y -= 25
@@ -75,7 +75,14 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	if is_multiplayer_authority():
 		$AudioListener2D.make_current()
 	
-	start.connect(func():
+	start.connect(func(data : Array):
+		
+		player_source.player_name = data[0]
+		player_source.steam_ID = data[1]
+		player_source.player_count = data[2]
+		
+		steam_name.text = player_source.player_name
+		
 		sprite.sprite_frames = player_source.sprite_frame
 		sprite.play("idle"))
 
@@ -253,3 +260,6 @@ func _lost():
 	sprite.play("fall")
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
+
+func _update():
+	pass
