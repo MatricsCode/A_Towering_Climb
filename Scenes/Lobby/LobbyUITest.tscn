@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="2_v2adh"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="3_14wrn"]
 
-[node name="Control" type="MarginContainer" unique_id=1356395191]
+[node name="Control" type="MarginContainer" unique_id=1356395191 node_paths=PackedStringArray("host_button", "join_button", "lobby_join_id", "quit_button", "lobby_select_ui", "lobby_main_ui", "reload_lobbies_button", "lobby_search_field", "lobby_list", "lobby_text", "leave_button")]
 z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,54 +12,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_v2adh")
-
-[node name="LobbyUI" type="Panel" parent="." unique_id=446573919 node_paths=PackedStringArray("host_button", "join_button", "lobby_join_id", "quit_button", "lobby_select_ui", "lobby_main_ui", "reload_lobbies_button", "lobby_search_field", "lobby_list", "lobby_text", "leave_button")]
-layout_mode = 2
 script = ExtResource("1_ucgnx")
-host_button = NodePath("LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/Host")
-join_button = NodePath("LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/MarginContainer/VBoxContainer/Join")
-lobby_join_id = NodePath("LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/MarginContainer/VBoxContainer/LobbyID")
-quit_button = NodePath("LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/Quit")
-lobby_select_ui = NodePath("LobbySelect")
-lobby_main_ui = NodePath("LobbyCustom")
-reload_lobbies_button = NodePath("LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/ReloadLobbies")
-lobby_search_field = NodePath("LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/LobbyID")
-lobby_list = NodePath("LobbySelect/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer/LobbyButtonContainer")
-lobby_text = NodePath("LobbyCustom/HBoxContainer/MainButtons/Label")
-leave_button = NodePath("LobbyCustom/HBoxContainer/MainButtons/Leave")
+host_button = NodePath("LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/Host")
+join_button = NodePath("LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/MarginContainer/VBoxContainer/Join")
+lobby_join_id = NodePath("LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/MarginContainer/VBoxContainer/LobbyID")
+quit_button = NodePath("LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/Quit")
+lobby_select_ui = NodePath("LobbyUI")
+lobby_main_ui = NodePath("VBoxContainer")
+reload_lobbies_button = NodePath("LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/ReloadLobbies")
+lobby_search_field = NodePath("LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/LobbySearch")
+lobby_list = NodePath("LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer/LobbyButtonContainer")
+lobby_text = NodePath("VBoxContainer/Panel/LobbyCustom/HBoxContainer/MainButtons/LobbyName")
+leave_button = NodePath("VBoxContainer/Panel/LobbyCustom/HBoxContainer/MainButtons/Leave")
 
-[node name="LobbyCustom" type="MarginContainer" parent="LobbyUI" unique_id=511783725]
-visible = false
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 323.0
-grow_horizontal = 2
-theme = ExtResource("2_v2adh")
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 60
-
-[node name="HBoxContainer" type="HBoxContainer" parent="LobbyUI/LobbyCustom" unique_id=446661783]
+[node name="LobbyUI" type="Panel" parent="." unique_id=446573919]
 layout_mode = 2
-alignment = 1
-
-[node name="MainButtons" type="VBoxContainer" parent="LobbyUI/LobbyCustom/HBoxContainer" unique_id=167881203]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="LobbyUI/LobbyCustom/HBoxContainer/MainButtons" unique_id=1391421869]
-layout_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Leave" type="Button" parent="LobbyUI/LobbyCustom/HBoxContainer/MainButtons" unique_id=249407260]
-layout_mode = 2
-text = "Leave Lobby"
-script = ExtResource("3_14wrn")
-metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
 [node name="LobbySelect" type="MarginContainer" parent="LobbyUI" unique_id=1411237778]
 layout_mode = 1
@@ -94,7 +61,7 @@ text = "  Reload  "
 script = ExtResource("3_14wrn")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
-[node name="LobbyID" type="LineEdit" parent="LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer" unique_id=308826436]
+[node name="LobbySearch" type="LineEdit" parent="LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer" unique_id=308826436]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Lobby Name"
@@ -146,4 +113,49 @@ horizontal_scroll_mode = 0
 [node name="LobbyButtonContainer" type="VBoxContainer" parent="LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer" unique_id=1715497551]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2056996097]
+visible = false
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer" unique_id=798031800]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LobbyCustom" type="MarginContainer" parent="VBoxContainer/Panel" unique_id=511783725]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_v2adh")
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/LobbyCustom" unique_id=446661783]
+layout_mode = 2
+alignment = 1
+
+[node name="MainButtons" type="VBoxContainer" parent="VBoxContainer/Panel/LobbyCustom/HBoxContainer" unique_id=167881203]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LobbyName" type="LineEdit" parent="VBoxContainer/Panel/LobbyCustom/HBoxContainer/MainButtons" unique_id=969545773]
+layout_mode = 2
+editable = false
+expand_to_text_length = true
+
+[node name="Leave" type="Button" parent="VBoxContainer/Panel/LobbyCustom/HBoxContainer/MainButtons" unique_id=249407260]
+layout_mode = 2
+text = "Leave Lobby"
+script = ExtResource("3_14wrn")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1389954034]
+layout_mode = 2
 size_flags_vertical = 3

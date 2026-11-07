@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ya3pjcvr6pbw" path="res://Scripts/MainScene/MainGameScene.gd" id="1_7rqgy"]
 [ext_resource type="PackedScene" uid="uid://cbnyp3hyfqj53" path="res://Scenes/Elements/Background.tscn" id="2_qxria"]
+[ext_resource type="PackedScene" uid="uid://cam0eoq23msfi" path="res://Scenes/Lobby/LobbyUITest.tscn" id="3_nhkr4"]
 
 [node name="Main" type="Node2D" unique_id=1591334068 node_paths=PackedStringArray("player_placements")]
 script = ExtResource("1_7rqgy")
@@ -24,3 +25,34 @@ spawn_path = NodePath("..")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1756513305]
 position = Vector2(-119, -1062)
 zoom = Vector2(0.3, 0.3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=707780783]
+
+[node name="LobbyUI" type="Control" parent="CanvasLayer" unique_id=1115386740]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="CanvasLayer/LobbyUI" unique_id=1152959425]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LobbyUI/VBoxContainer2" unique_id=1032600295]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" parent="CanvasLayer/LobbyUI/VBoxContainer2/VBoxContainer" unique_id=1356395191 instance=ExtResource("3_nhkr4")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer" type="Control" parent="CanvasLayer/LobbyUI/VBoxContainer2/VBoxContainer" unique_id=1042586298]
+custom_maximum_size = Vector2(-1, 250)
+layout_mode = 2
+size_flags_vertical = 3

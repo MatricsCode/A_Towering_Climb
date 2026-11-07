@@ -19,6 +19,7 @@ func _ready():
 		if flying and is_true:
 			_switch_to_state(false, player.States.GROUND, "Ram_Fling")
 		elif !flying and !is_true:
+			player.velocity.x = 50 * player._get_sprite_rotation()
 			_switch_to_state(false, player.States.AIR, "Ram"))
 	detectors.on_wall.connect(func(is_true : bool):
 		if !active or !is_true:

@@ -13,5 +13,5 @@ class_name PlayerSource
 
 @export_group("Multiplayer")
 @export var player_name : String
-@export var player_ID : int
+@export var player_number : int
 @export var steam_ID : int

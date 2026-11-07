@@ -43,6 +43,7 @@ var main_vars_reset = []
 
 ## ---- Functions ----
 func _ready(): ## Runns as soon as the player is loaded into the scenes
+	player_source.player_name = str(Steam.getPersonaName(), " ", player_source.player_number)
 	current_state = States.OVERIDDEN
 	
 	position.y -= 25
@@ -77,8 +78,6 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	start.connect(func():
 		sprite.sprite_frames = player_source.sprite_frame
 		sprite.play("idle"))
-	
-	steam_name.text = Steam.getPersonaName()
 
 func _physics_process(_delta):  ## Runs every physics frames
 	#GlobalScript.player_attributes.get(ID)["Position"] = position

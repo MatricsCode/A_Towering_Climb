@@ -1,4 +1,4 @@
-extends Panel
+extends MarginContainer
 
 @export_group("Create")
 @export var host_button : HoverButton
@@ -7,17 +7,16 @@ extends Panel
 @export var quit_button : HoverButton
 
 @export_group("UI Groups")
-@export var lobby_select_ui : MarginContainer
-@export var lobby_main_ui : MarginContainer
+@export var lobby_select_ui : Panel
+@export var lobby_main_ui : VBoxContainer
 
 @export_group("Lobby Search")
 @export var reload_lobbies_button : HoverButton
-@export var id_button : HoverButton
 @export var lobby_search_field : LineEdit
 @export var lobby_list : VBoxContainer
 
 @export_group("Lobby Main")
-@export var lobby_text : Label
+@export var lobby_text : LineEdit
 @export var leave_button : HoverButton
 
 # Called when the node enters the scene tree for the first time.

@@ -2,7 +2,6 @@
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Old/Recourses/Tileset.tres" id="1_a15b7"]
 [ext_resource type="PackedScene" uid="uid://bguy4wdeg25k6" path="res://Scenes/Lobby/AbilityChanger.tscn" id="2_t6nvb"]
-[ext_resource type="PackedScene" uid="uid://cam0eoq23msfi" path="res://Scenes/Lobby/LobbyUITest.tscn" id="3_q0a3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6nvb"]
 size = Vector2(7186, 10)
@@ -27,34 +26,3 @@ limit_bottom = 50
 
 [node name="StaticBody2D" parent="." unique_id=1142489465 instance=ExtResource("2_t6nvb")]
 position = Vector2(-606, -107)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=105309622]
-
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=169301721]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1279345034]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer2" unique_id=1777832720]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control" parent="CanvasLayer/Control/VBoxContainer2/VBoxContainer" unique_id=1251614693 instance=ExtResource("3_q0a3m")]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Spacer" type="Control" parent="CanvasLayer/Control/VBoxContainer2/VBoxContainer" unique_id=818975951]
-custom_maximum_size = Vector2(-1, 250)
-layout_mode = 2
-size_flags_vertical = 3
