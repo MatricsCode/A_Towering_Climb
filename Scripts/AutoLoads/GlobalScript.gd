@@ -5,8 +5,11 @@ var peers : Array[int]
 var players : Dictionary[int , Array]
 
 var debug := false
+var can_debug := false
 
 func _ready():
+	Signals.start_anim_finished.connect(func():
+		can_debug = true)
 	Signals.peer_joined.connect(func(ID : int): 
 		peers.append(ID))
 	Signals.peer_left.connect(func(ID : int):
@@ -14,7 +17,7 @@ func _ready():
 	#Signals.readied_peer.connect(_check_start)
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("Debug"):
+	if Input.is_action_just_pressed("Debug") and can_debug:
 		Signals.debug.emit(!debug)
 		debug = !debug
 

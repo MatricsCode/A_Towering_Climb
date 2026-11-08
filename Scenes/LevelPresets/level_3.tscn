@@ -47,10 +47,10 @@ text = "[wave]Hey, your going the [color=red][shake]WRONG[/shake][/color] way
 scroll_active = false
 
 [node name="Label4" type="RichTextLabel" parent="Notes" unique_id=600358793]
-offset_left = 2604.0002
-offset_top = -3653.9998
-offset_right = 3355.1545
-offset_bottom = -3296.168
+offset_left = 2958.0002
+offset_top = -3811.0
+offset_right = 3709.1545
+offset_bottom = -3453.1682
 rotation = -0.15118332
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
@@ -62,25 +62,10 @@ text = "[tornado] [color=darkred] THIS IS YOUR FINAL WARNING, HEAD BACK OR PERIS
 scroll_active = false
 
 [node name="Label5" type="RichTextLabel" parent="Notes" unique_id=73665941]
-offset_left = -2528.9993
-offset_top = -3203.0
-offset_right = -1777.845
-offset_bottom = -2845.1682
-rotation = 0.16064431
-theme_override_font_sizes/normal_font_size = 48
-theme_override_font_sizes/bold_font_size = 48
-theme_override_font_sizes/bold_italics_font_size = 48
-theme_override_font_sizes/italics_font_size = 48
-theme_override_font_sizes/mono_font_size = 48
-bbcode_enabled = true
-text = "[tornado] [color=darkred] THIS IS YOUR FINAL WARNING, HEAD BACK OR PERISH IN THE OUT-OF-BOUNDS"
-scroll_active = false
-
-[node name="Label6" type="RichTextLabel" parent="Notes" unique_id=1526156735]
-offset_left = -2528.9993
-offset_top = -3203.0
-offset_right = -1777.845
-offset_bottom = -2845.1682
+offset_left = -2979.0002
+offset_top = -3516.0
+offset_right = -2227.846
+offset_bottom = -3158.1682
 rotation = 0.16064431
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
@@ -118,7 +103,7 @@ theme_override_font_sizes/bold_italics_font_size = 48
 theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/mono_font_size = 48
 bbcode_enabled = true
-text = "And if you don't want to fall so fast, keep holding [color=black] [wave]to glide"
+text = "And if you don't want to fall so fast, keep holding space [color=black] [wave]to glide"
 scroll_active = false
 
 [node name="Label9" type="RichTextLabel" parent="Notes" unique_id=835355952]
@@ -133,7 +118,7 @@ theme_override_font_sizes/bold_italics_font_size = 48
 theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/mono_font_size = 48
 bbcode_enabled = true
-text = "+ if you don't want to [shake] climb [/shake] all the way down here, you fall faster and don't grab onto walls if you press [color=black] S [/color] whilst falling"
+text = "if you don't want to [shake] climb [/shake] all the way down here, you fall faster and don't grab onto walls if you press [color=black] S [/color] whilst falling"
 scroll_active = false
 
 [node name="Label10" type="RichTextLabel" parent="Notes" unique_id=1169033591]

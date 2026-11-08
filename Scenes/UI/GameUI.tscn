@@ -58,12 +58,14 @@ vertical_alignment = 1
 [node name="MainAbility" type="Label" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=52606080]
 layout_mode = 2
 theme = ExtResource("3_fe2yh")
+text = "Ram (Press E)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PassAbility" type="Label" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=1203756387]
 layout_mode = 2
 theme = ExtResource("3_fe2yh")
+text = "Glide (Hold Space)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
