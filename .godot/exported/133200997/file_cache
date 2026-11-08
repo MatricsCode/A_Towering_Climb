@@ -18,9 +18,9 @@ res://Old/Recourses/Birds/White.tres::eaff494a8de000499576c0b3fbf4a59b::17934427
 res://Old/Recourses/PlayerSprites/PlayerHeadSprites/Baker HeightLeaderboard.tres::3a6c480374ce691940749722e696eff4::1793442796::res://.godot/exported/133200997/export-e83539ea9725a4bffc480f1c4d61654a-Baker HeightLeaderboard.res
 res://Old/Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres::e6f0deefd9a5da660a1cbcb75c7a9a17::1793442796::res://.godot/exported/133200997/export-5370f05fab5480c1dd4769521c465033-Climber1 HeightLeaderboard.res
 res://Old/Recourses/PlayerSprites/PlayerHeadSprites/Climber2 HeightLeaderboard.tres::b677a6e80762c3e0d58907bf76e446f0::1793442796::res://.godot/exported/133200997/export-4871c885dd3fe4e444d5dc92e341e9b2-Climber2 HeightLeaderboard.res
-res://Old/Recourses/UI/main.tres::a9d54f6dcd025cf5160a9fff67913cfd::1794124338::res://.godot/exported/133200997/export-c03cb4e6c53943a6e2a58c728dfeebbe-main.res
-res://Old/Recourses/UI/PauseBackground.tres::b7ddd2968895b870b63627edae0cc89e::1794124338::res://.godot/exported/133200997/export-af7ce43659b12f6e3d748be957d8e94f-PauseBackground.res
-res://Old/Recourses/UI/WinBackground.tres::0ecd0fbf716824378351250fe8c2ae2f::1794124338::res://.godot/exported/133200997/export-3e45a1ab54d285d1ce7a077542056894-WinBackground.res
+res://Old/Recourses/UI/main.tres::a9d54f6dcd025cf5160a9fff67913cfd::1794150233::res://.godot/exported/133200997/export-c03cb4e6c53943a6e2a58c728dfeebbe-main.res
+res://Old/Recourses/UI/PauseBackground.tres::b7ddd2968895b870b63627edae0cc89e::1794150233::res://.godot/exported/133200997/export-af7ce43659b12f6e3d748be957d8e94f-PauseBackground.res
+res://Old/Recourses/UI/WinBackground.tres::0ecd0fbf716824378351250fe8c2ae2f::1794150233::res://.godot/exported/133200997/export-3e45a1ab54d285d1ce7a077542056894-WinBackground.res
 res://Old/Recourses/Tileset.tres::ac02aa8f574d5429632bc8f45a40230d::1794146806::res://.godot/exported/133200997/export-4aadf233405e0b2639e2765bb3147e52-Tileset.res
 res://Scenes/Autoloads/GlobalScript.tscn::a8f5e830df8064986b358107c82fe842::1793979608::res://.godot/exported/133200997/export-090ac828366b0b5183604ce51ba3b5e1-GlobalScript.scn
 res://Scenes/Autoloads/Networking.tscn::f3219c9e429c627f840ff355d778497c::1794149264::res://.godot/exported/133200997/export-19785139f7225a73c44cf73a88ff9861-Networking.scn
@@ -52,7 +52,7 @@ res://Old/UI_Old/DEPRICATED UI.tscn::8aae814b1b6ba8db4010c63672a5f80c::179405428
 res://Old/LobbyUI_DEPRICATED.tscn::f2118a9f21d5ac5c4e62fd8ee6f76f25::1794054280::res://.godot/exported/133200997/export-af1edad22b378e9824bb3114ceec2d52-LobbyUI_DEPRICATED.scn
 res://Old/PlayerLobbyModifier.tscn::058151802a9e7df8ecd77df435358261::1794123360::res://.godot/exported/133200997/export-a8bd48eb5dac9ee3052363a49f174a2a-PlayerLobbyModifier.scn
 res://Scenes/Lobby/AbilityChanger.tscn::6456c15bb7e3d76ae7f0ea119a4affc3::1794054280::res://.godot/exported/133200997/export-1c58f184fe87bcfa31f7bf071236a550-AbilityChanger.scn
-res://Scenes/Lobby/Lobby.tscn::0bf678eb00d0fca325fe98179107d2ea::1794149825::res://.godot/exported/133200997/export-5327d80d5a328660180feca6306c5d2c-Lobby.scn
+res://Scenes/Lobby/Lobby.tscn::8bed294825e12b4b396f68d1eb54bd54::1794150294::res://.godot/exported/133200997/export-5327d80d5a328660180feca6306c5d2c-Lobby.scn
 res://Scenes/Lobby/PlayerLobbyModifier.tscn::74395546c10bee8265d60243b6b727d3::1794054280::res://.godot/exported/133200997/export-e42bf832a1b77b14028b652d7b4801c7-PlayerLobbyModifier.scn
 res://Scenes/UI/GameUI.tscn::59adfd2524320ad537cbd253b9e8ce61::1794148739::res://.godot/exported/133200997/export-dbb0f21a42d96b9a45d46a93b621430a-GameUI.scn
 res://Scenes/UI/LobbyUI.tscn::33dc65c9035d5f9154a75f7988851548::1794149278::res://.godot/exported/133200997/export-bcc59d3d6752924e47e8fad4c9dcfc1c-LobbyUI.scn
