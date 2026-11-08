@@ -45,6 +45,7 @@ func _level_select():
 	add_child(level)
 	
 	await player_placements._count()
+	camera.player = GlobalScript.players.get(Steam.getSteamID())[0]
 	add_child(camera)
 	
 	move_child(player_placements, get_child_count()-1)
@@ -70,8 +71,8 @@ func _spawn_players():
 	player.position.y = -250
 	spawned_player_count += 1
 	
-	player.start.emit(str(Steam.getPersonaName(), "_", 
-		spawned_player_count), Steam.getSteamID(), spawned_player_count)
+	player.start.emit([str(Steam.getPersonaName(), "_", 
+		spawned_player_count), Steam.getSteamID(), spawned_player_count])
 	
 	#for player_ID in GlobalScript.players:
 		#var player_data : Array

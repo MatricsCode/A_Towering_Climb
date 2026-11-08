@@ -21,7 +21,7 @@ func _sort(player : Player):
 	if players.has(player_source.steam_ID) == false:
 		players[player_source.steam_ID] = [player]
 	
-	var sort_players : Array[Player]
+	var sort_players : Array
 	
 	sort_players = players[player_source.steam_ID]
 	

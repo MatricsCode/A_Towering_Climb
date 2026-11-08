@@ -79,7 +79,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 		
 		player_source.player_name = data[0]
 		player_source.steam_ID = data[1]
-		player_source.player_count = data[2]
+		player_source.player_number = data[2]
 		
 		steam_name.text = player_source.player_name
 		
