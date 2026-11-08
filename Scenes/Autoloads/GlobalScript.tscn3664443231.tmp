@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://kejlp28p67mq"]
+
+[ext_resource type="Script" uid="uid://kidyfaimhvk1" path="res://Scripts/AutoLoads/GlobalScript.gd" id="1_x2ys0"]
+
+[node name="GlobalScripts" type="Node" unique_id=1020724243]
+process_mode = 3
+script = ExtResource("1_x2ys0")

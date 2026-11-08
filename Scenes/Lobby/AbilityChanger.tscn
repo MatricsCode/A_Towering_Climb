@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bguy4wdeg25k6"]
+
+[ext_resource type="Script" uid="uid://dpdi1y0ri44y8" path="res://Scripts/Lobby/MainAbilitySwitcher.gd" id="1_p5wee"]
+[ext_resource type="Texture2D" uid="uid://bh05v7h6r0rxo" path="res://Art/Markers/GaryIcon.png" id="2_i04tw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqh25"]
+
+[node name="StaticBody2D" type="Area2D" unique_id=1142489465]
+script = ExtResource("1_p5wee")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=183888929]
+texture = ExtResource("2_i04tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1468838920]
+scale = Vector2(6.194213, 6.194213)
+shape = SubResource("RectangleShape2D_hqh25")

@@ -2,12 +2,14 @@ extends CharacterBody2D
 class_name Player
 
 signal start()
+signal update_source()
 
 @export_group("Nodes")
 @export var player_source : PlayerSource
 @export var sprite : AnimatedSprite2D
 @export var detectors : Node2D
 @export var animations : Node
+@export var steam_name : Label
 
 @export_group("States")
 @export var ground : Node
@@ -42,10 +44,10 @@ var main_vars_reset = []
 
 ## ---- Functions ----
 func _ready(): ## Runns as soon as the player is loaded into the scenes
-	current_state = States.OVERIDDEN
-	
 	position.y -= 25
-	
+	Signals.start_anim_finished.connect(func():
+		current_state = States.AIR
+		position = Vector2(0,-50))
 	Signals.lobby_finished_game.connect(func(winner : Player):
 		current_state = States.PAUSED
 		velocity = Vector2.ZERO
@@ -56,8 +58,11 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 		else:
 			_lost())
 	
-	Signals.start_anim_finished.connect(func():
-		current_state = States.GROUND)
+	
+	current_state = States.AIR
+	
+	#Signals.start_anim_finished.connect(func():
+		#current_state = States.GROUND)
 	
 	ground.switch.connect(_switch_ground)
 	air.switch.connect(_switch_air)
@@ -71,7 +76,13 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	if is_multiplayer_authority():
 		$AudioListener2D.make_current()
 	
-	start.connect(func():
+	start.connect(func(data : Array = []):
+		player_source.player_name = data[0]
+		player_source.steam_ID = data[1]
+		player_source.player_number = data[2]
+		
+		steam_name.text = player_source.player_name
+		
 		sprite.sprite_frames = player_source.sprite_frame
 		sprite.play("idle"))
 
@@ -249,3 +260,6 @@ func _lost():
 	sprite.play("fall")
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
+
+func _update():
+	pass

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b8eyhse1ec3my"]
+
+[ext_resource type="Script" uid="uid://bkayxu7ycriov" path="res://Scripts/Lobby/PlayerLobbyModifier.gd" id="1_y5mg4"]
+
+[node name="PlayerLobbyModifier" type="Node2D" unique_id=1584286722]
+script = ExtResource("1_y5mg4")

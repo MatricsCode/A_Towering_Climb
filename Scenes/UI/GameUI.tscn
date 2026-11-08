@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dktmuavbo5gt4"]
+
+[ext_resource type="Script" uid="uid://djlti40nuei7s" path="res://Scripts/UI/GameUI.gd" id="1_13cgw"]
+[ext_resource type="Script" uid="uid://blgp1f4rxq7ug" path="res://Scripts/UI/DebugUI.gd" id="2_tog36"]
+[ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="3_fe2yh"]
+[ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_npa51"]
+
+[node name="GameUI" type="Control" unique_id=1762117287]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameUI" type="MarginContainer" parent="." unique_id=400834465 node_paths=PackedStringArray("vignette")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_13cgw")
+vignette = NodePath("Vignette")
+
+[node name="Vignette" type="TextureRect" parent="GameUI" unique_id=1928665089]
+layout_mode = 2
+
+[node name="DebugMenu" type="MarginContainer" parent="." unique_id=88420541 node_paths=PackedStringArray("debug_label", "main_ability_label", "passive_ability_label", "quit_button")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -778.0
+offset_bottom = -274.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_fe2yh")
+script = ExtResource("2_tog36")
+debug_label = NodePath("VBoxContainer/VBoxContainer/DebugLabel")
+main_ability_label = NodePath("VBoxContainer/VBoxContainer/MainAbility")
+passive_ability_label = NodePath("VBoxContainer/VBoxContainer/PassAbility")
+quit_button = NodePath("VBoxContainer/VBoxContainer/Quit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugMenu" unique_id=675910622]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugMenu/VBoxContainer" unique_id=1703510279]
+layout_mode = 2
+
+[node name="DebugLabel" type="Label" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=1575260578]
+layout_mode = 2
+theme = ExtResource("3_fe2yh")
+text = "DEBUG MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainAbility" type="Label" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=52606080]
+layout_mode = 2
+theme = ExtResource("3_fe2yh")
+text = "Ram (Press E)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PassAbility" type="Label" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=1203756387]
+layout_mode = 2
+theme = ExtResource("3_fe2yh")
+text = "Glide (Hold Space)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=288555332]
+layout_mode = 2
+theme = ExtResource("3_fe2yh")
+text = "Quit"
+script = ExtResource("4_npa51")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"

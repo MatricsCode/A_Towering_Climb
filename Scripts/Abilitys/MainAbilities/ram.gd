@@ -19,6 +19,7 @@ func _ready():
 		if flying and is_true:
 			_switch_to_state(false, player.States.GROUND, "Ram_Fling")
 		elif !flying and !is_true:
+			player.velocity.x = 50 * player._get_sprite_rotation()
 			_switch_to_state(false, player.States.AIR, "Ram"))
 	detectors.on_wall.connect(func(is_true : bool):
 		if !active or !is_true:
@@ -37,6 +38,9 @@ func _physics_process(delta):
 		return
 	elif player.current_state == activation_state or player.current_state == player.States.ABILITY:
 		current_state = true
+	
+	if player.current_state == player.States.ABILITY and !did_switch:
+		return
 	
 	if Input.is_action_pressed("Ability") and !active:
 		_switch_to_state()

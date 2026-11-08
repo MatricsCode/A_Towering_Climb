@@ -1,0 +1,89 @@
+[gd_scene format=4 uid="uid://cefq6hcwel7wc"]
+
+[ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Old/Recourses/Tileset.tres" id="1_a15b7"]
+[ext_resource type="PackedScene" uid="uid://bguy4wdeg25k6" path="res://Scenes/Lobby/AbilityChanger.tscn" id="2_t6nvb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6nvb"]
+size = Vector2(7186, 10)
+
+[node name="Lobby" type="Node2D" unique_id=1207337759]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=902387967]
+tile_map_data = PackedByteArray("AAD//9z/AAABAAAAAAAAANz/AAABAAAAAAABANz/AAABAAAAAAACANz/AAABAAAAAAADANz/AAABAAAAAAAEANz/AAABAAAAAAAFANz/AAABAAAAAAAGANz/AAABAAAAAAAHANz/AAABAAAAAAAIANz/AAABAAAAAAAJANz/AAABAAAAAAAKANz/AAABAAAAAAALANz/AAABAAAAAAAMANz/AAABAAAAAAANANz/AAABAAAAAAAOANz/AAABAAAAAAAPANz/AAABAAAAAAAQANz/AAABAAAAAAARANz/AAABAAAAAAASANz/AAABAAAAAAATANz/AAABAAAAAAAUANz/AAABAAAAAAAVANz/AAABAAAAAAAWANz/AAABAAAAAAAXANz/AAABAAAAAAAYANz/AAACAAAAAADn/9z/AAAAAAAAAADo/9z/AAABAAAAAADp/9z/AAABAAAAAADq/9z/AAABAAAAAADr/9z/AAABAAAAAADs/9z/AAABAAAAAADt/9z/AAABAAAAAADu/9z/AAABAAAAAADv/9z/AAABAAAAAADw/9z/AAABAAAAAADx/9z/AAABAAAAAADy/9z/AAABAAAAAADz/9z/AAABAAAAAAD0/9z/AAABAAAAAAD1/9z/AAABAAAAAAD2/9z/AAABAAAAAAD3/9z/AAABAAAAAAD4/9z/AAABAAAAAAD5/9z/AAABAAAAAAD6/9z/AAABAAAAAAD7/9z/AAABAAAAAAD8/9z/AAABAAAAAAD9/9z/AAABAAAAAAD+/9z/AAABAAAAAADn//7/AAAAAAEAAADn//3/AAAAAAEAAADn//z/AAAAAAEAAADn//v/AAAAAAEAAADn//r/AAAAAAEAAADn//n/AAAAAAEAAADn//j/AAAAAAEAAADn//f/AAAAAAEAAADn//b/AAAAAAEAAADn//X/AAAAAAEAAADn//T/AAAAAAEAAADn//P/AAAAAAEAAADn//L/AAAAAAEAAADn//H/AAAAAAEAAADn//D/AAAAAAEAAADn/+//AAAAAAEAAADn/+7/AAAAAAEAAADn/+3/AAAAAAEAAADn/+z/AAAAAAEAAADn/+v/AAAAAAEAAADn/+r/AAAAAAEAAADn/+n/AAAAAAEAAADn/+j/AAAAAAEAAADn/+f/AAAAAAEAAADn/+b/AAAAAAEAAADn/+X/AAAAAAEAAADn/+T/AAAAAAEAAADn/+P/AAAAAAEAAADn/+L/AAAAAAEAAADn/+H/AAAAAAEAAADn/+D/AAAAAAEAAADn/9//AAAAAAEAAADn/97/AAAAAAEAAADn/93/AAAAAAEAAAAYAN3/AAAAAAEAAAAYAN7/AAAAAAEAAAAYAN//AAAAAAEAAAAYAOD/AAAAAAEAAAAYAOH/AAAAAAEAAAAYAOL/AAAAAAEAAAAYAOP/AAAAAAEAAAAYAOT/AAAAAAEAAAAYAOX/AAAAAAEAAAAYAOb/AAAAAAEAAAAYAOf/AAAAAAEAAAAYAOj/AAAAAAEAAAAYAOn/AAAAAAEAAAAYAOr/AAAAAAEAAAAYAOv/AAAAAAEAAAAYAOz/AAAAAAEAAAAYAO3/AAAAAAEAAAAYAO7/AAAAAAEAAAAYAO//AAAAAAEAAAAYAPD/AAAAAAEAAAAYAPH/AAAAAAEAAAAYAPL/AAAAAAEAAAAYAPP/AAAAAAEAAAAYAPT/AAAAAAEAAAAYAPX/AAAAAAEAAAAYAPb/AAAAAAEAAAAYAPf/AAAAAAEAAAAYAPj/AAAAAAEAAAAYAPn/AAAAAAEAAAAYAPr/AAAAAAEAAAAYAPv/AAAAAAEAAAAYAPz/AAAAAAEAAAAYAP3/AAAAAAEAAAAYAP7/AAAAAAEAAAAYAP//AAAAAAEAAADn////AAAAAAEAAAA=")
+tile_set = ExtResource("1_a15b7")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=591789038]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=937546885]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_t6nvb")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1200781543]
+zoom = Vector2(0.3, 0.3)
+limit_bottom = 50
+
+[node name="StaticBody2D" parent="." unique_id=1142489465 instance=ExtResource("2_t6nvb")]
+position = Vector2(-1296, -107)
+
+[node name="Label" type="Label" parent="." unique_id=1040915005]
+offset_left = -627.9999
+offset_top = -1423.0
+offset_right = 636.0001
+offset_bottom = -1244.0
+rotation = -0.013336644
+theme_override_font_sizes/font_size = 64
+text = "This is only a preview of the actual game 
+      (Because that isn't finished yet) :D"
+
+[node name="Label2" type="RichTextLabel" parent="." unique_id=965281803]
+offset_left = -1599.0
+offset_top = -368.00003
+offset_right = -945.3839
+offset_bottom = -166.06207
+rotation = -0.123006746
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+bbcode_enabled = true
+text = "For example, this is going 
+to be where you can [color=green] [tornado] [shake] switch abilities in the future
+"
+scroll_active = false
+
+[node name="Label3" type="RichTextLabel" parent="." unique_id=795832922]
+offset_left = 906.9999
+offset_top = -686.0
+offset_right = 1626.4318
+offset_bottom = -400.45215
+rotation = 0.07810944
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+bbcode_enabled = true
+text = "When you have hosted, press [tornado] [shake] [color=black] E [/color] [/shake] [/tornado] to start
+[color=darkgray] [shake] [When you have started, press enter for \"DEV MODE\"]
+"
+scroll_active = false
+
+[node name="Label4" type="RichTextLabel" parent="." unique_id=420127111]
+offset_left = -186.00002
+offset_top = -673.0
+offset_right = 467.6161
+offset_bottom = -536.8602
+rotation = -0.03832168
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+bbcode_enabled = true
+text = "[tornado] W, A, S, D, to move
+Space to jump
+"
+scroll_active = false
