@@ -14,6 +14,12 @@ var secret : Script
 func _ready():
 	_update()
 	player.update_source.connect(_update)
+	
+	Signals.lobby_start_game.connect(func():
+		for i in get_children():
+			i.queue_free()
+		player.current_state = player.States.OVERIDDEN)
+	Signals.start_anim_finished.connect(_update)
 
 func _add_ability(script : Script, ability_name : String):
 	var ability = Ability.new()

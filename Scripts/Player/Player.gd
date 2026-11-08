@@ -44,10 +44,10 @@ var main_vars_reset = []
 
 ## ---- Functions ----
 func _ready(): ## Runns as soon as the player is loaded into the scenes
-	current_state = States.OVERIDDEN
-	
 	position.y -= 25
-	
+	Signals.start_anim_finished.connect(func():
+		current_state = States.AIR
+		position = Vector2(0,-50))
 	Signals.lobby_finished_game.connect(func(winner : Player):
 		current_state = States.PAUSED
 		velocity = Vector2.ZERO
@@ -57,6 +57,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 			_won()
 		else:
 			_lost())
+	
 	
 	current_state = States.AIR
 	
@@ -75,8 +76,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	if is_multiplayer_authority():
 		$AudioListener2D.make_current()
 	
-	start.connect(func(data : Array):
-		
+	start.connect(func(data : Array = []):
 		player_source.player_name = data[0]
 		player_source.steam_ID = data[1]
 		player_source.player_number = data[2]

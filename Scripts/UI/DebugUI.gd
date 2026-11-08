@@ -8,6 +8,8 @@ extends Control
 @export var quit_button : HoverButton
 
 func _ready():
+	visible = false
+	
 	quit_button.pressed.connect(func():
 		get_tree().quit())
 	

@@ -1,12 +1,12 @@
-res://default_bus_layout.tres::1ac8037f70c88913720e4e9a97cc6430::1793442797::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
+res://default_bus_layout.tres::a6c05cec4e19c629333f4e04b9d58094::1794124342::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
 res://Test.tscn::80b879c85d6e84be7ba32f43074bb502::1793442796::res://.godot/exported/133200997/export-424cafac01f45de89b53d7dc0c0edabc-Test.scn
-res://addons/godotsteam/editor/updater.tres::637aeb9283f9e272aa8b50fbc7530204::1793990440::res://.godot/exported/133200997/export-35e33a848e706008f264dac9266c5b83-updater.res
+res://addons/godotsteam/editor/updater.tres::637aeb9283f9e272aa8b50fbc7530204::1794147281::res://.godot/exported/133200997/export-35e33a848e706008f264dac9266c5b83-updater.res
 res://addons/godotsteam/editor/updating.tscn::77b9253b1f69aab45417892b3040735a::1793442796::res://.godot/exported/133200997/export-e143f8fa8bfc358956963f9a67c15bf3-updating.scn
 res://addons/godot_super-wakatime/api_key_prompt.tscn::e3a85f203ad4122ff9f20c8c8ea0f5db::1793442796::res://.godot/exported/133200997/export-cd8705cb5e2533bd79c64579ac674dae-api_key_prompt.scn
 res://addons/godot_super-wakatime/counter.tscn::f478b3e6b88ac4c47e300a6a312bdd33::1793442796::res://.godot/exported/133200997/export-4af6c9115c1c285af5925fa1ce6a526e-counter.scn
 res://Art/Blockade.tscn::d3cf3c9ec70646c494e1c8ca740efb01::1793442796::res://.godot/exported/133200997/export-a02199a20bee28a8aacce81f946a589b-Blockade.scn
-res://Components/SpriteFrames/Players/Baker.tres::dd62080fbca10fc39698b2504f6c8099::1793990440::res://.godot/exported/133200997/export-4164e9aa8558bcc29f9500502171d6ee-Baker.res
-res://Components/Themes/MainTheme.tres::1b01936c6076965cdbfa19c048212440::1793990440::res://.godot/exported/133200997/export-4647a3876c784400567e273b32e44f51-MainTheme.res
+res://Components/SpriteFrames/Players/Baker.tres::dd62080fbca10fc39698b2504f6c8099::1794146806::res://.godot/exported/133200997/export-4164e9aa8558bcc29f9500502171d6ee-Baker.res
+res://Components/Themes/MainTheme.tres::1b01936c6076965cdbfa19c048212440::1794146806::res://.godot/exported/133200997/export-4647a3876c784400567e273b32e44f51-MainTheme.res
 res://Old/Components/PlayerDetector/PlayerDetector.tscn::fe8111c01ba43239a4872fd0c325f136::1793442796::res://.godot/exported/133200997/export-fa548b631d39af498c289e3f3f3efdf8-PlayerDetector.scn
 res://Old/Components/PlayerMovement/PlayerMover.tscn::df43eeb1d2dfae8636621d853102de8e::1793442796::res://.godot/exported/133200997/export-b770ba368d3eb6f4a0a8684b40faba16-PlayerMover.scn
 res://Old/Components/PlayerOverider/PlayerOverider.tscn::05a85acb83da0456af9fd088ed4ab345::1793442796::res://.godot/exported/133200997/export-7f533ae4c1c5d44af96eb141ced222bc-PlayerOverider.scn
@@ -18,25 +18,20 @@ res://Old/Recourses/Birds/White.tres::eaff494a8de000499576c0b3fbf4a59b::17934427
 res://Old/Recourses/PlayerSprites/PlayerHeadSprites/Baker HeightLeaderboard.tres::3a6c480374ce691940749722e696eff4::1793442796::res://.godot/exported/133200997/export-e83539ea9725a4bffc480f1c4d61654a-Baker HeightLeaderboard.res
 res://Old/Recourses/PlayerSprites/PlayerHeadSprites/Climber1 HeightLeaderboard.tres::e6f0deefd9a5da660a1cbcb75c7a9a17::1793442796::res://.godot/exported/133200997/export-5370f05fab5480c1dd4769521c465033-Climber1 HeightLeaderboard.res
 res://Old/Recourses/PlayerSprites/PlayerHeadSprites/Climber2 HeightLeaderboard.tres::b677a6e80762c3e0d58907bf76e446f0::1793442796::res://.godot/exported/133200997/export-4871c885dd3fe4e444d5dc92e341e9b2-Climber2 HeightLeaderboard.res
-res://Old/Recourses/UI/main.tres::a9d54f6dcd025cf5160a9fff67913cfd::1793990440::res://.godot/exported/133200997/export-c03cb4e6c53943a6e2a58c728dfeebbe-main.res
-res://Old/Recourses/UI/PauseBackground.tres::b7ddd2968895b870b63627edae0cc89e::1793990440::res://.godot/exported/133200997/export-af7ce43659b12f6e3d748be957d8e94f-PauseBackground.res
-res://Old/Recourses/UI/WinBackground.tres::0ecd0fbf716824378351250fe8c2ae2f::1793990440::res://.godot/exported/133200997/export-3e45a1ab54d285d1ce7a077542056894-WinBackground.res
-res://Old/Recourses/Tileset.tres::fb08a5d44a01927f6db8a2c85438ba8c::1794052960::res://.godot/exported/133200997/export-4aadf233405e0b2639e2765bb3147e52-Tileset.res
+res://Old/Recourses/UI/main.tres::a9d54f6dcd025cf5160a9fff67913cfd::1794124338::res://.godot/exported/133200997/export-c03cb4e6c53943a6e2a58c728dfeebbe-main.res
+res://Old/Recourses/UI/PauseBackground.tres::b7ddd2968895b870b63627edae0cc89e::1794124338::res://.godot/exported/133200997/export-af7ce43659b12f6e3d748be957d8e94f-PauseBackground.res
+res://Old/Recourses/UI/WinBackground.tres::0ecd0fbf716824378351250fe8c2ae2f::1794124338::res://.godot/exported/133200997/export-3e45a1ab54d285d1ce7a077542056894-WinBackground.res
+res://Old/Recourses/Tileset.tres::ac02aa8f574d5429632bc8f45a40230d::1794146806::res://.godot/exported/133200997/export-4aadf233405e0b2639e2765bb3147e52-Tileset.res
 res://Scenes/Autoloads/GlobalScript.tscn::a8f5e830df8064986b358107c82fe842::1793979608::res://.godot/exported/133200997/export-090ac828366b0b5183604ce51ba3b5e1-GlobalScript.scn
-res://Scenes/Autoloads/Networking.tscn::f3219c9e429c627f840ff355d778497c::1793978060::res://.godot/exported/133200997/export-19785139f7225a73c44cf73a88ff9861-Networking.scn
-res://Scenes/Autoloads/Signals.tscn::a59f01e19d89694690c74613adda7713::1793980265::res://.godot/exported/133200997/export-480e9b2c9843036f5a3b60413a0a422f-Signals.scn
-res://Scenes/Camera/Camera.tscn::cb42643c5a3ee0e911965b487517a301::1793726180::res://.godot/exported/133200997/export-9f6720578f0eee6a325b269a876c960b-Camera.scn
-res://Scenes/UI/MainUI.tscn::4eeb933f01a9f67532e72191d2de77a3::1793957694::res://.godot/exported/133200997/export-8fc240e6eb8d06dcf088828399ec0a45-MainUI.scn
-res://Components/SpriteFrames/Players/Climber1.tres::d9374737ee6450b0d65825e8daf1e380::1793990440::res://.godot/exported/133200997/export-373c127e0fafb5922534f5c70e9dbc01-Climber1.res
+res://Scenes/Autoloads/Networking.tscn::f3219c9e429c627f840ff355d778497c::1794149264::res://.godot/exported/133200997/export-19785139f7225a73c44cf73a88ff9861-Networking.scn
+res://Scenes/Autoloads/Signals.tscn::a59f01e19d89694690c74613adda7713::1794066382::res://.godot/exported/133200997/export-480e9b2c9843036f5a3b60413a0a422f-Signals.scn
+res://Scenes/Camera/Camera.tscn::6801864e97a210ebb4fa0e8867c8161a::1794147327::res://.godot/exported/133200997/export-9f6720578f0eee6a325b269a876c960b-Camera.scn
+res://Components/SpriteFrames/Players/Climber1.tres::d9374737ee6450b0d65825e8daf1e380::1794146806::res://.godot/exported/133200997/export-373c127e0fafb5922534f5c70e9dbc01-Climber1.res
 res://Components/SpriteFrames/Players/Climber2.tres::b060f44eb156675aef1fb8e87b5b7b9d::1793442796::res://.godot/exported/133200997/export-613491cd0df8deaa1449c2e7f21a92b1-Climber2.res
-res://Components/SpriteFrames/IntroSpriteFrames/Baker.tres::c5bbb5c7cb8b1f42089b858f26461ef8::1793990440::res://.godot/exported/133200997/export-03ffabc9cf017fba4a271135628d2d43-Baker.res
-res://Components/SpriteFrames/IntroSpriteFrames/Climber1.tres::4ec2c4c6b0205db320c9b742cb9da29d::1793990440::res://.godot/exported/133200997/export-4c7efd490e7a897200614b9702188348-Climber1.res
+res://Components/SpriteFrames/IntroSpriteFrames/Baker.tres::c5bbb5c7cb8b1f42089b858f26461ef8::1794146806::res://.godot/exported/133200997/export-03ffabc9cf017fba4a271135628d2d43-Baker.res
+res://Components/SpriteFrames/IntroSpriteFrames/Climber1.tres::4ec2c4c6b0205db320c9b742cb9da29d::1794146806::res://.godot/exported/133200997/export-4c7efd490e7a897200614b9702188348-Climber1.res
 res://Components/SpriteFrames/IntroSpriteFrames/IntroSpriteFrames.tres::c8581c82bbfad004a32c7b2469f46659::1793442796::res://.godot/exported/133200997/export-10f7f36284c0e145130f824100368908-IntroSpriteFrames.res
 res://Components/SpriteFrames/Players/PlayerSpriteFrames.tres::cf36d6fab79f863e8d94ac673c4554e7::1793442796::res://.godot/exported/133200997/export-05ec9fc4e6eb24bfbf01fb8c6b77a3e0-PlayerSpriteFrames.res
-res://Old/CinematicCamera.tscn::74395546c10bee8265d60243b6b727d3::1794052960::res://.godot/exported/133200997/export-b06ac28451e238a85d3df4b9fd46c187-CinematicCamera.scn
-res://Old/DEPRICATED UI.tscn::8aae814b1b6ba8db4010c63672a5f80c::1794052960::res://.godot/exported/133200997/export-63c6a74e91050557ea5da82746769eae-DEPRICATED UI.scn
-res://Old/PlayArea.tscn::1138110393c287603ca3e9da271140a7::1794052960::res://.godot/exported/133200997/export-e6ab1c1985a90f9c0fb4ddf4f1f72b0a-PlayArea.scn
-res://Old/PlayerSelectorDEPRICATED.tscn::49c4b8bc685f9270d7d5f559b6c3742d::1794052960::res://.godot/exported/133200997/export-bf9f3572b0a3d0803d2b958915ab8047-PlayerSelectorDEPRICATED.scn
 res://Scenes/Elements/Interactables/Beans.tscn::5efef775d182dd94b553f39366593c8f::1793442796::res://.godot/exported/133200997/export-63ba2aeeb70dcef4a07c18dd2cd7afda-Beans.scn
 res://Scenes/Elements/Interactables/LiquidDrum.tscn::814b9faa4e7807c4bc824dda06ef2f61::1793804184::res://.godot/exported/133200997/export-e1f2378d8f20c90182aeecb23603bdf2-LiquidDrum.scn
 res://Scenes/Elements/Interactables/MovingPlatform.tscn::c956bddc159bcf637698bb91d9c43bcf::1793442796::res://.godot/exported/133200997/export-57f39515f7259e2c2e4fda4a90d2c691-MovingPlatform.scn
@@ -44,13 +39,22 @@ res://Scenes/Elements/Projectiles/Sandwich.tscn::4288b879396ba83d8dd9808676934d0
 res://Scenes/Elements/Props/Bird.tscn::d1d0f69163cd274e4b252baa44d4cf52::1793442796::res://.godot/exported/133200997/export-70ada0c4fd8effc49dac22509173627e-Bird.scn
 res://Scenes/Elements/Props/Goal.tscn::17b5bc88848f8dbf4ecb05bc3970b7c5::1793442796::res://.godot/exported/133200997/export-b23242b8b602528d15e2c6df60cca410-Goal.scn
 res://Scenes/Elements/Background.tscn::ca7c7b498f74758bca858133a70d5c96::1793442796::res://.godot/exported/133200997/export-73664d4a2fc66e991dfc03d772d5763d-Background.scn
-res://Scenes/Elements/player.tscn::05ae87b54a22b79ba04377ddf5a36205::1794052960::res://.godot/exported/133200997/export-5909786e85394c2522d6599ff52c2f2c-player.scn
+res://Scenes/Elements/player.tscn::28231ae82b02c641a1827d29aa21ff06::1794148788::res://.godot/exported/133200997/export-5909786e85394c2522d6599ff52c2f2c-player.scn
 res://Scenes/LevelPresets/Spawners/BirdSpawner.tscn::906457b1c36299015283f68abc48d47f::1793466189::res://.godot/exported/133200997/export-5b40d6e399e010736a900664fa1d5845-BirdSpawner.scn
 res://Scenes/LevelPresets/Spawners/InteractablesSpawner.tscn::b6bcb5a30b4894ffe0702666e6f4dede::1793442796::res://.godot/exported/133200997/export-5b479953d3c7bfb983188fba5feb0b31-InteractablesSpawner.scn
 res://Scenes/LevelPresets/Spawners/ProjectileSpawner.tscn::7664aa705807c27ab368a273813b0c9b::1793442796::res://.godot/exported/133200997/export-29dac5abefc56f2fa3ca7ede13d59703-ProjectileSpawner.scn
 res://Scenes/LevelPresets/level_1.tscn::f10f5d5fe0b94aa90c2cb698e2b3ff11::1793442796::res://.godot/exported/133200997/export-eee756c778d72bcf9bf33f92e5ddaaa6-level_1.scn
 res://Scenes/LevelPresets/level_2.tscn::3912b597153a3eda6e6bad42370288bd::1793442796::res://.godot/exported/133200997/export-25bfc02f549511e7d2341cf59dff8a3b-level_2.scn
-res://Scenes/LevelPresets/level_3.tscn::fbee6bc0647efb87e066462ef13fb306::1794052960::res://.godot/exported/133200997/export-df3cca2d724b094f5b48bbc10cb42016-level_3.scn
+res://Scenes/LevelPresets/level_3.tscn::630c38bcb0d753c730c26360eeb5ff02::1794054280::res://.godot/exported/133200997/export-df3cca2d724b094f5b48bbc10cb42016-level_3.scn
 res://Scenes/UI/Buttons/Button.tscn::dfc0c512991538b6666a71289ecca9a0::1793442796::res://.godot/exported/133200997/export-c086da228057c152ead0160c11aa3d0f-Button.scn
-res://Scenes/UI/PlayerSelector.tscn::234cdef02eeded0a4ec769289d7ee715::1793806587::res://.godot/exported/133200997/export-97a25d76a916eed3403e56379a201bfd-PlayerSelector.scn
-res://Scenes/MainScene.tscn::3a048a2c9ba683f2d25f1bc56d3a52c8::1794052960::res://.godot/exported/133200997/export-d70913d46bf01eab1d3098718c300f2e-MainScene.scn
+res://Scenes/MainScene.tscn::21035746b0d8e449f682e058683d5fc0::1794148500::res://.godot/exported/133200997/export-d70913d46bf01eab1d3098718c300f2e-MainScene.scn
+res://Old/UI_Old/DEPRICATED UI.tscn::8aae814b1b6ba8db4010c63672a5f80c::1794054280::res://.godot/exported/133200997/export-e14bd416b281378fca5cb46ebec5ef59-DEPRICATED UI.scn
+res://Old/LobbyUI_DEPRICATED.tscn::f2118a9f21d5ac5c4e62fd8ee6f76f25::1794054280::res://.godot/exported/133200997/export-af1edad22b378e9824bb3114ceec2d52-LobbyUI_DEPRICATED.scn
+res://Old/PlayerLobbyModifier.tscn::058151802a9e7df8ecd77df435358261::1794123360::res://.godot/exported/133200997/export-a8bd48eb5dac9ee3052363a49f174a2a-PlayerLobbyModifier.scn
+res://Scenes/Lobby/AbilityChanger.tscn::6456c15bb7e3d76ae7f0ea119a4affc3::1794054280::res://.godot/exported/133200997/export-1c58f184fe87bcfa31f7bf071236a550-AbilityChanger.scn
+res://Scenes/Lobby/Lobby.tscn::0bf678eb00d0fca325fe98179107d2ea::1794149825::res://.godot/exported/133200997/export-5327d80d5a328660180feca6306c5d2c-Lobby.scn
+res://Scenes/Lobby/PlayerLobbyModifier.tscn::74395546c10bee8265d60243b6b727d3::1794054280::res://.godot/exported/133200997/export-e42bf832a1b77b14028b652d7b4801c7-PlayerLobbyModifier.scn
+res://Scenes/UI/GameUI.tscn::59adfd2524320ad537cbd253b9e8ce61::1794148739::res://.godot/exported/133200997/export-dbb0f21a42d96b9a45d46a93b621430a-GameUI.scn
+res://Scenes/UI/LobbyUI.tscn::33dc65c9035d5f9154a75f7988851548::1794149278::res://.godot/exported/133200997/export-bcc59d3d6752924e47e8fad4c9dcfc1c-LobbyUI.scn
+res://Scenes/UI/MainUI_DEPRICATED.tscn::4eeb933f01a9f67532e72191d2de77a3::1793957694::res://.godot/exported/133200997/export-2ed2b9dd491b6495ce20939096e13686-MainUI_DEPRICATED.scn
+res://Scenes/UI/PlayerSelector_DEPRICATED.tscn::234cdef02eeded0a4ec769289d7ee715::1793806587::res://.godot/exported/133200997/export-fc6896d8b3fda54eb5b33f46184f2e04-PlayerSelector_DEPRICATED.scn

@@ -3,7 +3,7 @@ extends Node
 const LOBBY_TYPE := Steam.LobbyType.LOBBY_TYPE_PUBLIC
 const MAX_PLAYERS := 4
 
-var current_lobby : int
+var current_lobby := -1
 
 var peer : MultiplayerPeer
 
@@ -95,6 +95,7 @@ func _leave_lobby():
 	peer.close()
 	Signals.lobby_left.emit(current_lobby)
 	Steam.leaveLobby(current_lobby)
+	current_lobby = -1
 
 func _request_lobby_list():
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)

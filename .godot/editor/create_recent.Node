@@ -1,13 +1,14 @@
+RichTextLabel
+Label
+TextureRect
+MarginContainer
 LineEdit
 Control
 Panel
 VBoxContainer
-TextureRect
-Label
 HBoxContainer
 Node2D
 Node
-MarginContainer
 Container
 HoverButton
 CanvasLayer

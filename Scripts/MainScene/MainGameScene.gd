@@ -35,12 +35,15 @@ func _level_select():
 	#for i in GlobalScript.players:
 		#pass
 	
-	lobby.queue_free()
 	if level != null:
 		level.queue_free()
 	
 	var level_number = levels[randi_range(0, levels.size()-1)]
 	level = level_number.instantiate()
+	
+	Signals.vignette.emit(0.2, 1)
+	
+	await get_tree().create_timer(1.2).timeout
 	
 	add_child(level)
 	
@@ -49,6 +52,10 @@ func _level_select():
 	add_child(camera)
 	
 	move_child(player_placements, get_child_count()-1)
+	
+	Signals.start_anim_finished.emit()
+	
+	lobby.queue_free()
 
 func _spawn_players():
 	var _owner = Steam.getLobbyOwner(Networking.current_lobby)

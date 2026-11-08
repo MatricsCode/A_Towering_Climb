@@ -25,7 +25,9 @@ position = Vector2(0, 288)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=243259360]
 ignore_rotation = false
-limit_bottom = 320
+zoom = Vector2(0.6, 0.6)
+limit_top = -9999994
+limit_bottom = 326
 
 [node name="CameraSpotter" type="Area2D" parent="." unique_id=1545801254]
 collision_layer = 0

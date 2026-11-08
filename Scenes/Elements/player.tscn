@@ -205,5 +205,6 @@ grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 32
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerLobbyModifier" parent="." unique_id=1584286722 instance=ExtResource("15_xphj1")]

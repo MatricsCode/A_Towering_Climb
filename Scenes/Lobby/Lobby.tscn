@@ -26,3 +26,47 @@ limit_bottom = 50
 
 [node name="StaticBody2D" parent="." unique_id=1142489465 instance=ExtResource("2_t6nvb")]
 position = Vector2(-606, -107)
+
+[node name="Label" type="Label" parent="." unique_id=1040915005]
+offset_left = -1729.0
+offset_top = -811.00006
+offset_right = -465.0
+offset_bottom = -632.00006
+rotation = -0.013336644
+theme_override_font_sizes/font_size = 64
+text = "This is only a preview of the actual game 
+      (Because that isn't finished yet) :D"
+
+[node name="Label2" type="RichTextLabel" parent="." unique_id=965281803]
+offset_left = -909.00006
+offset_top = -368.00003
+offset_right = -255.38397
+offset_bottom = -10.168243
+rotation = -0.123006746
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+bbcode_enabled = true
+text = "For example, this is going 
+to be where you can [color=green] [tornado] [shake] switch abilities in the future
+"
+scroll_active = false
+
+[node name="Label3" type="RichTextLabel" parent="." unique_id=795832922]
+offset_left = 549.0
+offset_top = -585.99994
+offset_right = 1268.4319
+offset_bottom = -300.4521
+rotation = 0.07810944
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+bbcode_enabled = true
+text = "When you have hosted, press [tornado] [shake] [color=black] E [/color] [/shake] [/tornado] to start
+[color=darkgray] [shake] [When you have started, press enter for \"DEV MODE\"]
+"
+scroll_active = false
