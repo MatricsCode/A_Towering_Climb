@@ -20,10 +20,6 @@ collision_mask = 2
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_t6nvb")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1200781543]
-zoom = Vector2(0.5, 0.5)
-limit_bottom = 50
-
 [node name="StaticBody2D" parent="." unique_id=1142489465 instance=ExtResource("2_t6nvb")]
 position = Vector2(-795, -107)
 

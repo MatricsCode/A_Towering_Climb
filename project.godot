@@ -14,10 +14,10 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="A Towering Climb Try 2"
-run/main_scene="uid://bvgxox4xf14tm"
+config/name="A Towering Climb"
+config/version="0.5"
+run/main_scene="uid://bshrsvq4shu70"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [audio]
 

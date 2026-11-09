@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bvgxox4xf14tm"]
+
+[ext_resource type="Script" uid="uid://ya3pjcvr6pbw" path="res://Scripts/MainScene/GameScene.gd" id="1_lohlh"]
+[ext_resource type="Script" uid="uid://dty20bc2y8b1p" path="res://Scripts/MainScene/PlayerCounter.gd" id="3_x6js8"]
+[ext_resource type="PackedScene" uid="uid://dktmuavbo5gt4" path="res://Scenes/UI/GameUI.tscn" id="4_lg2j6"]
+[ext_resource type="PackedScene" uid="uid://cam0eoq23msfi" path="res://Scenes/UI/LobbyUI.tscn" id="5_y30xb"]
+
+[node name="Game" type="Node2D" unique_id=1591334068 node_paths=PackedStringArray("player_placements")]
+script = ExtResource("1_lohlh")
+player_placements = NodePath("Players")
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="." unique_id=1671365010]
+spawn_path = NodePath("..")
+
+[node name="Players" type="Node2D" parent="." unique_id=120732521]
+script = ExtResource("3_x6js8")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Players" unique_id=1970020386]
+spawn_path = NodePath("..")
+
+[node name="Obstacles" type="Node2D" parent="." unique_id=1923602623]
+
+[node name="POI" type="Node2D" parent="." unique_id=1937250899]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=707780783]
+
+[node name="GameUI" parent="CanvasLayer" unique_id=1762117287 instance=ExtResource("4_lg2j6")]
+
+[node name="LobbyUI" type="Control" parent="CanvasLayer" unique_id=1115386740]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="CanvasLayer/LobbyUI" unique_id=1152959425]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LobbyUI/VBoxContainer2" unique_id=1032600295]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" parent="CanvasLayer/LobbyUI/VBoxContainer2/VBoxContainer" unique_id=1356395191 instance=ExtResource("5_y30xb")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer" type="Control" parent="CanvasLayer/LobbyUI/VBoxContainer2/VBoxContainer" unique_id=1042586298]
+custom_maximum_size = Vector2(-1, 250)
+layout_mode = 2
+size_flags_vertical = 3

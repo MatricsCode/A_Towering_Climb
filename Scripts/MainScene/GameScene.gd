@@ -8,6 +8,8 @@ var levels = [preload("uid://cn8yrub2tv3vi")] #[preload("uid://bb64cr50jmhs8"),
 	#preload("uid://c04puj7j1jrp"),
 	#preload("uid://cn8yrub2tv3vi"),]
 
+var main := false
+
 var lobby : Node2D
 var level : Node2D
 var camera : Node2D
