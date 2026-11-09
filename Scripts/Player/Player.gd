@@ -210,7 +210,6 @@ func _switch_ability(new_state : States, additional := ""):
 		pass
 	
 	current_state = new_state
-	_switch_timeout()
 
 func _switch_timeout():
 	main_vars.other_vars.can_switch = false

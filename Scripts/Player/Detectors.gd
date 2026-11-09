@@ -79,3 +79,9 @@ func _on_edge():
 	if current_situation != is_on_edge:
 		on_edge.emit(current_situation)
 		is_on_edge = current_situation
+
+func _return_direction():
+	if left_roof.is_colliding() or  left_ground.is_colliding() or left_wall.is_colliding() or left_edge.is_colliding():
+		return -1
+	elif right_roof.is_colliding() or  right_ground.is_colliding() or right_wall.is_colliding() or right_edge.is_colliding():
+		return 1

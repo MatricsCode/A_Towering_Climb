@@ -31,6 +31,8 @@ func _physics_process(_delta):
 		current = false
 		return
 	else:
+		if player._get_sprite_rotation() != detectors._return_direction():
+			sprite.flip_h = not sprite.flip_h
 		current = true
 	
 	if sliding:
