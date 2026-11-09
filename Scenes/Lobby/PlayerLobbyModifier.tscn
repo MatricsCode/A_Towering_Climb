@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxnq6ejhtqvp2" path="res://Old/Cinematic Camera/player_ready_up.gd" id="1_idivh"]
 
+
 [sub_resource type="GDScript" id="GDScript_idivh"]
 script/source = "extends Camera2D
 

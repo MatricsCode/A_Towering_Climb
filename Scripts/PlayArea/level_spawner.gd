@@ -2,7 +2,7 @@ extends MultiplayerSpawner
 
 @export var current_level = 0
 
-var levels = [preload("res://Scenes/Levels/level_1.tscn"), preload("res://Scenes/Levels/level_2.tscn")]
+var levels = []#[preload("res://Scenes/Levels/level_1.tscn"), preload("res://Scenes/Levels/level_2.tscn")]
 
 var level_scene
 var previouse_level

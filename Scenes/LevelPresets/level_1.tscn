@@ -13,6 +13,7 @@
 
 
 
+
 [sub_resource type="Curve2D" id="Curve2D_cyadu"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -1054, -1361, 0, 0, 0, 0, -1898, -2485, 0, 0, 0, 0, -1438, -3468, 0, 0, 0, 0, -617, -4081)

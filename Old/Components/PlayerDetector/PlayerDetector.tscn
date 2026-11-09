@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cj8il6d6cwnnk" path="res://Old/Components/PlayerDetector/player_detector.gd" id="1_dcwjp"]
 
+
 [node name="PlayerDetector" type="Area2D"]
 script = ExtResource("1_dcwjp")
 

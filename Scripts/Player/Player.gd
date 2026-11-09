@@ -18,7 +18,7 @@ signal update_source()
 @export var pause : Node
 
 ## --- Enums ---
-enum States {GROUND, AIR, CLIMB, PAUSED, ABILITY, OVERIDDEN, SWITCHING}
+enum States {GROUND, AIR, CLIMB, PAUSED, ABILITY, OVERIDDEN, SWITCHING, EMPTY}
 
 ## --- Constants ---
 

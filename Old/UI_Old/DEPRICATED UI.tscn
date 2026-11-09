@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://blkue12vglqdr" path="res://Old/UI_Old/settings.gd" id="6_jdmss"]
 [ext_resource type="Script" uid="uid://cg053s8d1g1c6" path="res://Old/UI_Old/remap_menu.gd" id="7_iifq7"]
 
+
 [node name="MainUI" type="Control" unique_id=702886886]
 process_mode = 3
 layout_mode = 3

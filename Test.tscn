@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://t2ada3fb8vts" path="res://Old/wall_detectors.gd" id="3_2au82"]
 
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2au82"]
 size = Vector2(79, 150)
 
