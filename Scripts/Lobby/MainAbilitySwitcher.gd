@@ -5,7 +5,7 @@ var players = []
 const MAIN_ABILITIES = {"Ram" : preload("uid://b0imh5jcjfvpr"), 
 	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
 const PASS_ABILITIES = {"Glide" : preload("uid://d0y0w2hbe3jwq"), "DrumKey" : preload("uid://cx4jckeql12mb"), 
-"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
+	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
 
 @export_enum("Main", "Passive") var ability := 0
 
@@ -46,14 +46,18 @@ func _body_exited(body : Player):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("Interact"):
+	if Input.is_action_just_pressed("Interact") and !switching_abilities:
 		for player in players:
 			if player.player_source.steam_ID == Steam.getSteamID():
 				player.current_state = player.States.EMPTY
 				player.sprite.play("idle")
 				player.velocity = Vector2.ZERO
-				abilities.visible = true
 				switching_abilities = true
+	elif Input.is_action_just_pressed("Interact") and switching_abilities:
+		for player in players:
+			if player.player_source.steam_ID == Steam.getSteamID():
+				player.current_state = player.States.GROUND
+				switching_abilities = false
 	
 	if switching_abilities:
 		if Input.is_action_just_pressed("Left"):
