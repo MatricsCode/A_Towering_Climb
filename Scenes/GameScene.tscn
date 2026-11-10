@@ -8,6 +8,9 @@
 script = ExtResource("1_lohlh")
 player_placements = NodePath("Players")
 
+[node name="TextPopup" type="Node2D" parent="." unique_id=149112809]
+script = ExtResource("3_3mbwn")
+
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="." unique_id=1671365010]
 spawn_path = NodePath("..")
 
@@ -20,14 +23,3 @@ spawn_path = NodePath("..")
 [node name="Obstacles" type="Node2D" parent="." unique_id=1923602623]
 
 [node name="POI" type="Node2D" parent="." unique_id=1937250899]
-
-[node name="TextPopup" type="Node2D" parent="." unique_id=149112809]
-script = ExtResource("3_3mbwn")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=901404322]
-offset_right = 26.0
-offset_bottom = 40.0
-text = "Dave"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
