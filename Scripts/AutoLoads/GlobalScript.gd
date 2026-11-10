@@ -3,8 +3,6 @@ extends Node
 var peers : Array[int]
 
 var players : Dictionary[int , Array]
-var local_players : Array[Player]
-
 
 var debug := false
 var can_debug := false

@@ -44,6 +44,8 @@ var main_vars_reset = []
 
 ## ---- Functions ----
 func _ready(): ## Runns as soon as the player is loaded into the scenes
+	InputEvent.device
+	
 	position.y -= 25
 	Signals.start_anim_finished.connect(func():
 		current_state = States.AIR

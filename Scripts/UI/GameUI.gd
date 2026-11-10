@@ -19,9 +19,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	vignette_gradient.set_offset(1, vignette_gradient_offset)
-	
-	if Input.is_action_pressed("Dev1"):
-		_vignette_animation(1,1)
 
 func _vignette_texture():
 	vignette_texture = GradientTexture2D.new()

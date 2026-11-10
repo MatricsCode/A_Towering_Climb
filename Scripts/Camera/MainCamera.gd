@@ -8,12 +8,13 @@ extends Node2D
 @export var indicator_down : Node2D
 @export var indicator_left : Node2D
 @export var indicator_right : Node2D
+@export var indicator_center : Node2D
 
 @onready var cam = $Camera2D
 @onready var timer = $Timer
 
-enum States {BOUNCING, STARTING_ANIMATION, FOLLOWING_PLAYER, FINISHED, OVERIDE}
-var current_state := States.BOUNCING
+enum States {BOUNCING, STARTING_ANIMATION, FOLLOWING_PLAYER, FINISHED, OVERIDDEN}
+var current_state := States.OVERIDDEN
 
 var bouncing_time = 0
 
@@ -38,7 +39,7 @@ func _ready():
 	#finish_tweener2 = get_tree().create_tween()
 	#finish_tweener3 = get_tree().create_tween()
 	
-	current_state = States.FOLLOWING_PLAYER
+	current_state = States.OVERIDDEN
 	
 	
 	Signals.lobby_start_game.connect(_start_animation)
@@ -48,9 +49,6 @@ func _ready():
 		_finished())
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("Dev1"):
-		Signals.vignette.emit(0.5,1)
-	
 	match current_state:
 		States.BOUNCING:
 			_bouncing()
@@ -96,11 +94,11 @@ func _start_animation():
 	
 	await start_anim.finished
 	
-	if !get_parent().is_class("Player"):
-		for finding_player in player_node.get_children():
-			if finding_player is CharacterBody2D:
-				if finding_player.player_source.steam_ID == Steam.getSteamID():
-					player = finding_player
+	#if !get_parent().is_class("Player"):
+		#for finding_player in player_node.get_children():
+			#if finding_player is CharacterBody2D:
+				#if finding_player.player_source.steam_ID == Steam.getSteamID():
+					#player = finding_player
 	
 	Signals.start_anim_finished.emit()
 	current_state = States.FOLLOWING_PLAYER
@@ -113,14 +111,14 @@ func _following_player():
 	var target_y : float = 0
 	
 	if input_direction.x == 0:
-		target_x = 0
+		target_x = indicator_center.position.x
 	elif input_direction.x > 0:
 		target_x = indicator_right.position.x
 	elif input_direction.x < 0:
 		target_x = indicator_left.position.x
 	
 	if input_direction.y == 0:
-		target_y = 0
+		target_y = indicator_center.position.y
 	elif input_direction.y > 0:
 		target_y = indicator_down.position.y
 	elif input_direction.y < 0:
@@ -192,12 +190,3 @@ func _finished():
 		#_finished()
 	
 	pass
-
-func _on_camera_spotter_body_entered(body):
-	if body.is_class("CameraInteractable") and current_state == States.FOLLOWING_PLAYER:
-		current_state = States.OVERIDE
-
-
-func _on_camera_spotter_body_exited(body):
-	if body.is_class("CameraInteractable") and current_state == States.OVERIDE:
-		current_state = States.FOLLOWING_PLAYER

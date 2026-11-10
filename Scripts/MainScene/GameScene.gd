@@ -18,18 +18,23 @@ var spawned_player_count := 0
 
 @export var player_placements : Node2D
 
+var device_IDs = []
+
 func _ready():
 	lobby = LOBBY.instantiate()
 	add_child(lobby)
 	
+	Signals.lobby_joined.connect(func(_ID):
+		for i in device_IDs:
+			_spawn_players(i))
 	Signals.lobby_start_game.connect(_level_select)
 	Signals.lobby_finished_game.connect(func():
 		lobby = LOBBY.instantiate()
 		add_child(lobby))
+	
 	#if Networking.peer.get_unique_id() == Steam.getLobbyOwner(Networking.current_lobby):
 	#Signals.lobby_start_game.connect(_spawn_players)
 	await get_tree().create_timer(0.1).timeout
-	_spawn_players()
 	move_child(player_placements, get_child_count()-1)
 
 func _level_select():
@@ -59,7 +64,7 @@ func _level_select():
 	
 	lobby.queue_free()
 
-func _spawn_players():
+func _spawn_players(device_ID : int):
 	var _owner = Steam.getLobbyOwner(Networking.current_lobby)
 	var _self = Steam.getSteamID()
 	
@@ -68,20 +73,26 @@ func _spawn_players():
 	
 	await get_tree().create_timer(0.1).timeout
 	
-	var player_count = player_placements.get_children().size()
-	while player_count > 1:
-		player_placements.get_child(1).queue_free()
-		player_count -= 1
+	#var player_count = player_placements.get_children().size()
+	#while player_count > 1:
+		#player_placements.get_child(1).queue_free()
+		#player_count -= 1
 	
 	var player = PLAYER.instantiate()
 	
 	player_placements.add_child(player)
 	
 	player.position.y = -250
+	if !GlobalScript.players.has(Steam.getSteamID()):
+		GlobalScript.players[Steam.getSteamID()] = []
+	GlobalScript.players.get(Steam.getSteamID()).append(player)
+	
 	spawned_player_count += 1
 	
 	player.start.emit([str(Steam.getPersonaName(), "_", 
 		spawned_player_count), Steam.getSteamID(), spawned_player_count])
+	
+	Signals.player_created.emit(player)
 	
 	#for player_ID in GlobalScript.players:
 		#var player_data : Array
@@ -97,5 +108,11 @@ func _spawn_players():
 			#player.position.y = -10
 			#
 			#player.start.emit()
-func _remove_players(Number : int):
-	pass
+
+func _input(event):
+	print("See input")
+	
+	if device_IDs.has(event.device): 
+		pass
+	else: 
+		device_IDs.append(event.device)

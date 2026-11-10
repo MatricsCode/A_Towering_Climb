@@ -15,3 +15,4 @@ class_name PlayerSource
 @export var player_name : String
 @export var player_number : int
 @export var steam_ID : int
+@export var input_ID : int

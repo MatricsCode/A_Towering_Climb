@@ -22,7 +22,7 @@ lobby_main_ui = NodePath("VBoxContainer")
 reload_lobbies_button = NodePath("LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/ReloadLobbies")
 lobby_search_field = NodePath("LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer/LobbySearch")
 lobby_list = NodePath("LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer/LobbyButtonContainer")
-lobby_text = NodePath("VBoxContainer/Panel/LobbyCustom/HBoxContainer/MainButtons/LobbyName")
+lobby_text = NodePath("VBoxContainer/LobbyName")
 leave_button = NodePath("VBoxContainer/Panel/LobbyCustom/HBoxContainer/MainButtons/Leave")
 
 [node name="LobbyUI" type="Panel" parent="." unique_id=446573919]
@@ -119,11 +119,18 @@ size_flags_vertical = 3
 visible = false
 layout_mode = 2
 
+[node name="LobbyName" type="LineEdit" parent="VBoxContainer" unique_id=969545773]
+layout_mode = 2
+editable = false
+expand_to_text_length = true
+
 [node name="Panel" type="Panel" parent="VBoxContainer" unique_id=798031800]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="LobbyCustom" type="MarginContainer" parent="VBoxContainer/Panel" unique_id=511783725]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -145,11 +152,6 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LobbyName" type="LineEdit" parent="VBoxContainer/Panel/LobbyCustom/HBoxContainer/MainButtons" unique_id=969545773]
-layout_mode = 2
-editable = false
-expand_to_text_length = true
-
 [node name="Leave" type="Button" parent="VBoxContainer/Panel/LobbyCustom/HBoxContainer/MainButtons" unique_id=249407260]
 layout_mode = 2
 text = "Leave Lobby"
@@ -157,5 +159,6 @@ script = ExtResource("3_14wrn")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
 [node name="Control" type="Control" parent="VBoxContainer" unique_id=1389954034]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3

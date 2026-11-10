@@ -2,26 +2,28 @@
 
 [ext_resource type="Script" uid="uid://osbh2v6gcw0m" path="res://Scripts/Camera/MainCamera.gd" id="1_0jrrr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqh25"]
-
-[node name="CameraControl" type="Node2D" unique_id=445707866 node_paths=PackedStringArray("indicator_up", "indicator_down", "indicator_left", "indicator_right")]
+[node name="CameraControl" type="Node2D" unique_id=445707866 node_paths=PackedStringArray("indicator_up", "indicator_down", "indicator_left", "indicator_right", "indicator_center")]
 script = ExtResource("1_0jrrr")
 indicator_up = NodePath("Up")
 indicator_down = NodePath("Down")
 indicator_left = NodePath("Left")
 indicator_right = NodePath("Right")
+indicator_center = NodePath("Center")
 
 [node name="Up" type="Node2D" parent="." unique_id=181306014]
-position = Vector2(0, -288)
+position = Vector2(0, -400)
 
 [node name="Right" type="Node2D" parent="." unique_id=1246239565]
-position = Vector2(288, 0)
+position = Vector2(288, -96)
 
 [node name="Left" type="Node2D" parent="." unique_id=504431575]
-position = Vector2(-288, 0)
+position = Vector2(-288, -96)
 
 [node name="Down" type="Node2D" parent="." unique_id=1401159899]
-position = Vector2(0, 288)
+position = Vector2(0, 192)
+
+[node name="Center" type="Node2D" parent="." unique_id=605995402]
+position = Vector2(0, -96)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=243259360]
 ignore_rotation = false
@@ -29,17 +31,7 @@ zoom = Vector2(0.6, 0.6)
 limit_top = -9999994
 limit_bottom = 326
 
-[node name="CameraSpotter" type="Area2D" parent="." unique_id=1545801254]
-collision_layer = 0
-collision_mask = 64
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraSpotter" unique_id=1529908625]
-scale = Vector2(45.254993, 25.450438)
-shape = SubResource("RectangleShape2D_hqh25")
-
 [node name="Timer" type="Timer" parent="." unique_id=2099716972]
 wait_time = 0.5
 
-[connection signal="body_entered" from="CameraSpotter" to="." method="_on_camera_spotter_body_entered"]
-[connection signal="body_exited" from="CameraSpotter" to="." method="_on_camera_spotter_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

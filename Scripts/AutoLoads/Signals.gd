@@ -15,6 +15,8 @@ signal peer_left(ID : int)
 signal peer_joined(ID : int)
 signal peer_waiting(ID : int)
 
+signal player_created(player : Player)
+signal player_deleted(player : Player)
 signal player_ready(info : Array)
 
 signal start_anim_finished()
