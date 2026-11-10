@@ -8,8 +8,6 @@ var levels = [preload("uid://cn8yrub2tv3vi")] #[preload("uid://bb64cr50jmhs8"),
 	#preload("uid://c04puj7j1jrp"),
 	#preload("uid://cn8yrub2tv3vi"),]
 
-var main := false
-
 var lobby : Node2D
 var level : Node2D
 var camera : Node2D
@@ -24,9 +22,7 @@ func _ready():
 	lobby = LOBBY.instantiate()
 	add_child(lobby)
 	
-	Signals.lobby_joined.connect(func(_ID):
-		for i in device_IDs:
-			_spawn_players(i))
+	Signals.lobby_joined.connect(func(_ID): pass)
 	Signals.lobby_start_game.connect(_level_select)
 	Signals.lobby_finished_game.connect(func():
 		lobby = LOBBY.instantiate()
@@ -36,6 +32,10 @@ func _ready():
 	#Signals.lobby_start_game.connect(_spawn_players)
 	await get_tree().create_timer(0.1).timeout
 	move_child(player_placements, get_child_count()-1)
+
+func _physics_process(delta):
+	if Input.is_action_just_pressed("Dev1"):
+		_spawn_players(16)
 
 func _level_select():
 	camera = CAMERA.instantiate()
@@ -110,9 +110,8 @@ func _spawn_players(device_ID : int):
 			#player.start.emit()
 
 func _input(event):
-	print("See input")
-	
 	if device_IDs.has(event.device): 
 		pass
 	else: 
 		device_IDs.append(event.device)
+		_spawn_players(event.device)

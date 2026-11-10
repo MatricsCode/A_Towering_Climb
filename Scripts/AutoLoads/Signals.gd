@@ -22,8 +22,11 @@ signal player_ready(info : Array)
 signal start_anim_finished()
 
 signal vignette(trans_time : float, wait_time : float)
+signal text_popup(text : String, text_position : Vector2)
 
 signal debug(is_debug : bool)
+
+
 
 #-----------------------------------
 

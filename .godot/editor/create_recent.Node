@@ -1,14 +1,14 @@
+RichTextLabel
+Node2D
+SubViewportContainer
 Camera2D
 SubViewport
-SubViewportContainer
 HBoxContainer
 VBoxContainer
-RichTextLabel
 MarginContainer
 Label
 HoverButton
 Control
-Node2D
 TextureRect
 LineEdit
 Panel

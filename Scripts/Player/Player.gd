@@ -44,8 +44,6 @@ var main_vars_reset = []
 
 ## ---- Functions ----
 func _ready(): ## Runns as soon as the player is loaded into the scenes
-	InputEvent.device
-	
 	position.y -= 25
 	Signals.start_anim_finished.connect(func():
 		current_state = States.AIR
@@ -98,6 +96,9 @@ func _physics_process(_delta):  ## Runs every physics frames
 	
 	if not is_multiplayer_authority():
 		return ## Checks if you are this player, and grants/denies you control acordingly
+	
+	if Input.is_action_just_pressed("Dev1"):
+		Signals.text_popup.emit("[wave][color=white]Yea!", position)
 	
 	#match current_state:
 		#States.GROUND:

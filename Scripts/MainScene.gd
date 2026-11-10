@@ -40,10 +40,10 @@ func _ready():
 	viewport_1.size = screen_size
 	viewport_container_1.size = screen_size
 	
-	viewport_1.world_2d = $SubViewport.world_2d
-	viewport_2.world_2d = $SubViewport.world_2d
-	viewport_3.world_2d = $SubViewport.world_2d
-	viewport_4.world_2d = $SubViewport.world_2d
+	viewport_1.world_2d = $SubViewportContainer/SubViewport.world_2d
+	viewport_2.world_2d = $SubViewportContainer/SubViewport.world_2d
+	viewport_3.world_2d = $SubViewportContainer/SubViewport.world_2d
+	viewport_4.world_2d = $SubViewportContainer/SubViewport.world_2d
 	
 	camera1 = PLAYER_CAMERA.instantiate()
 	camera2 = PLAYER_CAMERA.instantiate()

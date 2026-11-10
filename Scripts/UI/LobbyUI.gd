@@ -43,6 +43,8 @@ func _ready():
 	Signals.lobby_left.connect(_left_lobby)
 	Signals.lobby_start_game.connect(_game_started)
 	Signals.lobby_finished_game.connect(_game_stopped)
+	
+	host_button.grab_focus()
 
 func _host_pressed():
 	Networking._host_lobby()

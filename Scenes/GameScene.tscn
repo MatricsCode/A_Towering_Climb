@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bvgxox4xf14tm"]
 
 [ext_resource type="Script" uid="uid://ya3pjcvr6pbw" path="res://Scripts/MainScene/GameScene.gd" id="1_lohlh"]
+[ext_resource type="Script" uid="uid://c3jom7j8ma0bi" path="res://Scripts/MainScene/TextPopup.gd" id="3_3mbwn"]
 [ext_resource type="Script" uid="uid://dty20bc2y8b1p" path="res://Scripts/MainScene/PlayerCounter.gd" id="3_x6js8"]
 
 [node name="Game" type="Node2D" unique_id=1591334068 node_paths=PackedStringArray("player_placements")]
@@ -19,3 +20,14 @@ spawn_path = NodePath("..")
 [node name="Obstacles" type="Node2D" parent="." unique_id=1923602623]
 
 [node name="POI" type="Node2D" parent="." unique_id=1937250899]
+
+[node name="TextPopup" type="Node2D" parent="." unique_id=149112809]
+script = ExtResource("3_3mbwn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=901404322]
+offset_right = 26.0
+offset_bottom = 40.0
+text = "Dave"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

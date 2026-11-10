@@ -65,6 +65,10 @@ func _bouncing():
 	bouncing_time += 0.01
 	cam.zoom = Vector2(1 + cos(bouncing_time/2) * 0.1, 1 + cos(bouncing_time/2) * 0.1)
 func _start_animation():
+	if player == null:
+		current_state = States.OVERIDDEN
+		return
+	
 	current_state = States.STARTING_ANIMATION
 	var start_anim : Tween
 	
