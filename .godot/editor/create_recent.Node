@@ -1,14 +1,14 @@
+HBoxContainer
+TextureRect
 RichTextLabel
 Node2D
 SubViewportContainer
 Camera2D
 SubViewport
-HBoxContainer
 VBoxContainer
 MarginContainer
 Label
 HoverButton
 Control
-TextureRect
 LineEdit
 Panel

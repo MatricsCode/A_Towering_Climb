@@ -27,45 +27,21 @@ position = Vector2(-289, -88)
 position = Vector2(-914, -524)
 ability = 1
 
-[node name="StaticBody2D3" parent="." unique_id=440555401 instance=ExtResource("2_t6nvb")]
-position = Vector2(774, -88)
-ability = 2
-
 [node name="Label" type="Label" parent="." unique_id=1040915005]
-visible = false
 offset_left = -627.9999
-offset_top = -1423.0
+offset_top = -1080.9999
 offset_right = 636.0001
-offset_bottom = -1244.0
+offset_bottom = -810.9999
 rotation = -0.013336644
 theme_override_font_sizes/font_size = 64
 text = "This is only a preview of the actual game 
       (Because that isn't finished yet) :D"
 
-[node name="Label2" type="RichTextLabel" parent="." unique_id=965281803]
-visible = false
-offset_left = -936.0
-offset_top = -571.0
-offset_right = -282.3839
-offset_bottom = -369.06204
-rotation = -0.123006746
-theme_override_font_sizes/normal_font_size = 48
-theme_override_font_sizes/bold_font_size = 48
-theme_override_font_sizes/bold_italics_font_size = 48
-theme_override_font_sizes/italics_font_size = 48
-theme_override_font_sizes/mono_font_size = 48
-bbcode_enabled = true
-text = "For example, this is going 
-to be where you can [color=green] [tornado] [shake] switch abilities in the future
-"
-scroll_active = false
-
 [node name="Label3" type="RichTextLabel" parent="." unique_id=795832922]
-visible = false
-offset_left = 906.9999
-offset_top = -686.0
-offset_right = 1626.4318
-offset_bottom = -400.45215
+offset_left = 427.00003
+offset_top = -648.0
+offset_right = 1146.4319
+offset_bottom = -362.45215
 rotation = 0.12351397
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
@@ -79,7 +55,6 @@ text = "When you have hosted, press [tornado] [shake] [color=black] E [/color] [
 scroll_active = false
 
 [node name="Label4" type="RichTextLabel" parent="." unique_id=420127111]
-visible = false
 offset_left = -186.00002
 offset_top = -673.0
 offset_right = 467.6161

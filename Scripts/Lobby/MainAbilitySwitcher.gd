@@ -7,7 +7,7 @@ const MAIN_ABILITIES = {"Ram" : preload("uid://b0imh5jcjfvpr"),
 const PASS_ABILITIES = {"Glide" : preload("uid://d0y0w2hbe3jwq"), "DrumKey" : preload("uid://cx4jckeql12mb"), 
 	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
 
-@export_enum("Main", "Passive", "ReadyUp") var ability := 0
+@export_enum("Main", "Passive") var ability := 0
 
 @export_group("UI")
 @export var UI : Control
@@ -16,6 +16,8 @@ const PASS_ABILITIES = {"Glide" : preload("uid://d0y0w2hbe3jwq"), "DrumKey" : pr
 @export var ability_label : Label
 
 var switching_abilities := false
+
+var editing_players = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,7 +49,7 @@ func _body_exited(body : Player):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	
 	
 	#if Input.is_action_just_pressed(player.inputs.interact) and !switching_abilities:
 		#for player in players:
@@ -89,3 +91,21 @@ func _return_number(starting_number : int, direction : int,  max_number : int):
 		new_number = 0
 	elif new_number < 0:
 		new_number = max_number
+
+func _new_editing_player():
+	pass
+
+func _inputs(_event):
+	var local_players = {}
+	for i in players:
+		if i.player_source.steam_ID == Steam.getSteamID():
+			local_players[i.player_source.player_number+1] = i
+	
+	if Input.is_action_just_pressed("P1_Ability") and local_players.keys().has(1):
+		editing_players.append(local_players.get(1))
+	elif Input.is_action_just_pressed("P2_Ability") and local_players.keys().has(2):
+		editing_players.append(local_players.get(2))
+	elif Input.is_action_just_pressed("P3_Ability") and local_players.keys().has(3):
+		editing_players.append(local_players.get(3))
+	elif Input.is_action_just_pressed("P4_Ability") and local_players.keys().has(4):
+		editing_players.append(local_players.get(4))

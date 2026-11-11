@@ -10,6 +10,7 @@ signal update_source()
 @export var detectors : Node2D
 @export var animations : Node
 @export var steam_name : Label
+@export var status_image : TextureRect
 
 @export_group("States")
 @export var ground : Node
@@ -283,3 +284,6 @@ func _configure_inputs():
 	for input in current_inputs:
 		var current_input = input.split("_")
 		inputs[current_input[1]] = input
+
+func _status_effect_pic(image : Texture2D = null):
+	status_image.texture = image
