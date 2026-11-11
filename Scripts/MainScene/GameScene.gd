@@ -35,7 +35,7 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("Dev1"):
-		_spawn_players(16)
+		_spawn_players()
 
 func _level_select():
 	camera = CAMERA.instantiate()
@@ -64,7 +64,7 @@ func _level_select():
 	
 	lobby.queue_free()
 
-func _spawn_players(device_ID : int):
+func _spawn_players():
 	var _owner = Steam.getLobbyOwner(Networking.current_lobby)
 	var _self = Steam.getSteamID()
 	
@@ -108,10 +108,3 @@ func _spawn_players(device_ID : int):
 			#player.position.y = -10
 			#
 			#player.start.emit()
-
-func _input(event):
-	if device_IDs.has(event.device): 
-		pass
-	else: 
-		device_IDs.append(event.device)
-		_spawn_players(event.device)

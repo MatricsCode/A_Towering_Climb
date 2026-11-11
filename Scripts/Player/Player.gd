@@ -277,7 +277,6 @@ func _configure_inputs():
 	var current_inputs = []
 	
 	for input in all_inputs:
-		print(input)
 		if input.contains(search_for):
 			current_inputs.append(input)
 	

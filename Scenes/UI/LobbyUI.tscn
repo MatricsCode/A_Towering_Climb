@@ -66,6 +66,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Lobby Name"
 alignment = 1
+expand_to_text_length = true
 
 [node name="Host" type="Button" parent="LobbyUI/LobbySelect/HBoxContainer/LobbiesSelector/MainButtons/VBoxContainer" unique_id=725215538]
 layout_mode = 2
@@ -121,6 +122,7 @@ layout_mode = 2
 
 [node name="LobbyName" type="LineEdit" parent="VBoxContainer" unique_id=969545773]
 layout_mode = 2
+alignment = 1
 editable = false
 expand_to_text_length = true
 

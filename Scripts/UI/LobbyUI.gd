@@ -34,7 +34,9 @@ func _ready():
 	
 	leave_button.pressed.connect(Networking._leave_lobby)
 	
-	reload_lobbies_button.pressed.connect(func() : Signals.request_lobby_list.emit())
+	reload_lobbies_button.pressed.connect(func() : 
+		Signals.request_lobby_list.emit()
+		lobby_search_field.text = "")
 	
 	lobby_search_field.text_changed.connect(_search_request)
 	
@@ -120,8 +122,6 @@ func _search_request(new_text : String):
 			button.visible = true
 		else:
 			button.visible = false
-	
-	lobby_search_field.text = ""
 	
 	#for button in lobby_list.get_children():
 		#if button.name.find(lobby_id) != -1 and lobby_id != null:

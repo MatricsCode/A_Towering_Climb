@@ -9,6 +9,7 @@ script = ExtResource("1_lohlh")
 player_placements = NodePath("Players")
 
 [node name="TextPopup" type="Node2D" parent="." unique_id=149112809]
+visible = false
 script = ExtResource("3_3mbwn")
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="." unique_id=1671365010]

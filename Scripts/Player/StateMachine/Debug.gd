@@ -22,7 +22,7 @@ func _physics_process(delta):
 	_debug()
 
 func _debug():
-	var input_vector := Input.get_vector("Left", "Right", "Up", "Down")
+	var input_vector := Input.get_vector(player.inputs.Left, player.inputs.Right, player.inputs.Up, player.inputs.Down)
 	
 	if input_vector.y == 1:
 		sprite.flip_v = true
