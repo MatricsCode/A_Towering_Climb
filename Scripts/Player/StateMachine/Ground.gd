@@ -17,6 +17,8 @@ var coyote_timer : Timer
 var current := false
 
 func _ready():
+	await player.start
+	
 	detectors.on_ground.connect(func(is_true):
 		if !current or is_true:
 			return
@@ -45,11 +47,11 @@ func _ground():
 	if sprite.frame == 1 or sprite.frame == 5:
 		player._play_sound(WALK_SFX)
 	
-	if Input.is_action_pressed("Jump"):
+	if Input.is_action_pressed(player.inputs.Jump):
 		switch.emit(player.States.AIR, "Jump")
 
 func _move():
-	var direction = Input.get_axis("Left", "Right")
+	var direction = Input.get_axis(player.inputs.Left, player.inputs.Right)
 	if direction != 0:
 		player.velocity.x = player.main_vars.ground_vars.speed * direction
 	else:

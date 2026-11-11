@@ -27,11 +27,11 @@ func _physics_process(_delta):
 	if player.velocity.y < min_gliding_speed:
 		return
 	
-	if !active and Input.is_action_pressed("Jump"):
+	if !active and Input.is_action_pressed(player.inputs.Jump):
 		player._reset_main_vars()
 		_switch_to_state()
 	
-	if Input.is_action_just_released("Jump"):
+	if Input.is_action_just_released(player.inputs.Jump):
 		player.air.fall_speed = 500
 		player.main_vars.air_vars.gravity = 500.0
 		player.main_vars.air_vars.gravity_increase = 5.0
@@ -51,7 +51,7 @@ func _physics_process(_delta):
 
 func _glide():
 	var air_movement = func air_movement():
-		var direction = Input.get_axis("Left", "Right")
+		var direction = Input.get_axis(player.inputs.Left, player.inputs.Right)
 		
 		if (direction == player.main_vars.air_vars.movement_direction and 
 			player.main_vars.air_vars.movement_direction != 0 and 

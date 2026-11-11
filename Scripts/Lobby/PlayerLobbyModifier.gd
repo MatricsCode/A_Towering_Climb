@@ -41,7 +41,7 @@ func _physics_process(delta):
 	if !active:
 		return
 	
-	if Input.is_action_just_pressed("Interact") and Networking.current_lobby != -1:
+	if Input.is_action_just_pressed(player.inputs.Interact) and Networking.current_lobby != -1:
 		is_ready = !is_ready
 		ready_check.visible = is_ready
 		_send_data.rpc()

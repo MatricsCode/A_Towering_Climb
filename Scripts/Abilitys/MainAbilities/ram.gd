@@ -42,10 +42,10 @@ func _physics_process(delta):
 	if player.current_state == player.States.ABILITY and !did_switch:
 		return
 	
-	if Input.is_action_pressed("Ability") and !active:
+	if Input.is_action_pressed(player.inputs.Ability) and !active:
 		_switch_to_state()
 	
-	elif Input.is_action_just_released("Ability") and active and !flying:
+	elif Input.is_action_just_released(player.inputs.Ability) and active and !flying:
 		_switch_to_state(false, player.States.GROUND, "Ram")
 	
 	if active and !flying:

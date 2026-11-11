@@ -13,6 +13,8 @@ var current := false
 var sliding := false
 
 func _ready():
+	await player.start
+	
 	detectors.on_ground.connect(func(on_ground):
 		if !current or !on_ground:
 			return
@@ -45,7 +47,7 @@ func _physics_process(_delta):
 func _climb():
 	## All of the different actions possible in the current state go here
 	#region Main
-	var direction = Input.get_axis("Up", "Down") ## Accesses the current input
+	var direction = Input.get_axis(player.inputs.Up, player.inputs.Down) ## Accesses the current input
 	
 	if direction != 0:
 		player.velocity.y = player.main_vars.climbing_vars.climbing_speed * direction
@@ -65,7 +67,7 @@ func _climb():
 	#if not player.is_on_wall_only():
 		#switch.emit(player.States.GROUND, "LedgeClimb")
 	#
-	if Input.is_action_pressed("Jump"):
+	if Input.is_action_pressed(player.inputs.Jump):
 		switch.emit(player.States.AIR, "Jump")
 	#
 	#if player.is_on_floor():

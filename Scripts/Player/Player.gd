@@ -46,6 +46,8 @@ var inputs = {}
 
 ## ---- Functions ----
 func _ready(): ## Runns as soon as the player is loaded into the scenes
+	_configure_inputs()
+	
 	position.y -= 25
 	Signals.start_anim_finished.connect(func():
 		current_state = States.AIR
@@ -87,8 +89,6 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 		
 		sprite.sprite_frames = player_source.sprite_frame
 		sprite.play("idle"))
-	
-	_configure_inputs()
 
 func _physics_process(_delta):  ## Runs every physics frames
 	#GlobalScript.player_attributes.get(ID)["Position"] = position
@@ -272,11 +272,12 @@ func _update():
 
 func _configure_inputs():
 	var all_inputs = InputMap.get_actions()
-	var search_for = str("P", player_source.player_number, "_")
+	var search_for = str("P", player_source.player_number+1, "_")
 	
 	var current_inputs = []
 	
 	for input in all_inputs:
+		print(input)
 		if input.contains(search_for):
 			current_inputs.append(input)
 	

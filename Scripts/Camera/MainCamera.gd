@@ -109,7 +109,8 @@ func _start_animation():
 func _following_player():
 	position = player.position
 	
-	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
+	var input_direction = Input.get_vector(player.inputs.Left, 
+		player.inputs.Right, player.inputs.Up, player.inputs.Down)
 	
 	var target_x : float = 0
 	var target_y : float = 0

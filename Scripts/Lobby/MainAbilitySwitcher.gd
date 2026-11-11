@@ -46,18 +46,20 @@ func _body_exited(body : Player):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("Interact") and !switching_abilities:
-		for player in players:
-			if player.player_source.steam_ID == Steam.getSteamID():
-				player.current_state = player.States.EMPTY
-				player.sprite.play("idle")
-				player.velocity = Vector2.ZERO
-				switching_abilities = true
-	elif Input.is_action_just_pressed("Interact") and switching_abilities:
-		for player in players:
-			if player.player_source.steam_ID == Steam.getSteamID():
-				player.current_state = player.States.GROUND
-				switching_abilities = false
+	pass
+	
+	#if Input.is_action_just_pressed(player.inputs.interact) and !switching_abilities:
+		#for player in players:
+			#if player.player_source.steam_ID == Steam.getSteamID():
+				#player.current_state = player.States.EMPTY
+				#player.sprite.play("idle")
+				#player.velocity = Vector2.ZERO
+				#switching_abilities = true
+	#elif Input.is_action_just_pressed(player.inputs.interact) and switching_abilities:
+		#for player in players:
+			#if player.player_source.steam_ID == Steam.getSteamID():
+				#player.current_state = player.States.GROUND
+				#switching_abilities = false
 	
 	if switching_abilities:
 		if Input.is_action_just_pressed("Left"):

@@ -17,6 +17,8 @@ var current := false
 var hit_head := false
 
 func _ready():
+	await player.start
+	
 	detectors.on_ground.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
@@ -24,7 +26,7 @@ func _ready():
 		fall_speed = 25
 		hit_head = false)
 	detectors.on_edge.connect(func(is_true : bool):
-		if !current or !is_true or Input.is_action_pressed("Down"):
+		if !current or !is_true or Input.is_action_pressed(player.inputs.Down):
 			return
 		var count = 0
 		while !detectors.is_on_edge and count < 10:
@@ -54,11 +56,11 @@ func _physics_process(_delta):
 	elif player.current_state == player.States.AIR:
 		current = true
 	
-	if Input.is_action_pressed("Jump") and !coyote_timer.is_stopped():
+	if Input.is_action_pressed(player.inputs.Jump) and !coyote_timer.is_stopped():
 		coyote_timer.stop()
 		_jump()
 	
-	if Input.is_action_just_released("Down") and detectors.is_on_edge:
+	if Input.is_action_just_released(player.inputs.Down) and detectors.is_on_edge:
 		
 		switch.emit(player.States.CLIMB, "WallHit", fall_speed)
 		fall_speed = 25
@@ -69,7 +71,7 @@ func _physics_process(_delta):
 
 func _air():
 	var air_movement = func air_movement():
-		var direction = Input.get_axis("Left", "Right")
+		var direction = Input.get_axis(player.inputs.Left, player.inputs.Right)
 		
 		if (direction == player.main_vars.air_vars.movement_direction and 
 			player.main_vars.air_vars.movement_direction != 0 and 
@@ -88,7 +90,7 @@ func _air():
 			fall_speed += player.main_vars.air_vars.gravity
 			player.main_vars.air_vars.gravity += player.main_vars.air_vars.gravity_increase
 		
-		if Input.is_action_pressed("Down"):
+		if Input.is_action_pressed(player.inputs.Interact):
 			fall_speed += player.main_vars.air_vars.gravity
 		
 		if fall_speed > -150 and fall_speed < 0:
@@ -106,7 +108,7 @@ func _air():
 func _coyote_time():
 	coyote_timer.start()
 func _variable_jump():
-	if Input.is_action_just_released("Jump"):
+	if Input.is_action_just_released(player.inputs.Jump):
 		player.main_vars.air_vars.gravity_increase += 10
 
 func _jump(climbing : bool = false):
