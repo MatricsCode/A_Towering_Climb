@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjg64eyyotllh"
-path="res://.godot/imported/Sandwich1.png-fe55bb017eff5864fa3ab5fb70d2fe8e.ctex"
+uid="uid://b7pr8b6dvxdb2"
+path="res://.godot/imported/Sandwich2.png-4c0c7f7fabfac278adc14a7daea02971.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sandwich/Sandwich1.png"
-dest_files=["res://.godot/imported/Sandwich1.png-fe55bb017eff5864fa3ab5fb70d2fe8e.ctex"]
+source_file="res://Art/Sandwich/Sandwich/Sandwich2.png"
+dest_files=["res://.godot/imported/Sandwich2.png-4c0c7f7fabfac278adc14a7daea02971.ctex"]
 
 [params]
 

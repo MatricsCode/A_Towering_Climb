@@ -2,9 +2,38 @@
 
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Old/Recourses/Tileset.tres" id="1_a15b7"]
 [ext_resource type="PackedScene" uid="uid://bguy4wdeg25k6" path="res://Scenes/Lobby/AbilityChanger.tscn" id="2_t6nvb"]
+[ext_resource type="Texture2D" uid="uid://cjg64eyyotllh" path="res://Art/Sandwich/Sandwich/Sandwich1.png" id="3_dy3e7"]
+[ext_resource type="Script" uid="uid://mu3t7gesquvk" path="res://Scripts/Lobby/ReadyUpArea.gd" id="3_qy7bc"]
+[ext_resource type="Texture2D" uid="uid://840aay6lblgc" path="res://Art/Markers/Test.png" id="4_2dfve"]
+[ext_resource type="Texture2D" uid="uid://b7pr8b6dvxdb2" path="res://Art/Sandwich/Sandwich/Sandwich2.png" id="4_qy7bc"]
+[ext_resource type="Texture2D" uid="uid://dah4htacvndyf" path="res://Art/Sandwich/Sandwich/Sandwich3.png" id="5_2dfve"]
+[ext_resource type="Texture2D" uid="uid://ucstx68cn55j" path="res://Art/Sandwich/Sandwich/Sandwich4.png" id="6_1pw17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6nvb"]
 size = Vector2(7186, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aghgu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dy3e7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qy7bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2dfve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1pw17")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqh25"]
+radius = 88.005684
 
 [node name="Lobby" type="Node2D" unique_id=1207337759]
 
@@ -70,3 +99,33 @@ text = "[tornado] W, A, S, D, to move
 Space to jump
 "
 scroll_active = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=981998392]
+position = Vector2(964, -117)
+collision_layer = 0
+script = ExtResource("3_qy7bc")
+TEST = ExtResource("4_2dfve")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1460861219]
+position = Vector2(65, 15)
+rotation = -0.0040706396
+sprite_frames = SubResource("SpriteFrames_aghgu")
+frame_progress = 0.6158679
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Area2D" unique_id=521726469]
+position = Vector2(-62, 44)
+rotation = -0.27104655
+sprite_frames = SubResource("SpriteFrames_aghgu")
+frame_progress = 0.4474851
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Area2D" unique_id=1258685471]
+position = Vector2(-7, -63)
+rotation = 0.16900739
+sprite_frames = SubResource("SpriteFrames_aghgu")
+frame_progress = 0.8189457
+speed_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1417673844]
+shape = SubResource("CircleShape2D_hqh25")

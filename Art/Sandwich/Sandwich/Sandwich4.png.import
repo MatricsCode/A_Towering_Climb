@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ucstx68cn55j"
-path="res://.godot/imported/Sandwich4.png-190f6d8fb4911222932f56f810f3c6ba.ctex"
+path="res://.godot/imported/Sandwich4.png-915785a72bc6a7bab8af3e0c80e4eb3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sandwich/Sandwich4.png"
-dest_files=["res://.godot/imported/Sandwich4.png-190f6d8fb4911222932f56f810f3c6ba.ctex"]
+source_file="res://Art/Sandwich/Sandwich/Sandwich4.png"
+dest_files=["res://.godot/imported/Sandwich4.png-915785a72bc6a7bab8af3e0c80e4eb3b.ctex"]
 
 [params]
 

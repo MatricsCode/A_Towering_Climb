@@ -40,7 +40,7 @@ properties/3/path = NodePath("Sprite:flip_h")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[node name="Player" type="CharacterBody2D" unique_id=399334221 node_paths=PackedStringArray("sprite", "detectors", "animations", "steam_name", "ground", "air", "climb", "pause") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=399334221 node_paths=PackedStringArray("sprite", "detectors", "animations", "steam_name", "status_image", "ground", "air", "climb", "pause") groups=["Player"]]
 process_mode = 3
 z_index = 3
 collision_layer = 21
@@ -51,6 +51,7 @@ sprite = NodePath("Sprite")
 detectors = NodePath("Detectors")
 animations = NodePath("Animations")
 steam_name = NodePath("HBoxContainer/SteamName")
+status_image = NodePath("HBoxContainer/TextureRect")
 ground = NodePath("States/Ground")
 air = NodePath("States/Air")
 climb = NodePath("States/Climb")

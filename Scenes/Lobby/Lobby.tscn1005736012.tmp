@@ -1,0 +1,131 @@
+[gd_scene format=4 uid="uid://cefq6hcwel7wc"]
+
+[ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Old/Recourses/Tileset.tres" id="1_a15b7"]
+[ext_resource type="PackedScene" uid="uid://bguy4wdeg25k6" path="res://Scenes/Lobby/AbilityChanger.tscn" id="2_t6nvb"]
+[ext_resource type="Texture2D" uid="uid://cjg64eyyotllh" path="res://Art/Sandwich/Sandwich/Sandwich1.png" id="3_dy3e7"]
+[ext_resource type="Script" uid="uid://mu3t7gesquvk" path="res://Scripts/Lobby/ReadyUpArea.gd" id="3_qy7bc"]
+[ext_resource type="Texture2D" uid="uid://840aay6lblgc" path="res://Art/Markers/Test.png" id="4_2dfve"]
+[ext_resource type="Texture2D" uid="uid://b7pr8b6dvxdb2" path="res://Art/Sandwich/Sandwich/Sandwich2.png" id="4_qy7bc"]
+[ext_resource type="Texture2D" uid="uid://dah4htacvndyf" path="res://Art/Sandwich/Sandwich/Sandwich3.png" id="5_2dfve"]
+[ext_resource type="Texture2D" uid="uid://ucstx68cn55j" path="res://Art/Sandwich/Sandwich/Sandwich4.png" id="6_1pw17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6nvb"]
+size = Vector2(7186, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aghgu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dy3e7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qy7bc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2dfve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1pw17")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqh25"]
+radius = 88.005684
+
+[node name="Lobby" type="Node2D" unique_id=1207337759]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=902387967]
+tile_map_data = PackedByteArray("AADx//n/AAAAAAEAAADx//j/AAAAAAEAAADx//b/AAAAAAEAAADx//f/AAAAAAEAAADx//X/AAAAAAEAAADx//T/AAAAAAEAAADx//P/AAAAAAEAAADx//L/AAAAAAEAAADx//H/AAAAAAEAAADx//D/AAAAAAAAAAAMAPD/AAABAAAAAAALAPD/AAABAAAAAAAKAPD/AAABAAAAAAAJAPD/AAABAAAAAAAIAPD/AAABAAAAAAAHAPD/AAABAAAAAAAGAPD/AAABAAAAAAAFAPD/AAABAAAAAAAEAPD/AAABAAAAAAADAPD/AAABAAAAAAACAPD/AAABAAAAAAABAPD/AAABAAAAAAAAAPD/AAABAAAAAAD///D/AAABAAAAAAD+//D/AAABAAAAAAD9//D/AAABAAAAAAD8//D/AAABAAAAAAD7//D/AAABAAAAAAD6//D/AAABAAAAAAD5//D/AAABAAAAAAD4//D/AAABAAAAAAD3//D/AAABAAAAAAD2//D/AAABAAAAAAD1//D/AAABAAAAAAD0//D/AAABAAAAAADz//D/AAABAAAAAADy//D/AAABAAAAAAAOAP7/AAAAAAEAAAAOAP3/AAAAAAEAAAAOAPz/AAAAAAEAAAAOAPv/AAAAAAEAAAAOAPr/AAAAAAEAAAAOAPn/AAAAAAEAAAAOAPj/AAAAAAEAAAAOAPf/AAAAAAEAAAAOAPb/AAAAAAEAAAAOAPX/AAAAAAEAAAAOAPT/AAAAAAEAAAAOAPP/AAAAAAEAAAAOAPL/AAAAAAEAAAAOAPH/AAAAAAEAAAAOAP//AAAAAAEAAAANAPD/AAABAAAAAAAOAPD/AAACAAAAAADx//v/AAAAAAIAAADx//r/AAAAAAEAAAD2//v/AAACAAAAAAD1//v/AAABAAAAAAD0//v/AAABAAAAAADz//v/AAABAAAAAADy//v/AAABAAAAAAD2////AAAAAAEAAAD2//7/AAAAAAEAAAD2//3/AAAAAAEAAAD2//z/AAAAAAEAAAA=")
+tile_set = ExtResource("1_a15b7")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=591789038]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=937546885]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_t6nvb")
+
+[node name="StaticBody2D" parent="." unique_id=1142489465 instance=ExtResource("2_t6nvb")]
+position = Vector2(-289, -88)
+
+[node name="StaticBody2D2" parent="." unique_id=1023322715 instance=ExtResource("2_t6nvb")]
+position = Vector2(-914, -524)
+ability = 1
+
+[node name="Label" type="Label" parent="." unique_id=1040915005]
+offset_left = -627.9999
+offset_top = -1080.9999
+offset_right = 636.0001
+offset_bottom = -810.9999
+rotation = -0.013336644
+theme_override_font_sizes/font_size = 64
+text = "This is only a preview of the actual game 
+      (Because that isn't finished yet) :D"
+
+[node name="Label3" type="RichTextLabel" parent="." unique_id=795832922]
+offset_left = 427.00003
+offset_top = -648.0
+offset_right = 1146.4319
+offset_bottom = -362.45215
+rotation = 0.12351397
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+bbcode_enabled = true
+text = "When you have hosted, press [tornado] [shake] [color=black] E [/color] [/shake] [/tornado] to start
+[color=darkgray] [shake] [When you have started, press enter for \"DEV MODE\"]
+"
+scroll_active = false
+
+[node name="Label4" type="RichTextLabel" parent="." unique_id=420127111]
+offset_left = -186.00002
+offset_top = -673.0
+offset_right = 467.6161
+offset_bottom = -536.8602
+rotation = -0.03832168
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/mono_font_size = 48
+bbcode_enabled = true
+text = "[tornado] W, A, S, D, to move
+Space to jump
+"
+scroll_active = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=981998392]
+position = Vector2(964, -117)
+collision_layer = 0
+script = ExtResource("3_qy7bc")
+TEST = ExtResource("4_2dfve")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1460861219]
+position = Vector2(65, 15)
+rotation = -0.0040706396
+sprite_frames = SubResource("SpriteFrames_aghgu")
+frame_progress = 0.6158679
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Area2D" unique_id=521726469]
+position = Vector2(-62, 44)
+rotation = -0.27104655
+sprite_frames = SubResource("SpriteFrames_aghgu")
+frame_progress = 0.4474851
+speed_scale = 3.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Area2D" unique_id=1258685471]
+position = Vector2(-7, -63)
+rotation = 0.16900739
+sprite_frames = SubResource("SpriteFrames_aghgu")
+frame_progress = 0.8189457
+speed_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1417673844]
+shape = SubResource("CircleShape2D_hqh25")

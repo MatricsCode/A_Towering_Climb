@@ -135,3 +135,7 @@ func _peer_left(ID : int):
 	#GlobalScript.peers_ready.append(ID)
 	#GlobalScript.players[Steam.getSteamID()] = player_prefabs
 	#Signals.readied_peer.emit(ID)
+
+@rpc("any_peer", "call_local", "reliable")
+func _send_data(player : Player, is_ready : bool):
+	Signals.player_ready.emit([player, is_ready, player.player_source])

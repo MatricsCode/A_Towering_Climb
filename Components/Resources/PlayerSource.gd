@@ -14,5 +14,5 @@ class_name PlayerSource
 @export_group("Multiplayer")
 @export var player_name : String
 @export var player_number : int
-@export var steam_ID : int
-@export var input_ID : int
+@export var steam_ID : int = 0
+@export var is_ready : bool = false

@@ -18,7 +18,8 @@ func _ready():
 	
 
 func _physics_process(_delta):
-	if player.current_state != activation_state and player.current_state != player.States.ABILITY:
+	if (player.current_state != activation_state and player.current_state != player.States.ABILITY 
+		or player.main_vars.other_vars.ability_overide):
 		current_state = false
 		return
 	elif player.current_state == activation_state or player.current_state == player.States.ABILITY:

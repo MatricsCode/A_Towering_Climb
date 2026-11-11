@@ -1,11 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://b5yjcgursml8f"]
+[gd_scene format=3 uid="uid://b5yjcgursml8f"]
 
 [ext_resource type="Script" uid="uid://cu2343rcba378" path="res://Scripts/Projectiles/sandwich.gd" id="1_if25b"]
-[ext_resource type="Texture2D" uid="uid://cjg64eyyotllh" path="res://Art/Sandwich/Sandwich1.png" id="1_qwkdi"]
-[ext_resource type="Texture2D" uid="uid://b7pr8b6dvxdb2" path="res://Art/Sandwich/Sandwich2.png" id="3_if25b"]
+[ext_resource type="Texture2D" uid="uid://cjg64eyyotllh" path="res://Art/Sandwich/Sandwich/Sandwich1.png" id="1_qwkdi"]
+[ext_resource type="Texture2D" uid="uid://b7pr8b6dvxdb2" path="res://Art/Sandwich/Sandwich/Sandwich2.png" id="3_if25b"]
 [ext_resource type="Texture2D" uid="uid://b33i0iw7spmb2" path="res://Art/Sandwich/Bagle/Bagle1.png" id="4_jo20n"]
-[ext_resource type="Texture2D" uid="uid://dah4htacvndyf" path="res://Art/Sandwich/Sandwich3.png" id="4_qovo3"]
-[ext_resource type="Texture2D" uid="uid://ucstx68cn55j" path="res://Art/Sandwich/Sandwich4.png" id="5_hgw1j"]
+[ext_resource type="Texture2D" uid="uid://dah4htacvndyf" path="res://Art/Sandwich/Sandwich/Sandwich3.png" id="4_qovo3"]
+[ext_resource type="Texture2D" uid="uid://ucstx68cn55j" path="res://Art/Sandwich/Sandwich/Sandwich4.png" id="5_hgw1j"]
 [ext_resource type="Texture2D" uid="uid://c3ty0f5buwba1" path="res://Art/Sandwich/Bagle/Bagle2.png" id="5_wefh5"]
 [ext_resource type="Texture2D" uid="uid://jhll6f23nos1" path="res://Art/Sandwich/Bagle/Bagle3.png" id="6_qovo3"]
 [ext_resource type="Texture2D" uid="uid://otgdv58ship8" path="res://Art/Sandwich/Bagle/Bagle4.png" id="7_hgw1j"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bxtrugvabe2ph" path="res://Art/Sandwich/Sword/Sword7.png" id="20_h4h10"]
 [ext_resource type="Texture2D" uid="uid://dcn85skn0fy45" path="res://Art/Sandwich/Sword/Sword8.png" id="21_f4h4t"]
 [ext_resource type="Texture2D" uid="uid://dgx7o6r4ox5bs" path="res://Art/Sandwich/Sword/Sword9.png" id="22_dvayr"]
+
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g7352"]
 animations = [{

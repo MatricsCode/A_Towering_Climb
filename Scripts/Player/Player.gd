@@ -39,7 +39,7 @@ var main_vars = { ## Main variables
 		"gravity" : 0, "gravity_increase" : 2, "movement_direction" : 0},
 	"climbing_vars" : {"climbing_speed" : 300},
 	
-	"other_vars" : {"can_switch" : true,},}
+	"other_vars" : {"can_switch" : true,"ability_overide" : false},}
 
 var main_vars_reset = []
 

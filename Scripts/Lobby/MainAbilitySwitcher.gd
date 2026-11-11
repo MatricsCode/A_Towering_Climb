@@ -19,11 +19,21 @@ var switching_abilities := false
 
 var editing_players = []
 
+var players_present = []
+var local_players_present = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	body_entered.connect(_body_entered)
-	body_exited.connect(_body_exited)
-	_norm_text()
+	players_present = []
+	
+	body_entered.connect(func(body : Player):
+		body.main_vars.other_vars.ability_overide = true
+		players_present.append(body)
+		local_players_present[body.player_source.player_number] = body)
+	
+	body_exited.connect(func(body):
+		body.main_vars.other_vars.ability_overide = false
+		players_present.erase(body))
 	
 	#last_ability_button.pressed.connect(func():
 		#if ability == 0:
@@ -37,19 +47,25 @@ func _ready():
 	#next_ability_button.pressed.connect(func():
 		#if ability == 0:
 			#pass)
-
-func _body_entered(body : Player):
-	if players.is_empty():
-		interactables_label.text = "E"
-	players.append(body)
-func _body_exited(body : Player):
-	players.erase(body)
-	if players.is_empty():
-		_norm_text()
+#
+#func _body_entered(body : Player):
+	#if players.is_empty():
+		#interactables_label.text = "E"
+	#players.append(body)
+#func _body_exited(body : Player):
+	#players.erase(body)
+	#if players.is_empty():
+		#_norm_text()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
+	if Input.is_action_just_pressed("P1_Interact") and local_players_present.keys().has(1):
+		_new_editing_player(local_players_present.get(1))
+	elif Input.is_action_just_pressed("P2_Interact") and local_players_present.keys().has(2):
+		_new_editing_player(local_players_present.get(2))
+	elif Input.is_action_just_pressed("P3_Interact") and local_players_present.keys().has(3):
+		_new_editing_player(local_players_present.get(3))
 	
 	#if Input.is_action_just_pressed(player.inputs.interact) and !switching_abilities:
 		#for player in players:
@@ -92,7 +108,7 @@ func _return_number(starting_number : int, direction : int,  max_number : int):
 	elif new_number < 0:
 		new_number = max_number
 
-func _new_editing_player():
+func _new_editing_player(player):
 	pass
 
 func _inputs(_event):
