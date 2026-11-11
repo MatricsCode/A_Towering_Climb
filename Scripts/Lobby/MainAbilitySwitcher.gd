@@ -7,7 +7,7 @@ const MAIN_ABILITIES = {"Ram" : preload("uid://b0imh5jcjfvpr"),
 const PASS_ABILITIES = {"Glide" : preload("uid://d0y0w2hbe3jwq"), "DrumKey" : preload("uid://cx4jckeql12mb"), 
 	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
 
-@export_enum("Main", "Passive") var ability := 0
+@export_enum("Main", "Passive", "ReadyUp") var ability := 0
 
 @export_group("UI")
 @export var UI : Control
@@ -21,6 +21,7 @@ var switching_abilities := false
 func _ready():
 	body_entered.connect(_body_entered)
 	body_exited.connect(_body_exited)
+	_norm_text()
 	
 	#last_ability_button.pressed.connect(func():
 		#if ability == 0:
@@ -36,13 +37,13 @@ func _ready():
 			#pass)
 
 func _body_entered(body : Player):
+	if players.is_empty():
+		interactables_label.text = "E"
 	players.append(body)
-	if abilities.visible == false:
-		interactables_label.visible = true
 func _body_exited(body : Player):
 	players.erase(body)
 	if players.is_empty():
-		interactables_label.visible = false
+		_norm_text()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -69,6 +70,15 @@ func _process(delta):
 
 func _change_ability(direction : int):
 	pass
+
+func _norm_text():
+	if ability == 0:
+		interactables_label.text = "Main Abilities:"
+	elif ability == 1:
+		interactables_label.text = "Passive Abilities:"
+	else:
+		interactables_label.text = "Ready?"
+		abilities.visible = false
 
 func _return_number(starting_number : int, direction : int,  max_number : int):
 	var new_number = starting_number + direction
