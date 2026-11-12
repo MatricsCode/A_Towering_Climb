@@ -51,8 +51,10 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	
 	position.y -= 25
 	Signals.start_anim_finished.connect(func():
-		current_state = States.AIR
+		current_state = States.PAUSED
 		position = Vector2(0,-50))
+	Signals.start_camera_zoom_finished.connect(func():
+		current_state = States.GROUND)
 	Signals.lobby_finished_game.connect(func(winner : Player):
 		current_state = States.PAUSED
 		velocity = Vector2.ZERO

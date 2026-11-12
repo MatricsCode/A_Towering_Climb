@@ -12,7 +12,8 @@ func _ready():
 	body_entered.connect(func(body : Player):
 		body.main_vars.other_vars.ability_overide = true
 		players_present.append(body)
-		local_players_present[body.player_source.player_number] = body)
+		local_players_present[body.player_source.player_number] = body
+		print(local_players_present))
 	
 	body_exited.connect(func(body):
 		body.main_vars.other_vars.ability_overide = false

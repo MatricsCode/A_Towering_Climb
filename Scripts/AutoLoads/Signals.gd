@@ -19,6 +19,7 @@ signal player_created(player : Player)
 signal player_deleted(player : Player)
 signal player_ready(info : Array)
 
+signal start_camera_zoom_finished()
 signal start_anim_finished()
 
 signal vignette(trans_time : float, wait_time : float)

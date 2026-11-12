@@ -104,7 +104,7 @@ func _start_animation():
 				#if finding_player.player_source.steam_ID == Steam.getSteamID():
 					#player = finding_player
 	
-	Signals.start_anim_finished.emit()
+	Signals.start_camera_zoom_finished.emit()
 	current_state = States.FOLLOWING_PLAYER
 func _following_player():
 	position = player.position
