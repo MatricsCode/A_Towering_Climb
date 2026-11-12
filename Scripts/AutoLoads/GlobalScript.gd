@@ -20,22 +20,13 @@ func _ready():
 		peers.erase(ID))
 	#Signals.readied_peer.connect(_check_start)
 
-func _physics_process(_delta):
-	if Input.is_action_just_pressed("Debug") and can_debug:
-		Signals.debug.emit(!debug)
-		debug = !debug
-
 func _input(event):
 	var text = event.as_text()
-	
-	print(debug_inputs)
 	
 	if text.length() > 1 or text == debug_inputs_last:
 		return
 	debug_inputs_last = text
 	debug_inputs = str(debug_inputs, text)
-	
-	print(debug_inputs)
 	
 	if !debug_unlock.contains(debug_inputs):
 		debug_inputs_last = ""

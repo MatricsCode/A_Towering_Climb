@@ -47,7 +47,7 @@ var inputs = {}
 
 ## ---- Functions ----
 func _ready(): ## Runns as soon as the player is loaded into the scenes
-	_configure_inputs()
+	current_state = States.OVERIDDEN
 	
 	position.y -= 25
 	Signals.start_anim_finished.connect(func():
@@ -64,7 +64,7 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 			_lost())
 	
 	
-	current_state = States.AIR
+	
 	
 	#Signals.start_anim_finished.connect(func():
 		#current_state = States.GROUND)
@@ -89,7 +89,9 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 		steam_name.text = player_source.player_name
 		
 		sprite.sprite_frames = player_source.sprite_frame
-		sprite.play("idle"))
+		sprite.play("idle")
+		await _configure_inputs()
+		current_state = States.AIR)
 
 func _physics_process(_delta):  ## Runs every physics frames
 	#GlobalScript.player_attributes.get(ID)["Position"] = position
@@ -273,7 +275,7 @@ func _update():
 
 func _configure_inputs():
 	var all_inputs = InputMap.get_actions()
-	var search_for = str("P", player_source.player_number+1, "_")
+	var search_for = str("P", player_source.player_number, "_")
 	
 	var current_inputs = []
 	
@@ -284,6 +286,8 @@ func _configure_inputs():
 	for input in current_inputs:
 		var current_input = input.split("_")
 		inputs[current_input[1]] = input
+	
+	return true
 
 func _status_effect_pic(image : Texture2D = null):
 	status_image.texture = image

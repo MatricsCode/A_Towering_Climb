@@ -12,11 +12,9 @@ var lobby : Node2D
 var level : Node2D
 var camera : Node2D
 
-var spawned_player_count := 0
+var spawned_players = []
 
 @export var player_placements : Node2D
-
-var device_IDs = []
 
 func _ready():
 	lobby = LOBBY.instantiate()
@@ -24,7 +22,7 @@ func _ready():
 	
 	Signals.lobby_joined.connect(func(_ID): pass)
 	Signals.lobby_start_game.connect(_level_select)
-	Signals.lobby_finished_game.connect(func():
+	Signals.lobby_finished_game.connect(func(_winner : Player):
 		lobby = LOBBY.instantiate()
 		add_child(lobby))
 	
@@ -33,9 +31,15 @@ func _ready():
 	await get_tree().create_timer(0.1).timeout
 	move_child(player_placements, get_child_count()-1)
 
-func _physics_process(delta):
-	if Input.is_action_just_pressed("Dev1"):
-		_spawn_players()
+func _physics_process(_delta):
+	if Input.is_action_just_pressed("P1_Ability") and !spawned_players.has(1):
+		_spawn_players(1)
+	elif Input.is_action_just_pressed("P2_Ability") and !spawned_players.has(2):
+		_spawn_players(2)
+	elif Input.is_action_just_pressed("P3_Ability") and !spawned_players.has(3):
+		_spawn_players(3)
+	elif Input.is_action_just_pressed("P4_Ability") and !spawned_players.has(4):
+		_spawn_players(4)
 
 func _level_select():
 	camera = CAMERA.instantiate()
@@ -64,7 +68,7 @@ func _level_select():
 	
 	lobby.queue_free()
 
-func _spawn_players():
+func _spawn_players(number : int):
 	var _owner = Steam.getLobbyOwner(Networking.current_lobby)
 	var _self = Steam.getSteamID()
 	
@@ -87,10 +91,10 @@ func _spawn_players():
 		GlobalScript.players[Steam.getSteamID()] = []
 	GlobalScript.players.get(Steam.getSteamID()).append(player)
 	
-	spawned_player_count += 1
+	spawned_players.append(number)
 	
 	player.start.emit([str(Steam.getPersonaName(), "_", 
-		spawned_player_count), Steam.getSteamID(), spawned_player_count])
+		number), Steam.getSteamID(), number])
 	
 	Signals.player_created.emit(player)
 	

@@ -14,7 +14,7 @@ func _ready():
 		active = false
 		is_ready = false
 		ready_check.visible = false)
-	Signals.lobby_finished_game.connect(func():
+	Signals.lobby_finished_game.connect(func(_winner : Player):
 		active = true
 		is_ready = false
 		ready_check.visible = false)
