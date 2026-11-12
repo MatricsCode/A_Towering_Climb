@@ -7,6 +7,10 @@ var players : Dictionary[int , Array]
 var debug := false
 var can_debug := false
 
+var debug_inputs_last := ""
+var debug_inputs : String = ""
+var debug_unlock := "DEBUG"
+
 func _ready():
 	Signals.start_anim_finished.connect(func():
 		can_debug = true)
@@ -21,10 +25,26 @@ func _physics_process(_delta):
 		Signals.debug.emit(!debug)
 		debug = !debug
 
-#func _check_start(_ID : int):
-	#if Networking.host:
-		#if players_ready.size() == int(Steam.getLobbyData(Networking.current_lobby, "player_count")) + 1:
-			#Networking._start_game.rpc()
+func _input(event):
+	var text = event.as_text()
+	
+	print(debug_inputs)
+	
+	if text.length() > 1 or text == debug_inputs_last:
+		return
+	debug_inputs_last = text
+	debug_inputs = str(debug_inputs, text)
+	
+	print(debug_inputs)
+	
+	if !debug_unlock.contains(debug_inputs):
+		debug_inputs_last = ""
+		debug_inputs = ""
+		return
+	elif debug_unlock == debug_inputs and can_debug:
+		debug = !debug
+		Signals.debug.emit(debug)
+
 
 
 
