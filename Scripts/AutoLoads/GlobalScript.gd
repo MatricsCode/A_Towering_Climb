@@ -11,6 +11,8 @@ var debug_inputs_last := ""
 var debug_inputs : String = ""
 var debug_unlock := "DEBUG"
 
+var no_internet := false
+
 func _ready():
 	Signals.start_anim_finished.connect(func():
 		can_debug = true)

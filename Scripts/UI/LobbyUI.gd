@@ -99,7 +99,7 @@ func _lobby_match_list(lobbies : Array):
 		var button = HoverButton.new()
 		
 		button.name = str(lobby)
-		button.text = str(Steam.getLobbyData(lobby, "name"), " | ", Steam.getLobbyData(lobby, "player_count"))
+		button.text = str(Steam.getLobbyData(lobby, "name"), " | ", Steam.getNumLobbyMembers(lobby))
 		button.return_name = true
 		
 		button.returning_name.connect(_join_lobby)
@@ -156,3 +156,7 @@ func _game_started():
 	visible = false
 func _game_stopped():
 	visible = false
+
+func _physics_process(delta):
+	if GlobalScript.no_internet:
+		$LobbyUI/LobbySelect/LobbiesSelector/ConnectionIndicator.visible = true

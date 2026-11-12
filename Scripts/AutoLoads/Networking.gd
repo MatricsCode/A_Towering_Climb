@@ -20,7 +20,13 @@ func _ready():
 		ready_players[info[0]] = info[1]
 		var all_ready := true
 		
-		if ready_players.size() < int(Steam.getLobbyData(Networking.current_lobby, "player_count")) + 1:
+		var total_players := 0
+		
+		for i in GlobalScript.players:
+			for y in i:
+				total_players += 1
+		
+		if ready_players.size() < total_players:
 			return
 		
 		for i in ready_players.keys():
@@ -64,9 +70,9 @@ func _on_lobby_created(connected : int, lobby_id : int) -> void:
 	
 	elif connected == Steam.RESULT_NO_CONNECTION:
 		GlobalScript.no_internet = true
-		peer = SteamMultiplayerPeer.new()
-		peer.server_relay = true
-		peer.create_host()
+		#peer = SteamMultiplayerPeer.new()
+		#peer.server_relay = true
+		#peer.create_host()
 		
 		
 		multiplayer.multiplayer_peer = peer

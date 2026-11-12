@@ -99,13 +99,11 @@ func _physics_process(_delta):  ## Runs every physics frames
 	#else:
 		#set_collision_layer_value(2,false)
 	
-	print(steam_name.text, " ", player_source.player_number)
-	
 	if not is_multiplayer_authority():
 		return ## Checks if you are this player, and grants/denies you control acordingly
 	
-	if Input.is_action_just_pressed("Dev1"):
-		Signals.text_popup.emit("[wave][color=white]Yea!", position)
+	#if Input.is_action_just_pressed("Dev1"):
+		#Signals.text_popup.emit("[wave][color=white]Yea!", position)
 	
 	#match current_state:
 		#States.GROUND:
