@@ -29,3 +29,4 @@ func _physics_process(delta):
 
 func _make_ready(player : Player):
 	player._status_effect_pic(TEST)
+	Networking._send_data(player, true)

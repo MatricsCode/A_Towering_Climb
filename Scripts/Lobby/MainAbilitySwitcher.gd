@@ -19,21 +19,21 @@ var switching_abilities := false
 
 var editing_players = []
 
-var players_present = []
-var local_players_present = []
+var local_players_present : Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	players_present = []
+	local_players_present = {}
 	
 	body_entered.connect(func(body : Player):
 		body.main_vars.other_vars.ability_overide = true
-		players_present.append(body)
 		local_players_present[body.player_source.player_number] = body)
 	
 	body_exited.connect(func(body):
 		body.main_vars.other_vars.ability_overide = false
-		players_present.erase(body))
+		for i in local_players_present.keys():
+			if local_players_present[i] == body:
+				local_players_present.erase(i))
 	
 	#last_ability_button.pressed.connect(func():
 		#if ability == 0:
