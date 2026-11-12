@@ -83,17 +83,13 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	if is_multiplayer_authority():
 		$AudioListener2D.make_current()
 	
-	start.connect(func(data : Array = []):
-		player_source.player_name = data[0]
-		player_source.steam_ID = data[1]
-		player_source.player_number = data[2]
-		
-		steam_name.text = player_source.player_name
-		
-		sprite.sprite_frames = player_source.sprite_frame
-		sprite.play("idle")
-		await _configure_inputs()
-		current_state = States.AIR)
+	steam_name.text = player_source.player_name
+	
+	sprite.sprite_frames = player_source.sprite_frame
+	sprite.play("idle")
+	await _configure_inputs()
+	current_state = States.AIR
+	start.emit()
 
 func _physics_process(_delta):  ## Runs every physics frames
 	#GlobalScript.player_attributes.get(ID)["Position"] = position
@@ -102,6 +98,8 @@ func _physics_process(_delta):  ## Runs every physics frames
 		#set_collision_layer_value(2,true)
 	#else:
 		#set_collision_layer_value(2,false)
+	
+	print(steam_name.text, " ", player_source.player_number)
 	
 	if not is_multiplayer_authority():
 		return ## Checks if you are this player, and grants/denies you control acordingly

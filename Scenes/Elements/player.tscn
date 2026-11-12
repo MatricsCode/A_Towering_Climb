@@ -2,26 +2,14 @@
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/Player.gd" id="1_nn08x"]
 [ext_resource type="Script" uid="uid://cfhqtcjpmpt2f" path="res://Scripts/Player/StateMachine/Ground.gd" id="2_bhhdu"]
-[ext_resource type="Script" uid="uid://b0imh5jcjfvpr" path="res://Scripts/Abilitys/MainAbilities/Ram.gd" id="2_dh1om"]
-[ext_resource type="Script" uid="uid://bcgecunh1q8yd" path="res://Components/Resources/PlayerSource.gd" id="2_er752"]
 [ext_resource type="Script" uid="uid://b0cyxdudk1n30" path="res://Scripts/Player/StateMachine/Air.gd" id="3_megsn"]
-[ext_resource type="Script" uid="uid://d0y0w2hbe3jwq" path="res://Scripts/Abilitys/SecondaryAbilities/Glide.gd" id="3_xphj1"]
 [ext_resource type="Script" uid="uid://cpewpue8xd833" path="res://Scripts/Player/StateMachine/Climb.gd" id="4_yoq75"]
 [ext_resource type="Script" uid="uid://qbo6p8gv1xdl" path="res://Scripts/Player/StateMachine/Pause.gd" id="5_ksbbd"]
-[ext_resource type="Script" uid="uid://dbqffofmlv0yn" path="res://Scripts/Abilitys/SecretAbilities/ClimberSecret.gd" id="5_wkbfl"]
 [ext_resource type="Script" uid="uid://c22ccct5h31um" path="res://Scripts/Player/StateMachine/AbilityManager.gd" id="5_yoq75"]
 [ext_resource type="Script" uid="uid://mcnni8yg2jru" path="res://Scripts/Player/StateMachine/Animations.gd" id="6_gymyn"]
 [ext_resource type="Script" uid="uid://uiuqna3h4o6m" path="res://Scripts/Player/StateMachine/Debug.gd" id="7_bu0hs"]
 [ext_resource type="SpriteFrames" uid="uid://c2turr7b108g7" path="res://Components/SpriteFrames/Players/Climber1.tres" id="7_f1ek2"]
 [ext_resource type="Script" uid="uid://5ld7a65652d1" path="res://Scripts/Player/Detectors.gd" id="8_tx1dd"]
-
-[sub_resource type="Resource" id="Resource_qxria"]
-script = ExtResource("2_er752")
-sprite_frame = ExtResource("7_f1ek2")
-main_ability = ExtResource("2_dh1om")
-passive_ability = ExtResource("3_xphj1")
-secret_ability = ExtResource("5_wkbfl")
-metadata/_custom_type_script = "uid://bcgecunh1q8yd"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(80, 160)
@@ -46,7 +34,6 @@ z_index = 3
 collision_layer = 21
 collision_mask = 10
 script = ExtResource("1_nn08x")
-player_source = SubResource("Resource_qxria")
 sprite = NodePath("Sprite")
 detectors = NodePath("Detectors")
 animations = NodePath("Animations")
