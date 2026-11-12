@@ -16,10 +16,8 @@ var no_internet := false
 func _ready():
 	Signals.start_anim_finished.connect(func():
 		can_debug = true)
-	Signals.peer_joined.connect(func(ID : int): 
-		peers.append(ID))
-	Signals.peer_left.connect(func(ID : int):
-		peers.erase(ID))
+	Signals.peer_joined.connect(func(ID : int): peers.append(ID))
+	Signals.peer_left.connect(func(ID : int): peers.erase(ID))
 	#Signals.readied_peer.connect(_check_start)
 
 func _input(event):

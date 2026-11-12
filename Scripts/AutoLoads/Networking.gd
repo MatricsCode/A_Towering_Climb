@@ -22,9 +22,8 @@ func _ready():
 		
 		var total_players := 0
 		
-		for i in GlobalScript.players:
-			for y in i:
-				total_players += 1
+		for player_array in GlobalScript.players.values():
+			total_players = player_array.size()
 		
 		if ready_players.size() < total_players:
 			return
@@ -142,6 +141,9 @@ func _peer_left(ID : int):
 	#GlobalScript.players[Steam.getSteamID()] = player_prefabs
 	#Signals.readied_peer.emit(ID)
 
-@rpc("any_peer", "call_local", "reliable")
 func _send_data(player : Player, is_ready : bool):
+	_send_data_rpc.rpc(player, is_ready)
+
+@rpc("any_peer", "call_local", "reliable")
+func _send_data_rpc(player : Player, is_ready : bool):
 	Signals.player_ready.emit([player, is_ready, player.player_source])
