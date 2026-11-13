@@ -15,17 +15,21 @@ const PASS_ABILITIES = {"Glide" : preload("uid://d0y0w2hbe3jwq"), "DrumKey" : pr
 @export var interactables_label : RichTextLabel
 @export var ability_label : Label
 
-var switching_abilities := false
-
 var editing_players = []
-
-var local_players_present : Dictionary
+var local_players_present = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	local_players_present = {}
+	if ability == 1:
+		interactables_label.text = "Main Abilities:"
+	else:
+		interactables_label.text = "Passive Abilities:"
 	
-	body_entered.connect(func(body : Player):
+	interactables_label.visible = true
+	abilities.visible = false
+	
+	body_entered.connect(func(body : Player): 
+		interactables_label.visible = false
 		body.main_vars.other_vars.ability_overide = true
 		local_players_present[body.player_source.player_number] = body)
 	
@@ -33,7 +37,11 @@ func _ready():
 		body.main_vars.other_vars.ability_overide = false
 		for i in local_players_present.keys():
 			if local_players_present[i] == body:
-				local_players_present.erase(i))
+				local_players_present.erase(i)
+		
+		if local_players_present.size() == 0:
+			interactables_label.visible = true
+			abilities.visible = false)
 	
 	#last_ability_button.pressed.connect(func():
 		#if ability == 0:
@@ -59,13 +67,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	if Input.is_action_just_pressed("P1_Interact") and local_players_present.keys().has(1):
-		_new_editing_player(local_players_present.get(1))
+		_editing_player(local_players_present.get(1))
 	elif Input.is_action_just_pressed("P2_Interact") and local_players_present.keys().has(2):
-		_new_editing_player(local_players_present.get(2))
+		_editing_player(local_players_present.get(2))
 	elif Input.is_action_just_pressed("P3_Interact") and local_players_present.keys().has(3):
-		_new_editing_player(local_players_present.get(3))
+		_editing_player(local_players_present.get(3))
 	
 	#if Input.is_action_just_pressed(player.inputs.interact) and !switching_abilities:
 		#for player in players:
@@ -80,14 +87,38 @@ func _process(delta):
 				#player.current_state = player.States.GROUND
 				#switching_abilities = false
 	
-	if switching_abilities:
-		if Input.is_action_just_pressed("Left"):
-			_change_ability(-1)
-		elif Input.is_action_just_pressed("Right"):
-			_change_ability(1)
+	for player in editing_players:
+		if Input.is_action_just_pressed(player.inputs.Left):
+			_change_ability(-1, player)
+		elif Input.is_action_just_pressed(player.inputs.Right):
+			_change_ability(1, player)
 
-func _change_ability(direction : int):
-	pass
+func _editing_player(player : Player):
+	if editing_players.has(player):
+		player.current_state = player.States.GROUND
+		editing_players.erase(player)
+	else:
+		abilities.visible = true
+		player.current_state = player.States.PAUSED
+		editing_players.append(player)
+
+func _change_ability(direction : int, player : Player):
+	var counter = func(number : int, size : int):
+		if number + direction > size:
+			number = 0
+		elif number + direction < 0:
+			number = size
+		else:
+			number = number + direction
+		return number
+	
+	if ability == 0:
+		var all_abilities = MAIN_ABILITIES.values()
+		var index = all_abilities.find(player.player_source.main_ability)
+		var current_ability = MAIN_ABILITIES.keys().get(counter.call(index, MAIN_ABILITIES.size()-1))
+		player.player_source.main_ability = MAIN_ABILITIES[current_ability]
+	
+	player.update_source.emit()
 
 func _norm_text():
 	if ability == 0:
@@ -107,9 +138,6 @@ func _return_number(starting_number : int, direction : int,  max_number : int):
 		new_number = 0
 	elif new_number < 0:
 		new_number = max_number
-
-func _new_editing_player(player):
-	pass
 
 func _inputs(_event):
 	var local_players = {}

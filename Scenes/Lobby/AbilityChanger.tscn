@@ -2,16 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dpdi1y0ri44y8" path="res://Scripts/Lobby/MainAbilitySwitcher.gd" id="1_p5wee"]
 [ext_resource type="Texture2D" uid="uid://bh05v7h6r0rxo" path="res://Art/Markers/GaryIcon.png" id="2_i04tw"]
-[ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="3_hak7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqh25"]
 
-[node name="StaticBody2D" type="Area2D" unique_id=1142489465 node_paths=PackedStringArray("UI", "abilities", "interactables_label", "ability_label")]
+[node name="StaticBody2D" type="Area2D" unique_id=1142489465 node_paths=PackedStringArray("UI", "abilities", "interactables_label")]
 script = ExtResource("1_p5wee")
 UI = NodePath("UI")
 abilities = NodePath("UI/VBoxContainer/HBoxContainer")
 interactables_label = NodePath("UI/VBoxContainer/RichTextLabel")
-ability_label = NodePath("UI/VBoxContainer/HBoxContainer/Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=183888929]
 texture = ExtResource("2_i04tw")
@@ -39,13 +37,12 @@ alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/VBoxContainer" unique_id=789555512]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 32
 theme_override_font_sizes/bold_italics_font_size = 32
 theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/mono_font_size = 32
-bbcode_enabled = true
-text = "Passive Abilities:"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -54,46 +51,47 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer" unique_id=984092015]
 layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/VBoxContainer/HBoxContainer" unique_id=310955831]
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/VBoxContainer/HBoxContainer/MarginContainer" unique_id=1657196371]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
 bbcode_enabled = true
 text = "[shake][wave]A"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Label" type="Label" parent="UI/VBoxContainer/HBoxContainer" unique_id=217041750]
+[node name="Seperator" type="Control" parent="UI/VBoxContainer/HBoxContainer" unique_id=837542293]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
-theme = ExtResource("3_hak7x")
-text = "Gliding"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="UI/VBoxContainer/HBoxContainer" unique_id=1141634870]
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/VBoxContainer/HBoxContainer/MarginContainer2" unique_id=2129884385]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
 bbcode_enabled = true
 text = "[shake][wave]D"
 fit_content = true

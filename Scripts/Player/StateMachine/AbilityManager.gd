@@ -33,6 +33,9 @@ func _add_ability(script : Script, ability_name : String):
 	add_child(ability)
 
 func _update():
+	for i in get_children():
+		i.queue_free()
+	
 	main = player.player_source.main_ability
 	passive = player.player_source.passive_ability
 	#sec_1 = player.player_source.passive_ability_1

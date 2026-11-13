@@ -29,5 +29,5 @@ func _physics_process(delta):
 		_make_ready(local_players_present.get(3))
 
 func _make_ready(player : Player):
-	player._status_effect_pic(TEST)
+	player._status_effect_update(true, TEST)
 	Networking._send_data(player, true)

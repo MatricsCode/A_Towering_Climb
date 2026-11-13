@@ -9,8 +9,10 @@ signal update_source()
 @export var sprite : AnimatedSprite2D
 @export var detectors : Node2D
 @export var animations : Node
+@export_subgroup("UI tags")
 @export var steam_name : Label
 @export var status_image : TextureRect
+@export var secondary_text : RichTextLabel
 
 @export_group("States")
 @export var ground : Node
@@ -65,16 +67,14 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 		else:
 			_lost())
 	
-	
-	
-	
-	#Signals.start_anim_finished.connect(func():
-		#current_state = States.GROUND)
-	
 	ground.switch.connect(_switch_ground)
 	air.switch.connect(_switch_air)
 	climb.switch.connect(_switch_climb)
 	pause.switch.connect(_switch_pause)
+	update_source.connect(func():
+		steam_name.text = player_source.player_name
+		sprite.sprite_frames = player_source.sprite_frame
+		sprite.play("idle"))
 	
 	for i in main_vars:
 		for y in main_vars[i]:
@@ -83,13 +83,10 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	if is_multiplayer_authority():
 		$AudioListener2D.make_current()
 	
-	steam_name.text = player_source.player_name
-	
-	sprite.sprite_frames = player_source.sprite_frame
-	sprite.play("idle")
 	await _configure_inputs()
 	current_state = States.AIR
 	start.emit()
+	update_source.emit()
 
 func _physics_process(_delta):  ## Runs every physics frames
 	#GlobalScript.player_attributes.get(ID)["Position"] = position
@@ -221,7 +218,7 @@ func _switch_ability(new_state : States, additional := ""):
 
 func _switch_timeout():
 	main_vars.other_vars.can_switch = false
-	await get_tree().create_timer(0.025).timeout
+	await get_tree().create_timer(0.001).timeout
 	main_vars.other_vars.can_switch = true
 
 func _reset_main_vars(key : int = -1): ## 0 = Ground, 1 = Air, 2 = Climb
@@ -287,5 +284,8 @@ func _configure_inputs():
 	
 	return true
 
-func _status_effect_pic(image : Texture2D = null):
-	status_image.texture = image
+func _status_effect_update(change_image : bool, data = null):
+	if change_image:
+		status_image.texture = data
+	else:
+		secondary_text.text = data
