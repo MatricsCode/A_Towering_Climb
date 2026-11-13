@@ -287,5 +287,13 @@ func _configure_inputs():
 func _status_effect_update(change_image : bool, data = null):
 	if change_image:
 		status_image.texture = data
+		if data != null:
+			status_image.visible = true
+		else:
+			status_image.visible = false
 	else:
 		secondary_text.text = data
+		if data != "":
+			secondary_text.visible = true
+		else:
+			secondary_text.visible = false

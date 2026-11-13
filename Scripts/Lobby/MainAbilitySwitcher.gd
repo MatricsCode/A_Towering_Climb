@@ -7,7 +7,7 @@ const MAIN_ABILITIES = {"Ram" : preload("uid://b0imh5jcjfvpr"),
 const PASS_ABILITIES = {"Glide" : preload("uid://d0y0w2hbe3jwq"), "DrumKey" : preload("uid://cx4jckeql12mb"), 
 	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
 
-@export_enum("Main", "Passive") var ability := 0
+@export_enum("Main", "Passive") var ability : int = 0
 
 @export_group("UI")
 @export var UI : Control
@@ -97,11 +97,11 @@ func _editing_player(player : Player):
 	if editing_players.has(player):
 		player.current_state = player.States.GROUND
 		editing_players.erase(player)
+		player._status_effect_update(false, "")
 	else:
 		abilities.visible = true
 		player.current_state = player.States.PAUSED
 		editing_players.append(player)
-
 func _change_ability(direction : int, player : Player):
 	var counter = func(number : int, size : int):
 		if number + direction > size:
@@ -112,32 +112,20 @@ func _change_ability(direction : int, player : Player):
 			number = number + direction
 		return number
 	
-	if ability == 0:
+	if ability == 1:
 		var all_abilities = MAIN_ABILITIES.values()
 		var index = all_abilities.find(player.player_source.main_ability)
 		var current_ability = MAIN_ABILITIES.keys().get(counter.call(index, MAIN_ABILITIES.size()-1))
 		player.player_source.main_ability = MAIN_ABILITIES[current_ability]
+		player._status_effect_update(false, current_ability)
+	elif ability == 0:
+		var all_abilities = PASS_ABILITIES.values()
+		var index = all_abilities.find(player.player_source.passive_ability)
+		var current_ability = PASS_ABILITIES.keys().get(counter.call(index, PASS_ABILITIES.size()-1))
+		player.player_source.passive_ability = PASS_ABILITIES[current_ability]
+		player._status_effect_update(false, current_ability)
 	
 	player.update_source.emit()
-
-func _norm_text():
-	if ability == 0:
-		interactables_label.text = "Main Abilities:"
-	elif ability == 1:
-		interactables_label.text = "Passive Abilities:"
-	else:
-		interactables_label.text = "Ready?"
-		abilities.visible = false
-
-func _return_number(starting_number : int, direction : int,  max_number : int):
-	var new_number = starting_number + direction
-	max_number = max_number-1
-	if new_number < max_number and new_number > 0:
-		return new_number
-	elif new_number >= max_number:
-		new_number = 0
-	elif new_number < 0:
-		new_number = max_number
 
 func _inputs(_event):
 	var local_players = {}
