@@ -15,7 +15,7 @@ tile_map_data = PackedByteArray("AADz//D/AAABAAAAAAD0//D/AAABAAAAAAD1//D/AAABAAA
 tile_set = ExtResource("1_bov8p")
 
 [node name="Goal2" parent="." unique_id=1097038857 instance=ExtResource("2_a0ufr")]
-position = Vector2(678, -8480)
+position = Vector2(678, -414)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1993585470]
 collision_layer = 2

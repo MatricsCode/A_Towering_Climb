@@ -8,8 +8,8 @@ signal lobby_match_list(lobbies : Array)
 signal request_lobby_list()
 
 signal lobby_start_game()
-signal lobby_pause_game()
 signal lobby_finished_game(winner : int)
+signal lobby_return_to_lobby()
 
 signal peer_left(ID : int)
 signal peer_joined(ID : int)

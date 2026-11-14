@@ -29,6 +29,7 @@ func _ready():
 	Signals.lobby_start_game.connect(_level_select)
 	Signals.lobby_finished_game.connect(func(_winner : Player):
 		lobby = LOBBY.instantiate()
+		await get_tree().create_timer(0.5).timeout
 		add_child(lobby))
 	
 	#if Networking.peer.get_unique_id() == Steam.getLobbyOwner(Networking.current_lobby):
@@ -79,8 +80,6 @@ func _spawn_players(number : int):
 	
 	if !Networking.host and player_placements.get_child_count() > 1:#Steam.getSteamID() != Steam.getLobbyOwner(Networking.current_lobby):
 		return
-	
-	await get_tree().create_timer(0.1).timeout
 	
 	#var player_count = player_placements.get_children().size()
 	#while player_count > 1:

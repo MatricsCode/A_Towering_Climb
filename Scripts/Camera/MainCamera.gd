@@ -46,7 +46,7 @@ func _ready():
 	Signals.lobby_finished_game.connect(func(winner : Player):
 		current_state = States.FINISHED
 		viewing_player = winner
-		_finished())
+		_finished(winner))
 
 func _physics_process(_delta):
 	match current_state:
@@ -140,58 +140,10 @@ func _following_player():
 		cam_y = target_y
 		
 		cam_movement.tween_property(cam, "position", Vector2(cam_x, cam_y), easing)
-func _finished():
-	#var _return_tween := func():
-		#var tweener = get_tree().create_tween()
-		#
-		#tweener.set_parallel()
-		#tweener.set_ease(Tween.EASE_OUT)
-		#tweener.set_trans(Tween.TRANS_SINE)
-		#
-		#if current_state != States.FINISHED:
-			#return null
-		#
-		#return tweener
-	
-	#var _movement_anim := func():
-		#finish_tweener = _return_tween.call()
-		#
-		#finish_tweener.tween_property(self, "position", Vector2(0,-2000), move_time/2)
-		#finish_tweener.tween_property(cam, "zoom", Vector2(0.25, 0.25), move_time/2)
-		#finish_tweener.tween_property(cam, "position", Vector2(0,0), move_time/2)
-		#
-		#await finish_tweener.finished
-		#finish_tweener = _return_tween.call()
-		#
-		#finish_tweener.tween_property(self, "position", viewing_player.position, move_time/2)
-		#finish_tweener.tween_property(cam, "zoom", Vector2(1 ,1), move_time/2)
-		#
-		#await finish_tweener.finished
-		#
-		#return
-	
-	#var _zoom_anim := func():
-		#finish_tweener = _return_tween.call()
-		#
-		#finish_tweener3 = _return_tween.call()
-		#finish_tweener3.tween_property(cam, "position", indicator_left.position, zoom_time/2.0)
-		#await finish_tweener3.finished
-		#finish_tweener3 = _return_tween.call()
-		#finish_tweener3.tween_property(cam, "position", indicator_right.position, zoom_time/2.0)
-		#await finish_tweener3.finished
-		#
-		#return
-	#
-	#await _movement_anim.call()
-	#await _zoom_anim.call()
-	
-	
-	#var index = viewing_player.get_index() + 1
-	#if index > player_node.get_child_count()-1:
-		#index = 1
-	#viewing_player = player_node.get_child(index)
-	#
-	#if current_state == States.FINISHED:
-		#_finished()
+func _finished(winner : Player):
+	var tweener = get_tree().create_tween()
+	tweener.set_ease(Tween.EASE_OUT)
+	tweener.set_trans(Tween.TRANS_EXPO)
+	tweener.tween_property(self, "position", winner.position, 1.5)
 	
 	pass

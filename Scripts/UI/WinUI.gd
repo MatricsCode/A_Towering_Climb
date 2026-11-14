@@ -9,20 +9,27 @@ const PASS_ABILITIES = {preload("uid://d0y0w2hbe3jwq") : "Glide", preload("uid:/
 @export var sprite : AnimatedSprite2D
 @export var main_ability : Label
 @export var pass_ability : Label
+@export var name_label : Label
+@export var continue_button : HoverButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = false
 	Signals.lobby_finished_game.connect(_winner)
+	Signals.lobby_return_to_lobby.connect(_return_to_lobby)
+	continue_button.pressed.connect(func():
+		Signals.lobby_return_to_lobby.emit())
+	
 
 func _winner(player : Player):
+	visible = true
 	sprite.sprite_frames = player.player_source.sprite_frame
 	sprite.play("idle")
 	sprite.position = center_point.position
 	main_ability.text = MAIN_ABILITIES[player.player_source.main_ability]
 	pass_ability.text = PASS_ABILITIES[player.player_source.passive_ability]
-	
-	await get_tree().create_timer(5).timeout
-	
+	name_label.text = player.player_source.player_name
+func _return_to_lobby():
 	Signals.vignette.emit(1,0.5)
 	await get_tree().create_timer(1).timeout
 	visible = false

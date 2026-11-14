@@ -18,6 +18,8 @@ corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_intyv"]
+
 [node name="GameUI" type="Control" unique_id=1762117287]
 layout_mode = 3
 anchors_preset = 15
@@ -89,7 +91,7 @@ text = "Quit"
 script = ExtResource("4_npa51")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
-[node name="WinMenu" type="MarginContainer" parent="." unique_id=1770758432 node_paths=PackedStringArray("center_point", "sprite", "main_ability", "pass_ability")]
+[node name="WinMenu" type="MarginContainer" parent="." unique_id=1770758432 node_paths=PackedStringArray("center_point", "sprite", "main_ability", "pass_ability", "name_label", "continue_button")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,55 +100,38 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_fe2yh")
 script = ExtResource("5_fe2yh")
-center_point = NodePath("MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Panel/CenterPoint")
+center_point = NodePath("MarginContainer/VBoxContainer/MarginContainer/Panel/CenterPoint")
 sprite = NodePath("Sprite")
-main_ability = NodePath("MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainAbility")
-pass_ability = NodePath("MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/PassAbility")
+main_ability = NodePath("MarginContainer/VBoxContainer/MainAbility")
+pass_ability = NodePath("MarginContainer/VBoxContainer/PassAbility")
+name_label = NodePath("MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/Name")
+continue_button = NodePath("MarginContainer/VBoxContainer/HoverButton")
 
 [node name="Panel" type="Panel" parent="WinMenu" unique_id=1297423517]
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="WinMenu" unique_id=678525609]
 layout_mode = 2
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_right = 200
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_right = 250
 
-[node name="MarginContainer" type="MarginContainer" parent="WinMenu/MarginContainer" unique_id=1187279320]
+[node name="VBoxContainer" type="VBoxContainer" parent="WinMenu/MarginContainer" unique_id=254751148]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WinMenu/MarginContainer/MarginContainer" unique_id=1942393291]
-layout_mode = 2
-alignment = 1
-
-[node name="Label4" type="Label" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer" unique_id=786477787]
-layout_mode = 2
-text = "WINNER!!! :D"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer" unique_id=2116594463]
+[node name="MarginContainer" type="MarginContainer" parent="WinMenu/MarginContainer/VBoxContainer" unique_id=433255080]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 80
 theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=254751148]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=433255080]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 0
-
-[node name="Panel" type="Panel" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=123100839]
+[node name="Panel" type="Panel" parent="WinMenu/MarginContainer/VBoxContainer/MarginContainer" unique_id=123100839]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tog36")
 
-[node name="CenterPoint" type="Control" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Panel" unique_id=2108749897]
+[node name="CenterPoint" type="Control" parent="WinMenu/MarginContainer/VBoxContainer/MarginContainer/Panel" unique_id=2108749897]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -156,16 +141,38 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainAbility" type="Label" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1801504536]
+[node name="MarginContainer" type="MarginContainer" parent="WinMenu/MarginContainer/VBoxContainer/MarginContainer/Panel" unique_id=1491645743]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 107.0
+grow_horizontal = 2
+
+[node name="Name" type="Label" parent="WinMenu/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer" unique_id=1727966330]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_intyv")
+text = "Dave Won"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainAbility" type="Label" parent="WinMenu/MarginContainer/VBoxContainer" unique_id=1801504536]
 layout_mode = 2
 text = "Main Ability: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PassAbility" type="Label" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1421940316]
+[node name="PassAbility" type="Label" parent="WinMenu/MarginContainer/VBoxContainer" unique_id=1421940316]
 layout_mode = 2
 text = "Main Ability: "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HoverButton" type="Button" parent="WinMenu/MarginContainer/VBoxContainer" unique_id=387946388]
+layout_mode = 2
+text = "Continue"
+script = ExtResource("4_npa51")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="WinMenu" unique_id=1417153111]
+position = Vector2(576, 249)
