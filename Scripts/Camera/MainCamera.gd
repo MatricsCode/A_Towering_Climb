@@ -46,7 +46,11 @@ func _ready():
 	Signals.lobby_finished_game.connect(func(winner : Player):
 		current_state = States.FINISHED
 		viewing_player = winner
-		_finished(winner))
+		_finished(winner)
+		await Signals.vignette
+		await get_tree().create_timer(1.0).timeout
+		viewing_player = player
+		current_state = States.FOLLOWING_PLAYER)
 
 func _physics_process(_delta):
 	match current_state:
@@ -107,6 +111,12 @@ func _start_animation():
 	Signals.start_camera_zoom_finished.emit()
 	current_state = States.FOLLOWING_PLAYER
 func _following_player():
+	if player == null:
+		current_state = States.OVERIDDEN
+		return
+	
+	cam.zoom = Vector2(0.5,0.5)
+	
 	position = player.position
 	
 	var input_direction = Input.get_vector(player.inputs.Left, 

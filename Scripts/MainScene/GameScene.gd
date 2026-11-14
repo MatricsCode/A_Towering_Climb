@@ -28,9 +28,12 @@ func _ready():
 	Signals.lobby_joined.connect(func(_ID): pass)
 	Signals.lobby_start_game.connect(_level_select)
 	Signals.lobby_finished_game.connect(func(_winner : Player):
+		await Signals.vignette
+		
 		lobby = LOBBY.instantiate()
-		await get_tree().create_timer(0.5).timeout
-		add_child(lobby))
+		await get_tree().create_timer(1).timeout
+		add_child(lobby)
+		level.queue_free())
 	
 	#if Networking.peer.get_unique_id() == Steam.getLobbyOwner(Networking.current_lobby):
 	#Signals.lobby_start_game.connect(_spawn_players)
@@ -48,7 +51,6 @@ func _physics_process(_delta):
 		_spawn_players(4)
 
 func _level_select():
-	camera = CAMERA.instantiate()
 	#for i in GlobalScript.players:
 		#pass
 	
@@ -66,10 +68,6 @@ func _level_select():
 	
 	await player_placements._count()
 #	camera.player = GlobalScript.players.get(Steam.getSteamID())[0]
-	add_child(camera)
-	
-	move_child(player_placements, get_child_count()-1)
-	
 	Signals.start_anim_finished.emit()
 	
 	lobby.queue_free()

@@ -67,7 +67,11 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 		if winner == self:
 			_won()
 		else:
-			_lost())
+			_lost()
+		await Signals.vignette
+		await get_tree().create_timer(1.0).timeout
+		position = Vector2(0,-50)
+		current_state = States.AIR)
 	
 	ground.switch.connect(_switch_ground)
 	air.switch.connect(_switch_air)
