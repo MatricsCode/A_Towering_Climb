@@ -9,6 +9,7 @@ extends MarginContainer
 @export_group("UI Groups")
 @export var lobby_select_ui : Panel
 @export var lobby_main_ui : VBoxContainer
+@export var main_parent : Control
 
 @export_group("Lobby Search")
 @export var reload_lobbies_button : HoverButton
@@ -154,8 +155,8 @@ func _left_lobby(_lobby_id : int):
 
 func _game_started():
 	visible = false
-func _game_stopped():
-	visible = false
+func _game_stopped(_winner):
+	main_parent.visible = false
 
 func _physics_process(delta):
 	if GlobalScript.no_internet:

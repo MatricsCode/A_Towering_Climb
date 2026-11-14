@@ -123,6 +123,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control" parent="CanvasLayer/LobbyUI/VBoxContainer2/VBoxContainer" unique_id=1356395191 instance=ExtResource("4_y4jh7")]
+[node name="Control" parent="CanvasLayer/LobbyUI/VBoxContainer2/VBoxContainer" unique_id=1356395191 node_paths=PackedStringArray("main_parent") instance=ExtResource("4_y4jh7")]
 layout_mode = 2
 size_flags_vertical = 3
+main_parent = NodePath("../../..")

@@ -142,8 +142,11 @@ func _following_player():
 		cam_movement.tween_property(cam, "position", Vector2(cam_x, cam_y), easing)
 func _finished(winner : Player):
 	var tweener = get_tree().create_tween()
+	tweener.set_parallel()
 	tweener.set_ease(Tween.EASE_OUT)
-	tweener.set_trans(Tween.TRANS_EXPO)
 	tweener.tween_property(self, "position", winner.position, 1.5)
+	tweener.tween_property(cam, "position", Vector2(indicator_center.position.x,
+		indicator_center.position.y + 50) , 1.5)
+	tweener.tween_property(cam, "zoom", Vector2(0.4, 0.4), 1.5)
 	
 	pass
