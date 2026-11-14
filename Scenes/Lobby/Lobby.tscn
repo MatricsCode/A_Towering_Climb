@@ -56,6 +56,10 @@ position = Vector2(-289, -88)
 position = Vector2(-914, -524)
 ability = 1
 
+[node name="StaticBody2D3" parent="." unique_id=504689651 instance=ExtResource("2_t6nvb")]
+position = Vector2(430, -88)
+ability = 2
+
 [node name="Label" type="Label" parent="." unique_id=1040915005]
 offset_left = -627.9999
 offset_top = -1080.9999

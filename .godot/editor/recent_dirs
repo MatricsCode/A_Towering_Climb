@@ -1,3 +1,4 @@
+res://Art/Player/
 res://Scripts/Lobby/
 res://Scenes/GameScene/
 res://Scripts/MainScene/
@@ -11,7 +12,6 @@ res://Scenes/Elements/Interactables/
 res://Scripts/Levels/Interactables/
 D:/Kodumaster/Exports/A Towering Climb/Week2/
 res://Scripts/Player/StateMachine/
-res://Art/Player/
 res://Components/SpriteFrames/IntroSpriteFrames/
 res://Scripts/Player/
 res://Scripts/Camera/

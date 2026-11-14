@@ -144,7 +144,6 @@ func _switch_ground(new_state : States, additional := ""):
 		position.y -= 25
 	
 	current_state = new_state
-	_switch_timeout()
 func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
 	if !main_vars.get("other_vars")["can_switch"]:
 		return
@@ -168,7 +167,6 @@ func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
 	
 	_reset_main_vars()
 	current_state = new_state
-	_switch_timeout()
 func _switch_climb(new_state : States, additional := ""):
 	if !main_vars.get("other_vars")["can_switch"]:
 		return
@@ -176,6 +174,7 @@ func _switch_climb(new_state : States, additional := ""):
 	if new_state == States.GROUND:
 		if additional == "Finished":
 			position.x += 25 * _get_sprite_rotation() * -1
+			_switch_timeout(0.1)
 		elif additional == "OnEdge":
 			position.y -= 82.0
 			position.x += 50 * _get_sprite_rotation()
@@ -186,7 +185,6 @@ func _switch_climb(new_state : States, additional := ""):
 			air._jump(true)
 	
 	current_state = new_state
-	_switch_timeout()
 func _switch_pause(new_state : States, additional := ""):
 	current_state = new_state
 	if additional == "":
@@ -216,9 +214,9 @@ func _switch_ability(new_state : States, additional := ""):
 	
 	current_state = new_state
 
-func _switch_timeout():
+func _switch_timeout(time : float):
 	main_vars.other_vars.can_switch = false
-	await get_tree().create_timer(0.001).timeout
+	await get_tree().create_timer(time).timeout
 	main_vars.other_vars.can_switch = true
 
 func _reset_main_vars(key : int = -1): ## 0 = Ground, 1 = Air, 2 = Climb
