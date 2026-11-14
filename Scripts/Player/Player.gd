@@ -80,9 +80,6 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 		for y in main_vars[i]:
 			main_vars_reset.append(main_vars.get(i).get(y))
 	
-	if is_multiplayer_authority():
-		$AudioListener2D.make_current()
-	
 	await _configure_inputs()
 	current_state = States.AIR
 	start.emit()

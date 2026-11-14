@@ -14,11 +14,9 @@ var debug_unlock := "DEBUG"
 var no_internet := false
 
 func _ready():
-	Signals.start_anim_finished.connect(func():
-		can_debug = true)
+	Signals.start_anim_finished.connect(func(): can_debug = true)
 	Signals.peer_joined.connect(func(ID : int): peers.append(ID))
 	Signals.peer_left.connect(func(ID : int): peers.erase(ID))
-	#Signals.readied_peer.connect(_check_start)
 
 func _input(event):
 	var text = event.as_text()
@@ -32,7 +30,7 @@ func _input(event):
 		debug_inputs_last = ""
 		debug_inputs = ""
 		return
-	elif debug_unlock == debug_inputs and can_debug:
+	elif debug_unlock == debug_inputs && can_debug:
 		debug = !debug
 		Signals.debug.emit(debug)
 

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cefq6hcwel7wc"]
 
-[ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Old/Recourses/Tileset.tres" id="1_a15b7"]
+[ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Components/Tileset.tres" id="1_a15b7"]
 [ext_resource type="PackedScene" uid="uid://bguy4wdeg25k6" path="res://Scenes/Lobby/AbilityChanger.tscn" id="2_t6nvb"]
 [ext_resource type="Texture2D" uid="uid://cjg64eyyotllh" path="res://Art/Sandwich/Sandwich/Sandwich1.png" id="3_dy3e7"]
 [ext_resource type="Script" uid="uid://mu3t7gesquvk" path="res://Scripts/Lobby/ReadyUpArea.gd" id="3_qy7bc"]
@@ -61,10 +61,10 @@ position = Vector2(430, -88)
 ability = 2
 
 [node name="Label" type="Label" parent="." unique_id=1040915005]
-offset_left = -627.9999
-offset_top = -1080.9999
-offset_right = 636.0001
-offset_bottom = -810.9999
+offset_left = -744.00006
+offset_top = -940.0
+offset_right = 519.99994
+offset_bottom = -670.0
 rotation = -0.013336644
 theme_override_font_sizes/font_size = 64
 text = "This is only a preview of the actual game 

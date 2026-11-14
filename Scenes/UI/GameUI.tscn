@@ -4,6 +4,19 @@
 [ext_resource type="Script" uid="uid://blgp1f4rxq7ug" path="res://Scripts/UI/DebugUI.gd" id="2_tog36"]
 [ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="3_fe2yh"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_npa51"]
+[ext_resource type="Script" uid="uid://clmth84m3djfb" path="res://Scripts/UI/WinUI.gd" id="5_fe2yh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tog36"]
+bg_color = Color(0, 0.6803647, 0.72882235, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [node name="GameUI" type="Control" unique_id=1762117287]
 layout_mode = 3
@@ -75,3 +88,84 @@ theme = ExtResource("3_fe2yh")
 text = "Quit"
 script = ExtResource("4_npa51")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="WinMenu" type="MarginContainer" parent="." unique_id=1770758432 node_paths=PackedStringArray("center_point", "sprite", "main_ability", "pass_ability")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_fe2yh")
+script = ExtResource("5_fe2yh")
+center_point = NodePath("MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Panel/CenterPoint")
+sprite = NodePath("Sprite")
+main_ability = NodePath("MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MainAbility")
+pass_ability = NodePath("MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/PassAbility")
+
+[node name="Panel" type="Panel" parent="WinMenu" unique_id=1297423517]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="WinMenu" unique_id=678525609]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="MarginContainer" type="MarginContainer" parent="WinMenu/MarginContainer" unique_id=1187279320]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinMenu/MarginContainer/MarginContainer" unique_id=1942393291]
+layout_mode = 2
+alignment = 1
+
+[node name="Label4" type="Label" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer" unique_id=786477787]
+layout_mode = 2
+text = "WINNER!!! :D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer" unique_id=2116594463]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=254751148]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=433255080]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 0
+
+[node name="Panel" type="Panel" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=123100839]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_tog36")
+
+[node name="CenterPoint" type="Control" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/Panel" unique_id=2108749897]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainAbility" type="Label" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1801504536]
+layout_mode = 2
+text = "Main Ability: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PassAbility" type="Label" parent="WinMenu/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1421940316]
+layout_mode = 2
+text = "Main Ability: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite" type="AnimatedSprite2D" parent="WinMenu" unique_id=1417153111]

@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bc8og5lgrcpvd" path="res://Scripts/UI/Main.gd" id="1_5sfh5"]
 [ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="1_fr3bv"]
-[ext_resource type="Script" uid="uid://clmth84m3djfb" path="res://Scripts/UI/FinishedUI.gd" id="2_tt03y"]
+[ext_resource type="Script" uid="uid://clmth84m3djfb" path="res://Scripts/UI/WinUI.gd" id="2_tt03y"]
 [ext_resource type="Script" uid="uid://bldy0yf23ma7b" path="res://Scripts/UI/LobbyUI.gd" id="3_dfu8n"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_qyh0x"]
 [ext_resource type="Script" uid="uid://djlti40nuei7s" path="res://Scripts/UI/GameUI.gd" id="5_7uoew"]
 [ext_resource type="SpriteFrames" uid="uid://bl7fd60qs8x7s" path="res://Components/SpriteFrames/Players/Baker.tres" id="5_qy0ut"]
 [ext_resource type="Script" uid="uid://c0up8lhfcq1jh" path="res://Scripts/UI/CharacterSelectorUI.gd" id="5_upwrp"]
 [ext_resource type="Script" uid="uid://blgp1f4rxq7ug" path="res://Scripts/UI/DebugUI.gd" id="12_tt03y"]
+
 
 [sub_resource type="Gradient" id="Gradient_7uoew"]
 offsets = PackedFloat32Array(0.9895833, 1)

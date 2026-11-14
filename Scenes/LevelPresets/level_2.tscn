@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c04puj7j1jrp"]
 
-[ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Old/Recourses/Tileset.tres" id="1_7qxk6"]
+[ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Components/Tileset.tres" id="1_7qxk6"]
 [ext_resource type="PackedScene" uid="uid://bqn3jg2ms8eig" path="res://Scenes/LevelPresets/Spawners/InteractablesSpawner.tscn" id="3_oylv5"]
 [ext_resource type="PackedScene" uid="uid://deffkwaj6jy8s" path="res://Scenes/Elements/Interactables/MovingPlatform.tscn" id="4_8qsmg"]
 [ext_resource type="PackedScene" uid="uid://j0ml6gtwkiec" path="res://Art/Blockade.tscn" id="4_ovj6s"]

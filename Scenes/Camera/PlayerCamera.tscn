@@ -11,23 +11,23 @@ indicator_right = NodePath("Right")
 indicator_center = NodePath("Center")
 
 [node name="Up" type="Node2D" parent="." unique_id=181306014]
-position = Vector2(0, -400)
+position = Vector2(0, -500)
 
 [node name="Right" type="Node2D" parent="." unique_id=1246239565]
-position = Vector2(288, -96)
+position = Vector2(300, -200)
 
 [node name="Left" type="Node2D" parent="." unique_id=504431575]
-position = Vector2(-288, -96)
+position = Vector2(-300, -200)
 
 [node name="Down" type="Node2D" parent="." unique_id=1401159899]
-position = Vector2(0, 192)
+position = Vector2(0, 200)
 
 [node name="Center" type="Node2D" parent="." unique_id=605995402]
-position = Vector2(0, -96)
+position = Vector2(0, -200)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=243259360]
 ignore_rotation = false
-zoom = Vector2(0.6, 0.6)
+zoom = Vector2(0.5, 0.5)
 limit_top = -9999994
 limit_bottom = 326
 

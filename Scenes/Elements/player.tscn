@@ -132,26 +132,26 @@ collision_mask = 2
 
 [node name="GroundDetector1" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=1627784674]
 position = Vector2(-40, 0)
-target_position = Vector2(0, 10)
+target_position = Vector2(0, 5)
 collision_mask = 2
 
 [node name="GroundDetector2" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=577187749]
 position = Vector2(40, 0)
-target_position = Vector2(0, 10)
+target_position = Vector2(0, 5)
 collision_mask = 2
 
 [node name="WallDetectors" type="Node2D" parent="Detectors" unique_id=44892161]
 position = Vector2(0, -71)
 
 [node name="WallDetector1" type="RayCast2D" parent="Detectors/WallDetectors" unique_id=985429886]
-position = Vector2(-60, 0)
-target_position = Vector2(0, 60)
+position = Vector2(-45, 0)
+target_position = Vector2(0, 45)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="WallDetector2" type="RayCast2D" parent="Detectors/WallDetectors" unique_id=1384691904]
-position = Vector2(60, 0)
-target_position = Vector2(0, 60)
+position = Vector2(45, 0)
+target_position = Vector2(0, 45)
 collision_mask = 2
 hit_from_inside = true
 
@@ -159,13 +159,13 @@ hit_from_inside = true
 position = Vector2(0, -81)
 
 [node name="EdgeDetector1" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=2047404016]
-position = Vector2(-60, 0)
+position = Vector2(-45, 0)
 target_position = Vector2(-3, 0)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="EdgeDetector2" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=599898341]
-position = Vector2(60, 0)
+position = Vector2(45, 0)
 target_position = Vector2(3, 0)
 collision_mask = 2
 hit_from_inside = true
@@ -179,8 +179,6 @@ detectors = NodePath("../Detectors")
 [node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1387906588]
 volume_db = 5.0
 bus = &"Player"
-
-[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1138320826]
 
 [node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=448814101]
 offset_left = -180.0

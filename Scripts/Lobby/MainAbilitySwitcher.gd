@@ -23,9 +23,9 @@ var local_players_present = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if ability == 1: interactables_label.text = "Main Abilities:"
-	elif ability == 0: interactables_label.text = "Passive Abilities:"
-	else: interactables_label.text = "Character:"
+	if ability == 1: interactables_label.text = "[wave]Main Abilities:"
+	elif ability == 0: interactables_label.text = "[wave]Passive Abilities:"
+	else: interactables_label.text = "[wave]Character:"
 	
 	interactables_label.visible = true
 	abilities.visible = false
