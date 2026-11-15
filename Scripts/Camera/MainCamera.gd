@@ -13,7 +13,7 @@ extends Node2D
 @onready var cam = $Camera2D
 @onready var timer = $Timer
 
-enum States {BOUNCING, STARTING_ANIMATION, FOLLOWING_PLAYER, FINISHED, OVERIDDEN}
+enum States {STARTING_ANIMATION, FOLLOWING_PLAYER, FINISHED, PAUSED, OVERIDDEN}
 var current_state := States.OVERIDDEN
 
 var bouncing_time = 0
@@ -33,6 +33,8 @@ var finish_tweener : Tween
 var finish_tweener2 : Tween
 var finish_tweener3 : Tween
 
+var last_state 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#finish_tweener = get_tree().create_tween()
@@ -41,6 +43,11 @@ func _ready():
 	
 	current_state = States.OVERIDDEN
 	
+	Signals.paused.connect(func(is_paused : bool):
+		if is_paused:
+			cam.position = Vector2.ZERO
+			last_state = current_state
+			current_state = States.PAUSED)
 	
 	Signals.lobby_start_game.connect(_start_animation)
 	Signals.lobby_finished_game.connect(func(winner : Player):
@@ -54,8 +61,6 @@ func _ready():
 
 func _physics_process(_delta):
 	match current_state:
-		States.BOUNCING:
-			_bouncing()
 		States.STARTING_ANIMATION:
 			pass
 		States.FOLLOWING_PLAYER:
@@ -63,11 +68,7 @@ func _physics_process(_delta):
 		States.FINISHED:
 			pass
 
-func _bouncing():
-	position.x += 1
-	position.y = -10000 + sin(bouncing_time) * 10
-	bouncing_time += 0.01
-	cam.zoom = Vector2(1 + cos(bouncing_time/2) * 0.1, 1 + cos(bouncing_time/2) * 0.1)
+
 func _start_animation():
 	if player == null:
 		current_state = States.OVERIDDEN
