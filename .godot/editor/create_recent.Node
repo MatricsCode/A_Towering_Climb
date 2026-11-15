@@ -1,8 +1,8 @@
+Label
 AnimationPlayer
 AnimationTree
 HoverButton
 MarginContainer
-Label
 Button
 AnimatedSprite2D
 VBoxContainer
@@ -12,4 +12,3 @@ Panel
 TextureRect
 ColorRect
 HBoxContainer
-RichTextLabel

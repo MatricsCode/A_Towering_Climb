@@ -211,9 +211,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 32
-text = "Dave"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer" unique_id=1047417563]
 layout_mode = 2

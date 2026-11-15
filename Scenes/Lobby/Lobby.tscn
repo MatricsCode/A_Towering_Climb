@@ -136,3 +136,10 @@ speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1417673844]
 shape = SubResource("CircleShape2D_hqh25")
+
+[node name="Label" type="Label" parent="Area2D" unique_id=77835086]
+offset_left = -104.0
+offset_top = -154.0
+offset_right = 122.0
+offset_bottom = -131.0
+text = "Awaiting Players To Continue"

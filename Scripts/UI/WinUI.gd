@@ -32,7 +32,6 @@ func _winner(player : Player):
 	main_ability.text = MAIN_ABILITIES[player.player_source.main_ability]
 	pass_ability.text = PASS_ABILITIES[player.player_source.passive_ability]
 	name_label.text = player.player_source.player_name
-	await get_tree().create_timer(1).timeout
 	anim_player.play("WinUI_Open")
 func _return_to_lobby():
 	anim_player.play("WinUI_Close")

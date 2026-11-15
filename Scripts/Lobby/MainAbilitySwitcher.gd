@@ -64,6 +64,8 @@ func _editing_player(player : Player):
 		player.current_state = player.States.GROUND
 		editing_players.erase(player)
 		player._status_effect_update(false, "")
+		player._status_effect_update(true, null)
+		Networking._send_data(player, false)
 	else:
 		abilities.visible = true
 		player.current_state = player.States.PAUSED

@@ -19,6 +19,15 @@ func _ready():
 		body.main_vars.other_vars.ability_overide = false
 		players_present.erase(body)
 		local_players_present.erase(body.player_source.player_number))
+	
+	Signals.lobby_finished_game.connect(func():
+		$Label.visible = true)
+	#Signals.player_ready.connect(func(info : Array):
+		#if info[1] == false:
+			#return)
+		#var everyone_present = false
+		#for player in GlobalScript.players:
+			#if player[1] == false)
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("P1_Interact") and local_players_present.keys().has(1):
