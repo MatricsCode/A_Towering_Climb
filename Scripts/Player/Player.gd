@@ -59,19 +59,30 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 		position = Vector2(0,-50))
 	Signals.start_camera_zoom_finished.connect(func():
 		current_state = States.GROUND)
-	Signals.lobby_finished_game.connect(func(winner : Player):
+	Signals.lobby_finished_game.connect(func(_winner : Player):
 		current_state = States.PAUSED
 		velocity = Vector2.ZERO
 		animations.overide = true
 		
-		if winner == self:
-			_won()
-		else:
-			_lost()
+		set_collision_layer_value(1, false)
+		
 		await Signals.vignette
 		await get_tree().create_timer(1.0).timeout
 		position = Vector2(0,-50)
-		current_state = States.AIR)
+		current_state = States.PAUSED
+		
+		animations.overide = false
+		set_collision_layer_value(1, true))
+	Signals.paused.connect(func(is_paused : bool): 
+		if is_paused: 
+			current_state = States.PAUSED
+		else:
+			if detectors.is_on_wall:
+				current_state = States.CLIMB
+			elif !detectors.is_on_wall and detectors.is_on_ground:
+				current_state = States.GROUND
+			else:
+				current_state = States.AIR)
 	
 	ground.switch.connect(_switch_ground)
 	air.switch.connect(_switch_air)
@@ -256,15 +267,6 @@ func _get_sprite_rotation():
 		return 1
 	else:
 		return -1
-
-func _won():
-	sprite.play("fall")
-	set_collision_layer_value(1, false)
-	set_collision_mask_value(1, false)
-func _lost():
-	sprite.play("fall")
-	set_collision_layer_value(1, false)
-	set_collision_mask_value(1, false)
 
 func _update():
 	pass

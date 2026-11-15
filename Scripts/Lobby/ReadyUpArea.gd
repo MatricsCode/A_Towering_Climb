@@ -2,7 +2,6 @@ extends Area2D
 
 @export var TEST : Texture2D
 
-var text : Label
 var players_present : Array[Player]
 var local_players_present = {int = Player}
 
@@ -20,8 +19,6 @@ func _ready():
 		players_present.erase(body)
 		local_players_present.erase(body.player_source.player_number))
 	
-	Signals.lobby_finished_game.connect(func():
-		$Label.visible = true)
 	#Signals.player_ready.connect(func(info : Array):
 		#if info[1] == false:
 			#return)
@@ -29,7 +26,7 @@ func _ready():
 		#for player in GlobalScript.players:
 			#if player[1] == false)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_just_pressed("P1_Interact") and local_players_present.keys().has(1):
 		_make_ready(local_players_present.get(1))
 	elif Input.is_action_just_pressed("P2_Interact") and local_players_present.keys().has(2):

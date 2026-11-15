@@ -112,7 +112,7 @@ func _request_lobby_list():
 		#Steam.getLobbyData(current_lobby, "peers")
 
 
-func _lobby_message_recieved(lobby_id: int, changed_id: int, making_change_id: int, chat_state: int):
+func _lobby_message_recieved(_lobby_id: int, changed_id: int, _making_change_id: int, chat_state: int):
 	if chat_state == Steam.ChatMemberStateChange.CHAT_MEMBER_STATE_CHANGE_ENTERED and host:
 		_peer_joined.rpc(changed_id)
 	elif chat_state == Steam.ChatMemberStateChange.CHAT_MEMBER_STATE_CHANGE_ENTERED and host:

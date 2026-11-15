@@ -11,12 +11,15 @@ var debug_inputs_last := ""
 var debug_inputs : String = ""
 var debug_unlock := "DEBUG"
 
+var paused : bool = false
+
 var no_internet := false
 
 func _ready():
 	Signals.start_anim_finished.connect(func(): can_debug = true)
 	Signals.peer_joined.connect(func(ID : int): peers.append(ID))
 	Signals.peer_left.connect(func(ID : int): peers.erase(ID))
+	Signals.paused.connect(func(is_paused : bool): paused = is_paused)
 
 func _input(event):
 	var text = event.as_text()

@@ -15,7 +15,7 @@ func _ready():
 		else:
 			_debug_stop())
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !current:
 		return
 	

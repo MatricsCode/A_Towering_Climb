@@ -1,5 +1,6 @@
 extends Node
 
+@warning_ignore("unused_signal")
 signal switch(new_state, additional)
 
 @export var player : CharacterBody2D
@@ -10,7 +11,7 @@ var current := false
 
 var fall_speed := 0.0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player.current_state != player.States.PAUSED:
 		current = false
 		return

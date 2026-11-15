@@ -55,7 +55,6 @@ func _ready():
 	viewport_3.add_child(camera3)
 	viewport_4.add_child(camera4)
 
-
 func _player_added(player : Player):
 	var local_players = GlobalScript.players[Steam.getSteamID()]
 	
@@ -63,7 +62,7 @@ func _player_added(player : Player):
 		1:
 			_mono_player(player)
 		2:
-			_duo_player(player)#
+			_duo_player(player)
 		3:
 			_tri_player(player)
 		4:

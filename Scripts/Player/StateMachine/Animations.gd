@@ -10,7 +10,7 @@ extends Node
 
 var overide := false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if overide:
 		return
 	

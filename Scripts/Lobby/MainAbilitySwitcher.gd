@@ -45,7 +45,7 @@ func _ready():
 			abilities.visible = false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("P1_Interact") and local_players_present.keys().has(1):
 		_editing_player(local_players_present.get(1))
 	elif Input.is_action_just_pressed("P2_Interact") and local_players_present.keys().has(2):

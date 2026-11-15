@@ -30,8 +30,8 @@ func _ready():
 	Signals.lobby_finished_game.connect(func(_winner : Player):
 		await Signals.vignette
 		
-		lobby = LOBBY.instantiate()
 		await get_tree().create_timer(1).timeout
+		lobby = LOBBY.instantiate()
 		add_child(lobby)
 		level.queue_free())
 	
@@ -66,7 +66,6 @@ func _level_select():
 	
 	add_child(level)
 	
-	await player_placements._count()
 #	camera.player = GlobalScript.players.get(Steam.getSteamID())[0]
 	Signals.start_anim_finished.emit()
 	

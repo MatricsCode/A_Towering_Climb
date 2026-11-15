@@ -32,7 +32,7 @@ func _ready():
 			player.velocity.x = ram_speed * -0.45 * player._get_sprite_rotation()
 			fall_speed = ram_speed * -0.6)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if (player.current_state != activation_state and player.current_state != player.States.ABILITY 
 		or player.main_vars.other_vars.ability_overide):
 		current_state = false

@@ -20,21 +20,21 @@ func _ready():
 	Signals.lobby_finished_game.connect(_winner)
 	Signals.lobby_return_to_lobby.connect(_return_to_lobby)
 	continue_button.pressed.connect(func():
-		Signals.lobby_return_to_lobby.emit())
+		anim_player.play("WinUI_Close")
+		Signals.paused.emit(false)
+		continue_button.release_focus())
 
 func _physics_process(_delta):
-	sprite.position = center_point.position
+	sprite.position = center_point.global_position
 
 func _winner(player : Player):
 	sprite.sprite_frames = player.player_source.sprite_frame
-	sprite.play("idle")
-	sprite.position = center_point.position
+	sprite.play("walk")
+	sprite.position = center_point.global_position
 	main_ability.text = MAIN_ABILITIES[player.player_source.main_ability]
 	pass_ability.text = PASS_ABILITIES[player.player_source.passive_ability]
 	name_label.text = player.player_source.player_name
-	anim_player.play("WinUI_Open")
+	
 func _return_to_lobby():
-	anim_player.play("WinUI_Close")
-	Signals.vignette.emit(1,0.5)
 	await get_tree().create_timer(1).timeout
-	visible = false
+	anim_player.play("WinUI_Open")

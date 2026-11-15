@@ -99,6 +99,7 @@ func _start_animation():
 	start_anim.set_ease(Tween.EASE_OUT)
 	start_anim.tween_property(self, "position", Vector2(0,0), 2)
 	start_anim.tween_property(cam, "zoom", Vector2(0.5,0.5), 2)
+	start_anim.tween_property(cam, "position", indicator_center.position, 2)
 	
 	await start_anim.finished
 	

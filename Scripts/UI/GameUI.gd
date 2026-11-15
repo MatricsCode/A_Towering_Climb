@@ -17,7 +17,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	vignette_gradient.set_offset(1, vignette_gradient_offset)
 
 func _vignette_texture():

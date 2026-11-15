@@ -154,10 +154,10 @@ func _left_lobby(_lobby_id : int):
 	lobby_main_ui.visible = false
 
 func _game_started():
-	visible = false
+	main_parent.visible = false
 func _game_stopped(_winner):
 	main_parent.visible = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if GlobalScript.no_internet:
 		$LobbyUI/LobbySelect/LobbiesSelector/ConnectionIndicator.visible = true
