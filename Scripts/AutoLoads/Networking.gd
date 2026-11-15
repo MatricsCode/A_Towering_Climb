@@ -34,7 +34,8 @@ func _ready():
 		
 		if all_ready:
 			_start_game.rpc())
-	
+	Signals.lobby_finished_game.connect(func(_body):
+		ready_players.clear())
 	
 	Steam.initRelayNetworkAccess()
 	Steam.lobby_created.connect(_on_lobby_created)

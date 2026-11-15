@@ -64,12 +64,12 @@ func _editing_player(player : Player):
 		player.current_state = player.States.GROUND
 		editing_players.erase(player)
 		player._status_effect_update(false, "")
-		player._status_effect_update(true, null)
-		Networking._send_data(player, false)
 	else:
 		abilities.visible = true
 		player.current_state = player.States.PAUSED
 		editing_players.append(player)
+		player._status_effect_update(true, null)
+		Networking._send_data(player, false)
 func _change_ability(direction : int, player : Player):
 	var counter = func(number : int, size : int):
 		if number + direction > size:
