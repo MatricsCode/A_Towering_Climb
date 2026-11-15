@@ -1,11 +1,40 @@
-"A Towering Climb" is a fast paced, multiplayer climbing game where you compete against your friends to reach the top of a building as fast as possible.
-To help you hinder your opponents, an array of abilities is at your disposal, like a sandwich throw or spilling beans on the building.
+### Basic Overview:
+***A Towering Climb** is a multiplayer action platformer, in which you + 1, 2, 3 or X amount of friends race each other to reach the top of the building! Before you race, you get to pick from a handcrafted array of abilities and costumes, which will not just enhance your own chances at winning, but also annoy your friends on the way."*
 
-Prerequisit: Steam running with an active Steam account.
+### Additional Information:
+ ***A Towering Climb*** is in active development, things are subject to change at... basically any point, so don't get to attached to anything :D! 
+ 
+ ***A Towering Climb*** itself supports up to an unspecified amount of online players (basically, as long as your PC can handle it, ***A Towering Climb*** can as well) and currently 2 player couch coop (soon to be 4).
 
-To play: Download zip file, expand, start up steam, and click on the exe file.
+> IMPORTANT! For the online multiplayer, ***A Towering Climb*** uses Steam and it's integrated multiplayer development tools. ***A Towering Climb*** will NOT run without Steam running in the background with an active Steam account and a stable internet connection  
 
-During the development process of "A Towering Climb" uses the Steam ID of "SpaceWars", which is spesifically provided by steam for such multiplayer testing purposes.
+ You play on a randomly ***SELECTED*** (not generated) skyscraper construction site, on which you and your friends race to reach the top. To help you, as stated in the intro, there will be a number of handcrafted and unique abilities (think *grappling hook* and *can opener*, not *+30 movement speed*).
 
-About the developer:
-I have been working on this game for over one year now. I reworked it several times to match with my increasing skill level!
+All of ***A Towering Climb*** was hand made by me (Kodumaster), which includes but is not limited to the art, the code and the SFX. ***NO AI IS OR WILL BE USED IN THIS PROJECT***
+
+### Downloading:
+To download and play ***A Towering Climb***, follow this step by step guide:
+1. Click on this link (It will take you to the newest release):
+2. Download the ZIP file
+3. Unpack the ZIP in a location of your choice
+4. Log into Steam
+5. Click on the exe file
+6. Enjoy :-)
+
+> AS MENTIONED PREVIOUSLY: STEAM IS A PREREQUISIT FOR RUNNING ***A Towering Climb!***
+
+### Before playing:
+When starting ***A Towering Climb*** in it's current state, you will be greeted with a list of lobbies in the main part of the window and a few buttons up top. 
+
+As ***A Towering Climb*** does not have it's own SteamID yet and is still in development, all of the lobbies you see DO NOT WORK! You need to click on the "Host Lobby" button to start the game. Once you do, you should see a background change and some text prompting you to press either the E key or STRG. Pressing either will spawn a player, but only once, with predetermined controls. 
+
+> If you pressed E, the controls are WASD, SPACE to jump and E to interact. 
+> If you pressed STRG, the controls are the arrow keys, ENTER to jump and STRG to interact
+
+Once you spawned your player (or both) you can walk around. When you walk past one of the floating heads (With text over them) the text over them disappears. By interacting with them you switch into ability or outfit selection mode. This will allow you to switch your abilities or your outfits (surprise, surprise). To finish the selection process press the interact key again.
+
+When you walk past a hoard of flying sandwiches (you will know when you see them), press interact whilst you are inside them, a smiley face will appear next to your characters name. This indicates that you are ready to play. When all players have a smiley face next to their name, the screen will fade black and you will start the game. 
+Your goal is to reach the flagpole at the top of the level.
+
+### Known Bugs:
+I will update this periodically, when I know of any bugs.
