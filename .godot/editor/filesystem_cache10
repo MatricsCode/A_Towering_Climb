@@ -1,7 +1,7 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1794767065
+::res://::1794841376
 default_bus_layout.tres::AudioBusLayout::698027414198536659::1794742043::0::1::::<><><>0<>0<><>::
-export_presets.cfg::TextFile::-1::1794162315::0::1::::<><><>0<>0<><>::
+export_presets.cfg::TextFile::-1::1794767102::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::3041926038368580319::1793442797::1793460716::1::::<><><>0<>0<>f2ef2cbeb588765790e00cdb7c583c93<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 test.gd::GDScript::3508587568695867276::1793442797::0::1::::<>CharacterBody2D<><>0<>0<><>::
 Test.tscn::PackedScene::5738890036137853620::1794742043::0::1::::<><><>0<>0<><>::uid://bjlscvq7o16m2::::res://icon.svg<>uid://bp8t6o5i5cf1u::::res://test.gd<>uid://t2ada3fb8vts::::res://Old/wall_detectors.gd
@@ -22,7 +22,7 @@ updating.tscn::PackedScene::4844468035779095226::1793442796::0::1::::<><><>0<>0<
 ::res://addons/godotsteam/linuxarm64/::1793442796
 ::res://addons/godotsteam/osx/::1793442796
 ::res://addons/godotsteam/win32/::1793442797
-::res://addons/godotsteam/win64/::1794767059
+::res://addons/godotsteam/win64/::1794841371
 ::res://addons/godot_super-wakatime/::1793442796
 api_key_prompt.tscn::PackedScene::3919262858641749045::1793442796::0::1::::<><><>0<>0<><>::
 counter.tscn::PackedScene::6849360014225833986::1793442796::0::1::::<><><>0<>0<><>::
@@ -176,8 +176,8 @@ Wall7.png::CompressedTexture2D::8408127472084802795::1793442796::1793460716::1::
 Wall8.png::CompressedTexture2D::6645545452127954271::1793442796::1793460716::1::::<><><>0<>0<>a271ef951436e3aa21391fcd10e9b90b<>res://.godot/imported/Wall8.png-e24649c7711d5adeb50b02e309ea917e.ctex::
 Wall9.png::CompressedTexture2D::6963890726421251767::1793442796::1793460716::1::::<><><>0<>0<>cb1425f708b9d0967ab8f08e1bffc92e<>res://.godot/imported/Wall9.png-5150d3c7093b1774629de2a658af10bc.ctex::
 Wall10.png::CompressedTexture2D::7167796386967298824::1793442796::1793460716::1::::<><><>0<>0<>0e854fab0bb4c9c9f7b6a856e99ab444<>res://.godot/imported/Wall10.png-8dfd8aef1760c1756e308d483bfa3380.ctex::
-::res://Components/::1794766096
-Tileset.tres::TileSet::6406803866803831232::1794766096::0::1::::<><><>0<>0<><>::uid://vu8lrnx8rw0u::::res://Art/Tilemap/Beams.png<>uid://b06baxs5t618j::::res://Art/Tilemap/Signs.png<>uid://molm7urbf3d3::::res://Art/Tilemap/WalledSections.png
+::res://Components/::1794767958
+Tileset.tres::TileSet::6406803866803831232::1794767958::0::1::::<><><>0<>0<><>::uid://vu8lrnx8rw0u::::res://Art/Tilemap/Beams.png<>uid://b06baxs5t618j::::res://Art/Tilemap/Signs.png<>uid://molm7urbf3d3::::res://Art/Tilemap/WalledSections.png
 ::res://Components/Resources/::1794742043
 PlayerSource.gd::GDScript::2539432147955320951::1794742043::0::1::::PlayerSource<>Resource<><>0<>0<><>::
 ::res://Components/SpriteFrames/::1794742043
@@ -187,17 +187,17 @@ Green.tres::SpriteFrames::8298267444499444618::1794742043::0::1::::<><><>0<>0<><
 Pink.tres::SpriteFrames::1583625985943698502::1794742043::0::1::::<><><>0<>0<><>::uid://q1borbrlahns::::res://Art/Bird/Bird22.png<>uid://cgagxw3wxbt4::::res://Art/Bird/Bird23.png<>uid://bkl2sn3s2j5tb::::res://Art/Bird/Bird24.png<>uid://vprt123ivnwy::::res://Art/Bird/Bird25.png<>uid://bo1gem1n6m8::::res://Art/Bird/Bird21.png
 Red.tres::SpriteFrames::290027281483030283::1794742043::0::1::::<><><>0<>0<><>::uid://64vltxnopejq::::res://Art/Bird/Bird12.png<>uid://dr17nm8iqe1xm::::res://Art/Bird/Bird13.png<>uid://7iqdo32ifb7y::::res://Art/Bird/Bird14.png<>uid://cdpp368l5y4uj::::res://Art/Bird/Bird15.png<>uid://xxohy5564occ::::res://Art/Bird/Bird11.png
 White.tres::SpriteFrames::8593462389014952966::1794742043::0::1::::<><><>0<>0<><>::uid://q1borbrlahns::::res://Art/Bird/Bird22.png<>uid://cgagxw3wxbt4::::res://Art/Bird/Bird23.png<>uid://bkl2sn3s2j5tb::::res://Art/Bird/Bird24.png<>uid://vprt123ivnwy::::res://Art/Bird/Bird25.png<>uid://bo1gem1n6m8::::res://Art/Bird/Bird21.png
-::res://Components/SpriteFrames/IntroSpriteFrames/::1794766096
-Baker.tres::SpriteFrames::3036053616082410484::1794766096::0::1::::<><><>0<>0<><>::uid://7nqqsy0r6u5v::::res://Art/Player/Baker.png
-Climber1.tres::SpriteFrames::653017456937446818::1794766096::0::1::::<><><>0<>0<><>::uid://dpxyl2byx1n7::::res://Art/Player/Climber.png
+::res://Components/SpriteFrames/IntroSpriteFrames/::1794767958
+Baker.tres::SpriteFrames::3036053616082410484::1794767958::0::1::::<><><>0<>0<><>::uid://7nqqsy0r6u5v::::res://Art/Player/Baker.png
+Climber1.tres::SpriteFrames::653017456937446818::1794767958::0::1::::<><><>0<>0<><>::uid://dpxyl2byx1n7::::res://Art/Player/Climber.png
 IntroSpriteFrames.tres::SpriteFrames::743777762384692543::1793442796::0::1::::<><><>0<>0<><>::
-::res://Components/SpriteFrames/Players/::1794766096
-Baker.tres::SpriteFrames::3224868661783227542::1794766096::0::1::::<><><>0<>0<><>::uid://7nqqsy0r6u5v::::res://Art/Player/Baker.png
-Climber1.tres::SpriteFrames::6708408963703819640::1794766096::0::1::::<><><>0<>0<><>::uid://dpxyl2byx1n7::::res://Art/Player/Climber.png
-Climber2.tres::SpriteFrames::5154086206977140550::1794766096::0::1::::<><><>0<>0<><>::uid://cohbjhla1v7x2::::res://Art/Player/Climber2.png
+::res://Components/SpriteFrames/Players/::1794767958
+Baker.tres::SpriteFrames::3224868661783227542::1794767958::0::1::::<><><>0<>0<><>::uid://7nqqsy0r6u5v::::res://Art/Player/Baker.png
+Climber1.tres::SpriteFrames::6708408963703819640::1794767958::0::1::::<><><>0<>0<><>::uid://dpxyl2byx1n7::::res://Art/Player/Climber.png
+Climber2.tres::SpriteFrames::5154086206977140550::1794767958::0::1::::<><><>0<>0<><>::uid://cohbjhla1v7x2::::res://Art/Player/Climber2.png
 PlayerSpriteFrames.tres::SpriteFrames::2091156018547199444::1793442796::0::1::::<><><>0<>0<><>::
-::res://Components/Themes/::1794766096
-MainTheme.tres::Theme::5017258824401087048::1794766096::0::1::::<><><>0<>0<><>::
+::res://Components/Themes/::1794767958
+MainTheme.tres::Theme::5017258824401087048::1794767958::0::1::::<><><>0<>0<><>::
 ::res://Old/::1794742043
 LobbyUI_DEPRICATED.tscn::PackedScene::1714093245346357326::1794742043::0::1::::<><><>0<>0<><>::uid://mxplkon28xxc::::res://Scripts/PlayArea/level_spawner.gd<>uid://ceh88qybxg6et::::res://Scripts/PlayArea/multiplayer_spawner.gd<>uid://c2kbb3vdndd4g::::res://Scenes/Elements/player.tscn<>uid://bnt4usslrchfy::::res://Old/UI_Old/DEPRICATED UI.tscn
 MainScene_DEPRICATED.gd::GDScript::6354027177458728139::1794162315::0::1::::<>Node2D<><>0<>0<><>::
@@ -216,10 +216,10 @@ player_ready_up.gd::GDScript::8801469421392872637::1793442796::0::1::::<>Multipl
 Baker HeightLeaderboard.tres::Theme::1002079053211426567::1793442796::0::1::::<><><>0<>0<><>::uid://c4ldc5il3mxo::::res://Art/Markers/BakerIcon.png
 Climber1 HeightLeaderboard.tres::Theme::2615973589032267757::1794653159::0::1::::<><><>0<>0<><>::uid://g3go1fgefanm::::res://Art/Markers/ClimberIcon.png
 Climber2 HeightLeaderboard.tres::Theme::3358148732751592330::1793442796::0::1::::<><><>0<>0<><>::uid://l5ciqi18p0us::::res://Art/Markers/ClimberIcon2.png
-::res://Old/Recourses/UI/::1794737596
-main.tres::Theme::3769992649394900157::1794737596::0::1::::<><><>0<>0<><>::
-PauseBackground.tres::GradientTexture2D::4937319959609435997::1794737596::0::1::::<><><>0<>0<><>::
-WinBackground.tres::GradientTexture2D::6837227110911362756::1794737596::0::1::::<><><>0<>0<><>::
+::res://Old/Recourses/UI/::1794767958
+main.tres::Theme::3769992649394900157::1794767958::0::1::::<><><>0<>0<><>::
+PauseBackground.tres::GradientTexture2D::4937319959609435997::1794767958::0::1::::<><><>0<>0<><>::
+WinBackground.tres::GradientTexture2D::6837227110911362756::1794767958::0::1::::<><><>0<>0<><>::
 ::res://Old/Tools/::1793442796
 base_button.gd::GDScript::5690899254101211845::1793442796::0::1::::Base_Button<>Button<><>0<>0<><>::
 ::res://Old/UI_Old/::1794742043
@@ -260,9 +260,9 @@ level_3.tscn::PackedScene::5754909420152186682::1794757011::0::1::::<><><>0<>0<>
 BirdSpawner.tscn::PackedScene::7237426469105397965::1793466189::0::1::::<><><>0<>0<><>::uid://dy32smmeh3nm4::::res://Scripts/Levels/Props/Bird/bird_spawner.gd
 InteractablesSpawner.tscn::PackedScene::3537995598067402510::1793442796::0::1::::<><><>0<>0<><>::uid://ci36pfrutwlfx::::res://Scripts/Levels/Spawners/interactables_spawner.gd
 ProjectileSpawner.tscn::PackedScene::2489204104778780496::1793442796::0::1::::<><><>0<>0<><>::uid://bxjl61umx10xr::::res://Scripts/Projectiles/Projectile Spawner/projectile_spawner.gd
-::res://Scenes/Lobby/::1794767049
+::res://Scenes/Lobby/::1794768037
 AbilityChanger.tscn::PackedScene::2850351456791100387::1794756986::0::1::::<><><>0<>0<><>::uid://dpdi1y0ri44y8::::res://Scripts/Lobby/MainAbilitySwitcher.gd<>uid://bh05v7h6r0rxo::::res://Art/Markers/GaryIcon.png
-Lobby.tscn::PackedScene::5064945833962400326::1794767049::0::1::::<><><>0<>0<><>::uid://cxjreg6tirxq3::::res://Components/Tileset.tres<>uid://bguy4wdeg25k6::::res://Scenes/Lobby/AbilityChanger.tscn<>uid://bprgq2cddpma5::::res://Scripts/Tutorial/TutorialLabel.gd<>uid://cjg64eyyotllh::::res://Art/Sandwich/Sandwich/Sandwich1.png<>uid://mu3t7gesquvk::::res://Scripts/Lobby/ReadyUpArea.gd<>uid://840aay6lblgc::::res://Art/Markers/Test.png<>uid://b7pr8b6dvxdb2::::res://Art/Sandwich/Sandwich/Sandwich2.png<>uid://dah4htacvndyf::::res://Art/Sandwich/Sandwich/Sandwich3.png<>uid://ucstx68cn55j::::res://Art/Sandwich/Sandwich/Sandwich4.png
+Lobby.tscn::PackedScene::5064945833962400326::1794768037::0::1::::<><><>0<>0<><>::uid://cxjreg6tirxq3::::res://Components/Tileset.tres<>uid://bguy4wdeg25k6::::res://Scenes/Lobby/AbilityChanger.tscn<>uid://bprgq2cddpma5::::res://Scripts/Tutorial/TutorialLabel.gd<>uid://cjg64eyyotllh::::res://Art/Sandwich/Sandwich/Sandwich1.png<>uid://mu3t7gesquvk::::res://Scripts/Lobby/ReadyUpArea.gd<>uid://840aay6lblgc::::res://Art/Markers/Test.png<>uid://b7pr8b6dvxdb2::::res://Art/Sandwich/Sandwich/Sandwich2.png<>uid://dah4htacvndyf::::res://Art/Sandwich/Sandwich/Sandwich3.png<>uid://ucstx68cn55j::::res://Art/Sandwich/Sandwich/Sandwich4.png
 ::res://Scenes/UI/::1794757111
 CharacterSwitchAnimation.gd::GDScript::7070356622821781699::1793442796::0::1::::<>Panel<><>0<>0<><>::
 GameUI.tscn::PackedScene::7901138017084281835::1794757111::0::1::::<><><>0<>0<><>::uid://djlti40nuei7s::::res://Scripts/UI/GameUI.gd<>uid://blgp1f4rxq7ug::::res://Scripts/UI/DebugUI.gd<>uid://cdqnrw5rcouf5::::res://Components/Themes/MainTheme.tres<>uid://c8ngd8ierrftp::::res://Scripts/UI/Button/ButtonClass.gd<>uid://clmth84m3djfb::::res://Scripts/UI/WinUI.gd

@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://c0up8lhfcq1jh" path="res://Scripts/UI/CharacterSelectorUI.gd" id="5_upwrp"]
 [ext_resource type="Script" uid="uid://blgp1f4rxq7ug" path="res://Scripts/UI/DebugUI.gd" id="12_tt03y"]
 
-
 [sub_resource type="Gradient" id="Gradient_7uoew"]
 offsets = PackedFloat32Array(0.9895833, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 1)
@@ -84,26 +83,26 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameUI:visible")
+tracks/0/path = NodePath("GameUI:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GameUI:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ialnu"]
@@ -157,7 +156,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/2/type = "value"
@@ -211,7 +210,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CaracterSelectorUI:modulate")
+tracks/6/path = NodePath("GameUI:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -223,7 +222,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("GameUI:modulate")
+tracks/7/path = NodePath("CaracterSelectorUI:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -333,22 +332,21 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_qyh0x"]
 resource_name = "Close_MainUI"
 length = 0.3
-tracks/0/type = "value"
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameUI:visible")
+tracks/0/path = NodePath("GameUI:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.26666668)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameUI:modulate:r")
+tracks/1/path = NodePath("GameUI:modulate:b")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -370,7 +368,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("GameUI:modulate:b")
+tracks/3/path = NodePath("GameUI:modulate:r")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -378,16 +376,17 @@ tracks/3/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.26666668)
 }
-tracks/4/type = "bezier"
+tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("GameUI:modulate:a")
+tracks/4/path = NodePath("GameUI:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
-"times": PackedFloat32Array(0, 0.26666668)
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_dfu8n"]
@@ -473,7 +472,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/2/type = "value"
@@ -524,7 +523,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("LobbyUI:modulate:a")
+tracks/6/path = NodePath("GameUI:modulate:a")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -535,7 +534,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("GameUI:modulate:r")
+tracks/7/path = NodePath("GameUI:modulate:b")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -557,7 +556,7 @@ tracks/8/keys = {
 tracks/9/type = "bezier"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("GameUI:modulate:b")
+tracks/9/path = NodePath("GameUI:modulate:r")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -568,7 +567,7 @@ tracks/9/keys = {
 tracks/10/type = "bezier"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("GameUI:modulate:a")
+tracks/10/path = NodePath("LobbyUI:modulate:a")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -669,7 +668,7 @@ game_ui = NodePath("GameUI")
 caracter_selector_ui = NodePath("CaracterSelectorUI")
 finished_ui = NodePath("FinishedUI")
 
-[node name="FinishedUI" type="Panel" parent="." unique_id=1432471743 node_paths=PackedStringArray("continue_button", "change_character_button", "leave_lobby_button", "quit_button", "centre_point", "sprite", "main_ability", "sec1_ability", "sec2_ability")]
+[node name="FinishedUI" type="Panel" parent="." unique_id=1432471743 node_paths=PackedStringArray("sprite", "main_ability", "continue_button")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -679,15 +678,9 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("2_tt03y")
-continue_button = NodePath("MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Continue")
-change_character_button = NodePath("MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/ChangeCharacter")
-leave_lobby_button = NodePath("MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/LeaveLobby")
-quit_button = NodePath("MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Quit")
-centre_point = NodePath("MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/Panel/CentrePoint")
 sprite = NodePath("MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/Panel/Sprite")
 main_ability = NodePath("MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/MainAbility")
-sec1_ability = NodePath("MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/SecondaryAbility1")
-sec2_ability = NodePath("MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/SecondaryAbility2")
+continue_button = NodePath("MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Continue")
 
 [node name="MarginContainer" type="MarginContainer" parent="FinishedUI" unique_id=1517162270]
 layout_mode = 1
@@ -793,7 +786,7 @@ text = "Secondary Ability 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "lobby_join_id", "quit_button", "reload_lobbies_button", "id_button", "lobby_search_field", "lobby_list")]
+[node name="LobbyUI" type="Panel" parent="." unique_id=250894262 node_paths=PackedStringArray("host_button", "join_button", "lobby_join_id", "quit_button", "reload_lobbies_button", "lobby_search_field", "lobby_list")]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -807,7 +800,6 @@ join_button = NodePath("MarginContainer/HBoxContainer/MainButtons/MarginContaine
 lobby_join_id = NodePath("MarginContainer/HBoxContainer/MainButtons/MarginContainer/VBoxContainer/LobbyID")
 quit_button = NodePath("MarginContainer/HBoxContainer/MainButtons/Quit")
 reload_lobbies_button = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/ReloadLobbies")
-id_button = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/HBoxContainer/Container/SwitchToID")
 lobby_search_field = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/HBoxContainer/LobbyID")
 lobby_list = NodePath("MarginContainer/HBoxContainer/LobbiesSelector/LobbyButtons/ScrollContainer/LobbyButtonContainer")
 
