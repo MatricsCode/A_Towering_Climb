@@ -1,14 +1,12 @@
 [gd_scene format=3 uid="uid://fncklescmf13"]
 
-[ext_resource type="Script" uid="uid://bc8og5lgrcpvd" path="res://Scripts/UI/Main.gd" id="1_5sfh5"]
+[ext_resource type="Script" uid="uid://bc8og5lgrcpvd" path="res://Scripts/UI/MainUI.gd" id="1_5sfh5"]
 [ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="1_fr3bv"]
 [ext_resource type="Script" uid="uid://clmth84m3djfb" path="res://Scripts/UI/WinUI.gd" id="2_tt03y"]
 [ext_resource type="Script" uid="uid://bldy0yf23ma7b" path="res://Scripts/UI/LobbyUI.gd" id="3_dfu8n"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="4_qyh0x"]
-[ext_resource type="Script" uid="uid://djlti40nuei7s" path="res://Scripts/UI/GameUI.gd" id="5_7uoew"]
 [ext_resource type="SpriteFrames" uid="uid://bl7fd60qs8x7s" path="res://Components/SpriteFrames/Players/Baker.tres" id="5_qy0ut"]
 [ext_resource type="Script" uid="uid://c0up8lhfcq1jh" path="res://Scripts/UI/CharacterSelectorUI.gd" id="5_upwrp"]
-[ext_resource type="Script" uid="uid://blgp1f4rxq7ug" path="res://Scripts/UI/DebugUI.gd" id="12_tt03y"]
 
 [sub_resource type="Gradient" id="Gradient_7uoew"]
 offsets = PackedFloat32Array(0.9895833, 1)
@@ -80,30 +78,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_1so4l"]
 resource_name = "Open_MainUI"
 length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameUI:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GameUI:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_ialnu"]
 resource_name = "Open_LobbyUI"
@@ -150,19 +124,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameUI:visible")
+tracks/1/path = NodePath("CaracterSelectorUI:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CaracterSelectorUI:visible")
+tracks/2/path = NodePath("FinishedUI:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -174,19 +148,19 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FinishedUI:visible")
+tracks/3/path = NodePath("FinishedUI:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("FinishedUI:modulate")
+tracks/4/path = NodePath("LobbyUI:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -198,34 +172,10 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("LobbyUI:modulate")
+tracks/5/path = NodePath("CaracterSelectorUI:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("GameUI:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CaracterSelectorUI:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -332,62 +282,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_qyh0x"]
 resource_name = "Close_MainUI"
 length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameUI:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
-"times": PackedFloat32Array(0, 0.26666668)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GameUI:modulate:b")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.26666668)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("GameUI:modulate:g")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.26666668)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("GameUI:modulate:r")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.26666668)
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("GameUI:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [true, false]
-}
 
 [sub_resource type="Animation" id="Animation_dfu8n"]
 resource_name = "Close_LobbyUI"
@@ -466,31 +360,30 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameUI:visible")
+tracks/1/path = NodePath("LobbyUI:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [true]
 }
-tracks/2/type = "value"
+tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LobbyUI:visible")
+tracks/2/path = NodePath("LobbyUI:modulate:r")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("LobbyUI:modulate:r")
+tracks/3/path = NodePath("LobbyUI:modulate:g")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -501,7 +394,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("LobbyUI:modulate:g")
+tracks/4/path = NodePath("LobbyUI:modulate:b")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -512,29 +405,29 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("LobbyUI:modulate:b")
+tracks/5/path = NodePath("LobbyUI:modulate:a")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("GameUI:modulate:a")
+tracks/6/path = NodePath("CaracterSelectorUI:modulate:r")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("GameUI:modulate:b")
+tracks/7/path = NodePath("CaracterSelectorUI:modulate:g")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -545,7 +438,7 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("GameUI:modulate:g")
+tracks/8/path = NodePath("CaracterSelectorUI:modulate:b")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -556,88 +449,33 @@ tracks/8/keys = {
 tracks/9/type = "bezier"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("GameUI:modulate:r")
+tracks/9/path = NodePath("CaracterSelectorUI:modulate:a")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/10/type = "bezier"
+tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("LobbyUI:modulate:a")
+tracks/10/path = NodePath("FinishedUI:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/11/type = "bezier"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("CaracterSelectorUI:modulate:r")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/12/type = "bezier"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("CaracterSelectorUI:modulate:g")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/13/type = "bezier"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("CaracterSelectorUI:modulate:b")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/14/type = "bezier"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("CaracterSelectorUI:modulate:a")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("FinishedUI:visible")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("FinishedUI:modulate")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("FinishedUI:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -664,7 +502,7 @@ script = ExtResource("1_5sfh5")
 anim_close = NodePath("AnimationPlayerClose")
 anim_open = NodePath("AnimationPlayerOpen")
 lobby_ui = NodePath("LobbyUI")
-game_ui = NodePath("GameUI")
+game_ui = NodePath("")
 caracter_selector_ui = NodePath("CaracterSelectorUI")
 finished_ui = NodePath("FinishedUI")
 
@@ -976,69 +814,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_hqh25")
-
-[node name="GameUI" type="MarginContainer" parent="." unique_id=263238374 node_paths=PackedStringArray("vignette")]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("5_7uoew")
-vignette = NodePath("Vignette")
-
-[node name="Vignette" type="TextureRect" parent="GameUI" unique_id=1396566193]
-layout_mode = 2
-
-[node name="DebugMenu" type="Control" parent="." unique_id=759007241 node_paths=PackedStringArray("character_selector", "debug_label", "main_ability_label", "passive_ability_label", "quit_button")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("12_tt03y")
-character_selector = NodePath("../CaracterSelectorUI")
-debug_label = NodePath("VBoxContainer/VBoxContainer/DebugLabel")
-main_ability_label = NodePath("VBoxContainer/VBoxContainer/MainAbility")
-passive_ability_label = NodePath("VBoxContainer/VBoxContainer/PassAbility")
-quit_button = NodePath("VBoxContainer/VBoxContainer/Quit")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DebugMenu" unique_id=196672086]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DebugMenu/VBoxContainer" unique_id=1285584695]
-layout_mode = 2
-
-[node name="DebugLabel" type="Label" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=2106871353]
-layout_mode = 2
-theme = ExtResource("1_fr3bv")
-text = "DEBUG MODE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MainAbility" type="Label" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=1557722329]
-layout_mode = 2
-theme = ExtResource("1_fr3bv")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PassAbility" type="Label" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=1710641031]
-layout_mode = 2
-theme = ExtResource("1_fr3bv")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Quit" type="Button" parent="DebugMenu/VBoxContainer/VBoxContainer" unique_id=869933054]
-layout_mode = 2
-theme = ExtResource("1_fr3bv")
-text = "Quit"
-script = ExtResource("4_qyh0x")
-metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
 [node name="AnimationPlayerOpen" type="AnimationPlayer" parent="." unique_id=399376621]
 libraries/ = SubResource("AnimationLibrary_ual16")

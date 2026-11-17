@@ -25,7 +25,8 @@ func _ready():
 	lobby = LOBBY.instantiate()
 	add_child(lobby)
 	
-	Signals.lobby_joined.connect(func(_ID): pass)
+	Signals.lobby_joined.connect(func(_ID): 
+		_spawn_players(1))
 	Signals.lobby_start_game.connect(_level_select)
 	Signals.lobby_finished_game.connect(func(_winner : Player):
 		await Signals.vignette

@@ -1,9 +1,14 @@
-extends Control
+extends MarginContainer
+
+@export var settings_UI : Control
+
+@export_category("Nodes")
 @export var button_container : VBoxContainer
 @export var accept_button : HoverButton
 @export var cancel_button : HoverButton
 @export var action_label : Label
 @export var event_label : Label
+@export var finished_button : HoverButton
 
 var current_action : String = ""
 var current_event
@@ -11,6 +16,9 @@ var current_event
 func _ready():
 	accept_button.pressed.connect(_change_action)
 	cancel_button.pressed.connect(_finish_action)
+	finished_button.pressed.connect(func():
+		_finish_action()
+		settings_UI._settings(true))
 	
 	for action in InputMap.get_actions():
 		action = str(action)
@@ -40,6 +48,8 @@ func _ready():
 		button_container.get_child(button_container.get_child_count()-1).get_path())
 	
 	button_container.get_child(0).grab_focus()
+	finished_button.pressed.connect(func():
+		pass)
 
 func _check_actions(action : String):
 	var found = false
@@ -88,7 +98,7 @@ func _finish_action():
 
 func _input(event):
 	if current_action != "":
-		if str(event).find("InputEventKey") == -1:
+		if str(event).find("Key") == -1 && str(event).find("JoypadMotion") == -1:
 			return
 		
 		current_event = event
