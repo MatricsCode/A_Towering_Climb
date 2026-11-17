@@ -69,9 +69,10 @@ text = "Quit  :C"
 script = ExtResource("2_52ctl")
 metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 
-[node name="LobbyUI" parent="." unique_id=1356395191 instance=ExtResource("3_4cpe4")]
+[node name="LobbyUI" parent="." unique_id=1356395191 node_paths=PackedStringArray("main_parent") instance=ExtResource("3_4cpe4")]
 visible = false
 layout_mode = 1
+main_parent = NodePath("..")
 
 [node name="SettingsUI" type="MarginContainer" parent="." unique_id=1755806984 node_paths=PackedStringArray("main_UI", "settings_UI", "video_button", "audio_button", "remap_button", "finished_button", "video_settings", "audio_settings", "remap_settings")]
 layout_mode = 1

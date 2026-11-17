@@ -50,6 +50,9 @@ func _ready():
 	host_button.grab_focus()
 
 func _host_pressed():
+	Signals.vignette.emit(0.5,0.25)
+	main_parent.visible = false
+	await get_tree().create_timer(0.5).timeout
 	Networking._host_lobby()
 func _join_pressed():
 	var lobby_id := lobby_join_id.text
@@ -89,6 +92,10 @@ func _join_pressed():
 func _quit_pressed():
 	get_tree().quit()
 func _join_lobby(lobby_id : String):
+	Signals.vignette.emit(0.5,0.25)
+	main_parent.visible = false
+	await get_tree().create_timer(0.5).timeout
+	
 	var int_lobby_id := int(lobby_id)
 	Steam.joinLobby(int_lobby_id)
 
@@ -154,7 +161,7 @@ func _left_lobby(_lobby_id : int):
 	lobby_main_ui.visible = false
 
 func _game_started():
-	main_parent.visible = false
+	pass
 func _game_stopped(_winner):
 	main_parent.visible = false
 
