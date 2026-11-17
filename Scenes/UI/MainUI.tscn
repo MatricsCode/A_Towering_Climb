@@ -73,7 +73,7 @@ metadata/_custom_type_script = "uid://c8ngd8ierrftp"
 visible = false
 layout_mode = 1
 
-[node name="SettingsUI" type="MarginContainer" parent="." unique_id=1755806984 node_paths=PackedStringArray("main_UI", "background", "settings_UI", "video_button", "audio_button", "remap_button", "finished_button", "video_settings", "audio_settings", "remap_settings")]
+[node name="SettingsUI" type="MarginContainer" parent="." unique_id=1755806984 node_paths=PackedStringArray("main_UI", "settings_UI", "video_button", "audio_button", "remap_button", "finished_button", "video_settings", "audio_settings", "remap_settings")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,7 +82,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_mxqpb")
 main_UI = NodePath("..")
-background = NodePath("Panel")
 settings_UI = NodePath("Panel/HBoxContainer")
 video_button = NodePath("Panel/HBoxContainer/Buttons/VBoxContainer/Video")
 audio_button = NodePath("Panel/HBoxContainer/Buttons/VBoxContainer/Audio")

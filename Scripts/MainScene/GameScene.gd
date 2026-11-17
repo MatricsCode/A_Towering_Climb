@@ -21,12 +21,15 @@ var spawned_players = []
 
 @export var player_placements : Node2D
 
+var is_playing := false
+
 func _ready():
 	lobby = LOBBY.instantiate()
 	add_child(lobby)
 	
 	Signals.lobby_joined.connect(func(_ID): 
-		_spawn_players(1))
+		_spawn_players(1)
+		is_playing = true)
 	Signals.lobby_start_game.connect(_level_select)
 	Signals.lobby_finished_game.connect(func(_winner : Player):
 		await Signals.vignette
@@ -42,14 +45,10 @@ func _ready():
 	move_child(player_placements, get_child_count()-1)
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("P1_Ability") and !spawned_players.has(1):
-		_spawn_players(1)
-	elif Input.is_action_just_pressed("P2_Ability") and !spawned_players.has(2):
-		_spawn_players(2)
-	elif Input.is_action_just_pressed("P3_Ability") and !spawned_players.has(3):
-		_spawn_players(3)
-	elif Input.is_action_just_pressed("P4_Ability") and !spawned_players.has(4):
-		_spawn_players(4)
+	if !is_playing:
+		return
+	
+	_spawning_player_inputs()
 
 func _level_select():
 	#for i in GlobalScript.players:
@@ -72,6 +71,15 @@ func _level_select():
 	
 	lobby.queue_free()
 
+func _spawning_player_inputs():
+	if Input.is_action_just_pressed("P1_Ability") and !spawned_players.has(1):
+		_spawn_players(1)
+	elif Input.is_action_just_pressed("P2_Ability") and !spawned_players.has(2):
+		_spawn_players(2)
+	elif Input.is_action_just_pressed("P3_Ability") and !spawned_players.has(3):
+		_spawn_players(3)
+	elif Input.is_action_just_pressed("P4_Ability") and !spawned_players.has(4):
+		_spawn_players(4)
 func _spawn_players(number : int):
 	var _owner = Steam.getLobbyOwner(Networking.current_lobby)
 	var _self = Steam.getSteamID()
