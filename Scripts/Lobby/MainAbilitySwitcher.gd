@@ -2,7 +2,7 @@ extends Area2D
 
 var players = []
 
-const MAIN_ABILITIES = {"Ram" : preload("uid://b0imh5jcjfvpr"), 
+const MAIN_ABILITIES = {"Ram" : preload("uid://b0imh5jcjfvpr"), "ClimbersHook" : preload("uid://d1orsl3fcwm7b"),
 	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
 const PASS_ABILITIES = {"Glide" : preload("uid://d0y0w2hbe3jwq"), "DrumKey" : preload("uid://cx4jckeql12mb"), 
 	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}

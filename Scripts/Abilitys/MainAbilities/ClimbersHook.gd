@@ -1,7 +1,6 @@
 extends Ability
 
 var to_throw = []
-
 var area = CollisionShape2D
 
 func _ready():
