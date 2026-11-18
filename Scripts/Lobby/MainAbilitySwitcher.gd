@@ -71,6 +71,22 @@ func _editing_player(player : Player):
 		editing_players.append(player)
 		player._status_effect_update(true, null)
 		Networking._send_data(player, false)
+		
+		
+		## These lines search for the correct ability/sprite name in and show it on
+		## The players secondary text field
+		if ability == 1:
+			var all_abilities = MAIN_ABILITIES.values()
+			var index = all_abilities.find(player.player_source.main_ability)
+			player._status_effect_update(false, MAIN_ABILITIES.keys()[index])
+		elif ability == 0:
+			var all_abilities = PASS_ABILITIES.values()
+			var index = all_abilities.find(player.player_source.passive_ability)
+			player._status_effect_update(false, PASS_ABILITIES.keys()[index])
+		else:
+			var all_sprites = SPRITES.values()
+			var index = all_sprites.find(player.player_source.sprite_frame)
+			player._status_effect_update(false, SPRITES.keys()[index])
 func _change_ability(direction : int, player : Player):
 	var counter = func(number : int, size : int):
 		if number + direction > size:
@@ -109,7 +125,6 @@ func _show_input(body : Player):
 	input = input.split(")")[0]
 	
 	interactables_label.text = str("[wave]Press : ", input)
-
 func _inputs(_event):
 	var local_players = {}
 	for i in players:
