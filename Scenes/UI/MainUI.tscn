@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bc8og5lgrcpvd" path="res://Scripts/UI/MainUI.gd" id="2_yftfo"]
 [ext_resource type="PackedScene" uid="uid://cam0eoq23msfi" path="res://Scenes/UI/LobbyUI.tscn" id="3_4cpe4"]
 [ext_resource type="PackedScene" uid="uid://kye1vk88yuhy" path="res://Scenes/UI/RemapUI.tscn" id="5_upwrp"]
+[ext_resource type="Script" uid="uid://4a1kde4n8ys5" path="res://Scripts/UI/Settings/AudioSettings.gd" id="6_1kow2"]
 [ext_resource type="Script" uid="uid://b6r2sggjfb4fh" path="res://Scripts/UI/SettingsUI.gd" id="6_mxqpb"]
 
 [node name="UI" type="Control" unique_id=737286907 node_paths=PackedStringArray("main_UI", "lobby_UI", "settings_UI", "multiplayer_button", "localplayer_button", "settings_button", "quit_button")]
@@ -149,9 +150,15 @@ text = "I haven't added
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Audio" type="VBoxContainer" parent="SettingsUI/Panel/HBoxContainer/Changes" unique_id=385297321]
+[node name="Audio" type="VBoxContainer" parent="SettingsUI/Panel/HBoxContainer/Changes" unique_id=385297321 node_paths=PackedStringArray("master", "music", "master_SFX", "player_SFX", "other_SFX")]
 layout_mode = 2
 alignment = 1
+script = ExtResource("6_1kow2")
+master = NodePath("MainAudio/HSlider")
+music = NodePath("MusicAudio/HSlider")
+master_SFX = NodePath("SFX/HSlider")
+player_SFX = NodePath("PlayerSFX/HSlider")
+other_SFX = NodePath("PlayerSFX2/HSlider")
 
 [node name="MainAudio" type="HBoxContainer" parent="SettingsUI/Panel/HBoxContainer/Changes/Audio" unique_id=755515931]
 layout_mode = 2
