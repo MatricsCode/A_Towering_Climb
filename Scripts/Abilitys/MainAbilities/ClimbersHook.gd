@@ -4,6 +4,8 @@ var to_throw : Array[Player] = []
 var scanner : Area2D
 
 func _ready():
+	activation_state = player.States.CLIMB
+	
 	player.main_vars.climbing_vars.climbing_speed *= 1.5
 	
 	scanner = Area2D.new()
@@ -24,8 +26,8 @@ func _physics_process(_delta):
 	
 	scanner.get_overlapping_bodies()
 	
-	if to_throw.size() != 0 and Input.is_action_pressed(player.inputs.Ability):
-		for throwing_player in scanner.get_overlapping_bodies():
+	if to_throw.size() != 0 and Input.is_action_pressed(player.inputs.Ability) and activation_state:
+		for throwing_player in to_throw:
 			throwing_player.current_state = throwing_player.States.AIR
 			throwing_player.velocity.x = 250 * throwing_player._get_sprite_rotation() * -1
 			throwing_player.velocity.y = -500

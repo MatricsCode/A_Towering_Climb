@@ -23,17 +23,15 @@ var local_players_present = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if ability == 1: interactables_label.text = "[wave]Main Abilities:"
-	elif ability == 0: interactables_label.text = "[wave]Passive Abilities:"
-	else: interactables_label.text = "[wave]Character:"
+	_match_text()
 	
 	interactables_label.visible = true
 	abilities.visible = false
 	
-	body_entered.connect(func(body : Player): 
-		interactables_label.visible = false
+	body_entered.connect(func(body : Player):
 		body.main_vars.other_vars.ability_overide = true
-		local_players_present[body.player_source.player_number] = body)
+		local_players_present[body.player_source.player_number] = body
+		_show_input(body))
 	body_exited.connect(func(body):
 		body.main_vars.other_vars.ability_overide = false
 		for i in local_players_present.keys():
@@ -42,7 +40,9 @@ func _ready():
 		
 		if local_players_present.size() == 0:
 			interactables_label.visible = true
-			abilities.visible = false)
+			abilities.visible = false
+		
+		_match_text())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -65,6 +65,7 @@ func _editing_player(player : Player):
 		editing_players.erase(player)
 		player._status_effect_update(false, "")
 	else:
+		interactables_label.visible = false
 		abilities.visible = true
 		player.current_state = player.States.PAUSED
 		editing_players.append(player)
@@ -101,6 +102,14 @@ func _change_ability(direction : int, player : Player):
 	
 	player.update_source.emit()
 
+func _show_input(body : Player):
+	var action = body.inputs.Interact
+	var current_input_event = InputMap.action_get_events(action)
+	var input = str(current_input_event).split("(")[1]
+	input = input.split(")")[0]
+	
+	interactables_label.text = str("[wave]Press : ", input)
+
 func _inputs(_event):
 	var local_players = {}
 	for i in players:
@@ -115,3 +124,8 @@ func _inputs(_event):
 		editing_players.append(local_players.get(3))
 	elif Input.is_action_just_pressed("P4_Ability") and local_players.keys().has(4):
 		editing_players.append(local_players.get(4))
+
+func _match_text():
+	if ability == 1: interactables_label.text = "[wave]Main Abilities:"
+	elif ability == 0: interactables_label.text = "[wave]Passive Abilities:"
+	else: interactables_label.text = "[wave]Character:"

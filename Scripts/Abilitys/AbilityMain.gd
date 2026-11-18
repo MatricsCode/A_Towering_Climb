@@ -1,7 +1,6 @@
 extends Node
 class_name Ability
 
-
 @export var player : CharacterBody2D
 @export var sprite : AnimatedSprite2D
 @export var detectors : Node2D
