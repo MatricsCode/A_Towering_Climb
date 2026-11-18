@@ -1,15 +1,14 @@
+MarginContainer
+Panel
 LineEdit
 HoverButton
 VBoxContainer
 HSlider
 Label
 HBoxContainer
-MarginContainer
-Panel
 Control
 Button
 ScrollContainer
 HScrollBar
 AnimationPlayer
 AnimationTree
-AnimatedSprite2D
