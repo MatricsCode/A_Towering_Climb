@@ -74,23 +74,23 @@ script = ExtResource("3_1pw17")
 [node name="Label5" type="RichTextLabel" parent="Label4" unique_id=355299114]
 layout_mode = 0
 offset_top = 273.0
-offset_right = 1233.1343
-offset_bottom = 813.0
+offset_right = 1102.0
+offset_bottom = 351.0
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
 theme_override_font_sizes/bold_italics_font_size = 48
 theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/mono_font_size = 48
 bbcode_enabled = true
-text = "If you press CTRL, a second player will appearw"
+text = "If you press CTRL, a second player will appear"
 scroll_active = false
 
 [node name="Label3" type="RichTextLabel" parent="Label4" unique_id=795832922]
 layout_mode = 0
 offset_left = 160.0
-offset_top = -124.0
+offset_top = -81.0
 offset_right = 1027.0049
-offset_bottom = 303.53143
+offset_bottom = 346.53143
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
 theme_override_font_sizes/bold_italics_font_size = 48
@@ -101,51 +101,6 @@ text = "Please Interact [color=black](E/CTRL)[/color] with everything here :D!
 
 It all works (especially the flying sandwiches, interact with them!!!)
 "
-scroll_active = false
-
-[node name="Label4" type="RichTextLabel" parent="Label4" unique_id=1417395454]
-layout_mode = 0
-offset_left = -625.0
-offset_top = 41.0
-offset_right = 104.73657
-offset_bottom = 102.91266
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
-bbcode_enabled = true
-text = "[wave]interact here to change your [shake rate=50.0 level=20 ] MAIN [/shake] ability "
-scroll_active = false
-
-[node name="Label6" type="RichTextLabel" parent="Label4" unique_id=1073719569]
-layout_mode = 0
-offset_left = -106.00003
-offset_top = 412.0
-offset_right = 477.99997
-offset_bottom = 548.00006
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
-bbcode_enabled = true
-text = "Here you can interact to change your passive ability"
-scroll_active = false
-
-[node name="Label7" type="RichTextLabel" parent="Label4" unique_id=466673464]
-layout_mode = 0
-offset_left = 673.0
-offset_top = 412.0
-offset_right = 1257.0
-offset_bottom = 548.00006
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
-bbcode_enabled = true
-text = "This is where you can change your outfits if you interact with it and press left/right"
 scroll_active = false
 
 [node name="Label8" type="RichTextLabel" parent="Label4" unique_id=226743769]
@@ -165,7 +120,7 @@ text = "And if you interact within the sandwiches, then you say your ready to pl
 scroll_active = false
 
 [node name="Area2D" type="Area2D" parent="." unique_id=981998392]
-position = Vector2(964, -117)
+position = Vector2(964, -116)
 collision_layer = 0
 script = ExtResource("3_qy7bc")
 TEST = ExtResource("4_2dfve")

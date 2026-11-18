@@ -5,11 +5,13 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqh25"]
 
-[node name="StaticBody2D" type="Area2D" unique_id=1142489465 node_paths=PackedStringArray("UI", "abilities", "interactables_label")]
+[node name="StaticBody2D" type="Area2D" unique_id=1142489465 node_paths=PackedStringArray("UI", "abilities", "interactables_label", "left_input_text", "right_input_text")]
 script = ExtResource("1_p5wee")
 UI = NodePath("UI")
 abilities = NodePath("UI/VBoxContainer/HBoxContainer")
 interactables_label = NodePath("UI/VBoxContainer/RichTextLabel")
+left_input_text = NodePath("UI/VBoxContainer/HBoxContainer/MarginContainer/RichTextLabel")
+right_input_text = NodePath("UI/VBoxContainer/HBoxContainer/MarginContainer2/RichTextLabel")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=183888929]
 texture = ExtResource("2_i04tw")

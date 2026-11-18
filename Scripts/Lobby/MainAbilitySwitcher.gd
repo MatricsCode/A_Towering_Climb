@@ -17,6 +17,8 @@ const SECRET_ABILITIES = []
 @export var abilities : HBoxContainer
 @export var interactables_label : RichTextLabel
 @export var ability_label : Label
+@export var left_input_text : RichTextLabel
+@export var right_input_text : RichTextLabel
 
 var editing_players = []
 var local_players_present = {}
@@ -31,7 +33,7 @@ func _ready():
 	body_entered.connect(func(body : Player):
 		body.main_vars.other_vars.ability_overide = true
 		local_players_present[body.player_source.player_number] = body
-		_show_input(body))
+		_show_interact_input(body))
 	body_exited.connect(func(body):
 		body.main_vars.other_vars.ability_overide = false
 		for i in local_players_present.keys():
@@ -72,6 +74,7 @@ func _editing_player(player : Player):
 		player._status_effect_update(true, null)
 		Networking._send_data(player, false)
 		
+		_show_switching_input(player)
 		
 		## These lines search for the correct ability/sprite name in and show it on
 		## The players secondary text field
@@ -118,13 +121,35 @@ func _change_ability(direction : int, player : Player):
 	
 	player.update_source.emit()
 
-func _show_input(body : Player):
+func _show_interact_input(body : Player):
 	var action = body.inputs.Interact
 	var current_input_event = InputMap.action_get_events(action)
 	var input = str(current_input_event).split("(")[1]
 	input = input.split(")")[0]
 	
 	interactables_label.text = str("[wave]Press : ", input)
+func _show_switching_input(body : Player):
+	var left_action = body.inputs.Left
+	var right_action = body.inputs.Right
+	
+	var left_input = str(InputMap.action_get_events(left_action))
+	var right_input = str(InputMap.action_get_events(right_action))
+	
+	left_input = left_input.split("(")[1]
+	right_input = right_input.split("(")[1]
+	
+	left_input = left_input.split(")")[0]
+	right_input = right_input.split(")")[0]
+	
+	left_input_text.text = left_input
+	right_input_text.text = right_input
+	
+	#var action = body.inputs.Interact
+	#var current_input_event = InputMap.action_get_events(action)
+	#var input = str(current_input_event).split("(")[1]
+	#input = input.split(")")[0]
+	#
+	#interactables_label.text = str("[wave]Press : ", input)
 func _inputs(_event):
 	var local_players = {}
 	for i in players:
