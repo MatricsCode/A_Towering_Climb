@@ -1,63 +1,38 @@
 extends Ability
 
-#var punching = false
-#var punch_force = 0
-#
-#var grip : Tween
-#var timer : Timer
-#var punch_area : Area2D
-#
-#func _ready():
-	#timer = add_timer(1, false, increase_punch_strength)
-	#punch_area = add_area_2D(1, area1_colliding)
-#
-#func _physics_process(delta):
-	#if Input.is_action_pressed("Ability") and player.current_state == activation_state and not in_action and not punching:
-		#overide()
-		#player.velocity.x = 0
-		#increase_punch_strength()
-	#
-	#if Input.is_action_just_released("Ability") and in_action and ! punching:
-		#timer.stop()
-		#punch()
-	#
-	#if player.is_on_wall() and in_action:
-		#punching = false
-		#grip.kill()
-		#player.velocity = Vector2(0,0)
-		#punch_force = 0
-		#reset()
-	#
-	#punch_area.position.x = player.position.x + 75 * player._get_sprite_rotation()
-	#punch_area.position.y = player.position.y
-	#
-#
-#func increase_punch_strength():
-	#if Input.is_action_pressed("Ability") and in_action and punch_force < 3:
-		#punch_force += 1
-		#player.camera_zoom(0.5 + punch_force / 5, 0.9)
-		#timer.start()
-	#else:
-		#punch()
-#
-#func punch():
-	#player.position.y -= 1
-	#player.velocity.x = 2000 * punch_force * player._get_sprite_rotation()
-	#punching = true
-	#
-	#grip = get_tree().create_tween()
-	#grip.tween_property(player, "velocity", Vector2(0,0), 0.2 * punch_force).set_ease(Tween.EASE_OUT)
-	#
-	#player.camera_zoom(0.5, 0.2 * punch_force)
-	#
-	#await grip.finished
-	#
-	#punching = false
-	#grip.kill()
-	#player.velocity = Vector2(0,0)
-	#punch_force = 0
-	#reset()
-#
-#func area1_colliding(body):
-	#if in_action:
-		#body.velocity = Vector2(1000000000 * player._get_sprite_rotation(), -700)
+const WINDUP_MAX := 3
+const COLLISION_POSITION := Vector2(100,100)
+
+enum States {WINDING_UP, PUNCHING, HIT, FLYING, NOTHING}
+
+var punch_states := States.NOTHING
+var punch_timer : Timer
+var punch_area : Area2D
+
+var windup_level := 0
+var windup_time := 0.3
+var punch_strength : int = 50
+
+func _ready():
+	punch_timer = Timer.new()
+	add_child(punch_timer)
+	punch_timer.timeout.connect(_punch_timeout)
+	
+	punch_area = Area2D.new()
+	add_child(punch_area)
+	
+	punch_area.body_entered.connect(_punch_entered)
+	punch_area.body_exited.connect(_punch_exited)
+
+func _physics_process(delta):
+	
+
+func _punch_timeout():
+	if windup_level < WINDUP_MAX:
+		windup_level += 1
+		punch_timer.start(windup_time)
+		#sprite.play(str("windup", windup_level))
+func _punch_entered(body : Player):
+	pass
+func _punch_exited(body : Player):
+	pass
