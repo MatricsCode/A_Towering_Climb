@@ -191,8 +191,18 @@ func _switch_climb(new_state : States, additional := ""):
 			_switch_timeout(0.1)
 		elif additional == "OnEdge":
 			position.y -= 82.0
-			position.x += 50 * _get_sprite_rotation()
+			position.x += 100 * _get_sprite_rotation()
 			velocity = Vector2.ZERO
+			current_state = States.OVERIDDEN
+			
+			var crouch_time = 0.1
+			animations.overide = true
+			sprite.play("land")
+			
+			await get_tree().create_timer(crouch_time).timeout
+			animations.overide = false
+			
+			_reset_main_vars()
 		
 	elif new_state == States.AIR:
 		if additional == "Jump":
