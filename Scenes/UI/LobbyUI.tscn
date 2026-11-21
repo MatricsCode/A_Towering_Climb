@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="2_v2adh"]
 [ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="3_14wrn"]
 
-[node name="Control" type="MarginContainer" unique_id=1356395191 node_paths=PackedStringArray("host_button", "join_button", "lobby_join_id", "quit_button", "lobby_select_ui", "lobby_main_ui", "reload_lobbies_button", "lobby_search_field", "lobby_list", "lobby_text", "leave_button")]
+[node name="Control" type="MarginContainer" unique_id=1356395191 node_paths=PackedStringArray("host_button", "join_button", "lobby_join_id", "lobby_select_ui", "lobby_main_ui", "reload_lobbies_button", "lobby_search_field", "lobby_list", "lobby_text", "leave_button")]
 z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,6 @@ script = ExtResource("1_ucgnx")
 host_button = NodePath("LobbyUI/LobbySelect/LobbiesSelector/VBoxContainer/Host")
 join_button = NodePath("LobbyUI/LobbySelect/LobbiesSelector/VBoxContainer/MarginContainer/VBoxContainer/Join")
 lobby_join_id = NodePath("LobbyUI/LobbySelect/LobbiesSelector/VBoxContainer/MarginContainer/VBoxContainer/LobbyID")
-quit_button = NodePath("")
 lobby_select_ui = NodePath("LobbyUI")
 lobby_main_ui = NodePath("VBoxContainer")
 reload_lobbies_button = NodePath("LobbyUI/LobbySelect/LobbiesSelector/VBoxContainer/ReloadLobbies")
