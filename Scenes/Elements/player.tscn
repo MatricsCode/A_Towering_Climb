@@ -221,3 +221,5 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 stretch_mode = 2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2129214025]

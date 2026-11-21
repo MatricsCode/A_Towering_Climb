@@ -31,5 +31,5 @@ func _physics_process(_delta):
 			throwing_player.current_state = throwing_player.States.AIR
 			throwing_player.velocity.x = 250 * throwing_player._get_sprite_rotation() * -1
 			throwing_player.velocity.y = -500
-			throwing_player.air.can_control = false
+			throwing_player.air._input_delay(0.5)
 			to_throw.erase(throwing_player)

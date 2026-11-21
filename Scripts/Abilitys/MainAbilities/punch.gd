@@ -9,10 +9,10 @@ var punch_states := States.NOTHING
 var punch_timer : Timer
 var punch_area : Area2D
 
-var windup_time := 0.5
+var windup_time := 0.4
 var windup_level := 1
-var punch_strength : int = 500
-var friction : float = 0.3
+var punch_strength : int = 2000
+var friction : float = 0.25
 
 var gravity = 50
 
@@ -62,7 +62,7 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_pressed(player.inputs.Ability) and punch_states == States.NOTHING:
 		punch_states = States.WINDING_UP
-		punch_timer.start()
+		_punch_timeout()
 	elif Input.is_action_just_released(player.inputs.Ability) and punch_states == States.WINDING_UP:
 		punch_states = States.PUNCHING
 		punch_timer.stop()
@@ -73,17 +73,20 @@ func _physics_process(_delta):
 func _initiate_punch():
 	var collider = CollisionShape2D.new()
 	punch_area.add_child(collider)
-	collider.position = Vector2(45 * player._get_sprite_rotation(), -71.0)
+	collider.position = Vector2(60 * player._get_sprite_rotation(), -71.0)
 	collider.shape = RectangleShape2D.new()
 	
 	Signals.camera_zoom.emit(player.player_source.player_number, 0.5, 0.25)
 	player.velocity.x = punch_strength * player._get_sprite_rotation()
 	_switch_to_state(true)
 	tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(player, "velocity", Vector2.ZERO, friction)
+	
 	await get_tree().create_timer(friction).timeout
 	if active:
-		collider.queue_free()
+		for i in punch_area.get_children():
+			i.queue_free()
 		reset = true
 		_switch_to_state(false, player.States.GROUND, "Punch")
 func _hit_wall():
@@ -101,10 +104,10 @@ func _punch_timeout():
 		punch_strength = 4000
 		Signals. camera_zoom.emit(player.player_source.player_number, 0.65, windup_time/2)
 	elif windup_level == 2:
-		punch_strength = 6000
+		punch_strength = 8000
 		Signals. camera_zoom.emit(player.player_source.player_number, 0.8, windup_time/2)
 	else:
-		punch_strength = 8000
+		punch_strength = 12000
 		Signals. camera_zoom.emit(player.player_source.player_number, 1, windup_time/2)
 	
 	windup_level += 1
@@ -114,8 +117,10 @@ func _punch_timeout():
 	#sprite.play(str("windup", windup_level))
 func _punch_entered(body : Player):
 	body.current_state = body.States.AIR
-	body.velocity.x = punch_strength * 0.1 * player._get_sprite_rotation()
-	body.velocity.y = -1000
+	body.air._jump()
+	body.velocity.x = (punch_strength / 2.0) * player._get_sprite_rotation()
+	body.main_vars.air_vars.gravity = 50
+	body.air._input_delay(0.5)
 
 func _match_state():
 	if punch_states == States.WINDING_UP:
@@ -133,5 +138,5 @@ func _reset_vars():
 		reset = false
 		gravity = 50
 		windup_level = 1
-		punch_strength = 1000
+		punch_strength = 2000
 		punch_states = States.NOTHING

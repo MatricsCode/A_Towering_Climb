@@ -87,8 +87,7 @@ func _air():
 				player.main_vars.ground_vars.speed * direction, 0.1)
 		
 		elif direction == 0 and player.velocity.x != 0:
-			player.velocity.x = lerpf(player.velocity.x, 0.0, 0.01)
-		
+			player.velocity.x = lerpf(player.velocity.x, 0.0, 0.05)
 	var drop = func drop():
 		if fall_speed < player.TERMINAL_VELOCITY: # Checks and adjusts the current gravity
 			fall_speed += player.main_vars.air_vars.gravity
@@ -106,7 +105,7 @@ func _air():
 		player.main_vars.other_vars.ability_overide = false
 		air_movement.call()
 	else:
-		player.velocity.x = lerpf(player.velocity.x, 0.0, 0.01)
+		player.velocity.x = lerpf(player.velocity.x, 0.0, 0.05)
 	drop.call()
 	_turn()
 
@@ -120,7 +119,6 @@ func _jump(climbing : bool = false):
 	fall_speed = -player.main_vars.air_vars.jump_strength
 	player._reset_main_vars(1)
 	
-	
 	if climbing:
 		player.velocity.x = -player.main_vars.ground_vars.speed * player._get_sprite_rotation()
 		player.position.x -= 10 * player._get_sprite_rotation()
@@ -130,3 +128,8 @@ func _turn():
 		sprite.flip_h = false
 	elif player.velocity.x < 0:
 		sprite.flip_h = true
+
+func _input_delay(time : float):
+	can_control = false
+	await get_tree().create_timer(time).timeout
+	can_control = true
