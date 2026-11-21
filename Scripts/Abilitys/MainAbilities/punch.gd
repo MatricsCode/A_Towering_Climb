@@ -27,6 +27,7 @@ func _ready():
 	punch_timer.timeout.connect(_punch_timeout)
 	
 	punch_area = Area2D.new()
+	punch_area.set_collision_layer_value(1, false)
 	add_child(punch_area)
 	
 	punch_area.body_entered.connect(_punch_entered)
@@ -47,9 +48,11 @@ func _ready():
 			return
 		if punch_states == States.PUNCHING:
 			punch_states = States.FLYING
-			_initate_flying())
+			_hit_wall())
 
 func _physics_process(_delta):
+	punch_area.position = player.position
+	
 	if (player.current_state != activation_state and player.current_state != player.States.ABILITY 
 		or player.main_vars.other_vars.ability_overide):
 		current_state = false
@@ -68,14 +71,22 @@ func _physics_process(_delta):
 	_match_state()
 
 func _initiate_punch():
-	Signals. camera_zoom.emit(player.player_source.player_number, 0.5, 0.25)
+	var collider = CollisionShape2D.new()
+	punch_area.add_child(collider)
+	collider.position = Vector2(45 * player._get_sprite_rotation(), -71.0)
+	collider.shape = RectangleShape2D.new()
+	
+	Signals.camera_zoom.emit(player.player_source.player_number, 0.5, 0.25)
 	player.velocity.x = punch_strength * player._get_sprite_rotation()
 	_switch_to_state(true)
 	tween = get_tree().create_tween()
 	tween.tween_property(player, "velocity", Vector2.ZERO, friction)
 	await get_tree().create_timer(friction).timeout
-	_switch_to_state(false, 0, "Punch")
-func _initate_flying():
+	if active:
+		collider.queue_free()
+		reset = true
+		_switch_to_state(false, player.States.GROUND, "Punch")
+func _hit_wall():
 	if tween.is_running():
 		tween.kill()
 	
@@ -102,7 +113,9 @@ func _punch_timeout():
 	punch_timer.start(windup_time)
 	#sprite.play(str("windup", windup_level))
 func _punch_entered(body : Player):
-	body.velocity.x = 0
+	body.current_state = body.States.AIR
+	body.velocity.x = punch_strength * 0.1 * player._get_sprite_rotation()
+	body.velocity.y = -1000
 
 func _match_state():
 	if punch_states == States.WINDING_UP:
