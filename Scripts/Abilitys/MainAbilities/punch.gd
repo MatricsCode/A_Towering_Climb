@@ -9,13 +9,16 @@ var punch_states := States.NOTHING
 var punch_timer : Timer
 var punch_area : Area2D
 
-var windup_time := 0.3
+var windup_time := 0.5
 var windup_level := 1
 var punch_strength : int = 500
+var friction : float = 0.3
 
 var gravity = 50
 
 var reset = false
+
+var tween : Tween
 
 func _ready():
 	punch_timer = Timer.new()
@@ -68,24 +71,29 @@ func _initiate_punch():
 	Signals. camera_zoom.emit(player.player_source.player_number, 0.5, 0.25)
 	player.velocity.x = punch_strength * player._get_sprite_rotation()
 	_switch_to_state(true)
-	var tween = get_tree().create_tween()
-	tween.tween_property(player, "velocity", Vector2.ZERO, 0.5)
+	tween = get_tree().create_tween()
+	tween.tween_property(player, "velocity", Vector2.ZERO, friction)
+	await get_tree().create_timer(friction).timeout
+	_switch_to_state(false, 0, "Punch")
 func _initate_flying():
-	player.velocity.x = punch_strength * -player._get_sprite_rotation()
-	player.velocity.y = -500
+	if tween.is_running():
+		tween.kill()
+	
+	player.velocity.x = 0
+	player.velocity.y = 0
 
 func _punch_timeout():
 	if windup_level > WINDUP_MAX:
 		return
 	
 	if windup_level == 1:
-		punch_strength = 2500
+		punch_strength = 4000
 		Signals. camera_zoom.emit(player.player_source.player_number, 0.65, windup_time/2)
 	elif windup_level == 2:
-		punch_strength = 5000
+		punch_strength = 6000
 		Signals. camera_zoom.emit(player.player_source.player_number, 0.8, windup_time/2)
 	else:
-		punch_strength = 10000
+		punch_strength = 8000
 		Signals. camera_zoom.emit(player.player_source.player_number, 1, windup_time/2)
 	
 	windup_level += 1
@@ -94,7 +102,7 @@ func _punch_timeout():
 	punch_timer.start(windup_time)
 	#sprite.play(str("windup", windup_level))
 func _punch_entered(body : Player):
-	body.velocity.x = punch_strength * 2 * player._get_sprite_rotation()
+	body.velocity.x = 0
 
 func _match_state():
 	if punch_states == States.WINDING_UP:
@@ -111,6 +119,6 @@ func _reset_vars():
 	if reset:
 		reset = false
 		gravity = 50
-		windup_level = 0
+		windup_level = 1
 		punch_strength = 1000
 		punch_states = States.NOTHING
