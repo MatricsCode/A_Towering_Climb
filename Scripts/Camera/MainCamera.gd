@@ -117,7 +117,7 @@ func _following_player():
 		current_state = States.OVERIDDEN
 		return
 	
-	cam.zoom = Vector2(0.5,0.5)
+	
 	
 	position = player.position
 	
@@ -162,3 +162,9 @@ func _finished(winner : Player):
 	tweener.tween_property(cam, "zoom", Vector2(0.4, 0.4), 1.5)
 	
 	pass
+
+func _zoom(zoom_level : float, time : float):
+	var tweener = get_tree().create_tween()
+	tweener.set_ease(Tween.EASE_OUT)
+	
+	tweener.tween_property(cam, "zoom", Vector2(zoom_level,zoom_level), time)

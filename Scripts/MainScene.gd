@@ -37,6 +37,8 @@ func _ready():
 	Signals.player_created.connect(_player_added)
 	Signals.player_deleted.connect(_player_removed)
 	
+	Signals.camera_zoom.connect(_zoom_camera)
+	
 	viewport_1.size = screen_size
 	viewport_container_1.size = screen_size
 	
@@ -163,3 +165,12 @@ func _quad_player(player : Player):
 	camera2.current_state = camera2.States.FOLLOWING_PLAYER
 	camera3.current_state = camera3.States.FOLLOWING_PLAYER
 	camera4.current_state = camera4.States.FOLLOWING_PLAYER
+
+func _zoom_camera(player : int, zoom_level : float, time : float):
+	var current_camera : Node2D
+	if player == 1: current_camera = camera1
+	elif player == 2: current_camera = camera2
+	elif player == 3: current_camera = camera3
+	elif player == 4: current_camera = camera4
+	
+	current_camera._zoom(zoom_level, time)

@@ -20,6 +20,7 @@ var reset = false
 func _ready():
 	punch_timer = Timer.new()
 	add_child(punch_timer)
+	punch_timer.wait_time = windup_time
 	punch_timer.timeout.connect(_punch_timeout)
 	
 	punch_area = Area2D.new()
@@ -64,10 +65,11 @@ func _physics_process(_delta):
 	_match_state()
 
 func _initiate_punch():
+	Signals. camera_zoom.emit(player.player_source.player_number, 0.5, 0.25)
 	player.velocity.x = punch_strength * player._get_sprite_rotation()
 	_switch_to_state(true)
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "velocity", Vector2.ZERO, 0.5)
+	tween.tween_property(player, "velocity", Vector2.ZERO, 0.5)
 func _initate_flying():
 	player.velocity.x = punch_strength * -player._get_sprite_rotation()
 	player.velocity.y = -500
@@ -77,11 +79,14 @@ func _punch_timeout():
 		return
 	
 	if windup_level == 1:
-		punch_strength = 2000
+		punch_strength = 2500
+		Signals. camera_zoom.emit(player.player_source.player_number, 0.65, windup_time/2)
 	elif windup_level == 2:
-		punch_strength = 4000
+		punch_strength = 5000
+		Signals. camera_zoom.emit(player.player_source.player_number, 0.8, windup_time/2)
 	else:
-		punch_strength = 6000
+		punch_strength = 10000
+		Signals. camera_zoom.emit(player.player_source.player_number, 1, windup_time/2)
 	
 	windup_level += 1
 	
