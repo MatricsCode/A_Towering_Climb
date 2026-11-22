@@ -93,7 +93,7 @@ func _air():
 			fall_speed += player.main_vars.air_vars.gravity
 			player.main_vars.air_vars.gravity += player.main_vars.air_vars.gravity_increase
 		
-		if Input.is_action_pressed(player.inputs.Interact):
+		if Input.is_action_pressed(player.inputs.Down):
 			fall_speed += player.main_vars.air_vars.gravity
 		
 		if fall_speed > -150 and fall_speed < 0:

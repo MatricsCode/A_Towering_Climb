@@ -12,7 +12,7 @@ var punch_area : Area2D
 var windup_time := 0.4
 var windup_level := 1
 var punch_strength : int = 2000
-var friction : float = 0.25
+var friction : float = 0.4
 
 var gravity = 50
 
@@ -85,8 +85,6 @@ func _initiate_punch():
 	
 	await get_tree().create_timer(friction).timeout
 	if active:
-		for i in punch_area.get_children():
-			i.queue_free()
 		reset = true
 		_switch_to_state(false, player.States.GROUND, "Punch")
 func _hit_wall():
@@ -135,6 +133,8 @@ func _match_state():
 
 func _reset_vars():
 	if reset:
+		for i in punch_area.get_children():
+			i.queue_free()
 		reset = false
 		gravity = 50
 		windup_level = 1
