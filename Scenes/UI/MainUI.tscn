@@ -1,0 +1,227 @@
+[gd_scene format=3 uid="uid://bsvf5r54phqvp"]
+
+[ext_resource type="Theme" uid="uid://cdqnrw5rcouf5" path="res://Components/Themes/MainTheme.tres" id="1_58co4"]
+[ext_resource type="Script" uid="uid://c8ngd8ierrftp" path="res://Scripts/UI/Button/ButtonClass.gd" id="2_52ctl"]
+[ext_resource type="Script" uid="uid://bc8og5lgrcpvd" path="res://Scripts/UI/MainUI.gd" id="2_yftfo"]
+[ext_resource type="PackedScene" uid="uid://cam0eoq23msfi" path="res://Scenes/UI/LobbyUI.tscn" id="3_4cpe4"]
+[ext_resource type="PackedScene" uid="uid://kye1vk88yuhy" path="res://Scenes/UI/RemapUI.tscn" id="5_upwrp"]
+[ext_resource type="Script" uid="uid://4a1kde4n8ys5" path="res://Scripts/UI/Settings/AudioSettings.gd" id="6_1kow2"]
+[ext_resource type="Script" uid="uid://b6r2sggjfb4fh" path="res://Scripts/UI/SettingsUI.gd" id="6_mxqpb"]
+
+[node name="UI" type="Control" unique_id=737286907 node_paths=PackedStringArray("main_UI", "lobby_UI", "settings_UI", "multiplayer_button", "localplayer_button", "settings_button", "quit_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_58co4")
+script = ExtResource("2_yftfo")
+main_UI = NodePath("MainUI")
+lobby_UI = NodePath("LobbyUI")
+settings_UI = NodePath("SettingsUI")
+multiplayer_button = NodePath("MainUI/MarginContainer/VBoxContainer/Multiplayer")
+localplayer_button = NodePath("MainUI/MarginContainer/VBoxContainer/Local")
+settings_button = NodePath("MainUI/MarginContainer/VBoxContainer/Settings")
+quit_button = NodePath("MainUI/MarginContainer/VBoxContainer/Quit")
+
+[node name="MainUI" type="MarginContainer" parent="." unique_id=910074441]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="Panel2" type="Panel" parent="MainUI" unique_id=176982551]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI" unique_id=1636761344]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI/MarginContainer" unique_id=44966044]
+layout_mode = 2
+alignment = 1
+
+[node name="Multiplayer" type="Button" parent="MainUI/MarginContainer/VBoxContainer" unique_id=190054938]
+layout_mode = 2
+text = "Start Online Game"
+script = ExtResource("2_52ctl")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Local" type="Button" parent="MainUI/MarginContainer/VBoxContainer" unique_id=1734540654]
+layout_mode = 2
+text = "Start Local Game [NOT WORKING]"
+script = ExtResource("2_52ctl")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Settings" type="Button" parent="MainUI/MarginContainer/VBoxContainer" unique_id=1212511243]
+layout_mode = 2
+text = "Settings  (I worked hard on this :D)"
+script = ExtResource("2_52ctl")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Quit" type="Button" parent="MainUI/MarginContainer/VBoxContainer" unique_id=445892352]
+layout_mode = 2
+text = "Quit  :C"
+script = ExtResource("2_52ctl")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="LobbyUI" parent="." unique_id=1356395191 node_paths=PackedStringArray("main_parent") instance=ExtResource("3_4cpe4")]
+visible = false
+layout_mode = 1
+main_parent = NodePath("..")
+
+[node name="SettingsUI" type="MarginContainer" parent="." unique_id=1755806984 node_paths=PackedStringArray("main_UI", "settings_UI", "video_button", "audio_button", "remap_button", "finished_button", "video_settings", "audio_settings", "remap_settings")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_mxqpb")
+main_UI = NodePath("..")
+settings_UI = NodePath("Panel/HBoxContainer")
+video_button = NodePath("Panel/HBoxContainer/Buttons/VBoxContainer/Video")
+audio_button = NodePath("Panel/HBoxContainer/Buttons/VBoxContainer/Audio")
+remap_button = NodePath("Panel/HBoxContainer/Buttons/VBoxContainer/Controls")
+finished_button = NodePath("Panel/HBoxContainer/Buttons/VBoxContainer/Finished")
+video_settings = NodePath("Panel/HBoxContainer/Changes/MarginContainer/Video")
+audio_settings = NodePath("Panel/HBoxContainer/Changes/MarginContainer/Audio")
+remap_settings = NodePath("Panel/RemapUI")
+
+[node name="Panel" type="Panel" parent="SettingsUI" unique_id=1816851468]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsUI/Panel" unique_id=1369662910]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 1062.0
+offset_bottom = 558.0
+
+[node name="Buttons" type="MarginContainer" parent="SettingsUI/Panel/HBoxContainer" unique_id=1073740092]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsUI/Panel/HBoxContainer/Buttons" unique_id=2070402722]
+layout_mode = 2
+alignment = 1
+
+[node name="Video" type="Button" parent="SettingsUI/Panel/HBoxContainer/Buttons/VBoxContainer" unique_id=1886927730]
+layout_mode = 2
+text = "Video"
+script = ExtResource("2_52ctl")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Audio" type="Button" parent="SettingsUI/Panel/HBoxContainer/Buttons/VBoxContainer" unique_id=1582254528]
+layout_mode = 2
+text = "Audio"
+script = ExtResource("2_52ctl")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Controls" type="Button" parent="SettingsUI/Panel/HBoxContainer/Buttons/VBoxContainer" unique_id=1018724851]
+layout_mode = 2
+text = "Controls"
+script = ExtResource("2_52ctl")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Finished" type="Button" parent="SettingsUI/Panel/HBoxContainer/Buttons/VBoxContainer" unique_id=1759194594]
+layout_mode = 2
+text = "Return"
+script = ExtResource("2_52ctl")
+metadata/_custom_type_script = "uid://c8ngd8ierrftp"
+
+[node name="Changes" type="MarginContainer" parent="SettingsUI/Panel/HBoxContainer" unique_id=1551270968]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="SettingsUI/Panel/HBoxContainer/Changes" unique_id=1852387944]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsUI/Panel/HBoxContainer/Changes" unique_id=1826310463]
+layout_mode = 2
+
+[node name="Video" type="VBoxContainer" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer" unique_id=1757095410]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Video" unique_id=1016789664]
+layout_mode = 2
+text = "I haven't added
+ anything yet :D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Audio" type="VBoxContainer" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer" unique_id=385297321 node_paths=PackedStringArray("master", "music", "SFX", "master_text", "music_text", "SFX_text")]
+layout_mode = 2
+alignment = 1
+script = ExtResource("6_1kow2")
+master = NodePath("MainAudio/HSlider")
+music = NodePath("MusicAudio/HSlider")
+SFX = NodePath("SFX/HSlider")
+master_text = NodePath("MainAudio/LineEdit")
+music_text = NodePath("MusicAudio/LineEdit")
+SFX_text = NodePath("SFX/LineEdit")
+
+[node name="MainAudio" type="HBoxContainer" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio" unique_id=755515931]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio/MainAudio" unique_id=777064068]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Main"
+
+[node name="HSlider" type="HSlider" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio/MainAudio" unique_id=946485041]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="LineEdit" type="LineEdit" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio/MainAudio" unique_id=28353330]
+layout_mode = 2
+alignment = 1
+max_length = 4
+
+[node name="MusicAudio" type="HBoxContainer" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio" unique_id=596082531]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio/MusicAudio" unique_id=2094635153]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio/MusicAudio" unique_id=975376128]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="LineEdit" type="LineEdit" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio/MusicAudio" unique_id=2123427630]
+layout_mode = 2
+alignment = 1
+max_length = 4
+
+[node name="SFX" type="HBoxContainer" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio" unique_id=1791944593]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio/SFX" unique_id=828912034]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX    "
+
+[node name="HSlider" type="HSlider" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio/SFX" unique_id=313569933]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="LineEdit" type="LineEdit" parent="SettingsUI/Panel/HBoxContainer/Changes/MarginContainer/Audio/SFX" unique_id=892684400]
+layout_mode = 2
+alignment = 1
+max_length = 4
+
+[node name="RemapUI" parent="SettingsUI/Panel" unique_id=1149948583 node_paths=PackedStringArray("settings_UI") instance=ExtResource("5_upwrp")]
+visible = false
+layout_mode = 1
+settings_UI = NodePath("../..")

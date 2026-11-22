@@ -39,6 +39,7 @@ radius = 94.20191
 [node name="Lobby" type="Node2D" unique_id=1207337759]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=902387967]
+z_index = 3
 tile_map_data = PackedByteArray("AADx//n/AAAAAAEAAADx//j/AAAAAAEAAADx//b/AAAAAAEAAADx//f/AAAAAAEAAADx//X/AAAAAAEAAADx//T/AAAAAAEAAADx//P/AAAAAAEAAADx//L/AAAAAAEAAADx//H/AAAAAAEAAADx//D/AAAAAAAAAAAMAPD/AAABAAAAAAALAPD/AAABAAAAAAAKAPD/AAABAAAAAAAJAPD/AAABAAAAAAAIAPD/AAABAAAAAAAHAPD/AAABAAAAAAAGAPD/AAABAAAAAAAFAPD/AAABAAAAAAAEAPD/AAABAAAAAAADAPD/AAABAAAAAAACAPD/AAABAAAAAAABAPD/AAABAAAAAAAAAPD/AAABAAAAAAD///D/AAABAAAAAAD+//D/AAABAAAAAAD9//D/AAABAAAAAAD8//D/AAABAAAAAAD7//D/AAABAAAAAAD6//D/AAABAAAAAAD5//D/AAABAAAAAAD4//D/AAABAAAAAAD3//D/AAABAAAAAAD2//D/AAABAAAAAAD1//D/AAABAAAAAAD0//D/AAABAAAAAADz//D/AAABAAAAAADy//D/AAABAAAAAAAOAP7/AAAAAAEAAAAOAP3/AAAAAAEAAAAOAPz/AAAAAAEAAAAOAPv/AAAAAAEAAAAOAPr/AAAAAAEAAAAOAPn/AAAAAAEAAAAOAPj/AAAAAAEAAAAOAPf/AAAAAAEAAAAOAPb/AAAAAAEAAAAOAPX/AAAAAAEAAAAOAPT/AAAAAAEAAAAOAPP/AAAAAAEAAAAOAPL/AAAAAAEAAAAOAPH/AAAAAAEAAAAOAP//AAAAAAEAAAANAPD/AAABAAAAAAAOAPD/AAACAAAAAADx//v/AAAAAAIAAADx//r/AAAAAAEAAAD2//v/AAACAAAAAAD1//v/AAABAAAAAAD0//v/AAABAAAAAADz//v/AAABAAAAAADy//v/AAABAAAAAAD2////AAAAAAEAAAD2//7/AAAAAAEAAAD2//3/AAAAAAEAAAD2//z/AAAAAAEAAAA=")
 tile_set = ExtResource("1_a15b7")
 
@@ -52,13 +53,16 @@ shape = SubResource("RectangleShape2D_t6nvb")
 
 [node name="StaticBody2D" parent="." unique_id=1142489465 instance=ExtResource("2_t6nvb")]
 position = Vector2(-289, -88)
+collision_layer = 0
 
 [node name="StaticBody2D2" parent="." unique_id=1023322715 instance=ExtResource("2_t6nvb")]
 position = Vector2(-914, -524)
+collision_layer = 0
 ability = 1
 
 [node name="StaticBody2D3" parent="." unique_id=504689651 instance=ExtResource("2_t6nvb")]
 position = Vector2(430, -88)
+collision_layer = 0
 ability = 2
 
 [node name="Label4" type="Control" parent="." unique_id=227182616]
@@ -72,83 +76,34 @@ script = ExtResource("3_1pw17")
 
 [node name="Label5" type="RichTextLabel" parent="Label4" unique_id=355299114]
 layout_mode = 0
-offset_right = 1233.1343
-offset_bottom = 540.0
+offset_top = 273.0
+offset_right = 1102.0
+offset_bottom = 351.0
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
 theme_override_font_sizes/bold_italics_font_size = 48
 theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/mono_font_size = 48
 bbcode_enabled = true
-text = "[wave] Press [color=black] E [/color] or [color=black] STRG/CTRL [/color] to spawn players (you CAN have 2 players) [/wave]
-
-When you press [color=black] STRG [/color], the controls are  [color=black] ARROW KEYS [/color],  [color=black] ENTER [/color] and  [color=black] STRG [/color] to interact
-
-When you press [color=black] E [/color], the controls are  [color=black] WASD [/color],  [color=black] SPACE [/color] and  [color=black] E [/color] to interact"
+text = "If you press CTRL, a second player will appear"
 scroll_active = false
 
 [node name="Label3" type="RichTextLabel" parent="Label4" unique_id=795832922]
 layout_mode = 0
 offset_left = 160.0
-offset_top = -73.0
+offset_top = -81.0
 offset_right = 1027.0049
-offset_bottom = 354.53143
+offset_bottom = 346.53143
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
 theme_override_font_sizes/bold_italics_font_size = 48
 theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/mono_font_size = 48
 bbcode_enabled = true
-text = "Please Interact [color=black](E/STRG)[/color] with everything here :D!
+text = "Please Interact [color=black](E/CTRL)[/color] with everything here :D!
 
 It all works (especially the flying sandwiches, interact with them!!!)
 "
-scroll_active = false
-
-[node name="Label4" type="RichTextLabel" parent="Label4" unique_id=1417395454]
-layout_mode = 0
-offset_left = -461.0
-offset_top = 57.0
-offset_right = 268.73657
-offset_bottom = 118.91266
-rotation = -0.31336898
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
-bbcode_enabled = true
-text = "[wave] <- interact here to change your [shake rate=50.0 level=20 ] MAIN [/shake] ability "
-scroll_active = false
-
-[node name="Label6" type="RichTextLabel" parent="Label4" unique_id=1073719569]
-layout_mode = 0
-offset_left = -106.00003
-offset_top = 355.0
-offset_right = 477.99997
-offset_bottom = 491.00006
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
-bbcode_enabled = true
-text = "Here you can interact to change your passive ability"
-scroll_active = false
-
-[node name="Label7" type="RichTextLabel" parent="Label4" unique_id=466673464]
-layout_mode = 0
-offset_left = 673.0
-offset_top = 355.0
-offset_right = 1257.0
-offset_bottom = 491.00006
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
-bbcode_enabled = true
-text = "This is where you can change your outfits if you interact with it and press left/right"
 scroll_active = false
 
 [node name="Label8" type="RichTextLabel" parent="Label4" unique_id=226743769]
@@ -168,7 +123,7 @@ text = "And if you interact within the sandwiches, then you say your ready to pl
 scroll_active = false
 
 [node name="Area2D" type="Area2D" parent="." unique_id=981998392]
-position = Vector2(964, -117)
+position = Vector2(964, -116)
 collision_layer = 0
 script = ExtResource("3_qy7bc")
 TEST = ExtResource("4_2dfve")

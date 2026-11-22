@@ -14,7 +14,7 @@ var coyote_timer : Timer
 
 var current := false
 
-var hit_head := false
+var can_control := true
 
 func _ready():
 	await player.start
@@ -24,7 +24,8 @@ func _ready():
 			return
 		switch.emit(player.States.GROUND, "Land", fall_speed)
 		fall_speed = 25
-		hit_head = false)
+		can_control = true
+		player.main_vars.other_vars.ability_overide = false)
 	detectors.on_edge.connect(func(is_true : bool):
 		if !current or !is_true or Input.is_action_pressed(player.inputs.Down):
 			return
@@ -36,12 +37,14 @@ func _ready():
 		
 		switch.emit(player.States.CLIMB, "WallHit", fall_speed)
 		fall_speed = 25
-		hit_head = false)
+		can_control = true
+		player.main_vars.other_vars.ability_overide = false)
 	detectors.on_roof.connect(func(is_true : bool):
 		if !current or !is_true:
 			return
-		hit_head = true
-		fall_speed = -25)
+		can_control = false
+		fall_speed = -25
+		player.main_vars.other_vars.ability_overide = true)
 	
 	coyote_timer = Timer.new()
 	
@@ -64,7 +67,8 @@ func _physics_process(_delta):
 		
 		switch.emit(player.States.CLIMB, "WallHit", fall_speed)
 		fall_speed = 25
-		hit_head = false
+		can_control = true
+		player.main_vars.other_vars.ability_overide = false
 	
 	_variable_jump()
 	_air()
@@ -83,14 +87,13 @@ func _air():
 				player.main_vars.ground_vars.speed * direction, 0.1)
 		
 		elif direction == 0 and player.velocity.x != 0:
-			player.velocity.x = lerpf(player.velocity.x, 0.0, 0.01)
-		
+			player.velocity.x = lerpf(player.velocity.x, 0.0, 0.05)
 	var drop = func drop():
 		if fall_speed < player.TERMINAL_VELOCITY: # Checks and adjusts the current gravity
 			fall_speed += player.main_vars.air_vars.gravity
 			player.main_vars.air_vars.gravity += player.main_vars.air_vars.gravity_increase
 		
-		if Input.is_action_pressed(player.inputs.Interact):
+		if Input.is_action_pressed(player.inputs.Down):
 			fall_speed += player.main_vars.air_vars.gravity
 		
 		if fall_speed > -150 and fall_speed < 0:
@@ -98,10 +101,11 @@ func _air():
 		
 		player.velocity.y = fall_speed
 	
-	if !hit_head:
+	if can_control:
+		player.main_vars.other_vars.ability_overide = false
 		air_movement.call()
 	else:
-		player.velocity.x = lerpf(player.velocity.x, 0.0, 0.01)
+		player.velocity.x = lerpf(player.velocity.x, 0.0, 0.05)
 	drop.call()
 	_turn()
 
@@ -115,7 +119,6 @@ func _jump(climbing : bool = false):
 	fall_speed = -player.main_vars.air_vars.jump_strength
 	player._reset_main_vars(1)
 	
-	
 	if climbing:
 		player.velocity.x = -player.main_vars.ground_vars.speed * player._get_sprite_rotation()
 		player.position.x -= 10 * player._get_sprite_rotation()
@@ -125,3 +128,8 @@ func _turn():
 		sprite.flip_h = false
 	elif player.velocity.x < 0:
 		sprite.flip_h = true
+
+func _input_delay(time : float):
+	can_control = false
+	await get_tree().create_timer(time).timeout
+	can_control = true

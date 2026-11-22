@@ -1,6 +1,6 @@
 extends MarginContainer
 
-const MAIN_ABILITIES = {preload("uid://b0imh5jcjfvpr") : "Ram", 
+const MAIN_ABILITIES = {preload("uid://b0imh5jcjfvpr") : "Ram", preload("uid://dguxchtm12cvo") : "Punch",
 	preload("uid://bpmhsc3tdcpqq") : "DummyAbility1", preload("uid://dvnr5lwr2t2n8") : "DummyAbility2"}
 const PASS_ABILITIES = {preload("uid://d0y0w2hbe3jwq") : "Glide", preload("uid://cx4jckeql12mb") : "DrumKey", 
 	preload("uid://bpmhsc3tdcpqq") : "DummyAbility1", preload("uid://dvnr5lwr2t2n8") : "DummyAbility2"}

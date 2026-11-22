@@ -4,7 +4,6 @@ extends MarginContainer
 @export var host_button : HoverButton
 @export var join_button : HoverButton
 @export var lobby_join_id : LineEdit
-@export var quit_button : HoverButton
 
 @export_group("UI Groups")
 @export var lobby_select_ui : Panel
@@ -24,14 +23,12 @@ extends MarginContainer
 func _ready():
 	host_button.visible = false
 	join_button.visible = false
-	quit_button.visible = false
 	reload_lobbies_button.visible = false
 	
 	lobby_join_id.pivot_offset_ratio = Vector2(0.5, 0.5)
 	
 	host_button.pressed.connect(_host_pressed)
 	join_button.pressed.connect(_join_pressed)
-	quit_button.pressed.connect(_quit_pressed)
 	
 	leave_button.pressed.connect(Networking._leave_lobby)
 	
@@ -50,6 +47,9 @@ func _ready():
 	host_button.grab_focus()
 
 func _host_pressed():
+	Signals.vignette.emit(0.5,0.25)
+	main_parent.visible = false
+	await get_tree().create_timer(0.5).timeout
 	Networking._host_lobby()
 func _join_pressed():
 	var lobby_id := lobby_join_id.text
@@ -86,9 +86,11 @@ func _join_pressed():
 		
 		lobby_join_id.editable = true
 		lobby_join_id.text = ""
-func _quit_pressed():
-	get_tree().quit()
 func _join_lobby(lobby_id : String):
+	Signals.vignette.emit(0.5,0.25)
+	main_parent.visible = false
+	await get_tree().create_timer(0.5).timeout
+	
 	var int_lobby_id := int(lobby_id)
 	Steam.joinLobby(int_lobby_id)
 
@@ -154,7 +156,7 @@ func _left_lobby(_lobby_id : int):
 	lobby_main_ui.visible = false
 
 func _game_started():
-	main_parent.visible = false
+	pass
 func _game_stopped(_winner):
 	main_parent.visible = false
 

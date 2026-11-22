@@ -120,37 +120,37 @@ position = Vector2(0, -160)
 
 [node name="RoofDetector1" type="RayCast2D" parent="Detectors/RoofDetectors" unique_id=1862768453]
 position = Vector2(-34, 0)
-target_position = Vector2(0, -25)
+target_position = Vector2(0, -5)
 collision_mask = 2
 
 [node name="RoofDetector2" type="RayCast2D" parent="Detectors/RoofDetectors" unique_id=2101390143]
 position = Vector2(34, 0)
-target_position = Vector2(0, -25)
+target_position = Vector2(0, -5)
 collision_mask = 2
 
 [node name="FloorDetectors" type="Node2D" parent="Detectors" unique_id=256314108]
 
 [node name="GroundDetector1" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=1627784674]
-position = Vector2(-40, 0)
-target_position = Vector2(0, 5)
+position = Vector2(-39, 0)
+target_position = Vector2(0, 10)
 collision_mask = 2
 
 [node name="GroundDetector2" type="RayCast2D" parent="Detectors/FloorDetectors" unique_id=577187749]
-position = Vector2(40, 0)
-target_position = Vector2(0, 5)
+position = Vector2(39, 0)
+target_position = Vector2(0, 10)
 collision_mask = 2
 
 [node name="WallDetectors" type="Node2D" parent="Detectors" unique_id=44892161]
 position = Vector2(0, -71)
 
 [node name="WallDetector1" type="RayCast2D" parent="Detectors/WallDetectors" unique_id=985429886]
-position = Vector2(-45, 0)
+position = Vector2(-43, 0)
 target_position = Vector2(0, 45)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="WallDetector2" type="RayCast2D" parent="Detectors/WallDetectors" unique_id=1384691904]
-position = Vector2(45, 0)
+position = Vector2(43, 0)
 target_position = Vector2(0, 45)
 collision_mask = 2
 hit_from_inside = true
@@ -159,13 +159,13 @@ hit_from_inside = true
 position = Vector2(0, -81)
 
 [node name="EdgeDetector1" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=2047404016]
-position = Vector2(-45, 0)
+position = Vector2(-43, 0)
 target_position = Vector2(-3, 0)
 collision_mask = 2
 hit_from_inside = true
 
 [node name="EdgeDetector2" type="RayCast2D" parent="Detectors/EdgeDetectors" unique_id=599898341]
-position = Vector2(45, 0)
+position = Vector2(43, 0)
 target_position = Vector2(3, 0)
 collision_mask = 2
 hit_from_inside = true
@@ -221,3 +221,5 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 stretch_mode = 2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2129214025]

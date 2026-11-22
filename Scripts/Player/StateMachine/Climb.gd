@@ -11,6 +11,7 @@ signal switch(new_state, additional)
 var friction := 0.1
 var current := false
 var sliding := false
+var can_jump := true
 
 func _ready():
 	await player.start
@@ -67,7 +68,7 @@ func _climb():
 	#if not player.is_on_wall_only():
 		#switch.emit(player.States.GROUND, "LedgeClimb")
 	#
-	if Input.is_action_pressed(player.inputs.Jump):
+	if Input.is_action_pressed(player.inputs.Jump) and can_jump:
 		switch.emit(player.States.AIR, "Jump")
 	#
 	#if player.is_on_floor():
@@ -84,8 +85,15 @@ func _slide(fall_speed):
 	
 	var tweener = get_tree().create_tween()
 	var time = fall_speed / 13200.0
+	time = clamp(time, 0.1, 1)
 	tweener.tween_property(player, "velocity", Vector2.ZERO, time)
 	
+	_can_jump(time*3)
+	can_jump = false
 	await tweener.finished
 	
 	sliding = false
+
+func _can_jump(time : float):
+	await get_tree().create_timer(time).timeout
+	can_jump = true

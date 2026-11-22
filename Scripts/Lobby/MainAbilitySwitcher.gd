@@ -2,7 +2,8 @@ extends Area2D
 
 var players = []
 
-const MAIN_ABILITIES = {"Ram" : preload("uid://b0imh5jcjfvpr"), 
+const MAIN_ABILITIES = {"Ram" : preload("uid://b0imh5jcjfvpr"), "ClimbersHook" : preload("uid://d1orsl3fcwm7b"),
+	"Punch": preload("uid://dguxchtm12cvo"),
 	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
 const PASS_ABILITIES = {"Glide" : preload("uid://d0y0w2hbe3jwq"), "DrumKey" : preload("uid://cx4jckeql12mb"), 
 	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
@@ -17,23 +18,23 @@ const SECRET_ABILITIES = []
 @export var abilities : HBoxContainer
 @export var interactables_label : RichTextLabel
 @export var ability_label : Label
+@export var left_input_text : RichTextLabel
+@export var right_input_text : RichTextLabel
 
 var editing_players = []
 var local_players_present = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if ability == 1: interactables_label.text = "[wave]Main Abilities:"
-	elif ability == 0: interactables_label.text = "[wave]Passive Abilities:"
-	else: interactables_label.text = "[wave]Character:"
+	_match_text()
 	
 	interactables_label.visible = true
 	abilities.visible = false
 	
-	body_entered.connect(func(body : Player): 
-		interactables_label.visible = false
+	body_entered.connect(func(body : Player):
 		body.main_vars.other_vars.ability_overide = true
-		local_players_present[body.player_source.player_number] = body)
+		local_players_present[body.player_source.player_number] = body
+		_show_interact_input(body))
 	body_exited.connect(func(body):
 		body.main_vars.other_vars.ability_overide = false
 		for i in local_players_present.keys():
@@ -42,7 +43,9 @@ func _ready():
 		
 		if local_players_present.size() == 0:
 			interactables_label.visible = true
-			abilities.visible = false)
+			abilities.visible = false
+		
+		_match_text())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -65,11 +68,29 @@ func _editing_player(player : Player):
 		editing_players.erase(player)
 		player._status_effect_update(false, "")
 	else:
+		interactables_label.visible = false
 		abilities.visible = true
 		player.current_state = player.States.PAUSED
 		editing_players.append(player)
 		player._status_effect_update(true, null)
 		Networking._send_data(player, false)
+		
+		_show_switching_input(player)
+		
+		## These lines search for the correct ability/sprite name in and show it on
+		## The players secondary text field
+		if ability == 1:
+			var all_abilities = MAIN_ABILITIES.values()
+			var index = all_abilities.find(player.player_source.main_ability)
+			player._status_effect_update(false, MAIN_ABILITIES.keys()[index])
+		elif ability == 0:
+			var all_abilities = PASS_ABILITIES.values()
+			var index = all_abilities.find(player.player_source.passive_ability)
+			player._status_effect_update(false, PASS_ABILITIES.keys()[index])
+		else:
+			var all_sprites = SPRITES.values()
+			var index = all_sprites.find(player.player_source.sprite_frame)
+			player._status_effect_update(false, SPRITES.keys()[index])
 func _change_ability(direction : int, player : Player):
 	var counter = func(number : int, size : int):
 		if number + direction > size:
@@ -101,6 +122,35 @@ func _change_ability(direction : int, player : Player):
 	
 	player.update_source.emit()
 
+func _show_interact_input(body : Player):
+	var action = body.inputs.Interact
+	var current_input_event = InputMap.action_get_events(action)
+	var input = str(current_input_event).split("(")[1]
+	input = input.split(")")[0]
+	
+	interactables_label.text = str("[wave]Press : ", input)
+func _show_switching_input(body : Player):
+	var left_action = body.inputs.Left
+	var right_action = body.inputs.Right
+	
+	var left_input = str(InputMap.action_get_events(left_action))
+	var right_input = str(InputMap.action_get_events(right_action))
+	
+	left_input = left_input.split("(")[1]
+	right_input = right_input.split("(")[1]
+	
+	left_input = left_input.split(")")[0]
+	right_input = right_input.split(")")[0]
+	
+	left_input_text.text = left_input
+	right_input_text.text = right_input
+	
+	#var action = body.inputs.Interact
+	#var current_input_event = InputMap.action_get_events(action)
+	#var input = str(current_input_event).split("(")[1]
+	#input = input.split(")")[0]
+	#
+	#interactables_label.text = str("[wave]Press : ", input)
 func _inputs(_event):
 	var local_players = {}
 	for i in players:
@@ -115,3 +165,8 @@ func _inputs(_event):
 		editing_players.append(local_players.get(3))
 	elif Input.is_action_just_pressed("P4_Ability") and local_players.keys().has(4):
 		editing_players.append(local_players.get(4))
+
+func _match_text():
+	if ability == 1: interactables_label.text = "[wave]Main Abilities:"
+	elif ability == 0: interactables_label.text = "[wave]Passive Abilities:"
+	else: interactables_label.text = "[wave]Character:"
