@@ -72,7 +72,7 @@ theme_override_font_sizes/bold_italics_font_size = 64
 theme_override_font_sizes/italics_font_size = 64
 theme_override_font_sizes/mono_font_size = 64
 bbcode_enabled = true
-text = "[shake][wave]A"
+text = "[wave amp=100]A"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -96,7 +96,7 @@ theme_override_font_sizes/bold_italics_font_size = 64
 theme_override_font_sizes/italics_font_size = 64
 theme_override_font_sizes/mono_font_size = 64
 bbcode_enabled = true
-text = "[shake][wave]D"
+text = "[wave amp=100]D"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

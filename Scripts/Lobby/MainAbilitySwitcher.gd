@@ -132,7 +132,7 @@ func _show_interact_input(body : Player):
 	var input = str(current_input_event).split("(")[1]
 	input = input.split(")")[0]
 	
-	interactables_label.text = str("[wave]Press : ", input)
+	interactables_label.text = str("[wave amp=100]Press : ", input)
 func _show_switching_input(body : Player):
 	var left_action = body.inputs.Left
 	var right_action = body.inputs.Right
@@ -150,7 +150,7 @@ func _show_switching_input(body : Player):
 	right_input_text.text = right_input
 	
 	#var action = body.inputs.Interact
-	#var current_input_event = InputMap.action_get_events(action)
+	#var current_input_events = InputMap.action_get_events(action)
 	#var input = str(current_input_event).split("(")[1]
 	#input = input.split(")")[0]
 	#
@@ -171,6 +171,6 @@ func _inputs(_event):
 		editing_players.append(local_players.get(4))
 
 func _match_text():
-	if ability == 1: interactables_label.text = "[wave]Main Abilities:"
-	elif ability == 0: interactables_label.text = "[wave]Passive Abilities:"
-	else: interactables_label.text = "[wave]Character:"
+	if ability == 1: interactables_label.text = "[wave amp=200]Main Abilities:"
+	elif ability == 0: interactables_label.text = "[wave amp=50]Passive Abilities:"
+	else: interactables_label.text = "[tornado]Character:"

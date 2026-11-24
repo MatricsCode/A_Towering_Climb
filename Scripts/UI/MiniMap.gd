@@ -18,6 +18,7 @@ func _ready():
 	main_sliders.add_child(objects)
 	
 	Signals.lobby_start_game.connect(_start)
+	Signals.lobby_finished_game.connect(_finish)
 
 func _physics_process(_delta):
 	if has_started:
@@ -37,6 +38,13 @@ func _start():
 	
 	await get_tree().create_timer(0.1).timeout
 	has_started = true
+func _finish():
+	visible = false
+	
+	for i in players.get_children():
+		i.queue_free()
+	for i in objects.get_children():
+		i.queue_free()
 
 func _update():
 	for player in GlobalScript.player_positions.keys():
