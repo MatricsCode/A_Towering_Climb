@@ -260,6 +260,7 @@ grow_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameUI/MiniMap/MarginContainer" unique_id=2076474076]
 layout_mode = 2
+theme_override_constants/separation = 60
 
 [node name="SlidersMain" type="Control" parent="GameUI/MiniMap/MarginContainer/HBoxContainer" unique_id=2016167181]
 layout_mode = 2

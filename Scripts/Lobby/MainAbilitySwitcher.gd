@@ -9,6 +9,8 @@ const PASS_ABILITIES = {"Glide" : preload("uid://d0y0w2hbe3jwq"), "DrumKey" : pr
 	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
 const SPRITES = {"Baker" : preload("uid://bl7fd60qs8x7s"), "Climber" : preload("uid://c2turr7b108g7"), 
 	"Climber 2" : preload("uid://cfoxbudysmmgk")}
+const SPRITE_THEME = [preload("uid://d0fl0yg8b5iq2"), preload("uid://c5qlnyqt7qlc3"), 
+	preload("uid://s0cgft0kbrqu")]
 const SECRET_ABILITIES = []
 
 @export_enum("Main", "Passive", "Sprite") var ability : int = 0
@@ -116,8 +118,10 @@ func _change_ability(direction : int, player : Player):
 	else:
 		var all_sprites = SPRITES.values()
 		var index = all_sprites.find(player.player_source.sprite_frame)
-		var current_sprite = SPRITES.keys().get(counter.call(index, SPRITES.size()-1))
+		index = counter.call(index, SPRITES.size()-1)
+		var current_sprite = SPRITES.keys().get(index)
 		player.player_source.sprite_frame = SPRITES[current_sprite]
+		player.player_source.slider_theme = SPRITE_THEME[index]
 		player._status_effect_update(false, current_sprite)
 	
 	player.update_source.emit()
