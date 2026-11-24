@@ -1,5 +1,9 @@
 extends Node
 
+@export var button_hover : AudioStreamPlayer
+@export var button_exited : AudioStreamPlayer
+@export var button_pressed : AudioStreamPlayer
+
 var peers : Array[int]
 
 var players : Dictionary[int , Array]
@@ -24,6 +28,15 @@ func _ready():
 	Signals.peer_joined.connect(func(ID : int): peers.append(ID))
 	Signals.peer_left.connect(func(ID : int): peers.erase(ID))
 	Signals.paused.connect(func(is_paused : bool): paused = is_paused)
+	
+	Signals.play_audio.connect(func(audio : int):
+		if audio == 0:
+			button_hover.play()
+		elif audio == 1:
+			button_exited.play()
+		elif audio == 2:
+			button_pressed.play())
+
 
 func _input(event):
 	var text = event.as_text()

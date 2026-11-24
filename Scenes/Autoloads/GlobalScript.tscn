@@ -2,6 +2,21 @@
 
 [ext_resource type="Script" uid="uid://kidyfaimhvk1" path="res://Scripts/AutoLoads/GlobalScript.gd" id="1_x2ys0"]
 
-[node name="GlobalScripts" type="Node" unique_id=1020724243]
+[node name="GlobalScripts" type="Node" unique_id=1020724243 node_paths=PackedStringArray("button_hover", "button_exited", "button_pressed")]
 process_mode = 3
 script = ExtResource("1_x2ys0")
+button_hover = NodePath("ButtonHover")
+button_exited = NodePath("ButtonExited")
+button_pressed = NodePath("ButtonPressed")
+
+[node name="ButtonHover" type="AudioStreamPlayer" parent="." unique_id=1344097508]
+
+[node name="ButtonExited" type="AudioStreamPlayer" parent="." unique_id=1777696777]
+
+[node name="ButtonPressed" type="AudioStreamPlayer" parent="." unique_id=155130649]
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="." unique_id=1893836898]
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="." unique_id=1320696244]
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="." unique_id=11850706]
