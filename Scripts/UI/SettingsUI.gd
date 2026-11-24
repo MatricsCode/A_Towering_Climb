@@ -41,6 +41,7 @@ func _settings(settings_visible : bool):
 	video_settings.visible = true
 
 func _make_invisible():
+	Signals.respawn_buttons.emit()
 	video_settings.visible = false
 	audio_settings.visible = false
 	remap_settings.visible = false

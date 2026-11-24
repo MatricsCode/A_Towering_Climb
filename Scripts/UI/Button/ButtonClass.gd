@@ -41,6 +41,8 @@ func _ready():
 	pivot_offset_ratio = Vector2(0.5,0.5)
 	mouse_entered.connect(_mouse_entered)
 	mouse_exited.connect(_mouse_exited)
+	
+	Signals.respawn_buttons.connect(_spawn)
 
 func _physics_process(_delta):
 	if !hovering and wiggle:

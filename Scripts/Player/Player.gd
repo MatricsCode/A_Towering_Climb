@@ -4,11 +4,13 @@ class_name Player
 signal start()
 signal update_source()
 
-@export_group("Nodes")
 @export var player_source : PlayerSource
+
+@export_group("Nodes")
 @export var sprite : AnimatedSprite2D
 @export var detectors : Node2D
 @export var animations : Node
+@export var sound_effects : AudioStreamPlayer
 @export_subgroup("UI tags")
 @export var steam_name : Label
 @export var status_image : TextureRect
@@ -26,10 +28,6 @@ enum States {GROUND, AIR, CLIMB, PAUSED, ABILITY, OVERIDDEN, SWITCHING, EMPTY}
 ## --- Constants ---
 
 const TERMINAL_VELOCITY := 2400
-
-var sounds = {
-	"Land" : preload("res://Sound Effects/Land.mp3"),
-	"Jump" : preload("res://Sound Effects/Jump.mp3"),}
 
 ## --- Variables ---
 var current_state
@@ -269,9 +267,9 @@ func _reset_main_vars(key : int = -1): ## 0 = Ground, 1 = Air, 2 = Climb
 			current_item += 1
 
 func _play_sound(sound : Resource):
-	$SFX.stream = sound
-	$SFX.play()
-	$SFX.pitch_scale = randf_range(0.95, 1.15)
+	sound_effects.stream = sound
+	sound_effects.play()
+	#sound_effects.pitch_scale = randf_range(0.95, 1.15)
 func _get_sprite_rotation():
 	if sprite.flip_h == false:
 		return 1

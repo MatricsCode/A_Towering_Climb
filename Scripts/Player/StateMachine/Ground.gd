@@ -1,6 +1,6 @@
 extends Node
 
-const WALK_SFX = preload("res://Sound Effects/Walking.mp3")
+const WALK_SFX = preload("uid://intnhven7ral")
 
 signal switch(new_state, additional)
 

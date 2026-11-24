@@ -17,13 +17,15 @@ func _ready():
 	
 	multiplayer_button.pressed.connect(func(): 
 		lobby_UI.visible = true
-		main_UI.visible = false)
+		main_UI.visible = false
+		Signals.respawn_buttons.emit())
 	
 	localplayer_button.pressed.connect(func(): pass)
 	settings_button.pressed.connect(func():
 		main_UI.visible = false
 		lobby_UI.visible = false
-		settings_UI.visible = true)
+		settings_UI.visible = true
+		Signals.respawn_buttons.emit())
 	quit_button.pressed.connect(get_tree().quit)
 
 func _return_to_settings():

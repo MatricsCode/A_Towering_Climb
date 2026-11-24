@@ -28,7 +28,7 @@ properties/3/path = NodePath("Sprite:flip_h")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[node name="Player" type="CharacterBody2D" unique_id=399334221 node_paths=PackedStringArray("sprite", "detectors", "animations", "steam_name", "status_image", "secondary_text", "ground", "air", "climb", "pause") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=399334221 node_paths=PackedStringArray("sprite", "detectors", "animations", "sound_effects", "steam_name", "status_image", "secondary_text", "ground", "air", "climb", "pause") groups=["Player"]]
 process_mode = 3
 z_index = 3
 collision_layer = 21
@@ -37,6 +37,7 @@ script = ExtResource("1_nn08x")
 sprite = NodePath("Sprite")
 detectors = NodePath("Detectors")
 animations = NodePath("Animations")
+sound_effects = NodePath("SFX")
 steam_name = NodePath("HBoxContainer/HBoxContainer/SteamName")
 status_image = NodePath("HBoxContainer/HBoxContainer/TextureRect")
 secondary_text = NodePath("HBoxContainer/SecondaryText")
@@ -176,10 +177,6 @@ player = NodePath("..")
 sprite = NodePath("../Sprite")
 detectors = NodePath("../Detectors")
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1387906588]
-volume_db = 5.0
-bus = &"Player"
-
 [node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=448814101]
 offset_left = -180.0
 offset_top = -383.0
@@ -223,3 +220,7 @@ size_flags_vertical = 4
 stretch_mode = 2
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2129214025]
+
+[node name="SFX" type="AudioStreamPlayer" parent="." unique_id=62276811]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=527827237]
