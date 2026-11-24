@@ -1,7 +1,8 @@
 extends Resource
 class_name PlayerSource
 
-@export_group("Animation")
+@export_group("Visualisations")
+@export var slider_theme : Theme
 @export var sprite_frame : SpriteFrames
 
 @export_group("Abilities")

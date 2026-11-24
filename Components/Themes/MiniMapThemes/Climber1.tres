@@ -1,0 +1,17 @@
+[gd_resource type="Theme" format=3 uid="uid://c5qlnyqt7qlc3"]
+
+[ext_resource type="Texture2D" uid="uid://g3go1fgefanm" path="res://Art/Markers/ClimberIcon.png" id="1_ap6hj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_avave"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hu6rs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4c55d"]
+
+[resource]
+VSlider/icons/grabber = ExtResource("1_ap6hj")
+VSlider/icons/grabber_disabled = ExtResource("1_ap6hj")
+VSlider/icons/grabber_highlight = ExtResource("1_ap6hj")
+VSlider/styles/grabber_area = SubResource("StyleBoxEmpty_avave")
+VSlider/styles/grabber_area_highlight = SubResource("StyleBoxEmpty_hu6rs")
+VSlider/styles/slider = SubResource("StyleBoxEmpty_4c55d")

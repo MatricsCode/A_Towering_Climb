@@ -1,9 +1,12 @@
 extends StaticBody2D
 
 @onready var sprite = $Sprite2D
+@export var level_height : float = 0.0
 
 func _ready():
-	GlobalScript.important_positions[position] = 4
+	GlobalScript.level_height = level_height
+	
+	#GlobalScript.important_positions[position] = 4
 	
 	var flip = randi_range(0, 1)
 	if flip == 1:

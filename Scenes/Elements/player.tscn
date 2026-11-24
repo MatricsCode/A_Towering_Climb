@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ck5jp4kr670ps" path="res://Scripts/Player/Player.gd" id="1_nn08x"]
 [ext_resource type="Script" uid="uid://cfhqtcjpmpt2f" path="res://Scripts/Player/StateMachine/Ground.gd" id="2_bhhdu"]
+[ext_resource type="Texture2D" uid="uid://dnkw8e5bhrkib" path="res://Art/Markers/Drum.png" id="2_er752"]
 [ext_resource type="Script" uid="uid://b0cyxdudk1n30" path="res://Scripts/Player/StateMachine/Air.gd" id="3_megsn"]
 [ext_resource type="Script" uid="uid://cpewpue8xd833" path="res://Scripts/Player/StateMachine/Climb.gd" id="4_yoq75"]
 [ext_resource type="Script" uid="uid://qbo6p8gv1xdl" path="res://Scripts/Player/StateMachine/Pause.gd" id="5_ksbbd"]
@@ -10,6 +11,24 @@
 [ext_resource type="Script" uid="uid://uiuqna3h4o6m" path="res://Scripts/Player/StateMachine/Debug.gd" id="7_bu0hs"]
 [ext_resource type="SpriteFrames" uid="uid://c2turr7b108g7" path="res://Components/SpriteFrames/Players/Climber1.tres" id="7_f1ek2"]
 [ext_resource type="Script" uid="uid://5ld7a65652d1" path="res://Scripts/Player/Detectors.gd" id="8_tx1dd"]
+
+[sub_resource type="Curve" id="Curve_kyi1y"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.39814818, -24), -933.1194, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fqgfk"]
+curve = SubResource("Curve_kyi1y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hqh25"]
+particle_flag_disable_z = true
+direction = Vector3(-100, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 11.5999975
+linear_accel_max = 30.389997
+linear_accel_curve = SubResource("CurveTexture_fqgfk")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(80, 160)
@@ -45,6 +64,11 @@ ground = NodePath("States/Ground")
 air = NodePath("States/Air")
 climb = NodePath("States/Climb")
 pause = NodePath("States/Pause")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=527827237]
+emitting = false
+texture = ExtResource("2_er752")
+process_material = SubResource("ParticleProcessMaterial_hqh25")
 
 [node name="States" type="Node" parent="." unique_id=542146053]
 
@@ -222,5 +246,3 @@ stretch_mode = 2
 [node name="Area2D" type="Area2D" parent="." unique_id=2129214025]
 
 [node name="SFX" type="AudioStreamPlayer" parent="." unique_id=62276811]
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=527827237]

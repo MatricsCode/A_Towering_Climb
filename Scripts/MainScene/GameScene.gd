@@ -7,6 +7,8 @@ const CAMERA = preload("uid://n84h7ds41dm6")
 const RAM = preload("uid://b0imh5jcjfvpr")
 const GLIDE = preload("uid://d0y0w2hbe3jwq")
 const CLIMBER_SECRET = preload("uid://dbqffofmlv0yn")
+
+const CLIMBER_THEME = preload("uid://c5qlnyqt7qlc3")
 const CLIMBER_FRAMES = preload("uid://c2turr7b108g7")
 
 var levels = [preload("uid://cn8yrub2tv3vi")] #[preload("uid://bb64cr50jmhs8"),
@@ -96,9 +98,12 @@ func _spawn_players(number : int):
 	
 	player_source.player_name = str(Steam.getPersonaName(), "_", number)
 	player_source.player_number = number
+	
 	player_source.main_ability = RAM
 	player_source.passive_ability = GLIDE
 	player_source.secret_ability = CLIMBER_SECRET
+	
+	player_source.slider_theme = CLIMBER_THEME
 	player_source.sprite_frame = CLIMBER_FRAMES
 	
 	

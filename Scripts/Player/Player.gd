@@ -47,6 +47,8 @@ var inputs = {}
 
 ## ---- Functions ----
 func _ready(): ## Runns as soon as the player is loaded into the scenes
+	GlobalScript.player_positions[self] = position
+	
 	current_state = States.OVERIDDEN
 	
 	position.y -= 25

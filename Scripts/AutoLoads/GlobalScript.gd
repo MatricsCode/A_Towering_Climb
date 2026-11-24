@@ -4,6 +4,10 @@ var peers : Array[int]
 
 var players : Dictionary[int , Array]
 
+var player_positions : Dictionary[Player, Vector2] = {}
+var important_positions : Dictionary[Resource, Vector2] = {}
+var level_height : float = 0.0
+
 var debug := false
 var can_debug := false
 
@@ -60,8 +64,6 @@ func _input(event):
 var peer_ID = 0
 var user_ID = 0
 var countdown_timer = 0.5
-
-var important_positions = {}
 var max_abilitys = 3
 
 #var all_player_abilitys = {
