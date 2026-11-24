@@ -261,13 +261,13 @@ grow_vertical = 0
 [node name="HBoxContainer" type="HBoxContainer" parent="GameUI/MiniMap/MarginContainer" unique_id=2076474076]
 layout_mode = 2
 
+[node name="SlidersMain" type="Control" parent="GameUI/MiniMap/MarginContainer/HBoxContainer" unique_id=2016167181]
+layout_mode = 2
+
 [node name="TextureRect" type="TextureRect" parent="GameUI/MiniMap/MarginContainer/HBoxContainer" unique_id=1781634290]
 layout_mode = 2
 texture = ExtResource("3_npa51")
 stretch_mode = 2
-
-[node name="SlidersMain" type="Control" parent="GameUI/MiniMap/MarginContainer/HBoxContainer" unique_id=2016167181]
-layout_mode = 2
 
 [node name="DebugMenu" type="MarginContainer" parent="." unique_id=88420541 node_paths=PackedStringArray("debug_label", "main_ability_label", "passive_ability_label", "quit_button")]
 layout_mode = 1

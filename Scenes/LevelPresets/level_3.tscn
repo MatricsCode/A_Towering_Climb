@@ -16,6 +16,7 @@ tile_set = ExtResource("1_bov8p")
 
 [node name="Goal2" parent="." unique_id=1097038857 instance=ExtResource("2_a0ufr")]
 position = Vector2(685, -8480)
+level_height = 9000.0
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1993585470]
 collision_layer = 2

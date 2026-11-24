@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://kejlp28p67mq"]
 
 [ext_resource type="Script" uid="uid://kidyfaimhvk1" path="res://Scripts/AutoLoads/GlobalScript.gd" id="1_x2ys0"]
+[ext_resource type="AudioStream" uid="uid://doktp74e7kmtf" path="res://Sound Effects/Land.mp3" id="2_ukxc2"]
+[ext_resource type="AudioStream" uid="uid://ydvu2nrnrn1t" path="res://Sound Effects/Jump.mp3" id="3_ub03e"]
+[ext_resource type="AudioStream" uid="uid://intnhven7ral" path="res://Sound Effects/Walking.mp3" id="4_2klod"]
 
 [node name="GlobalScripts" type="Node" unique_id=1020724243 node_paths=PackedStringArray("button_hover", "button_exited", "button_pressed")]
 process_mode = 3
@@ -10,10 +13,13 @@ button_exited = NodePath("ButtonExited")
 button_pressed = NodePath("ButtonPressed")
 
 [node name="ButtonHover" type="AudioStreamPlayer" parent="." unique_id=1344097508]
+stream = ExtResource("3_ub03e")
 
 [node name="ButtonExited" type="AudioStreamPlayer" parent="." unique_id=1777696777]
+stream = ExtResource("2_ukxc2")
 
 [node name="ButtonPressed" type="AudioStreamPlayer" parent="." unique_id=155130649]
+stream = ExtResource("4_2klod")
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="." unique_id=1893836898]
 

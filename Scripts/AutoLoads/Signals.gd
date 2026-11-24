@@ -40,6 +40,8 @@ extends Node2D
 @warning_ignore("unused_signal") signal camera_zoom(camera : int, zoom_level : float, time : float)
 @warning_ignore("unused_signal") signal text_popup(text : String, text_position : Vector2)
 @warning_ignore("unused_signal") signal respawn_buttons()
+## 0 is button entered, 1 is button exited, 2 is button pressed
+@warning_ignore("unused_signal") signal play_audio(audio : int)
 
 @warning_ignore("unused_signal") signal paused(is_paused : bool)
 

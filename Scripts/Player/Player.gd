@@ -47,7 +47,7 @@ var inputs = {}
 
 ## ---- Functions ----
 func _ready(): ## Runns as soon as the player is loaded into the scenes
-	GlobalScript.player_positions[self] = position
+	GlobalScript.player_positions.set(self, position)
 	
 	current_state = States.OVERIDDEN
 	
@@ -141,6 +141,8 @@ func _physics_process(_delta):  ## Runs every physics frames
 	#if shaking_camera == 0:
 		#cam.offset = lerp(cam.offset, Vector2.ZERO, 0.002)
 	
+	
+	GlobalScript.player_positions.set(self, position)
 	move_and_slide()
 
 ## -- Switch Functions --
@@ -190,6 +192,7 @@ func _switch_climb(new_state : States, additional := ""):
 			position.x += 25 * _get_sprite_rotation() * -1
 			_switch_timeout(0.1)
 		elif additional == "OnEdge":
+			main_vars.other_vars.can_switch = false
 			position.y -= 82.0
 			position.x += 100 * _get_sprite_rotation()
 			velocity = Vector2.ZERO
@@ -202,6 +205,7 @@ func _switch_climb(new_state : States, additional := ""):
 			await get_tree().create_timer(crouch_time).timeout
 			animations.overide = false
 			
+			main_vars.other_vars.can_switch = true
 			_reset_main_vars()
 		
 	elif new_state == States.AIR:
