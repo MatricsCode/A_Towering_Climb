@@ -1,46 +1,79 @@
 [gd_scene format=3 uid="uid://ibhv3ulgppft"]
 
 [ext_resource type="Script" uid="uid://cjmoi3rtnx4vu" path="res://Scripts/Levels/Props/Bird/bird.gd" id="1_806kn"]
-[ext_resource type="SpriteFrames" uid="uid://duo0cm7k7dn1g" path="res://Components/SpriteFrames/Birds/White.tres" id="2_806kn"]
+[ext_resource type="Texture2D" uid="uid://ckrb8wkunj0hl" path="res://Art/Bird/Bird3.png" id="1_n0dcf"]
+[ext_resource type="Texture2D" uid="uid://b8a6j8ve6mch5" path="res://Art/Bird/Bird1.png" id="2_iangg"]
+[ext_resource type="Texture2D" uid="uid://mofp4o61bglv" path="res://Art/Bird/Bird8.png" id="3_rvsgj"]
+[ext_resource type="Texture2D" uid="uid://dmeta1ojki2ci" path="res://Art/Bird/Bird6.png" id="4_j7fe7"]
+[ext_resource type="Texture2D" uid="uid://dr17nm8iqe1xm" path="res://Art/Bird/Bird13.png" id="5_4lpma"]
+[ext_resource type="Texture2D" uid="uid://xxohy5564occ" path="res://Art/Bird/Bird11.png" id="6_7ootn"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqh25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n0dcf")
+}],
+"loop": 1,
+"name": &"BlueFly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iangg")
+}],
+"loop": 1,
+"name": &"BlueIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rvsgj")
+}],
+"loop": 1,
+"name": &"GreenFly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_j7fe7")
+}],
+"loop": 1,
+"name": &"GreenIdle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4lpma")
+}],
+"loop": 1,
+"name": &"RedFly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7ootn")
+}],
+"loop": 1,
+"name": &"RedIdle",
+"speed": 5.0
+}]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqh25"]
+size = Vector2(160, 13)
 
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_806kn"]
-radius = 146.014
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rpcp7"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath("AnimatedSprite2D:animation")
-properties/1/spawn = true
-properties/1/replication_mode = 2
-properties/2/path = NodePath("AnimatedSprite2D:frame")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-
-[node name="CharacterBody2D" type="CharacterBody2D"]
-collision_layer = 32
-collision_mask = 0
+[node name="Bird" type="StaticBody2D" unique_id=1811907650 node_paths=PackedStringArray("sprite", "area")]
 script = ExtResource("1_806kn")
+sprite = NodePath("AnimatedSprite2D")
+area = NodePath("Area2D")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=22599275]
 position = Vector2(0, -25)
-sprite_frames = ExtResource("2_806kn")
-animation = &"idle"
-frame_progress = 0.51389
-speed_scale = 2.0
+sprite_frames = SubResource("SpriteFrames_hqh25")
+animation = &"RedIdle"
 
-[node name="PlayerDetector" type="Area2D" parent="."]
-position = Vector2(0, -25)
-collision_layer = 0
+[node name="Area2D" type="Area2D" parent="." unique_id=1623047263]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-shape = SubResource("CircleShape2D_806kn")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_rpcp7")
-
-[connection signal="area_entered" from="PlayerDetector" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="PlayerDetector" to="." method="_on_area_2d_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1602947452]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_hqh25")

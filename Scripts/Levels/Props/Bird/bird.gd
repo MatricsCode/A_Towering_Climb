@@ -1,61 +1,63 @@
-extends CharacterBody2D
+extends StaticBody2D
 
-const BLUE = preload("res://Old/Recourses/Birds/Blue.tres")
-const GREEN = preload("res://Old/Recourses/Birds/Green.tres")
-const PINK = preload("res://Old/Recourses/Birds/Pink.tres")
-const RED = preload("res://Old/Recourses/Birds/Red.tres")
-const WHITE = preload("res://Old/Recourses/Birds/White.tres")
+@export var sprite : AnimatedSprite2D
+@export var area : Area2D
 
-@onready var sprite = $Sprite
-
-var fly_speed = Vector2(0, 0)
-var message_others : int
+const COLORS = ["Blue", "Green", "Red"]
+var color : String
 
 func _ready():
-	message_others = randi_range(-3, 1)
-	
-	var twist = randi_range(0, 1)
-	
-	if twist == 0:
-		sprite.flip_h = true
-	
-	var color = randi_range(0, 4)
-	match color:
-		0:
-			sprite.sprite_frames = BLUE
-		1:
-			sprite.sprite_frames = GREEN
-		2:
-			sprite.sprite_frames = PINK
-		3:
-			sprite.sprite_frames = RED
-		4:
-			sprite.sprite_frames = WHITE
+	color = COLORS[randi_range(0, COLORS.size()-1)]
+	sprite.play(str(color, "Idle"))
+
+func _physics_process(delta):
+	pass
 
 
-func _physics_process(_delta):
-	move_and_slide()
 
 
-func _on_area_2d_body_entered(body):
-	run(body)
 
-func _on_area_2d_area_entered(area):
-	run(area)
 
-func run(detected):
-	var run_rotation = 0
-	
-	if detected.position.x < position.x:
-		run_rotation = 1
-		sprite.flip_h = true
-	else:
-		run_rotation = -1
-	
-	sprite.play("fly")
-	
-	velocity.y = randf_range(300, 700) * -1
-	velocity.x = randf_range(300, 700) * run_rotation
-	
-	if message_others == 1:
-		$PlayerDetector.set_collision_layer_value(1, true)
+
+#@onready var sprite = $Sprite
+#
+#var fly_speed = Vector2(0, 0)
+#var message_others : int
+#
+#func _ready():
+	#message_others = randi_range(-3, 1)
+	#
+	#var twist = randi_range(0, 1)
+	#
+	#if twist == 0:
+		#sprite.flip_h = true
+	#
+	#var color = randi_range(0, 4)
+#
+#
+#func _physics_process(_delta):
+	#move_and_slide()
+#
+#
+#func _on_area_2d_body_entered(body):
+	#run(body)
+#
+#func _on_area_2d_area_entered(area):
+	#run(area)
+#
+#func run(detected):
+	#var run_rotation = 0
+	#
+	#if detected.position.x < position.x:
+		#run_rotation = 1
+		#sprite.flip_h = true
+	#else:
+		#run_rotation = -1
+	#
+	#sprite.play("fly")
+	#
+	#velocity.y = randf_range(300, 700) * -1
+	#velocity.x = randf_range(300, 700) * run_rotation
+	#
+	#if message_others == 1:
+		#$PlayerDetector.set_collision_layer_value(1, true)

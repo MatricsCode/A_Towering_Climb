@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cxjreg6tirxq3" path="res://Components/Tileset.tres" id="1_bov8p"]
 [ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Elements/Props/Goal.tscn" id="2_a0ufr"]
 [ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/Elements/Interactables/LiquidDrum.tscn" id="3_a0ufr"]
+[ext_resource type="PackedScene" uid="uid://ibhv3ulgppft" path="res://Scenes/Elements/Props/Bird.tscn" id="4_xk1gt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqh25"]
 size = Vector2(7186, 10)
@@ -137,3 +138,12 @@ bbcode_enabled = true
 text = "[tornado] [color=gold] congratulations! You made it to the top! [/color] [/tornado]
 [wave][color=darkgray]but please don't win yet, it isn't implemented and [color=red]WILL[color=darkgray] softlock you :D"
 scroll_active = false
+
+[node name="Bird" parent="." unique_id=1811907650 instance=ExtResource("4_xk1gt")]
+position = Vector2(684, -438)
+
+[node name="Bird2" parent="." unique_id=2025116488 instance=ExtResource("4_xk1gt")]
+position = Vector2(824, -433)
+
+[node name="Bird3" parent="." unique_id=1308210101 instance=ExtResource("4_xk1gt")]
+position = Vector2(960, -445)
