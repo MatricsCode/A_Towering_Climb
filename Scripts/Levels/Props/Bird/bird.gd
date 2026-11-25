@@ -12,7 +12,7 @@ var nodes = {"sprite" : AnimatedSprite2D, "area" : Area2D,
 	"ray_cast" : RayCast2D, "hop_timer" : Timer}
 var flying_vars = {"direction" = 0, "speed" = 0.0, "degrees" = 0.0}
 var hopping_vars = {"direction" = 0, "end_point" = Vector2.ZERO,
-	"curve_peak" = Vector2.ZERO, "difference" = 0.0, "minTime" = 0.0, "maxTime" = 1.0}
+	"curve_peak" = Vector2.ZERO, "difference" = 0.0, "hop_time" = 0.2, "minTime" = 0.0, "maxTime" = 1.0}
 var appearance = {"color" = ""}
 
 func _ready():
@@ -75,32 +75,39 @@ func _player_entered(body : PhysicsBody2D):
 		flying_vars["direction"] = 1
 	current_state = States.FLYING
 func _player_exited(_body : PhysicsBody2D):
-	var ray_cast = RayCast2D.new()
-	add_child(ray_cast)
-	ray_cast.set_collision_mask_value(1, false)
-	ray_cast.set_collision_mask_value(2, true)
-	ray_cast.target_position.y = 100
-	await get_tree().create_timer(0.1).timeout
-	position = ray_cast.get_collision_point()
-	position.y -= 16
-	ray_cast.queue_free()
+	pass
+	#var ray_cast = RayCast2D.new()
+	#add_child(ray_cast)
+	#ray_cast.set_collision_mask_value(1, false)
+	#ray_cast.set_collision_mask_value(2, true)
+	#ray_cast.target_position.y = 100
+	#await get_tree().create_timer(0.1).timeout
+	#position = ray_cast.get_collision_point()
+	#position.y -= 16
+	#ray_cast.queue_free()
 
 func _hop_execute():
 	hopping_vars.set("direction", randi_range(-1,1))
 	while hopping_vars.get("direction") == 0:
 		hopping_vars.set("direction", randi_range(-1,1))
 	
-	await _hop_measure(randf_range(20.0,100.0))
+	await _hop_measure(randf_range(100.0,200.0))
 	
 	var tweener = get_tree().create_tween()
 	tweener.set_ease(Tween.EASE_IN)
 	tweener.set_trans(Tween.TRANS_SINE)
-	tweener.tween_property(self, "position", hopping_vars.get("mid_point"),
-		 hopping_vars.get("difference")/2)
-	await tweener.finished
-	tweener.tween_property(self, "position", hopping_vars.get("end_point"),
-		 hopping_vars.get("difference")/2)
+	tweener.tween_property(self, "position", hopping_vars.get("curve_peak"), hopping_vars.get("hop_time"))
+	nodes.get("sprite").play(str(appearance.get("color"), "Fly"))
 	
+	await tweener.finished
+	tweener.kill()
+	tweener = get_tree().create_tween()
+	tweener.tween_property(self, "position", hopping_vars.get("end_point"), hopping_vars.get("hop_time"))
+	_setup_node(nodes.get("hop_timer"))
+	
+	await tweener.finished
+	nodes.get("sprite").play(str(appearance.get("color"), "Idle"))
+	nodes.get("ray_cast").position = Vector2.ZERO
 func _hop_measure(starting_position : float):
 	nodes.get("ray_cast").position.x = starting_position * hopping_vars.get("direction")
 	
@@ -110,7 +117,9 @@ func _hop_measure(starting_position : float):
 		if nodes.get("ray_cast").is_colliding():
 			new_position = nodes.get("ray_cast").get_collision_point()
 		else:
-			nodes.get("ray_cast").position.x += hopping_vars.get("direction") * 0.1
+			nodes.get("ray_cast").position.x -= hopping_vars.get("direction") * 0.1
+	
+	new_position.y -= 10
 	
 	hopping_vars.set("end_point", new_position)
 	
@@ -126,5 +135,5 @@ func _hop_measure(starting_position : float):
 
 func _setup_node(node : Node):
 	if node == nodes.get("hop_timer"):
-		node.wait_time = randf_range(0,1)
+		node.wait_time = 2
 		node.start()
