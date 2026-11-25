@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b7pr8b6dvxdb2" path="res://Art/Sandwich/Sandwich/Sandwich2.png" id="4_qy7bc"]
 [ext_resource type="Texture2D" uid="uid://dah4htacvndyf" path="res://Art/Sandwich/Sandwich/Sandwich3.png" id="5_2dfve"]
 [ext_resource type="Texture2D" uid="uid://ucstx68cn55j" path="res://Art/Sandwich/Sandwich/Sandwich4.png" id="6_1pw17"]
-[ext_resource type="Script" uid="uid://cjmoi3rtnx4vu" path="res://Scripts/Levels/Props/Bird/bird.gd" id="10_lj1ok"]
+[ext_resource type="Script" uid="uid://cjmoi3rtnx4vu" path="res://Scripts/Levels/Props/Bird/Bird.gd" id="10_lj1ok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6nvb"]
 size = Vector2(7186, 10)

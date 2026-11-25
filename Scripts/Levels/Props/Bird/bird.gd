@@ -1,18 +1,14 @@
 extends Node2D
 class_name Bird
 
-enum States {IDLE, JUMPING, FLYING}
-
 const BIRD_SPRITE_FRAMES = preload("uid://boimcwbblrhxc")
 const COLORS = ["Blue", "Green", "Red"]
 
-var current_state = States.IDLE
-
 var nodes = {"sprite" : AnimatedSprite2D, "area" : Area2D, 
 	"ray_cast" : RayCast2D, "hop_timer" : Timer}
-var flying_vars = {"direction" = 0, "speed" = 0.0, "degrees" = 0.0}
-var hopping_vars = {"direction" = 0, "end_point" = Vector2.ZERO,
-	"curve_peak" = Vector2.ZERO, "difference" = 0.0, "hop_time" = 0.2, "minTime" = 0.0, "maxTime" = 1.0}
+var flying_vars = {"direction" = 0, "speed" = 10.0, "degrees" = 5.0, "count" = 0.0, "is_flying" = false}
+var hopping_vars = {"direction" = 0, "end_point" = Vector2.ZERO, "is_hopping" = false,
+	"curve_peak" = Vector2.ZERO, "difference" = 0.0, "hop_time" = 0.5, "minTime" = 1.0, "maxTime" = 10.0}
 var appearance = {"color" = ""}
 
 func _ready():
@@ -20,6 +16,7 @@ func _ready():
 	
 	# Here it spawns the sprite,the area2D and the hop_timer + sets them all up
 	nodes["sprite"] = AnimatedSprite2D.new()
+	nodes.get("sprite").speed_scale = 3
 	nodes.get("sprite").sprite_frames = BIRD_SPRITE_FRAMES
 	add_child(nodes.get("sprite"))
 	
@@ -65,7 +62,8 @@ func _ready():
 	nodes.get("sprite").play(str(appearance["color"], "Idle"))
 
 func _physics_process(_delta):
-	pass
+	if flying_vars.get("is_flying"):
+		_flying()
 
 
 func _player_entered(body : PhysicsBody2D):
@@ -73,7 +71,8 @@ func _player_entered(body : PhysicsBody2D):
 		flying_vars["direction"] = -1
 	else:
 		flying_vars["direction"] = 1
-	current_state = States.FLYING
+		nodes.get("hop_timer").stop()
+	flying_vars["is_flying"] = true
 func _player_exited(_body : PhysicsBody2D):
 	pass
 	#var ray_cast = RayCast2D.new()
@@ -86,28 +85,40 @@ func _player_exited(_body : PhysicsBody2D):
 	#position.y -= 16
 	#ray_cast.queue_free()
 
+func _flying():
+	flying_vars["count"] += 1
+	position.y += flying_vars.get("degrees") * flying_vars.get("speed") * -1
+	position.x += flying_vars.get("speed") * flying_vars.get("direction") + sin(flying_vars.get("count"))
+
 func _hop_execute():
+	nodes.get("sprite").play(str(appearance.get("color"), "Fly"))
 	hopping_vars.set("direction", randi_range(-1,1))
 	while hopping_vars.get("direction") == 0:
 		hopping_vars.set("direction", randi_range(-1,1))
+	if flying_vars.get("is_flying"):
+		return
 	
 	await _hop_measure(randf_range(100.0,200.0))
+	if flying_vars.get("is_flying"):
+		return
 	
 	var tweener = get_tree().create_tween()
 	tweener.set_ease(Tween.EASE_IN)
 	tweener.set_trans(Tween.TRANS_SINE)
 	tweener.tween_property(self, "position", hopping_vars.get("curve_peak"), hopping_vars.get("hop_time"))
-	nodes.get("sprite").play(str(appearance.get("color"), "Fly"))
 	
 	await tweener.finished
+	if flying_vars.get("is_flying"):
+		return
 	tweener.kill()
 	tweener = get_tree().create_tween()
 	tweener.tween_property(self, "position", hopping_vars.get("end_point"), hopping_vars.get("hop_time"))
 	_setup_node(nodes.get("hop_timer"))
 	
 	await tweener.finished
-	nodes.get("sprite").play(str(appearance.get("color"), "Idle"))
 	nodes.get("ray_cast").position = Vector2.ZERO
+	await get_tree().create_timer(0.1).timeout
+	nodes.get("sprite").play(str(appearance.get("color"), "Idle"))
 func _hop_measure(starting_position : float):
 	nodes.get("ray_cast").position.x = starting_position * hopping_vars.get("direction")
 	
@@ -135,5 +146,5 @@ func _hop_measure(starting_position : float):
 
 func _setup_node(node : Node):
 	if node == nodes.get("hop_timer"):
-		node.wait_time = 2
+		node.wait_time = randf_range(hopping_vars.get("minTime"), hopping_vars.get("maxTime"))
 		node.start()
