@@ -159,21 +159,21 @@ shape = SubResource("CircleShape2D_hqh25")
 [node name="Birds" type="Node2D" parent="." unique_id=1459622265]
 
 [node name="Bird" type="StaticBody2D" parent="Birds" unique_id=1794333882]
-position = Vector2(0, -18)
+position = Vector2(443, -18)
 script = ExtResource("10_lj1ok")
 metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
 
 [node name="Bird2" type="StaticBody2D" parent="Birds" unique_id=1068612547]
-position = Vector2(40, -18)
+position = Vector2(483, -18)
 script = ExtResource("10_lj1ok")
 metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
 
 [node name="Bird3" type="StaticBody2D" parent="Birds" unique_id=2121992592]
-position = Vector2(78, -18)
+position = Vector2(521, -18)
 script = ExtResource("10_lj1ok")
 metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
 
 [node name="Bird4" type="StaticBody2D" parent="Birds" unique_id=2098999159]
-position = Vector2(-76, -18)
+position = Vector2(367, -18)
 script = ExtResource("10_lj1ok")
 metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"

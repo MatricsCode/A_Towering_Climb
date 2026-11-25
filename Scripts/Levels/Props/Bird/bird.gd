@@ -6,9 +6,9 @@ const COLORS = ["Blue", "Green", "Red"]
 
 var nodes = {"sprite" : AnimatedSprite2D, "area" : Area2D, 
 	"ray_cast" : RayCast2D, "hop_timer" : Timer}
-var flying_vars = {"direction" = 0, "speed" = 10.0, "degrees" = 5.0, "count" = 0.0, "is_flying" = false}
+var flying_vars = {"direction" = 0, "speed" = 10.0, "degrees" = 1.0, "count" = 0.0, "is_flying" = false}
 var hopping_vars = {"direction" = 0, "end_point" = Vector2.ZERO, "is_hopping" = false,
-	"curve_peak" = Vector2.ZERO, "difference" = 0.0, "hop_time" = 0.5, "minTime" = 1.0, "maxTime" = 10.0}
+	"curve_peak" = Vector2.ZERO, "difference" = 0.0, "hop_time" = 0.2, "minTime" = 1.0, "maxTime" = 10.0}
 var appearance = {"color" = ""}
 
 func _ready():
@@ -55,6 +55,9 @@ func _ready():
 	nodes.get("hop_timer").timeout.connect(_hop_execute)
 #endregion
 	
+	flying_vars["speed"] = randf_range(10,30)
+	flying_vars["degrees"] = randf_range(10,30)
+	
 	_setup_node(nodes.get("hop_timer"))
 	
 	# Here it sets up it's appearance
@@ -67,10 +70,12 @@ func _physics_process(_delta):
 
 
 func _player_entered(body : PhysicsBody2D):
+	print(body.name)
+	_change_direction(flying_vars.get("direction"))
 	if body.position.x < position.x:
-		flying_vars["direction"] = -1
-	else:
 		flying_vars["direction"] = 1
+	else:
+		flying_vars["direction"] = -1
 		nodes.get("hop_timer").stop()
 	flying_vars["is_flying"] = true
 func _player_exited(_body : PhysicsBody2D):
@@ -87,8 +92,8 @@ func _player_exited(_body : PhysicsBody2D):
 
 func _flying():
 	flying_vars["count"] += 1
-	position.y += flying_vars.get("degrees") * flying_vars.get("speed") * -1
-	position.x += flying_vars.get("speed") * flying_vars.get("direction") + sin(flying_vars.get("count"))
+	position.y += flying_vars.get("degrees") * -1
+	position.x += flying_vars.get("speed") * flying_vars.get("direction") + sin(flying_vars.get("count")) * 10
 
 func _hop_execute():
 	nodes.get("sprite").play(str(appearance.get("color"), "Fly"))
@@ -98,9 +103,11 @@ func _hop_execute():
 	if flying_vars.get("is_flying"):
 		return
 	
-	await _hop_measure(randf_range(100.0,200.0))
+	await _hop_measure(randf_range(50.0,100.0))
 	if flying_vars.get("is_flying"):
 		return
+	
+	_change_direction(hopping_vars.get("direction"))
 	
 	var tweener = get_tree().create_tween()
 	tweener.set_ease(Tween.EASE_IN)
@@ -148,3 +155,9 @@ func _setup_node(node : Node):
 	if node == nodes.get("hop_timer"):
 		node.wait_time = randf_range(hopping_vars.get("minTime"), hopping_vars.get("maxTime"))
 		node.start()
+
+func _change_direction(direction : int):
+	if direction == 1:
+		nodes.get("sprite").flip_h = false
+	else:
+		nodes.get("sprite").flip_h = true
