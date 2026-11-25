@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b7pr8b6dvxdb2" path="res://Art/Sandwich/Sandwich/Sandwich2.png" id="4_qy7bc"]
 [ext_resource type="Texture2D" uid="uid://dah4htacvndyf" path="res://Art/Sandwich/Sandwich/Sandwich3.png" id="5_2dfve"]
 [ext_resource type="Texture2D" uid="uid://ucstx68cn55j" path="res://Art/Sandwich/Sandwich/Sandwich4.png" id="6_1pw17"]
+[ext_resource type="Script" uid="uid://cjmoi3rtnx4vu" path="res://Scripts/Levels/Props/Bird/bird.gd" id="10_lj1ok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6nvb"]
 size = Vector2(7186, 10)
@@ -154,3 +155,25 @@ speed_scale = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1417673844]
 shape = SubResource("CircleShape2D_hqh25")
+
+[node name="Birds" type="Node2D" parent="." unique_id=1459622265]
+
+[node name="Bird" type="StaticBody2D" parent="Birds" unique_id=1794333882]
+position = Vector2(0, -18)
+script = ExtResource("10_lj1ok")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
+
+[node name="Bird2" type="StaticBody2D" parent="Birds" unique_id=1068612547]
+position = Vector2(40, -18)
+script = ExtResource("10_lj1ok")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
+
+[node name="Bird3" type="StaticBody2D" parent="Birds" unique_id=2121992592]
+position = Vector2(78, -18)
+script = ExtResource("10_lj1ok")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
+
+[node name="Bird4" type="StaticBody2D" parent="Birds" unique_id=2098999159]
+position = Vector2(-76, -18)
+script = ExtResource("10_lj1ok")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"

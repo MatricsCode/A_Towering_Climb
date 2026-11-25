@@ -1,7 +1,5 @@
 extends MultiplayerSpawner
 
-const BIRD = preload("res://Scenes/Bird.tscn")
-
 @export var spawn_positions : Array[Array]
 
 #var current_position = []
@@ -34,7 +32,7 @@ func _ready():
 		#spawn(GlobalScript.peer_ID)
 
 func spawn_bird(data):
-	var bird = BIRD.instantiate()
+	var bird = Bird.new()
 	var bird_position : Vector2
 	
 	bird_position = Vector2(current_horizontal_position, spawn_positions.get(spawn_area).get(0).y)
