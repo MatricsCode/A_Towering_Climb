@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://b4hy0x2gtnjq6"]
+
+[ext_resource type="Script" uid="uid://ctch4x8xi88xm" path="res://Scripts/Levels/Interactables/Beans/Beans.gd" id="1_4w81i"]
+[ext_resource type="Texture2D" uid="uid://dltkjgxhpd0tm" path="res://Art/Beans/Beans-sheet.png" id="1_h84p6"]
+[ext_resource type="Shader" uid="uid://snp71tjtu5u5" path="res://Components/Shaders/Wiggle.gdshader" id="1_wi6eu"]
+[ext_resource type="Script" uid="uid://clix5xqay4du2" path="res://Scripts/Abilitys/SecondaryAbilities/BeanOpener.gd" id="2_ad6yg"]
+[ext_resource type="Script" uid="uid://1pvjkp0rf4rn" path="res://Scripts/Abilitys/SecondaryAbilities/BeanSpill.gd" id="3_4k5v8"]
+[ext_resource type="Script" uid="uid://43xq3swqbxdi" path="res://Scripts/Abilitys/MainAbilities/BeanThrow.gd" id="4_nswjj"]
+[ext_resource type="Script" uid="uid://dnmg5xdc8i5qc" path="res://Scripts/Levels/Interactables/Beans/Eaten.gd" id="4_rt1e6"]
+[ext_resource type="Script" uid="uid://ds7yl1dce34hu" path="res://Scripts/Levels/Interactables/Beans/Spilled.gd" id="5_s3ue3"]
+[ext_resource type="Script" uid="uid://dmxd0xaqem23e" path="res://Scripts/Levels/Interactables/Beans/Collected.gd" id="6_anhw2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nswjj"]
+shader = ExtResource("1_wi6eu")
+shader_parameter/position_x = 5.0
+shader_parameter/position_y = 25.0
+shader_parameter/offset_x = 10.0
+shader_parameter/offset_y = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi6eu"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(0, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w81i"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(86, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad6yg"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(172, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt1e6"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(258, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3ue3"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(344, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anhw2"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(430, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k5v8"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(516, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nswjj"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(602, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mxyu"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(688, 0, 86, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqh25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi6eu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w81i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad6yg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt1e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3ue3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anhw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k5v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nswjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mxyu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqh25"]
+radius = 36.345562
+
+[node name="Beans" type="Node2D" unique_id=446458985 node_paths=PackedStringArray("effects", "area", "sprite")]
+script = ExtResource("1_4w81i")
+activators = Array[Script]([ExtResource("2_ad6yg"), ExtResource("3_4k5v8"), ExtResource("4_nswjj")])
+effects = [NodePath("Eaten"), NodePath("Spilled"), NodePath("Collected")]
+area = NodePath("Area2D")
+sprite = NodePath("AnimatedSprite2D")
+metadata/_custom_type_script = "uid://c3pd3dg0vshs0"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2099315335]
+material = SubResource("ShaderMaterial_nswjj")
+sprite_frames = SubResource("SpriteFrames_hqh25")
+autoplay = "default"
+frame_progress = 0.31874844
+
+[node name="Area2D" type="Area2D" parent="." unique_id=176521851]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=275128021]
+shape = SubResource("CircleShape2D_hqh25")
+
+[node name="Eaten" type="Node" parent="." unique_id=404004818 node_paths=PackedStringArray("interactable", "nodes")]
+script = ExtResource("4_rt1e6")
+interactable = NodePath("..")
+nodes = {
+"sprite": NodePath("../AnimatedSprite2D")
+}
+metadata/_custom_type_script = "uid://c3tn80405xpof"
+
+[node name="Spilled" type="Node" parent="." unique_id=244354415 node_paths=PackedStringArray("interactable", "nodes")]
+script = ExtResource("5_s3ue3")
+interactable = NodePath("..")
+nodes = {
+"sprite": NodePath("../AnimatedSprite2D")
+}
+metadata/_custom_type_script = "uid://c3tn80405xpof"
+
+[node name="Collected" type="Node" parent="." unique_id=1068241467 node_paths=PackedStringArray("interactable", "nodes")]
+script = ExtResource("6_anhw2")
+interactable = NodePath("..")
+nodes = {
+"sprite": NodePath("../AnimatedSprite2D")
+}
+metadata/_custom_type_script = "uid://c3tn80405xpof"

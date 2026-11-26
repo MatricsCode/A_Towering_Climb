@@ -289,9 +289,6 @@ func _get_sprite_rotation():
 	else:
 		return -1
 
-func _update():
-	pass
-
 func _configure_inputs():
 	var all_inputs = InputMap.get_actions()
 	var search_for = str("P", player_source.player_number, "_")
@@ -310,14 +307,16 @@ func _configure_inputs():
 
 func _status_effect_update(change_image : bool, data = null):
 	if change_image:
-		status_image.texture = data
 		if data != null:
 			status_image.visible = true
 		else:
 			status_image.visible = false
+			return
+		status_image.texture = data
 	else:
-		secondary_text.text = data
 		if data != "":
 			secondary_text.visible = true
 		else:
 			secondary_text.visible = false
+			return
+		secondary_text.text = data

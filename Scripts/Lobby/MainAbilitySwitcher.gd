@@ -5,10 +5,9 @@ var player_inputs : Dictionary[Player, String] = {}
 var player_left_right : Dictionary[Player, Array] = {}
 
 const MAIN_ABILITIES = {"Ram" : preload("uid://b0imh5jcjfvpr"), "ClimbersHook" : preload("uid://d1orsl3fcwm7b"),
-	"Punch": preload("uid://dguxchtm12cvo"),
-	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
+	"Punch": preload("uid://dguxchtm12cvo"), "Bean Projectile" : preload("uid://43xq3swqbxdi")}
 const PASS_ABILITIES = {"Glide" : preload("uid://d0y0w2hbe3jwq"), "DrumKey" : preload("uid://cx4jckeql12mb"), 
-	"DummyAbility1" : preload("uid://bpmhsc3tdcpqq"), "DummyAbility2" : preload("uid://dvnr5lwr2t2n8")}
+	"Eating Beans" : preload("uid://clix5xqay4du2"), "Spilling Beans" : preload("uid://1pvjkp0rf4rn")}
 const SPRITES = {"Baker" : preload("uid://bl7fd60qs8x7s"), "Climber" : preload("uid://c2turr7b108g7"), 
 	"Climber 2" : preload("uid://cfoxbudysmmgk")}
 const SPRITE_THEME = [preload("uid://d0fl0yg8b5iq2"), preload("uid://c5qlnyqt7qlc3"), 

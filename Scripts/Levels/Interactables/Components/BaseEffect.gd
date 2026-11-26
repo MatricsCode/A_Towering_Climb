@@ -1,7 +1,7 @@
 extends Node
 class_name Effect
 
-@export var interactable : Interactable
+@export var interactable : Interactable = null
 @export var nodes : Dictionary[String, Node]
 
 func _ready():

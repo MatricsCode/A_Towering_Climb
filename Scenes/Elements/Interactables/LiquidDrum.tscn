@@ -91,7 +91,6 @@ scale = Vector2(1, 1.0000002)
 shape = SubResource("RectangleShape2D_3yqq0")
 
 [node name="SpillEffect" type="Node" parent="." unique_id=923365891 node_paths=PackedStringArray("interactable", "nodes")]
-process_mode = 4
 script = ExtResource("7_3ppat")
 interactable = NodePath("..")
 nodes = {

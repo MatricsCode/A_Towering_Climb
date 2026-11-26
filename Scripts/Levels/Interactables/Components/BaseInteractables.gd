@@ -107,3 +107,7 @@ func _stick_to_ground(vertical_offset : float = 0):
 		position.y -= vertical_offset
 	
 	ground_detector.queue_free()
+
+func _stop_effects():
+	for i in effects:
+		i.set_process_mode(PROCESS_MODE_DISABLED)
