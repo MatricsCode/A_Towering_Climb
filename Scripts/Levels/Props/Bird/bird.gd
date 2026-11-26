@@ -5,28 +5,40 @@ const BIRD_SPRITE_FRAMES = preload("uid://boimcwbblrhxc")
 const COLORS = ["Blue", "Green", "Red"]
 
 var nodes = {"sprite" : AnimatedSprite2D, "area" : Area2D, 
-	"ray_cast" : RayCast2D, "hop_timer" : Timer}
+	"ray_cast" : RayCast2D, "hop_timer" : Timer, "onscreen_detector" : VisibleOnScreenNotifier2D, 
+	"queue_free_timer" : Timer,}
 var flying_vars = {"direction" = 0, "speed" = 10.0, "degrees" = 1.0, "count" = 0.0, "is_flying" = false}
 var hopping_vars = {"direction" = 0, "end_point" = Vector2.ZERO, "is_hopping" = false,
 	"curve_peak" = Vector2.ZERO, "difference" = 0.0, "hop_time" = 0.2, "minTime" = 1.0, "maxTime" = 10.0}
-var appearance = {"color" = ""}
+var appearance = {"color" = "",}
 
 func _ready():
-#region This spawns and sets up all of the required nodes 
-	
-	# Here it spawns the sprite,the area2D and the hop_timer + sets them all up
+	#region This spawns and sets up all of the required nodes 
+	# This spawns + sets up the sprite with the correct speed and spriteframes
 	nodes["sprite"] = AnimatedSprite2D.new()
 	nodes.get("sprite").speed_scale = 3
 	nodes.get("sprite").sprite_frames = BIRD_SPRITE_FRAMES
 	add_child(nodes.get("sprite"))
 	
+	# This spawns + sets up the area with the correct collision layer 
 	nodes["area"] = Area2D.new()
 	nodes.get("area").set_collision_layer_value(1, false)
 	add_child(nodes.get("area"))
 	
+	# This spawns + sets up the hop timer with one shot being active
 	nodes["hop_timer"] = Timer.new()
 	nodes.get("hop_timer").one_shot = true
 	add_child(nodes["hop_timer"])
+	
+	# This spawns + sets up the queue_free timer with one shot being active and the wait time being 10
+	nodes["queue_free_timer"] = Timer.new()
+	nodes.get("queue_free_timer").one_shot = true
+	nodes.get("queue_free_timer").wait_time = 10.0
+	add_child(nodes.get("queue_free_timer"))
+	
+	# This spawns the on screen detector
+	nodes["onscreen_detector"] = VisibleOnScreenNotifier2D.new()
+	add_child(nodes.get("onscreen_detector"))
 	
 	# Here it creates the collision shape and it's shape for the area 2D
 	var collision_field = CollisionShape2D.new()
@@ -35,12 +47,24 @@ func _ready():
 	collision_field.shape = collision_shape
 	nodes.get("area").add_child(collision_field)
 	
-	# Here it creates a raycast to see were the floor is
+	# Here it creates a raycast to see were the floor is (The raycast is reused multiple times)
 	nodes["ray_cast"] = RayCast2D.new()
 	add_child(nodes.get("ray_cast"))
 	nodes.get("ray_cast").set_collision_mask_value(1, false)
 	nodes.get("ray_cast").set_collision_mask_value(2, true)
 	nodes.get("ray_cast").target_position.y = 50
+	
+	# Here it sets up all of the signals
+	nodes.get("area").body_entered.connect(_player_entered)
+	nodes.get("area").body_exited.connect(_player_exited)
+	nodes.get("hop_timer").timeout.connect(_hop_execute)
+	nodes.get("queue_free_timer").timeout.connect(func():
+		queue_free())
+	nodes.get("onscreen_detector").screen_entered.connect(func(): 
+		nodes.get("queue_free_timer").stop())
+	nodes.get("onscreen_detector").screen_exited.connect(func(): 
+		nodes.get("queue_free_timer").start())
+	#endregion
 	
 	# Here it checks when the raycast is colliding and 
 	# sets the birds position to the position of the floor
@@ -48,12 +72,6 @@ func _ready():
 		await get_tree().create_timer(0.1).timeout
 	position = nodes.get("ray_cast").get_collision_point()
 	position.y -= 10
-	
-	# Here it sets up all of the signals
-	nodes.get("area").body_entered.connect(_player_entered)
-	nodes.get("area").body_exited.connect(_player_exited)
-	nodes.get("hop_timer").timeout.connect(_hop_execute)
-#endregion
 	
 	flying_vars["speed"] = randf_range(10,30)
 	flying_vars["degrees"] = randf_range(10,30)
