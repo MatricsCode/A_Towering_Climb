@@ -3,6 +3,7 @@ class_name Player
 
 signal start()
 signal update_source()
+signal switched(new_state : int)
 
 @export var player_source : PlayerSource
 
@@ -39,7 +40,7 @@ var main_vars = { ## Main variables
 		"gravity" : 0, "gravity_increase" : 2, "movement_direction" : 0},
 	"climbing_vars" : {"climbing_speed" : 300},
 	
-	"other_vars" : {"can_switch" : true,"ability_overide" : false},}
+	"other_vars" : {"can_switch" : true, "ability_overide" : false},}
 
 var main_vars_reset = []
 
@@ -159,6 +160,7 @@ func _switch_ground(new_state : States, additional := ""):
 	elif new_state == States.CLIMB:
 		position.y -= 25
 	
+	switched.emit(new_state)
 	current_state = new_state
 func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
 	if !main_vars.get("other_vars")["can_switch"]:
@@ -182,6 +184,8 @@ func _switch_air(new_state : States, additional := "",  fall_speed := 0.0):
 		_reset_main_vars()
 	
 	_reset_main_vars()
+	
+	switched.emit(new_state)
 	current_state = new_state
 func _switch_climb(new_state : States, additional := ""):
 	if !main_vars.get("other_vars")["can_switch"]:
@@ -212,8 +216,10 @@ func _switch_climb(new_state : States, additional := ""):
 		if additional == "Jump":
 			air._jump(true)
 	
+	switched.emit(new_state)
 	current_state = new_state
 func _switch_pause(new_state : States, additional := ""):
+	switched.emit(new_state)
 	current_state = new_state
 	if additional == "":
 		pass
@@ -240,6 +246,7 @@ func _switch_ability(new_state : States, additional := ""):
 	elif additional == "Glide" and new_state == States.CLIMB:
 		pass
 	
+	switched.emit(new_state)
 	current_state = new_state
 
 func _switch_timeout(time : float):

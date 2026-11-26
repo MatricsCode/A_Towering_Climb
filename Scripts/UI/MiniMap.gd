@@ -38,7 +38,7 @@ func _start():
 	
 	await get_tree().create_timer(0.1).timeout
 	has_started = true
-func _finish():
+func _finish(_body):
 	visible = false
 	
 	for i in players.get_children():

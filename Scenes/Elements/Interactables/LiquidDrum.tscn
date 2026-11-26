@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://qcca3v04ibwv"]
 
 [ext_resource type="Script" uid="uid://cwnojcoqhgt44" path="res://Scripts/Levels/Interactables/LiquidDrum/LiquidDrumMain.gd" id="1_xwc7i"]
+[ext_resource type="Script" uid="uid://cx4jckeql12mb" path="res://Scripts/Abilitys/SecondaryAbilities/DrumKey.gd" id="2_61h7m"]
 [ext_resource type="Texture2D" uid="uid://7ouqnqymspnj" path="res://Art/Liquid Drum/Industrial Drum4.png" id="2_da04d"]
 [ext_resource type="Texture2D" uid="uid://bnfx2kurr2dqv" path="res://Art/Liquid Drum/Industrial Drum5.png" id="2_kexb0"]
 [ext_resource type="Texture2D" uid="uid://b05n87ae7e08t" path="res://Art/Liquid Drum/Industrial Drum1.png" id="2_l6euv"]
@@ -67,12 +68,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3yqq0"]
 size = Vector2(250.423, 40)
 
-[node name="Liquid Drum" type="Node2D" unique_id=160526860 node_paths=PackedStringArray("area", "sprite")]
+[node name="Liquid Drum" type="Node2D" unique_id=160526860 node_paths=PackedStringArray("effects", "area", "sprite")]
 scale = Vector2(1.0046, 0.996686)
 script = ExtResource("1_xwc7i")
+activators = Array[Script]([ExtResource("2_61h7m")])
+effects = [NodePath("SpillEffect")]
 area = NodePath("Area2D")
 sprite = NodePath("Sprite")
-auto_setup_area = false
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=102988255]
 position = Vector2(-144.336, -299.99417)
@@ -88,5 +90,8 @@ position = Vector2(0, -20.000004)
 scale = Vector2(1, 1.0000002)
 shape = SubResource("RectangleShape2D_3yqq0")
 
-[node name="SpillEffect" type="Node" parent="." unique_id=923365891]
+[node name="SpillEffect" type="Node" parent="." unique_id=923365891 node_paths=PackedStringArray("liquid_drum", "sprite")]
+process_mode = 4
 script = ExtResource("7_3ppat")
+liquid_drum = NodePath("..")
+sprite = NodePath("../Sprite")

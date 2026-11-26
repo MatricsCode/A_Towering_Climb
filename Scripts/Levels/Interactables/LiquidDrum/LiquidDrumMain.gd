@@ -1,27 +1,18 @@
 extends Interactable
 
-var speed = {}
-var jump_power = {}
-
-var spilled := false
-
-var player_stats := {}
+var current_effect := -1
 
 func _interactable_ready():
 	sprite.play("Full")
+	_stick_to_ground()
 
 func _player_entered(body : Player):
 	var player_source : PlayerSource
 	player_source = body.player_source
 	
-	### This line just checks if any of the ability scripts of the player matches the activator
-	#if (player_source.main_ability == activator or
-	 #player_source.passive_ability == activator or player_source.secret_ability == activator):
-		#if !spilled:
-			#sprite.play("Emptying")
-	#else:
-		#pass
-	#if spilled:
-		#_stick_player(body)
+	var number = _check_abilities(body)
+	if number != -1 and current_effect == -1:
+		effects.get(number).set_process_mode(PROCESS_MODE_INHERIT)
+		current_effect = number
 func _player_exited(body : Player):
 	pass

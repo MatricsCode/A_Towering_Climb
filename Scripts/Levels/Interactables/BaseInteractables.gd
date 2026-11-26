@@ -30,24 +30,27 @@ var players := []
 func _ready():
 	if auto_setup_area:
 		area.body_entered.connect(func(body : Node):
-			if !body.is_class("Player"):
+			if !body.is_class("CharacterBody2D"):
 				return
 			
-			elif _check_abilities(body):
+			elif _check_abilities(body) != -1:
 				players.append(body)
 				_player_entered(body)
 				
 				player_entered.emit(body))
 		area.body_exited.connect(func(body : Node):
-			if !body.is_class("Player"):
+			if !body.is_class("CharacterBody2D"):
 				return
 			
-			elif _check_abilities(body):
+			elif _check_abilities(body)  != -1:
 				players.erase(body)
 				_player_exited(body)
 				
 				
 				player_exited.emit(body))
+	
+	for i in effects:
+		i.set_process_mode(PROCESS_MODE_DISABLED)
 	
 	_interactable_ready()
 
