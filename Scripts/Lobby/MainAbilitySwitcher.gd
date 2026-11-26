@@ -1,6 +1,8 @@
 extends Area2D
 
 var players = []
+var player_inputs : Dictionary[Player, String] = {}
+var player_left_right : Dictionary[Player, Array] = {}
 
 const MAIN_ABILITIES = {"Ram" : preload("uid://b0imh5jcjfvpr"), "ClimbersHook" : preload("uid://d1orsl3fcwm7b"),
 	"Punch": preload("uid://dguxchtm12cvo"),
@@ -13,7 +15,7 @@ const SPRITE_THEME = [preload("uid://d0fl0yg8b5iq2"), preload("uid://c5qlnyqt7ql
 	preload("uid://s0cgft0kbrqu")]
 const SECRET_ABILITIES = []
 
-@export_enum("Main", "Passive", "Sprite") var ability : int = 0
+@export_enum("Passive", "Main", "Sprite") var ability : int = 0
 
 @export_group("UI")
 @export var UI : Control
@@ -42,12 +44,15 @@ func _ready():
 		for i in local_players_present.keys():
 			if local_players_present[i] == body:
 				local_players_present.erase(i)
+				
 		
-		if local_players_present.size() == 0:
-			interactables_label.visible = true
-			abilities.visible = false
+		_update_text()
 		
 		_match_text())
+	
+	interactables_label.visible = true
+	left_input_text.visible = true
+	right_input_text.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -68,6 +73,8 @@ func _editing_player(player : Player):
 	if editing_players.has(player):
 		player.current_state = player.States.GROUND
 		editing_players.erase(player)
+		player_left_right.erase(player)
+		_match_text()
 		player._status_effect_update(false, "")
 	else:
 		interactables_label.visible = false
@@ -132,7 +139,9 @@ func _show_interact_input(body : Player):
 	var input = str(current_input_event).split("(")[1]
 	input = input.split(")")[0]
 	
-	interactables_label.text = str("[wave amp=100]Press : ", input)
+	player_inputs[body] = input
+	
+	_update_text()
 func _show_switching_input(body : Player):
 	var left_action = body.inputs.Left
 	var right_action = body.inputs.Right
@@ -146,9 +155,11 @@ func _show_switching_input(body : Player):
 	left_input = left_input.split(")")[0]
 	right_input = right_input.split(")")[0]
 	
-	left_input_text.text = left_input
-	right_input_text.text = right_input
 	
+	player_inputs.erase(body)
+	player_left_right[body] = [left_input, right_input]
+	
+	_update_text()
 	#var action = body.inputs.Interact
 	#var current_input_events = InputMap.action_get_events(action)
 	#var input = str(current_input_event).split("(")[1]
@@ -169,6 +180,37 @@ func _inputs(_event):
 		editing_players.append(local_players.get(3))
 	elif Input.is_action_just_pressed("P4_Ability") and local_players.keys().has(4):
 		editing_players.append(local_players.get(4))
+
+func _update_text():
+	if player_inputs.size() > 0:
+		var string := ""
+		for i in player_inputs.values():
+			string = str(string, ", ", i) if string.length() > 0 else i
+		
+		
+		interactables_label.text = str("[wave amp=100]Press : ", string)
+	else:
+		interactables_label.text = ""
+	
+	if player_left_right.size() > 0:
+		var array = []
+		for i in player_left_right.values():
+			array.append(i)
+		
+		
+		
+		
+		var left_string : String = ""
+		var right_string : String = ""
+		
+		for i in array:
+			left_string = str(left_string, "/n", i[0]) if left_string.length() > 0 else i[0]
+			right_string = str(right_string, "/n", i[1]) if right_string.length() > 0 else i[1]
+		left_input_text.text = left_string
+		right_input_text.text = right_string
+	else:
+		left_input_text.text = ""
+		right_input_text.text = ""
 
 func _match_text():
 	if ability == 1: interactables_label.text = "[wave amp=200]Main Abilities:"
