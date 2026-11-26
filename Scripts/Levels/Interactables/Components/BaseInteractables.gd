@@ -65,6 +65,8 @@ func _player_exited(_body : Player):
 ## If the player does, it then goes through the links dictionary to see if there is a corresponding link
 ## It then returns the index of the corresponding effect in the effects dictionary
 ## If the player does NOT have a corresponding ability, this function returns -1
+## If the player has MULTIPLE corresponding abilities, this function returns a compound number, were each individual digit represents the index of the corresponding event
+## Use _decode_check_abilities to get the effect index's out of the compound number
 func _check_abilities(player : Player) -> int:
 	var player_stats : PlayerSource
 	player_stats = player.player_source
@@ -75,7 +77,15 @@ func _check_abilities(player : Player) -> int:
 	for i in activators:
 		if (player_stats.main_ability == i or
 		 player_stats.passive_ability == i or player_stats.secret_ability == i):
-			index = activators.find(i)
+			if index == -1:
+				index = activators.find(i)
+			else:
+				var count = 0
+				var sec_index = index
+				while sec_index > 1:
+					count += 1
+					sec_index = sec_index / 10.0
+				return index + activators.find(i) * (10 * count)
 	
 	if index == -1:
 		return -1
@@ -107,6 +117,17 @@ func _stick_to_ground(vertical_offset : float = 0):
 		position.y -= vertical_offset
 	
 	ground_detector.queue_free()
+
+## If the player has multiple abilities which can trigger an effect, a compound number is produced
+## Use this function to turn the compound number into an array, containing all of the index's of the effects to be triggered
+func _decode_check_abilities(number : float) -> Array:
+	var all_effects = []
+	while number > 1:
+		number = number / 10.0
+		var temp_number = floor(number)
+		all_effects.append((number - temp_number) * 10)
+	
+	return all_effects
 
 func _stop_effects():
 	for i in effects:
