@@ -1,13 +1,7 @@
 [gd_scene format=3 uid="uid://b4hy0x2gtnjq6"]
 
-[ext_resource type="Script" uid="uid://ctch4x8xi88xm" path="res://Scripts/Levels/Interactables/Beans.gd" id="1_4w81i"]
+[ext_resource type="Script" uid="uid://ctch4x8xi88xm" path="res://Scripts/Levels/Interactables/Beans/Beans.gd" id="1_4w81i"]
 [ext_resource type="Texture2D" uid="uid://dltkjgxhpd0tm" path="res://Art/Beans/Beans-sheet.png" id="1_h84p6"]
-[ext_resource type="Shader" uid="uid://snp71tjtu5u5" path="res://Components/Shaders/Wiggle.gdshader" id="1_wi6eu"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bt4ww"]
-shader = ExtResource("1_wi6eu")
-shader_parameter/position_x = 5.0
-shader_parameter/position_y = 25.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wi6eu"]
 atlas = ExtResource("1_h84p6")
@@ -90,7 +84,6 @@ sprite = NodePath("AnimatedSprite2D")
 metadata/_custom_type_script = "uid://c3pd3dg0vshs0"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2099315335]
-material = SubResource("ShaderMaterial_bt4ww")
 sprite_frames = SubResource("SpriteFrames_hqh25")
 frame_progress = 0.31874844
 

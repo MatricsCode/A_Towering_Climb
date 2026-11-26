@@ -49,9 +49,6 @@ func _ready():
 				
 				player_exited.emit(body))
 	
-	for i in effects:
-		i.set_process_mode(PROCESS_MODE_DISABLED)
-	
 	_interactable_ready()
 
 func _interactable_ready():
