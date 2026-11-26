@@ -19,7 +19,6 @@ const SECRET_ABILITIES = []
 
 @export_group("UI")
 @export var UI : Control
-@export var abilities : HBoxContainer
 @export var interactables_label : RichTextLabel
 @export var ability_label : Label
 @export var left_input_text : RichTextLabel
@@ -32,9 +31,6 @@ var local_players_present = {}
 func _ready():
 	_match_text()
 	
-	interactables_label.visible = true
-	abilities.visible = false
-	
 	body_entered.connect(func(body : Player):
 		body.main_vars.other_vars.ability_overide = true
 		local_players_present[body.player_source.player_number] = body
@@ -46,9 +42,7 @@ func _ready():
 				local_players_present.erase(i)
 				
 		
-		_update_text()
-		
-		_match_text())
+		_update_text())
 	
 	interactables_label.visible = true
 	left_input_text.visible = true
@@ -74,11 +68,13 @@ func _editing_player(player : Player):
 		player.current_state = player.States.GROUND
 		editing_players.erase(player)
 		player_left_right.erase(player)
-		_match_text()
+		_update_text()
+		
+		if editing_players.is_empty():
+			_match_text()
+		
 		player._status_effect_update(false, "")
 	else:
-		interactables_label.visible = false
-		abilities.visible = true
 		player.current_state = player.States.PAUSED
 		editing_players.append(player)
 		player._status_effect_update(true, null)
@@ -204,8 +200,10 @@ func _update_text():
 		var right_string : String = ""
 		
 		for i in array:
-			left_string = str(left_string, "/n", i[0]) if left_string.length() > 0 else i[0]
-			right_string = str(right_string, "/n", i[1]) if right_string.length() > 0 else i[1]
+			left_string = (str(left_string, "\n", i[0]) if left_string.length() > 0 
+				else str("[wave amp=100]", i[0]))
+			right_string = (str(right_string, "\n", i[1]) if right_string.length() > 0 
+				else str("[wave amp=100]",i[1]))
 		left_input_text.text = left_string
 		right_input_text.text = right_string
 	else:

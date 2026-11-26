@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://b4hy0x2gtnjq6"]
+
+[ext_resource type="Texture2D" uid="uid://dltkjgxhpd0tm" path="res://Art/Beans/Beans-sheet.png" id="1_h84p6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi6eu"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(0, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w81i"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(86, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad6yg"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(172, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt1e6"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(258, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3ue3"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(344, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anhw2"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(430, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k5v8"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(516, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nswjj"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(602, 0, 86, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mxyu"]
+atlas = ExtResource("1_h84p6")
+region = Rect2(688, 0, 86, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqh25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi6eu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w81i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad6yg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt1e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3ue3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anhw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k5v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nswjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mxyu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1149663730]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2099315335]
+sprite_frames = SubResource("SpriteFrames_hqh25")
+frame_progress = 0.31874844

@@ -5,10 +5,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqh25"]
 
-[node name="StaticBody2D" type="Area2D" unique_id=1142489465 node_paths=PackedStringArray("UI", "abilities", "interactables_label", "left_input_text", "right_input_text")]
+[node name="StaticBody2D" type="Area2D" unique_id=1142489465 node_paths=PackedStringArray("UI", "interactables_label", "left_input_text", "right_input_text")]
 script = ExtResource("1_p5wee")
 UI = NodePath("UI")
-abilities = NodePath("UI/VBoxContainer/HBoxContainer")
 interactables_label = NodePath("UI/VBoxContainer/RichTextLabel")
 left_input_text = NodePath("UI/VBoxContainer/HBoxContainer/MarginContainer/RichTextLabel")
 right_input_text = NodePath("UI/VBoxContainer/HBoxContainer/MarginContainer2/RichTextLabel")
@@ -72,7 +71,6 @@ theme_override_font_sizes/bold_italics_font_size = 64
 theme_override_font_sizes/italics_font_size = 64
 theme_override_font_sizes/mono_font_size = 64
 bbcode_enabled = true
-text = "[wave amp=100]A"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -96,7 +94,6 @@ theme_override_font_sizes/bold_italics_font_size = 64
 theme_override_font_sizes/italics_font_size = 64
 theme_override_font_sizes/mono_font_size = 64
 bbcode_enabled = true
-text = "[wave amp=100]D"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
