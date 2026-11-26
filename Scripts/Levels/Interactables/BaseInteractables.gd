@@ -2,7 +2,9 @@ extends Node2D
 class_name Interactable
 
 @export_group("Main")
-@export var activator : Script
+@export var activators : Array[Script]
+@export var effects  : Array[Node]
+@export var links : Dictionary[int, int]
 @export var target : Node
 @export var auto_setup_area := true
 
@@ -13,31 +15,19 @@ class_name Interactable
 var players := []
 
 func _ready():
-	var check = func(body : Player): ## Checks if the player has the correct ability
-		var player_stats : PlayerSource
-		player_stats = body.player_source
-		
-		## This line just checks if any of the ability scripts of the player matches the activator
-		if (player_stats.main_ability == activator or
-		 player_stats.passive_ability == activator or player_stats.secret_ability == activator):
-			return true
-		else:
-			return false
-	
 	if auto_setup_area:
 		area.body_entered.connect(func(body : Node):
-			print(body.get_class())
 			if !body.is_class("CharacterBody2D"):
 				return
 			
-			elif check.call(body):
+			elif _check_ability(body):
 				players.append(body)
 				_player_entered(body))
 		area.body_exited.connect(func(body : Node):
 			if !body.is_class("CharacterBody2D"):
 				return
 			
-			elif check.call(body):
+			elif _check_ability(body):
 				players.erase(body)
 				_player_exited(body))
 	
@@ -64,7 +54,6 @@ func _ready():
 		position = ground_detector.get_collision_point()
 	
 	ground_detector.queue_free()
-	
 
 func _interactable_ready():
 	pass
@@ -105,3 +94,22 @@ func _player_exited(_body : Player):
 	#for i in GlobalScript.player_attributes.get(body_ID).get("Abilities"):
 		#if i == ability:
 			#return true
+
+func _check_ability(player : Player) -> int:
+	var player_stats : PlayerSource
+	player_stats = player.player_source
+	
+	var index = -1
+	
+	## This line just checks if any of the ability scripts of the player matches the activator
+	for i in activators:
+		if (player_stats.main_ability == i or
+		 player_stats.passive_ability == i or player_stats.secret_ability == i):
+			index = activators.find(i)
+	
+	if index == -1:
+		return -1
+	
+	var code_to_execute : int = index if !links.has(index) else links.get(index)
+	
+	return code_to_execute

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://qcca3v04ibwv"]
 
 [ext_resource type="Script" uid="uid://cwnojcoqhgt44" path="res://Scripts/Levels/Interactables/LiquidDrum.gd" id="1_xwc7i"]
-[ext_resource type="Script" uid="uid://cx4jckeql12mb" path="res://Scripts/Abilitys/SecondaryAbilities/DrumKey.gd" id="2_61h7m"]
 [ext_resource type="Texture2D" uid="uid://7ouqnqymspnj" path="res://Art/Liquid Drum/Industrial Drum4.png" id="2_da04d"]
 [ext_resource type="Texture2D" uid="uid://bnfx2kurr2dqv" path="res://Art/Liquid Drum/Industrial Drum5.png" id="2_kexb0"]
 [ext_resource type="Texture2D" uid="uid://b05n87ae7e08t" path="res://Art/Liquid Drum/Industrial Drum1.png" id="2_l6euv"]
@@ -70,7 +69,7 @@ size = Vector2(250.423, 40)
 [node name="Liquid Drum" type="Node2D" unique_id=160526860 node_paths=PackedStringArray("area", "sprite")]
 scale = Vector2(1.0046, 0.996686)
 script = ExtResource("1_xwc7i")
-activator = ExtResource("2_61h7m")
+activator = null
 auto_setup_area = false
 area = NodePath("Area2D")
 sprite = NodePath("Sprite")
