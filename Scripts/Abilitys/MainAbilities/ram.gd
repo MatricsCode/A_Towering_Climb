@@ -9,7 +9,7 @@ var fall_speed := 25.0
 var fall_gravity := 10.0
 var fall_increase := 25.0
 
-func _ready():
+func _ability_ready():
 	activation_state = player.States.GROUND
 	
 	detectors.on_ground.connect(func(is_true : bool):
@@ -64,8 +64,6 @@ func _ram():
 	player.velocity.x = ram_speed * player._get_sprite_rotation()
 	
 	sprite.play("ram")
-
-
 func _fall():
 	sprite.play("fall")
 	
@@ -82,3 +80,9 @@ func _reset_vars():
 	fall_speed = 25.0
 	fall_gravity = 10.0
 	fall_increase = 25.0
+func _reset_ability():
+	if flying:
+		_switch_to_state(false, player.States.AIR, "RamStopped")
+	else:
+		player.velocity = Vector2.ZERO
+		_switch_to_state(false, player.States.GROUND, "RamStopped")

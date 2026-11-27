@@ -20,7 +20,7 @@ var reset = false
 
 var tween : Tween
 
-func _ready():
+func _ability_ready():
 	punch_timer = Timer.new()
 	add_child(punch_timer)
 	punch_timer.wait_time = windup_time
@@ -61,6 +61,7 @@ func _physics_process(_delta):
 		current_state = true
 	
 	if Input.is_action_just_pressed(player.inputs.Ability) and punch_states == States.NOTHING:
+		_switch_to_state(true)
 		punch_states = States.WINDING_UP
 		_punch_timeout()
 	elif Input.is_action_just_released(player.inputs.Ability) and punch_states == States.WINDING_UP:
@@ -140,3 +141,13 @@ func _reset_vars():
 		windup_level = 1
 		punch_strength = 2000
 		punch_states = States.NOTHING
+func _reset_ability():
+	tween.stop()
+	punch_states = States.NOTHING
+	player.velocity = Vector2.ZERO
+	reset = true
+	_reset_vars()
+	if detectors.is_on_ground:
+		_switch_to_state(false, player.States.GROUND, "PunchStopped")
+	elif !detectors.is_on_ground:
+		_switch_to_state(false, player.States.AIR, "PunchStopped")

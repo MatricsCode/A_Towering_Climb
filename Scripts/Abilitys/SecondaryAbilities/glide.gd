@@ -2,7 +2,7 @@ extends Ability
 
 var min_gliding_speed = 500
 
-func _ready():
+func _ability_ready():
 	activation_state = player.States.AIR
 	
 	detectors.on_ground.connect(func(is_true : bool):
@@ -15,7 +15,7 @@ func _ready():
 			return
 		active = false
 		_switch_to_state(false, player.States.CLIMB, "Glide"))
-	
+
 
 func _physics_process(_delta):
 	if (player.current_state != activation_state and player.current_state != player.States.ABILITY 

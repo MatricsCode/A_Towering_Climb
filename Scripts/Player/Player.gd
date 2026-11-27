@@ -4,6 +4,7 @@ class_name Player
 signal start()
 signal update_source()
 signal switched(new_state : int)
+signal reset_abilities()
 
 @export var player_source : PlayerSource
 

@@ -32,6 +32,7 @@ func _ready():
 	
 	body_entered.connect(func(body : Player):
 		body.main_vars.other_vars.ability_overide = true
+		body.reset_abilities.emit()
 		local_players_present[body.player_source.player_number] = body
 		_show_interact_input(body))
 	body_exited.connect(func(body):

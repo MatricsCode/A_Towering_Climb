@@ -3,7 +3,7 @@ extends Ability
 var to_throw : Array[Player] = []
 var scanner : Area2D
 
-func _ready():
+func _ability_ready():
 	activation_state = player.States.CLIMB
 	
 	player.main_vars.climbing_vars.climbing_speed *= 1.5

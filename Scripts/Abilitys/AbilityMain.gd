@@ -10,6 +10,16 @@ var current_state := false
 var active := false
 var did_switch := false
 
+func _ready():
+	player.reset_abilities.connect(func():
+		active = false
+		did_switch = false
+		_reset_ability())
+	_ability_ready()
+
+func _ability_ready():
+	pass
+
 func _switch_to_state(overide := true, new_state := 0, additional := ""):
 	_reset_vars()
 	did_switch = overide
@@ -18,6 +28,9 @@ func _switch_to_state(overide := true, new_state := 0, additional := ""):
 		player._switch_ability(player.States.ABILITY, additional)
 	else:
 		player._switch_ability(new_state, additional)
+
+func _reset_ability():
+	pass
 
 func _reset_vars():
 	pass
