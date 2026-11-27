@@ -142,7 +142,8 @@ func _reset_vars():
 		punch_strength = 2000
 		punch_states = States.NOTHING
 func _reset_ability():
-	tween.stop()
+	if tween.is_valid():
+		tween.kill()
 	punch_states = States.NOTHING
 	player.velocity = Vector2.ZERO
 	reset = true

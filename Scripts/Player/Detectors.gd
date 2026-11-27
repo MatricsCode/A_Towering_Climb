@@ -26,9 +26,14 @@ var is_on_edge := false
 
 var ignore := false
 
+var to_print = false
+
 func _physics_process(_delta):
 	if ignore:
 		return
+	
+	if Input.is_action_just_pressed("Dev2"):
+		to_print = !to_print
 	
 	_on_roof()
 	_on_ground()

@@ -103,6 +103,10 @@ func _ready(): ## Runns as soon as the player is loaded into the scenes
 	current_state = States.AIR
 	start.emit()
 	update_source.emit()
+	
+	switched.connect(func(new_state : int):
+		if Input.is_action_pressed("Dev1"):
+			print(new_state))
 
 func _physics_process(_delta):  ## Runs every physics frames
 	#GlobalScript.player_attributes.get(ID)["Position"] = position

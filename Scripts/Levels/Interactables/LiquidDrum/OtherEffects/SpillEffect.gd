@@ -22,6 +22,7 @@ func _stick_player(player : Player):
 		player.current_state = player.States.GROUND
 		player.main_vars.other_vars.ability_overide = true
 		player.main_vars.other_vars.can_switch = false
+		player.reset_abilities.emit()
 		player_stats[player] = [player.main_vars.ground_vars.speed]
 		player.main_vars.ground_vars.speed = 50
 		player.velocity = Vector2.ZERO

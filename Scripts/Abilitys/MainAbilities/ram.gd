@@ -81,8 +81,8 @@ func _reset_vars():
 	fall_gravity = 10.0
 	fall_increase = 25.0
 func _reset_ability():
-	if flying:
-		_switch_to_state(false, player.States.AIR, "RamStopped")
-	else:
+	if detectors.is_on_ground:
 		player.velocity = Vector2.ZERO
 		_switch_to_state(false, player.States.GROUND, "RamStopped")
+	else:
+		_switch_to_state(false, player.States.AIR, "RamStopped")
