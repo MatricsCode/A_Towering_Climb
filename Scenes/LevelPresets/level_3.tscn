@@ -4,9 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://cbujddwjermfm" path="res://Scenes/Elements/Props/Goal.tscn" id="2_a0ufr"]
 [ext_resource type="PackedScene" uid="uid://qcca3v04ibwv" path="res://Scenes/Elements/Interactables/LiquidDrum.tscn" id="3_a0ufr"]
 [ext_resource type="PackedScene" uid="uid://b4hy0x2gtnjq6" path="res://Scenes/Elements/Props/Beans.tscn" id="4_xk1gt"]
+[ext_resource type="PackedScene" uid="uid://dbd4mefv24ifl" path="res://Scenes/LevelPresets/Spawners/BirdSpawner.tscn" id="5_0tbu8"]
+[ext_resource type="Script" uid="uid://cjmoi3rtnx4vu" path="res://Scripts/Levels/Props/Bird/Bird.gd" id="6_yj2yc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqh25"]
 size = Vector2(7186, 10)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_b4cut"]
+a = Vector2(-1260, -1291)
+b = Vector2(-258, -1291)
 
 [node name="Level3" type="Node2D" unique_id=1795007488]
 
@@ -140,4 +146,47 @@ text = "[tornado] [color=gold] congratulations! You made it to the top! [/color]
 scroll_active = false
 
 [node name="Beans" parent="." unique_id=446458985 instance=ExtResource("4_xk1gt")]
-position = Vector2(-828, -1413)
+position = Vector2(-762, -1441)
+
+[node name="BirdSpawner" parent="." unique_id=760831414 instance=ExtResource("5_0tbu8")]
+spawn_positions = Array[SegmentShape2D]([SubResource("SegmentShape2D_b4cut")])
+
+[node name="Bird" type="Node2D" parent="." unique_id=62799853]
+position = Vector2(729, -414)
+script = ExtResource("6_yj2yc")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
+
+[node name="Bird2" type="Node2D" parent="." unique_id=1342529185]
+position = Vector2(799, -414)
+script = ExtResource("6_yj2yc")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
+
+[node name="Bird3" type="Node2D" parent="." unique_id=215129457]
+position = Vector2(855, -414)
+script = ExtResource("6_yj2yc")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
+
+[node name="Bird4" type="Node2D" parent="." unique_id=316852352]
+position = Vector2(685, -414)
+script = ExtResource("6_yj2yc")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
+
+[node name="Bird5" type="Node2D" parent="." unique_id=1881123351]
+position = Vector2(866, -414)
+script = ExtResource("6_yj2yc")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
+
+[node name="Bird6" type="Node2D" parent="." unique_id=211965445]
+position = Vector2(936, -414)
+script = ExtResource("6_yj2yc")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
+
+[node name="Bird7" type="Node2D" parent="." unique_id=829742579]
+position = Vector2(992, -414)
+script = ExtResource("6_yj2yc")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
+
+[node name="Bird8" type="Node2D" parent="." unique_id=689746272]
+position = Vector2(822, -414)
+script = ExtResource("6_yj2yc")
+metadata/_custom_type_script = "uid://cjmoi3rtnx4vu"
